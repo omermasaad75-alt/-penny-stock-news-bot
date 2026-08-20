@@ -11,12 +11,30 @@ app = Flask('')
 def home():
     return "بوت قناص أسهم السنتات الموقت (مع تغطية بعد الإغلاق) يعمل 24/7!"
 
+@app.route('/test')
+def test_route():
+    """رابط بسيط تفتحه من الجوال عشان تبعت رسالة اختبار للقناة فورًا"""
+    try:
+        asyncio.run(send_telegram_message("🔔 اختبار يدوي: البوت متصل ويعمل بنجاح."))
+        return "✅ تم إرسال رسالة الاختبار إلى القناة. راجع تيليجرام."
+    except Exception as e:
+        return f"❌ حصل خطأ أثناء الاختبار: {e}"
+
+@app.route('/scan')
+def scan_route():
+    """رابط تفتحه من الجوال عشان تشغّل فحص أخبار فوري (مسح يدوي) بدل انتظار الدورة التلقائية"""
+    try:
+        asyncio.run(check_market_news())
+        return "✅ تم تنفيذ مسح يدوي للأخبار. لو فيه خبر مطابق للشروط هيوصلك تنبيه في القناة، ولو مفيش يبقى مفيش أخبار مطابقة حاليًا."
+    except Exception as e:
+        return f"❌ حصل خطأ أثناء المسح: {e}"
+
 def run_flask():
     app.run(host='0.0.0.0', port=8080)
 
 # --- بياناتك السرية ---
 TELEGRAM_TOKEN = "8808593618:AAEUz24M2638F7Al0ZHDJndmWIX4JCDLrJE"
-TELEGRAM_CHAT_ID = "@ennyNewsSniperChanne1"
+TELEGRAM_CHAT_ID = "-1004436952886"
 FINNHUB_API_KEY = "da30k59r01qupvfb6hagda30k59r01qupvfb6hb0"
 
 last_news_timestamp = int(datetime.datetime.now().timestamp())
