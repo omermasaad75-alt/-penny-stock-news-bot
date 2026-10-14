@@ -24,7 +24,7 @@ def get(url: str) -> dict:
         return json.loads(r.read().decode("utf-8"))
 
 
-def build(url: str, out: Path, max_symbols: int = 40) -> Path:
+def build(url: str, out: Path, max_symbols: int = 40, badge: str | None = None) -> Path:
     health = get(f"{url}/api/health")
     strategy = get(f"{url}/api/strategy")
     results = get(f"{url}/api/scan/results")
@@ -68,7 +68,8 @@ def build(url: str, out: Path, max_symbols: int = 40) -> Path:
                         + ";</script>\n<script>\n" + app + "\n</script>")
     html = html.replace("<title>", "<title>[نسخة ثابتة] ", 1)
     html = html.replace('<span id="modeBadge" class="badge badge-demo">وضع البيانات: تجريبي</span>',
-                        '<span id="modeBadge" class="badge badge-demo">نسخة ثابتة — بيانات تجريبية</span>')
+                        '<span id="modeBadge" class="badge badge-demo">'
+                        + (badge or "نسخة ثابتة — بيانات تجريبية") + "</span>")
 
     out.parent.mkdir(parents=True, exist_ok=True)
     io.open(out, "w", encoding="utf-8").write(html)

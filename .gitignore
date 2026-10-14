@@ -26,3 +26,6 @@ reports/output/
 .DS_Store
 .idea/
 .vscode/
+
+# موقع Github Pages المبني تلقائياً
+site/

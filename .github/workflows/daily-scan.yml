@@ -1,0 +1,116 @@
+name: المسح اليومي (Daily Scan)
+
+# تشغيل تلقائي ٣ مرات كل يوم عمل + يدوياً عند الحاجة.
+# المواعيد بتوقيت UTC (الرياض = UTC+3):
+#   13:35 UTC = 16:35 الرياض — افتتاح السوق الأمريكي
+#   17:05 UTC = 20:05 الرياض — منتصف الجلسة
+#   21:15 UTC = 00:15 الرياض — بعد الإغلاق (بيانات إغلاق مستقرة)
+on:
+  schedule:
+    - cron: "35 13 * * 1-5"
+    - cron: "5 17 * * 1-5"
+    - cron: "15 21 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "عدد الرموز في المسح"
+        default: "40"
+        required: false
+      mode:
+        description: "وضع البيانات: auto | live | demo"
+        default: "auto"
+        required: false
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - "web/**"
+      - "tools/**"
+      - "config/**"
+      - "requirements.txt"
+      - ".github/workflows/daily-scan.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-scan-pages
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    name: مسح السوق وبناء اللوحة
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: تثبيت المتطلبات
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: اختبارات سريعة (سلامة الكود)
+        run: python -m pytest -q
+
+      - name: المسح اليومي + بناء الموقع
+        env:
+          RSS_DATA_MODE: ${{ inputs.mode || 'auto' }}
+        run: |
+          python tools/daily_scan.py --site site --limit ${{ inputs.limit || '40' }} --mode "${RSS_DATA_MODE}"
+
+      - name: أرشيف النتائج (CSV/JSON/التقارير)
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-run-${{ github.run_number }}
+          path: |
+            site/data
+            site/reports
+            site/history
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: ملخّص في صفحة العملية
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          d = json.load(open("site/data/latest.json", encoding="utf-8"))
+          s = d["summary"]
+          print("### ملخّص المسح —", d["generated_at_riyadh"], "(" + d["mode"] + ")")
+          print()
+          print("| رموز مفحوصة | تقسيم عكسي | مؤهلة | متابعة | جاهز فنياً | متوسط التقييم |")
+          print("|---|---|---|---|---|---|")
+          print(f"| {s['scanned']} | {s['with_reverse_split']} | {s['eligible']} | {s['watchlist']} | {s['ready']} | {s['avg_score_watchlist']} |")
+          print()
+          top = " · ".join(f"{r['symbol']} ({r['score']} {r['grade']})" for r in d["rows"][:8])
+          print("**أفضل الفرص:**", top or "—")
+          PY
+
+      - name: تفعيل إعدادات GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: تجهيز ملفات النشر (GitHub Pages)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    name: نشر اللوحة على الرابط الثابت
+    needs: scan
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
