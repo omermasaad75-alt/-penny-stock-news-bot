@@ -417,3 +417,43 @@ table.grid tbody td .c-green{font-weight:700}
   .steps-hint{display:none}
   .an-actions .btn{flex:1 1 auto}
 }
+
+/* ============================ بطاقات الجوال (بديل الجدول) ============================ */
+.cards{display:none;flex-direction:column;gap:11px}
+.mcard{background:linear-gradient(170deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:var(--r);padding:13px 14px;cursor:pointer;transition:.16s}
+.mcard:active{transform:scale(.995)}
+.mcard.muted-card{opacity:.6}
+.mcard-head{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.mcard-head .sym-cell{font-size:16px}
+.mcard-price{font-weight:800;font-size:16px;text-align:center;font-variant-numeric:tabular-nums}
+.score-pill{background:rgba(56,139,253,.14);border:1px solid rgba(56,139,253,.45);color:#dbe9ff;
+  border-radius:20px;padding:3px 11px;font-weight:800;font-size:12.5px}
+.mcard-seq{padding:8px 0 6px;border-bottom:1px dashed #1c2532;margin-bottom:9px}
+.mcard-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px 12px;margin-bottom:10px}
+.mcard-grid>div{display:flex;justify-content:space-between;gap:8px;font-size:12px}
+.mcard-grid span{color:var(--muted)}
+.mcard-grid b{font-variant-numeric:tabular-nums}
+.mcard .btn{width:100%;margin-top:2px}
+.seq-legend{display:inline-flex;gap:10px;flex-wrap:wrap;border-inline-start:1px solid var(--line2);padding-inline-start:10px}
+
+@media (max-width:760px){
+  .table-wrap{display:none}
+  .cards{display:flex}
+  .tabs{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(8,11,17,.98),rgba(8,11,17,.86));
+    border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+  .tab{border-radius:10px 10px 0 0}
+  .chip,.btn{min-height:38px}
+  .chart-legend{font-size:11px;gap:9px}
+  .check{padding:9px 10px}
+  .lvl{font-size:12.5px}
+}
+
+/* الرسم المصغّر وترويسة البطاقة الثابتة على الجوال */
+.mcard-spark{display:flex;align-items:center;gap:8px;padding:2px 0 8px}
+.mcard-spark svg{background:rgba(255,255,255,.02);border-radius:6px}
+@media (max-width:860px){
+  .back-row{position:sticky;top:52px;z-index:29;padding:8px 0;
+    background:linear-gradient(180deg,rgba(8,11,17,.97),rgba(8,11,17,.75));backdrop-filter:blur(6px)}
+  .an-head{order:-1}
+}

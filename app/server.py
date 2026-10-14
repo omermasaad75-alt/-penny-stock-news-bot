@@ -217,6 +217,7 @@ def _lifecycle_summary(a: "eng.Analysis") -> dict[str, Any]:
     return {
         "stage": a.lifecycle_stage, "ready": a.lifecycle_ready, "failed": a.lifecycle_failed,
         "support": a.support_level or a.bottom_price, "base_sessions": a.base_sessions,
+        "base_close": a.base_close, "impulse_target": (round(a.base_close * 1.2, 4) if a.base_close else None),
         "support_hold_ok": a.support_hold_ok,
         "impulse_pct": a.impulse_pct, "impulse_high": a.impulse_high, "impulse_date": a.impulse_date,
         "resistance_level": a.resistance_level, "resistance_date": a.resistance_date,
@@ -322,8 +323,31 @@ def demo_metadata() -> dict[str, Any]:
 # --------------------------------------------------------------------------- #
 #  الواجهة
 # --------------------------------------------------------------------------- #
-app.mount("/assets", StaticFiles(directory=str(WEB_DIR / "assets")), name="assets")
-app.mount("/vendor", StaticFiles(directory=str(WEB_DIR / "vendor")), name="vendor")
+class NoCacheStatic(StaticFiles):
+    """ملفات الواجهة تُقدَّم دائماً بأحدث نسخة (بدون تخزين مؤقت في المتصفح)."""
+
+    def file_response(self, *args, **kwargs):  # type: ignore[override]
+        resp = super().file_response(*args, **kwargs)
+        resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+        resp.headers["Pragma"] = "no-cache"
+        resp.headers["Expires"] = "0"
+        return resp
+
+
+app.mount("/assets", NoCacheStatic(directory=str(WEB_DIR / "assets")), name="assets")
+app.mount("/vendor", NoCacheStatic(directory=str(WEB_DIR / "vendor")), name="vendor")
+
+
+def _asset_version() -> str:
+    """بصمة زمنية لملفات الواجهة تُلحق بالروابط لكسر أي تخزين مؤقت قديم."""
+    stamps = []
+    for rel in ("assets/app.js", "assets/styles.css"):
+        p = WEB_DIR / rel
+        try:
+            stamps.append(str(int(p.stat().st_mtime)))
+        except OSError:
+            stamps.append("0")
+    return "-".join(stamps)
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -331,7 +355,14 @@ def index() -> Any:
     idx = WEB_DIR / "index.html"
     if not idx.exists():
         return HTMLResponse("<h1>لوحة الداشبورد غير مثبّتة</h1>")
-    return FileResponse(idx)
+    html = idx.read_text(encoding="utf-8")
+    v = _asset_version()
+    html = (html.replace("/assets/styles.css", f"/assets/styles.css?v={v}")
+                .replace("/assets/app.js", f"/assets/app.js?v={v}"))
+    return HTMLResponse(html, headers={
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        "Pragma": "no-cache",
+    })
 
 
 @app.get("/reports/{name}")

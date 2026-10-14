@@ -77,9 +77,9 @@ $$('.chip').forEach(c => c.onclick = () => {
   $$('.chip').forEach(x => x.classList.remove('active'));
   c.classList.add('active');
   state.filter = c.dataset.filter;
-  renderTable();
+  renderTable(); renderCards();
 });
-$('#searchBox').oninput = e => { state.search = e.target.value.trim().toUpperCase(); renderTable(); };
+$('#searchBox').oninput = e => { state.search = e.target.value.trim().toUpperCase(); renderTable(); renderCards(); };
 
 /* ------------------------- الساعة والحالة ------------------------- */
 setInterval(() => {
@@ -146,7 +146,7 @@ async function loadResults() {
   state.rows = data.rows || [];
   state.summary = data.summary || {};
   state.sources = data.sources || state.sources;
-  renderKpis(); renderTable(); renderPhases(); renderSources();
+  renderKpis(); renderTable(); renderCards(); renderPhases(); renderSources();
 }
 
 function renderKpis() {
@@ -171,17 +171,21 @@ function rowMatchesFilter(r) {
   }
 }
 
-/* خلية «التسلسل»: خطوات دورة الحياة بأيقونات + الحالة المختصرة */
+/* خلية «التسلسل»: خطوات دورة الحياة + اسم الخطوة الناقصة صراحةً */
+const STEP_SHORT = {
+  support_hold: 'ثبات الدعم 3 جلسات', impulse: 'الانطلاقة ≈20%', resistance: 'أقرب مقاومة',
+  pullback: 'العودة لاختبار الدعم', sweep: 'سحب السيولة/الاستعادة', reclaim: 'الاستعادة فوق الدعم',
+};
 function seqCell(r) {
   const checks = r.lifecycle_checks || [];
-  if (!checks.length) return '<span class="muted">—</span>';
+  if (!checks.length) return '<span class="muted small">لا تقسيم داخل النافذة</span>';
   const done = checks.filter(c => c.ok).length;
   const icons = checks.map(c => c.ok ? '✅' : (c.state === 'active' ? '🔸' : '⬜')).join('');
+  const active = checks.find(c => !c.ok);
   let label, color;
-  if (r.lifecycle_ready) { label = 'جاهز فنياً'; color = 'c-green'; }
-  else if (r.lifecycle_failed) { label = 'فشل التسلسل ⛔'; color = 'c-red'; }
-  else if (done === checks.length - 1) { label = 'الخطوة الأخيرة'; color = 'c-amber'; }
-  else { label = `${done}/${checks.length} خطوات`; color = 'muted'; }
+  if (r.lifecycle_ready) { label = '✅ جاهز فنياً (6/6)'; color = 'c-green'; }
+  else if (r.lifecycle_failed) { label = '⛔ فشل — كسر الدعم دون استعادة'; color = 'c-red'; }
+  else { label = `${done}/6 — ناقص: ${STEP_SHORT[active?.key] || (active?.ar || '')}`; color = 'c-amber'; }
   return `<span title="${esc(r.lifecycle_stage || '')}" style="cursor:help;white-space:nowrap">
     <span class="seq-icons">${icons}</span>
     <div class="small ${color}">${esc(label)}</div></span>`;
@@ -232,6 +236,67 @@ function renderTable() {
     const tr = $(`#scanBody tr[data-sym="${state.selected}"]`);
     if (tr) tr.classList.add('selected');
   }
+}
+
+
+
+/* رسم مصغّر (Sparkline) لسلسلة الإغلاقات */
+function sparkline(values, w = 132, h = 34) {
+  const v = (values || []).filter(x => x !== null && x !== undefined);
+  if (v.length < 3) return '';
+  const min = Math.min(...v), max = Math.max(...v), span = (max - min) || 1;
+  const step = w / (v.length - 1);
+  const pts = v.map((x, i) => `${(i * step).toFixed(1)},${(h - ((x - min) / span) * (h - 4) - 2).toFixed(1)}`).join(' ');
+  const up = v[v.length - 1] >= v[0];
+  const col = up ? '#3fb950' : '#f85149';
+  const area = `${pts} ${w},${h} 0,${h}`;
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" preserveAspectRatio="none">
+    <polygon points="${area}" fill="${col}22"/>
+    <polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.6" stroke-linejoin="round"/>
+  </svg>`;
+}
+
+/* ------------------------- عرض الجوال: بطاقات الفرص ------------------------- */
+function renderCards() {
+  const box = $('#scanCards');
+  if (!box) return;
+  let rows = state.rows.filter(rowMatchesFilter);
+  if (state.search) rows = rows.filter(r => r.symbol.includes(state.search) || (r.name || '').toUpperCase().includes(state.search));
+  if (!rows.length) { box.innerHTML = '<div class="empty">لا توجد نتائج مطابقة.</div>'; return; }
+  box.innerHTML = rows.map(r => {
+    const ph = r.phase_info || {}, lv = r.levels || {};
+    const checks = r.lifecycle_checks || [];
+    const done = checks.filter(c => c.ok).length;
+    const icons = checks.map(c => c.ok ? '✅' : (c.state === 'active' ? '🔸' : '⬜')).join('');
+    const active = checks.find(c => !c.ok);
+    const stage = r.lifecycle_ready ? '✅ جاهز فنياً'
+      : r.lifecycle_failed ? '⛔ فشل — كسر الدعم دون استعادة'
+      : checks.length ? `ناقص: ${STEP_SHORT[active?.key] || ''}` : '—';
+    return `<div class="mcard ${r.eligible ? '' : 'muted-card'}" data-sym="${r.symbol}">
+      <div class="mcard-head">
+        <div><b class="sym-cell">${esc(r.symbol)}</b>
+          <div class="muted small">${esc((r.name || '').slice(0, 30))}</div></div>
+        <div class="mcard-price">${money(r.last_close)}
+          <div class="${cls(r.change_pct)} small">${pct(r.change_pct)}</div></div>
+        <span class="phase-pill" style="background:${(ph.color || '#333')}22;color:${ph.color || '#ccc'};border:1px solid ${(ph.color || '#333')}66">${esc((ph.ar || '—').replace('المرحلة ', 'م'))}</span>
+        <span class="score-pill">${n(r.score, 1)}${r.grade ? ' ' + esc(r.grade) : ''}</span>
+      </div>
+      <div class="mcard-seq">${seqCell(r)}</div>
+      <div class="mcard-spark">${sparkline(r.spark)}<span class="muted small">آخر 40 جلسة</span></div>
+      <div class="mcard-grid">
+        <div><span>التقسيم</span><b>${r.rs_found ? esc(r.rs_ratio_str) : '—'}</b></div>
+        <div><span>صعود/هبوط</span><b>${pct(r.spike_pct)} / ${pct(r.decline_pct)}</b></div>
+        <div><span>الثبات</span><b>${r.base_sessions ?? '—'} جلسة</b></div>
+        <div><span>RSI</span><b>${n(r.rsi_now, 0)} (قاع ${n(r.rsi_trough, 0)})</b></div>
+        <div><span>الفلوت</span><b>${big(r.float_shares)}</b></div>
+        <div><span>بيع مكشوف</span><b>${r.short_pct_float != null ? n(r.short_pct_float, 1) + '%' : '—'}</b></div>
+        <div><span>الاختراق</span><b>${lv.trigger ? money(lv.trigger) : '—'}</b></div>
+        <div><span>مخاطرة/عائد</span><b>${lv.rr_t2 ? n(lv.rr_t2, 2) + ':1' : '—'}</b></div>
+      </div>
+      <button class="btn btn-mini">فتح بطاقة التحليل ›</button>
+    </div>`;
+  }).join('');
+  $$('#scanCards .mcard').forEach(el => el.onclick = () => go('#/sym/' + el.dataset.sym));
 }
 
 /* ------------------------- فتح تحليل رمز ------------------------- */
@@ -559,8 +624,19 @@ function renderChart(p) {
   const line = (price, color, title, style = 2) => price && s.price.candles.createPriceLine({
     price: Number(price), color, lineWidth: 1, lineStyle: style, axisLabelVisible: true, title,
   });
-  line(lc.support, '#f0883e', 'الدعم الرئيسي', 0);
+  // شروط دورة الحياة مرسومة على المخطط
+  if (lc.support) {
+    const tol = ((state.strategy?.params?.support_retest_tolerance_pct ?? 2) / 100);
+    line(lc.support, '#f0883e', 'الدعم الرئيسي', 0);
+    line(lc.support * (1 + tol), '#f0883e88', 'سقف منطقة الدعم', 1);
+    line(lc.support * (1 - tol), '#f0883e88', 'قاع منطقة الدعم', 1);
+  }
+  // خط «هدف الانطلاقة +20%» من إغلاق جلسات الثبات (يظهر ما دام التسلسل غير مكتمل)
+  if (!lc.ready && lc.impulse_target) {
+    line(lc.impulse_target, '#a371f7', 'هدف الانطلاقة +20%', 1);
+  }
   line(lc.resistance_level, '#e3b341', 'أقرب مقاومة', 0);
+  line(lc.reclaim_level, '#3fb950', 'مستوى الاستعادة', 1);
   line(lc.sweep_low, '#f85149', 'قاع السحب', 1);
   line(lv.trigger, COLORS.trigger, 'اختراق');
   line(lv.stop, COLORS.stop, 'وقف');
@@ -568,10 +644,14 @@ function renderChart(p) {
   line(t.t2_618, COLORS.target, 'هدف2', 3);
   line(t.t3_full, '#7ee787', 'هدف3', 3);
 
+  const seqLegend = (p.lifecycle?.checks || []).map(c =>
+    `<span class="${c.ok ? 'c-green' : 'c-amber'}">${c.ok ? '✅' : '🔸'} ${esc((STEP_SHORT[c.key] || c.ar))}</span>`).join('');
   $('#chartLegend').innerHTML = [
     ['EMA9', COLORS.ema9], ['EMA20', COLORS.ema20], ['EMA50', COLORS.ema50],
-    ['الدعم', '#f0883e'], ['المقاومة', '#e3b341'],
+    ['الدعم', '#f0883e'], ['المقاومة', '#e3b341'], ['هدف الانطلاقة +20%', '#a371f7'],
+    ['قاع السحب', '#f85149'], ['الاستعادة', '#3fb950'],
   ].map(([k, c]) => `<span><i style="background:${c}"></i>${k}</span>`).join('') +
+    (seqLegend ? `<span class="seq-legend">${seqLegend}</span>` : '') +
     `<span>الشموع: ${p.meta?.bars || 0}</span><span>الإقفال: ${money(p.meta?.last_close)}</span>` +
     (p.meta?.rvol ? `<span>RVOL: ${n(p.meta.rvol, 2)}x</span>` : '');
 

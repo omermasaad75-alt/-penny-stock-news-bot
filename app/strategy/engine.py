@@ -155,6 +155,7 @@ class Analysis:
     base_close: float | None = None
     lifecycle_sequence_ok: bool = False
     resistance_kind: str | None = None
+    spark: list[float] = field(default_factory=list)      # آخر 40 إغلاقاً للرسم المصغّر
     resistance_tested: bool = False
     resistance_stall_pct: float | None = None
 
@@ -1337,6 +1338,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
 
         # ---------- دورة الحياة بعد الثبات (شروط «جاهز فنياً») ---------- #
         seq = analyse_lifecycle(df, struct, params)
+        a.spark = [_r(float(x), 3) for x in df["close"].tail(40).tolist()]
         a.lifecycle_stage = seq["stage"]
         a.lifecycle_ready = bool(seq["ready"])
         a.lifecycle_failed = bool(seq["failed"])
