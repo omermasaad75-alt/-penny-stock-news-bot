@@ -1,103 +1,35 @@
 {
- "generated_at_riyadh": "2026-10-14 19:56",
+ "generated_at_riyadh": "2026-10-14 21:11",
  "mode": "live",
  "summary": {
-  "scanned": 28,
-  "with_reverse_split": 6,
-  "eligible": 2,
-  "watchlist": 2,
-  "ready": 1,
+  "scanned": 40,
+  "with_reverse_split": 0,
+  "eligible": 0,
+  "watchlist": 0,
+  "ready": 0,
   "failed": 0,
-  "avg_score_watchlist": 76.0,
+  "avg_score_watchlist": 0,
   "top_symbol": "JZ",
-  "ready_symbols": [
-   "NVEX"
-  ]
+  "ready_symbols": []
  },
  "top": [
   {
    "symbol": "JZ",
-   "phase": 7,
-   "score": 67.3,
-   "grade": "B",
-   "last_close": 1.565,
-   "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 372.97,
-   "impulse_pct": 347.48
-  },
-  {
-   "symbol": "NVEX",
-   "phase": 6,
-   "score": 84.2,
-   "grade": "A",
-   "last_close": 2.4593,
-   "lifecycle_ready": true,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 23.69,
-   "impulse_pct": 22.2
-  },
-  {
-   "symbol": "SRNA",
-   "phase": 5,
-   "score": 67.7,
-   "grade": "B",
-   "last_close": 1.3155,
-   "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 15.84,
-   "impulse_pct": 12.63
-  },
-  {
-   "symbol": "BIOK",
-   "phase": 3,
-   "score": 54.9,
-   "grade": "C",
-   "last_close": 2.227,
-   "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 14.9,
-   "impulse_pct": 8.85
-  },
-  {
-   "symbol": "DRTS",
-   "phase": 3,
-   "score": 36.5,
-   "grade": "D",
-   "last_close": 13.57,
-   "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 11.36,
-   "impulse_pct": 10.19
-  },
-  {
-   "symbol": "QLGN",
-   "phase": 1,
-   "score": 70.8,
-   "grade": "B",
-   "last_close": 0.4293,
-   "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 3.94,
-   "impulse_pct": 0.96
-  },
-  {
-   "symbol": "IMPL",
    "phase": 0,
-   "score": 13.6,
+   "score": 16.6,
    "grade": "D",
-   "last_close": 2.2731,
+   "last_close": 1.5,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": null,
    "impulse_pct": null
   },
   {
-   "symbol": "TGL",
+   "symbol": "HRTX",
    "phase": 0,
-   "score": 13.4,
+   "score": 12.7,
    "grade": "D",
-   "last_close": 0.5108,
+   "last_close": 0.3743,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": null,
@@ -108,18 +40,7 @@
    "phase": 0,
    "score": 12.3,
    "grade": "D",
-   "last_close": 2.1,
-   "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": null,
-   "impulse_pct": null
-  },
-  {
-   "symbol": "OPGN",
-   "phase": 0,
-   "score": 12.0,
-   "grade": "D",
-   "last_close": 3.3422,
+   "last_close": 2.13,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": null,
@@ -130,18 +51,95 @@
    "phase": 0,
    "score": 11.6,
    "grade": "D",
-   "last_close": 35.72,
+   "last_close": 35.46,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": null,
    "impulse_pct": null
   },
   {
-   "symbol": "VBIV",
+   "symbol": "TGL",
    "phase": 0,
-   "score": 11.5,
+   "score": 11.4,
    "grade": "D",
-   "last_close": 2.8838,
+   "last_close": 0.4292,
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null
+  },
+  {
+   "symbol": "CGC",
+   "phase": 0,
+   "score": 10.9,
+   "grade": "D",
+   "last_close": 0.7113,
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null
+  },
+  {
+   "symbol": "KZIA",
+   "phase": 0,
+   "score": 10.6,
+   "grade": "D",
+   "last_close": 7.095,
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null
+  },
+  {
+   "symbol": "SNDL",
+   "phase": 0,
+   "score": 10.6,
+   "grade": "D",
+   "last_close": 1.145,
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null
+  },
+  {
+   "symbol": "TRVN",
+   "phase": 0,
+   "score": 10.0,
+   "grade": "D",
+   "last_close": 0.066,
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null
+  },
+  {
+   "symbol": "RIOT",
+   "phase": 0,
+   "score": 9.5,
+   "grade": "D",
+   "last_close": 14.96,
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null
+  },
+  {
+   "symbol": "HLIO",
+   "phase": 0,
+   "score": 9.4,
+   "grade": "D",
+   "last_close": 67.39,
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null
+  },
+  {
+   "symbol": "NRXP",
+   "phase": 0,
+   "score": 9.3,
+   "grade": "D",
+   "last_close": 2.605,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": null,
@@ -149,12 +147,6 @@
   }
  ],
  "providers": [
-  {
-   "name": "demo-generator",
-   "ok": true,
-   "source_kind": "demo",
-   "detail": "بيانات محاكية مولّدة داخلياً"
-  },
   {
    "name": "yahoo-finance",
    "ok": true,
@@ -177,8 +169,14 @@
    "name": "news-rss",
    "ok": true,
    "source_kind": "live",
-   "detail": "9 عنوان"
+   "detail": "38 عنوان"
+  },
+  {
+   "name": "demo-generator",
+   "ok": false,
+   "source_kind": "demo",
+   "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/38602277381"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/38612990409"
 }
