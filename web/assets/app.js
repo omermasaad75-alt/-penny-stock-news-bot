@@ -224,7 +224,7 @@ const STEP_SHORT = {
 };
 function seqCell(r) {
   const checks = r.lifecycle_checks || [];
-  if (!checks.length) return '<span class="muted small">لا تقسيم داخل النافذة</span>';
+  if (!checks.length) return `<span class="muted small">${r.rs_found ? 'تسلسل الثبات لم يبدأ بعد' : 'لا تقسيم داخل النافذة'}</span>`;
   const done = checks.filter(c => c.ok).length;
   const dots = checks.map(c => `<i class="dot ${c.ok ? 'ok' : (c.state === 'active' ? 'active' : 'pending')}"></i>`).join('');
   const active = checks.find(c => !c.ok);
@@ -370,7 +370,7 @@ function renderStepper(a) {
   const checks = a.lifecycle_checks || [];
   const box = $('#anStepper');
   if (!checks.length) {
-    box.innerHTML = '<p class="muted">لا يوجد تسلسل دورة حياة لهذا الرمز (لا تقسيم عكسي داخل النافذة).</p>';
+    box.innerHTML = `<p class="muted">${a.rs_found ? 'تقسيم عكسي مرصود؛ تسلسل الثبات لم يبدأ بعد.' : 'لا تقسيم عكسي داخل النافذة.'}</p>`;
   } else {
     box.innerHTML = checks.map((c, i) => `
       <div class="step ${c.state}">

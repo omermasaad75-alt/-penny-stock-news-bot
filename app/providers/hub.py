@@ -210,9 +210,13 @@ class DataHub:
                     try:
                         sec_prof = self.sec.profile(sym)
                         if sec_prof and sec_prof.name:
+                            used_sec = not prof.name
                             prof.name = prof.name or sec_prof.name
                             if prof.shares_out is None and sec_prof.shares_out:
                                 prof.shares_out = sec_prof.shares_out
+                                used_sec = True
+                            if used_sec:
+                                prof.source = f"{prof.source}+{sec_prof.source}"
                     except Exception:  # noqa: BLE001
                         pass
             if prof and prof.name:

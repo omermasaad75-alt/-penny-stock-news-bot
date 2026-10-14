@@ -312,7 +312,7 @@ def markdown_to_html(md: str, title: str = "تقرير تحليلي") -> str:
         if not line.strip():
             close_all()
             continue
-        if line.startswith("| "):
+        if line.startswith("|"):
             cells = [c.strip() for c in line.strip("|").split("|")]
             if set("".join(cells)) <= set("-: "):
                 continue
@@ -444,6 +444,13 @@ def watchlist_markdown(results: list[eng.Analysis], sources: dict | None = None)
             f"{_n(a.last_close,3)}$ | {a.rs_ratio_str} {a.rs_date or ''} | {_pct(a.spike_pct)} | "
             f"{_pct(a.decline_pct)} | {a.base_sessions} | {_n(a.rsi_trough,0)}→{_n(a.rsi_now,0)} | "
             f"{_m(a.float_shares)} | {_n(a.short_pct_float,1)}% | {_n(lv.get('trigger'),3)}$ | {_n(lv.get('rr_t2'),2)}:1 |")
+    add("")
+    add("## مصادر جميع الصفوف")
+    add("| الرمز | الأسعار | التقسيم | الأساسيات | الأخبار | تجريبي |")
+    add("|---|---|---|---|---|---|")
+    for a in results:
+        add(f"| {a.symbol} | {a.price_source or 'غير متاح'} | {a.split_source or 'غير متاح'} | "
+            f"{a.fundamentals_source or 'غير متاح'} | {a.news_source or 'غير متاح'} | {str(a.synthetic).lower()} |")
     add("")
     add("## كل الرموز ذات التقسيم العكسي داخل النافذة")
     add("")

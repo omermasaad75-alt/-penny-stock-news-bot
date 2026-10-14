@@ -20,7 +20,7 @@ pip install --quiet -r requirements.txt
 
 if [ ! -f ".env" ]; then
   cp .env.example .env
-  echo "▶ تم إنشاء ملف .env (وضع البيانات: demo)"
+  echo "▶ تم إنشاء ملف .env (وضع البيانات: live)"
 fi
 
 PORT=$(grep -E '^RSS_PORT=' .env | cut -d= -f2 || echo 8000)

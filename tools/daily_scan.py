@@ -97,7 +97,7 @@ def sequence_state(a: "eng.Analysis") -> tuple[int, str, str]:
     """(عدد الخطوات المكتملة، وصف الحالة، لون) — مطابق لمنطق الواجهة."""
     checks = a.lifecycle_checks or []
     if not checks:
-        return 0, "لا تقسيم عكسي داخل النافذة", "muted"
+        return 0, ("تسلسل الثبات لم يبدأ بعد" if a.rs_found else "لا تقسيم عكسي داخل النافذة"), "muted"
     done = sum(1 for c in checks if c.get("ok"))
     if a.lifecycle_ready:
         return 6, "جاهز فنياً (6/6)", "ok"
@@ -236,7 +236,9 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
              "close": a.last_close, "impulse_pct": a.impulse_pct,
              "resistance_distance_pct": a.resistance_distance_pct,
              "ready": a.lifecycle_ready, "failed": a.lifecycle_failed,
-             "sequence": sequence_state(a)[1]}
+             "sequence": sequence_state(a)[1], "synthetic": a.synthetic,
+             "price_source": a.price_source, "split_source": a.split_source,
+             "fundamentals_source": a.fundamentals_source, "news_source": a.news_source}
             for a in results[:15]
         ],
     }
@@ -489,7 +491,7 @@ $warning_banner
 </section>
 
 <div class="card">
-  <h2><span>أفضل الفرص الآن</span><span class="muted">$rowcount رمز — مرتّبة بالمرحلة ثم التقييم</span></h2>
+  <h2><span>الرموز المرصودة — راجع الأهلية</span><span class="muted">$rowcount رمز — مرتّبة بالمرحلة ثم التقييم</span></h2>
   <div class="tblwrap">
   <table>
     <thead><tr>
@@ -648,7 +650,7 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
         warning_banner = ""
     elif is_mixed:
         mode_class = "mixed"
-        mode_label = f"مختلطة 🟠 — {real_count} حقيقي / {synth_count} تجريبي"
+        mode_label = f"مختلطة 🟠 — {synth_count} تجريبي؛ راجع المصادر الناقصة"
         warning_banner = (
             '<div class="warn" style="background:#3a2a08;border:1px solid #8a6d1f;'
             'border-radius:12px;padding:12px 14px;margin:14px 0;color:#ffd87a;font-size:13px;">'
@@ -749,7 +751,7 @@ def main() -> int:
     ap.add_argument("--site", default="site", help="مجلد الموقع الناتج (يُنشر على GitHub Pages)")
     ap.add_argument("--limit", type=int, default=40, help="عدد الرموز")
     ap.add_argument("--test-only", action="store_true", help="السماح بالديمو للاختبارات فقط؛ محظور في Actions")
-    ap.add_argument("--mode", default="live", help="demo | live | auto (افتراضي: من الإعدادات)")
+    ap.add_argument("--mode", default="live", help="live افتراضياً؛ demo مع --test-only فقط")
     ap.add_argument("--symbols", default="", help="رموز محددة مفصولة بفواصل (تجاوز الكون)")
     ap.add_argument("--top-reports", type=int, default=12, help="عدد التقارير المولّدة")
     ap.add_argument("--dashboard-symbols", type=int, default=40, help="عدد الرموز داخل اللوحة الثابتة")
