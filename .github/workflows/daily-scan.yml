@@ -31,7 +31,7 @@ on:
       - ".github/workflows/daily-scan.yml"
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -78,6 +78,44 @@ jobs:
           retention-days: 30
           if-no-files-found: warn
 
+      - name: أرشيف الموقع كاملاً (للنشر والتنزيل)
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-publish-${{ github.run_number }}
+          path: site
+          retention-days: 7
+          if-no-files-found: error
+
+      - name: مؤشر الحالة في المستودع (docs/status)
+        run: |
+          python - <<'PY'
+          import json, pathlib, datetime
+          d = json.load(open("site/data/latest.json", encoding="utf-8"))
+          out = pathlib.Path("docs/status"); out.mkdir(parents=True, exist_ok=True)
+          slim = {
+              "generated_at_riyadh": d["generated_at_riyadh"],
+              "mode": d["mode"],
+              "summary": d["summary"],
+              "top": [{k: r.get(k) for k in ("symbol", "phase", "score", "grade", "last_close",
+                                              "lifecycle_ready", "lifecycle_failed",
+                                              "resistance_distance_pct", "impulse_pct")}
+                      for r in d["rows"][:12]],
+              "providers": [{k: p.get(k) for k in ("name", "ok", "source_kind", "detail")}
+                            for p in d["sources"]["providers"]],
+              "run_url": f"{__import__('os').environ.get('GITHUB_SERVER_URL','https://github.com')}/"
+                         f"{__import__('os').environ.get('GITHUB_REPOSITORY','')}/actions/runs/"
+                         f"{__import__('os').environ.get('GITHUB_RUN_ID','')}",
+          }
+          (out / "latest.json").write_text(json.dumps(slim, ensure_ascii=False, indent=1), encoding="utf-8")
+          print("docs/status/latest.json:", d["generated_at_riyadh"], "|", d["mode"],
+                "|", d["summary"]["scanned"], "رمز")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/status
+          git diff --cached --quiet || git commit -qm "chore(status): تحديث آخر مسح — $(date -u '+%Y-%m-%d %H:%M') UTC [skip ci]"
+          git push -q || echo "تعذّر رفع مؤشر الحالة (سيُحدَّث في المسح القادم)"
+
       - name: ملخّص في صفحة العملية
         run: |
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
@@ -90,8 +128,9 @@ jobs:
           print("|---|---|---|---|---|---|")
           print(f"| {s['scanned']} | {s['with_reverse_split']} | {s['eligible']} | {s['watchlist']} | {s['ready']} | {s['avg_score_watchlist']} |")
           print()
-          top = " · ".join(f"{r['symbol']} ({r['score']} {r['grade']})" for r in d["rows"][:8])
-          print("**أفضل الفرص:**", top or "—")
+          print("**أفضل الفرص:**", " · ".join(f"{r['symbol']} ({r['score']} {r['grade']})" for r in d["rows"][:8]) or "—")
+          print()
+          print("**الرابط الثابت للجوال:** https://omermasaad75-alt.github.io/-penny-stock-news-bot/")
           PY
 
       - name: تجهيز ملفات النشر (GitHub Pages)
@@ -100,31 +139,50 @@ jobs:
           path: site
 
   deploy:
-    name: نشر اللوحة على الرابط الثابت
+    name: نشر اللوحة (gh-pages + GitHub Pages)
     needs: scan
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # GitHub لا يسمح لأي رمز آلي بتفعيل Pages — التفعيل مرة واحدة من إعدادات المستودع.
-      # لذلك نفحص الحالة أولاً: إن كانت مفعّلة ننشر، وإلا نتخطّى النشر بهدوء (النتائج محفوظة في Artifacts).
+      - name: تنزيل الموقع المبني
+        uses: actions/download-artifact@v4
+        with:
+          name: site-publish-${{ github.run_number }}
+          path: site
+
+      # النشر على فرع gh-pages: GitHub يكتشف الفرع وينشر الموقع تلقائياً (بلا أي إعداد يدوي).
+      - name: النشر على فرع gh-pages
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          cd site
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "نشر اللوحة — $(date -u '+%Y-%m-%d %H:%M') UTC"
+          git remote add origin "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push -fq origin gh-pages
+          echo "✔ تم تحديث فرع gh-pages"
+
       - name: فحص حالة GitHub Pages
         id: pages
         run: |
-          code=$(curl -s -o /dev/null -w '%{http_code}' \
-            -H "Authorization: Bearer ${{ github.token }}" \
+          curl -s -H "Authorization: Bearer ${{ github.token }}" \
             -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages")
-          echo "http=$code" >> "$GITHUB_OUTPUT"
-          echo "GitHub Pages API → HTTP $code"
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" \
+            -o /tmp/pages.json -w '%{http_code}' > /tmp/pages.code || true
+          echo "http=$(cat /tmp/pages.code 2>/dev/null || echo 000)" >> "$GITHUB_OUTPUT"
+          BUILD=$(python3 -c "import json;print(json.load(open('/tmp/pages.json')).get('build_type',''))" 2>/dev/null || echo "")
+          echo "build=$BUILD" >> "$GITHUB_OUTPUT"
+          echo "حالة Pages: $(cat /tmp/pages.code) | نوع البناء: ${BUILD:-غير معروف}"
+          if [ "$(cat /tmp/pages.code)" != "200" ]; then
+            echo "::warning title=رابط الجوال::لم تُفعَّل Pages للمستودع بعد. التفعيل من: Settings → Pages → Build and deployment → Source = Deploy from a branch → gh-pages / (root) ثم Save. الموقع منشور أصلاً على الفرع gh-pages."
+          fi
 
-      - name: "تنبيه: Pages غير مفعّلة بعد"
-        if: steps.pages.outputs.http != '200'
-        run: |
-          echo "::warning title=GitHub Pages غير مفعّلة::للحصول على رابط الجوال الثابت افتح: Settings → Pages → Build and deployment → Source = GitHub Actions. اللوحة والبيانات محفوظة الآن في Artifacts كل عملية."
-
-      - name: النشر على GitHub Pages
+      - name: النشر عبر GitHub Actions (يُستخدم فقط إن كان مصدر Pages هو Actions)
         id: deployment
-        if: steps.pages.outputs.http == '200'
+        if: steps.pages.outputs.build == 'workflow'
         uses: actions/deploy-pages@v4
