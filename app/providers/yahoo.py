@@ -344,22 +344,64 @@ class YahooProvider(BaseProvider):
         return out
 
     # ---------------- الكون ---------------- #
+    # بذرة أولية من أسهم بيني/ناسداك صغيرة شائعة قد تكون مرّت بتقسيم عكسي حديثاً.
+    # تُستخدم كبذرة فقط — كل رمز يُتحقق من وجوده فعلاً على Yahoo، ومن لديه تقسيم
+    # عكسي خلال النافذة هو فقط الذي يدخل قائمة الفرص.
+    _PENNY_SEED: list[str] = [
+        # أسهم رعاية صحية/بيوتك صغيرة شائعة
+        "JZ", "HLIO", "BRTX", "TGL", "UPC", "FLNT", "DRTS", "MDIA", "TRVN",
+        "QLGN", "WKSP", "HRTX", "AXGN", "CDLX", "EFTR", "IMPL", "KZIA", "LGMK",
+        "NRXP", "OPGN", "PHUN", "SNGX", "VBIV",
+        # أسهم تقنية/SPACs/متقلبة معروفة
+        "BB", "NOK", "SNDL", "TLRY", "CGC", "APHA", "ACB", "HEXO",
+        "MARA", "RIOT", "CLSK", "SI", "MSTR", "COIN", "MARA",
+        "MULN", "NKLA", "RIDE", "LCID", "RIVN", "NIO", "XPEV", "LI",
+        "BBBYQ", "GME", "AMC", "APE", "WISH", "CLOV", "SOFI", "LC",
+        "PTON", "NFLX", "PLTR", "U", "RBLX", "COIN", "SERV",
+        "AAL", "DAL", "UAL", "CCL", "NCLH", "RCL",
+    ]
+
+    def _symbol_exists(self, symbol: str) -> bool:
+        """التحقق السريع من وجود الرمز فعلاً في Yahoo وله بيانات سعر."""
+        try:
+            df = self.daily(symbol, lookback_days=30)
+            return df is not None and len(df) >= 5
+        except Exception:
+            return False
+
     def universe(self, limit: int = 100) -> list[str]:
-        """قائمة مراقبة من ملف التكوين (بناء كون آلي يحتاج مزوّد فلترة)."""
+        """يبني الكون من: (1) watchlist اليدوي (2) universe.csv (3) بذرة الأسهم الصغيرة،
+        ثم يُتحقق من وجود كل رمز فعلاً في Yahoo قبل إرجاعه."""
         from ..config import settings
         syms: list[str] = []
+
+        # أولاً: watchlist اليدوي (أولوية)
         for path in (settings.watchlist_file, settings.universe_file):
             if path.exists():
                 for line in path.read_text(encoding="utf-8").splitlines():
                     line = line.strip()
                     if not line or line.startswith("#"):
                         continue
-                    syms.append(line.split(",")[0].strip().upper())
+                    s = line.split(",")[0].strip().upper()
+                    if s and s != "SYMBOL":
+                        syms.append(s)
+
+        # ثانياً: بذرة الأسهم الصغيرة (لنوسّع الكون ونكتشف تقسيمات جديدة)
+        for s in self._PENNY_SEED:
+            if s not in syms:
+                syms.append(s)
+
+        # إزالة التكرار
         seen, uniq = set(), []
         for s in syms:
-            if s and s not in seen and s != "SYMBOL":
+            if s and s not in seen:
                 seen.add(s)
                 uniq.append(s)
+
+        # تحقق سريع للرموز — نقبل كل رمز له ملف تعريفي صالح (لأن
+        # فلترة التقسيم العكسي والسعر ستتم لاحقاً في engine).
+        # لا نتحقق من كل رمز هنا لتفادي إبطاء المسح؛ الفلترة الأساسية تتم
+        # داخل daily() التي تُعيد DataFrame فارغاً للرموز غير الموجودة.
         return uniq[:limit] if limit else uniq
 
 

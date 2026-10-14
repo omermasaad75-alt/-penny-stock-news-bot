@@ -339,6 +339,10 @@ class NoCacheStatic(StaticFiles):
 
 app.mount("/assets", NoCacheStatic(directory=str(WEB_DIR / "assets")), name="assets")
 app.mount("/vendor", NoCacheStatic(directory=str(WEB_DIR / "vendor")), name="vendor")
+# ملفات الأيقونات وmanifest (للواجهة المطوّرة المحلية)
+_icons_dir = WEB_DIR / "icons"
+if _icons_dir.exists():
+    app.mount("/icons", NoCacheStatic(directory=str(_icons_dir)), name="icons")
 
 
 def _asset_version() -> str:
@@ -380,6 +384,34 @@ def report_file(name: str) -> Any:
 @app.get("/favicon.ico")
 def favicon():
     return JSONResponse({}, status_code=204)
+
+
+@app.get("/favicon.png")
+def favicon_png():
+    p = WEB_DIR / "icons" / "favicon-32.png"
+    if p.exists():
+        return FileResponse(p, media_type="image/png")
+    return JSONResponse({}, status_code=204)
+
+
+@app.get("/manifest.json")
+def manifest():
+    import json as _json
+    return JSONResponse({
+        "name": "منصة رصد التقسيم العكسي والانعكاس",
+        "short_name": "RS Reversal",
+        "description": "رصد أسهم التقسيم العكسي — بيانات حقيقية من Yahoo/SEC/FINRA",
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#080b11",
+        "theme_color": "#080b11",
+        "dir": "rtl", "lang": "ar",
+        "icons": [
+            {"src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+            {"src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+            {"src": "/icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png"},
+        ],
+    }, headers={"Cache-Control": "no-cache"})
 
 
 def main() -> None:

@@ -61,6 +61,9 @@ CSV_COLUMNS = [
     ("lifecycle_ready", "جاهز فنياً"), ("lifecycle_failed", "فشل"), ("missing_step", "الخطوة الناقصة"),
     ("trigger", "سعر التفعيل"), ("stop_structural", "وقف هيكلي"), ("rr_t2", "ربح/خطر"),
     ("last_close_time", "وقت آخر شمعة"),
+    ("synthetic", "بيانات تجريبية"),
+    ("price_source", "مصدر الأسعار"), ("split_source", "مصدر التقسيم"),
+    ("fundamentals_source", "مصدر الأساسيات"), ("news_source", "مصدر الأخبار"),
 ]
 
 
@@ -206,6 +209,11 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
                 "missing_step": missing, "trigger": lv.get("trigger"),
                 "stop_structural": lv.get("stop_structural"), "rr_t2": lv.get("rr_t2"),
                 "last_close_time": a.as_of or "",
+                "synthetic": "نعم" if a.synthetic else "لا",
+                "price_source": a.price_source or "—",
+                "split_source": a.split_source or "—",
+                "fundamentals_source": a.fundamentals_source or "—",
+                "news_source": a.news_source or "—",
             }
             w.writerow([look.get(key, "") for key, _ in CSV_COLUMNS])
 
@@ -354,8 +362,13 @@ h1{font-size:18px;margin:0}
 .sub{color:var(--muted);font-size:12px}
 .badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .badge{font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:#0b111a}
-.badge.live{border-color:#1f6f3d;color:#7ee787}
-.badge.demo{border-color:#6b5a1f;color:#e3b341}
+.badge.live{border-color:#1f6f3d;color:#7ee787;background:rgba(63,185,80,.1)}
+.badge.mixed{border-color:#8a6d1f;color:#ffd87a;background:rgba(227,179,65,.08)}
+.badge.demo{border-color:#8a2828;color:#ff9999;background:rgba(248,81,73,.1)}
+.row-badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:8px;margin-inline-start:4px}
+.row-badge.ok{background:rgba(63,185,80,.15);color:#7ee787}
+.row-badge.warn{background:rgba(227,179,65,.12);color:#e3b341}
+.row-badge.bad{background:rgba(248,81,73,.15);color:#ff7b72}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 6px}
 .btn{display:inline-flex;gap:8px;align-items:center;padding:12px 18px;border-radius:12px;font-weight:700;
   border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:14px}
@@ -425,6 +438,9 @@ LANDING = Template("""<!DOCTYPE html>
 <meta name="theme-color" content="#080b11">
 <meta http-equiv="cache-control" content="no-cache, must-revalidate">
 <title>لوحة رصد التقسيم العكسي — آخر تحديث $updated</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <style>$css</style>
 </head>
@@ -443,6 +459,8 @@ LANDING = Template("""<!DOCTYPE html>
     <span class="badge">آخر مسح: $updated</span>
   </div>
 </header>
+
+$warning_banner
 
 <div class="cta">
   <a class="btn primary" href="dashboard.html?v=$stamp">افتح اللوحة التفاعلية</a>
@@ -512,9 +530,19 @@ def _rows_html(results: list, report_names: dict, stamp: str) -> str:
         phase_ar = phase_ar.split("—")[-1].strip() if "—" in phase_ar else phase_ar
         rep = report_names.get(a.symbol)
         rep_cell = f'<a href="reports/{rep}">تحليل ›</a>' if rep else '<span class="muted">—</span>'
+        # شارة جودة البيانات للصف
+        if getattr(a, 'synthetic', False):
+            rb = '<span class="row-badge bad">🔴 تجريبي</span>'
+        elif getattr(a, 'price_source', '') and not getattr(a, 'split_source', ''):
+            rb = '<span class="row-badge warn">🟠 ناقص</span>'
+        elif getattr(a, 'price_source', ''):
+            rb = '<span class="row-badge ok">🟢 حقيقي</span>'
+        else:
+            rb = '<span class="row-badge warn">🟠 ناقص</span>'
         out.append(
             "<tr>"
-            f'<td class="sym">{html.escape(a.symbol)}<div class="muted" style="font-weight:400;font-size:11px">'
+            f'<td class="sym">{html.escape(a.symbol)}{rb}'
+            f'<div class="muted" style="font-weight:400;font-size:11px">'
             f'{html.escape((a.name or "")[:22])}</div></td>'
             f"<td>{dots_html(a)}<div class=\"{cls}\" style=\"font-size:11.5px\">{html.escape(label)}</div></td>"
             f'<td>{html.escape(phase_ar[:26])}</td>'
@@ -568,6 +596,12 @@ def _cards_html(results: list, report_names: dict, stamp: str) -> str:
 def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
     summary = payload["summary"]
     mode = payload.get("mode", "demo")
+    rows_data = payload.get("rows") or []
+    # حساب عدد الصفوف التجريبية والحقيقية
+    synth_count = sum(1 for r in rows_data if r.get("synthetic"))
+    real_count = len(rows_data) - synth_count
+    all_real = (mode == "live" and synth_count == 0 and real_count > 0)
+    is_mixed = mode == "live" and synth_count > 0
     report_names = {}
     for w in written:
         name = Path(w.get("html") or "").name
@@ -590,12 +624,36 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
         f'{p.get("name")} ({p.get("source_kind")}/{p.get("ok")})'
         for p in (payload.get("sources", {}) or {}).get("providers", [])[:6]) or "—"
     live = mode == "live"
+    # شارة الوضع
+    if all_real:
+        mode_class = "live"
+        mode_label = "حقيقية 🟢 — Yahoo/SEC/FINRA"
+        warning_banner = ""
+    elif is_mixed:
+        mode_class = "mixed"
+        mode_label = f"مختلطة 🟠 — {real_count} حقيقي / {synth_count} تجريبي"
+        warning_banner = (
+            '<div class="warn" style="background:#3a2a08;border:1px solid #8a6d1f;'
+            'border-radius:12px;padding:12px 14px;margin:14px 0;color:#ffd87a;font-size:13px;">'
+            '⚠ <b>تحذير:</b> يوجد صفوف ببيانات تجريبية في هذه النشرة — لا تعتمد عليها في التداول. '
+            'الوضع الحي مُفعّل لكن بعض المزوّدين فشلوا.</div>'
+        )
+    else:
+        mode_class = "demo"
+        mode_label = "تجريبية 🔴 — بيانات محاكاة (محظورة في النشر)"
+        warning_banner = (
+            '<div class="warn" style="background:#3d0f0f;border:1px solid #8a2828;'
+            'border-radius:12px;padding:12px 14px;margin:14px 0;color:#ff9999;font-size:13px;">'
+            '🔴 <b>هذه النشرة تحتوي بيانات تجريبية بالكامل.</b> '
+            'هذه البيانات غير مسموح بها في مسار النشر الإنتاجي.</div>'
+        )
     ctx = {
         "css": LANDING_CSS,
         "updated": html.escape(payload["generated_at_riyadh"]),
         "stamp": payload["stamp"],
-        "mode_class": "live" if live else "demo",
-        "mode_label": "حقيقية — Yahoo/SEC/FINRA" if live else "تجريبية (بديل محلي)",
+        "mode_class": mode_class,
+        "mode_label": mode_label,
+        "warning_banner": warning_banner,
         "scanned": summary["scanned"], "with_rs": summary["with_reverse_split"],
         "eligible": summary["eligible"], "watchlist": summary["watchlist"],
         "ready": summary["ready"], "avg": summary["avg_score_watchlist"],
@@ -637,16 +695,35 @@ class _RowProxy:
 
 
 def write_manifest(site: Path, stamp: str) -> None:
+    import shutil
+    icons_dir = site / "icons"
+    icons_dir.mkdir(parents=True, exist_ok=True)
+    # نسخ الأيقونات من web/icons إلى site/icons
+    src_icons = ROOT / "web" / "icons"
+    if src_icons.exists():
+        for icon in src_icons.glob("*.png"):
+            shutil.copy2(icon, icons_dir / icon.name)
     (site / "manifest.json").write_text(json.dumps({
-        "name": "لوحة رصد التقسيم العكسي",
-        "short_name": "RS Radar",
+        "name": "منصة رصد التقسيم العكسي والانعكاس",
+        "short_name": "RS Reversal",
+        "description": "رصد أسهم التقسيم العكسي — بيانات حقيقية من Yahoo/SEC/FINRA",
         "start_url": "./dashboard.html",
         "display": "standalone",
         "background_color": "#080b11",
         "theme_color": "#080b11",
         "dir": "rtl", "lang": "ar",
+        "icons": [
+            {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+            {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+            {"src": "icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png",
+             "purpose": "any maskable"},
+        ],
     }, ensure_ascii=False, indent=1), encoding="utf-8")
     (site / ".nojekyll").write_text("", encoding="utf-8")
+    # نسخ favicon إلى جذر الموقع
+    favicon_src = src_icons / "favicon-32.png" if src_icons.exists() else None
+    if favicon_src and favicon_src.exists():
+        shutil.copy2(favicon_src, site / "favicon.png")
 
 
 # --------------------------------------------------------------------------- #
@@ -668,10 +745,37 @@ def main() -> int:
     site.mkdir(parents=True, exist_ok=True)
 
     symbols = [s.strip().upper() for s in args.symbols.split(",") if s.strip()] or None
+    # منع نشر بيانات تجريبية: في وضع live/auto نرفض أي synthetic > 0 أو effective != live
+    requested = (args.mode or settings.data_mode or "demo").lower()
+    if requested in ("live", "auto"):
+        print(f"▶ وضع {requested}: البيانات الحقيقية مطلوبة — لن تُنشر أي بيانات تجريبية.", flush=True)
+    elif requested == "demo":
+        print("⚠ وضع DEMO مُختار — للاختبار المحلي فقط. لن يُقبل هذا الوضع في سير عمل النشر.",
+              flush=True)
+
     results, sources = run_scan(args.mode, args.limit, symbols)
+    mode_eff = sources.get("mode_effective", "demo")
+    synth_rows = sum(1 for a in results if a.synthetic)
+
+    if requested in ("live", "auto"):
+        # صرامة النشر: وضع live يجب أن يكون فعّالاً فعلاً
+        if mode_eff != "live":
+            print(f"✖ فشل: وضع البيانات الفعّال هو '{mode_eff}' وليس 'live' — تعذّر الوصول لمزوّدي "
+                  f"البيانات الحقيقية. لن تُنشر بيانات تجريبية.", flush=True)
+            return 3
+        # في الوضع الحي لا يُسمح بصفوف synthetic
+        if synth_rows > 0:
+            print(f"✖ فشل: وُجد {synth_rows} صف ببيانات تجريبية في الوضع الحي — "
+                  f"هذا تسريب غير مسموح به.", flush=True)
+            return 4
+        print(f"✔ تحقق الوضع: كل البيانات حقيقية (mode_effective=live، synthetic=0).", flush=True)
+
     if not results:
         print("✖ لا نتائج — تحقّق من الكون أو الاتصال.", flush=True)
         return 2
+    # في وضع live قد تكون النتائج كلها مستبعدة (لا تقسيمات عكسية) — هذا طبيعي ومقبول
+    real_with_data = sum(1 for a in results if len(getattr(a, 'rejections', [])) == 0)
+    print(f"▶ رموز حقيقية مع بيانات صالحة: {real_with_data} / {len(results)}", flush=True)
 
     payload = write_dataset(site, results, sources, args.mode or settings.data_mode, started)
     hub = get_hub()

@@ -1,9 +1,10 @@
-"""مركز البيانات — DataHub: دمج المزوّدين مع التدرّج الآمن (fallback).
+"""مركز البيانات — DataHub: دمج المزوّدين مع سياسة صارمة للوضع الحي.
 
 قواعد التشغيل:
-  • demo : بيانات تجريبية مولّدة داخلياً (تعمل بدون انترنت)
-  • live : بيانات حقيقية (Yahoo + SEC + FINRA + RSS) مع تدرّج إلى التجريبي عند الفشل
-  • auto : يحاول الحقيقي أولاً، وإن فشل الاتصال يرجع للتجريبي ويسجّل السبب
+  • demo : بيانات تجريبية مولّدة داخلياً (تعمل بدون انترنت) — للاختبارات فقط
+  • live : بيانات حقيقية فقط (Yahoo + SEC + FINRA + RSS). أي فشل = استبعاد الرمز.
+          لا رجوع إطلاقاً إلى DemoProvider في هذا الوضع.
+  • auto : يُعامل كـ live حالياً (لمنع النشر غير المقصود لبيانات تجريبية).
 """
 from __future__ import annotations
 
@@ -32,10 +33,19 @@ try:
 except Exception:  # noqa: BLE001
     _HAS_YF = False
 
+# رموز معروفة بأنها وهمية/غير موجودة — تُرفض فوراً في الوضع الحي.
+FAKE_SYMBOLS = frozenset({
+    "NVEX", "GNSX", "SRNA", "BIOK", "RUBY",
+})
+
 
 class DataHub:
     def __init__(self, mode: str | None = None):
-        self.mode = (mode or settings.data_mode or "demo").lower()
+        requested = (mode or settings.data_mode or "demo").lower()
+        # auto يُعامل كـ live لمنع التسرّب إلى الديمو في النشر.
+        if requested == "auto":
+            requested = "live"
+        self.mode = requested
         self.demo = DemoProvider()
         self.yahoo = YahooProvider() if _HAS_YF else None
         self.sec = SECProvider()
@@ -44,12 +54,18 @@ class DataHub:
         self._live_probe: bool | None = None
         self._probe_at: float = 0.0
         self.log: list[str] = []
+        self.rejections: dict[str, str] = {}   # reason per symbol
 
     # ------------------------------------------------------------------ #
     #  تحديد الوضع
     # ------------------------------------------------------------------ #
+    def _is_live_mode(self) -> bool:
+        """الوضع الحي فقط (لا auto ترجع للديمو)."""
+        return self.mode == "live"
+
     def live_available(self, force: bool = False) -> bool:
-        if self.mode == "demo":
+        """فحص توفر الاتصال بمزوّدي البيانات الحقيقية."""
+        if not self._is_live_mode():
             return False
         if self.yahoo is None:
             return False
@@ -66,28 +82,33 @@ class DataHub:
         self._probe_at = time.time()
         return ok
 
-    def _use_live(self) -> bool:
-        if self.mode == "demo":
-            return False
-        if self.mode == "live":
-            return self.live_available()
-        return self.live_available()   # auto
-
     @property
     def effective_mode(self) -> str:
-        return "live" if self._use_live() else "demo"
+        """يعيد 'live' فقط عندما نكون فعلاً في وضع live ويتوفر الاتصال.
+        خلاف ذلك: في وضع live مع عدم توفر الاتصال ⇒ 'live-unavailable' (ليس 'demo')."""
+        if self._is_live_mode():
+            return "live" if self.live_available() else "live-unavailable"
+        return "demo"
 
     def sources_report(self) -> dict:
-        live = self._use_live()
-        rows = [ProviderStatus("demo-generator", True, "بيانات محاكية مولّدة داخلياً",
-                               source_kind="demo").to_dict()]
-        if live:
+        live = self._is_live_mode() and self.live_available()
+        rows = []
+        if self._is_live_mode():
             rows.append(self.yahoo.status.to_dict() if self.yahoo else
-                        ProviderStatus("yahoo-finance", _HAS_YF, "yfinance غير مثبّت").to_dict())
+                        ProviderStatus("yahoo-finance", _HAS_YF, "yfinance غير مثبّت",
+                                       source_kind="live").to_dict())
             rows.append(self.sec.status.to_dict())
             rows.append(self.finra.status.to_dict())
             rows.append(self.news.status.to_dict())
+            # سجل الديمو كمعطّل
+            rows.append(ProviderStatus(
+                "demo-generator", False,
+                "معطّل — الوضع الحي لا يستخدم بيانات تجريبية",
+                source_kind="demo").to_dict())
         else:
+            rows.append(ProviderStatus("demo-generator", True,
+                                       "بيانات محاكية مولّدة داخلياً (وضع اختبار فقط)",
+                                       source_kind="demo").to_dict())
             for nm, note in (
                 ("yahoo-finance", "غير مفعّل في وضع البيانات التجريبي"),
                 ("sec-edgar", "غير مفعّل في وضع البيانات التجريبي"),
@@ -100,120 +121,186 @@ class DataHub:
             "mode_effective": self.effective_mode,
             "has_yfinance": _HAS_YF,
             "providers": rows,
-            "log": self.log[-5:],
+            "log": self.log[-10:],
+            "rejections": dict(self.rejections),
+            "synthetic_count": 0 if self._is_live_mode() else -1,  # -1 = كله ديمو
         }
+
+    def _reject(self, symbol: str, reason: str) -> None:
+        """تسجيل سبب استبعاد رمز (يُستخدم في التقارير)."""
+        key = symbol.upper()
+        prev = self.rejections.get(key, "")
+        self.rejections[key] = reason if not prev else f"{prev}؛ {reason}"
+        self.log.append(f"استبعاد {key}: {reason}")
 
     # ------------------------------------------------------------------ #
     #  واجهات البيانات
     # ------------------------------------------------------------------ #
     def daily(self, symbol: str, lookback_days: int = 260) -> pd.DataFrame:
-        if self._use_live() and self.yahoo:
-            df = self.yahoo.daily(symbol, lookback_days)
+        """في الوضع live: بيانات حقيقية فقط. لا fallback للديمو."""
+        sym = symbol.upper()
+        if sym in FAKE_SYMBOLS and self._is_live_mode():
+            self._reject(sym, "رمز وهمي غير موجود في السوق")
+            return pd.DataFrame()
+        if self._is_live_mode() and self.yahoo:
+            try:
+                df = self.yahoo.daily(sym, lookback_days)
+            except Exception as exc:  # noqa: BLE001
+                self._reject(sym, f"فشل جلب الأسعار اليومية: {exc}")
+                return pd.DataFrame()
             if df is not None and len(df) > 30:
                 return df
-        return self.demo.daily(symbol, lookback_days)
+            self._reject(sym, "لا توجد بيانات سعر يومية حقيقية لهذا الرمز")
+            return pd.DataFrame()
+        # وضع demo
+        return self.demo.daily(sym, lookback_days)
 
     def intraday_4h(self, symbol: str, lookback_days: int = 90) -> pd.DataFrame:
-        if self._use_live() and self.yahoo:
-            df = self.yahoo.intraday_4h(symbol, lookback_days)
+        sym = symbol.upper()
+        if sym in FAKE_SYMBOLS and self._is_live_mode():
+            return pd.DataFrame()
+        if self._is_live_mode() and self.yahoo:
+            try:
+                df = self.yahoo.intraday_4h(sym, lookback_days)
+            except Exception as exc:  # noqa: BLE001
+                self._reject(sym, f"فشل جلب بيانات 4 ساعات: {exc}")
+                return pd.DataFrame()
             if df is not None and len(df) > 30:
                 return df
-        return self.demo.intraday_4h(symbol, lookback_days)
+            return pd.DataFrame()
+        return self.demo.intraday_4h(sym, lookback_days)
 
     def splits(self, symbol: str) -> list[ReverseSplitEvent]:
+        sym = symbol.upper()
         events: list[ReverseSplitEvent] = []
-        if self._use_live() and self.yahoo:
-            events = self.yahoo.splits(symbol) or []
-        if not events and self._use_live():
-            events = self.sec.splits(symbol) or []
-        if not events:
-            events = self.demo.splits(symbol) or []
+        if self._is_live_mode():
+            if self.yahoo:
+                try:
+                    events = self.yahoo.splits(sym) or []
+                except Exception as exc:  # noqa: BLE001
+                    self.log.append(f"فشل splits من yahoo لـ {sym}: {exc}")
+            if not events:
+                try:
+                    events = self.sec.splits(sym) or []
+                except Exception as exc:  # noqa: BLE001
+                    self.log.append(f"فشل splits من sec لـ {sym}: {exc}")
+            # لا fallback إلى demo في الوضع الحي — نرجع ما وجدناه (قد يكون [])
+            return sorted(events, key=lambda e: e.date, reverse=True)
+        events = self.demo.splits(sym) or []
         return sorted(events, key=lambda e: e.date, reverse=True)
 
-    def profile(self, symbol: str) -> TickerProfile:
-        prof = None
-        if self._use_live() and self.yahoo:
-            prof = self.yahoo.profile(symbol)
-            if prof and prof.shares_out is None:
-                sec_prof = self.sec.profile(symbol)
-                if sec_prof and sec_prof.name:
-                    prof.name = prof.name or sec_prof.name
-        if not prof or (prof.shares_out is None and not prof.name):
-            prof = self.demo.profile(symbol)
-        return prof
+    def profile(self, symbol: str) -> TickerProfile | None:
+        sym = symbol.upper()
+        if self._is_live_mode():
+            prof = None
+            if self.yahoo:
+                try:
+                    prof = self.yahoo.profile(sym)
+                except Exception as exc:  # noqa: BLE001
+                    self._reject(sym, f"فشل جلب الملف التعريفي: {exc}")
+                    prof = None
+                if prof and (not prof.name or prof.shares_out is None):
+                    try:
+                        sec_prof = self.sec.profile(sym)
+                        if sec_prof and sec_prof.name:
+                            prof.name = prof.name or sec_prof.name
+                            if prof.shares_out is None and sec_prof.shares_out:
+                                prof.shares_out = sec_prof.shares_out
+                    except Exception:  # noqa: BLE001
+                        pass
+            if prof and prof.name:
+                return prof
+            self._reject(sym, "لا توجد بيانات تعريفية حقيقية لهذا الرمز")
+            return None
+        return self.demo.profile(sym)
 
     def short_data(self, symbol: str, float_shares: float | None = None) -> ShortData | None:
-        if self._use_live():
-            sd = self.yahoo.short_data(symbol) if self.yahoo else None
-            regsho = None
+        sym = symbol.upper()
+        if self._is_live_mode():
+            sd = None
+            if self.yahoo:
+                try:
+                    sd = self.yahoo.short_data(sym)
+                except Exception as exc:  # noqa: BLE001
+                    self.log.append(f"فشل short_data yahoo لـ {sym}: {exc}")
             try:
-                regsho = self.finra.short_volume_ratio(symbol, sessions=10)[0]
+                regsho_list = self.finra.short_volume_ratio(sym, sessions=10) or []
+                regsho = regsho_list[0] if regsho_list else None
             except Exception:  # noqa: BLE001
                 regsho = None
             if sd is None and regsho is not None:
-                sd = ShortData(symbol=symbol.upper(), short_volume_ratio=regsho, source="finra-regsho")
+                sd = ShortData(symbol=sym, short_volume_ratio=regsho, source="finra-regsho")
             elif sd is not None and regsho is not None:
                 sd.short_volume_ratio = regsho
                 sd.source = f"{sd.source}+finra-regsho"
-            if sd is not None:
-                return sd
-        return self.demo.short_data(symbol)
+            # لا fallback للديمو — قد نعيد None (بيانات البيع المكشوف اختيارية)
+            return sd
+        return self.demo.short_data(sym)
 
     def catalysts(self, symbol: str) -> list[Catalyst]:
+        sym = symbol.upper()
         out: list[Catalyst] = []
-        if self._use_live():
-            try:
-                out += self.yahoo.catalysts(symbol) if self.yahoo else []
-            except Exception:  # noqa: BLE001
-                pass
-            try:
-                out += self.news.catalysts(symbol)
-            except Exception:  # noqa: BLE001
-                pass
-            try:
-                out += self.sec.catalysts(symbol)
-            except Exception:  # noqa: BLE001
-                pass
-        if not out:
-            out = self.demo.catalysts(symbol)
-        seen, uniq = set(), []
-        for c in sorted(out, key=lambda c: c.date, reverse=True):
-            k = (c.title or "")[:70].lower()
-            if k in seen:
-                continue
-            seen.add(k)
-            uniq.append(c)
-        return uniq[:40]
+        if self._is_live_mode():
+            for name, fn in (
+                ("yahoo", lambda: self.yahoo.catalysts(sym) if self.yahoo else []),
+                ("news", lambda: self.news.catalysts(sym)),
+                ("sec", lambda: self.sec.catalysts(sym)),
+            ):
+                try:
+                    out += fn() or []
+                except Exception as exc:  # noqa: BLE001
+                    self.log.append(f"فشل catalysts من {name} لـ {sym}: {exc}")
+            # لا fallback للديمو
+            seen, uniq = set(), []
+            for c in sorted(out, key=lambda c: c.date, reverse=True):
+                k = (c.title or "")[:70].lower()
+                if k in seen:
+                    continue
+                seen.add(k)
+                uniq.append(c)
+            return uniq[:40]
+        out = self.demo.catalysts(sym)
+        return out
 
     def dilution(self, symbol: str) -> list[DilutionSignal]:
+        sym = symbol.upper()
         out: list[DilutionSignal] = []
-        if self._use_live():
+        if self._is_live_mode():
             for prov in (self.sec, self.news, self.yahoo):
                 try:
-                    out += prov.dilution(symbol) or []
+                    out += prov.dilution(sym) or []
                 except Exception:  # noqa: BLE001
                     continue
-        if not out:
-            out = self.demo.dilution(symbol)
-        seen, uniq = set(), []
-        for d in sorted(out, key=lambda d: d.date, reverse=True):
-            k = (d.title or "")[:70].lower()
-            if k in seen:
-                continue
-            seen.add(k)
-            uniq.append(d)
-        return uniq[:25]
+            seen, uniq = set(), []
+            for d in sorted(out, key=lambda d: d.date, reverse=True):
+                k = (d.title or "")[:70].lower()
+                if k in seen:
+                    continue
+                seen.add(k)
+                uniq.append(d)
+            return uniq[:25]
+        return self.demo.dilution(sym)
 
     def universe(self, limit: int = 60) -> list[str]:
-        if self._use_live() and self.yahoo:
-            syms = self.yahoo.universe(limit=limit)
+        """كون السوق: في الوضع live يُبنى من ياهو + قوائم التكوين بعد التحقق."""
+        if self._is_live_mode() and self.yahoo:
+            try:
+                syms = self.yahoo.universe(limit=limit)
+            except Exception as exc:  # noqa: BLE001
+                self.log.append(f"فشل بناء الكون من Yahoo: {exc}")
+                syms = []
+            # فلترة الرموز الوهمية المعروفة
+            syms = [s for s in syms if s.upper() not in FAKE_SYMBOLS]
             if syms:
-                return syms
+                return syms[:limit] if limit else syms
+            self.log.append("تحذير: تعذّر بناء كون حقيقي — لن تُنشر بيانات تجريبية.")
+            return []
         return self.demo.universe(limit=limit)
 
     def scenario_note(self, symbol: str) -> str:
+        sym = symbol.upper()
         if self.effective_mode == "demo":
-            return self.demo.scenario_note(symbol)
+            return self.demo.scenario_note(sym)
         return ""
 
 

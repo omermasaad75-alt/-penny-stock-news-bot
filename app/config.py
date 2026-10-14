@@ -60,8 +60,8 @@ class Settings:
     app_name_ar: str = "منصة رصد التقسيم العكسي والانعكاس"
     version: str = "1.0.0"
 
-    # demo | live | auto
-    data_mode: str = _env("RSS_DATA_MODE", "demo")
+    # live | demo  (auto يُعامل كـ live — لا نسمح بالتراجع الصامت للديمو)
+    data_mode: str = _env("RSS_DATA_MODE", "live")
     host: str = _env("RSS_HOST", "0.0.0.0")
     port: int = _env("RSS_PORT", 8000, int)
 

@@ -17,8 +17,8 @@ on:
         default: "40"
         required: false
       mode:
-        description: "وضع البيانات: auto | live | demo"
-        default: "auto"
+        description: "وضع البيانات: live (افتراضي) | demo (اختبار محلي فقط)"
+        default: "live"
         required: false
   push:
     branches: [main]
@@ -63,9 +63,36 @@ jobs:
 
       - name: المسح اليومي + بناء الموقع
         env:
-          RSS_DATA_MODE: ${{ inputs.mode || 'auto' }}
+          RSS_DATA_MODE: ${{ inputs.mode || 'live' }}
         run: |
           python tools/daily_scan.py --site site --limit ${{ inputs.limit || '40' }} --mode "${RSS_DATA_MODE}"
+
+      - name: ✅ تحقق صرامة البيانات (لا تجريبي في النشر)
+        run: |
+          python - <<'PY'
+          import json, sys
+          d = json.load(open("site/data/latest.json", encoding="utf-8"))
+          mode = d.get("mode")
+          rows = d.get("rows") or []
+          synth = sum(1 for r in rows if r.get("synthetic"))
+          no_source = [r["symbol"] for r in rows if not r.get("price_source") and r.get("last_close",0)>0]
+          required = ("price_source","split_source","fundamentals_source","news_source")
+          missing_cols = [c for c in required if c not in (rows[0].keys() if rows else [])]
+          errors = []
+          if mode != "live":
+              errors.append(f"mode_effective = {mode!r} (يجب أن يكون 'live')")
+          if synth > 0:
+              errors.append(f"synthetic rows = {synth} (يجب أن يكون 0)")
+          if no_source:
+              errors.append(f"رموز بلا مصدر سعر: {no_source[:5]}")
+          if missing_cols:
+              errors.append(f"أعمدة مصادر مفقودة: {missing_cols}")
+          if errors:
+              print("✖ فشل التحقق:")
+              for e in errors: print(" -", e)
+              sys.exit(1)
+          print(f"✔ التحقق ناجح: mode={mode}, total_rows={len(rows)}, synthetic={synth}, كل المصادر موجودة")
+          PY
 
       - name: أرشيف النتائج (CSV/JSON/التقارير)
         uses: actions/upload-artifact@v4

@@ -115,14 +115,17 @@ async function loadHealth() {
     state.sources = h.data;
     const live = h.data.mode_effective === 'live';
     const b = $('#modeBadge');
-    b.textContent = 'وضع البيانات: ' + (live ? 'حي (سوق حقيقي)' : 'تجريبي (demo)');
+    // نحدد النص النهائي بعد تحميل النتائج (قد يظهر synthetic>0)
     b.className = 'badge ' + (live ? 'badge-live' : 'badge-demo');
     if (SNAPSHOT) {
-      b.textContent = 'نسخة ثابتة — بيانات تجريبية';
+      b.textContent = live ? 'نسخة ثابتة — 🟢 حقيقية' : 'نسخة ثابتة — بيانات تجريبية';
+      b.className = 'badge ' + (live ? 'badge-live' : 'badge-demo');
       ['btnScan', 'btnReport', 'btnReportHtml', 'btnReportMd', 'btnJson'].forEach(id => {
         const el = document.getElementById(id);
         if (el) { el.disabled = true; el.title = 'غير متاح في النسخة الثابتة'; }
       });
+    } else {
+      b.textContent = live ? 'وضع البيانات: حي 🟢' : 'وضع البيانات: تجريبي 🔴';
     }
     if (!SNAPSHOT && h.scan && h.scan.running) {
       $('#progressWrap').classList.remove('hidden');

@@ -83,6 +83,11 @@ class Analysis:
     industry: str = ""
     exchange: str = ""
     data_source: str = "demo"
+    price_source: str = ""
+    split_source: str = ""
+    fundamentals_source: str = ""
+    news_source: str = ""
+    synthetic: bool = True   # True = بيانات مولّدة/تجريبية، False = حقيقية مؤكدة
     as_of: str = ""
     last_close: float = 0.0
     change_pct: float = 0.0
@@ -1260,11 +1265,19 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
 
     raw_daily = hub.daily(symbol, 320)
     if raw_daily is None or len(raw_daily) < 40:
-        a.rejections.append("لا توجد بيانات سعرية كافية")
+        reason = hub.rejections.get(symbol, "لا توجد بيانات سعرية كافية")
+        a.rejections.append(reason)
+        a.synthetic = (hub.effective_mode == "demo")
         return a
     df = ind.add_indicators(raw_daily, params)
 
-    prof: TickerProfile = hub.profile(symbol)
+    prof: TickerProfile | None = hub.profile(symbol)
+    if prof is None:
+        reason = hub.rejections.get(symbol, "لا توجد بيانات حقيقية لهذا الرمز")
+        a.rejections.append(reason)
+        a.synthetic = False  # وُجدت أسعار فقط بدون ملف تعريفي — ليس تجريبي
+        a.price_source = "yahoo-finance"
+        return a
     a.name = prof.name or symbol
     a.sector = prof.sector or ""
     a.industry = prof.industry or ""
@@ -1275,6 +1288,12 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     a.avg_volume = prof.avg_volume
     a.insider_pct = prof.insider_pct
     a.institutional_pct = prof.institutional_pct
+
+    # تسجيل مصادر البيانات
+    is_live = hub.effective_mode == "live"
+    a.synthetic = not is_live
+    a.price_source = "yahoo-finance" if is_live else "demo-generator"
+    a.fundamentals_source = prof.source or ("yahoo-finance" if is_live else "demo-generator")
 
     a.last_close = _r(df["close"].iloc[-1]) or 0.0
     a.change_pct = _r(_pct(df["close"].iloc[-1], df["close"].iloc[-2]), 2) or 0.0
@@ -1304,6 +1323,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     if params.max_float_shares and (a.float_shares or 0) > params.max_float_shares:
         a.rejections.append(f"الفلوت {_fmt_num(a.float_shares)} أكبر من الحد المسموح")
 
+    # مصدر التقسيم: من الحدث المختار (yahoo/sec/demo)
     if ev is not None:
         a.rs_found = True
         a.rs_date = _date_str(ev.date)
@@ -1311,6 +1331,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         a.rs_ratio_str = ev.ratio_str or f"1-for-{ev.factor:g}"
         a.rs_ratio = float(ev.factor)
         a.rs_source = ev.source
+        a.split_source = ev.source or a.data_source
         a.rs_url = ev.url
         struct = analyse_structure(df, ev, params)
         mom = analyse_momentum(df, struct, params)
@@ -1408,6 +1429,12 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     a.catalysts = [c.to_dict() for c in cats]
     dil: list[DilutionSignal] = hub.dilution(symbol)
     a.dilution = [d.to_dict() for d in dil]
+    # مصدر الأخبار
+    if cats:
+        sources_used = sorted({c.source for c in cats if c.source})
+        a.news_source = "+".join(sources_used) if sources_used else a.data_source
+    else:
+        a.news_source = "" if is_live else "demo-generator"
     a.negative_news = [c.to_dict() for c in cats if c.sentiment == "negative"]
     a.positive_news = [c.to_dict() for c in cats if c.sentiment == "positive"]
     upcoming = [c for c in cats if (_days_since(c.date) is not None and pd.Timestamp(c.date) > pd.Timestamp(a.as_of))]
@@ -1420,8 +1447,17 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         )
     if a.base_broken:
         a.risk_flags.append("⚠ كسر القاع المرجعي — احتمال استمرار الهبوط")
-    if a.data_source == "demo":
+    if a.synthetic:
         a.risk_flags.append("ℹ البيانات المعروضة تجريبية (demo) — فعّل الوضع الحي من الإعدادات")
+    # ضبط قيم افتراضية لمصادر البيانات في حال لم تُحدّث
+    if not a.split_source:
+        a.split_source = a.rs_source or ("" if is_live else "demo-generator")
+    if not a.price_source:
+        a.price_source = ("yahoo-finance" if is_live else "demo-generator")
+    if not a.fundamentals_source:
+        a.fundamentals_source = ("" if is_live else "demo-generator")
+    if not a.news_source:
+        a.news_source = ("" if is_live else "demo-generator")
     if upcoming:
         a.risk_flags.append("محفزات قادمة: " + " | ".join(
             f"{c.date} {c.title[:45]}" for c in sorted(upcoming, key=lambda x: x.date)[:3]))
