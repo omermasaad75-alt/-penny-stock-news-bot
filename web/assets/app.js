@@ -73,8 +73,17 @@ async function loadHealth() {
     const b = $('#modeBadge');
     b.textContent = 'وضع البيانات: ' + (live ? 'حي (سوق حقيقي)' : 'تجريبي (demo)');
     b.className = 'badge ' + (live ? 'badge-live' : 'badge-demo');
-    if (h.scan && h.scan.running) { $('#progressWrap').classList.remove('hidden'); pollStatus(); }
-    else if (h.results_cached > 0) loadResults();
+    if (h.scan && h.scan.running) {
+      $('#progressWrap').classList.remove('hidden');
+      pollStatus();
+    } else if (h.results_cached > 0) {
+      loadResults();
+    } else if (!state.autoScanStarted) {
+      state.autoScanStarted = true;            // أول تشغيل: ابدأ المسح تلقائياً
+      $('#progressWrap').classList.remove('hidden');
+      api('/api/scan/start?limit=80', { method: 'POST' }).catch(() => {});
+      pollStatus();
+    }
     renderSources();
   } catch (e) { toast('تعذر الاتصال بالمخدم: ' + e.message); }
 }
