@@ -144,7 +144,9 @@ class StrategyParams:
     require_lifecycle_sequence: bool = True   # إلزام التسلسل الكامل للترقية للمرحلة 6
     ideal_impulse_pct: float = 20.0      # الانطلاقة المثالية بعد الثبات (≈20%)
     min_ready_impulse_pct: float = 15.0  # أدنى انطلاقة مقبولة (20% ± قليل)
-    max_nearby_resistance_pct: float = 40.0  # المقاومة «قريبة» إذا كانت ≤ 40% فوق الدعم (وفي حدود 10% من قمة الانطلاقة)
+    max_nearby_resistance_pct: float = 28.0  # «مقاومة قريبة» = لا تبعد أكثر من 28% عن الدعم الرئيسي
+    resistance_stall_pct: float = 3.0    # يجب أن يتوقف السعر عند المقاومة داخل هذه النسبة
+    max_lifecycle_sessions: int = 45     # أقصى عمر للتسلسل بعد الثبات قبل اعتباره قديماً
     support_retest_tolerance_pct: float = 2.0  # تسامح العودة لاختبار الدعم الرئيسي
     sweep_tolerance_pct: float = 1.0     # اختراق تحت الدعم بهذه النسبة أو أكثر = سحب سيولة
     reclaim_buffer_pct: float = 0.5      # الإغلاق فوق الدعم بهذه النسبة = استعادة

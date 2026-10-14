@@ -113,20 +113,31 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
         add("")
 
     # ---------------- دورة الحياة بعد الثبات (شرط «جاهز فنياً») ---------------- #
-    add("## 2.b) شروط «جاهز فنياً» — دورة الحياة بعد الثبات")
+    add("## 2.ب) دورة الحياة بعد الثبات — شرط «جاهز فنياً»")
     add("")
-    add(f"**حالة التسلسل:** {a.lifecycle_stage or '—'}"
-        + ("  ✅ مكتمل" if a.lifecycle_ready else "  ⏳ قيد التكوّن"))
+    add(f"**حالة التسلسل:** {a.lifecycle_stage or '—'} "
+        + ("✅ **جاهز فنياً**" if a.lifecycle_ready else
+           ("⛔ فشل التسلسل" if a.lifecycle_failed else "⏳ قيد التكوّن")))
     add("")
-    if a.lifecycle_checks:
-        add("| # | الشرط | المعيار | القراءة الفعلية | الحالة |")
-        add("|---|-------|---------|----------------|--------|")
-        for i, c in enumerate(a.lifecycle_checks, 1):
-            add(f"| {i} | {c['ar']} | {c['std']} | {c['detail']} | {'✅ محقق' if c['ok'] else '⏳ غير مكتمل'} |")
-        add("")
+    add("| # | الخطوة | المعيار | القراءة الفعلية | الحالة |")
+    add("|---|--------|---------|-----------------|--------|")
+    for i, c in enumerate(a.lifecycle_checks or [], 1):
+        mark = {"ok": "✅ محقق", "active": "⏳ جارٍ الآن", "pending": "• لم يبدأ"}.get(c.get("state"), "—")
+        add(f"| {i} | {c['ar']} | {c['std']} | {c['detail']} | {mark} |")
+    add("")
     if a.lifecycle_failed:
-        add("> ⛔ **فشل التسلسل:** كسر الدعم الرئيسي بعد الانطلاقة دون استعادة — يُلغى السيناريو حتى يتكوّن قاع جديد.")
+        add("> ⛔ **إلغاء السيناريو:** كسر السعر الدعم الرئيسي بعد الانطلاقة دون استعادة — "
+            "لا دخول حتى يتكوّن قاع جديد.")
         add("")
+    if a.pullback_type == "liquidity_sweep":
+        add(f"- **سحب سيولة (Liquidity Sweep):** الفتيل كسر الدعم إلى {_n(a.sweep_low,3)}$ "
+            f"({_n(a.sweep_depth_pct,1)}% تحت الدعم) بتاريخ {a.sweep_date or '—'} ثم أُغلق فوقه.")
+        add(f"- **وقف إلغاء السيناريو انتقل إلى** {_n((a.levels or {}).get('stop_structural'),3)}$ "
+            f"(تحت قاع السحب {_n(a.sweep_low,3)}$).")
+        add("")
+    add(f"- **المستويات المرجعية:** الدعم الرئيسي {_n(a.support_level or a.bottom_price,3)}$ — "
+        f"أقرب مقاومة {_n(a.resistance_level,3)}$ — قمة الانطلاقة {_n(a.impulse_high,3)}$.")
+    add("")
 
     # ---------------- التفاصيل الفنية ---------------- #
     add("## 3) التفاصيل الفنية")

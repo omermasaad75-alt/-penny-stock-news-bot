@@ -2,7 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080b11">
 <title>منصة رصد التقسيم العكسي والانعكاس | RS Reversal Terminal</title>
 <link rel="stylesheet" href="/assets/styles.css">
 </head>
@@ -16,7 +17,8 @@
       <span class="sub">Reverse-Split Oversold Reversal Terminal · Daily &amp; 4H</span>
     </div>
   </div>
-  <div class="topbar-right">
+  <button class="btn menu-btn" id="menuBtn" aria-label="القائمة">☰ القائمة</button>
+  <div class="topbar-right" id="topbarRight">
     <span id="modeBadge" class="badge badge-demo">وضع البيانات: تجريبي</span>
     <span id="clock" class="clock">—</span>
     <button id="btnScan" class="btn btn-primary">⟳ مسح السوق الآن</button>
@@ -37,7 +39,7 @@
   <div class="kpi"><span class="kpi-label">رموز مفحوصة</span><b id="kpiScanned">—</b></div>
   <div class="kpi"><span class="kpi-label">تقسيم عكسي داخل النافذة</span><b id="kpiRs" class="c-blue">—</b></div>
   <div class="kpi"><span class="kpi-label">قائمة المتابعة (ثبات 3+)</span><b id="kpiWatch" class="c-green">—</b></div>
-  <div class="kpi"><span class="kpi-label">جاهز فنياً (انعكاس مؤكد)</span><b id="kpiReady" class="c-green">—</b></div>
+  <div class="kpi"><span class="kpi-label">جاهز فنياً (اكتمال التسلسل)</span><b id="kpiReady" class="c-green">—</b></div>
   <div class="kpi"><span class="kpi-label">متوسط تقييم الفرص</span><b id="kpiAvg" class="c-amber">—</b></div>
   <div class="kpi"><span class="kpi-label">آخر تحديث</span><b id="kpiTime" class="small">—</b></div>
 </section>
@@ -46,7 +48,7 @@
   <button class="tab active" data-tab="scanner">📡 الرصد والفرص</button>
   <button class="tab" data-tab="analysis">🔬 لوحة التحليل الفني</button>
   <button class="tab" data-tab="phases">🧭 مراحل الاستراتيجية</button>
-  <button class="tab" data-tab="data">🗄️ مصادر البيانات والعناوين</button>
+  <button class="tab" data-tab="data">🗄️ مصادر البيانات</button>
 </nav>
 
 <!-- ====================== الرصد ====================== -->
@@ -70,7 +72,9 @@
           <th>#</th><th>الرمز</th><th>المرحلة</th><th>التقييم</th><th>السعر</th>
           <th>التقسيم العكسي</th><th>صعود التقسيم</th><th>الهبوط</th><th>جلسات الثبات</th>
           <th>RSI</th><th>الفلوت</th><th>بيع مكشوف</th><th>RVOL</th>
-          <th>نقطة الاختراق</th><th>مخاطرة/عائد</th><th title="التسلسل: انطلاقة → مقاومة → عودة للدعم → سحب سيولة → استعادة">التسلسل</th><th>أبرز نموذج</th><th></th>
+          <th>نقطة الاختراق</th><th>مخاطرة/عائد</th>
+          <th title="التسلسل: ثبات الدعم → انطلاقة → مقاومة → عودة للدعم/سحب سيولة → استعادة">التسلسل</th>
+          <th>أبرز نموذج</th><th></th>
         </tr>
       </thead>
       <tbody id="scanBody">
@@ -83,10 +87,15 @@
 
 <!-- ====================== التحليل ====================== -->
 <main id="tab-analysis" class="tab-panel">
+  <div class="back-row">
+    <button class="btn-back" id="btnBack">→ رجوع إلى الرادار</button>
+    <span class="muted small">يمكنك أيضاً استخدام زر الرجوع في المتصفح</span>
+  </div>
+
   <div id="analysisEmpty" class="empty-state">
     <h3>اختر سهماً من جدول الرصد</h3>
-    <p>ستظهر هنا لوحة التحليل الفني الكاملة: المخطط (يومي / 4 ساعات)، المؤشرات، النماذج الفنية،
-       البيانات الأساسية، الأخبار والمحفزات، ومستويات الدخول والوقف والأهداف.</p>
+    <p>ستظهر هنا لوحة التحليل الفني الكاملة: المخطط (يومي / 4 ساعات)، دورة الحياة، المؤشرات،
+       النماذج الفنية، البيانات الأساسية، الأخبار والمحفزات، ومستويات الدخول والوقف والأهداف.</p>
   </div>
 
   <div id="analysisBody" class="hidden">
@@ -120,6 +129,19 @@
 
     <div id="anAlerts" class="alerts"></div>
 
+    <!-- دورة الحياة: شريط المراحل + الحالة -->
+    <div class="card">
+      <div class="card-head">
+        <h3>دورة الحياة الكاملة — شرط «جاهز فنياً»</h3>
+        <span id="seqStatus" class="seq-status">—</span>
+      </div>
+      <div class="stepper" id="anStepper"></div>
+      <div class="chart-hint">
+        <span>1) ثبات الدعم ≥ 3 جلسات</span><span>2) انطلاقة ≈20%</span><span>3) اختبار أقرب مقاومة</span>
+        <span>4) عودة لاختبار الدعم</span><span>5) أو سحب سيولة تحت القاع ثم العودة فوقه</span><span>6) استعادة وإغلاق فوق الدعم</span>
+      </div>
+    </div>
+
     <div class="an-grid">
       <!-- المخططات -->
       <div class="card chart-card">
@@ -129,16 +151,52 @@
             <button class="tf active" data-tf="1D">يومي 1D</button>
             <button class="tf" data-tf="4H">4 ساعات</button>
           </div>
-          <div class="osc-switch">
-            <button class="osc active" data-osc="rsi">RSI</button>
-            <button class="osc" data-osc="macd">MACD</button>
-            <button class="osc" data-osc="stoch">Stochastic</button>
-            <button class="osc" data-osc="mfi">MFI</button>
-            <button class="osc" data-osc="rvol">Volume RVOL</button>
+        </div>
+
+        <div class="chart-tools">
+          <button class="ct-btn icon" id="ctZoomIn" title="تكبير">＋</button>
+          <button class="ct-btn icon" id="ctZoomOut" title="تصغير">－</button>
+          <button class="ct-btn" id="ctFit" title="إظهار كل الشموع">⤢ ملاءمة</button>
+          <button class="ct-btn" id="ctReset" title="إعادة ضبط العرض">⟲ إعادة ضبط</button>
+          <button class="ct-btn active" id="ctAutoScale" title="تحجيم تلقائي لعمود السعر">⤡ تحجيم تلقائي</button>
+          <button class="ct-btn" id="ctVolume" title="إظهار/إخفاء الحجم">▮ الحجم</button>
+          <span class="muted small">اسحب المخطط حراً (أعلى/أسفل/يمين/يسار) — أو استخدم شريط السحب الجانبي والأسفل</span>
+        </div>
+
+        <div class="chart-shell">
+          <div class="chart-stack">
+            <div id="priceChart" class="chart"></div>
+            <div id="oscChart" class="chart chart-osc"></div>
+            <input type="range" id="hSlider" class="h-slider" min="0" max="1000" value="1000"
+                   title="سحب المخطط أفقياً على محور الزمن">
+            <div class="chart-hint">
+              <span><kbd>عجلة الفأرة</kbd> تكبير/تصغير</span>
+              <span><kbd>سحب</kbd> تحريك أفقي/رأسي</span>
+              <span><kbd>سحب محور السعر</kbd> تحجيم يدوي</span>
+            </div>
+            <div class="osc-switch" style="margin-top:8px">
+              <button class="osc active" data-osc="rsi">RSI</button>
+              <button class="osc" data-osc="macd">MACD</button>
+              <button class="osc" data-osc="stoch">Stochastic</button>
+              <button class="osc" data-osc="mfi">MFI</button>
+              <button class="osc" data-osc="rvol">Volume RVOL</button>
+            </div>
+          </div>
+
+          <!-- شريط السحب والتحكم الجانبي -->
+          <div class="chart-rail">
+            <button class="ct-btn icon" id="ctUp" title="تحريك الشارت لأعلى">▲</button>
+            <input type="range" id="vSlider" class="v-slider" min="0" max="1000" value="500"
+                   title="سحب الشارت رأسياً (أعلى/أسفل)">
+            <button class="ct-btn icon" id="ctDown" title="تحريك الشارت لأسفل">▼</button>
+            <span class="rail-label">سحب رأسي</span>
+            <button class="ct-btn icon" id="ctVZoomIn" title="تكبير رأسى للأسعار">⇥</button>
+            <input type="range" id="zSlider" class="v-slider" min="0" max="1000" value="540"
+                   title="تكبير/تصغير محور السعر رأسياً">
+            <button class="ct-btn icon" id="ctVZoomOut" title="تصغير رأسى للأسعار">⇤</button>
+            <span class="rail-label">تكبير رأسي</span>
           </div>
         </div>
-        <div id="priceChart" class="chart"></div>
-        <div id="oscChart" class="chart chart-osc"></div>
         <div class="chart-legend" id="chartLegend"></div>
       </div>
 
@@ -198,8 +256,10 @@
     <p class="muted">
       الاستراتيجية تبحث عن سهم أُجري له <b>تقسيم عكسي</b> (1:2 حتى 1:60) خلال آخر شهرين،
       صعد صعوداً محدوداً يوم التقسيم، ثم دخل <b>موجة هبوط قوية</b> (≥30%، والمثالي 40-50%+)
-      حتى وصل إلى <b>تشبع بيعي</b> (RSI &lt; 30)، ثم كوّن <b>قاعاً وثبت عليه</b> 3-5 جلسات مع جفاف حجم،
-      وبعدها يبدأ فنياً بالتحسّن حتى يتحول إلى <b>جاهز فنياً</b>.
+      حتى وصل إلى <b>تشبع بيعي</b> (RSI &lt; 30)، وكوّن <b>قاعاً وثبت عليه</b> 3-5 جلسات مع جفاف حجم،
+      ثم <b>ينطلق بنسبة ≈20%</b> (أقل/أكثر قليلاً) لاختبار <b>أقرب مقاومة</b>، وبعدها
+      <b>يعود لاختبار الدعم الرئيسي</b> أو <b>يسحب سيولة تحته ويعود فوقه</b> —
+      وعندها فقط يتحوّل السهم إلى <b>جاهز فنياً</b> (اكتمال التسلسل).
     </p>
   </div>
   <div id="phasesList" class="phases"></div>
@@ -208,7 +268,8 @@
     <div id="weightsList" class="weights"></div>
     <p class="muted small">
       التقييم مرجّح: كل مكوّن يُنقّط من 0 إلى 100 ثم يُضرب في وزنه، والمجموع يُقسم على مجموع الأوزان.
-      الرموز بلا حدث تقسيم عكسي تُخفض نقاطها بنسبة 45%، وكسر القاع المرجعي يخفض النتيجة 20%.
+      الرموز بلا حدث تقسيم عكسي تُخفض نقاطها بنسبة 45%، وكسر القاع المرجعي يخفض النتيجة 20%،
+      وفشل تسلسل الانعكاس يخفض «جودة المخاطر» 25%.
     </p>
   </div>
 </main>
@@ -237,8 +298,9 @@
   </div>
   <div class="card">
     <h3>السيناريوهات التجريبية المدمجة (نموذج تحليلي مرجعي)</h3>
-    <p class="muted small">هذه البيانات مولّدة داخلياً لمحاكاة دورة الاستراتيجية بدقة، وتشمل السيناريو
-      المرجعي JZ (افتتاح 3.00$ → قمة 3.40$ → هبوط 53% → قاع 1.60$ → ثبات 6 جلسات).</p>
+    <p class="muted small">هذه البيانات مولّدة داخلياً لمحاكاة دورة الاستراتيجية كاملة، وتشمل السيناريو
+      المرجعي JZ (افتتاح 3.00$ → قمة 3.40$ → هبوط 53% → قاع 1.60$ → ثبات 5 جلسات → انطلاقة +23% →
+      مقاومة 2.01$ → سحب سيولة 1.53$ → استعادة فوق الدعم).</p>
     <div class="table-wrap">
       <table class="grid small-table">
         <thead><tr><th>الرمز</th><th>الشركة</th><th>التقسيم</th><th>صعود</th><th>هبوط</th>

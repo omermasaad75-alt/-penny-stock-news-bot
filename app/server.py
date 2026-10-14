@@ -207,16 +207,25 @@ def chart(symbol: str, tf: str = "1D", mode: str | None = None) -> dict[str, Any
     payload["levels"] = (a.levels if a else {}) or {}
     payload["phase"] = a.phase if a else 0
     if a is not None:
-        payload["lifecycle"] = {
-            "stage": a.lifecycle_stage, "ready": a.lifecycle_ready, "failed": a.lifecycle_failed,
-            "impulse_pct": a.impulse_pct, "impulse_high": a.impulse_high,
-            "resistance_level": a.resistance_level, "pullback_type": a.pullback_type,
-            "sweep_low": a.sweep_low, "sweep_depth_pct": a.sweep_depth_pct,
-            "reclaim_level": a.reclaim_level, "reclaim_sessions": a.reclaim_sessions,
-            "support": a.support_level or a.bottom_price,
-        }
+        payload["lifecycle"] = _lifecycle_summary(a)
         payload["markers"] = (payload.get("markers") or []) + _lifecycle_markers(payload, a)
     return payload
+
+
+def _lifecycle_summary(a: "eng.Analysis") -> dict[str, Any]:
+    """ملخّص دورة الحياة الذي ترسمه الواجهة (الخطوط، العلامات، شريط الخطوات)."""
+    return {
+        "stage": a.lifecycle_stage, "ready": a.lifecycle_ready, "failed": a.lifecycle_failed,
+        "support": a.support_level or a.bottom_price, "base_sessions": a.base_sessions,
+        "support_hold_ok": a.support_hold_ok,
+        "impulse_pct": a.impulse_pct, "impulse_high": a.impulse_high, "impulse_date": a.impulse_date,
+        "resistance_level": a.resistance_level, "resistance_date": a.resistance_date,
+        "resistance_stall_pct": a.resistance_stall_pct,
+        "pullback_type": a.pullback_type, "pullback_low": a.pullback_low, "pullback_date": a.pullback_date,
+        "sweep_low": a.sweep_low, "sweep_depth_pct": a.sweep_depth_pct, "sweep_date": a.sweep_date,
+        "reclaim_level": a.reclaim_level, "reclaim_sessions": a.reclaim_sessions,
+        "reclaim_date": a.reclaim_date, "checks": a.lifecycle_checks,
+    }
 
 
 def _lifecycle_markers(payload: dict[str, Any], a: eng.Analysis) -> list[dict[str, Any]]:
@@ -253,11 +262,21 @@ def _lifecycle_markers(payload: dict[str, Any], a: eng.Analysis) -> list[dict[st
         if t:
             out.append({"time": t, "position": "belowBar", "color": "#f85149", "shape": "arrowDown",
                         "text": f"سحب سيولة {a.sweep_low:.2f}"})
+    if a.pullback_type == "support_retest" and a.pullback_low and a.pullback_date:
+        t = to_time(a.pullback_date)
+        if t:
+            out.append({"time": t, "position": "belowBar", "color": "#f0883e", "shape": "arrowUp",
+                        "text": f"اختبار الدعم {a.pullback_low:.2f}"})
     if a.reclaim_date:
         t = to_time(a.reclaim_date)
         if t:
             out.append({"time": t, "position": "belowBar", "color": "#3fb950", "shape": "arrowUp",
                         "text": f"استعادة الدعم ({a.reclaim_sessions})"})
+    if a.support_level and a.bottom_date and not a.lifecycle_ready:
+        t = to_time(a.bottom_date)
+        if t:
+            out.append({"time": t, "position": "belowBar", "color": "#58a6ff", "shape": "circle",
+                        "text": f"الدعم {a.support_level:.2f} (ثبات {a.base_sessions})"})
     return out
 
 

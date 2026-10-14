@@ -99,9 +99,33 @@ def test_partial_sequence_not_ready(hub):
 
 def test_lifecycle_checks_structure(jz):
     keys = [c["key"] for c in jz.lifecycle_checks]
-    assert keys == ["impulse", "resistance", "pullback", "sweep", "reclaim"]
+    assert keys == ["support_hold", "impulse", "resistance", "pullback", "sweep", "reclaim"]
     for c in jz.lifecycle_checks:
         assert c["ar"] and c["std"] and c["detail"] and isinstance(c["ok"], bool)
+        assert c["state"] in {"ok", "active", "pending"}
+
+
+def test_support_hold_requires_three_sessions(hub):
+    """WKSP: الثبات جلستان فقط (أقل من 3) ⇒ لا يُعتمد «جاهز فنياً» مهما اكتملت بقية الخطوات."""
+    a = eng.analyze_symbol("WKSP", hub)
+    hold = next(c for c in a.lifecycle_checks if c["key"] == "support_hold")
+    assert hold["ok"] is False
+    assert a.support_hold_ok is False
+    assert a.lifecycle_ready is False
+    assert a.phase < 6
+
+
+def test_stage_reflects_incomplete_sequence(hub):
+    """لا يجوز أن تحمل الأسهم غير المكتملة وصف «مكتمل»."""
+    for sym in ("WKSP", "SRNA", "TGL", "HLIO", "DRTS"):
+        a = eng.analyze_symbol(sym, hub)
+        if not a.lifecycle_ready:
+            assert not a.lifecycle_stage.startswith("مكتمل"), (sym, a.lifecycle_stage)
+
+
+def test_nearest_resistance_is_pivot(jz):
+    assert jz.resistance_kind == "pivot"
+    assert jz.resistance_level is not None and jz.resistance_level < jz.impulse_high * 1.02
 
 
 def test_levels_use_sweep_low_for_invalidation(jz):
@@ -209,3 +233,38 @@ def test_all_scenarios_run(hub):
         assert a.last_close > 0
         assert a.phase in eng.PHASES
         assert 0 <= a.score <= 100
+
+
+def test_resistance_must_stall_not_blow_through(hub):
+    """WKSP: تجاوز المقاومة بقوة (> 3%) ⇒ لا تُعدّ «أقرب مقاومة مختبرة» ولا يكتمل التسلسل."""
+    a = eng.analyze_symbol("WKSP", hub)
+    res = next(c for c in a.lifecycle_checks if c["key"] == "resistance")
+    assert res["ok"] is False
+    assert a.resistance_tested is False
+    assert a.lifecycle_ready is False
+
+
+def test_sequence_order_is_enforced(jz):
+    """الترتيب الزمني: ثبات الدعم ← الانطلاقة ← المقاومة ← العودة للدعم/السحب ← الاستعادة."""
+    assert jz.bottom_date < jz.impulse_date
+    assert jz.resistance_date <= jz.impulse_date
+    assert jz.pullback_date >= jz.impulse_date
+    if jz.sweep_low:
+        assert jz.sweep_low < jz.bottom_price          # الفتيل كسر الدعم فعلاً
+        assert jz.sweep_date >= jz.pullback_date
+
+
+def test_stop_placed_under_sweep_low(jz):
+    """وقف إلغاء السيناريو يجب أن يكون تحت قاع السحب (وإلا تحت الدعم)."""
+    assert jz.levels["stop_structural"] < (jz.sweep_low or jz.bottom_price)
+
+
+def test_ready_requires_base_hold_and_full_sequence(hub):
+    """كل من يُصنّف «جاهز فنياً» لا بد أن يستوفي الثبات ≥3 جلسات والتسلسل كاملاً."""
+    for sym in ("JZ", "NVEX", "BRTX", "FLNT", "SRNA", "HLIO", "WKSP"):
+        a = eng.analyze_symbol(sym, hub)
+        if a.phase == 6:
+            assert a.lifecycle_ready is True
+            assert a.support_hold_ok is True
+            assert a.base_sessions >= STRATEGY.min_base_sessions
+            assert all(c["ok"] for c in a.lifecycle_checks)
