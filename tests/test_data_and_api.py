@@ -114,6 +114,10 @@ def test_scan_cycle(client):
     assert res["summary"]["scanned"] >= 10
     assert res["summary"]["with_reverse_split"] >= 1
     assert res["rows"]
+    # «جاهز فنياً» في الملخّص = المرحلة 6 مع اكتمال التسلسل (مطابق لفلتر الواجهة)
+    row_ready = sum(1 for r in res["rows"] if r["phase"] == 6 and r["lifecycle_ready"])
+    assert res["summary"]["ready"] == row_ready
+    assert res["summary"]["phase5_plus"] >= res["summary"]["ready"]
 
 
 def test_analysis_and_chart(client):
