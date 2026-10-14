@@ -125,6 +125,8 @@ class DataHub:
             "providers": rows,
             "log": self.log[-10:],
             "rejections": dict(self.rejections),
+            "candidate_discovery": getattr(self.yahoo, "candidate_discovery", {}),
+            "scan_coverage": getattr(self.yahoo, "scan_coverage", {}),
             "synthetic_count": 0 if self._is_live_mode() else -1,  # -1 = كله ديمو
         }
 
