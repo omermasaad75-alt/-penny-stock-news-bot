@@ -267,3 +267,11 @@ def test_universe_validates_before_more_requests(monkeypatch):
     monkeypatch.setattr(provider, "splits", forbidden)
     assert provider.universe() == []
     assert "INVALID" in provider.universe_rejections
+
+
+def test_actions_rejects_even_explicit_demo_test_flag(tmp_path, monkeypatch):
+    import tools.daily_scan as tool
+    import sys
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    monkeypatch.setattr(sys, "argv", ["daily_scan", "--mode", "demo", "--test-only", "--site", str(tmp_path)])
+    assert tool.main() == 4

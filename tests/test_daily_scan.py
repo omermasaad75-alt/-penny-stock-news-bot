@@ -70,6 +70,7 @@ def test_cli_builds_publishable_site(tmp_path):
     """يشغّل الأداة فعلياً (وضع تجريبي) ويتحقّق من ملفات النشر."""
     site = tmp_path / "site"
     env = {**os.environ, "RSS_DATA_MODE": "demo"}
+    env.pop("GITHUB_ACTIONS", None)  # isolate local test-only subprocess, not deployment
     proc = subprocess.run(
         [sys.executable, str(ROOT / "tools" / "daily_scan.py"),
          "--site", str(site), "--limit", "5", "--mode", "demo",
