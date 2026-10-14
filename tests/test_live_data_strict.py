@@ -275,3 +275,19 @@ def test_actions_rejects_even_explicit_demo_test_flag(tmp_path, monkeypatch):
     monkeypatch.setenv("GITHUB_ACTIONS", "true")
     monkeypatch.setattr(sys, "argv", ["daily_scan", "--mode", "demo", "--test-only", "--site", str(tmp_path)])
     assert tool.main() == 4
+
+
+def test_pending_sequence_not_mislabeled_as_no_split():
+    from tools.daily_scan import sequence_state
+    a = eng.Analysis(symbol="TEST", rs_found=True)
+    assert sequence_state(a)[1] == "تسلسل الثبات لم يبدأ بعد"
+
+
+def test_watchlist_report_includes_sources_and_html_table():
+    from app.reporting import watchlist_markdown, markdown_to_html
+    a = eng.Analysis(symbol="TEST", synthetic=False, price_source="yahoo-finance",
+                     fundamentals_source="yahoo-finance", split_source="yahoo-finance", news_source="rss:yahoo")
+    text = watchlist_markdown([a])
+    assert "مصادر جميع الصفوف" in text and "rss:yahoo" in text and "false" in text
+    html = markdown_to_html(text)
+    assert "|---|" not in html
