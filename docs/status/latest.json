@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-10-14 19:07",
+ "generated_at_riyadh": "2026-10-14 19:56",
  "mode": "live",
  "summary": {
   "scanned": 28,
@@ -20,7 +20,7 @@
    "phase": 7,
    "score": 67.3,
    "grade": "B",
-   "last_close": 1.6,
+   "last_close": 1.565,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": 372.97,
@@ -62,9 +62,9 @@
   {
    "symbol": "DRTS",
    "phase": 3,
-   "score": 37.3,
+   "score": 36.5,
    "grade": "D",
-   "last_close": 13.445,
+   "last_close": 13.57,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": 11.36,
@@ -97,7 +97,7 @@
    "phase": 0,
    "score": 13.4,
    "grade": "D",
-   "last_close": 0.7248,
+   "last_close": 0.5108,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": null,
@@ -108,7 +108,7 @@
    "phase": 0,
    "score": 12.3,
    "grade": "D",
-   "last_close": 2.1106,
+   "last_close": 2.1,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": null,
@@ -130,7 +130,7 @@
    "phase": 0,
    "score": 11.6,
    "grade": "D",
-   "last_close": 36.03,
+   "last_close": 35.72,
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": null,
@@ -180,5 +180,5 @@
    "detail": "9 عنوان"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/38595255324"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/38602277381"
 }
