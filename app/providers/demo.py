@@ -52,6 +52,16 @@ class Scenario:
     recovery_strength: float       # 0 = لا انعكاس بعد، 1 = انعكاس مؤكد وقوي
     tail_gain_pct: float = 8.0     # نسبة التغيّر من القاع إلى آخر جلسة (سالب = استمرار الهبوط)
     rs_open: float | None = None   # سعر افتتاح يوم التقسيم (يُحسب تلقائياً إن لم يحدد)
+    # ---- دورة الحياة بعد الثبات (شروط «جاهز فنياً» في ورقة الشروط) ----
+    lifecycle: bool = True         # ثبات ← انطلاقة ~20% ← اختبار مقاومة ← عودة للدعم/سحب سيولة ← استعادة
+    calm_sessions: int = 4         # جلسات الثبات قبل الانطلاقة
+    impulse_pct: float = 20.0      # نسبة الانطلاقة من إغلاق الثبات
+    impulse_sessions: int = 4
+    resist_price: float | None = None   # المقاومة القريبة (تُشتق آلياً إن لم تحدد)
+    pullback_sessions: int = 3
+    pullback_target: str = "sweep"  # sweep = سحب سيولة تحت الدعم | support = إعادة اختبار الدعم
+    sweep_depth_pct: float = 4.0    # عمق سحب السيولة تحت الدعم
+    reclaim_sessions: int = 2
     price_high_note: str = ""
     catalysts: list[dict] = field(default_factory=list)
     dilution: list[dict] = field(default_factory=list)
@@ -74,13 +84,17 @@ SCENARIOS: list[Scenario] = [
         shares_out=9_500_000, float_shares=3_200_000,
         short_pct_float=18.4, days_to_cover=3.1, short_change=+12.0,
         base_volume=1_450_000,
-        spike_pct=13.33, drop_pct=52.9, bottom_offset=-7,
-        rsi_trough=21.5, rsi_now_target=45.0, recovery_strength=0.85,
-        tail_gain_pct=8.5, rs_open=3.00, pre_price=2.95, bottom_price=1.60,
+        spike_pct=13.33, drop_pct=52.9, bottom_offset=-16,
+        rsi_trough=21.5, rsi_now_target=48.0, recovery_strength=0.9,
+        tail_gain_pct=11.5, rs_open=3.00, pre_price=2.95, bottom_price=1.60,
+        lifecycle=True, calm_sessions=4, impulse_pct=22.0, impulse_sessions=4,
+        pullback_sessions=4, pullback_target="sweep",
+        sweep_depth_pct=4.5, reclaim_sessions=2,
         note_ar=(
-            "النموذج المرجعي للاستراتيجية: تقسيم عكسي 1:8 بتاريخ التقسيم، افتتاح 3.00$، "
-            "صعود يوم التقسيم إلى 3.40$ (+13.3% من الافتتاح)، ثم موجة هبوط 53% إلى قاع 1.60$، "
-            "ثبات 5 جلسات على القاع مع جفاف حجم، ثم تحسّن RSI واختراق EMA9."
+            "النموذج المرجعي الكامل: تقسيم عكسي 1:8، افتتاح 3.00$ → قمة 3.40$ (+13.3%) → "
+            "هبوط 53% إلى قاع 1.60$ → ثبات 4 جلسات مع جفاف حجم → انطلاقة +22% إلى 1.96$ "
+            "(اختبار مقاومة قريبة) → سحب سيولة تحت الدعم إلى 1.53$ والعودة فوقه → "
+            "استعادة 1.78$: التسلسل مكتمل والسهم جاهز فنياً."
         ),
         catalysts=[
             {"offset": -12, "type": "offering", "sentiment": "negative", "impact": "medium",
@@ -112,14 +126,17 @@ SCENARIOS: list[Scenario] = [
         shares_out=6_800_000, float_shares=1_900_000,
         short_pct_float=31.2, days_to_cover=4.8, short_change=+22.0,
         base_volume=980_000,
-        spike_pct=22.0, drop_pct=61.0, bottom_offset=-11,
-        rsi_trough=16.8, rsi_now_target=52.0, recovery_strength=1.0,
+        spike_pct=22.0, drop_pct=61.0, bottom_offset=-18,
+        rsi_trough=16.8, rsi_now_target=55.0, recovery_strength=1.0,
         pre_price=4.8,
-        tail_gain_pct=28.0, rs_open=4.92,
+        tail_gain_pct=17.0, rs_open=4.92,
+        lifecycle=True, calm_sessions=4, impulse_pct=20.0, impulse_sessions=4,
+        pullback_sessions=4, pullback_target="support",
+        reclaim_sessions=3,
         note_ar=(
-            "حالة مكتملة: تقسيم عكسي 1:20، هبوط 61% إلى 0.86$، قاعدة 10 جلسات، "
-            "اختراق قناة هابطة بحجم 3.2x، ديفرجنس RSI إيجابي، وتوافق فريم 4 ساعات. "
-            "مع فلوت 1.9M وبيع مكشوف 31% من الفلوت → أفضلية ضغط قصير."
+            "حالة مكتملة: تقسيم عكسي 1:20، هبوط 61% إلى القاع، ثم ثبات على الدعم، "
+            "انطلاقة +20% إلى 2.86$ عند مقاومة قريبة، ثم إعادة اختبار الدعم الرئيسي "
+            "والاستعادة فوقه. مع فلوت 1.9M وبيع مكشوف 31% من الفلوت → أفضلية ضغط قصير."
         ),
         catalysts=[
             {"offset": -20, "type": "clinical", "sentiment": "positive", "impact": "high",
@@ -176,10 +193,12 @@ SCENARIOS: list[Scenario] = [
         shares_out=12_400_000, float_shares=8_900_000,
         short_pct_float=6.2, days_to_cover=0.9, short_change=+1.5,
         base_volume=610_000,
-        spike_pct=11.0, drop_pct=35.0, bottom_offset=-4,
-        rsi_trough=26.5, rsi_now_target=33.5, recovery_strength=0.35,
+        spike_pct=11.0, drop_pct=40.0, bottom_offset=-9,
+        rsi_trough=26.5, rsi_now_target=40.0, recovery_strength=0.45,
         pre_price=1.85,
-        tail_gain_pct=3.5, rs_open=1.88,
+        tail_gain_pct=6.0, rs_open=1.88,
+        lifecycle=True, calm_sessions=2, impulse_pct=12.0, impulse_sessions=3,
+        pullback_sessions=2, pullback_target="support", reclaim_sessions=1,
         note_ar="ثبات 3 جلسات على القاع مع RSI أقل من 30 سابقاً، لكن التحسّن الفني بطيء.",
         catalysts=[
             {"offset": -16, "type": "earnings", "sentiment": "negative", "impact": "medium",
@@ -203,11 +222,14 @@ SCENARIOS: list[Scenario] = [
         shares_out=2_300_000, float_shares=1_450_000,
         short_pct_float=14.7, days_to_cover=2.2, short_change=+8.0,
         base_volume=520_000,
-        spike_pct=18.0, drop_pct=55.0, bottom_offset=-5,
+        spike_pct=18.0, drop_pct=55.0, bottom_offset=-12,
         rsi_trough=18.2, rsi_now_target=38.0, recovery_strength=0.55,
         pre_price=9.6,
-        tail_gain_pct=6.0, rs_open=9.85,
-        note_ar="تشبع بيعي متطرف وثبات جيد، لكن مخاطر التخفيف مرتفعة جداً (طرح جديد).",
+        tail_gain_pct=4.0, rs_open=9.85,
+        lifecycle=True, calm_sessions=3, impulse_pct=19.0, impulse_sessions=3,
+        pullback_sessions=3, pullback_target="support", reclaim_sessions=1,
+        note_ar=("تشبع بيعي متطرف وثبات جيد + انطلاقة 19% واختبار المقاومة، "
+                 "والسهم الآن في طريق العودة لاختبار الدعم — لكن مخاطر التخفيف مرتفعة جداً (طرح جديد)."),
         catalysts=[
             {"offset": -1, "type": "offering", "sentiment": "negative", "impact": "high",
              "title": "إيداع 424B5 لطرح 4.5M$ بسعر مخفّض عن السوق"},
@@ -237,7 +259,9 @@ SCENARIOS: list[Scenario] = [
         spike_pct=12.0, drop_pct=44.0, bottom_offset=-52,
         rsi_trough=23.0, rsi_now_target=58.0, recovery_strength=0.7,
         pre_price=6.2,
-        tail_gain_pct=21.0, rs_open=6.35,
+        tail_gain_pct=19.0, rs_open=6.35,
+        lifecycle=True, impulse_pct=21.0, impulse_sessions=4,
+        pullback_target="support", reclaim_sessions=2,
         note_ar="تقسيم عكسي عمره 75 يوماً — خارج نافذة الشهرين المطلوبة في الاستراتيجية.",
     ),
     # ================================================================ #
@@ -253,10 +277,11 @@ SCENARIOS: list[Scenario] = [
         shares_out=18_200_000, float_shares=14_500_000,
         short_pct_float=3.1, days_to_cover=0.4, short_change=0.0,
         base_volume=380_000,
-        spike_pct=6.0, drop_pct=31.0, bottom_offset=-7,
-        rsi_trough=33.0, rsi_now_target=41.0, recovery_strength=0.4,
+        spike_pct=6.0, drop_pct=31.0, bottom_offset=-8,
+        rsi_trough=31.0, rsi_now_target=41.0, recovery_strength=0.4,
         pre_price=1.42,
-        tail_gain_pct=5.0, rs_open=1.44,
+        tail_gain_pct=4.0, rs_open=1.44,
+        lifecycle=False,
         note_ar="تحقق الهبوط (-31%) لكن RSI لم ينزل تحت 30 → شرط التشبع البيعي غير محقق.",
     ),
 ]
@@ -293,6 +318,106 @@ def _px(idx: pd.DatetimeIndex, offset: int, default=None):
 # --------------------------------------------------------------------------- #
 #  محرّك التوليد
 # --------------------------------------------------------------------------- #
+def _fit_lengths(lens: list[int], target: int) -> list[int]:
+    """توزيع أطوال المقاطع على عدد الجلسات المتاح مع الحفاظ على النِسَب."""
+    n = len(lens)
+    if target <= 0:
+        return [0] * n
+    if sum(lens) == target:
+        return list(lens)
+    if target < n:                      # لا يكفي العدد — ندمج المقاطع الأخيرة
+        out = [1] * n
+        for i in range(target, n):
+            out[i] = 0
+        return out
+    scaled = [max(1, int(round(x * target / sum(lens)))) for x in lens]
+    # تصحيح الفرق على أكبر مقطع
+    diff = target - sum(scaled)
+    order = sorted(range(n), key=lambda i: -lens[i])
+    k = 0
+    while diff != 0:
+        i = order[k % n]
+        if diff > 0:
+            scaled[i] += 1
+            diff -= 1
+        elif scaled[i] > 1:
+            scaled[i] -= 1
+            diff += 1
+        k += 1
+        if k > 200:
+            break
+    return scaled
+
+
+def _lifecycle_tail(sc: Scenario, support: float, base_close: float, tail_len: int,
+                    rng: np.random.Generator) -> tuple[np.ndarray, dict]:
+    """بناء الجزء الأخير من السلسلة وفق دورة حياة الاستراتيجية الكاملة.
+
+    المقاطع: [ثبات] ← [انطلاقة ~20%] ← [اختبار مقاومة] ← [عودة للدعم / سحب سيولة] ← [استعادة]
+    Returns: (closes, meta) حيث meta يحمل مؤشرات نسبية للمقاطع المهمة.
+    """
+    imp_high = base_close * (1 + sc.impulse_pct / 100.0)
+    resist = float(sc.resist_price) if sc.resist_price else imp_high * 1.005
+    sweep = str(sc.pullback_target).lower() == "sweep"
+    pull_low = support * (1 - sc.sweep_depth_pct / 100.0) if sweep else support * 1.012
+    reclaim = max(support * 1.045, base_close * 1.02)
+
+    lens = _fit_lengths(
+        [max(1, sc.calm_sessions), max(2, sc.impulse_sessions), 1,
+         max(1, sc.pullback_sessions), max(1, sc.reclaim_sessions)],
+        tail_len,
+    )
+    calm_n, imp_n, test_n, pull_n, recl_n = lens
+    closes: list[float] = []
+
+    # (1) الثبات على الدعم
+    for _ in range(calm_n):
+        closes.append(float(np.clip(base_close * (1 + rng.normal(0, 0.009)),
+                                    support * 1.004, base_close * 1.05)))
+    calm_end = len(closes)
+
+    # (2) الانطلاقة نحو المستهدف (~20%)
+    for k in range(1, imp_n + 1):
+        u = (k / imp_n) ** 0.85
+        closes.append(base_close + (imp_high - base_close) * u)
+    imp_end = len(closes)
+
+    # (3) اختبار المقاومة القريبة
+    for _ in range(test_n):
+        closes.append(imp_high * (1 + rng.normal(0, 0.004)))
+    test_end = len(closes)
+
+    # (4) العودة لاختبار الدعم الرئيسي / سحب السيولة تحته
+    for k in range(1, pull_n + 1):
+        u = (k / pull_n) ** 0.9
+        closes.append(imp_high + (pull_low - imp_high) * u)
+    if sweep and pull_n:                      # شمعة السحب تغلق فوق الدعم (استعادة فورية)
+        closes[-1] = support * 1.015
+    pull_end = len(closes)
+
+    # (5) الاستعادة فوق الدعم
+    start = closes[-1] if closes else base_close
+    for k in range(1, recl_n + 1):
+        u = k / max(1, recl_n)
+        closes.append(start + (reclaim - start) * u)
+
+    arr = np.array(closes[:tail_len], dtype=float)
+    meta = {
+        "imp_high": round(float(imp_high), 4),
+        "resist": round(float(resist), 4),
+        "pull_low": round(float(pull_low), 4),
+        "sweep": bool(sweep),
+        "calm_end": calm_end, "imp_end": imp_end, "test_end": test_end,
+        "pull_end": pull_end, "total": len(arr),
+        "imp_bar": max(0, imp_end - 1),
+        "test_bar": max(0, test_end - 1),
+        "pull_bar": max(0, pull_end - 1),
+    }
+    if len(arr) < tail_len:
+        arr = np.concatenate([arr, np.full(tail_len - len(arr), arr[-1] if len(arr) else base_close)])
+    return arr, meta
+
+
 def _build_daily(sc: Scenario, idx: pd.DatetimeIndex, seed: int | None = None) -> pd.DataFrame:
     """توليد جلسات يومية تحاكي دورة استراتيجية كاملة.
 
@@ -336,23 +461,22 @@ def _build_daily(sc: Scenario, idx: pd.DatetimeIndex, seed: int | None = None) -
     path = trend * bounce * (1 + ar)
     path[-1] = bottom * 1.03
     closes[rs_i : bottom_i + 1] = path
-    # ---------- (د) القاع ثم القاعدة/التعافي ----------
+    # ---------- (د) القاع ثم الثبات ثم دورة الحياة الكاملة ---------- #
     tail_len = n - bottom_i - 1
-    boost_len = max(1, int(round(1 + 2.5 * sc.recovery_strength))) if sc.tail_gain_pct >= 0 else 0
-    calm_len = max(0, tail_len - boost_len)
+    calm_len = 0
+    life_meta: dict = {}
     if tail_len > 0:
-        if sc.tail_gain_pct >= 0:
-            calm = bottom * (1.012 + rng.normal(0, 0.010, calm_len))
-            calm = np.clip(calm, bottom * 0.998, bottom * 1.058)
-            if boost_len and tail_len - calm_len > 0:
-                ru = np.linspace(0.0, 1.0, tail_len - calm_len)
-                ramp = bottom * (1 + (sc.tail_gain_pct / 100.0) * (ru ** 0.85))
+        if sc.tail_gain_pct < 0 or not sc.lifecycle:
+            # استمرار الهبوط أو قاعدة بسيطة بدون انطلاقة
+            if sc.tail_gain_pct >= 0:
+                calm = bottom * (1.012 + rng.normal(0, 0.010, tail_len))
+                calm = np.clip(calm, bottom * 0.998, bottom * (1 + sc.tail_gain_pct / 100.0))
+                tail = calm
             else:
-                ramp = np.array([])
-            tail = np.concatenate([calm, ramp])
+                dec = np.exp(np.linspace(0, np.log(1 + sc.tail_gain_pct / 100.0), tail_len))
+                tail = bottom * dec * (1 + rng.normal(0, 0.010, tail_len))
         else:
-            dec = np.exp(np.linspace(0, np.log(1 + sc.tail_gain_pct / 100.0), tail_len))
-            tail = bottom * dec * (1 + rng.normal(0, 0.010, tail_len))
+            tail, life_meta = _lifecycle_tail(sc, bottom, bottom * 1.03, tail_len, rng)
         closes[bottom_i + 1 :] = tail[:tail_len]
     closes[bottom_i] = bottom * 1.03
     closes = np.clip(closes, 0.08, None)
@@ -371,6 +495,24 @@ def _build_daily(sc: Scenario, idx: pd.DatetimeIndex, seed: int | None = None) -
     lows[rs_i] = min(rs_open, rs_close) * float(rng.uniform(0.975, 0.995))
     lows[bottom_i] = bottom
     highs[bottom_i] = max(highs[bottom_i], bottom * 1.05)
+    # --- ضبط مقاطع دورة الحياة على الشموع (انطلاقة/مقاومة/سحب/استعادة) ---
+    if life_meta:
+        imp_bar = bottom_i + 1 + life_meta.get("imp_bar", 0)
+        test_bar = bottom_i + 1 + life_meta.get("test_bar", 0)
+        pull_bar = bottom_i + 1 + life_meta.get("pull_bar", 0)
+        imp_high = float(life_meta.get("imp_high") or 0)
+        resist = float(life_meta.get("resist") or 0)
+        if 0 <= imp_bar < n and imp_high:
+            highs[imp_bar] = max(highs[imp_bar], imp_high)
+            closes[imp_bar] = min(closes[imp_bar], imp_high)
+        if 0 <= test_bar < n and resist and resist <= imp_high * 1.02:
+            highs[test_bar] = max(highs[test_bar], resist)
+        if life_meta.get("sweep") and 0 <= pull_bar < n:
+            lows[pull_bar] = float(life_meta.get("pull_low") or lows[pull_bar])
+            closes[pull_bar] = max(closes[pull_bar], bottom * 1.012)   # إغلاق فوق الدعم
+            opens[pull_bar] = max(opens[pull_bar], bottom * 1.005)
+        if 0 <= pull_bar < n:
+            highs[pull_bar] = max(highs[pull_bar], opens[pull_bar], closes[pull_bar])
     # قمة ما بعد التقسيم يجب أن تكون هي الأعلى حتى تكوين القاع
     if bottom_i > rs_i:
         highs[rs_i + 1 : bottom_i + 1] = np.minimum(
@@ -382,10 +524,18 @@ def _build_daily(sc: Scenario, idx: pd.DatetimeIndex, seed: int | None = None) -
         closes[:rs_i] = np.minimum(closes[:rs_i], cap)
     # قيود مرحلة القاعدة: القاع لا يُكسر (عند وجود سيناريو انعكاس)
     if sc.tail_gain_pct >= 0:
+        sweep_floor: float | None = None
+        sweep_bar_abs: int | None = None
+        if life_meta and life_meta.get("sweep"):
+            sweep_floor = float(life_meta.get("pull_low") or bottom)
+            sweep_bar_abs = bottom_i + 1 + int(life_meta.get("pull_bar") or 0)
         for i in range(bottom_i + 1, n):
             opens[i] = max(opens[i], bottom * 1.001)
             closes[i] = max(closes[i], bottom * 1.001)
-            lows[i] = max(min(lows[i], opens[i], closes[i]), bottom)   # القاع لا يُكسر
+            floor = bottom                        # القاع لا يُكسر إلا في شمعة سحب السيولة
+            if sweep_bar_abs is not None and i == sweep_bar_abs and sweep_floor:
+                floor = sweep_floor
+            lows[i] = max(min(lows[i], opens[i], closes[i]), floor)
             highs[i] = max(highs[i], opens[i], closes[i], lows[i])
         opens[bottom_i] = max(opens[bottom_i], bottom)
         closes[bottom_i] = max(closes[bottom_i], bottom)
@@ -417,8 +567,20 @@ def _build_daily(sc: Scenario, idx: pd.DatetimeIndex, seed: int | None = None) -
                 mult = rng.uniform(1.6, 2.8)
         else:
             pos = i - bottom_i
-            if pos <= calm_len:
-                mult = rng.uniform(0.32, 0.6)                 # جفاف حجم داخل القاعدة
+            if life_meta:
+                calm_end = life_meta.get("calm_end", 3)
+                imp_end = life_meta.get("imp_end", calm_end + 3)
+                pull_bar = life_meta.get("pull_bar", imp_end)
+                if pos <= calm_end:
+                    mult = rng.uniform(0.32, 0.6)             # جفاف حجم داخل الثبات
+                elif pos <= imp_end:
+                    mult = rng.uniform(1.6, 2.6)              # الانطلاقة بحجم متزايد
+                elif pos < pull_bar:
+                    mult = rng.uniform(0.9, 1.4)              # اختبار المقاومة
+                elif pos == pull_bar:
+                    mult = rng.uniform(2.2, 3.6) if sc.pullback_target == "sweep" else rng.uniform(1.1, 1.7)
+                else:
+                    mult = rng.uniform(1.4, 2.4)              # الاستعادة
             else:
                 k = (pos - calm_len) / max(1, (n - bottom_i - calm_len))
                 base_component = 1.0 + 1.3 * k
@@ -429,6 +591,13 @@ def _build_daily(sc: Scenario, idx: pd.DatetimeIndex, seed: int | None = None) -
         {"open": opens, "high": highs, "low": lows, "close": closes, "volume": vol}, index=idx)
     df[["open", "high", "low", "close"]] = df[["open", "high", "low", "close"]].round(4)
     df["volume"] = df["volume"].round(0)
+    if life_meta:
+        df.attrs.update({
+            "impulse_high": life_meta.get("imp_high"),
+            "resistance": life_meta.get("resist"),
+            "sweep_low": life_meta.get("pull_low") if life_meta.get("sweep") else None,
+            "pullback_target": sc.pullback_target,
+        })
     df.attrs.update({
         "rs_price": round(float(rs_open), 4), "spike_high": round(float(spike_high), 4),
         "bottom": round(float(bottom), 4), "drop_pct": real_drop,
@@ -525,7 +694,15 @@ class DemoProvider(BaseProvider):
             rsi_trough=float(rng.uniform(16, 38)),
             rsi_now_target=float(rng.uniform(28, 62)),
             recovery_strength=float(rng.uniform(0, 1)),
-            tail_gain_pct=float(rng.choice([-9.0, -4.0, 2.0, 5.0, 9.0, 14.0, 22.0], p=[0.14, 0.14, 0.16, 0.2, 0.2, 0.1, 0.06])),
+            tail_gain_pct=float(rng.choice([-9.0, -4.0, 3.0, 8.0, 15.0, 24.0], p=[0.16, 0.14, 0.2, 0.22, 0.16, 0.12])),
+            lifecycle=bool(rng.random() < 0.75),
+            calm_sessions=int(rng.integers(2, 6)),
+            impulse_pct=float(rng.choice([8.0, 14.0, 19.0, 22.0, 28.0])),
+            impulse_sessions=int(rng.integers(2, 6)),
+            pullback_sessions=int(rng.integers(2, 5)),
+            pullback_target=str(rng.choice(["sweep", "support"])),
+            sweep_depth_pct=float(rng.uniform(2.5, 7.0)),
+            reclaim_sessions=int(rng.integers(1, 4)),
             pre_price=pre,
         )
         return _build_daily(sc, self._idx, seed=_seed(symbol, "daily"))

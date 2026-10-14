@@ -269,3 +269,8 @@ td.empty,.empty{text-align:center;color:var(--muted);padding:34px !important;cur
 .spinner{display:inline-block;width:13px;height:13px;border:2px solid #2f6fbf;border-top-color:transparent;
   border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px;margin-inline-end:7px}
 @keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------------- دورة الحياة (شرط جاهز فنياً) ---------------- */
+.seq-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 11px;
+  border-radius:9px;background:#0f2136;border:1px solid #2f6fbf;font-size:12.5px;margin-bottom:4px}
+.seq-head b{font-size:13px}

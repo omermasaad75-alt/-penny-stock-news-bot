@@ -65,6 +65,57 @@ def test_jz_is_watchlisted(jz):
     assert jz.grade in {"A+", "A", "B"}
 
 
+# ------------------------- دورة الحياة (شرط «جاهز فنياً») ------------------------- #
+def test_jz_full_lifecycle_sequence(jz):
+    """JZ: ثبات ← انطلاقة ≈20% ← مقاومة قريبة ← سحب سيولة تحت الدعم ← استعادة."""
+    assert jz.impulse_pct is not None and jz.impulse_pct >= STRATEGY.min_ready_impulse_pct
+    assert abs(jz.impulse_pct - STRATEGY.ideal_impulse_pct) <= 8, "الانطلاقة يجب أن تكون قريبة من 20%"
+    assert jz.resistance_level is not None
+    assert jz.pullback_type == "liquidity_sweep"
+    assert jz.sweep_low is not None and jz.sweep_low < jz.bottom_price   # سحب تحت الدعم
+    assert jz.reclaim_sessions >= 1 and jz.sweep_low < jz.last_close     # عاد فوقه
+    assert jz.lifecycle_ready is True
+    assert jz.phase == 6
+    assert all(c["ok"] for c in jz.lifecycle_checks)
+
+
+def test_nvex_support_retest_variant(hub):
+    """NVEX: النمط البديل — عودة لاختبار الدعم دون سحب سيولة، ثم استعادة."""
+    a = eng.analyze_symbol("NVEX", hub)
+    assert a.pullback_type == "support_retest"
+    assert a.sweep_low is None
+    assert a.return_to_support if hasattr(a, "return_to_support") else True
+    assert a.lifecycle_ready is True and a.phase == 6
+
+
+def test_partial_sequence_not_ready(hub):
+    """SRNA: انطلاقة أقل من الحد (13%) ⇒ لا تكتمل الجاهزية الفنية."""
+    a = eng.analyze_symbol("SRNA", hub)
+    assert a.impulse_pct is not None
+    assert a.impulse_pct < STRATEGY.min_ready_impulse_pct
+    assert a.lifecycle_ready is False
+    assert a.phase < 6
+
+
+def test_lifecycle_checks_structure(jz):
+    keys = [c["key"] for c in jz.lifecycle_checks]
+    assert keys == ["impulse", "resistance", "pullback", "sweep", "reclaim"]
+    for c in jz.lifecycle_checks:
+        assert c["ar"] and c["std"] and c["detail"] and isinstance(c["ok"], bool)
+
+
+def test_levels_use_sweep_low_for_invalidation(jz):
+    """وقف إلغاء السيناريو يجب أن يكون تحت قاع السحب عند حدوثه."""
+    assert jz.levels["stop_structural"] < jz.sweep_low
+
+
+def test_narrative_mentions_lifecycle(jz):
+    joined = " ".join(jz.why_ar)
+    assert "الانطلاقة" in joined
+    assert "سحب سيولة" in joined
+    assert "مقاومة" in joined
+
+
 # ------------------------- المراحل والاستبعاد ------------------------- #
 def test_phase_monotonic_with_conditions(hub):
     res = {a.symbol: a for a in eng.scan(hub.universe(30), hub)}

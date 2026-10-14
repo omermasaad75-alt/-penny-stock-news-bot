@@ -40,7 +40,8 @@ def _bars(df: pd.DataFrame, tf: str) -> tuple[list[dict], list[dict]]:
 
 
 def build_chart_payload(symbol: str, tf: str, hub: DataHub,
-                        params: StrategyParams = STRATEGY, limit: int = 220) -> dict[str, Any]:
+                        params: StrategyParams = STRATEGY, limit: int = 220,
+                        analysis: Any = None) -> dict[str, Any]:
     """حِزمة كاملة لرسم فني: شموع + متوسطات + RSI/MACD/Stoch + أحداث + مستويات."""
     tf = (tf or "1D").upper().replace("D", "D")
     is_intraday = tf in {"4H", "1H", "60M"}
@@ -93,9 +94,15 @@ def build_chart_payload(symbol: str, tf: str, hub: DataHub,
                             "shape": "circle", "text": f"قمة {float(seg['high'].max()):.2f}"})
             after_peak = df.loc[df.index >= peak_i]
             if len(after_peak) > 3:
-                bot_i = after_peak["low"].idxmin()
-                markers.append({"time": _t(bot_i, tf), "position": "belowBar", "color": "#3fb950",
-                                "shape": "arrowUp", "text": f"قاع {float(after_peak['low'].min()):.2f}"})
+                if analysis is not None and getattr(analysis, "bottom_price", None):
+                    bot_price, bot_date = analysis.bottom_price, analysis.bottom_date
+                else:
+                    bot_price, bot_date = float(after_peak["low"].min()), None
+                    bot_i = after_peak["low"].idxmin()
+                    bot_date = _t(bot_i, tf)
+                if bot_price is not None and bot_date:
+                    markers.append({"time": bot_date, "position": "belowBar", "color": "#3fb950",
+                                    "shape": "arrowUp", "text": f"قاع {float(bot_price):.2f}"})
 
     return {
         "symbol": symbol.upper(), "tf": tf, "candles": candles, "volume": volumes,

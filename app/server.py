@@ -21,6 +21,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+import pandas as pd
 import uvicorn
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -200,11 +201,64 @@ def analysis(symbol: str, mode: str | None = None, with_series: bool = True) -> 
 @app.get("/api/chart/{symbol}")
 def chart(symbol: str, tf: str = "1D", mode: str | None = None) -> dict[str, Any]:
     hub = get_hub(mode=mode, refresh=bool(mode))
-    payload = build_chart_payload(symbol.upper(), tf, hub, STRATEGY)
+    payload = build_chart_payload(symbol.upper(), tf, hub, STRATEGY,
+                                  analysis=SCAN.by_symbol.get(symbol.upper()))
     a = SCAN.by_symbol.get(symbol.upper())
     payload["levels"] = (a.levels if a else {}) or {}
     payload["phase"] = a.phase if a else 0
+    if a is not None:
+        payload["lifecycle"] = {
+            "stage": a.lifecycle_stage, "ready": a.lifecycle_ready, "failed": a.lifecycle_failed,
+            "impulse_pct": a.impulse_pct, "impulse_high": a.impulse_high,
+            "resistance_level": a.resistance_level, "pullback_type": a.pullback_type,
+            "sweep_low": a.sweep_low, "sweep_depth_pct": a.sweep_depth_pct,
+            "reclaim_level": a.reclaim_level, "reclaim_sessions": a.reclaim_sessions,
+            "support": a.support_level or a.bottom_price,
+        }
+        payload["markers"] = (payload.get("markers") or []) + _lifecycle_markers(payload, a)
     return payload
+
+
+def _lifecycle_markers(payload: dict[str, Any], a: eng.Analysis) -> list[dict[str, Any]]:
+    """علامات دورة الحياة على المخطط: الانطلاقة، المقاومة، سحب السيولة، الاستعادة."""
+    candles = payload.get("candles") or []
+    if not candles:
+        return []
+    times = [c["time"] for c in candles]
+    intraday = str(payload.get("tf")) in {"4H", "1H", "60M"}
+
+    def to_time(date_str: str | None):
+        if not date_str:
+            return None
+        if intraday:
+            target = pd.Timestamp(date_str).timestamp()
+            chosen = next((t for t in times if float(t) >= target), None)
+            return chosen or times[-1]
+        s = str(date_str)[:10]
+        return s if s in times else None
+
+    out: list[dict[str, Any]] = []
+    if a.impulse_high:
+        t = to_time(a.impulse_date)
+        if t:
+            out.append({"time": t, "position": "aboveBar", "color": "#a371f7", "shape": "arrowUp",
+                        "text": f"انطلاقة {('+%.0f%%' % a.impulse_pct) if a.impulse_pct else ''} {a.impulse_high:.2f}"})
+    if a.resistance_level:
+        t = to_time(a.resistance_date)
+        if t:
+            out.append({"time": t, "position": "aboveBar", "color": "#e3b341", "shape": "circle",
+                        "text": f"مقاومة {a.resistance_level:.2f}"})
+    if a.sweep_low and a.sweep_date:
+        t = to_time(a.sweep_date)
+        if t:
+            out.append({"time": t, "position": "belowBar", "color": "#f85149", "shape": "arrowDown",
+                        "text": f"سحب سيولة {a.sweep_low:.2f}"})
+    if a.reclaim_date:
+        t = to_time(a.reclaim_date)
+        if t:
+            out.append({"time": t, "position": "belowBar", "color": "#3fb950", "shape": "arrowUp",
+                        "text": f"استعادة الدعم ({a.reclaim_sessions})"})
+    return out
 
 
 @app.get("/api/report/{symbol}")

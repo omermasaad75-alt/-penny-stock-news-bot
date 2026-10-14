@@ -40,10 +40,10 @@ PHASES: dict[int, dict[str, str]] = {
         "desc": "ظهر قاع ولكن الثبات لم يكتمل (أقل من 3 جلسات) — مراقبة لصيقة."},
     4: {"key": "BASE_CONFIRMED", "ar": "المرحلة 4 — ثبات على القاع (قائمة المتابعة)", "color": "#3fb950",
         "desc": "ثبات 3-5 جلسات على القاع مع جفاف الحجم — السهم انتقل لقائمة المتابعة فعلياً."},
-    5: {"key": "OVERSOLD_RECOVERY", "ar": "المرحلة 5 — المرحلة الإيجابية (تحسّن RSI)", "color": "#2ea043",
-        "desc": "RSI بدأ يتحسّن وخرج من منطقة التشبع البيعي مع استقرار السعر."},
-    6: {"key": "REVERSAL_CONFIRMED", "ar": "المرحلة 6 — جاهز فنياً (انعكاس مؤكد)", "color": "#1f9a4d",
-        "desc": "اختراق القناة الهابطة + استعادة المتوسطات + تأكيد الحجم → سهم جاهز فنياً."},
+    5: {"key": "OVERSOLD_RECOVERY", "ar": "المرحلة 5 — المرحلة الإيجابية (التسلسل قيد التكوّن)", "color": "#2ea043",
+        "desc": "RSI يتحسّن وبدأت دورة الحياة: انطلاقة ≈20% و/أو اختبار مقاومة قريبة و/أو عودة لاختبار الدعم — لم تكتمل بعد."},
+    6: {"key": "REVERSAL_CONFIRMED", "ar": "المرحلة 6 — جاهز فنياً (اكتمال التسلسل)", "color": "#1f9a4d",
+        "desc": "ثبات الدعم ← انطلاقة ≈20% ← اختبار مقاومة قريبة ← عودة لاختبار الدعم أو سحب سيولة تحته ثم استعادته" + " → سهم جاهز فنياً."},
     7: {"key": "EXTENDED", "ar": "مرحلة التمدد — بعد الاختراق", "color": "#8957e5",
         "desc": "السهم ابتعد عن منطقة الارتكاز — الدخول يحتاج انتظار إعادة اختبار."},
 }
@@ -129,6 +129,28 @@ class Analysis:
     rvol: float | None = None
     higher_lows: int = 0
     squeeze: bool = False
+
+    # -- دورة الحياة بعد الثبات (شرط «جاهز فنياً») -- #
+    lifecycle_stage: str = ""
+    lifecycle_ready: bool = False
+    lifecycle_failed: bool = False
+    lifecycle_checks: list[dict] = field(default_factory=list)
+    impulse_pct: float | None = None
+    impulse_high: float | None = None
+    impulse_date: str | None = None
+    resistance_level: float | None = None
+    resistance_distance_pct: float | None = None
+    resistance_date: str | None = None
+    pullback_type: str | None = None
+    pullback_low: float | None = None
+    pullback_date: str | None = None
+    sweep_low: float | None = None
+    sweep_depth_pct: float | None = None
+    sweep_date: str | None = None
+    reclaim_level: float | None = None
+    reclaim_sessions: int = 0
+    reclaim_date: str | None = None
+    support_level: float | None = None
 
     # -- الأساسيات -- #
     shares_out: float | None = None
@@ -299,8 +321,29 @@ def analyse_structure(df: pd.DataFrame, ev: ReverseSplitEvent, params: StrategyP
     )
 
     # (3) القاع المرجعي بعد القمة + الموجة الهابطة
-    tail = df.iloc[peak_pos:]
-    bottom_pos = int(tail["low"].to_numpy().argmin()) + peak_pos
+    #     نحدّد القاع المرجعي بأنه أدنى قاع سُجّل قبيل «الانطلاقة» (ارتفاع ≥ الحد الأدنى للانطلاقة
+    #     من أدنى قاع مسجّل) — حتى لا يلتقط النظام «سحب السيولة» اللاحق كقاع مرجعي.
+    #     وإذا لم توجد انطلاقة (هبوط مستمر/قاعدة مسطحة) نرجع للتعريف البسيط: أدنى قاع بعد القمة.
+    seg = df.iloc[peak_pos:]
+    lows_arr = seg["low"].to_numpy(dtype=float)
+    highs_arr = seg["high"].to_numpy(dtype=float)
+    n_seg = len(lows_arr)
+    if n_seg:
+        # أقصى قمة لاحقة لكل موضع
+        suffix_max = np.full(n_seg, -np.inf)
+        for k in range(n_seg - 2, -1, -1):
+            suffix_max[k] = max(suffix_max[k + 1], highs_arr[k + 1])
+        target_mult = 1 + params.min_ready_impulse_pct / 100.0
+        # القاع المرجعي = أدنى قاع يتبعه ارتفاع ≥ الحد الأدنى للانطلاقة (يستبعد سحب السيولة اللاحق)
+        qualifying = np.where(
+            (lows_arr > 0) & (suffix_max >= lows_arr * target_mult)
+        )[0]
+        if qualifying.size:
+            bottom_pos = peak_pos + int(qualifying[np.argmin(lows_arr[qualifying])])
+        else:   # لا توجد انطلاقة ⇒ نعود للتعريف البسيط: أدنى قاع بعد القمة
+            bottom_pos = peak_pos + int(lows_arr.argmin())
+    else:
+        bottom_pos = peak_pos
     bottom_price = float(df["low"].iloc[bottom_pos])
     decline_pct = _pct(bottom_price, spike_high)
     out.update(
@@ -341,11 +384,21 @@ def analyse_structure(df: pd.DataFrame, ev: ReverseSplitEvent, params: StrategyP
     vol_ref = float(df["volume"].iloc[ref_start:bottom_pos].mean()) if bottom_pos > ref_start else 0.0
     dryup = (vol_base / vol_ref) if vol_ref else None
 
+    # نهاية القاعدة: شمعة الاختراق تُحتسب بداية الانطلاقة (خارج القاعدة)
+    if escape_pos is not None:
+        base_end_pos = max(bottom_pos, escape_pos - 1)
+    else:
+        base_end_pos = max(bottom_pos, bottom_pos + max(0, sessions - 1))
+    base_end_pos = min(base_end_pos, len(df) - 1)
+    base_close = float(df["close"].iloc[base_end_pos])
+    base_low = float(df["low"].iloc[bottom_pos : base_end_pos + 1].min()) if base_end_pos >= bottom_pos else bottom_price
+
     out.update(
         base_sessions=int(sessions), base_broken=bool(broken), base_high=_r(base_high),
         base_vol_ratio=_r(dryup, 3),
         base_range_pct=_r(base_range), volume_dryup=_r(dryup, 3),
         base_low=_r(bottom_price),
+        base_end_pos=int(base_end_pos), base_close=_r(base_close), support=_r(base_low),
     )
     return out
 
@@ -458,6 +511,187 @@ def quick_momentum(df: pd.DataFrame, params: StrategyParams) -> dict[str, Any]:
         out["higher_lows"] = ind.count_higher_lows(df, df.index[-25])
     except Exception:  # noqa: BLE001
         pass
+    return out
+
+
+def analyse_lifecycle(df: pd.DataFrame, struct: dict, params: StrategyParams) -> dict[str, Any]:
+    """تحليل دورة الحياة بعد الثبات على الدعم (شروط «جاهز فنياً» في ورقة الشروط):
+
+    1) انطلاقة ≈ 20% (أقل/أكثر قليلاً) من إغلاق الثبات
+    2) اختبار مقاومة قريبة (أو وجود مقاومة قريبة فوق الانطلاقة)
+    3) العودة لاختبار الدعم الرئيسي **أو** سحب سيولة تحت الدعم
+    4) استعادة/ثبات فوق الدعم بعد السحب
+    """
+    out: dict[str, Any] = {
+        "stage": "لا يوجد تسلسل بعد", "ready": False, "failed": False,
+        "impulse_pct": None, "impulse_high": None, "impulse_low": None, "impulse_date": None,
+        "resistance_level": None, "resistance_distance_pct": None, "resistance_date": None,
+        "pullback_type": None, "pullback_low": None, "pullback_date": None,
+        "sweep_low": None, "sweep_depth_pct": None, "sweep_date": None,
+        "reclaim_level": None, "reclaim_sessions": 0, "reclaim_date": None,
+        "return_to_support": False, "reclaimed": False, "checks": [],
+    }
+    base_end = struct.get("base_end_pos")
+    support = float(struct.get("support") or struct.get("bottom_price") or 0)
+    base_close = struct.get("base_close")
+    base_high = float(struct.get("base_high") or 0)
+    if base_end is None or not support or base_close is None:
+        return out
+    if int(base_end) >= len(df) - 1:
+        out["stage"] = "بانتظار جلسات ما بعد الثبات"
+        return out
+
+    post = df.iloc[int(base_end) + 1 :]
+    peak_pos = int(post["high"].to_numpy().argmax())
+    impulse_high = float(post["high"].iloc[peak_pos])
+    impulse_low = float(post["low"].iloc[: peak_pos + 1].min())
+    impulse_pct = _pct(impulse_high, base_close)
+    impulse_date = _date_str(post.index[peak_pos])
+
+    # ---- المقاومة القريبة: أعلى قمة قبل قمة الانطلاقة (أو سقف القاعدة) ---- #
+    if peak_pos >= 1:
+        resistance_level = float(post["high"].iloc[:peak_pos].max())
+        resistance_date = _date_str(post["high"].iloc[:peak_pos].idxmax())
+    else:
+        resistance_level = base_high or None
+        resistance_date = struct.get("bottom_date")
+    resistance_distance = _pct(resistance_level, support) if resistance_level else None
+
+    impulse_ok = bool(impulse_pct is not None and impulse_pct >= params.min_ready_impulse_pct)
+    # «مقاومة قريبة» = قريبة من قمة الانطلاقة (≤10% فوقها) وفي الوقت نفسه ليست بعيدة عن الدعم
+    resistance_near_impulse = bool(
+        resistance_level is not None and resistance_level <= impulse_high * 1.10
+    )
+    resistance_ok = bool(
+        resistance_level is not None
+        and resistance_distance is not None
+        and 0 <= resistance_distance <= params.max_nearby_resistance_pct
+        and resistance_near_impulse
+    )
+
+    # ---- العودة لاختبار الدعم / سحب السيولة ---- #
+    after = post.iloc[peak_pos + 1 :]
+    pullback_type = None
+    pullback_low = None
+    pullback_date = None
+    sweep_low = None
+    sweep_depth = None
+    sweep_date = None
+    reclaim_level = support * (1 + params.reclaim_buffer_pct / 100.0)
+    reclaim_sessions = 0
+    reclaim_date = None
+    return_to_support = False
+    reclaimed = False
+    failed = False
+
+    if len(after) > 0:
+        low_pos = int(after["low"].to_numpy().argmin())
+        pullback_low = float(after["low"].iloc[low_pos])
+        pullback_date = _date_str(after.index[low_pos])
+        sweep_threshold = support * (1 - params.sweep_tolerance_pct / 100.0)
+        retest_band = support * (1 + params.support_retest_tolerance_pct / 100.0)
+        tail = after.iloc[low_pos:]
+        closes_after = tail["close"]
+        above = closes_after[closes_after > reclaim_level]
+        reclaim_sessions = int(len(above))
+        if reclaim_sessions:
+            reclaim_date = _date_str(above.index[-1])
+        reclaimed = bool(reclaim_sessions >= params.min_reclaim_sessions)
+
+        if pullback_low < sweep_threshold:
+            sweep_low = pullback_low
+            sweep_depth = abs(_pct(pullback_low, support))   # عمق السحب تحت الدعم (موجب)
+            sweep_date = pullback_date
+            pullback_type = "liquidity_sweep" if reclaimed else "breakdown"
+            return_to_support = True          # السحب يشمل العودة لمنطقة الدعم
+            # «الفشل» يُحتسب فقط إذا حدثت انطلاقة حقيقية ثم كسر الدعم دون استعادة
+            failed = bool(impulse_ok and not reclaimed)
+        elif pullback_low <= retest_band:
+            pullback_type = "support_retest"
+            return_to_support = True
+            failed = bool(impulse_ok and (closes_after < support * (1 - params.sweep_tolerance_pct / 100.0)).any())
+        else:
+            pullback_type = "shallow_pullback"
+            return_to_support = False
+
+    # ---- الحالة والمرحلة ---- #
+    if failed:
+        stage = "فشل — كسر الدعم دون استعادة (إلغاء السيناريو)"
+    elif impulse_pct is None:
+        stage = "لا يوجد تسلسل بعد"
+    elif not impulse_ok:
+        stage = f"انطلاقة ضعيفة (+{impulse_pct:.0f}% — المستهدف ≈{params.ideal_impulse_pct:.0f}%)"
+    elif pullback_type is None:
+        stage = "اختبار المقاومة القريبة (بانتظار العودة للدعم)"
+    elif pullback_type == "liquidity_sweep" and not reclaimed:
+        stage = "سحب سيولة تحت الدعم (بانتظار الاستعادة)"
+    elif pullback_type == "shallow_pullback":
+        stage = "لم يعد بعد لاختبار الدعم الرئيسي"
+    elif not reclaimed:
+        stage = "عودة لاختبار الدعم (بانتظار إغلاق الاستعادة)"
+    elif pullback_type == "liquidity_sweep":
+        stage = "مكتمل: انطلاقة → مقاومة → سحب سيولة → استعادة فوق الدعم"
+    else:
+        stage = "مكتمل: انطلاقة → مقاومة → إعادة اختبار الدعم → استعادة"
+
+    ready = bool(
+        impulse_ok and resistance_ok and return_to_support
+        and (reclaimed or pullback_type == "support_retest") and not failed
+    )
+
+    checks = [
+        {
+            "key": "impulse", "ar": "الانطلاقة بعد الثبات (≈20%)",
+            "std": f"≥ {params.min_ready_impulse_pct:.0f}% (المثالي {params.ideal_impulse_pct:.0f}%)",
+            "ok": impulse_ok,
+            "detail": (f"+{impulse_pct:.1f}% من {base_close:.3f} إلى {impulse_high:.3f}"
+                       if impulse_pct is not None else "لم تبدأ بعد"),
+        },
+        {
+            "key": "resistance", "ar": "اختبار مقاومة قريبة",
+            "std": f"مقاومة ≤ {params.max_nearby_resistance_pct:.0f}% فوق الدعم",
+            "ok": resistance_ok,
+            "detail": (f"المقاومة {resistance_level:.3f} (على {resistance_distance:.1f}% من الدعم {support:.3f})"
+                       if resistance_level and resistance_distance is not None else "لا توجد مقاومة محددة"),
+        },
+        {
+            "key": "pullback", "ar": "العودة لاختبار الدعم الرئيسي",
+            "std": f"ملامسة الدعم (تسامح {params.support_retest_tolerance_pct:.0f}%)",
+            "ok": return_to_support,
+            "detail": (f"أدنى نقطة بعد القمة {pullback_low:.3f} مقابل الدعم {support:.3f}"
+                       if pullback_low is not None else "لم تحدث موجة عائدة بعد"),
+        },
+        {
+            "key": "sweep", "ar": "سحب سيولة تحت الدعم ثم الاستعادة",
+            "std": f"كسر الدعم ≥ {params.sweep_tolerance_pct:.0f}% ثم إغلاق فوقه",
+            "ok": bool(pullback_type in ("liquidity_sweep", "support_retest") and reclaimed),
+            "detail": (f"سحب إلى {sweep_low:.3f} ({sweep_depth:.1f}% تحت الدعم) ثم استعادة"
+                       if pullback_type == "liquidity_sweep" and sweep_low
+                       else ("إعادة اختبار الدعم دون كسر — استعادة مباشرة" if pullback_type == "support_retest"
+                             else ("كسر الدعم دون استعادة ⚠" if failed else "لم يتحقق بعد"))),
+        },
+        {
+            "key": "reclaim", "ar": "الاستقرار فوق الدعم بعد السحب",
+            "std": f"≥ {params.min_reclaim_sessions} إغلاق فوق الدعم +{params.reclaim_buffer_pct:.1f}%",
+            "ok": bool(reclaimed and not failed),
+            "detail": (f"{reclaim_sessions} إغلاق فوق {reclaim_level:.3f} (آخرها {reclaim_date})"
+                       if reclaimed else "لا يوجد إغلاق استعادة بعد"),
+        },
+    ]
+
+    out.update({
+        "stage": stage, "ready": ready, "failed": failed, "checks": checks,
+        "impulse_pct": _r(impulse_pct, 2), "impulse_high": _r(impulse_high),
+        "impulse_low": _r(impulse_low), "impulse_date": impulse_date,
+        "resistance_level": _r(resistance_level), "resistance_distance_pct": _r(resistance_distance, 2),
+        "resistance_date": resistance_date,
+        "pullback_type": pullback_type, "pullback_low": _r(pullback_low), "pullback_date": pullback_date,
+        "sweep_low": _r(sweep_low), "sweep_depth_pct": _r(sweep_depth, 2), "sweep_date": sweep_date,
+        "reclaim_level": _r(reclaim_level), "reclaim_sessions": reclaim_sessions,
+        "reclaim_date": reclaim_date,
+        "return_to_support": return_to_support, "reclaimed": reclaimed,
+        "base_close": _r(base_close), "support": _r(support),
+    })
     return out
 
 
@@ -575,6 +809,24 @@ def score_setup(a: Analysis, params: StrategyParams) -> list[ScorePart]:
     if a.h4.get("aligned"):
         rev += 10
         rev_detail.append("توافق فريم 4 ساعات")
+
+    # دورة الحياة: انطلاقة → مقاومة → عودة للدعم/سحب سيولة → استعادة
+    if a.impulse_pct is not None and a.impulse_pct >= params.min_ready_impulse_pct:
+        closeness = 1 - min(1.0, abs(a.impulse_pct - params.ideal_impulse_pct) / params.ideal_impulse_pct)
+        rev += 8 + 6 * closeness
+        rev_detail.append(f"انطلاقة +{a.impulse_pct:.0f}% بعد الثبات")
+    if a.resistance_level:
+        rev += 6
+        rev_detail.append(f"اختبار مقاومة قريبة عند {a.resistance_level}")
+    if a.pullback_type == "liquidity_sweep":
+        rev += 12
+        rev_detail.append(f"سحب سيولة تحت الدعم {a.sweep_low} ثم استعادة")
+    elif a.pullback_type == "support_retest":
+        rev += 8
+        rev_detail.append("إعادة اختبار الدعم الرئيسي")
+    if a.lifecycle_ready:
+        rev += 10
+        rev_detail.append("تسلسل «جاهز فنياً» مكتمل")
     parts.append(ScorePart("reversal", "تأكيد الانعكاس", float(np.clip(rev, 0, 100)), w["reversal"],
                            "، ".join(rev_detail) or "لا يوجد تأكيد فني بعد"))
 
@@ -623,6 +875,11 @@ def score_setup(a: Analysis, params: StrategyParams) -> list[ScorePart]:
     if a.base_broken:
         risk -= 20
         rk_bits.append("كسر القاع المرجعي")
+    if a.lifecycle_failed:
+        risk -= 25
+        rk_bits.append("فشل تسلسل الانعكاس (كسر الدعم بعد الانطلاقة)")
+    if a.pullback_type == "liquidity_sweep":
+        rk_bits.append("سحب سيولة تحت الدعم حدث ثم تمت استعادته")
     parts.append(ScorePart("risk", "جودة المخاطر", float(np.clip(risk, 0, 100)), w["risk"],
                            "، ".join(rk_bits) or "لا مخاطر بارزة خلال 30 يوماً"))
     return parts
@@ -676,7 +933,7 @@ def classify_phase(a: Analysis, params: StrategyParams) -> int:
         if a.bottom_price and last <= a.bottom_price * (1 + params.base_tolerance_pct / 100.0):
             return 3 if (a.base_sessions or 0) >= 1 else 2
         return 2
-    # 4) قاعدة مؤكدة (قائمة المتابعة)
+    # 3) القاعدة مؤكدة — نطبّق الآن تسلسل دورة الحياة (شرط «جاهز فنياً»)
     confirmations = []
     if a.rsi_recovered:
         confirmations.append("rsi")
@@ -688,6 +945,17 @@ def classify_phase(a: Analysis, params: StrategyParams) -> int:
         confirmations.append("break")
     if (a.higher_lows or 0) >= 1:
         confirmations.append("hl")
+
+    if a.lifecycle_failed:
+        return 2                                    # فشل التسلسل = عودة لمرحلة الهبوط
+    if params.require_lifecycle_sequence:
+        if a.lifecycle_ready:
+            # اكتمال التسلسل نفسه = شرط «جاهز فنياً»؛ نطلب تأكيداً فنياً واحداً إضافياً على الأقل
+            return 6 if len(confirmations) >= 1 else 5
+        if a.impulse_pct is not None or confirmations:
+            return 5                                # التسلسل/التحسّن قيد التكوين
+        return 4
+    # سلوك بديل (لو أُعطِل إلزام التسلسل)
     if len(confirmations) >= 3:
         return 6
     if confirmations:
@@ -711,11 +979,17 @@ def build_levels(a: Analysis, df: pd.DataFrame, params: StrategyParams) -> dict[
 
     # نقطة الاختراق: أعلى القاعدة/آخر 5 جلسات، مع سقف 25% فوق السعر الحالي
     structural = max(base_high, recent_high)
+    if a.lifecycle_ready and a.reclaim_level:
+        # بعد اكتمال التسلسل: الاختراق يكون فوق قمة الاستعادة/المقاومة القريبة
+        structural = max(structural, min(a.resistance_level or structural, last * 1.35))
     trigger_raw = max(structural, min(ema9, last * 1.08)) * 1.012
     trigger = float(min(max(trigger_raw, last * 1.015), last * 1.25))
 
-    # وقف إلغاء السيناريو (بنيوي) تحت القاع المرجعي
-    stop_structural = bottom * (1 - max(0.02, min(0.06, atr_pct / 300.0)))
+    # وقف إلغاء السيناريو (بنيوي): تحت قاع السحب إن وُجد، وإلا تحت القاع المرجعي
+    invalidation_base = bottom
+    if a.pullback_type == "liquidity_sweep" and a.sweep_low:
+        invalidation_base = min(bottom, float(a.sweep_low))
+    stop_structural = invalidation_base * (1 - max(0.02, min(0.06, atr_pct / 300.0)))
     # الوقف التداولي: مسافة 1.4×ATR بحدود 8%–20% من نقطة الدخول
     stop_width = max(0.08, min(0.20, 1.4 * atr_pct / 100.0))
     stop = float(max(stop_structural, trigger * (1 - stop_width)))
@@ -741,6 +1015,9 @@ def build_levels(a: Analysis, df: pd.DataFrame, params: StrategyParams) -> dict[
         "atr_pct": _r(atr_pct, 2),
         "bottom": _r(bottom), "peak": _r(peak), "last": _r(last),
         "base_high": _r(base_high), "ema9": _r(ema9), "ema20": _r(ema20),
+        "support": _r(a.support_level or bottom),
+        "impulse_high": _r(a.impulse_high), "resistance": _r(a.resistance_level),
+        "sweep_low": _r(a.sweep_low), "reclaim_level": _r(a.reclaim_level),
         "position_note_ar": (
             f"مخاطرة السهم عالية (ATR {atr_pct:.1f}%) — استخدم حجم مركز صغير؛ "
             f"مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند {_r(stop)}$ "
@@ -783,6 +1060,38 @@ def build_narrative(a: Analysis, params: StrategyParams) -> tuple[list[str], str
         + (f" مع جفاف حجم ({a.volume_dryup*100:.0f}% من المتوسط)" if a.volume_dryup else "")
         + ("، والقاع مكسور ⚠" if a.base_broken else "، والقاع صامد.")
     )
+    # دورة الحياة بعد الثبات (شروط «جاهز فنياً»)
+    if a.impulse_pct is not None:
+        quality = ("بالقدر المطلوب (≈20%)" if abs(a.impulse_pct - params.ideal_impulse_pct) <= 5
+                   else "أعلى من المستهدف قليلاً" if a.impulse_pct > params.ideal_impulse_pct
+                   else "أقل من المستهدف (20%) قليلاً")
+        why.append(
+            f"الانطلاقة بعد الثبات: +{a.impulse_pct:.1f}% من إغلاق القاعدة إلى {a.impulse_high}$ "
+            f"({a.impulse_date}) — {quality}."
+        )
+    if a.resistance_level:
+        why.append(
+            f"مقاومة قريبة عند {a.resistance_level}$ (تشكّلت {a.resistance_date})"
+            + (f" — على {a.resistance_distance_pct:.1f}% من الدعم الرئيسي" if a.resistance_distance_pct is not None else "")
+            + (f"، واختُبرها السعر في {a.impulse_date} عند {a.impulse_high}$ ثم تراجع." if a.impulse_date else ".")
+        )
+    if a.pullback_type == "liquidity_sweep":
+        why.append(
+            f"سحب سيولة (Liquidity Sweep) تحت الدعم: هبطت الفتيل إلى {a.sweep_low}$ "
+            f"({a.sweep_depth_pct:.1f}% تحت الدعم {a.bottom_price}$) في {a.sweep_date} "
+            f"ثم أُغلق فوق الدعم — {a.reclaim_sessions} إغلاق استعادة (آخرها {a.reclaim_date})."
+        )
+    elif a.pullback_type == "support_retest":
+        why.append(
+            f"عاد السهم لاختبار الدعم الرئيسي {a.bottom_price}$ (أدنى نقطة {a.pullback_low}$ "
+            f"بتاريخ {a.pullback_date}) وارتد دون كسر — إعادة اختبار ناجحة."
+        )
+    elif a.pullback_type == "breakdown":
+        why.append(
+            f"⚠ كسر الدعم الرئيسي إلى {a.pullback_low}$ دون استعادة — فشل التسلسل وإلغاء السيناريو."
+        )
+    if a.lifecycle_stage:
+        why.append(f"حالة التسلسل: {a.lifecycle_stage}.")
     if a.confirmations:
         why.append("تأكيدات فنية: " + "، ".join(a.confirmations) + ".")
     if a.h4.get("available"):
@@ -807,16 +1116,17 @@ def build_narrative(a: Analysis, params: StrategyParams) -> tuple[list[str], str
     lv = a.levels or {}
     if a.phase == 6:
         action = (
-            f"جاهز فنياً: الدخول بعد اختراق {lv.get('trigger')} بحجم تداول ≥ "
-            f"{params.rvol_threshold}x، والوقف {lv.get('stop')} ({lv.get('stop_pct')}%)، "
-            f"والأهداف {lv.get('targets',{}).get('t1_382')} / {lv.get('targets',{}).get('t2_618')} / "
+            f"جاهز فنياً (التسلسل مكتمل: انطلاقة → مقاومة → عودة للدعم/سحب سيولة → استعادة): "
+            f"الدخول بعد اختراق {lv.get('trigger')} بحجم تداول ≥ {params.rvol_threshold}x، "
+            f"والوقف {lv.get('stop')} ({lv.get('stop_pct')}%)"
+            + (f" (تحت قاع السحب {a.sweep_low})" if a.pullback_type == "liquidity_sweep" and a.sweep_low else "")
+            + f"، والأهداف {lv.get('targets',{}).get('t1_382')} / {lv.get('targets',{}).get('t2_618')} / "
             f"{lv.get('targets',{}).get('t3_full')} — نسبة مخاطرة/عائد {lv.get('rr_t2')}."
         )
     elif a.phase == 5:
-        action = (
-            f"المرحلة الإيجابية المبكرة: تجهيز أمر شرطيان فوق {lv.get('trigger')} — "
-            f"لا دخول قبل تأكيد الإغلاق فوق القاعدة مع حجم."
-        )
+        action = (f"المرحلة الإيجابية المبكرة ({a.lifecycle_stage or 'التسلسل قيد التكوّن'}): "
+                  f"تجهيز أمر شرطيان فوق {lv.get('trigger')} — لا دخول قبل اكتمال التسلسل "
+                  f"(انطلاقة → مقاومة → عودة للدعم → استعادة) بتأكيد الحجم.")
     elif a.phase == 4:
         action = (
             f"قائمة المتابعة: الثبات على القاع {a.bottom_price}$ مؤكد ({sessions_ar(a.base_sessions)}) — "
@@ -950,6 +1260,38 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
             setattr(a, k, mom.get(k))
         a.higher_lows = int(mom.get("higher_lows") or 0)
 
+        # ---------- دورة الحياة بعد الثبات (شروط «جاهز فنياً») ---------- #
+        seq = analyse_lifecycle(df, struct, params)
+        a.lifecycle_stage = seq["stage"]
+        a.lifecycle_ready = bool(seq["ready"])
+        a.lifecycle_failed = bool(seq["failed"])
+        a.lifecycle_checks = seq["checks"]
+        a.impulse_pct = seq["impulse_pct"]
+        a.impulse_high = seq["impulse_high"]
+        a.impulse_date = seq["impulse_date"]
+        a.resistance_level = seq["resistance_level"]
+        a.resistance_distance_pct = seq["resistance_distance_pct"]
+        a.resistance_date = seq["resistance_date"]
+        a.pullback_type = seq["pullback_type"]
+        a.pullback_low = seq["pullback_low"]
+        a.pullback_date = seq["pullback_date"]
+        a.sweep_low = seq["sweep_low"]
+        a.sweep_depth_pct = seq["sweep_depth_pct"]
+        a.sweep_date = seq["sweep_date"]
+        a.reclaim_level = seq["reclaim_level"]
+        a.reclaim_sessions = int(seq["reclaim_sessions"] or 0)
+        a.reclaim_date = seq["reclaim_date"]
+        a.support_level = seq.get("support")
+
+        if a.lifecycle_failed:
+            a.rejections.append(
+                "كسر الدعم الرئيسي بعد الانطلاقة دون استعادة (سحب سيولة فاشل) — "
+                "إلغاء السيناريو حتى يتكوّن قاع جديد")
+        if a.lifecycle_ready:
+            a.notes.append(f"تسلسل الاستراتيجية مكتمل — {a.lifecycle_stage}")
+        elif a.impulse_pct is not None and not a.rejections:
+            a.notes.append(f"تسلسل «جاهز فنياً» قيد التكوّن — {a.lifecycle_stage}")
+
         # شروط الاستراتيجية الصارمة
         if a.spike_pct is not None and a.spike_pct < params.min_spike_pct:
             a.rejections.append(f"صعود يوم التقسيم {a.spike_pct:.1f}% أقل من الحد الأدنى {params.min_spike_pct}%")
@@ -1033,6 +1375,14 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         conf.append(f"{a.higher_lows} قاع صاعد في البنية")
     if (a.rvol or 0) >= params.rvol_threshold:
         conf.append(f"حجم نسبي {a.rvol}x يدعم الحركة")
+    if a.lifecycle_ready:
+        conf.append("تسلسل «جاهز فنياً» مكتمل: انطلاقة ≈20% + مقاومة قريبة + عودة للدعم/سحب سيولة + استعادة")
+    elif a.pullback_type == "liquidity_sweep" and not a.lifecycle_failed:
+        conf.append("سحب سيولة تحت الدعم مع استعادة الإغلاق فوقه")
+    elif a.pullback_type == "support_retest":
+        conf.append("إعادة اختبار الدعم الرئيسي بنجاح")
+    if a.impulse_pct is not None and a.impulse_pct >= params.min_ready_impulse_pct:
+        conf.append(f"انطلاقة +{a.impulse_pct:.0f}% بعد الثبات")
     if a.h4.get("aligned"):
         conf.append("توافق فريم 4 ساعات (اتجاه صاعد)")
     if a.h4.get("bullish_divergence"):

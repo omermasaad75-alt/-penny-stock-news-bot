@@ -112,6 +112,22 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
             add(f"- ⓘ {nt}")
         add("")
 
+    # ---------------- دورة الحياة بعد الثبات (شرط «جاهز فنياً») ---------------- #
+    add("## 2.b) شروط «جاهز فنياً» — دورة الحياة بعد الثبات")
+    add("")
+    add(f"**حالة التسلسل:** {a.lifecycle_stage or '—'}"
+        + ("  ✅ مكتمل" if a.lifecycle_ready else "  ⏳ قيد التكوّن"))
+    add("")
+    if a.lifecycle_checks:
+        add("| # | الشرط | المعيار | القراءة الفعلية | الحالة |")
+        add("|---|-------|---------|----------------|--------|")
+        for i, c in enumerate(a.lifecycle_checks, 1):
+            add(f"| {i} | {c['ar']} | {c['std']} | {c['detail']} | {'✅ محقق' if c['ok'] else '⏳ غير مكتمل'} |")
+        add("")
+    if a.lifecycle_failed:
+        add("> ⛔ **فشل التسلسل:** كسر الدعم الرئيسي بعد الانطلاقة دون استعادة — يُلغى السيناريو حتى يتكوّن قاع جديد.")
+        add("")
+
     # ---------------- التفاصيل الفنية ---------------- #
     add("## 3) التفاصيل الفنية")
     add("")
@@ -121,6 +137,17 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
     add(f"| قمة ما بعد التقسيم | {_n(a.spike_high,3)}$ ({a.spike_date or '—'}) |")
     add(f"| القاع المرجعي | {_n(a.bottom_price,3)}$ ({a.bottom_date or '—'}) |")
     add(f"| نطاق القاعدة | {_n(a.base_range_pct,1)}% |")
+    add(f"| الانطلاقة بعد الثبات | {_pct(a.impulse_pct)} إلى {_n(a.impulse_high,3)}$ ({a.impulse_date or '—'}) |")
+    add(f"| المقاومة القريبة | {_n(a.resistance_level,3)}$ — تشكّلت {a.resistance_date or '—'}"
+        + (f"، واختُبرت في {a.impulse_date}" if a.impulse_date else "")
+        + (f" (على {_n(a.resistance_distance_pct,1)}% من الدعم) |" if a.resistance_distance_pct is not None else " |"))
+    if a.pullback_type == "liquidity_sweep":
+        add(f"| سحب السيولة | {_n(a.sweep_low,3)}$ ({_n(a.sweep_depth_pct,1)}% تحت الدعم) في {a.sweep_date or '—'} |")
+    elif a.pullback_low is not None:
+        add(f"| العودة للدعم | أدنى نقطة {_n(a.pullback_low,3)}$ ({a.pullback_date or '—'}) — "
+            f"{'إعادة اختبار ناجحة' if a.pullback_type == 'support_retest' else 'تحت المراقبة'} |")
+    add(f"| الاستعادة فوق الدعم | {a.reclaim_sessions} إغلاق فوق {_n(a.reclaim_level,3)}$ "
+        f"(آخرها {a.reclaim_date or '—'}) |")
     add(f"| الإقفال الحالي | {_n(a.last_close,3)}$ ({_pct(a.change_pct,2)}) |")
     add(f"| RSI (14) اليومي | {_n(a.rsi_now,1)} (أدنى {_n(a.rsi_trough,1)} بتاريخ {a.rsi_trough_date or '—'}) |")
     add(f"| MACD Histogram | {_n(a.macd_hist,4)} — {'يتحسّن' if a.macd_turning else 'لم يتحسّن بعد'} |")

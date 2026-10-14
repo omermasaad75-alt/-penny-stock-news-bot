@@ -165,6 +165,8 @@ function renderTable() {
     const pat = (r.patterns_daily && r.patterns_daily[0]) ? r.patterns_daily[0].name_ar : '—';
     const scoreColor = r.score >= 75 ? '#3fb950' : r.score >= 60 ? '#d29922' : '#8b96a5';
     const rsTxt = r.rs_found ? `${r.rs_ratio_str}<br><span class="muted small">${r.rs_date || ''} · ${r.rs_age_days ?? '—'}ي</span>` : '<span class="muted">—</span>';
+    const seqIcons = (r.lifecycle_checks || []).map(c => c.ok ? '🟢' : '⚪').join('') || '—';
+    const seqTitle = esc(r.lifecycle_stage || '');
     return `<tr data-sym="${r.symbol}" class="${r.eligible ? '' : 'phase-rejected'}">
       <td class="muted">${i + 1}</td>
       <td class="sym-cell">${esc(r.symbol)}<div class="muted small" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc((r.name || '').slice(0, 26))}</div></td>
@@ -181,6 +183,7 @@ function renderTable() {
       <td>${n(r.rvol, 2)}x</td>
       <td>${lv.trigger ? money(lv.trigger) : '—'}</td>
       <td>${lv.rr_t2 ? n(lv.rr_t2, 2) + ' : 1' : '—'}</td>
+      <td title="${seqTitle}" style="letter-spacing:2px;cursor:help">${seqIcons}</td>
       <td class="muted" style="max-width:190px;white-space:normal">${esc(pat)}</td>
       <td><button class="btn" data-open="${r.symbol}">تحليل</button></td>
     </tr>`;
@@ -282,8 +285,15 @@ function renderChecklist(a) {
     ['تأكيد الانعكاس', '≥ 3 تأكيدات', `${(a.confirmations || []).length} تأكيد: ${(a.confirmations || []).join('، ') || '—'}`, (a.confirmations || []).length >= 3],
     ['القاع صامد (لم يُكسر)', '—', a.base_broken ? 'تم كسر القاع ⚠️' : 'لم يُكسر', !a.base_broken],
   ];
-  $('#anChecklist').innerHTML = items.map(([t, std, val, ok]) => `
-    <div class="check ${ok ? 'ok' : (val === '—' ? 'pending' : 'pending')}">
+  const seq = (a.lifecycle_checks || []).map(c => [c.ar, c.std, c.detail, c.ok]);
+  const rows = items.concat(seq);
+  const seqHead = seq.length ? `
+    <div class="seq-head">
+      <b>دورة الحياة — شرط «جاهز فنياً»</b>
+      <span class="${a.lifecycle_ready ? 'c-green' : 'c-amber'}">${esc(a.lifecycle_stage || '')}</span>
+    </div>` : '';
+  $('#anChecklist').innerHTML = seqHead + rows.map(([t, std, val, ok], idx) => `
+    <div class="check ${ok ? 'ok' : 'pending'}">
       <span class="icon">${ok ? '✅' : '⏳'}</span>
       <div><b>${esc(t)}</b> <span class="muted small">(${esc(std)})</span><br>
       <span class="muted small">${esc(val)}</span></div>
@@ -332,6 +342,15 @@ function renderMetrics(a) {
     ['نطاق القاعدة', a.base_range_pct != null ? n(a.base_range_pct, 1) + '%' : '—'],
     ['جلسات الثبات', a.base_sessions ?? '—'],
     ['جفاف الحجم', a.volume_dryup != null ? Math.round(a.volume_dryup * 100) + '%' : '—'],
+    ['الانطلاقة بعد الثبات', a.impulse_pct != null ? pct(a.impulse_pct) + ' → ' + money(a.impulse_high) : '—'],
+    ['المقاومة القريبة', a.resistance_level != null ? money(a.resistance_level) + (a.resistance_distance_pct != null ? ` (${n(a.resistance_distance_pct, 1)}% من الدعم)` : '') : '—'],
+    ['العودة للدعم / سحب سيولة', a.pullback_type === 'liquidity_sweep'
+      ? `سحب سيولة إلى ${money(a.sweep_low)} (${n(a.sweep_depth_pct, 1)}% تحت الدعم)`
+      : a.pullback_type === 'support_retest' ? `إعادة اختبار الدعم ${money(a.pullback_low)}`
+      : a.pullback_type === 'breakdown' ? 'كسر الدعم دون استعادة ⚠' : '—'],
+    ['الاستعادة فوق الدعم', a.reclaim_sessions ? `${a.reclaim_sessions} إغلاق فوق ${money(a.reclaim_level)}` : '—'],
+    ['حالة التسلسل', (a.lifecycle_ready ? '✅ ' : a.lifecycle_failed ? '⛔ ' : '⏳ ') + (a.lifecycle_stage || '—')],
+    ['الدعم الرئيسي', money(a.support_level || a.bottom_price)],
     ['RSI (يومي)', `${n(a.rsi_now, 1)} (أدنى ${n(a.rsi_trough, 1)})`],
     ['MACD Hist', n(a.macd_hist, 4) + (a.macd_turning ? ' ↑' : '')],
     ['EMA9 / EMA20', money(a.levels?.ema9) + ' / ' + money(a.levels?.ema20)],
@@ -610,10 +629,16 @@ async function renderHelp() {
     <tr><td>5</td><td>قاع وثبات</td><td>≥ ${p.min_base_sessions || 3} جلسات داخل ±${p.base_tolerance_pct || 9}%</td></tr>
     <tr><td>6</td><td>تحسّن RSI</td><td>RSI ≥ ${p.rsi_recovery_min || 35} أو +${p.rsi_recovery_delta || 5} عن قاعه</td></tr>
     <tr><td>7</td><td>تأكيد الانعكاس</td><td>إغلاقان فوق EMA9 + تحسّن MACD + اختراق القناة الهابطة + RVOL ≥ ${p.rvol_threshold || 1.5}x</td></tr>
+    <tr><td>8</td><td>الانطلاقة بعد الثبات</td><td>صعود ≈${p.ideal_impulse_pct || 20}% (أقل/أكثر قليلاً) من إغلاق الثبات — الحد الأدنى ${p.min_ready_impulse_pct || 15}%</td></tr>
+    <tr><td>9</td><td>اختبار مقاومة قريبة</td><td>مقاومة قريبة (≤ ${p.max_nearby_resistance_pct || 40}% من الدعم وفي نطاق 10% من قمة الانطلاقة) يختبرها السعر</td></tr>
+    <tr><td>10</td><td>العودة لاختبار الدعم الرئيسي</td><td>موجة عائدة تلامس الدعم (تسامح ${p.support_retest_tolerance_pct || 2}%)</td></tr>
+    <tr><td>11</td><td>سحب السيولة ثم الاستعادة</td><td>فتيل يكسر الدعم ≥ ${p.sweep_tolerance_pct || 1}% ثم إغلاق فوقه (≥ ${p.min_reclaim_sessions || 1} جلسة فوق الدعم +${p.reclaim_buffer_pct || 0.5}%) — أو إعادة اختبار ناجحة دون كسر</td></tr>
   </table>
+  <p class="muted">⚠ أي كسر للدعم الرئيسي بعد الانطلاقة <b>دون</b> استعادة = فشل التسلسل وإلغاء السيناريو حتى يتكوّن قاع جديد.</p>
   <h3>التسلسل العملي</h3>
   <p>1) رصد التقسيم → 2) متابعة الهبوط والتشبع → 3) تكوّن القاع → 4) ثبات 3-5 جلسات (دخول قائمة المتابعة)
-  → 5) تحسّن RSI → 6) انعكاس مؤكد (جاهز فنياً) → 7) بعد الاختراق (مرحلة التمدد: لا مطاردة).</p>
+  → 5) انطلاقة ≈20% واختبار مقاومة قريبة → 6) عودة لاختبار الدعم الرئيسي أو سحب سيولة تحته ثم استعادته
+  → 7) <b>جاهز فنياً</b> (اكتمال التسلسل) → 8) بعد الاختراق (مرحلة التمدد: لا مطاردة).</p>
   <h3>قواعد إدارة المخاطر</h3>
   <ul>
     <li>لا شراء أثناء الهبوط (“لا نشتري سكيناً ساقطة”) — الدخول بعد ثبات القاع وتأكيد الاختراق.</li>
