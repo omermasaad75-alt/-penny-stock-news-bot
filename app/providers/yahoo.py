@@ -401,7 +401,10 @@ class YahooProvider(BaseProvider):
                 if not isinstance(data, dict) or not data:
                     break            # فشل الطلب — لا ندّعي اكتمال التغطية
                 quotes = data.get("quotes") or []
-                total = data.get("count", data.get("total"))
+                # Yahoo: «total» = إجمالي المطابقات، «count» = عدد نتائج هذه الصفحة فقط.
+                total = data.get("total")
+                if not isinstance(total, (int, float)):
+                    total = data.get("count")
                 if discovery["total_matching_screener"] is None and isinstance(total, (int, float)):
                     discovery["total_matching_screener"] = int(total)
                 for q in quotes:
@@ -414,7 +417,7 @@ class YahooProvider(BaseProvider):
                     break
                 offset += len(quotes)
                 total_known = discovery["total_matching_screener"]
-                if isinstance(total_known, int) and len(screener) >= total_known:
+                if isinstance(total_known, int) and total_known > 0 and len(screener) >= total_known:
                     reached_end = True   # جُمعت كل النتائج المطابقة فعلياً
                     break
                 if len(screener) >= cap:
