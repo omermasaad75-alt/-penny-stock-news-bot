@@ -31,7 +31,28 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<':
 const cls = (x) => (x === null || x === undefined) ? '' : (x >= 0 ? 'pos' : 'neg');
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
+const SNAPSHOT = (typeof window !== 'undefined' && window.__SNAPSHOT__) || null;
+
 async function api(path, opts = {}) {
+  if (SNAPSHOT) {
+    // نسخة ثابتة (Offline Snapshot): كل البيانات مضمّنة داخل الملف نفسه
+    const [p, qs] = String(path).split('?');
+    const q = new URLSearchParams(qs || '');
+    const rows = (SNAPSHOT.results && SNAPSHOT.results.rows) || [];
+    if (p === '/api/health') return SNAPSHOT.health || {};
+    if (p === '/api/strategy') return SNAPSHOT.strategy || {};
+    if (p === '/api/demo-metadata') return SNAPSHOT.demo || { scenarios: [] };
+    if (p === '/api/scan/results') return SNAPSHOT.results || { rows: [], summary: {} };
+    if (p === '/api/scan/status') return { running: false, progress: rows.length, total: rows.length, percent: 100, results_available: rows.length, mode: 'demo' };
+    if (p === '/api/scan/start') return { started: false, snapshot: true };
+    if (p === '/api/report/save') return { written: [], folder: 'نسخة ثابتة — التصدير غير متاح' };
+    if (p.startsWith('/api/analysis/')) return (SNAPSHOT.analysis || {})[p.split('/').pop()] || {};
+    if (p.startsWith('/api/chart/')) {
+      const sym = p.split('/').pop(), tf = (q.get('tf') || '1D').toUpperCase();
+      return ((SNAPSHOT.charts || {})[sym] || {})[tf] || {};
+    }
+    return {};
+  }
   const r = await fetch(path, { headers: { 'Content-Type': 'application/json' }, ...opts });
   if (!r.ok) throw new Error((await r.text()).slice(0, 200));
   return r.headers.get('content-type')?.includes('json') ? r.json() : r.text();
@@ -96,12 +117,19 @@ async function loadHealth() {
     const b = $('#modeBadge');
     b.textContent = 'وضع البيانات: ' + (live ? 'حي (سوق حقيقي)' : 'تجريبي (demo)');
     b.className = 'badge ' + (live ? 'badge-live' : 'badge-demo');
-    if (h.scan && h.scan.running) {
+    if (SNAPSHOT) {
+      b.textContent = 'نسخة ثابتة — بيانات تجريبية';
+      ['btnScan', 'btnReport', 'btnReportHtml', 'btnReportMd', 'btnJson'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) { el.disabled = true; el.title = 'غير متاح في النسخة الثابتة'; }
+      });
+    }
+    if (!SNAPSHOT && h.scan && h.scan.running) {
       $('#progressWrap').classList.remove('hidden');
       pollStatus();
     } else if (h.results_cached > 0) {
       loadResults();
-    } else if (!state.autoScanStarted) {
+    } else if (!state.autoScanStarted && !SNAPSHOT) {
       state.autoScanStarted = true;            // أول تشغيل: ابدأ المسح تلقائياً
       $('#progressWrap').classList.remove('hidden');
       api('/api/scan/start?limit=80', { method: 'POST' }).catch(() => {});
@@ -180,14 +208,14 @@ function seqCell(r) {
   const checks = r.lifecycle_checks || [];
   if (!checks.length) return '<span class="muted small">لا تقسيم داخل النافذة</span>';
   const done = checks.filter(c => c.ok).length;
-  const icons = checks.map(c => c.ok ? '✅' : (c.state === 'active' ? '🔸' : '⬜')).join('');
+  const dots = checks.map(c => `<i class="dot ${c.ok ? 'ok' : (c.state === 'active' ? 'active' : 'pending')}"></i>`).join('');
   const active = checks.find(c => !c.ok);
   let label, color;
-  if (r.lifecycle_ready) { label = '✅ جاهز فنياً (6/6)'; color = 'c-green'; }
-  else if (r.lifecycle_failed) { label = '⛔ فشل — كسر الدعم دون استعادة'; color = 'c-red'; }
+  if (r.lifecycle_ready) { label = 'جاهز فنياً (6/6)'; color = 'c-green'; }
+  else if (r.lifecycle_failed) { label = 'فشل — كسر الدعم دون استعادة'; color = 'c-red'; }
   else { label = `${done}/6 — ناقص: ${STEP_SHORT[active?.key] || (active?.ar || '')}`; color = 'c-amber'; }
   return `<span title="${esc(r.lifecycle_stage || '')}" style="cursor:help;white-space:nowrap">
-    <span class="seq-icons">${icons}</span>
+    <span class="seq-icons">${dots}</span>
     <div class="small ${color}">${esc(label)}</div></span>`;
 }
 
@@ -267,11 +295,10 @@ function renderCards() {
     const ph = r.phase_info || {}, lv = r.levels || {};
     const checks = r.lifecycle_checks || [];
     const done = checks.filter(c => c.ok).length;
-    const icons = checks.map(c => c.ok ? '✅' : (c.state === 'active' ? '🔸' : '⬜')).join('');
     const active = checks.find(c => !c.ok);
-    const stage = r.lifecycle_ready ? '✅ جاهز فنياً'
-      : r.lifecycle_failed ? '⛔ فشل — كسر الدعم دون استعادة'
-      : checks.length ? `ناقص: ${STEP_SHORT[active?.key] || ''}` : '—';
+    const stage = r.lifecycle_ready ? 'جاهز فنياً — التسلسل مكتمل'
+      : r.lifecycle_failed ? 'فشل التسلسل — كسر الدعم دون استعادة'
+      : checks.length ? `ناقص: ${STEP_SHORT[active?.key] || ''} (${done}/6)` : '—';
     return `<div class="mcard ${r.eligible ? '' : 'muted-card'}" data-sym="${r.symbol}">
       <div class="mcard-head">
         <div><b class="sym-cell">${esc(r.symbol)}</b>
@@ -338,7 +365,7 @@ function renderStepper(a) {
   const st = $('#seqStatus');
   const okAll = a.lifecycle_ready, failed = a.lifecycle_failed;
   st.className = 'seq-status ' + (failed ? 'fail' : okAll ? 'ok' : 'active');
-  st.textContent = (failed ? '⛔ ' : okAll ? '✅ ' : '⏳ ') + (a.lifecycle_stage || '—');
+  st.innerHTML = `<i class="dot ${failed ? 'fail' : okAll ? 'ok' : 'active'}"></i> ${esc(a.lifecycle_stage || '—')}`;
 }
 
 /* ------------------------- عرض التحليل ------------------------- */
@@ -366,13 +393,14 @@ function renderAnalysis(a) {
   $('#anGrade').textContent = a.grade || '—';
 
   const alerts = [];
-  if (a.risk_flags?.length) alerts.push(['bad', '⛔', a.risk_flags.join('<br>')]);
-  if (a.lifecycle_failed) alerts.push(['bad', '⛔', 'فشل تسلسل الانعكاس: كسر الدعم الرئيسي بعد الانطلاقة دون استعادة — يُلغى السيناريو حتى يتكوّن قاع جديد.']);
-  if (a.rejections?.length) alerts.push(['warn', '⚠️', '<b>أسباب الاستبعاد:</b><br>' + a.rejections.map(esc).join('<br>')]);
-  if (a.notes?.length) alerts.push(['info', 'ℹ️', a.notes.map(esc).join('<br>')]);
-  if (!a.rejections?.length && a.watchlist) alerts.unshift(['good', '✅', 'السهم مستوفٍ لشروط الاستراتيجية ومرصود في قائمة المتابعة.']);
-  $('#anAlerts').innerHTML = alerts.map(([k, ic, t]) =>
-    `<div class="alert alert-${k}"><span>${ic}</span><div>${t}</div></div>`).join('');
+  if (a.risk_flags?.length) alerts.push(['bad', 'خطر', a.risk_flags.join('<br>')]);
+  if (a.lifecycle_failed) alerts.push(['bad', 'فشل', 'فشل تسلسل الانعكاس: كسر الدعم الرئيسي بعد الانطلاقة دون استعادة — يُلغى السيناريو حتى يتكوّن قاع جديد.']);
+  if (a.rejections?.length) alerts.push(['warn', 'استبعاد', '<b>أسباب الاستبعاد:</b><br>' + a.rejections.map(esc).join('<br>')]);
+  if (a.notes?.length) alerts.push(['info', 'ملاحظة', a.notes.map(esc).join('<br>')]);
+  if (!a.rejections?.length && a.watchlist) alerts.unshift(['good', 'متابعة', 'السهم مستوفٍ لشروط الاستراتيجية ومرصود في قائمة المتابعة.']);
+  $('#anAlerts').innerHTML = alerts.map(([k, tag, t]) =>
+    `<div class="alert alert-${k}"><i class="dot ${k === 'good' ? 'ok' : k === 'bad' ? 'fail' : k === 'warn' ? 'active' : 'info'}"></i>
+      <div><b class="alert-tag">${tag}</b> ${t}</div></div>`).join('');
 
   renderStepper(a);
   renderLevels(a); renderChecklist(a); renderBreakdown(a); renderFundamentals(a);
@@ -422,7 +450,7 @@ function renderChecklist(a) {
     </div>` : '';
   $('#anChecklist').innerHTML = seqHead + rows.map(([t, std, val, ok, st]) => `
     <div class="check ${ok ? 'ok' : (st === 'active' ? 'active' : 'pending')}">
-      <span class="icon">${ok ? '✅' : (st === 'active' ? '⏳' : '•')}</span>
+      <span class="icon"><i class="dot ${ok ? 'ok' : (st === 'active' ? 'active' : 'pending')}"></i></span>
       <div><b>${esc(t)}</b> <span class="muted small">(${esc(std)})</span><br>
       <span class="muted small">${esc(val)}</span></div>
     </div>`).join('');
@@ -475,10 +503,10 @@ function renderMetrics(a) {
     ['العودة لاختبار الدعم', a.pullback_type === 'liquidity_sweep'
       ? `سحب سيولة إلى ${money(a.sweep_low)} (${n(a.sweep_depth_pct, 1)}% تحت الدعم) في ${a.pullback_date || '—'}`
       : a.pullback_type === 'support_retest' ? `اختبار ناجح عند ${money(a.pullback_low)} في ${a.pullback_date || '—'}`
-      : a.pullback_type === 'breakdown' ? 'كسر الدعم دون استعادة ⛔'
+      : a.pullback_type === 'breakdown' ? 'كسر الدعم دون استعادة (فشل)'
       : a.pullback_type ? 'موجة عائدة لم تصل لمنطقة الدعم بعد' : '—'],
     ['الاستعادة فوق الدعم', a.reclaim_sessions ? `${a.reclaim_sessions} إغلاق فوق ${money(a.reclaim_level)} (آخرها ${a.reclaim_date || '—'})` : '—'],
-    ['حالة التسلسل', (a.lifecycle_ready ? '✅ جاهز فنياً — ' : a.lifecycle_failed ? '⛔ فشل — ' : '⏳ قيد التكوين — ') + (a.lifecycle_stage || '')],
+    ['حالة التسلسل', (a.lifecycle_ready ? 'جاهز فنياً — ' : a.lifecycle_failed ? 'فشل التسلسل — ' : 'قيد التكوين — ') + (a.lifecycle_stage || '')],
     ['RSI (يومي)', `${n(a.rsi_now, 1)} (أدنى ${n(a.rsi_trough, 1)})`],
     ['MACD Hist', n(a.macd_hist, 4) + (a.macd_turning ? ' ↑' : '')],
     ['EMA9 / EMA20', money(a.levels?.ema9) + ' / ' + money(a.levels?.ema20)],
@@ -513,7 +541,7 @@ function renderNews(a) {
   const cats = a.catalysts || [];
   const dil = (a.dilution || []).map(d => `
     <div class="news-item ${d.severity === 'high' ? 'neg' : 'neu'}">
-      <span class="sent">${d.severity === 'high' ? '🔻' : '📄'}</span>
+      <i class="dot ${d.severity === 'high' ? 'fail' : 'pending'}" style="margin-top:6px"></i>
       <div><div class="meta">تخفيف · ${esc(d.date)} · خطورة ${esc(d.severity)} · ${esc(d.source)}</div>
       <div class="title">${esc(d.title)}</div></div>
     </div>`).join('');
@@ -524,7 +552,7 @@ function renderNews(a) {
   const today = new Date().toISOString().slice(0, 10);
   $('#anNews').innerHTML = dil + cats.map(c => `
     <div class="news-item ${c.sentiment === 'positive' ? 'pos' : c.sentiment === 'negative' ? 'neg' : 'neu'}">
-      <span class="sent">${icon[c.sentiment] || '⚪'}</span>
+      <i class="dot ${c.sentiment === 'positive' ? 'ok' : c.sentiment === 'negative' ? 'fail' : 'pending'}" style="margin-top:6px"></i>
       <div>
         <div class="meta">${esc(c.date)} · ${esc(kindAr[c.type] || c.type)} · أثر ${esc(c.impact)}
           ${c.date > today ? '· <b class="c-blue">محفّز قادم</b>' : ''} · ${esc(c.source || '')}</div>
@@ -541,7 +569,7 @@ const COLORS = { up: '#2ea043', down: '#f85149', ema9: '#e3b341', ema20: '#58a6f
 function chartOptions(el, intraday) {
   return {
     width: el.clientWidth, height: el.clientHeight,
-    layout: { background: { color: 'transparent' }, textColor: '#93a1b3', fontSize: 11,
+    layout: { background: { type: 'solid', color: '#0a0f16' }, textColor: '#93a1b3', fontSize: 11,
               fontFamily: '"Segoe UI",Tahoma,"Noto Kufi Arabic",sans-serif' },
     grid: { vertLines: { color: 'rgba(30,39,53,.75)' }, horzLines: { color: 'rgba(30,39,53,.75)' } },
     rightPriceScale: { borderColor: '#28334333', entireTextOnly: true, scaleMargins: { top: .08, bottom: .24 } },
@@ -554,7 +582,7 @@ function chartOptions(el, intraday) {
       mode: 0, vertLine: { color: '#388bfd', width: 1, style: 2, labelBackgroundColor: '#1f6feb' },
       horzLine: { color: '#388bfd', width: 1, style: 2, labelBackgroundColor: '#1f6feb' },
     },
-    localization: { priceFormatter: p => '$' + Number(p).toFixed(p < 1 ? 3 : 2) },
+    localization: { locale: 'en-GB', priceFormatter: p => '$' + Number(p).toFixed(p < 1 ? 3 : 2) },
     handleScroll: { mouseWheel: true, pressedMouseMove: true, horzTouchDrag: true, vertTouchDrag: true },
     handleScale: { axisPressedMouseMove: { time: true, price: true }, axisDoubleClickReset: true,
                    mouseWheel: true, pinch: true },
@@ -567,9 +595,12 @@ function ensureCharts(intraday) {
   if (state.charts.price) { state.charts.price.remove(); state.charts.price = null; }
   if (state.charts.osc) { state.charts.osc.remove(); state.charts.osc = null; }
   state.charts.price = LightweightCharts.createChart(priceEl, chartOptions(priceEl, intraday));
+  const oscOpts = chartOptions(oscEl, intraday);
   state.charts.osc = LightweightCharts.createChart(oscEl, {
-    ...chartOptions(oscEl, intraday),
+    ...oscOpts,
+    localization: { locale: 'en-GB', priceFormatter: v => Number(v).toFixed(0) },   // RSI/MACD بأرقام لا دولارات
     rightPriceScale: { borderColor: '#28334333', entireTextOnly: true, scaleMargins: { top: .18, bottom: .12 } },
+    crosshair: { ...oscOpts.crosshair },
   });
   const p = state.charts.price, o = state.charts.osc;
   p.timeScale().subscribeVisibleLogicalRangeChange(r => {
@@ -588,6 +619,7 @@ async function loadChart(sym, tf) {
 }
 
 function renderChart(p) {
+  state._lastPayload = p;
   const intraday = p.tf === '4H';
   ensureCharts(intraday);
   const s = state.series;
@@ -621,35 +653,32 @@ function renderChart(p) {
 
   // مستويات الدعم/المقاومة/الخطة
   const lv = p.levels || {}, t = lv.targets || {}, lc = p.lifecycle || {};
-  const line = (price, color, title, style = 2) => price && s.price.candles.createPriceLine({
-    price: Number(price), color, lineWidth: 1, lineStyle: style, axisLabelVisible: true, title,
+  const line = (price, color, title, style = 2, onAxis = true) => price && s.price.candles.createPriceLine({
+    price: Number(price), color, lineWidth: 1, lineStyle: style, axisLabelVisible: onAxis, title,
   });
-  // شروط دورة الحياة مرسومة على المخطط
-  if (lc.support) {
+  // شروط دورة الحياة مرسومة على المخطط (بلا ازدحام: الأساسيات دائماً، والبقية حسب الحاجة)
+  line(lc.support, '#f0883e', 'الدعم الرئيسي', 0);
+  if (lc.resistance_level) line(lc.resistance_level, '#e3b341', 'أقرب مقاومة', 2);
+  if (lc.sweep_low) line(lc.sweep_low, '#f85149', 'قاع السحب', 1);
+  if (!lc.ready) {
     const tol = ((state.strategy?.params?.support_retest_tolerance_pct ?? 2) / 100);
-    line(lc.support, '#f0883e', 'الدعم الرئيسي', 0);
-    line(lc.support * (1 + tol), '#f0883e88', 'سقف منطقة الدعم', 1);
-    line(lc.support * (1 - tol), '#f0883e88', 'قاع منطقة الدعم', 1);
+    if (lc.support) {
+      line(lc.support * (1 + tol), '#f0883e66', '', 1);
+      line(lc.support * (1 - tol), '#f0883e66', '', 1);
+    }
+    if (lc.impulse_target) line(lc.impulse_target, '#a371f7', 'هدف الانطلاقة +20%', 1);
   }
-  // خط «هدف الانطلاقة +20%» من إغلاق جلسات الثبات (يظهر ما دام التسلسل غير مكتمل)
-  if (!lc.ready && lc.impulse_target) {
-    line(lc.impulse_target, '#a371f7', 'هدف الانطلاقة +20%', 1);
-  }
-  line(lc.resistance_level, '#e3b341', 'أقرب مقاومة', 0);
-  line(lc.reclaim_level, '#3fb950', 'مستوى الاستعادة', 1);
-  line(lc.sweep_low, '#f85149', 'قاع السحب', 1);
-  line(lv.trigger, COLORS.trigger, 'اختراق');
-  line(lv.stop, COLORS.stop, 'وقف');
-  line(t.t1_382, COLORS.target, 'هدف1', 3);
-  line(t.t2_618, COLORS.target, 'هدف2', 3);
-  line(t.t3_full, '#7ee787', 'هدف3', 3);
+  line(lv.trigger, COLORS.trigger, 'اختراق', 0);
+  line(lv.stop, COLORS.stop, 'وقف', 0);
+  line(t.t1_382, COLORS.target, 'هدف1', 3, false);
+  line(t.t2_618, COLORS.target, 'هدف2', 3, false);
 
   const seqLegend = (p.lifecycle?.checks || []).map(c =>
-    `<span class="${c.ok ? 'c-green' : 'c-amber'}">${c.ok ? '✅' : '🔸'} ${esc((STEP_SHORT[c.key] || c.ar))}</span>`).join('');
+    `<span><i class="dot ${c.ok ? 'ok' : 'active'}"></i> ${esc((STEP_SHORT[c.key] || c.ar))}</span>`).join('');
   $('#chartLegend').innerHTML = [
     ['EMA9', COLORS.ema9], ['EMA20', COLORS.ema20], ['EMA50', COLORS.ema50],
     ['الدعم', '#f0883e'], ['المقاومة', '#e3b341'], ['هدف الانطلاقة +20%', '#a371f7'],
-    ['قاع السحب', '#f85149'], ['الاستعادة', '#3fb950'],
+    ['قاع السحب', '#f85149'],
   ].map(([k, c]) => `<span><i style="background:${c}"></i>${k}</span>`).join('') +
     (seqLegend ? `<span class="seq-legend">${seqLegend}</span>` : '') +
     `<span>الشموع: ${p.meta?.bars || 0}</span><span>الإقفال: ${money(p.meta?.last_close)}</span>` +
@@ -669,9 +698,9 @@ function renderOscillator(p) {
     const data = kind === 'rsi' ? osc.rsi : osc.mfi;
     o.main = ch.addLineSeries({ color: COLORS.rsi, lineWidth: 1.6, priceLineVisible: false });
     o.main.setData(data || []);
-    o.main.createPriceLine({ price: 70, color: 'rgba(248,81,73,.4)', lineWidth: 1, lineStyle: 2, title: '70' });
-    o.main.createPriceLine({ price: 30, color: 'rgba(63,185,80,.45)', lineWidth: 1, lineStyle: 2, title: '30' });
-    ch.priceScale('right').applyOptions({ autoScale: false, scaleMargins: { top: .12, bottom: .12 } });
+    o.main.createPriceLine({ price: 70, color: 'rgba(248,81,73,.4)', lineWidth: 1, lineStyle: 2, title: 'تشبع 70', axisLabelVisible: false });
+    o.main.createPriceLine({ price: 30, color: 'rgba(63,185,80,.45)', lineWidth: 1, lineStyle: 2, title: 'تشبع 30', axisLabelVisible: false });
+    ch.applyOptions({ rightPriceScale: { autoScale: true, scaleMargins: { top: .12, bottom: .12 } } });
   } else if (kind === 'macd') {
     o.hist = ch.addHistogramSeries({ priceLineVisible: false, color: 'rgba(63,185,80,.5)' });
     o.hist.setData((osc.macd_hist || []).map(d => ({ ...d, color: d.value >= 0 ? 'rgba(63,185,80,.55)' : 'rgba(248,81,73,.55)' })));
@@ -684,8 +713,8 @@ function renderOscillator(p) {
     o.main.setData(osc.stoch_k || []);
     o.signal = ch.addLineSeries({ color: COLORS.ema9, lineWidth: 1.2, priceLineVisible: false });
     o.signal.setData(osc.stoch_d || []);
-    o.main.createPriceLine({ price: 80, color: 'rgba(248,81,73,.4)', lineWidth: 1, lineStyle: 2 });
-    o.main.createPriceLine({ price: 20, color: 'rgba(63,185,80,.45)', lineWidth: 1, lineStyle: 2 });
+    o.main.createPriceLine({ price: 80, color: 'rgba(248,81,73,.4)', lineWidth: 1, lineStyle: 2, axisLabelVisible: false });
+    o.main.createPriceLine({ price: 20, color: 'rgba(63,185,80,.45)', lineWidth: 1, lineStyle: 2, axisLabelVisible: false });
   } else if (kind === 'rvol') {
     const data = (osc.rvol || []).map(d => ({ ...d, color: d.value >= 1.5 ? 'rgba(63,185,80,.6)' : 'rgba(56,139,253,.35)' }));
     o.hist = ch.addHistogramSeries({ priceLineVisible: false });
@@ -816,7 +845,10 @@ $$('.osc').forEach(b => b.onclick = () => {
   $$('.osc').forEach(x => x.classList.remove('active'));
   b.classList.add('active');
   state.osc = b.dataset.osc;
-  if (state.selected) loadChart(state.selected, state.tf);
+  if (state.selected && state._lastPayload) {       // إعادة رسم سريعة بلا طلب جديد
+    ensureCharts(state.tf === '4H');
+    renderChart(state._lastPayload);
+  } else if (state.selected) loadChart(state.selected, state.tf);
 });
 
 function resizeCharts() {
@@ -872,7 +904,7 @@ function renderSources() {
     ['وضع البيانات المُعدّ', d.mode_setting || '—'],
     ['الوضع الفعّال الآن', d.mode_effective === 'live' ? 'سوق حقيقي (live)' : 'تجريبي (demo)'],
     ['مكتبة yfinance مثبّتة', d.has_yfinance ? 'نعم' : 'لا'],
-  ].concat((d.providers || []).map(p => [p.name, (p.ok ? '✔ ' : '✖ ') + (p.detail || (p.ok ? 'يعمل' : 'غير مفعّل'))]));
+  ].concat((d.providers || []).map(p => [p.name, (p.ok ? 'يعمل — ' : 'غير مفعّل — ') + (p.detail || '')]));
   const el = $('#sourcesTable');
   if (el) el.innerHTML = rows.map(([k, v]) => `<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
 }

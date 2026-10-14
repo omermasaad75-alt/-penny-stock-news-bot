@@ -457,3 +457,23 @@ table.grid tbody td .c-green{font-weight:700}
     background:linear-gradient(180deg,rgba(8,11,17,.97),rgba(8,11,17,.75));backdrop-filter:blur(6px)}
   .an-head{order:-1}
 }
+
+/* ---------------- مؤشرات بصرية (نقاط ملوّنة بدل الإيموجي) ---------------- */
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#3a4759;vertical-align:middle;
+  box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.dot.ok{background:#3fb950;box-shadow:0 0 6px rgba(63,185,80,.55)}
+.dot.active{background:#e3b341;box-shadow:0 0 6px rgba(227,179,65,.5)}
+.dot.fail{background:#f85149;box-shadow:0 0 6px rgba(248,81,73,.5)}
+.dot.info{background:#58a6ff}
+.dot.pending{background:#3a4759}
+.seq-icons .dot{margin-inline-end:3px}
+.alert-tag{color:var(--txt);margin-inline-end:6px}
+.chart-legend .dot{margin-inline-end:5px}
+.check .icon{padding-top:4px}
+.news-item .dot{flex:0 0 auto}
+
+/* تبويبات الجوال: التفاف كامل بلا قصّ */
+@media (max-width:760px){
+  .tabs{flex-wrap:wrap;overflow:visible;gap:6px}
+  .tab{flex:1 1 calc(50% - 6px);text-align:center;border-radius:10px;border-bottom:1px solid var(--line)}
+}
