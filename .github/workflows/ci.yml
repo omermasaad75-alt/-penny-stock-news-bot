@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy fastapi "uvicorn[standard]" jinja2 python-dotenv requests pytest httpx
+          pip install yfinance || echo "yfinance optional - skipped"
+
+      - name: Static sanity (compile all modules)
+        run: python -m compileall -q app
+
+      - name: Run test suite
+        run: python -m pytest -q
+
+      - name: CLI smoke test (demo mode, offline)
+        run: |
+          RSS_DATA_MODE=demo python -m app.scanner --scan --limit 12 --json --out /tmp/scan.json
+          python - <<'PY'
+          import json
+          data = json.load(open('/tmp/scan.json'))
+          assert data['summary']['scanned'] >= 10, data['summary']
+          assert data['summary']['with_reverse_split'] >= 1, data['summary']
+          print('CLI OK:', data['summary'])
+          PY

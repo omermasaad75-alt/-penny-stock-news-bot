@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# بيانات مؤقتة / كاش
+data/cache/
+data/raw/
+data/*.db
+data/*.sqlite*
+*.parquet
+*.log
+
+# تقارير مولّدة
+reports/output/
+*.tmp
+
+# بيئة محلية
+.env
+.DS_Store
+.idea/
+.vscode/
+
+# موقع Github Pages المبني تلقائياً
+site/
