@@ -82,7 +82,9 @@ def test_market_candidates_fetches_all_pages_until_end(yahoo_env, monkeypatch):
         offsets.append(offset)
         start = offset or 0
         page = symbols[start:start + (size or 100)]
-        return {"quotes": [{"symbol": s} for s in page], "count": 205}
+        # صيغة Yahoo الحقيقية: total = الإجمالي المطابق، count = عدد هذه الصفحة فقط
+        return {"quotes": [{"symbol": s} for s in page],
+                "count": len(page), "total": 205}
 
     monkeypatch.setattr(yahoo_mod.yf, "screen", fake_screen)
     out = prov.market_candidates(cap=300)
@@ -119,7 +121,9 @@ def test_market_candidates_cap_truncates_and_records_total(yahoo_env, monkeypatc
         offsets.append(offset)
         start = offset or 0
         n = size or 100
-        return {"quotes": [{"symbol": f"S{start + i:05d}"} for i in range(n)], "count": 5000}
+        # صيغة Yahoo الحقيقية: total = الإجمالي المطابق (5000)، count = عدد هذه الصفحة
+        return {"quotes": [{"symbol": f"S{start + i:05d}"} for i in range(n)],
+                "count": n, "total": 5000}
 
     monkeypatch.setattr(yahoo_mod.yf, "screen", fake_screen)
     out = prov.market_candidates(cap=200)
