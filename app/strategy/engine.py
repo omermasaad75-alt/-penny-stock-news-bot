@@ -1290,7 +1290,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     a.institutional_pct = prof.institutional_pct
 
     # تسجيل مصادر البيانات
-    is_live = hub.effective_mode == "live"
+    is_live = hub.mode == "live"
     a.synthetic = not is_live
     a.price_source = "yahoo-finance" if is_live else "demo-generator"
     a.fundamentals_source = prof.source or ("yahoo-finance" if is_live else "demo-generator")

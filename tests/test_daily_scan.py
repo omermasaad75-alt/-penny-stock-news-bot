@@ -73,7 +73,7 @@ def test_cli_builds_publishable_site(tmp_path):
     proc = subprocess.run(
         [sys.executable, str(ROOT / "tools" / "daily_scan.py"),
          "--site", str(site), "--limit", "5", "--mode", "demo",
-         "--top-reports", "3", "--no-dashboard"],
+         "--top-reports", "3", "--no-dashboard", "--test-only"],
         capture_output=True, text=True, env=env, cwd=str(ROOT), timeout=300,
     )
     assert proc.returncode == 0, proc.stderr[-2000:]

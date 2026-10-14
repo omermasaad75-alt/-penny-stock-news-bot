@@ -107,13 +107,13 @@ class YahooProvider(BaseProvider):
         raw = None
         if yf is not None:
             hist = self._timed(lambda: self._ticker(symbol).history(
-                period=period, interval=interval, auto_adjust=False, raise_errors=False))
+                period=period, interval=interval, auto_adjust=False, raise_errors=False, timeout=self.timeout))
             if hist is not None and len(hist):
                 raw = hist
             else:
                 bulk = self._timed(lambda: yf.download(
                     symbol, period=period, interval=interval, progress=False,
-                    auto_adjust=False, threads=False))
+                    auto_adjust=False, threads=False, timeout=self.timeout))
                 if bulk is not None and len(bulk):
                     if isinstance(bulk.columns, pd.MultiIndex):
                         bulk.columns = bulk.columns.get_level_values(0)
@@ -155,7 +155,7 @@ class YahooProvider(BaseProvider):
         if yf is None:
             return self.empty_df()
         hist = self._timed(lambda: self._ticker(symbol).history(
-            period="60d", interval="1h", auto_adjust=False, raise_errors=False))
+            period="60d", interval="1h", auto_adjust=False, raise_errors=False, timeout=self.timeout))
         if hist is None or not len(hist):
             return self.empty_df()
         df = hist.rename(columns=str.lower)
@@ -174,7 +174,7 @@ class YahooProvider(BaseProvider):
 
     # ---------------- التقسيمات ---------------- #
     def splits(self, symbol: str) -> list[ReverseSplitEvent]:
-        key = f"yahoo_splits_{symbol.upper()}"
+        key = f"yahoo_reverse_splits_v2_{symbol.upper()}"
         cached = self.cache.get(key)
         if cached is not None:
             return [ReverseSplitEvent(symbol=symbol.upper(), date=pd.Timestamp(c["date"]),
@@ -191,8 +191,10 @@ class YahooProvider(BaseProvider):
                     factor = float(val)
                 except (TypeError, ValueError):
                     continue
-                if factor <= 1.0:      # >1 = تقسيم عكسي (1-for-N)
+                # Yahoo: new/old shares. Reverse split 1:10 is 0.1, not 10.
+                if not 0 < factor < 1:
                     continue
+                factor = 1.0 / factor
                 date = pd.Timestamp(ts)
                 if date.tz is not None:
                     date = date.tz_localize(None)
@@ -344,65 +346,85 @@ class YahooProvider(BaseProvider):
         return out
 
     # ---------------- الكون ---------------- #
-    # بذرة أولية من أسهم بيني/ناسداك صغيرة شائعة قد تكون مرّت بتقسيم عكسي حديثاً.
-    # تُستخدم كبذرة فقط — كل رمز يُتحقق من وجوده فعلاً على Yahoo، ومن لديه تقسيم
-    # عكسي خلال النافذة هو فقط الذي يدخل قائمة الفرص.
-    _PENNY_SEED: list[str] = [
-        # أسهم رعاية صحية/بيوتك صغيرة شائعة
-        "JZ", "HLIO", "BRTX", "TGL", "UPC", "FLNT", "DRTS", "MDIA", "TRVN",
-        "QLGN", "WKSP", "HRTX", "AXGN", "CDLX", "EFTR", "IMPL", "KZIA", "LGMK",
-        "NRXP", "OPGN", "PHUN", "SNGX", "VBIV",
-        # أسهم تقنية/SPACs/متقلبة معروفة
-        "BB", "NOK", "SNDL", "TLRY", "CGC", "APHA", "ACB", "HEXO",
-        "MARA", "RIOT", "CLSK", "SI", "MSTR", "COIN", "MARA",
-        "MULN", "NKLA", "RIDE", "LCID", "RIVN", "NIO", "XPEV", "LI",
-        "BBBYQ", "GME", "AMC", "APE", "WISH", "CLOV", "SOFI", "LC",
-        "PTON", "NFLX", "PLTR", "U", "RBLX", "COIN", "SERV",
-        "AAL", "DAL", "UAL", "CCL", "NCLH", "RCL",
-    ]
-
-    def _symbol_exists(self, symbol: str) -> bool:
-        """التحقق السريع من وجود الرمز فعلاً في Yahoo وله بيانات سعر."""
-        try:
-            df = self.daily(symbol, lookback_days=30)
-            return df is not None and len(df) >= 5
-        except Exception:
-            return False
-
-    def universe(self, limit: int = 100) -> list[str]:
-        """يبني الكون من: (1) watchlist اليدوي (2) universe.csv (3) بذرة الأسهم الصغيرة،
-        ثم يُتحقق من وجود كل رمز فعلاً في Yahoo قبل إرجاعه."""
+    def market_candidates(self, cap: int = 100) -> list[str]:
+        """مرشحون ديناميكيون من screener أمريكي، لا قوائم مولّدة أو بذرة ديمو."""
         from ..config import settings
-        syms: list[str] = []
-
-        # أولاً: watchlist اليدوي (أولوية)
+        candidates = []
         for path in (settings.watchlist_file, settings.universe_file):
             if path.exists():
                 for line in path.read_text(encoding="utf-8").splitlines():
-                    line = line.strip()
-                    if not line or line.startswith("#"):
-                        continue
-                    s = line.split(",")[0].strip().upper()
-                    if s and s != "SYMBOL":
-                        syms.append(s)
+                    if line.strip() and not line.lstrip().startswith("#"):
+                        sym = line.split(",")[0].strip().upper()
+                        if sym != "SYMBOL":
+                            candidates.append(sym)
+        if yf is not None:
+            query = yf.EquityQuery("and", [
+                yf.EquityQuery("eq", ["region", "us"]),
+                yf.EquityQuery("gt", ["intradayprice", 0]),
+                yf.EquityQuery("lt", ["intradayprice", 5]),
+                yf.EquityQuery("gt", ["dayvolume", 10000]),
+            ])
+            data = self._timed(lambda: yf.screen(query, size=cap,
+                               sortField="dayvolume", sortAsc=False)) or {}
+            candidates.extend(q["symbol"].upper() for q in data.get("quotes", [])
+                              if q.get("symbol"))
+            if not candidates:
+                data = self._timed(lambda: yf.screen("most_actives", count=cap)) or {}
+                candidates.extend(q["symbol"].upper() for q in data.get("quotes", [])
+                                  if q.get("symbol") and 0 < q.get("regularMarketPrice", 0) < 5)
+        return list(dict.fromkeys(candidates))[:cap]
 
-        # ثانياً: بذرة الأسهم الصغيرة (لنوسّع الكون ونكتشف تقسيمات جديدة)
-        for s in self._PENNY_SEED:
-            if s not in syms:
-                syms.append(s)
+    def universe(self, limit: int = 100) -> list[str]:
+        """تحقق أسعار ثم تقسيم عكسي 60 يوماً بنسبة 1:2–1:60 قبل التحليل المكلف.
 
-        # إزالة التكرار
-        seen, uniq = set(), []
-        for s in syms:
-            if s and s not in seen:
-                seen.add(s)
-                uniq.append(s)
-
-        # تحقق سريع للرموز — نقبل كل رمز له ملف تعريفي صالح (لأن
-        # فلترة التقسيم العكسي والسعر ستتم لاحقاً في engine).
-        # لا نتحقق من كل رمز هنا لتفادي إبطاء المسح؛ الفلترة الأساسية تتم
-        # داخل daily() التي تُعيد DataFrame فارغاً للرموز غير الموجودة.
-        return uniq[:limit] if limit else uniq
+        حد المرشحين 100 وحد زمني 15 دقيقة، مع إبطاء الطلبات واحترام المعدل.
+        قائمة المتابعة اليدوية ليست إثباتاً لوجود الرمز؛ تُفحص كأي مرشح.
+        """
+        from ..config import STRATEGY
+        from .hub import FAKE_SYMBOLS
+        from .sec import SECProvider
+        self.universe_rejections = {}
+        self.candidates_checked = 0
+        self.verified_symbols = []
+        self.discovery_ok = False
+        out = []
+        deadline = time.monotonic() + 900
+        now = pd.Timestamp.now().normalize()
+        sec = SECProvider(cache=self.cache)
+        candidates = self.market_candidates()
+        self.discovery_ok = bool(candidates)
+        for sym in candidates:
+            if time.monotonic() >= deadline:
+                self.universe_rejections[sym] = "انتهت ميزانية وقت اكتشاف الكون"
+                break
+            self.candidates_checked += 1
+            if sym in FAKE_SYMBOLS:
+                self.universe_rejections[sym] = "رمز محظور غير قابل للتحقق"
+                continue
+            time.sleep(0.25)
+            df = self.daily(sym, 320)
+            if df is None or len(df) < 40 or df["close"].dropna().empty:
+                self.universe_rejections[sym] = "لا توجد بيانات حقيقية لهذا الرمز"
+                continue
+            # لا تُقبل أسعار قديمة لرموز مشطوبة أو معاد تسميتها.
+            if (now - pd.Timestamp(df.index[-1]).normalize()).days > 7:
+                self.universe_rejections[sym] = "الأسعار قديمة — الرمز غير متداول حالياً أو المزوّد متأخر"
+                continue
+            self.verified_symbols.append(sym)
+            events = self.splits(sym)
+            # SEC يُستخدم فقط للحدث الذي أمكن التحقق من نسبته (لا تخمين 1:10).
+            if not events:
+                events = sec.splits(sym)
+            valid = [e for e in events if
+                     0 <= (now - e.date.normalize()).days <= STRATEGY.rs_lookback_days
+                     and STRATEGY.rs_min_ratio <= e.factor <= STRATEGY.rs_max_ratio]
+            if valid:
+                out.append(sym)
+            else:
+                self.universe_rejections[sym] = "لا تقسيم عكسي مؤكّد خلال 60 يوماً بنسبة 1:2–1:60"
+            if limit and len(out) >= limit:
+                break
+        return out
 
 
 def _maybe_pct(v) -> float | None:

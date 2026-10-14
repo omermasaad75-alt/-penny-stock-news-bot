@@ -28,10 +28,7 @@ def build(url: str, out: Path, max_symbols: int = 40, badge: str | None = None) 
     health = get(f"{url}/api/health")
     strategy = get(f"{url}/api/strategy")
     results = get(f"{url}/api/scan/results")
-    try:
-        demo = get(f"{url}/api/demo-metadata")
-    except Exception:                                        # noqa: BLE001
-        demo = {"scenarios": []}
+    demo = {"scenarios": []}
 
     rows = results.get("rows") or []
     symbols = [r["symbol"] for r in rows][:max_symbols]
@@ -62,11 +59,6 @@ def build(url: str, out: Path, max_symbols: int = 40, badge: str | None = None) 
                         f"<style>\n{css}\n</style>")
     html = html.replace('<link rel="stylesheet" href="/assets/styles.css">',
                         f"<style>\n{css}\n</style>")
-    # استبدال روابط الأيقونات في النسخة الثابتة (لا حاجة لها في ملف واحد،
-    # لكن نزيل روابطها النسبية حتى لا تظهر طلبات 404)
-    html = html.replace('<link rel="icon', '<!--icon')
-    html = html.replace('<link rel="apple-touch-icon', '<!--icon')
-    html = html.replace('<link rel="manifest', '<!--manifest')
     html = html.replace('<script src="/vendor/lightweight-charts.standalone.production.js"></script>',
                         f"<script>\n{lwc}\n</script>")
     html = html.replace('<script src="/assets/app.js"></script>',
