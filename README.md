@@ -232,6 +232,22 @@ python3 tools/daily_scan.py --site site --limit 40 --mode auto
 
 - **سجل العمليات:** تبويب **Actions** → «المسح اليومي» — وكل عملية تحفظ نتائجها كـ Artifact لمدة 30 يومًا.
 - **مسح فوري:** Actions → «المسح اليومي (Daily Scan)» → *Run workflow* (يمكن تحديد عدد الرموز ووضع البيانات).
+- **مؤشر الحالة داخل المستودع:** [`docs/status/latest.json`](docs/status/latest.json) — يحدّثه كل مسح (الملخّص + أفضل الفرص + حالة المزوّدين + رابط العملية).
+
+### كيف يُنشر الموقع؟ (مرة واحدة فقط)
+
+كل تشغيل للمسح يدفع الموقع المبني كاملًا إلى فرع **`gh-pages`** تلقائيًا (صفحة الهبوط + اللوحة التفاعلية + البيانات + التقارير).
+يبقى على GitHub تفعيل النشر مرة واحدة — لا يسمح GitHub لأي رمز آلي بذلك:
+
+1. افتح: <https://github.com/omermasaad75-alt/-penny-stock-news-bot/settings/pages>
+2. عند **Build and deployment → Source** اختر: **Deploy from a branch**
+3. **Branch** = `gh-pages` و **Folder** = `/(root)` ثم **Save**
+
+بعد دقيقة يصبح الرابط الثابت يعمل: <https://omermasaad75-alt.github.io/-penny-stock-news-bot/>
+(بديل: اختر **Source = GitHub Actions** وسينشر الـ workflow تلقائيًا في المسح القادم.)
+
+**رابط بديل فوري بدون أي إعداد** (مرآة CDN على نفس الفرع — قد يتأخّر تحديثها ساعات):
+<https://cdn.jsdelivr.net/gh/omermasaad75-alt/-penny-stock-news-bot@gh-pages/index.html>
 
 ## 🧷 نسخة ثابتة تعمل بلا مخدم (Offline Snapshot)
 
