@@ -58,8 +58,15 @@ def build(url: str, out: Path, max_symbols: int = 40, badge: str | None = None) 
     html = (WEB / "index.html").read_text(encoding="utf-8")
 
     # نستبدل الروابط الخارجية بالمحتوى المضمّن
+    html = html.replace('<link rel="stylesheet" href="assets/styles.css">',
+                        f"<style>\n{css}\n</style>")
     html = html.replace('<link rel="stylesheet" href="/assets/styles.css">',
                         f"<style>\n{css}\n</style>")
+    # استبدال روابط الأيقونات في النسخة الثابتة (لا حاجة لها في ملف واحد،
+    # لكن نزيل روابطها النسبية حتى لا تظهر طلبات 404)
+    html = html.replace('<link rel="icon', '<!--icon')
+    html = html.replace('<link rel="apple-touch-icon', '<!--icon')
+    html = html.replace('<link rel="manifest', '<!--manifest')
     html = html.replace('<script src="/vendor/lightweight-charts.standalone.production.js"></script>',
                         f"<script>\n{lwc}\n</script>")
     html = html.replace('<script src="/assets/app.js"></script>',
@@ -67,9 +74,17 @@ def build(url: str, out: Path, max_symbols: int = 40, badge: str | None = None) 
                         + json.dumps(snapshot, ensure_ascii=False, separators=(",", ":"))
                         + ";</script>\n<script>\n" + app + "\n</script>")
     html = html.replace("<title>", "<title>[نسخة ثابتة] ", 1)
+    # نحدد شارة الوضع بناءً على البيانات الفعلية
+    mode_eff = (results.get("mode") or (health.get("data") or {}).get("mode_effective") or "demo")
+    synth = sum(1 for r in (results.get("rows") or []) if r.get("synthetic"))
+    if mode_eff == "live" and synth == 0:
+        badge_html = '<span id="modeBadge" class="badge badge-live">نسخة ثابتة — 🟢 بيانات حقيقية</span>'
+    elif mode_eff == "live":
+        badge_html = '<span id="modeBadge" class="badge badge-demo">نسخة ثابتة — 🟠 مختلطة</span>'
+    else:
+        badge_html = '<span id="modeBadge" class="badge badge-demo">نسخة ثابتة — 🔴 بيانات تجريبية</span>'
     html = html.replace('<span id="modeBadge" class="badge badge-demo">وضع البيانات: تجريبي</span>',
-                        '<span id="modeBadge" class="badge badge-demo">'
-                        + (badge or "نسخة ثابتة — بيانات تجريبية") + "</span>")
+                        badge_html)
 
     out.parent.mkdir(parents=True, exist_ok=True)
     io.open(out, "w", encoding="utf-8").write(html)
