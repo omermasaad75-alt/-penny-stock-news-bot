@@ -192,7 +192,64 @@ async function loadResults() {
   warning.style.cssText = 'background:#3a2a08;color:#ffd87a;padding:12px';
   warning.textContent = synthetic || incomplete ? '⚠ توجد بيانات تجريبية أو مصادر ناقصة. راجع مصادر كل صف قبل الاعتماد عليه.' : '';
   warning.hidden = !synthetic && !incomplete;
+  renderCoverage();
   renderKpis(); renderTable(); renderCards(); renderPhases(); renderSources();
+}
+
+/* ------------------------- تغطية المسح وحدودها ------------------------- */
+/* يفصل بوضوح بين: لم يُفحص · بيانات غير متاحة · لا تقسيم حديث مطابق ·
+   تقسيم حديث مرصود لكنه غير مؤهل فنياً · قائمة المتابعة · جاهز فنياً. */
+function renderCoverage() {
+  const src = state.sources || {};
+  const cov = src.scan_coverage || (src.coverage) || {};
+  const disc = src.candidate_discovery || {};
+  const rows = state.rows || [];
+  const collected = cov.candidates_collected ?? disc.candidates_collected ?? 0;
+  const checked = cov.candidates_checked ?? src.candidates_checked ?? 0;
+  const unchecked = cov.candidates_unchecked ?? Math.max(collected - checked, 0);
+  const rowsAfterSplit = rows.filter(r => r.rs_found).length;
+  const rsExcluded = rows.filter(r => r.rs_found && !r.eligible);
+  const watch = rows.filter(r => r.watchlist);
+  const ready = rows.filter(r => r.phase === 6 && r.lifecycle_ready);
+  const excluded = src.rejections || {};
+  let noData = 0, noSplit = 0;
+  Object.values(excluded).forEach(reason => {
+    if (String(reason || '').includes('لا تقسيم')) noSplit += 1; else noData += 1;
+  });
+  const partial = !!(cov.partial || disc.truncated);
+  const totalScreener = disc.total_matching_screener ?? cov.total_matching_screener;
+  let box = document.getElementById('coverageBar');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'coverageBar';
+    (document.getElementById('sourceWarning') || document.querySelector('header')).after(box);
+  }
+  const chip = (label, count, color, note) =>
+    `<span style="display:inline-flex;gap:6px;align-items:center;background:#0e1520;border:1px solid #16202f;` +
+    `border-radius:10px;padding:5px 9px;font-size:12px"><span class="muted">${label}</span>` +
+    `<b class="${color}" style="font-size:15px">${count}</b>${note ? `<span class="muted" style="font-size:10px">${note}</span>` : ''}</span>`;
+  box.style.cssText = 'background:#0b111a;border:1px solid #1e2a3d;border-radius:12px;padding:12px;margin:10px 0;font-size:12.5px;color:#e6edf7';
+  box.innerHTML =
+    `<div style="font-weight:700;margin-bottom:8px">📊 تغطية المسح — ` +
+    `مرشحون مجموعون ${collected} · مفحوصون ${checked} · غير مفحوصين ${unchecked} · ` +
+    `صفوف بعد فلترة التقسيم ${rowsAfterSplit}` +
+    (totalScreener != null ? ` · إجمالي مطابقات screener ${totalScreener}` : '') +
+    `</div>` +
+    (partial
+      ? `<div style="background:#3a2a08;color:#ffd87a;border:1px solid #8a6d1f;border-radius:10px;` +
+        `padding:10px 12px;margin-bottom:8px">⚠ التغطية جزئية؛ لا تعني النتائج غياب حالات أخرى في السوق خلال شهرين.</div>`
+      : '') +
+    `<div style="display:flex;flex-wrap:wrap;gap:7px">` +
+    chip('لم يُفحص', unchecked, 'c-amber', 'ليست مستبعدة') +
+    chip('بيانات غير متاحة', noData, 'c-red') +
+    chip('لا تقسيم حديث مطابق', noSplit, 'muted') +
+    chip('تقسيم حديث مرصود لكنه غير مؤهل فنياً', rsExcluded.length, 'c-amber') +
+    chip('قائمة المتابعة', watch.length, 'c-amber') +
+    chip('جاهز فنياً', ready.length, 'c-green') +
+    `</div>` +
+    `<div class="muted" style="margin-top:8px;font-size:11px">«لم يُفحص» = مرشحون لم تتحقق منهم بعد (مهلة أو سقف) وليست مستبعدة فنياً؛ ` +
+    `«بيانات غير متاحة» = تعذّر تحقق الأسعار أو الملف؛ «لا تقسيم حديث مطابق» = خارج نافذة 60 يوماً أو النسبة المطلوبة؛ ` +
+    `«غير مؤهل فنياً» = حدث حديث مرصود لكنه لم يستوفِ شروط السعر/السيولة/النموذج.</div>`;
 }
 
 function renderKpis() {

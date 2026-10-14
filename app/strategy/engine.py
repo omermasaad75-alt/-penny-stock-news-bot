@@ -1311,7 +1311,12 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     # ---------- التقسيم ---------- #
     events = hub.splits(symbol)
     ev, rs_reasons = pick_reverse_split(events, params, pd.Timestamp(df.index[-1]))
-    a.rejections.extend(rs_reasons)
+    if ev is None:
+        # لا حدث حديث صالح: أسباب تجاهل الأحداث القديمة/غير المطابقة تصبح أسباب رفض.
+        a.rejections.extend(rs_reasons)
+    else:
+        # حدث حديث صالح مختار: تجاهل الأحداث التاريخية ملاحظة فقط — لا يُبطل الأهلية.
+        a.notes.extend(f"حدث تاريخي متجاهَل: {reason}" for reason in rs_reasons)
     size_ok = (params.min_price <= a.last_close <= params.max_price)
     if not size_ok:
         a.rejections.append(f"سعر الإقفال {a.last_close}$ خارج نطاق الاستراتيجية "

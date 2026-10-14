@@ -141,6 +141,68 @@ def summarize(results: list) -> dict:
     }
 
 
+# أسماء الحالات الست للتمييز الصريح بينها (لا تُخلط في العرض)
+COVERAGE_CATEGORY_LABELS = {
+    "unchecked": "لم يُفحص",
+    "no_data": "بيانات غير متاحة",
+    "no_recent_split": "لا تقسيم حديث مطابق",
+    "rs_technically_excluded": "تقسيم حديث مرصود لكنه غير مؤهل فنياً",
+    "watchlist": "قائمة المتابعة",
+    "ready": "جاهز فنياً",
+}
+
+
+def build_coverage(sources: dict, results: list) -> dict:
+    """تفصيل صريح لحدود تغطية المسح — يفصل الحالات الست بلا خلط.
+
+    «لم يُفحص» ليست مستبعدة فنياً؛ و«التغطية الجزئية» لا تعني غياب حالات أخرى.
+    """
+    scan_cov = sources.get("scan_coverage") or {}
+    disc = sources.get("candidate_discovery") or {}
+    excluded = sources.get("rejections") or {}
+
+    no_data: list[str] = []
+    no_split: list[str] = []
+    for sym, reason in excluded.items():
+        if "لا تقسيم" in str(reason or ""):
+            no_split.append(sym)
+        else:
+            no_data.append(sym)   # بيانات غير متاحة / أسعار قديمة / غير قابل للتحقق
+
+    rs_rows = [a for a in results if a.rs_found]
+    rs_excluded = [a.symbol for a in rs_rows if not a.eligible]
+    watch = [a.symbol for a in results if a.watchlist]
+    ready = [a.symbol for a in results if a.phase == 6 and a.lifecycle_ready]
+
+    checked = int(scan_cov.get("candidates_checked")
+                  or sources.get("candidates_checked") or 0)
+    collected = int(scan_cov.get("candidates_collected")
+                    or disc.get("candidates_collected") or 0) or checked
+    unchecked = int(scan_cov.get("candidates_unchecked") or max(collected - checked, 0))
+    partial = bool(scan_cov.get("partial") or disc.get("truncated"))
+    return {
+        "candidates_collected": collected,
+        "candidates_checked": checked,
+        "candidates_unchecked": unchecked,
+        "rows_after_split_filter": len(rs_rows),
+        "partial": partial,
+        "stop_reason": str(scan_cov.get("stop_reason") or ""),
+        "total_matching_screener": disc.get("total_matching_screener"),
+        "price_ceiling": disc.get("price_ceiling"),
+        "pages_fetched": disc.get("pages_fetched", 0),
+        "discovery_truncated": bool(disc.get("truncated")),
+        "categories": {
+            "unchecked": {"count": unchecked,
+                          "symbols": list(scan_cov.get("unchecked_symbols") or [])[:20]},
+            "no_data": {"count": len(no_data), "symbols": no_data[:20]},
+            "no_recent_split": {"count": len(no_split), "symbols": no_split[:20]},
+            "rs_technically_excluded": {"count": len(rs_excluded), "symbols": rs_excluded[:20]},
+            "watchlist": {"count": len(watch), "symbols": watch[:20]},
+            "ready": {"count": len(ready), "symbols": ready[:20]},
+        },
+    }
+
+
 # --------------------------------------------------------------------------- #
 #  1) المسح
 # --------------------------------------------------------------------------- #
@@ -165,8 +227,14 @@ def run_scan(mode: str | None, limit: int, symbols: list[str] | None = None):
     sources = hub.sources_report()
     sources["candidates_checked"] = getattr(hub.yahoo, "candidates_checked", len(syms))
     sources["verified_symbols"] = getattr(hub.yahoo, "verified_symbols", [a.symbol for a in results])
+    sources["coverage"] = build_coverage(sources, results)
     print(f"✔ انتهى المسح في {time.time() - t0:,.1f} ثانية — الوضع الفعّال: {sources['mode_effective']}",
           flush=True)
+    cov = sources["coverage"]
+    print(f"▶ التغطية: مرشحون {cov['candidates_collected']} · مفحوصون {cov['candidates_checked']} · "
+          f"غير مفحوصين {cov['candidates_unchecked']} · صفوف بعد فلترة التقسيم "
+          f"{cov['rows_after_split_filter']}"
+          + (" · التغطية جزئية ⚠" if cov["partial"] else ""), flush=True)
     return results, sources
 
 
@@ -189,6 +257,7 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
         "excluded": sources.get("rejections", {}),
         "mode_setting": sources.get("mode_setting", mode),
         "summary": summary,
+        "coverage": sources.get("coverage", {}),
         "sources": sources,
         "rows": rows,
     }
@@ -488,7 +557,12 @@ $warning_banner
   <div class="kpi"><span>قائمة المتابعة</span><b class="c-amber">$watchlist</b></div>
   <div class="kpi"><span>جاهز فنياً (6/6)</span><b class="c-green">$ready</b></div>
   <div class="kpi"><span>متوسط تقييم المتابعة</span><b>$avg</b></div>
+  <div class="kpi"><span>مرشحون مجموعون</span><b>$cand_collected</b></div>
+  <div class="kpi"><span>مرشحون مفحوصون</span><b>$cand_checked</b></div>
+  <div class="kpi"><span>صفوف بعد فلترة التقسيم</span><b class="c-green">$rows_after_split</b></div>
 </section>
+
+$coverage_html
 
 <div class="card">
   <h2><span>الرموز المرصودة — راجع الأهلية</span><span class="muted">$rowcount رمز — مرتّبة بالمرحلة ثم التقييم</span></h2>
@@ -666,6 +740,57 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
             '🔴 <b>هذه النشرة تحتوي بيانات تجريبية بالكامل.</b> '
             'هذه البيانات غير مسموح بها في مسار النشر الإنتاجي.</div>'
         )
+    # ---- تغطية المسح: التمييز الصريح بين الحالات الست + تحذير الجزئية ---- #
+    cov = payload.get("coverage") or (payload.get("sources") or {}).get("coverage") or {}
+    cats = cov.get("categories") or {}
+
+    def _cat_html(key: str, color: str, note: str = "") -> str:
+        c = cats.get(key) or {}
+        syms = "، ".join(str(s) for s in (c.get("symbols") or []))
+        sym_html = (f'<div class="muted" style="font-size:10.5px;overflow-wrap:anywhere">{html.escape(syms)}</div>'
+                    if syms else "")
+        note_html = (f'<div class="muted" style="font-size:10px">{html.escape(note)}</div>' if note else "")
+        return (
+            '<div style="background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:8px 10px">'
+            f'<span style="display:block;color:var(--muted);font-size:11px">{html.escape(COVERAGE_CATEGORY_LABELS[key])}</span>'
+            f'<b class="{color}" style="font-size:18px">{int(c.get("count") or 0)}</b>'
+            f"{note_html}{sym_html}</div>"
+        )
+
+    coverage_warning = ""
+    if cov.get("partial"):
+        coverage_warning = (
+            '<div class="warn" style="background:#3a2a08;border:1px solid #8a6d1f;'
+            'border-radius:12px;padding:12px 14px;margin:14px 0;color:#ffd87a;font-size:13px;">'
+            '⚠ <b>تحذير:</b> التغطية جزئية؛ لا تعني النتائج غياب حالات أخرى في السوق خلال شهرين.</div>'
+        )
+    disc_bits = []
+    if cov.get("total_matching_screener") is not None:
+        disc_bits.append(f"إجمالي مطابقات screener: {cov['total_matching_screener']}")
+    if cov.get("pages_fetched") is not None:
+        disc_bits.append(f"صفحات مجلوبة: {cov.get('pages_fetched', 0)}")
+    if cov.get("price_ceiling") is not None:
+        disc_bits.append(f"سقف سعر الاكتشاف: {cov['price_ceiling']}$")
+    disc_bits.append(f"سقف المرشحين: {cov.get('candidates_collected', 0)}"
+                     + (" (مقتطع)" if cov.get("discovery_truncated") else ""))
+    coverage_html = coverage_warning + (
+        '<div class="card"><h2><span>حدود التغطية — اقرأ قبل الاعتماد على النتائج</span>'
+        f'<span class="muted">{html.escape(" · ".join(disc_bits))}</span></h2>'
+        '<div class="note" style="margin-bottom:10px">«لم يُفحص» = مرشحون لم تتحقق منهم بعد (مهلة أو سقف) '
+        'وليست مستبعدة فنياً · «بيانات غير متاحة» = تعذّر تحقق الأسعار أو الملف التعريفي · '
+        '«لا تقسيم حديث مطابق» = لا حدث خلال 60 يوماً بنسبة 1:2–1:60 · '
+        '«غير مؤهل فنياً» = تقسيم حديث مرصود لكنه لم يستوفِ شروط السعر/السيولة/النموذج · '
+        '«قائمة المتابعة» = مؤهل ومراقب · «جاهز فنياً» = اكتمل تسلسل دورة الحياة 6/6.</div>'
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">'
+        + _cat_html("unchecked", "c-amber", "ليست مستبعدة")
+        + _cat_html("no_data", "c-red")
+        + _cat_html("no_recent_split", "muted")
+        + _cat_html("rs_technically_excluded", "c-amber")
+        + _cat_html("watchlist", "c-amber")
+        + _cat_html("ready", "c-green")
+        + "</div></div>"
+    )
+
     ctx = {
         "css": LANDING_CSS,
         "updated": html.escape(payload["generated_at_riyadh"]),
@@ -676,6 +801,10 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
         "scanned": summary["scanned"], "with_rs": summary["with_reverse_split"],
         "eligible": summary["eligible"], "watchlist": summary["watchlist"],
         "ready": summary["ready"], "avg": summary["avg_score_watchlist"],
+        "cand_collected": cov.get("candidates_collected", "—"),
+        "cand_checked": cov.get("candidates_checked", "—"),
+        "rows_after_split": cov.get("rows_after_split_filter", "—"),
+        "coverage_html": coverage_html,
         "rowcount": min(len(payload.get("rows") or []), 60),
         "rows_html": _rows_html([_RowProxy(r) for r in (payload.get("rows") or [])], report_names,
                                 payload["stamp"]),

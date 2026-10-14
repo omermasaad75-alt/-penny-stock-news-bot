@@ -71,6 +71,9 @@ class Settings:
     http_timeout: int = _env("RSS_HTTP_TIMEOUT", 20, int)
     cache_ttl_minutes: int = _env("RSS_CACHE_TTL", 30, int)
 
+    # سقف مرشحي الكون المجلوبين من Yahoo screener (تعدد صفحات حتى هذا العدد)
+    universe_max_candidates: int = _env("RSS_UNIVERSE_MAX_CANDIDATES", 1000, int)
+
     # قائمة الأسهم المراقبة يدوياً (تُستخدم إذا تعذّر بناء الكون تلقائياً)
     watchlist_file: Path = CONFIG_DIR / "watchlist.csv"
     universe_file: Path = CONFIG_DIR / "universe.csv"

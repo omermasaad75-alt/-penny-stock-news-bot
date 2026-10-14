@@ -346,39 +346,94 @@ class YahooProvider(BaseProvider):
         return out
 
     # ---------------- الكون ---------------- #
-    def market_candidates(self, cap: int = 100) -> list[str]:
-        """مرشحون ديناميكيون من screener أمريكي، لا قوائم مولّدة أو بذرة ديمو."""
-        from ..config import settings
-        candidates = []
+    def market_candidates(self, cap: int | None = None) -> list[str]:
+        """مرشحون ديناميكيون من Yahoo screener متعدد الصفحات + القوائم اليدوية.
+
+        النطاق: أسهم أمريكية بسعر أعلى من صفر وحتى سقف سعر الاستراتيجية
+        (STRATEGY.max_price) — وليس جرداً شاملاً لكل تقسيمات السوق.
+        القوائم اليدوية (watchlist/universe) تُضاف كمرشحين يحتاجون التحقق،
+        وليست إثباتاً لصلاحية الرمز.
+        """
+        from ..config import STRATEGY, settings
+
+        if cap is None:
+            cap = int(settings.universe_max_candidates)
+        cap = max(1, int(cap))
+
+        manual: list[str] = []
         for path in (settings.watchlist_file, settings.universe_file):
             if path.exists():
                 for line in path.read_text(encoding="utf-8").splitlines():
                     if line.strip() and not line.lstrip().startswith("#"):
                         sym = line.split(",")[0].strip().upper()
-                        if sym != "SYMBOL":
-                            candidates.append(sym)
+                        if sym and sym != "SYMBOL":
+                            manual.append(sym)
+
+        discovery: dict = {
+            "scope": (
+                "أسهم أمريكية (region=us) بسعر intraday > 0 وحتى "
+                f"{STRATEGY.max_price:g}$ عبر Yahoo Equity Screener، مرتبة بالنشاط — "
+                "نطاق مقصود لأسهم البيني، وليس جرداً شاملاً لكل تقسيمات السوق"
+            ),
+            "price_ceiling": STRATEGY.max_price,
+            "total_matching_screener": None,
+            "candidate_cap": cap,
+            "pages_fetched": 0,
+            "truncated": True,
+            "candidates_collected": 0,
+        }
+
+        screener: list[str] = []
+        reached_end = False
         if yf is not None:
             query = yf.EquityQuery("and", [
                 yf.EquityQuery("eq", ["region", "us"]),
                 yf.EquityQuery("gt", ["intradayprice", 0]),
-                yf.EquityQuery("lt", ["intradayprice", 5]),
-                yf.EquityQuery("gt", ["dayvolume", 10000]),
+                yf.EquityQuery("lte", ["intradayprice", STRATEGY.max_price]),
             ])
-            data = self._timed(lambda: yf.screen(query, size=cap,
-                               sortField="dayvolume", sortAsc=False)) or {}
-            candidates.extend(q["symbol"].upper() for q in data.get("quotes", [])
-                              if q.get("symbol"))
-            if not candidates:
-                data = self._timed(lambda: yf.screen("most_actives", count=cap)) or {}
-                candidates.extend(q["symbol"].upper() for q in data.get("quotes", [])
-                                  if q.get("symbol") and 0 < q.get("regularMarketPrice", 0) < 5)
-        return list(dict.fromkeys(candidates))[:cap]
+            page_size = 100          # حد عملي لكل صفحة (حد Yahoo 250)
+            offset = 0
+            while len(screener) < cap:
+                size = min(page_size, cap - len(screener))
+                data = self._timed(lambda: yf.screen(
+                    query, offset=offset, size=size,
+                    sortField="dayvolume", sortAsc=False)) or {}
+                if not isinstance(data, dict) or not data:
+                    break            # فشل الطلب — لا ندّعي اكتمال التغطية
+                quotes = data.get("quotes") or []
+                total = data.get("count", data.get("total"))
+                if discovery["total_matching_screener"] is None and isinstance(total, (int, float)):
+                    discovery["total_matching_screener"] = int(total)
+                for q in quotes:
+                    sym = str(q.get("symbol") or "").upper()
+                    if sym:
+                        screener.append(sym)
+                discovery["pages_fetched"] += 1
+                if len(quotes) < size:
+                    reached_end = True   # نهاية النتائج الفعلية
+                    break
+                offset += len(quotes)
+                total_known = discovery["total_matching_screener"]
+                if isinstance(total_known, int) and len(screener) >= total_known:
+                    reached_end = True   # جُمعت كل النتائج المطابقة فعلياً
+                    break
+                if len(screener) >= cap:
+                    break                # بلوغ السقف — لا يعني نهاية النتائج
+                time.sleep(0.6)          # مهلة قصيرة بين الطلبات (احترام المعدل)
+
+        combined = list(dict.fromkeys(manual + screener))[:cap]
+        discovery["truncated"] = not reached_end
+        discovery["candidates_collected"] = len(combined)
+        self.candidate_discovery = discovery
+        return combined
 
     def universe(self, limit: int = 100) -> list[str]:
         """تحقق أسعار ثم تقسيم عكسي 60 يوماً بنسبة 1:2–1:60 قبل التحليل المكلف.
 
-        حد المرشحين 100 وحد زمني 15 دقيقة، مع إبطاء الطلبات واحترام المعدل.
+        ميزانية الاكتشاف 15 دقيقة، مع إبطاء الطلبات واحترام المعدل.
         قائمة المتابعة اليدوية ليست إثباتاً لوجود الرمز؛ تُفحص كأي مرشح.
+        الرموز التي لم تُفحص (انتهاء المهلة أو بلوغ limit) تُسجَّل «لم يُفحص»
+        في scan_coverage وليست مستبعدة فنياً.
         """
         from ..config import STRATEGY
         from .hub import FAKE_SYMBOLS
@@ -388,14 +443,17 @@ class YahooProvider(BaseProvider):
         self.verified_symbols = []
         self.discovery_ok = False
         out = []
-        deadline = time.monotonic() + 900
+        deadline = time.monotonic() + 900      # ميزانية الاكتشاف 15 دقيقة
         now = pd.Timestamp.now().normalize()
         sec = SECProvider(cache=self.cache)
         candidates = self.market_candidates()
         self.discovery_ok = bool(candidates)
-        for sym in candidates:
+        unchecked: list[str] = []
+        stop_reason = "all_candidates_checked" if candidates else "no_candidates_discovered"
+        for i, sym in enumerate(candidates):
             if time.monotonic() >= deadline:
-                self.universe_rejections[sym] = "انتهت ميزانية وقت اكتشاف الكون"
+                unchecked = list(candidates[i:])
+                stop_reason = "discovery_time_budget_exhausted"
                 break
             self.candidates_checked += 1
             if sym in FAKE_SYMBOLS:
@@ -423,7 +481,18 @@ class YahooProvider(BaseProvider):
             else:
                 self.universe_rejections[sym] = "لا تقسيم عكسي مؤكّد خلال 60 يوماً بنسبة 1:2–1:60"
             if limit and len(out) >= limit:
+                unchecked = list(candidates[i + 1:])
+                stop_reason = "result_limit_reached"
                 break
+        disc = getattr(self, "candidate_discovery", {}) or {}
+        self.scan_coverage = {
+            "candidates_collected": len(candidates),
+            "candidates_checked": self.candidates_checked,
+            "candidates_unchecked": len(unchecked),
+            "unchecked_symbols": unchecked[:100],
+            "partial": bool(unchecked) or bool(disc.get("truncated")),
+            "stop_reason": stop_reason,
+        }
         return out
 
 
