@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>منصة رصد التقسيم العكسي والانعكاس | RS Reversal Terminal</title>
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">RS</div>
+    <div>
+      <h1>منصة رصد التقسيم العكسي والانعكاس</h1>
+      <span class="sub">Reverse-Split Oversold Reversal Terminal · Daily &amp; 4H</span>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span id="modeBadge" class="badge badge-demo">وضع البيانات: تجريبي</span>
+    <span id="clock" class="clock">—</span>
+    <button id="btnScan" class="btn btn-primary">⟳ مسح السوق الآن</button>
+    <button id="btnReport" class="btn">⤓ توليد التقارير</button>
+    <button id="btnHelp" class="btn btn-ghost">؟ دليل الاستراتيجية</button>
+  </div>
+</header>
+
+<div id="progressWrap" class="progress-wrap hidden">
+  <div class="progress-info">
+    <span id="progressText">جارٍ مسح السوق…</span>
+    <span id="progressPct">0%</span>
+  </div>
+  <div class="progress-bar"><div id="progressFill"></div></div>
+</div>
+
+<section class="kpis">
+  <div class="kpi"><span class="kpi-label">رموز مفحوصة</span><b id="kpiScanned">—</b></div>
+  <div class="kpi"><span class="kpi-label">تقسيم عكسي داخل النافذة</span><b id="kpiRs" class="c-blue">—</b></div>
+  <div class="kpi"><span class="kpi-label">قائمة المتابعة (ثبات 3+)</span><b id="kpiWatch" class="c-green">—</b></div>
+  <div class="kpi"><span class="kpi-label">جاهز فنياً (انعكاس مؤكد)</span><b id="kpiReady" class="c-green">—</b></div>
+  <div class="kpi"><span class="kpi-label">متوسط تقييم الفرص</span><b id="kpiAvg" class="c-amber">—</b></div>
+  <div class="kpi"><span class="kpi-label">آخر تحديث</span><b id="kpiTime" class="small">—</b></div>
+</section>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="scanner">📡 الرصد والفرص</button>
+  <button class="tab" data-tab="analysis">🔬 لوحة التحليل الفني</button>
+  <button class="tab" data-tab="phases">🧭 مراحل الاستراتيجية</button>
+  <button class="tab" data-tab="data">🗄️ مصادر البيانات والعناوين</button>
+</nav>
+
+<!-- ====================== الرصد ====================== -->
+<main id="tab-scanner" class="tab-panel active">
+  <div class="toolbar">
+    <div class="filters">
+      <button class="chip active" data-filter="all">الكل</button>
+      <button class="chip" data-filter="watch">قائمة المتابعة</button>
+      <button class="chip" data-filter="eligible">فرص مؤهلة</button>
+      <button class="chip" data-filter="ready">جاهز فنياً</button>
+      <button class="chip" data-filter="rs">لها تقسيم عكسي</button>
+      <button class="chip" data-filter="rejected">مستبعدة</button>
+    </div>
+    <input id="searchBox" class="search" type="search" placeholder="ابحث برمز السهم أو الاسم…">
+  </div>
+
+  <div class="table-wrap">
+    <table class="grid" id="scanTable">
+      <thead>
+        <tr>
+          <th>#</th><th>الرمز</th><th>المرحلة</th><th>التقييم</th><th>السعر</th>
+          <th>التقسيم العكسي</th><th>صعود التقسيم</th><th>الهبوط</th><th>جلسات الثبات</th>
+          <th>RSI</th><th>الفلوت</th><th>بيع مكشوف</th><th>RVOL</th>
+          <th>نقطة الاختراق</th><th>مخاطرة/عائد</th><th>أبرز نموذج</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="scanBody">
+        <tr><td colspan="17" class="empty">اضغط «مسح السوق الآن» لبدء الرصد…</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="scanFooter" class="table-footer"></div>
+</main>
+
+<!-- ====================== التحليل ====================== -->
+<main id="tab-analysis" class="tab-panel">
+  <div id="analysisEmpty" class="empty-state">
+    <h3>اختر سهماً من جدول الرصد</h3>
+    <p>ستظهر هنا لوحة التحليل الفني الكاملة: المخطط (يومي / 4 ساعات)، المؤشرات، النماذج الفنية،
+       البيانات الأساسية، الأخبار والمحفزات، ومستويات الدخول والوقف والأهداف.</p>
+  </div>
+
+  <div id="analysisBody" class="hidden">
+    <div class="an-head">
+      <div class="an-title">
+        <h2 id="anSymbol">—</h2>
+        <div>
+          <span id="anName" class="muted">—</span>
+          <span id="anExchange" class="tag">—</span>
+          <span id="anSector" class="tag">—</span>
+        </div>
+      </div>
+      <div class="an-price">
+        <b id="anPrice">—</b>
+        <span id="anChange" class="chg">—</span>
+      </div>
+      <div class="an-phase">
+        <span id="anPhaseBadge" class="badge">—</span>
+        <div id="anPhaseDesc" class="muted small">—</div>
+      </div>
+      <div class="gauge-wrap">
+        <div class="gauge" id="anGauge"><span id="anScore">0</span></div>
+        <div class="gauge-label">التقييم / 100<br><b id="anGrade">—</b></div>
+      </div>
+      <div class="an-actions">
+        <button class="btn" id="btnReportHtml">تقرير HTML</button>
+        <button class="btn" id="btnReportMd">Markdown</button>
+        <button class="btn btn-ghost" id="btnJson">JSON</button>
+      </div>
+    </div>
+
+    <div id="anAlerts" class="alerts"></div>
+
+    <div class="an-grid">
+      <!-- المخططات -->
+      <div class="card chart-card">
+        <div class="card-head">
+          <h3>المخطط الفني</h3>
+          <div class="tf-switch">
+            <button class="tf active" data-tf="1D">يومي 1D</button>
+            <button class="tf" data-tf="4H">4 ساعات</button>
+          </div>
+          <div class="osc-switch">
+            <button class="osc active" data-osc="rsi">RSI</button>
+            <button class="osc" data-osc="macd">MACD</button>
+            <button class="osc" data-osc="stoch">Stochastic</button>
+            <button class="osc" data-osc="mfi">MFI</button>
+            <button class="osc" data-osc="rvol">Volume RVOL</button>
+          </div>
+        </div>
+        <div id="priceChart" class="chart"></div>
+        <div id="oscChart" class="chart chart-osc"></div>
+        <div class="chart-legend" id="chartLegend"></div>
+      </div>
+
+      <!-- العمود الجانبي -->
+      <aside class="side">
+        <div class="card">
+          <h3>خطة التداول والمستويات</h3>
+          <div class="levels" id="anLevels"></div>
+        </div>
+        <div class="card">
+          <h3>البيانات الأساسية</h3>
+          <div class="kv" id="anFundamentals"></div>
+        </div>
+        <div class="card">
+          <h3>مؤشرات فنية لحظية</h3>
+          <div class="kv" id="anMetrics"></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="an-grid-2">
+      <div class="card">
+        <h3>مطابقة شروط الاستراتيجية</h3>
+        <div class="checklist" id="anChecklist"></div>
+      </div>
+      <div class="card">
+        <h3>تفصيل التقييم</h3>
+        <div class="breakdown" id="anBreakdown"></div>
+      </div>
+    </div>
+
+    <div class="an-grid-2">
+      <div class="card">
+        <h3>التحليل السردي</h3>
+        <ul class="narrative" id="anWhy"></ul>
+        <div class="action-box" id="anAction"></div>
+        <h4>تأكيدات الانعكاس</h4>
+        <div class="chips" id="anConfirmations"></div>
+      </div>
+      <div class="card">
+        <h3>النماذج الفنية المرصودة</h3>
+        <div id="anPatterns" class="patterns"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>الأخبار والمحفزات (إيجابي / سلبي / مستقبلي)</h3>
+      <div id="anNews" class="news"></div>
+    </div>
+  </div>
+</main>
+
+<!-- ====================== المراحل ====================== -->
+<main id="tab-phases" class="tab-panel">
+  <div class="card">
+    <h3>تسلسل الاستراتيجية — كيف ينتقل السهم بين المراحل</h3>
+    <p class="muted">
+      الاستراتيجية تبحث عن سهم أُجري له <b>تقسيم عكسي</b> (1:2 حتى 1:60) خلال آخر شهرين،
+      صعد صعوداً محدوداً يوم التقسيم، ثم دخل <b>موجة هبوط قوية</b> (≥30%، والمثالي 40-50%+)
+      حتى وصل إلى <b>تشبع بيعي</b> (RSI &lt; 30)، ثم كوّن <b>قاعاً وثبت عليه</b> 3-5 جلسات مع جفاف حجم،
+      وبعدها يبدأ فنياً بالتحسّن حتى يتحول إلى <b>جاهز فنياً</b>.
+    </p>
+  </div>
+  <div id="phasesList" class="phases"></div>
+  <div class="card">
+    <h3>معادلة التقييم (0-100)</h3>
+    <div id="weightsList" class="weights"></div>
+    <p class="muted small">
+      التقييم مرجّح: كل مكوّن يُنقّط من 0 إلى 100 ثم يُضرب في وزنه، والمجموع يُقسم على مجموع الأوزان.
+      الرموز بلا حدث تقسيم عكسي تُخفض نقاطها بنسبة 45%، وكسر القاع المرجعي يخفض النتيجة 20%.
+    </p>
+  </div>
+</main>
+
+<!-- ====================== البيانات ====================== -->
+<main id="tab-data" class="tab-panel">
+  <div class="an-grid-2">
+    <div class="card">
+      <h3>حالة مزوّدي البيانات</h3>
+      <div id="sourcesTable" class="kv"></div>
+    </div>
+    <div class="card">
+      <h3>مصادر البيانات المجانية المستخدمة</h3>
+      <ul class="narrative">
+        <li><b>Yahoo Finance</b> (yfinance) — أسعار يومية، فريم 4 ساعات، التقسيمات، الفلوت، البيع المكشوف، الأخبار.</li>
+        <li><b>SEC EDGAR</b> — الإفصاحات الرسمية: 424B5 / S-1 / S-3 (طرح أسهم)، 8-K، 25-NSE، ومعالجة التقسيمات العكسية.</li>
+        <li><b>FINRA Reg SHO</b> — نسبة حجم البيع المكشوف اليومي لكل رمز (ملفات cdn.finra.org المجانية).</li>
+        <li><b>FINRA Bi-weekly</b> — مراكز البيع المكشوف نصف الشهرية (عند توفّر النسخة العامة).</li>
+        <li><b>RSS</b> (Yahoo / Google News / Nasdaq) — الأخبار والمحفزات المستقبلية مع تصنيف اتجاهي.</li>
+      </ul>
+      <p class="muted small">
+        لتشغيل البيانات الحقيقية: عدّل <code>RSS_DATA_MODE=live</code> في ملف <code>.env</code>
+        (أو <code>auto</code> للتحول التلقائي إلى التجريبي عند تعذّر الاتصال)، ثم أعد تشغيل المخدم.
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <h3>السيناريوهات التجريبية المدمجة (نموذج تحليلي مرجعي)</h3>
+    <p class="muted small">هذه البيانات مولّدة داخلياً لمحاكاة دورة الاستراتيجية بدقة، وتشمل السيناريو
+      المرجعي JZ (افتتاح 3.00$ → قمة 3.40$ → هبوط 53% → قاع 1.60$ → ثبات 6 جلسات).</p>
+    <div class="table-wrap">
+      <table class="grid small-table">
+        <thead><tr><th>الرمز</th><th>الشركة</th><th>التقسيم</th><th>صعود</th><th>هبوط</th>
+          <th>الفلوت</th><th>بيع مكشوف</th><th>الوصف</th></tr></thead>
+        <tbody id="demoBody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<!-- ====================== نافذة المساعدة ====================== -->
+<div id="helpModal" class="modal hidden">
+  <div class="modal-box">
+    <button class="modal-close" id="helpClose">✕</button>
+    <h2>دليل الاستراتيجية التنفيذي</h2>
+    <div id="helpContent"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="/vendor/lightweight-charts.standalone.production.js"></script>
+<script src="/assets/app.js"></script>
+</body>
+</html>
