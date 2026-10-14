@@ -155,6 +155,8 @@ class SECProvider(BaseProvider):
             if "3.03" not in items and "reverse" not in desc and "5.03" not in items:
                 continue
             ratio, factor = _parse_ratio(f"{desc} {items}")
+            if factor <= 1:
+                continue  # لا نفترض نسبة من عنوان/بنود إفصاح لا يذكرها
             events.append(ReverseSplitEvent(
                 symbol=symbol.upper(), date=pd.Timestamp(f["date"]), ratio_str=ratio,
                 factor=factor, source=self.name, url=f["url"],

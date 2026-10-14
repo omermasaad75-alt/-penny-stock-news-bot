@@ -81,7 +81,10 @@ class ScanManager:
                 except Exception as exc:  # noqa: BLE001
                     a = eng.Analysis(symbol=sym)
                     a.rejections.append(f"خطأ في التحليل: {exc}")
-                out.append(a)
+                if hub.mode == "live" and (not a.price_source or not a.fundamentals_source or a.last_close <= 0):
+                    hub._reject(sym, "لا توجد بيانات حقيقية لهذا الرمز")
+                else:
+                    out.append(a)
                 with self.lock:
                     self.state.update(progress=i + 1, current=sym)
             out.sort(key=lambda x: (-x.phase, -x.score))
@@ -319,6 +322,8 @@ def report_save(symbols: str | None = None) -> dict[str, Any]:
 
 @app.get("/api/demo-metadata")
 def demo_metadata() -> dict[str, Any]:
+    if get_hub().mode != "demo":
+        return {"scenarios": []}
     from .providers.demo import demo_metadata as dm
     return {"scenarios": dm()}
 

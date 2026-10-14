@@ -2,15 +2,15 @@
 """مسح يومي تلقائي + بناء موقع لوحة جاهز للنشر (GitHub Pages) في خطوة واحدة.
 
 ما الذي يفعله؟
-  1) يمسح الكون (وضع auto: بيانات حقيقية أولاً، ثم تراجع تلقائي للتجريبي عند فشل الاتصال).
+  1) يمسح كوناً ديناميكياً ببيانات حقيقية فقط؛ الفشل لا يُستبدل بالديمو.
   2) يحفظ النتائج:  site/data/latest.json · site/data/latest.csv · site/history/<وقت>.json
   3) يولّد تقارير تحليلية (Markdown + HTML + JSON) لأهم الرموز في site/reports/.
   4) يبني اللوحة التفاعلية الثابتة site/dashboard.html (ملف واحد يعمل بلا مخدم وبلا إنترنت).
   5) يبني صفحة هبوط عربية site/index.html فيها آخر تحديث والملخّص وأفضل الفرص وروابط التقارير.
 
 الاستخدام:
-    python3 tools/daily_scan.py --site site --limit 40 --mode auto
-    python3 tools/daily_scan.py --site /tmp/site --limit 8 --mode demo --no-dashboard   # سريع للاختبار
+    python3 tools/daily_scan.py --site site --limit 40 --mode live
+    python3 tools/daily_scan.py --site /tmp/site --limit 8 --mode demo --test-only --no-dashboard   # سريع للاختبار
 """
 from __future__ import annotations
 
@@ -156,10 +156,15 @@ def run_scan(mode: str | None, limit: int, symbols: list[str] | None = None):
         except Exception as exc:                                   # noqa: BLE001
             a = eng.Analysis(symbol=sym)
             a.rejections.append(f"خطأ: {exc}")
+        if hub.mode == "live" and (not a.price_source or not a.fundamentals_source or a.last_close <= 0):
+            hub._reject(sym, "لا توجد بيانات حقيقية لهذا الرمز — " + "؛ ".join(a.rejections))
+            continue
         results.append(a)
         print(f"  [{i}/{len(syms)}] {sym:<8} مرحلة={a.phase} تقييم={a.score}", flush=True)
     results.sort(key=lambda x: (-x.phase, -x.score))
     sources = hub.sources_report()
+    sources["candidates_checked"] = getattr(hub.yahoo, "candidates_checked", len(syms))
+    sources["verified_symbols"] = getattr(hub.yahoo, "verified_symbols", [a.symbol for a in results])
     print(f"✔ انتهى المسح في {time.time() - t0:,.1f} ثانية — الوضع الفعّال: {sources['mode_effective']}",
           flush=True)
     return results, sources
@@ -179,6 +184,9 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
         "generated_at_riyadh": fmt_riyadh(started),
         "stamp": stamp,
         "mode": sources.get("mode_effective", mode),
+        "mode_effective": sources.get("mode_effective", mode),
+        "synthetic_count": sum(a.synthetic for a in results),
+        "excluded": sources.get("rejections", {}),
         "mode_setting": sources.get("mode_setting", mode),
         "summary": summary,
         "sources": sources,
@@ -448,7 +456,7 @@ LANDING = Template("""<!DOCTYPE html>
 <div class="wrap">
 <header class="top">
   <div class="brand">
-    <div class="logo">RS</div>
+    <img class="logo" src="icons/icon-192.png" alt="أيقونة رصد الانعكاس">
     <div>
       <h1>منصة رصد التقسيم العكسي والانعكاس</h1>
       <div class="sub">Reverse-Split Oversold Reversal · فريم اليومي و4 ساعات</div>
@@ -520,6 +528,12 @@ $cards_html
 """)
 
 
+def source_text(a) -> str:
+    return " · ".join(f"{label}: {getattr(a, key, '') or 'غير متاح'}" for key, label in
+                     (("price_source", "الأسعار"), ("split_source", "التقسيم"),
+                      ("fundamentals_source", "الأساسيات"), ("news_source", "الأخبار")))
+
+
 def _rows_html(results: list, report_names: dict, stamp: str) -> str:
     out = []
     for a in results[:60]:
@@ -533,7 +547,7 @@ def _rows_html(results: list, report_names: dict, stamp: str) -> str:
         # شارة جودة البيانات للصف
         if getattr(a, 'synthetic', False):
             rb = '<span class="row-badge bad">🔴 تجريبي</span>'
-        elif getattr(a, 'price_source', '') and not getattr(a, 'split_source', ''):
+        elif not all(getattr(a, k, "") for k in ("price_source", "split_source", "fundamentals_source", "news_source")):
             rb = '<span class="row-badge warn">🟠 ناقص</span>'
         elif getattr(a, 'price_source', ''):
             rb = '<span class="row-badge ok">🟢 حقيقي</span>'
@@ -553,7 +567,7 @@ def _rows_html(results: list, report_names: dict, stamp: str) -> str:
             f"<td>{_f(a.resistance_level, 3)} <span class=\"muted\">{_pct(a.resistance_distance_pct)}</span></td>"
             f"<td>{_f(a.sweep_low, 3)}</td>"
             f"<td>{_f(a.support_level, 3)}</td>"
-            f"<td>{rep_cell}</td>"
+            f"<td>{rep_cell}<div class=\"muted\">{html.escape(source_text(a))}</div></td>"
             "</tr>")
     if not out:
         out.append('<tr><td colspan="11" class="muted">لا توجد نتائج — أعد تشغيل المسح.</td></tr>')
@@ -586,6 +600,7 @@ def _cards_html(results: list, report_names: dict, stamp: str) -> str:
             f'<div><span>الدعم الرئيسي</span>{_f(a.support_level, 3)}</div>'
             f'<div><span>نسبة التقسيم</span>{html.escape(a.rs_ratio_str or "—")}</div>'
             '</div>'
+            f'<div class="muted">{"🔴 تجريبي" if a.synthetic else "🟠 ناقص" if not a.news_source else "🟢 حقيقي"} · {html.escape(source_text(a))}</div>'
             f'<div class="mcard-actions">{"".join(links)}</div>'
             '</div>')
     if not out:
@@ -600,8 +615,10 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
     # حساب عدد الصفوف التجريبية والحقيقية
     synth_count = sum(1 for r in rows_data if r.get("synthetic"))
     real_count = len(rows_data) - synth_count
-    all_real = (mode == "live" and synth_count == 0 and real_count > 0)
-    is_mixed = mode == "live" and synth_count > 0
+    all_real = (mode == "live" and synth_count == 0 and all(r.get("price_source") for r in rows_data))
+    incomplete = any(not all(r.get(k) for k in ("price_source", "split_source", "fundamentals_source", "news_source")) for r in rows_data)
+    all_real = all_real and not incomplete
+    is_mixed = mode == "live" and (synth_count > 0 or incomplete)
     report_names = {}
     for w in written:
         name = Path(w.get("html") or "").name
@@ -635,7 +652,7 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
         warning_banner = (
             '<div class="warn" style="background:#3a2a08;border:1px solid #8a6d1f;'
             'border-radius:12px;padding:12px 14px;margin:14px 0;color:#ffd87a;font-size:13px;">'
-            '⚠ <b>تحذير:</b> يوجد صفوف ببيانات تجريبية في هذه النشرة — لا تعتمد عليها في التداول. '
+            '⚠ <b>تحذير:</b> توجد مصادر ناقصة أو صفوف غير حقيقية في هذه النشرة — راجع مصادر كل صف. '
             'الوضع الحي مُفعّل لكن بعض المزوّدين فشلوا.</div>'
         )
     else:
@@ -653,7 +670,7 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
         "stamp": payload["stamp"],
         "mode_class": mode_class,
         "mode_label": mode_label,
-        "warning_banner": warning_banner,
+        "warning_banner": warning_banner + ('<div class="note">لا توجد أسهم مطابقة لشروط التقسيم العكسي في هذا المسح؛ لم تُضف بيانات بديلة.</div>' if not rows_data else ""),
         "scanned": summary["scanned"], "with_rs": summary["with_reverse_split"],
         "eligible": summary["eligible"], "watchlist": summary["watchlist"],
         "ready": summary["ready"], "avg": summary["avg_score_watchlist"],
@@ -731,12 +748,17 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="مسح يومي + بناء موقع اللوحة")
     ap.add_argument("--site", default="site", help="مجلد الموقع الناتج (يُنشر على GitHub Pages)")
     ap.add_argument("--limit", type=int, default=40, help="عدد الرموز")
-    ap.add_argument("--mode", default=None, help="demo | live | auto (افتراضي: من الإعدادات)")
+    ap.add_argument("--test-only", action="store_true", help="السماح بالديمو للاختبارات فقط؛ محظور في Actions")
+    ap.add_argument("--mode", default="live", help="demo | live | auto (افتراضي: من الإعدادات)")
     ap.add_argument("--symbols", default="", help="رموز محددة مفصولة بفواصل (تجاوز الكون)")
     ap.add_argument("--top-reports", type=int, default=12, help="عدد التقارير المولّدة")
     ap.add_argument("--dashboard-symbols", type=int, default=40, help="عدد الرموز داخل اللوحة الثابتة")
     ap.add_argument("--no-dashboard", action="store_true", help="تخطّي بناء اللوحة الثقيلة (اختبار سريع)")
     args = ap.parse_args()
+
+    if args.mode != "live" and (not args.test_only or __import__("os").environ.get("GITHUB_ACTIONS") == "true"):
+        print("✖ رفض النشر: البيانات التجريبية محظورة؛ استخدم --mode live.", flush=True)
+        return 4
 
     started = now_riyadh()
     site = Path(args.site)
@@ -770,8 +792,15 @@ def main() -> int:
             return 4
         print(f"✔ تحقق الوضع: كل البيانات حقيقية (mode_effective=live، synthetic=0).", flush=True)
 
-    if not results:
-        print("✖ لا نتائج — تحقّق من الكون أو الاتصال.", flush=True)
+    if requested == "live":
+        from tools.validate_live import validate
+        errors = validate({"mode_effective": mode_eff, "rows": [a.to_dict() for a in results]})
+        if errors:
+            print("✖ رفض النشر: " + "؛ ".join(errors), flush=True)
+            return 4
+
+    if not results and not (requested == "live" and getattr(get_hub().yahoo, "discovery_ok", False)):
+        print("✖ لا نتائج حقيقية ولا اكتشاف موثوق للكون — لن ننشر.", flush=True)
         return 2
     # في وضع live قد تكون النتائج كلها مستبعدة (لا تقسيمات عكسية) — هذا طبيعي ومقبول
     real_with_data = sum(1 for a in results if len(getattr(a, 'rejections', [])) == 0)

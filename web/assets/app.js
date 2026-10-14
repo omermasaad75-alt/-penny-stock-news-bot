@@ -172,11 +172,26 @@ function pollStatus() {
   }, 600);
 }
 
+const sourceKeys = ['price_source', 'split_source', 'fundamentals_source', 'news_source'];
+function sourceBadge(r) {
+  const label = r.synthetic !== false ? '🔴 تجريبي' : sourceKeys.some(k => !r[k]) ? '🟠 ناقص' : '🟢 حقيقي';
+  const names = ['الأسعار', 'التقسيم', 'الأساسيات', 'الأخبار'];
+  return `<div class="small">${label}</div><div class="muted small">${sourceKeys.map((k,i) => names[i] + ': ' + esc(r[k] || 'غير متاح')).join(' · ')}</div>`;
+}
 async function loadResults() {
   const data = await api('/api/scan/results');
   state.rows = data.rows || [];
   state.summary = data.summary || {};
   state.sources = data.sources || state.sources;
+  const synthetic = state.rows.some(r => r.synthetic !== false);
+  const incomplete = state.rows.some(r => sourceKeys.some(k => !r[k]));
+  const live = state.sources.mode_effective === 'live';
+  $('#modeBadge').textContent = 'وضع البيانات: ' + (live && !synthetic && !incomplete ? '🟢 حقيقية' : live ? '🟠 مختلطة — مصادر ناقصة' : '🔴 تجريبية');
+  let warning = document.getElementById('sourceWarning');
+  if (!warning) { warning = document.createElement('div'); warning.id = 'sourceWarning'; document.querySelector('header').after(warning); }
+  warning.style.cssText = 'background:#3a2a08;color:#ffd87a;padding:12px';
+  warning.textContent = synthetic || incomplete ? '⚠ توجد بيانات تجريبية أو مصادر ناقصة. راجع مصادر كل صف قبل الاعتماد عليه.' : '';
+  warning.hidden = !synthetic && !incomplete;
   renderKpis(); renderTable(); renderCards(); renderPhases(); renderSources();
 }
 
@@ -241,7 +256,7 @@ function renderTable() {
     const rsTxt = r.rs_found ? `${r.rs_ratio_str}<br><span class="muted small">${r.rs_date || ''} · ${r.rs_age_days ?? '—'}ي</span>` : '<span class="muted">—</span>';
     return `<tr data-sym="${r.symbol}" class="${r.eligible ? '' : 'phase-rejected'}">
       <td class="muted">${i + 1}</td>
-      <td class="sym-cell">${esc(r.symbol)}<div class="muted small" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc((r.name || '').slice(0, 26))}</div></td>
+      <td class="sym-cell">${esc(r.symbol)}${sourceBadge(r)}<div class="muted small" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc((r.name || '').slice(0, 26))}</div></td>
       <td><span class="phase-pill" style="background:${(ph.color || '#333')}22;color:${ph.color || '#ccc'};border:1px solid ${(ph.color || '#333')}66">${esc((ph.ar || '—').replace('المرحلة ', 'م'))}</span></td>
       <td class="score-cell" style="color:${scoreColor}">${n(r.score, 1)}<span class="muted small"> ${esc(r.grade)}</span></td>
       <td>${money(r.last_close)}<br><span class="${cls(r.change_pct)} small">${pct(r.change_pct)}</span></td>
@@ -304,7 +319,7 @@ function renderCards() {
       : checks.length ? `ناقص: ${STEP_SHORT[active?.key] || ''} (${done}/6)` : '—';
     return `<div class="mcard ${r.eligible ? '' : 'muted-card'}" data-sym="${r.symbol}">
       <div class="mcard-head">
-        <div><b class="sym-cell">${esc(r.symbol)}</b>
+        <div><b class="sym-cell">${esc(r.symbol)}</b>${sourceBadge(r)}
           <div class="muted small">${esc((r.name || '').slice(0, 30))}</div></div>
         <div class="mcard-price">${money(r.last_close)}
           <div class="${cls(r.change_pct)} small">${pct(r.change_pct)}</div></div>
@@ -520,7 +535,8 @@ function renderMetrics(a) {
     ['بنية القيعان', (a.higher_lows ?? 0) + ' قاع صاعد'],
     ['فريم 4 ساعات', h4.available ? `${trendAr} · RSI ${n(h4.rsi, 1)} · RVOL ${n(h4.rvol, 2)}x` : '—'],
     ['توافق الفريمين', h4.aligned ? 'متوافق ✅' : 'غير متوافق ⏳'],
-    ['مصدر البيانات', a.data_source === 'live' ? 'سوق حقيقي' : 'تجريبي'],
+    ['مصدر البيانات', a.synthetic ? '🔴 تجريبي' : 'حقيقي — راجع المصادر'],
+    ...sourceKeys.map(k => [k, a[k] || 'غير متاح']),
   ];
   $('#anMetrics').innerHTML = rows.map(([k, v]) => `<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
 }

@@ -58,6 +58,14 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
     add(f"> **المرحلة:** {info['ar']}  |  **التقييم:** {a.score}/100 ({a.grade})  |  "
         f"**مصدر البيانات:** {a.data_source}  |  **آخر جلسة:** {a.as_of}")
     add("")
+    add("## مصادر هذا الصف")
+    add("| نوع البيانات | المصدر الفعلي |")
+    add("|---|---|")
+    for key, label in (("price_source", "الأسعار"), ("split_source", "التقسيم"),
+                       ("fundamentals_source", "الأساسيات"), ("news_source", "الأخبار")):
+        add(f"| {label} | {getattr(a, key) or 'غير متاح — لم يُستبدل ببيانات تجريبية'} |")
+    add(f"\n**بيانات تجريبية (synthetic):** {str(a.synthetic).lower()}")
+    add("")
     if a.note_ar:
         add(f"**وصف الحالة:** {a.note_ar}")
         add("")

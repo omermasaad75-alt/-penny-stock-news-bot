@@ -46,7 +46,9 @@ class DataHub:
         if requested == "auto":
             requested = "live"
         self.mode = requested
-        self.demo = DemoProvider()
+        if requested not in {"live", "demo"}:
+            raise ValueError("وضع بيانات غير صالح")
+        self.demo = DemoProvider() if requested == "demo" else None
         self.yahoo = YahooProvider() if _HAS_YF else None
         self.sec = SECProvider()
         self.finra = FINRAProvider()
@@ -153,6 +155,9 @@ class DataHub:
             self._reject(sym, "لا توجد بيانات سعر يومية حقيقية لهذا الرمز")
             return pd.DataFrame()
         # وضع demo
+        if self._is_live_mode():
+            self._reject(sym, "لا توجد بيانات حقيقية لهذا الرمز — مزوّد الأسعار غير متاح")
+            return pd.DataFrame()
         return self.demo.daily(sym, lookback_days)
 
     def intraday_4h(self, symbol: str, lookback_days: int = 90) -> pd.DataFrame:
@@ -167,6 +172,8 @@ class DataHub:
                 return pd.DataFrame()
             if df is not None and len(df) > 30:
                 return df
+            return pd.DataFrame()
+        if self._is_live_mode():
             return pd.DataFrame()
         return self.demo.intraday_4h(sym, lookback_days)
 
@@ -290,10 +297,13 @@ class DataHub:
                 self.log.append(f"فشل بناء الكون من Yahoo: {exc}")
                 syms = []
             # فلترة الرموز الوهمية المعروفة
+            self.rejections.update(getattr(self.yahoo, "universe_rejections", {}))
             syms = [s for s in syms if s.upper() not in FAKE_SYMBOLS]
             if syms:
                 return syms[:limit] if limit else syms
             self.log.append("تحذير: تعذّر بناء كون حقيقي — لن تُنشر بيانات تجريبية.")
+            return []
+        if self._is_live_mode():
             return []
         return self.demo.universe(limit=limit)
 

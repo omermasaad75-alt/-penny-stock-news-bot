@@ -16,10 +16,6 @@ on:
         description: "عدد الرموز في المسح"
         default: "40"
         required: false
-      mode:
-        description: "وضع البيانات: live (افتراضي) | demo (اختبار محلي فقط)"
-        default: "live"
-        required: false
   push:
     branches: [main]
     paths:
@@ -43,7 +39,7 @@ jobs:
   scan:
     name: مسح السوق وبناء اللوحة
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -63,36 +59,12 @@ jobs:
 
       - name: المسح اليومي + بناء الموقع
         env:
-          RSS_DATA_MODE: ${{ inputs.mode || 'live' }}
+          RSS_DATA_MODE: live
         run: |
-          python tools/daily_scan.py --site site --limit ${{ inputs.limit || '40' }} --mode "${RSS_DATA_MODE}"
+          python tools/daily_scan.py --site site --limit ${{ inputs.limit || '40' }} --mode live
 
       - name: ✅ تحقق صرامة البيانات (لا تجريبي في النشر)
-        run: |
-          python - <<'PY'
-          import json, sys
-          d = json.load(open("site/data/latest.json", encoding="utf-8"))
-          mode = d.get("mode")
-          rows = d.get("rows") or []
-          synth = sum(1 for r in rows if r.get("synthetic"))
-          no_source = [r["symbol"] for r in rows if not r.get("price_source") and r.get("last_close",0)>0]
-          required = ("price_source","split_source","fundamentals_source","news_source")
-          missing_cols = [c for c in required if c not in (rows[0].keys() if rows else [])]
-          errors = []
-          if mode != "live":
-              errors.append(f"mode_effective = {mode!r} (يجب أن يكون 'live')")
-          if synth > 0:
-              errors.append(f"synthetic rows = {synth} (يجب أن يكون 0)")
-          if no_source:
-              errors.append(f"رموز بلا مصدر سعر: {no_source[:5]}")
-          if missing_cols:
-              errors.append(f"أعمدة مصادر مفقودة: {missing_cols}")
-          if errors:
-              print("✖ فشل التحقق:")
-              for e in errors: print(" -", e)
-              sys.exit(1)
-          print(f"✔ التحقق ناجح: mode={mode}, total_rows={len(rows)}, synthetic={synth}, كل المصادر موجودة")
-          PY
+        run: python tools/validate_live.py site/data/latest.json
 
       - name: أرشيف النتائج (CSV/JSON/التقارير)
         uses: actions/upload-artifact@v4
@@ -122,10 +94,13 @@ jobs:
           slim = {
               "generated_at_riyadh": d["generated_at_riyadh"],
               "mode": d["mode"],
+              "sources": d["sources"],
+              "excluded": d.get("excluded", {}),
               "summary": d["summary"],
               "top": [{k: r.get(k) for k in ("symbol", "phase", "score", "grade", "last_close",
                                               "lifecycle_ready", "lifecycle_failed",
-                                              "resistance_distance_pct", "impulse_pct")}
+                                              "resistance_distance_pct", "impulse_pct", "price_source", "split_source",
+                                              "fundamentals_source", "news_source", "synthetic")}
                       for r in d["rows"][:12]],
               "providers": [{k: p.get(k) for k in ("name", "ok", "source_kind", "detail")}
                             for p in d["sources"]["providers"]],
@@ -169,9 +144,6 @@ jobs:
     name: نشر اللوحة (gh-pages + GitHub Pages)
     needs: scan
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: تنزيل الموقع المبني
         uses: actions/download-artifact@v4
@@ -208,8 +180,3 @@ jobs:
           if [ "$(cat /tmp/pages.code)" != "200" ]; then
             echo "::warning title=رابط الجوال::لم تُفعَّل Pages للمستودع بعد. التفعيل من: Settings → Pages → Build and deployment → Source = Deploy from a branch → gh-pages / (root) ثم Save. الموقع منشور أصلاً على الفرع gh-pages."
           fi
-
-      - name: النشر عبر GitHub Actions (يُستخدم فقط إن كان مصدر Pages هو Actions)
-        id: deployment
-        if: steps.pages.outputs.build == 'workflow'
-        uses: actions/deploy-pages@v4
