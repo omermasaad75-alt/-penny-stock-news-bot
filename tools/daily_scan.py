@@ -386,11 +386,34 @@ ul.files{list-style:none;margin:0;padding:0}
 ul.files li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed #16202f;font-size:13px}
 footer{color:var(--muted);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
 .note{background:#0d1620;border:1px dashed #26364d;border-radius:12px;padding:10px 12px;font-size:12.5px;color:#b9c6d8}
-@media(max-width:640px){
+.mcards{display:none}
+.mcard{background:#0b111a;border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:10px}
+.mcard-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mcard-seq{margin-top:7px;font-size:11.5px}
+.mcard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}
+.mcard-grid div{background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:6px 8px;font-size:12.5px}
+.mcard-grid span{display:block;color:var(--muted);font-size:10.5px;margin-bottom:2px}
+.mcard-actions{display:flex;gap:8px;margin-top:10px}
+.mcard-actions .btn{flex:1;justify-content:center;padding:9px 10px;font-size:12.5px;border-radius:10px}
+@media(max-width:760px){
   .wrap{padding:12px 10px 48px}
-  h1{font-size:15px}.kpi b{font-size:19px}
+  header.top{position:static;display:block;padding:12px 13px}
+  .brand{align-items:flex-start;gap:10px}
+  .brand>div{min-width:0}
+  .logo{width:38px;height:38px;border-radius:11px;font-size:13px}
+  h1{font-size:15px;line-height:1.45;margin:0 0 3px;overflow-wrap:anywhere}
+  .sub{font-size:11px;line-height:1.5;overflow-wrap:anywhere;display:block}
+  .badges{margin-top:10px;gap:6px}
+  .badge{font-size:11px;padding:4px 9px}
+  .kpi b{font-size:19px}
   .btn{width:100%;justify-content:center}
-  table{min-width:640px;font-size:12px}
+  .cta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .cta .btn.primary{grid-column:1 / -1}
+  .tblwrap{display:none}
+  .mcards{display:block}
+  .card{padding:12px 12px;border-radius:14px}
+  .card h2{font-size:14px;flex-wrap:wrap;gap:4px}
+  ul.files li{font-size:12.5px;flex-wrap:wrap}
 }
 """
 
@@ -452,6 +475,9 @@ $rows_html
     </tbody>
   </table>
   </div>
+  <div class="mcards">
+$cards_html
+  </div>
 </div>
 
 <div class="grid2">
@@ -506,6 +532,39 @@ def _rows_html(results: list, report_names: dict, stamp: str) -> str:
     return "\n".join(out)
 
 
+def _cards_html(results: list, report_names: dict, stamp: str) -> str:
+    """بطاقات الجوال (بديل الجدول العريض على الشاشات الصغيرة)."""
+    out = []
+    for a in results[:40]:
+        done, label, color = sequence_state(a)
+        cls = {"ok": "c-green", "warn": "c-amber", "bad": "c-red", "muted": "muted"}[color]
+        rep = report_names.get(a.symbol)
+        links = []
+        if rep:
+            links.append(f'<a class="btn" href="reports/{rep}">تحليل مفصل</a>')
+        links.append(f'<a class="btn" href="dashboard.html?v={stamp}">على اللوحة</a>')
+        out.append(
+            '<div class="mcard">'
+            '<div class="mcard-head">'
+            f'<div><span class="sym">{html.escape(a.symbol)}</span> '
+            f'<span class="muted" style="font-size:11px">{html.escape((a.name or "")[:20])}</span></div>'
+            f'<span class="grade">{a.score} {a.grade}</span></div>'
+            f'<div class="mcard-seq">{dots_html(a)}<span class="{cls}">{html.escape(label)}</span></div>'
+            '<div class="mcard-grid">'
+            f'<div><span>آخر إغلاق</span>{_f(a.last_close, 3)}</div>'
+            f'<div><span>الانطلاقة</span>{_pct(a.impulse_pct)}</div>'
+            f'<div><span>أقرب مقاومة</span>{_f(a.resistance_level, 3)}</div>'
+            f'<div><span>سحب السيولة</span>{_f(a.sweep_low, 3)}</div>'
+            f'<div><span>الدعم الرئيسي</span>{_f(a.support_level, 3)}</div>'
+            f'<div><span>نسبة التقسيم</span>{html.escape(a.rs_ratio_str or "—")}</div>'
+            '</div>'
+            f'<div class="mcard-actions">{"".join(links)}</div>'
+            '</div>')
+    if not out:
+        out.append('<div class="mcard muted">لا توجد نتائج — أعد تشغيل المسح.</div>')
+    return "\n".join(out)
+
+
 def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
     summary = payload["summary"]
     mode = payload.get("mode", "demo")
@@ -536,13 +595,15 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
         "updated": html.escape(payload["generated_at_riyadh"]),
         "stamp": payload["stamp"],
         "mode_class": "live" if live else "demo",
-        "mode_label": "حقيقية (Yahoo/SEC/FINRA)" if live else "تجريبية (بديل محلي عند تعذّر الاتصال)",
+        "mode_label": "حقيقية — Yahoo/SEC/FINRA" if live else "تجريبية (بديل محلي)",
         "scanned": summary["scanned"], "with_rs": summary["with_reverse_split"],
         "eligible": summary["eligible"], "watchlist": summary["watchlist"],
         "ready": summary["ready"], "avg": summary["avg_score_watchlist"],
         "rowcount": min(len(payload.get("rows") or []), 60),
         "rows_html": _rows_html([_RowProxy(r) for r in (payload.get("rows") or [])], report_names,
                                 payload["stamp"]),
+        "cards_html": _cards_html([_RowProxy(r) for r in (payload.get("rows") or [])], report_names,
+                                  payload["stamp"]),
         "reports_html": reports_html, "report_count": len(written),
         "history_html": history_html,
         "repo_slug": REPO_SLUG,

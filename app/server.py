@@ -107,13 +107,16 @@ def _summary(results: list[eng.Analysis]) -> dict[str, Any]:
     with_rs = [a for a in results if a.rs_found]
     elig = [a for a in results if a.eligible]
     watch = [a for a in results if a.watchlist]
-    ready = [a for a in results if a.phase >= 5 and a.eligible]
+    # «جاهز فنياً» = المرحلة 6 مع اكتمال تسلسل دورة الحياة فعلياً (نفس منطق فلتر الواجهة)
+    ready = [a for a in results if a.phase == 6 and a.lifecycle_ready]
+    phase5_plus = [a for a in results if a.phase >= 5 and a.eligible]
     return {
         "scanned": len(results),
         "with_reverse_split": len(with_rs),
         "eligible": len(elig),
         "watchlist": len(watch),
         "ready": len(ready),
+        "phase5_plus": len(phase5_plus),
         "avg_score_watchlist": round(sum(a.score for a in watch) / len(watch), 1) if watch else 0,
         "phase_counts": phase_counts,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
