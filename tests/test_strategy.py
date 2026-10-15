@@ -291,3 +291,45 @@ def test_report_has_technical_section(demo_hub):
     from app.reporting import analysis_to_markdown
     md = analysis_to_markdown(eng.analyze_symbol("TRVN", demo_hub))
     assert "## 5) المؤشرات الفنية" in md and "RSI" in md and "## 6) المؤشرات الأساسية" in md
+
+
+# --------------------------------------------------------------------------- #
+#  4) القمة الصحيحة ومنطقة القمة÷2 (تتّسق مع حساب الهبوط)
+# --------------------------------------------------------------------------- #
+def test_peak_is_true_highest_high_not_biggest_percent_spike():
+    """الافتتاح 3 ثم الوصول 3.40 ⇒ القمة 3.40 والمنطقة 1.70 (وليس شمعة قفزت 20% من 1.00)."""
+    from app.strategy.strategy_engine import _drop_zone
+    idx = pd.bdate_range(end="2026-10-14", periods=5)
+    df = pd.DataFrame({
+        "open": [1.00, 1.00, 2.90, 3.00, 2.50],
+        "high": [1.20, 1.10, 3.05, 3.40, 2.60],
+        "low": [0.95, 0.98, 2.80, 2.95, 2.40],
+        "close": [1.10, 1.05, 3.00, 3.10, 2.50],
+        "volume": 1e6,
+    }, index=idx)
+    dz = _drop_zone(df, StrategyConfig())
+    assert dz["spike_high"] == pytest.approx(3.40)
+    assert dz["zone"] == pytest.approx(1.70)
+
+
+def test_drop_zone_and_post_peak_drawdown_use_same_peak():
+    from app.strategy.strategy_engine import _drop_zone, _post_peak_drawdown
+    closes = list(np.linspace(1.0, 3.0, 40)) + list(np.linspace(3.0, 2.0, 40)) + [2.0] * 20
+    df = mk(closes)
+    dz = _drop_zone(df, StrategyConfig())
+    peak, post_low, dd = _post_peak_drawdown(df, StrategyConfig())
+    assert dz["spike_high"] == pytest.approx(peak)
+    assert dz["zone"] == pytest.approx(peak / 2)
+    assert dd == pytest.approx(1 - post_low / peak)
+
+
+def test_price_near_half_peak_is_inside_drop_zone():
+    """سعر قرب القاع الثاني داخل نطاق القمة÷2 يعطي نقاط منطقة الهبوط."""
+    from app.strategy.strategy_engine import _drop_zone
+    closes = list(np.linspace(1.0, 3.4, 40)) + list(np.linspace(3.4, 1.7, 40)) + [1.7] * 20
+    df = mk(closes)
+    dz = _drop_zone(df, StrategyConfig())
+    assert dz["zone"] == pytest.approx(1.7, abs=1e-6)
+    res = evaluate_symbol(df, short_interest=5_000, has_news=True)
+    assert res["drop_zone"]["zone"] == pytest.approx(1.7, abs=1e-6)
+    assert any("داخل منطقة القمة" in p for p in res["passed"])

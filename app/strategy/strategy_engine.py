@@ -40,7 +40,7 @@ class StrategyConfig:
     ma_periods: tuple = (20, 30, 50)
 
     # --- منطقة الهبوط (شرط 2): القمة ÷ divisor ---
-    spike_lookback: int = 60
+    peak_lookback: int = 90            # نافذة القمة: أعلى سعر (high) خلال 90 شمعة — مصدر واحد للقمة
     drop_divisor: float = 2.0
     drop_zone_tolerance: float = 0.15  # ±15%
 
@@ -52,7 +52,6 @@ class StrategyConfig:
     min_bars_between_lows: int = 5
 
     # --- السلوك السلبي العام (شرط 5) ---
-    negative_lookback: int = 90
     min_drawdown: float = 0.40         # هبوط 40%+ من أعلى 90 يوم (من القمة إلى ما بعدها)
 
     # --- المقاومة (شرط 6) ---
@@ -155,11 +154,19 @@ def _confirmation(df: pd.DataFrame, pat: dict) -> dict:
             "green": bool(green), "above_low1": bool(above_low1), "broke_prev_high": bool(broke_prev)}
 
 
+def _peak(df: pd.DataFrame, cfg: StrategyConfig) -> tuple[int, float]:
+    """القمة الحقيقية: أعلى سعر high داخل النافذة (وليس أكبر نسبة قفز من الافتتاح).
+
+    يُستخدم المصدر نفسه لمنطقة القمة÷2 ولحساب الهبوط بعد القمة، حتى لا يختلفا.
+    """
+    highs = df["high"].tail(cfg.peak_lookback).to_numpy(dtype=float)
+    pk = int(np.argmax(highs))
+    return pk, float(highs[pk])
+
+
 def _drop_zone(df: pd.DataFrame, cfg: StrategyConfig) -> dict:
     """القمة ÷ 2: مثال افتتح 3 ووصل 3.40 => منطقة 1.70."""
-    d = df.tail(cfg.spike_lookback)
-    spike = ((d["high"] / d["open"]) - 1).idxmax()
-    spike_high = float(d.loc[spike, "high"])
+    _, spike_high = _peak(df, cfg)
     zone = spike_high / cfg.drop_divisor
     lo, hi = zone * (1 - cfg.drop_zone_tolerance), zone * (1 + cfg.drop_zone_tolerance)
     return {"spike_high": spike_high, "zone": zone, "zone_low": lo, "zone_high": hi}
@@ -167,11 +174,9 @@ def _drop_zone(df: pd.DataFrame, cfg: StrategyConfig) -> dict:
 
 def _post_peak_drawdown(df: pd.DataFrame, cfg: StrategyConfig) -> tuple[float, float, float]:
     """هبوط حقيقي: من القمة إلى أدنى قاع **بعد** تلك القمة فقط."""
-    win = df.tail(cfg.negative_lookback)
-    highs = win["high"].to_numpy(dtype=float)
+    win = df.tail(cfg.peak_lookback)
     lows = win["low"].to_numpy(dtype=float)
-    pk = int(np.argmax(highs))
-    peak = float(highs[pk])
+    pk, peak = _peak(df, cfg)
     post_low = float(lows[pk:].min())
     dd = 1.0 - post_low / peak if peak > 0 else 0.0
     return peak, post_low, dd

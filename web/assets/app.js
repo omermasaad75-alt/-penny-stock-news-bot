@@ -576,7 +576,7 @@ function renderMetrics(a) {
   const trendAr = { up: 'صاعد', down: 'هابط', neutral: 'عرضي' }[h4.trend] || '—';
   const p = a.pattern || {}, dz = a.drop_zone || {}, c = a.confirmation || {};
   const rows = [
-    ['القمة (أعلى 60 شمعة)', money(dz.spike_high)],
+    ['القمة (أعلى سعر خلال 90 شمعة)', money(dz.spike_high)],
     ['منطقة القمة ÷ 2', dz.zone ? `${money(dz.zone)} (${money(dz.zone_low)} – ${money(dz.zone_high)})` : '—'],
     ['القاع الأول', p.found || p.broken ? money(p.low1) : '—'],
     ['القاع الثاني', p.found || p.broken ? money(p.low2) : '—'],
@@ -1005,7 +1005,7 @@ async function renderHelp() {
   <table>
     <tr><th>#</th><th>المعيار</th><th>القاعدة في النظام</th></tr>
     <tr><td>1</td><td>الشورت</td><td>أقل من 20 ألف سهم (غير متوفر = محايد)</td></tr>
-    <tr><td>2</td><td>منطقة القمة ÷ 2</td><td>القمة (أعلى 60 شمعة) ÷ 2 ±15%؛ مثال: افتتح 3 ووصل 3.40 ⇒ المنطقة 1.70</td></tr>
+    <tr><td>2</td><td>منطقة القمة ÷ 2</td><td>القمة (أعلى سعر خلال 90 شمعة) ÷ 2 ±15%؛ مثال: افتتح 3 ووصل 3.40 ⇒ المنطقة 1.70</td></tr>
     <tr><td>3</td><td>السعر</td><td>1.50–2.00 نقاط كاملة؛ دون 5$ نقاط جزئية؛ الفلتر الصلب 0.10–10$</td></tr>
     <tr><td>4</td><td>المتوسطات</td><td>السعر فوق MA20، وميل MA20 للأعلى، والسعر فوق MA30</td></tr>
     <tr><td>5</td><td>السلوك السلبي</td><td>هبوط 40%+ من القمة إلى أدنى قاع بعدها خلال 90 شمعة</td></tr>
