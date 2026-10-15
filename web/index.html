@@ -39,9 +39,17 @@
   <div class="progress-bar"><div id="progressFill"></div></div>
 </div>
 
+<section class="gam-banner" aria-label="تعريف مسار GAM">
+  <b>GAM — مسار ثانوي فقط:</b>
+  يعرض مرشحين قريبين رفضتهم الشروط الصارمة حصراً بسبب هبوط أقل من 30% و/أو شرط RSI،
+  مع تقسيم عكسي حديث وسعر بين 0.50 و20 دولاراً. المرشح غير مؤهل، لا يدخل قائمة المتابعة، وليس توصية.
+  رفض RSI محسوب من بيانات السعر في المسح الحالي؛ لا توجد حالة رفض تاريخية محفوظة.
+</section>
+
 <section class="kpis">
   <div class="kpi"><span class="kpi-label">رموز مفحوصة</span><b id="kpiScanned">—</b></div>
   <div class="kpi"><span class="kpi-label">تقسيم عكسي داخل النافذة</span><b id="kpiRs" class="c-blue">—</b></div>
+  <div class="kpi"><span class="kpi-label">مرشحو GAM (غير مؤهلين)</span><b id="kpiGam" class="c-purple">—</b></div>
   <div class="kpi"><span class="kpi-label">قائمة المتابعة (ثبات 3+)</span><b id="kpiWatch" class="c-green">—</b></div>
   <div class="kpi"><span class="kpi-label">جاهز فنياً (اكتمال التسلسل)</span><b id="kpiReady" class="c-green">—</b></div>
   <div class="kpi"><span class="kpi-label">متوسط تقييم الفرص</span><b id="kpiAvg" class="c-amber">—</b></div>
@@ -62,6 +70,7 @@
       <button class="chip active" data-filter="all">الكل</button>
       <button class="chip" data-filter="watch">قائمة المتابعة</button>
       <button class="chip" data-filter="eligible">فرص مؤهلة</button>
+      <button class="chip chip-gam" data-filter="gam">GAM (غير مؤهل)</button>
       <button class="chip" data-filter="ready">جاهز فنياً</button>
       <button class="chip" data-filter="rs">لها تقسيم عكسي</button>
       <button class="chip" data-filter="rejected">مستبعدة</button>

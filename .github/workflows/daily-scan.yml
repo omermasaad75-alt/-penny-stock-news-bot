@@ -97,7 +97,9 @@ jobs:
               "sources": d["sources"],
               "excluded": d.get("excluded", {}),
               "summary": d["summary"],
+              "gam_policy": d.get("gam_policy", {}),
               "top": [{k: r.get(k) for k in ("symbol", "phase", "score", "grade", "last_close",
+                                              "eligible", "watchlist", "gam_candidate", "gam_reasons",
                                               "lifecycle_ready", "lifecycle_failed",
                                               "resistance_distance_pct", "impulse_pct", "price_source", "split_source",
                                               "fundamentals_source", "news_source", "synthetic")}
@@ -126,11 +128,17 @@ jobs:
           s = d["summary"]
           print("### ملخّص المسح —", d["generated_at_riyadh"], "(" + d["mode"] + ")")
           print()
-          print("| رموز مفحوصة | تقسيم عكسي | مؤهلة | متابعة | جاهز فنياً | متوسط التقييم |")
-          print("|---|---|---|---|---|---|")
-          print(f"| {s['scanned']} | {s['with_reverse_split']} | {s['eligible']} | {s['watchlist']} | {s['ready']} | {s['avg_score_watchlist']} |")
+          print("| رموز مفحوصة | تقسيم عكسي | مؤهلة | متابعة | GAM غير مؤهل | جاهز فنياً | متوسط التقييم |")
+          print("|---|---|---|---|---|---|---|")
+          print(f"| {s['scanned']} | {s['with_reverse_split']} | {s['eligible']} | {s['watchlist']} | {s.get('gam_candidates', 0)} | {s['ready']} | {s['avg_score_watchlist']} |")
           print()
-          print("**أفضل الفرص:**", " · ".join(f"{r['symbol']} ({r['score']} {r['grade']})" for r in d["rows"][:8]) or "—")
+          eligible = [r for r in d["rows"] if r.get("eligible")]
+          gam = [r for r in d["rows"] if r.get("gam_candidate")]
+          print("**أفضل الفرص المؤهلة:**", " · ".join(f"{r['symbol']} ({r['score']} {r['grade']})" for r in eligible[:8]) or "—")
+          print()
+          print("**GAM (مسار ثانوي؛ غير مؤهل وليس توصية):**", " · ".join(r["symbol"] for r in gam[:8]) or "—")
+          print()
+          print("رفض RSI في GAM يخص بيانات السعر في المسح الحالي؛ لا توجد حالة رفض تاريخية محفوظة.")
           print()
           print("**الرابط الثابت للجوال:** https://omermasaad75-alt.github.io/-penny-stock-news-bot/")
           PY

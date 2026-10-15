@@ -95,6 +95,12 @@ def test_strategy_endpoint(client):
     assert p["min_drop_pct"] == 30
     assert p["rsi_oversold"] == 30
     assert sum(p["weights"].values()) == 100
+    gam = r.json()["gam_policy"]
+    assert gam["secondary_lane_only"] is True
+    assert gam["eligible"] is False and gam["watchlist"] is False
+    assert gam["min_price"] == 0.5 and gam["max_price"] == 20.0
+    assert gam["historical_state_persisted"] is False
+    assert gam["rsi_scope"] == "current_scan_price_series"
 
 
 def test_universe_and_demo_metadata(client):
@@ -115,8 +121,11 @@ def test_scan_cycle(client):
     assert res["summary"]["with_reverse_split"] >= 1
     assert res["rows"]
     # «جاهز فنياً» في الملخّص = المرحلة 6 مع اكتمال التسلسل (مطابق لفلتر الواجهة)
-    row_ready = sum(1 for r in res["rows"] if r["phase"] == 6 and r["lifecycle_ready"])
+    row_ready = sum(1 for r in res["rows"] if r["eligible"] and r["phase"] == 6 and r["lifecycle_ready"])
     assert res["summary"]["ready"] == row_ready
+    gam = [r for r in res["rows"] if r["gam_candidate"]]
+    assert res["summary"]["gam_candidates"] == len(gam)
+    assert all(not r["eligible"] and not r["watchlist"] for r in gam)
     assert res["summary"]["phase5_plus"] >= res["summary"]["ready"]
 
 

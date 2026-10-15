@@ -208,9 +208,10 @@ function renderCoverage() {
   const checked = cov.candidates_checked ?? src.candidates_checked ?? 0;
   const unchecked = cov.candidates_unchecked ?? Math.max(collected - checked, 0);
   const rowsAfterSplit = rows.filter(r => r.rs_found).length;
-  const rsExcluded = rows.filter(r => r.rs_found && !r.eligible);
-  const watch = rows.filter(r => r.watchlist);
-  const ready = rows.filter(r => r.phase === 6 && r.lifecycle_ready);
+  const rsExcluded = rows.filter(r => r.rs_found && !r.eligible && !r.gam_candidate);
+  const gam = rows.filter(r => r.gam_candidate);
+  const watch = rows.filter(r => r.watchlist && r.eligible);
+  const ready = rows.filter(r => r.eligible && r.phase === 6 && r.lifecycle_ready);
   const excluded = src.rejections || {};
   let noData = 0, noSplit = 0;
   Object.values(excluded).forEach(reason => {
@@ -243,19 +244,22 @@ function renderCoverage() {
     chip('لم يُفحص', unchecked, 'c-amber', 'ليست مستبعدة') +
     chip('بيانات غير متاحة', noData, 'c-red') +
     chip('لا تقسيم حديث مطابق', noSplit, 'muted') +
-    chip('تقسيم حديث مرصود لكنه غير مؤهل فنياً', rsExcluded.length, 'c-amber') +
+    chip('تقسيم حديث — مستبعد لسبب آخر', rsExcluded.length, 'c-amber') +
+    chip('GAM (غير مؤهل)', gam.length, 'c-purple', 'مسار ثانوي فقط') +
     chip('قائمة المتابعة', watch.length, 'c-amber') +
     chip('جاهز فنياً', ready.length, 'c-green') +
     `</div>` +
     `<div class="muted" style="margin-top:8px;font-size:11px">«لم يُفحص» = مرشحون لم تتحقق منهم بعد (مهلة أو سقف) وليست مستبعدة فنياً؛ ` +
     `«بيانات غير متاحة» = تعذّر تحقق الأسعار أو الملف؛ «لا تقسيم حديث مطابق» = خارج نافذة 60 يوماً أو النسبة المطلوبة؛ ` +
-    `«غير مؤهل فنياً» = حدث حديث مرصود لكنه لم يستوفِ شروط السعر/السيولة/النموذج.</div>`;
+    `«مستبعد لسبب آخر» = حدث حديث أخفق السعر/السيولة/الصعود/النموذج أو سبباً مانعاً آخر؛ ` +
+    `«GAM» = رفض حصراً بسبب هبوط أقل من 30% و/أو RSI في المسح الحالي، مع سعر 0.50–20$؛ ليس فرصة أو توصية.</div>`;
 }
 
 function renderKpis() {
   const s = state.summary;
   $('#kpiScanned').textContent = s.scanned ?? '—';
   $('#kpiRs').textContent = s.with_reverse_split ?? '—';
+  $('#kpiGam').textContent = s.gam_candidates ?? 0;
   $('#kpiWatch').textContent = s.watchlist ?? '—';
   $('#kpiReady').textContent = s.ready ?? '—';
   $('#kpiAvg').textContent = s.avg_score_watchlist ?? '—';
@@ -265,9 +269,10 @@ function renderKpis() {
 
 function rowMatchesFilter(r) {
   switch (state.filter) {
-    case 'watch': return !!r.watchlist;
+    case 'watch': return !!r.watchlist && !!r.eligible;
     case 'eligible': return !!r.eligible;
-    case 'ready': return r.phase === 6 && !!r.lifecycle_ready;
+    case 'gam': return !!r.gam_candidate && !r.eligible && !r.watchlist;
+    case 'ready': return !!r.eligible && r.phase === 6 && !!r.lifecycle_ready;
     case 'rs': return !!r.rs_found;
     case 'rejected': return r.rs_found && !r.eligible;
     default: return true;
@@ -286,7 +291,8 @@ function seqCell(r) {
   const dots = checks.map(c => `<i class="dot ${c.ok ? 'ok' : (c.state === 'active' ? 'active' : 'pending')}"></i>`).join('');
   const active = checks.find(c => !c.ok);
   let label, color;
-  if (r.lifecycle_ready) { label = 'جاهز فنياً (6/6)'; color = 'c-green'; }
+  if (r.gam_candidate) { label = `GAM — غير مؤهل (${done}/6 بنيوياً)`; color = 'c-purple'; }
+  else if (r.lifecycle_ready && r.eligible) { label = 'جاهز فنياً (6/6)'; color = 'c-green'; }
   else if (r.lifecycle_failed) { label = 'فشل — كسر الدعم دون استعادة'; color = 'c-red'; }
   else { label = `${done}/6 — ناقص: ${STEP_SHORT[active?.key] || (active?.ar || '')}`; color = 'c-amber'; }
   return `<span title="${esc(r.lifecycle_stage || '')}" style="cursor:help;white-space:nowrap">
@@ -311,10 +317,12 @@ function renderTable() {
     const pat = (r.patterns_daily && r.patterns_daily[0]) ? r.patterns_daily[0].name_ar : '—';
     const scoreColor = r.score >= 75 ? '#3fb950' : r.score >= 60 ? '#d29922' : '#8b96a5';
     const rsTxt = r.rs_found ? `${r.rs_ratio_str}<br><span class="muted small">${r.rs_date || ''} · ${r.rs_age_days ?? '—'}ي</span>` : '<span class="muted">—</span>';
-    return `<tr data-sym="${r.symbol}" class="${r.eligible ? '' : 'phase-rejected'}">
+    const gamBadge = r.gam_candidate ? '<span class="gam-pill" title="مسار ثانوي؛ غير مؤهل وليس توصية">GAM · غير مؤهل</span>' : '';
+    const rowClass = `${r.eligible ? '' : 'phase-rejected'}${r.gam_candidate ? ' gam-row' : ''}`.trim();
+    return `<tr data-sym="${r.symbol}" class="${rowClass}">
       <td class="muted">${i + 1}</td>
-      <td class="sym-cell">${esc(r.symbol)}${sourceBadge(r)}<div class="muted small" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc((r.name || '').slice(0, 26))}</div></td>
-      <td><span class="phase-pill" style="background:${(ph.color || '#333')}22;color:${ph.color || '#ccc'};border:1px solid ${(ph.color || '#333')}66">${esc((ph.ar || '—').replace('المرحلة ', 'م'))}</span></td>
+      <td class="sym-cell">${esc(r.symbol)}${gamBadge}${sourceBadge(r)}<div class="muted small" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc((r.name || '').slice(0, 26))}</div></td>
+      <td><span class="phase-pill" style="background:${(ph.color || '#333')}22;color:${ph.color || '#ccc'};border:1px solid ${(ph.color || '#333')}66">${esc((ph.ar || '—').replace('المرحلة ', 'م'))}</span>${gamBadge}</td>
       <td class="score-cell" style="color:${scoreColor}">${n(r.score, 1)}<span class="muted small"> ${esc(r.grade)}</span></td>
       <td>${money(r.last_close)}<br><span class="${cls(r.change_pct)} small">${pct(r.change_pct)}</span></td>
       <td>${rsTxt}</td>
@@ -334,7 +342,8 @@ function renderTable() {
   }).join('');
   $$('#scanBody tr[data-sym]').forEach(tr => tr.onclick = () => go('#/sym/' + tr.dataset.sym));
   $('#scanFooter').textContent = `عرض ${rows.length} من ${state.rows.length} رمز — ` +
-    `قائمة المتابعة: ${state.summary.watchlist ?? 0} · فرص مؤهلة: ${state.summary.eligible ?? 0}`;
+    `فرص مؤهلة: ${state.summary.eligible ?? 0} · قائمة المتابعة: ${state.summary.watchlist ?? 0} · ` +
+    `GAM غير مؤهل: ${state.summary.gam_candidates ?? 0}`;
   if (state.selected) {
     const tr = $(`#scanBody tr[data-sym="${state.selected}"]`);
     if (tr) tr.classList.add('selected');
@@ -371,12 +380,16 @@ function renderCards() {
     const checks = r.lifecycle_checks || [];
     const done = checks.filter(c => c.ok).length;
     const active = checks.find(c => !c.ok);
-    const stage = r.lifecycle_ready ? 'جاهز فنياً — التسلسل مكتمل'
+    const stage = r.gam_candidate ? `GAM — غير مؤهل (${done}/6 بنيوياً)`
+      : r.lifecycle_ready && r.eligible ? 'جاهز فنياً — التسلسل مكتمل'
       : r.lifecycle_failed ? 'فشل التسلسل — كسر الدعم دون استعادة'
       : checks.length ? `ناقص: ${STEP_SHORT[active?.key] || ''} (${done}/6)` : '—';
-    return `<div class="mcard ${r.eligible ? '' : 'muted-card'}" data-sym="${r.symbol}">
+    const gamBadge = r.gam_candidate ? '<span class="gam-pill">GAM · غير مؤهل</span>' : '';
+    const gamReason = r.gam_candidate
+      ? `<div class="gam-reason"><b>مسار ثانوي فقط:</b> ${(r.gam_reasons || []).map(esc).join(' · ')}<br>ليس فرصة مؤهلة ولا توصية.</div>` : '';
+    return `<div class="mcard ${r.eligible ? '' : 'muted-card'}${r.gam_candidate ? ' gam-card' : ''}" data-sym="${r.symbol}">
       <div class="mcard-head">
-        <div><b class="sym-cell">${esc(r.symbol)}</b>${sourceBadge(r)}
+        <div><b class="sym-cell">${esc(r.symbol)}</b>${gamBadge}${sourceBadge(r)}
           <div class="muted small">${esc((r.name || '').slice(0, 30))}</div></div>
         <div class="mcard-price">${money(r.last_close)}
           <div class="${cls(r.change_pct)} small">${pct(r.change_pct)}</div></div>
@@ -384,6 +397,7 @@ function renderCards() {
         <span class="score-pill">${n(r.score, 1)}${r.grade ? ' ' + esc(r.grade) : ''}</span>
       </div>
       <div class="mcard-seq">${seqCell(r)}</div>
+      ${gamReason}
       <div class="mcard-spark">${sparkline(r.spark)}<span class="muted small">آخر 40 جلسة</span></div>
       <div class="mcard-grid">
         <div><span>التقسيم</span><b>${r.rs_found ? esc(r.rs_ratio_str) : '—'}</b></div>
@@ -438,9 +452,12 @@ function renderStepper(a) {
       </div>`).join('');
   }
   const st = $('#seqStatus');
-  const okAll = a.lifecycle_ready, failed = a.lifecycle_failed;
+  const okAll = a.lifecycle_ready && a.eligible, failed = a.lifecycle_failed;
   st.className = 'seq-status ' + (failed ? 'fail' : okAll ? 'ok' : 'active');
-  st.innerHTML = `<i class="dot ${failed ? 'fail' : okAll ? 'ok' : 'active'}"></i> ${esc(a.lifecycle_stage || '—')}`;
+  const statusText = a.gam_candidate
+    ? `GAM — غير مؤهل؛ الحالة البنيوية: ${a.lifecycle_stage || '—'}`
+    : (a.lifecycle_stage || '—');
+  st.innerHTML = `<i class="dot ${failed ? 'fail' : okAll ? 'ok' : 'active'}"></i> ${esc(statusText)}`;
 }
 
 /* ------------------------- عرض التحليل ------------------------- */
@@ -454,12 +471,15 @@ function renderAnalysis(a) {
   ch.textContent = pct(a.change_pct, 2);
   ch.className = 'chg ' + cls(a.change_pct);
   const badge = $('#anPhaseBadge');
-  badge.textContent = ph.ar || '—';
-  badge.style.background = (ph.color || '#333') + '22';
-  badge.style.color = ph.color || '#ccc';
-  badge.style.borderColor = (ph.color || '#333') + '66';
+  badge.textContent = a.gam_candidate ? 'GAM — غير مؤهل (مسار ثانوي)' : (ph.ar || '—');
+  const phaseColor = a.gam_candidate ? '#a371f7' : (ph.color || '#333');
+  badge.style.background = phaseColor + '22';
+  badge.style.color = a.gam_candidate ? '#c9adff' : (ph.color || '#ccc');
+  badge.style.borderColor = phaseColor + '66';
   badge.className = 'badge';
-  $('#anPhaseDesc').textContent = ph.desc || '';
+  $('#anPhaseDesc').textContent = a.gam_candidate
+    ? 'مرشح قريب فقط؛ لا يخفّف الأهلية ولا يدخل قائمة المتابعة، وليس توصية.'
+    : (ph.desc || '');
   const g = $('#anGauge');
   const deg = Math.max(0, Math.min(360, (a.score || 0) * 3.6));
   const col = a.score >= 85 ? '#3fb950' : a.score >= 75 ? '#7ee787' : a.score >= 62 ? '#d29942' : '#8b96a5';
@@ -468,13 +488,16 @@ function renderAnalysis(a) {
   $('#anGrade').textContent = a.grade || '—';
 
   const alerts = [];
-  if (a.risk_flags?.length) alerts.push(['bad', 'خطر', a.risk_flags.join('<br>')]);
+  if (a.risk_flags?.length) alerts.push(['bad', 'خطر', a.risk_flags.map(esc).join('<br>')]);
   if (a.lifecycle_failed) alerts.push(['bad', 'فشل', 'فشل تسلسل الانعكاس: كسر الدعم الرئيسي بعد الانطلاقة دون استعادة — يُلغى السيناريو حتى يتكوّن قاع جديد.']);
   if (a.rejections?.length) alerts.push(['warn', 'استبعاد', '<b>أسباب الاستبعاد:</b><br>' + a.rejections.map(esc).join('<br>')]);
   if (a.notes?.length) alerts.push(['info', 'ملاحظة', a.notes.map(esc).join('<br>')]);
-  if (!a.rejections?.length && a.watchlist) alerts.unshift(['good', 'متابعة', 'السهم مستوفٍ لشروط الاستراتيجية ومرصود في قائمة المتابعة.']);
+  if (a.gam_candidate) alerts.unshift(['gam', 'GAM — غير مؤهل',
+    '<b>مسار ثانوي فقط:</b> ' + (a.gam_reasons || []).map(esc).join(' · ') +
+    '<br>ليس فرصة مؤهلة ولا في قائمة المتابعة وليس توصية. رفض RSI يخص بيانات المسح الحالي؛ لا حفظ تاريخي.']);
+  if (!a.rejections?.length && a.watchlist && a.eligible) alerts.unshift(['good', 'متابعة', 'السهم مستوفٍ لشروط الاستراتيجية ومرصود في قائمة المتابعة.']);
   $('#anAlerts').innerHTML = alerts.map(([k, tag, t]) =>
-    `<div class="alert alert-${k}"><i class="dot ${k === 'good' ? 'ok' : k === 'bad' ? 'fail' : k === 'warn' ? 'active' : 'info'}"></i>
+    `<div class="alert alert-${k}"><i class="dot ${k === 'good' ? 'ok' : k === 'bad' ? 'fail' : k === 'warn' || k === 'gam' ? 'active' : 'info'}"></i>
       <div><b class="alert-tag">${tag}</b> ${t}</div></div>`).join('');
 
   renderStepper(a);
@@ -482,7 +505,7 @@ function renderAnalysis(a) {
   renderMetrics(a); renderPatterns(a); renderNews(a);
 
   $('#anWhy').innerHTML = (a.why_ar || []).map(w => `<li>${esc(w)}</li>`).join('');
-  $('#anAction').innerHTML = `<b>خطة العمل:</b> ${esc(a.action_ar || '')}`;
+  $('#anAction').innerHTML = `<b>${a.gam_candidate ? 'حالة GAM:' : 'خطة العمل:'}</b> ${esc(a.action_ar || '')}`;
   $('#anConfirmations').innerHTML = (a.confirmations || []).length
     ? a.confirmations.map(c => `<span class="c">✓ ${esc(c)}</span>`).join('')
     : '<span class="muted small">لا توجد تأكيدات فنية بعد — السهم ما زال في طور التكوين.</span>';
@@ -490,17 +513,26 @@ function renderAnalysis(a) {
 
 function renderLevels(a) {
   const lv = a.levels || {}, t = lv.targets || {};
+  const heading = $('#anLevels')?.closest('.card')?.querySelector('h3');
+  if (heading) heading.textContent = a.gam_candidate
+    ? 'مستويات فنية مرجعية — ليست خطة تداول'
+    : 'خطة التداول والمستويات';
   const box = (cls2, label, val, extra = '') =>
     `<div class="lvl lvl-${cls2}"><span>${label}</span><b>${val}</b>${extra ? `<div class="muted small">${extra}</div>` : ''}</div>`;
-  $('#anLevels').innerHTML = [
-    box('trigger', 'نقطة الاختراق (Trigger)', money(lv.trigger), lv.entry_zone ? `منطقة الدخول ${money(lv.entry_zone[0])} – ${money(lv.trigger)}` : ''),
-    box('stop', 'وقف الخسارة', money(lv.stop), lv.stop_pct != null ? `${n(lv.stop_pct, 1)}% من الدخول` : ''),
-    box('stop', 'وقف إلغاء السيناريو', money(lv.stop_structural),
+  const gamNotice = a.gam_candidate
+    ? '<div class="gam-reason"><b>GAM غير مؤهل:</b> هذه مستويات وصفية آلية، وليست توصية أو خطة دخول.</div>' : '';
+  $('#anLevels').innerHTML = gamNotice + [
+    box('trigger', a.gam_candidate ? 'مستوى الاختراق المرجعي' : 'نقطة الاختراق (Trigger)', money(lv.trigger), lv.entry_zone ? `${a.gam_candidate ? 'نطاق مرجعي' : 'منطقة الدخول'} ${money(lv.entry_zone[0])} – ${money(lv.trigger)}` : ''),
+    box('stop', a.gam_candidate ? 'مستوى الإبطال المرجعي' : 'وقف الخسارة', money(lv.stop),
+        a.gam_candidate ? 'للوصف الفني فقط' : (lv.stop_pct != null ? `${n(lv.stop_pct, 1)}% من الدخول` : '')),
+    box('stop', a.gam_candidate ? 'الإبطال الهيكلي' : 'وقف إلغاء السيناريو', money(lv.stop_structural),
         a.pullback_type === 'liquidity_sweep' && a.sweep_low ? `تحت قاع السحب ${money(a.sweep_low)}` : 'كسر الدعم الرئيسي = إلغاء'),
-    box('target', 'الهدف 1 (38.2%)', money(t.t1_382), lv.rr_t1 ? `مخاطرة/عائد ${n(lv.rr_t1, 2)}:1` : ''),
-    box('target', 'الهدف 2 (61.8%)', money(t.t2_618), lv.rr_t2 ? `مخاطرة/عائد ${n(lv.rr_t2, 2)}:1` : ''),
-    box('target', 'الهدف 3 (القمة)', money(t.t3_full), 'استعادة كامل الموجة'),
-  ].join('') + `<div class="lvl" style="grid-column:1/-1"><span>إدارة حجم المركز</span><b class="small" style="font-weight:400">${esc(lv.position_note_ar || '')}</b></div>`;
+    box('target', a.gam_candidate ? 'ارتداد مرجعي 38.2%' : 'الهدف 1 (38.2%)', money(t.t1_382),
+        !a.gam_candidate && lv.rr_t1 ? `مخاطرة/عائد ${n(lv.rr_t1, 2)}:1` : ''),
+    box('target', a.gam_candidate ? 'ارتداد مرجعي 61.8%' : 'الهدف 2 (61.8%)', money(t.t2_618),
+        !a.gam_candidate && lv.rr_t2 ? `مخاطرة/عائد ${n(lv.rr_t2, 2)}:1` : ''),
+    box('target', a.gam_candidate ? 'القمة السابقة المرجعية' : 'الهدف 3 (القمة)', money(t.t3_full), 'استعادة كامل الموجة'),
+  ].join('') + (a.gam_candidate ? '' : `<div class="lvl" style="grid-column:1/-1"><span>إدارة حجم المركز</span><b class="small" style="font-weight:400">${esc(lv.position_note_ar || '')}</b></div>`);
 }
 
 function renderChecklist(a) {
@@ -521,7 +553,7 @@ function renderChecklist(a) {
   const seqHead = seq.length ? `
     <div class="seq-head">
       <b>دورة الحياة — شرط «جاهز فنياً» (${doneN}/${seq.length})</b>
-      <span class="${a.lifecycle_ready ? 'c-green' : a.lifecycle_failed ? 'c-red' : 'c-amber'}">${esc(a.lifecycle_stage || '')}</span>
+      <span class="${a.gam_candidate ? 'c-purple' : a.lifecycle_ready && a.eligible ? 'c-green' : a.lifecycle_failed ? 'c-red' : 'c-amber'}">${esc(a.gam_candidate ? 'GAM غير مؤهل — ' + (a.lifecycle_stage || '') : (a.lifecycle_stage || ''))}</span>
     </div>` : '';
   $('#anChecklist').innerHTML = seqHead + rows.map(([t, std, val, ok, st]) => `
     <div class="check ${ok ? 'ok' : (st === 'active' ? 'active' : 'pending')}">
@@ -581,7 +613,8 @@ function renderMetrics(a) {
       : a.pullback_type === 'breakdown' ? 'كسر الدعم دون استعادة (فشل)'
       : a.pullback_type ? 'موجة عائدة لم تصل لمنطقة الدعم بعد' : '—'],
     ['الاستعادة فوق الدعم', a.reclaim_sessions ? `${a.reclaim_sessions} إغلاق فوق ${money(a.reclaim_level)} (آخرها ${a.reclaim_date || '—'})` : '—'],
-    ['حالة التسلسل', (a.lifecycle_ready ? 'جاهز فنياً — ' : a.lifecycle_failed ? 'فشل التسلسل — ' : 'قيد التكوين — ') + (a.lifecycle_stage || '')],
+    ['حالة التسلسل', (a.gam_candidate ? 'GAM غير مؤهل — ' : a.lifecycle_ready && a.eligible ? 'جاهز فنياً — ' : a.lifecycle_failed ? 'فشل التسلسل — ' : 'قيد التكوين — ') + (a.lifecycle_stage || '')],
+    ['تصنيف GAM', a.gam_candidate ? `نعم — غير مؤهل: ${(a.gam_reasons || []).join(' | ')}` : 'لا'],
     ['RSI (يومي)', `${n(a.rsi_now, 1)} (أدنى ${n(a.rsi_trough, 1)})`],
     ['MACD Hist', n(a.macd_hist, 4) + (a.macd_turning ? ' ↑' : '')],
     ['EMA9 / EMA20', money(a.levels?.ema9) + ' / ' + money(a.levels?.ema20)],

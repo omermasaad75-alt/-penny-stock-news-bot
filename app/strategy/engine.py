@@ -53,6 +53,17 @@ def phase_info(pid: int) -> dict[str, str]:
     return PHASES.get(pid, PHASES[0])
 
 
+# مسار GAM ثانوي لعرض حالات الـ near-miss فقط. لا يغيّر شروط الأهلية الصارمة
+# ولا قائمة المتابعة، ولا يمثل توصية. رفض RSI هنا ناتج حصراً عن سلسلة الأسعار
+# التي يحللها المسح الحالي؛ لا توجد حالة تاريخية محفوظة بين المسوح.
+GAM_ALLOWED_REJECTION_CODES = frozenset({"decline", "rsi"})
+GAM_RSI_SCOPE = "current_scan_price_series"
+GAM_DISCLAIMER_AR = (
+    "مرشح GAM للمراجعة فقط — غير مؤهل وفق الشروط الصارمة، وليس فرصة أو توصية. "
+    "تقييم RSI مبني على بيانات السعر في المسح الحالي ولا تُحفظ حالات رفض تاريخية بين المسوح."
+)
+
+
 # --------------------------------------------------------------------------- #
 #  بنية النتيجة
 # --------------------------------------------------------------------------- #
@@ -192,6 +203,11 @@ class Analysis:
     phase_ar: str = ""
     eligible: bool = False
     watchlist: bool = False
+    # GAM مسار عرض ثانوي للرفض القريب؛ يبقى دائماً منفصلاً عن الأهلية والمتابعة.
+    gam_candidate: bool = False
+    gam_reasons: list[str] = field(default_factory=list)
+    gam_rsi_scope: str = GAM_RSI_SCOPE
+    rejection_codes: list[str] = field(default_factory=list)
     rejections: list[str] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
     score: float = 0.0
@@ -272,6 +288,68 @@ def _scaled(value: float, points: list[tuple[float, float]]) -> float:
                 return y1
             return y0 + (y1 - y0) * (value - x0) / (x1 - x0)
     return pts[-1][1]
+
+
+def add_rejection(a: Analysis, code: str, reason: str) -> None:
+    """يسجّل رفضاً منظماً مع النص العربي المعروض للمستخدم.
+
+    الربط بين كل سبب ورمزه يمنع GAM من الاعتماد على مطابقة نصوص قابلة للتغيّر،
+    كما يجعل أي سبب غير مصنّف مانعاً افتراضياً بدلاً من تمريره خطأً.
+    """
+    a.rejection_codes.append(str(code))
+    a.rejections.append(str(reason))
+
+
+def evaluate_gam_candidate(a: Analysis, params: StrategyParams = STRATEGY) -> bool:
+    """يحدّد مسار GAM دون المساس بالأهلية الصارمة أو قائمة المتابعة.
+
+    يقبل GAM فقط سهماً له تقسيم عكسي حديث صالح وسعر ضمن النطاق، وكانت كل
+    أسباب رفضه الصارم محصورة في هبوط أقل من الحد و/أو عدم نزول RSI تحت الحد.
+    نقص أي قياس أساسي، ضعف السيولة، فشل الصعود، كسر القاع، أو أي رفض آخر
+    يمنع GAM. بيانات RSI تخص سلسلة السعر في المسح الحالي فقط؛ لا تخزين تاريخي.
+    """
+    a.gam_candidate = False
+    a.gam_reasons = []
+
+    # GAM حالة رفض قريب، وليس اسماً بديلاً لفرصة مؤهلة.
+    if a.eligible or not a.rs_found or not a.rejections:
+        return False
+    if not (params.min_price <= (a.last_close or 0) <= params.max_price):
+        return False
+
+    # كل رفض يجب أن يحمل رمزاً؛ أي سبب جديد/غير مصنف يُعامل كمانع آمن.
+    if len(a.rejection_codes) != len(a.rejections):
+        return False
+    codes = set(a.rejection_codes)
+    if not codes or not codes.issubset(GAM_ALLOWED_REJECTION_CODES):
+        return False
+
+    # منع نقص البيانات حتى لو تغيّر منطق الرفض مستقبلاً، والتحقق من أن الرفض
+    # يعكس قراءات المسح الحالي فعلاً (لا رمز RSI قديم أو حالة مخزنة).
+    if a.decline_pct is None or a.rsi_trough is None or a.spike_pct is None:
+        return False
+    current_failures: set[str] = set()
+    if abs(a.decline_pct) < params.min_drop_pct:
+        current_failures.add("decline")
+    if a.rsi_trough >= params.rsi_oversold:
+        current_failures.add("rsi")
+    if codes != current_failures:
+        return False
+    if a.spike_pct < params.min_spike_pct:
+        return False
+    if (a.dollar_volume or 0) < params.min_avg_dollar_volume:
+        return False
+    if params.max_float_shares and (a.float_shares or 0) > params.max_float_shares:
+        return False
+    if a.base_broken or a.lifecycle_failed:
+        return False
+
+    a.gam_candidate = True
+    a.gam_reasons = [
+        reason for code, reason in zip(a.rejection_codes, a.rejections)
+        if code in GAM_ALLOWED_REJECTION_CODES
+    ]
+    return True
 
 
 # --------------------------------------------------------------------------- #
@@ -1192,9 +1270,17 @@ def build_narrative(a: Analysis, params: StrategyParams) -> tuple[list[str], str
     if a.positive_news:
         why.append("محفزات إيجابية: " + " | ".join(c["title"][:80] for c in a.positive_news[:2]))
 
-    # خطة العمل
+    # خطة العمل — GAM والمستبعدات لا تحصل أبداً على صيغة دخول أو توصية.
     lv = a.levels or {}
-    if a.phase == 6:
+    if a.gam_candidate:
+        action = (
+            "مرشح GAM للمراجعة في المسار الثانوي فقط؛ لم يجتز الأهلية الصارمة بسبب "
+            + " و".join(a.gam_reasons)
+            + ". لا يُعرض كفرصة مؤهلة أو في قائمة المتابعة، وليس توصية أو إشارة دخول."
+        )
+    elif not a.eligible:
+        action = "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية."
+    elif a.phase == 6:
         action = (
             f"جاهز فنياً (التسلسل مكتمل: انطلاقة → مقاومة → عودة للدعم/سحب سيولة → استعادة): "
             f"الدخول بعد اختراق {lv.get('trigger')} بحجم تداول ≥ {params.rvol_threshold}x، "
@@ -1266,7 +1352,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     raw_daily = hub.daily(symbol, 320)
     if raw_daily is None or len(raw_daily) < 40:
         reason = hub.rejections.get(symbol, "لا توجد بيانات سعرية كافية")
-        a.rejections.append(reason)
+        add_rejection(a, "missing_price_data", reason)
         a.synthetic = (hub.effective_mode == "demo")
         return a
     df = ind.add_indicators(raw_daily, params)
@@ -1274,7 +1360,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     prof: TickerProfile | None = hub.profile(symbol)
     if prof is None:
         reason = hub.rejections.get(symbol, "لا توجد بيانات حقيقية لهذا الرمز")
-        a.rejections.append(reason)
+        add_rejection(a, "missing_profile_data", reason)
         a.synthetic = False  # وُجدت أسعار فقط بدون ملف تعريفي — ليس تجريبي
         a.price_source = "yahoo-finance"
         return a
@@ -1313,20 +1399,26 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     ev, rs_reasons = pick_reverse_split(events, params, pd.Timestamp(df.index[-1]))
     if ev is None:
         # لا حدث حديث صالح: أسباب تجاهل الأحداث القديمة/غير المطابقة تصبح أسباب رفض.
-        a.rejections.extend(rs_reasons)
+        for reason in rs_reasons:
+            add_rejection(a, "reverse_split", reason)
     else:
         # حدث حديث صالح مختار: تجاهل الأحداث التاريخية ملاحظة فقط — لا يُبطل الأهلية.
         a.notes.extend(f"حدث تاريخي متجاهَل: {reason}" for reason in rs_reasons)
     size_ok = (params.min_price <= a.last_close <= params.max_price)
     if not size_ok:
-        a.rejections.append(f"سعر الإقفال {a.last_close}$ خارج نطاق الاستراتيجية "
-                            f"({params.min_price}$ - {params.max_price}$)")
+        add_rejection(
+            a, "price",
+            f"سعر الإقفال {a.last_close}$ خارج نطاق الاستراتيجية "
+            f"({params.min_price}$ - {params.max_price}$)",
+        )
     if (a.dollar_volume or 0) < params.min_avg_dollar_volume:
-        a.rejections.append(
+        add_rejection(
+            a, "liquidity",
             f"سيولة متوسطة منخفضة ({_fmt_num(a.dollar_volume)}$ يومياً < "
-            f"{_fmt_num(params.min_avg_dollar_volume)}$)")
+            f"{_fmt_num(params.min_avg_dollar_volume)}$)",
+        )
     if params.max_float_shares and (a.float_shares or 0) > params.max_float_shares:
-        a.rejections.append(f"الفلوت {_fmt_num(a.float_shares)} أكبر من الحد المسموح")
+        add_rejection(a, "float", f"الفلوت {_fmt_num(a.float_shares)} أكبر من الحد المسموح")
 
     # مصدر التقسيم: من الحدث المختار (yahoo/sec/demo)
     if ev is not None:
@@ -1392,9 +1484,11 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         a.resistance_stall_pct = seq.get("resistance_stall_pct")
 
         if a.lifecycle_failed:
-            a.rejections.append(
+            add_rejection(
+                a, "lifecycle_failure",
                 "كسر الدعم الرئيسي بعد الانطلاقة دون استعادة (سحب سيولة فاشل) — "
-                "إلغاء السيناريو حتى يتكوّن قاع جديد")
+                "إلغاء السيناريو حتى يتكوّن قاع جديد",
+            )
         if a.lifecycle_ready:
             a.notes.append(f"تسلسل الاستراتيجية مكتمل — {a.lifecycle_stage}")
         elif a.impulse_pct is not None and not a.rejections:
@@ -1402,19 +1496,30 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
 
         # شروط الاستراتيجية الصارمة
         if a.spike_pct is not None and a.spike_pct < params.min_spike_pct:
-            a.rejections.append(f"صعود يوم التقسيم {a.spike_pct:.1f}% أقل من الحد الأدنى {params.min_spike_pct}%")
-        if a.decline_pct is None or abs(a.decline_pct) < params.min_drop_pct:
-            a.rejections.append(
-                f"الهبوط {abs(a.decline_pct or 0):.1f}% أقل من الحد المطلوب {params.min_drop_pct}%")
-        if a.rsi_trough is None or a.rsi_trough > params.rsi_oversold:
-            a.rejections.append(
-                f"RSI لم ينزل تحت {params.rsi_oversold:g} (أدنى قيمة {a.rsi_trough}) — لا يوجد تشبع بيعي")
+            add_rejection(
+                a, "spike",
+                f"صعود يوم التقسيم {a.spike_pct:.1f}% أقل من الحد الأدنى {params.min_spike_pct}%",
+            )
+        if a.decline_pct is None:
+            add_rejection(a, "missing_decline_data", "بيانات الهبوط بعد التقسيم غير كافية للتحقق")
+        elif abs(a.decline_pct) < params.min_drop_pct:
+            add_rejection(
+                a, "decline",
+                f"الهبوط {abs(a.decline_pct):.1f}% أقل من الحد المطلوب {params.min_drop_pct}%",
+            )
+        if a.rsi_trough is None:
+            add_rejection(a, "missing_rsi_data", "بيانات RSI غير كافية للتحقق من التشبع البيعي")
+        elif a.rsi_trough >= params.rsi_oversold:
+            add_rejection(
+                a, "rsi",
+                f"RSI لم ينزل تحت {params.rsi_oversold:g} (أدنى قيمة {a.rsi_trough}) — لا يوجد تشبع بيعي",
+            )
         if (a.base_sessions or 0) < params.min_base_sessions:
             a.notes.append(
                 f"الثبات على القاع {sessions_ar(a.base_sessions)} — لم يكتمل شرط "
                 f"{params.min_base_sessions} جلسات بعد (مرحلة تكوّن القاعدة)")
         if a.base_broken:
-            a.rejections.append("كسر القاع المرجعي بأكثر من الحد المسموح (السيناريو مهدد)")
+            add_rejection(a, "base_broken", "كسر القاع المرجعي بأكثر من الحد المسموح (السيناريو مهدد)")
 
     # ---------- البيع المكشوف ---------- #
     sd: ShortData | None = hub.short_data(symbol, a.float_shares)
@@ -1525,7 +1630,13 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         a.rs_found and not a.rejections and a.phase >= 4
         and (a.base_sessions or 0) >= params.min_base_sessions
     )
-    if a.rs_found and not a.eligible:
+    evaluate_gam_candidate(a, params)
+    if a.gam_candidate:
+        # تأكيد دفاعي: لا تسمح أبداً لمسار العرض الثانوي بالترقية إلى فرصة/متابعة.
+        a.eligible = False
+        a.watchlist = False
+        a.notes.append(GAM_DISCLAIMER_AR)
+    elif a.rs_found and not a.eligible:
         a.notes.append("مستبعد من قائمة الفرص — راجع أسباب الاستبعاد")
 
     parts = score_setup(a, params)
@@ -1583,7 +1694,7 @@ def scan(symbols: list[str], hub: DataHub, params: StrategyParams = STRATEGY,
             a = analyze_symbol(sym, hub, params)
         except Exception as exc:  # noqa: BLE001
             a = Analysis(symbol=sym)
-            a.rejections.append(f"خطأ في التحليل: {exc}")
+            add_rejection(a, "analysis_error", f"خطأ في التحليل: {exc}")
         results.append(a)
         if progress:
             try:

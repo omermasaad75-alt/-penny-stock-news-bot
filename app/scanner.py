@@ -59,6 +59,8 @@ def print_table(results: list[eng.Analysis], only_watch: bool = False) -> None:
         lv = a.levels or {}
         phase = eng.phase_info(a.phase if (a.eligible or not a.rs_found) else 0)["ar"]
         phase = phase.split("—")[-1].strip() if "—" in phase else phase
+        if a.gam_candidate:
+            phase = "GAM — غير مؤهل (مسار ثانوي)"
         print(f"{a.symbol:<7}{phase[:36]:<38}{str(a.score)+' '+a.grade:<9}"
               f"{_f(a.last_close, 3):<9}{(a.rs_ratio_str or '—'):<14}{_pct(a.spike_pct):<8}"
               f"{_pct(a.decline_pct):<8}{str(a.base_sessions):<6}"
@@ -74,8 +76,11 @@ def print_symbol_report(a: eng.Analysis) -> None:
     info = eng.phase_info(a.phase if (a.eligible or not a.rs_found) else 0)
     print()
     print("┌" + "─" * 96)
-    print(f"│ {a.symbol} — {a.name}  |  {info['ar']}")
+    status = "مرشح GAM — غير مؤهل/ليس توصية" if a.gam_candidate else info["ar"]
+    print(f"│ {a.symbol} — {a.name}  |  {status}")
     print(f"│ التقييم: {a.score}/100 ({a.grade})  |  مصدر البيانات: {a.data_source}  |  آخر جلسة: {a.as_of}")
+    if a.gam_candidate:
+        print("│ GAM مسار ثانوي فقط؛ RSI من بيانات المسح الحالي ولا توجد حالة رفض تاريخية محفوظة.")
     print("├" + "─" * 96)
     for w in a.why_ar:
         print(f"│ • {w[:150]}")
@@ -126,7 +131,7 @@ def main(argv: list[str] | None = None) -> int:
             a = eng.analyze_symbol(s, hub, STRATEGY)
         except Exception as exc:  # noqa: BLE001
             a = eng.Analysis(symbol=s)
-            a.rejections.append(f"خطأ: {exc}")
+            eng.add_rejection(a, "analysis_error", f"خطأ: {exc}")
         results.append(a)
         print(f"\r  [{i}/{len(syms)}] {s:<8}", end="", flush=True)
     print("\r" + " " * 40 + "\r", end="")
@@ -141,6 +146,15 @@ def main(argv: list[str] | None = None) -> int:
                 "with_reverse_split": sum(1 for a in results if a.rs_found),
                 "watchlist": sum(1 for a in results if a.watchlist),
                 "eligible": sum(1 for a in results if a.eligible),
+                "gam_candidates": sum(1 for a in results if a.gam_candidate),
+            },
+            "gam_policy": {
+                "secondary_lane_only": True,
+                "eligible": False,
+                "price_range": [STRATEGY.min_price, STRATEGY.max_price],
+                "allowed_failures": ["decline", "rsi"],
+                "rsi_scope": eng.GAM_RSI_SCOPE,
+                "historical_state_persisted": False,
             },
             "rows": [a.to_dict() for a in results],
         }
@@ -154,7 +168,7 @@ def main(argv: list[str] | None = None) -> int:
     else:
         print_table(results, only_watch=args.only_watch)
         for a in results:
-            if a.watchlist:
+            if a.watchlist or a.gam_candidate:
                 print_symbol_report(a)
 
     if args.report:

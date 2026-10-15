@@ -63,6 +63,8 @@ def test_summarize_counts(tool):
     assert s["scanned"] == 3
     assert s["ready"] == len(s["ready_symbols"])
     assert s["with_reverse_split"] <= 3
+    assert s["gam_candidates"] == len(s["gam_symbols"])
+    assert set(s["eligible_symbols"]).isdisjoint(s["gam_symbols"])
 
 
 # ------------------------- مسار كامل (CLI) ------------------------- #
@@ -98,9 +100,40 @@ def test_cli_builds_publishable_site(tmp_path):
 
     header = csv.read_text(encoding="utf-8-sig").splitlines()[0]
     assert "الرمز" in header and "التقييم" in header
+    assert "مرشح GAM" in header and "أسباب GAM" in header
+    assert "GAM" in html and "غير مؤهل" in html
 
     stamp = payload["stamp"]
     assert (site / "history" / f"{stamp}.json").exists()
     history = json.loads((site / "history" / "index.json").read_text(encoding="utf-8"))
     assert history and history[0]["stamp"] == stamp
     assert list((site / "reports").glob("*.html"))
+
+
+def test_dataset_separates_gam_from_eligible_and_watchlist(tool, tmp_path):
+    from app.config import STRATEGY
+    from app.providers.hub import get_hub
+    from app.strategy import engine as eng
+
+    hub = get_hub(mode="demo", refresh=True)
+    results = [eng.analyze_symbol(s, hub, STRATEGY) for s in ("JZ", "BIOK", "QLGN")]
+    site = tmp_path / "site"
+    started = tool.now_riyadh()
+    sources = hub.sources_report()
+    sources["coverage"] = tool.build_coverage(sources, results)
+    payload = tool.write_dataset(site, results, sources, "demo", started)
+
+    rows = {r["symbol"]: r for r in payload["rows"]}
+    assert rows["JZ"]["eligible"] is True and rows["JZ"]["gam_candidate"] is False
+    assert rows["BIOK"]["gam_candidate"] is True
+    assert rows["BIOK"]["eligible"] is False and rows["BIOK"]["watchlist"] is False
+    assert rows["QLGN"]["last_close"] < STRATEGY.min_price
+    assert rows["QLGN"]["gam_candidate"] is False
+    assert payload["summary"]["gam_candidates"] == 1
+    assert payload["gam_policy"]["historical_state_persisted"] is False
+    assert payload["gam_policy"]["rsi_scope"] == "current_scan_price_series"
+
+    csv_text = (site / "data" / "latest.csv").read_text(encoding="utf-8-sig")
+    assert "مرشح GAM" in csv_text
+    biok_line = next(line for line in csv_text.splitlines() if line.startswith("BIOK,"))
+    assert "نعم — غير مؤهل" in biok_line

@@ -52,7 +52,11 @@ STEP_SHORT = {
 
 CSV_COLUMNS = [
     ("symbol", "الرمز"), ("name", "الاسم"), ("phase", "المرحلة"),
-    ("phase_ar", "وصف المرحلة"), ("score", "التقييم"), ("grade", "الدرجة"),
+    ("phase_ar", "وصف المرحلة"), ("eligible", "فرصة مؤهلة"),
+    ("watchlist", "قائمة المتابعة"), ("gam_candidate", "مرشح GAM"),
+    ("gam_reasons", "أسباب GAM"), ("gam_rsi_scope", "نطاق RSI لـ GAM"),
+    ("rejections", "أسباب الاستبعاد"),
+    ("score", "التقييم"), ("grade", "الدرجة"),
     ("last_close", "آخر إغلاق"), ("rs_date", "تاريخ التقسيم"), ("rs_ratio", "نسبة التقسيم"),
     ("impulse_pct", "الانطلاقة %"), ("resistance_level", "أقرب مقاومة"),
     ("resistance_distance_pct", "بعد المقاومة %"), ("sweep_low", "قاع سحب السيولة"),
@@ -99,7 +103,9 @@ def sequence_state(a: "eng.Analysis") -> tuple[int, str, str]:
     if not checks:
         return 0, ("تسلسل الثبات لم يبدأ بعد" if a.rs_found else "لا تقسيم عكسي داخل النافذة"), "muted"
     done = sum(1 for c in checks if c.get("ok"))
-    if a.lifecycle_ready:
+    if a.gam_candidate:
+        return done, "GAM — غير مؤهل (مسار ثانوي)", "warn"
+    if a.lifecycle_ready and a.eligible:
         return 6, "جاهز فنياً (6/6)", "ok"
     if a.lifecycle_failed:
         return done, "فشل — كسر الدعم دون استعادة", "bad"
@@ -126,34 +132,39 @@ def summarize(results: list) -> dict:
     with_rs = [a for a in results if a.rs_found]
     elig = [a for a in results if a.eligible]
     watch = [a for a in results if a.watchlist]
-    ready = [a for a in results if a.lifecycle_ready]
+    gam = [a for a in results if a.gam_candidate]
+    ready = [a for a in results if a.eligible and a.lifecycle_ready]
     failed = [a for a in results if a.lifecycle_failed]
     return {
         "scanned": len(results),
         "with_reverse_split": len(with_rs),
         "eligible": len(elig),
         "watchlist": len(watch),
+        "gam_candidates": len(gam),
         "ready": len(ready),
         "failed": len(failed),
         "avg_score_watchlist": round(sum(a.score for a in watch) / len(watch), 1) if watch else 0,
-        "top_symbol": results[0].symbol if results else "",
+        "top_symbol": elig[0].symbol if elig else "",
+        "eligible_symbols": [a.symbol for a in elig],
+        "gam_symbols": [a.symbol for a in gam],
         "ready_symbols": [a.symbol for a in ready],
     }
 
 
-# أسماء الحالات الست للتمييز الصريح بينها (لا تُخلط في العرض)
+# حالات التغطية ومسار GAM الثانوي؛ لا يُخلط GAM مع الفرص أو المتابعة.
 COVERAGE_CATEGORY_LABELS = {
     "unchecked": "لم يُفحص",
     "no_data": "بيانات غير متاحة",
     "no_recent_split": "لا تقسيم حديث مطابق",
-    "rs_technically_excluded": "تقسيم حديث مرصود لكنه غير مؤهل فنياً",
+    "rs_technically_excluded": "تقسيم حديث — مستبعد لسبب آخر",
+    "gam_candidates": "مرشحو GAM (غير مؤهلين)",
     "watchlist": "قائمة المتابعة",
     "ready": "جاهز فنياً",
 }
 
 
 def build_coverage(sources: dict, results: list) -> dict:
-    """تفصيل صريح لحدود تغطية المسح — يفصل الحالات الست بلا خلط.
+    """تفصيل صريح لحدود التغطية مع فصل GAM عن الأهلية والمتابعة.
 
     «لم يُفحص» ليست مستبعدة فنياً؛ و«التغطية الجزئية» لا تعني غياب حالات أخرى.
     """
@@ -170,9 +181,10 @@ def build_coverage(sources: dict, results: list) -> dict:
             no_data.append(sym)   # بيانات غير متاحة / أسعار قديمة / غير قابل للتحقق
 
     rs_rows = [a for a in results if a.rs_found]
-    rs_excluded = [a.symbol for a in rs_rows if not a.eligible]
+    rs_excluded = [a.symbol for a in rs_rows if not a.eligible and not a.gam_candidate]
+    gam = [a.symbol for a in results if a.gam_candidate]
     watch = [a.symbol for a in results if a.watchlist]
-    ready = [a.symbol for a in results if a.phase == 6 and a.lifecycle_ready]
+    ready = [a.symbol for a in results if a.eligible and a.phase == 6 and a.lifecycle_ready]
 
     checked = int(scan_cov.get("candidates_checked")
                   or sources.get("candidates_checked") or 0)
@@ -197,6 +209,7 @@ def build_coverage(sources: dict, results: list) -> dict:
             "no_data": {"count": len(no_data), "symbols": no_data[:20]},
             "no_recent_split": {"count": len(no_split), "symbols": no_split[:20]},
             "rs_technically_excluded": {"count": len(rs_excluded), "symbols": rs_excluded[:20]},
+            "gam_candidates": {"count": len(gam), "symbols": gam[:20]},
             "watchlist": {"count": len(watch), "symbols": watch[:20]},
             "ready": {"count": len(ready), "symbols": ready[:20]},
         },
@@ -217,7 +230,7 @@ def run_scan(mode: str | None, limit: int, symbols: list[str] | None = None):
             a = eng.analyze_symbol(sym, hub, STRATEGY)
         except Exception as exc:                                   # noqa: BLE001
             a = eng.Analysis(symbol=sym)
-            a.rejections.append(f"خطأ: {exc}")
+            eng.add_rejection(a, "analysis_error", f"خطأ: {exc}")
         if hub.mode == "live" and (not a.price_source or not a.fundamentals_source or a.last_close <= 0):
             hub._reject(sym, "لا توجد بيانات حقيقية لهذا الرمز — " + "؛ ".join(a.rejections))
             continue
@@ -257,6 +270,16 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
         "excluded": sources.get("rejections", {}),
         "mode_setting": sources.get("mode_setting", mode),
         "summary": summary,
+        "gam_policy": {
+            "secondary_lane_only": True,
+            "eligible": False,
+            "watchlist": False,
+            "price_range": [STRATEGY.min_price, STRATEGY.max_price],
+            "allowed_rejection_codes": sorted(eng.GAM_ALLOWED_REJECTION_CODES),
+            "rsi_scope": eng.GAM_RSI_SCOPE,
+            "historical_state_persisted": False,
+            "disclaimer_ar": eng.GAM_DISCLAIMER_AR,
+        },
         "coverage": sources.get("coverage", {}),
         "sources": sources,
         "rows": rows,
@@ -276,13 +299,20 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
             look = {
                 "symbol": a.symbol, "name": a.name, "phase": a.phase,
                 "phase_ar": eng.phase_info(a.phase if (a.eligible or not a.rs_found) else 0)["ar"],
+                "eligible": "نعم" if a.eligible else "لا",
+                "watchlist": "نعم" if a.watchlist else "لا",
+                "gam_candidate": "نعم — غير مؤهل" if a.gam_candidate else "لا",
+                "gam_reasons": " | ".join(a.gam_reasons),
+                "gam_rsi_scope": ("بيانات المسح الحالي — لا حفظ تاريخي" if a.gam_candidate else "—"),
+                "rejections": " | ".join(a.rejections),
                 "score": a.score, "grade": a.grade, "last_close": a.last_close,
                 "rs_date": a.rs_date, "rs_ratio": a.rs_ratio_str,
                 "impulse_pct": a.impulse_pct, "resistance_level": a.resistance_level,
                 "resistance_distance_pct": a.resistance_distance_pct, "sweep_low": a.sweep_low,
                 "support_level": a.support_level, "support_hold_ok": a.support_hold_ok,
                 "reclaim_sessions": a.reclaim_sessions, "sequence_done": done,
-                "lifecycle_ready": a.lifecycle_ready, "lifecycle_failed": a.lifecycle_failed,
+                "lifecycle_ready": bool(a.eligible and a.lifecycle_ready),
+                "lifecycle_failed": a.lifecycle_failed,
                 "missing_step": missing, "trigger": lv.get("trigger"),
                 "stop_structural": lv.get("stop_structural"), "rr_t2": lv.get("rr_t2"),
                 "last_close_time": a.as_of or "",
@@ -302,9 +332,10 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
         "summary": summary,
         "top": [
             {"symbol": a.symbol, "phase": a.phase, "score": a.score, "grade": a.grade,
-             "close": a.last_close, "impulse_pct": a.impulse_pct,
-             "resistance_distance_pct": a.resistance_distance_pct,
-             "ready": a.lifecycle_ready, "failed": a.lifecycle_failed,
+             "close": a.last_close, "eligible": a.eligible, "watchlist": a.watchlist,
+             "gam_candidate": a.gam_candidate, "gam_reasons": a.gam_reasons,
+             "impulse_pct": a.impulse_pct, "resistance_distance_pct": a.resistance_distance_pct,
+             "ready": bool(a.eligible and a.lifecycle_ready), "failed": a.lifecycle_failed,
              "sequence": sequence_state(a)[1], "synthetic": a.synthetic,
              "price_source": a.price_source, "split_source": a.split_source,
              "fundamentals_source": a.fundamentals_source, "news_source": a.news_source}
@@ -337,7 +368,7 @@ def build_reports(site: Path, results: list, hub, top_n: int) -> list[dict]:
     out_dir.mkdir(parents=True, exist_ok=True)
     picks: list[str] = []
     for a in results:
-        if a.lifecycle_ready or a.watchlist or a.eligible:
+        if (a.eligible and a.lifecycle_ready) or a.watchlist or a.eligible or a.gam_candidate:
             picks.append(a.symbol)
     if len(picks) < min(top_n, len(results)):
         picks += [a.symbol for a in results if a.symbol not in picks]
@@ -447,6 +478,7 @@ h1{font-size:18px;margin:0}
 .row-badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:8px;margin-inline-start:4px}
 .row-badge.ok{background:rgba(63,185,80,.15);color:#7ee787}
 .row-badge.warn{background:rgba(227,179,65,.12);color:#e3b341}
+.row-badge.gam{background:rgba(163,113,247,.16);color:#c9adff;border:1px solid rgba(163,113,247,.4)}
 .row-badge.bad{background:rgba(248,81,73,.15);color:#ff7b72}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 6px}
 .btn{display:inline-flex;gap:8px;align-items:center;padding:12px 18px;border-radius:12px;font-weight:700;
@@ -549,11 +581,15 @@ $warning_banner
 </div>
 <div class="note">اللوحة ملف واحد يعمل داخل جوالك بلا إنترنت بعد فتحه أول مرة — يمكنك حفظه في الشاشة الرئيسية
 (من قائمة المتصفح: «إضافة إلى الشاشة الرئيسية»).</div>
+<div class="note" style="margin-top:8px;border-color:rgba(163,113,247,.45)"><b style="color:#c9adff">GAM:</b>
+مسار ثانوي لمرشحين قريبين فقط؛ لا يخفّف شروط الأهلية، ولا يدخل قائمة الفرص أو المتابعة، وليس توصية.
+رفض RSI — إن وُجد — محسوب من سلسلة السعر في المسح الحالي، ولا توجد حالة رفض تاريخية محفوظة.</div>
 
 <section class="kpis">
   <div class="kpi"><span>رموز مفحوصة</span><b>$scanned</b></div>
   <div class="kpi"><span>تقسيم عكسي داخل النافذة</span><b class="c-green">$with_rs</b></div>
   <div class="kpi"><span>فرص مؤهلة</span><b class="c-green">$eligible</b></div>
+  <div class="kpi"><span>مرشحو GAM (غير مؤهلين)</span><b style="color:var(--purple)">$gam_candidates</b></div>
   <div class="kpi"><span>قائمة المتابعة</span><b class="c-amber">$watchlist</b></div>
   <div class="kpi"><span>جاهز فنياً (6/6)</span><b class="c-green">$ready</b></div>
   <div class="kpi"><span>متوسط تقييم المتابعة</span><b>$avg</b></div>
@@ -629,9 +665,11 @@ def _rows_html(results: list, report_names: dict, stamp: str) -> str:
             rb = '<span class="row-badge ok">🟢 حقيقي</span>'
         else:
             rb = '<span class="row-badge warn">🟠 ناقص</span>'
+        gam_badge = ('<span class="row-badge gam" title="مسار ثانوي؛ غير مؤهل وليس توصية">GAM · غير مؤهل</span>'
+                     if getattr(a, "gam_candidate", False) else "")
         out.append(
             "<tr>"
-            f'<td class="sym">{html.escape(a.symbol)}{rb}'
+            f'<td class="sym">{html.escape(a.symbol)}{rb}{gam_badge}'
             f'<div class="muted" style="font-weight:400;font-size:11px">'
             f'{html.escape((a.name or "")[:22])}</div></td>'
             f"<td>{dots_html(a)}<div class=\"{cls}\" style=\"font-size:11.5px\">{html.escape(label)}</div></td>"
@@ -661,13 +699,19 @@ def _cards_html(results: list, report_names: dict, stamp: str) -> str:
         if rep:
             links.append(f'<a class="btn" href="reports/{rep}">تحليل مفصل</a>')
         links.append(f'<a class="btn" href="dashboard.html?v={stamp}">على اللوحة</a>')
+        gam_badge = ('<span class="row-badge gam">GAM · غير مؤهل</span>'
+                     if getattr(a, "gam_candidate", False) else "")
+        gam_reason = (f'<div class="note" style="margin-top:8px">مسار GAM فقط: '
+                      f'{html.escape(" | ".join(a.gam_reasons or []))} — ليس فرصة أو توصية.</div>'
+                      if getattr(a, "gam_candidate", False) else "")
         out.append(
             '<div class="mcard">'
             '<div class="mcard-head">'
-            f'<div><span class="sym">{html.escape(a.symbol)}</span> '
+            f'<div><span class="sym">{html.escape(a.symbol)}</span>{gam_badge} '
             f'<span class="muted" style="font-size:11px">{html.escape((a.name or "")[:20])}</span></div>'
             f'<span class="grade">{a.score} {a.grade}</span></div>'
             f'<div class="mcard-seq">{dots_html(a)}<span class="{cls}">{html.escape(label)}</span></div>'
+            f'{gam_reason}'
             '<div class="mcard-grid">'
             f'<div><span>آخر إغلاق</span>{_f(a.last_close, 3)}</div>'
             f'<div><span>الانطلاقة</span>{_pct(a.impulse_pct)}</div>'
@@ -703,7 +747,9 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
     reports_sorted = sorted(written, key=lambda w: (-w.get("score", 0), w.get("symbol", "")))
     reports_html = "\n".join(
         f'<li><span class="sym">{html.escape(w["symbol"])}</span>'
-        f'<span class="muted">مرحلة {w.get("phase")} · {w.get("score")}</span>'
+        f'<span class="muted">'
+        f'{"GAM · غير مؤهل" if w.get("gam_candidate") else "فرصة مؤهلة" if w.get("eligible") else "مستبعد"}'
+        f' · {w.get("score")}</span>'
         f'<span><a href="reports/{Path(w["html"]).name}">HTML</a> · '
         f'<a href="reports/{Path(w["md"]).name}">MD</a></span></li>'
         for w in reports_sorted) or '<li class="muted">لا تقارير</li>'
@@ -779,13 +825,16 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
         '<div class="note" style="margin-bottom:10px">«لم يُفحص» = مرشحون لم تتحقق منهم بعد (مهلة أو سقف) '
         'وليست مستبعدة فنياً · «بيانات غير متاحة» = تعذّر تحقق الأسعار أو الملف التعريفي · '
         '«لا تقسيم حديث مطابق» = لا حدث خلال 60 يوماً بنسبة 1:2–1:60 · '
-        '«غير مؤهل فنياً» = تقسيم حديث مرصود لكنه لم يستوفِ شروط السعر/السيولة/النموذج · '
-        '«قائمة المتابعة» = مؤهل ومراقب · «جاهز فنياً» = اكتمل تسلسل دورة الحياة 6/6.</div>'
+        '«مستبعد لسبب آخر» = تقسيم حديث مرصود لكنه أخفق السعر/السيولة/الصعود/النموذج أو سبباً مانعاً آخر · '
+        '«GAM» = رفضه الوحيد هبوط دون 30% و/أو RSI في بيانات المسح الحالي، مع سعر 0.50–20$؛ '
+        'يبقى غير مؤهل وليس توصية · «قائمة المتابعة» = مؤهل ومراقب · '
+        '«جاهز فنياً» = فرصة مؤهلة اكتمل تسلسلها 6/6.</div>'
         '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">'
         + _cat_html("unchecked", "c-amber", "ليست مستبعدة")
         + _cat_html("no_data", "c-red")
         + _cat_html("no_recent_split", "muted")
         + _cat_html("rs_technically_excluded", "c-amber")
+        + _cat_html("gam_candidates", "c-amber", "مسار ثانوي فقط")
         + _cat_html("watchlist", "c-amber")
         + _cat_html("ready", "c-green")
         + "</div></div>"
@@ -799,7 +848,8 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
         "mode_label": mode_label,
         "warning_banner": warning_banner + ('<div class="note">لا توجد أسهم مطابقة لشروط التقسيم العكسي في هذا المسح؛ لم تُضف بيانات بديلة.</div>' if not rows_data else ""),
         "scanned": summary["scanned"], "with_rs": summary["with_reverse_split"],
-        "eligible": summary["eligible"], "watchlist": summary["watchlist"],
+        "eligible": summary["eligible"], "gam_candidates": summary.get("gam_candidates", 0),
+        "watchlist": summary["watchlist"],
         "ready": summary["ready"], "avg": summary["avg_score_watchlist"],
         "cand_collected": cov.get("candidates_collected", "—"),
         "cand_checked": cov.get("candidates_checked", "—"),
