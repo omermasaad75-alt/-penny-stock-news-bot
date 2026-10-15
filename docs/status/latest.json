@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-10-15 11:51",
+ "generated_at_riyadh": "2026-10-15 12:50",
  "mode": "live",
  "sources": {
   "mode_setting": "live",
@@ -10,14 +10,14 @@
     "name": "yahoo-finance",
     "ok": true,
     "detail": "",
-    "latency_ms": 74,
+    "latency_ms": 118,
     "source_kind": "live"
    },
    {
     "name": "sec-edgar",
     "ok": true,
     "detail": "",
-    "latency_ms": 146,
+    "latency_ms": 135,
     "source_kind": "live"
    },
    {
@@ -30,7 +30,7 @@
    {
     "name": "news-rss",
     "ok": true,
-    "detail": "27 عنوان",
+    "detail": "28 عنوان",
     "latency_ms": 0,
     "source_kind": "live"
    },
@@ -3300,7 +3300,7 @@
   {
    "symbol": "SCNI",
    "phase": 3,
-   "score": 48.9,
+   "score": 49.8,
    "grade": "D",
    "last_close": 0.88,
    "eligible": false,
@@ -3425,7 +3425,7 @@
    "name": "news-rss",
    "ok": true,
    "source_kind": "live",
-   "detail": "27 عنوان"
+   "detail": "28 عنوان"
   },
   {
    "name": "demo-generator",
@@ -3434,5 +3434,5 @@
    "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/38708624188"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/38715785426"
 }
