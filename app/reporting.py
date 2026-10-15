@@ -1,4 +1,4 @@
-"""مولّد التقارير — تقرير تحليلي كامل (Markdown + HTML) لكل سهم أو لقائمة الفرص."""
+"""مولّد التقارير — تقرير تحليلي (Markdown + HTML) لكل سهم أو لقائمة المتابعة."""
 from __future__ import annotations
 
 import json
@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from .config import REPORTS_DIR, STRATEGY, settings
+from .config import REPORTS_DIR, settings
 from .providers.hub import DataHub
 from .strategy import engine as eng
 
@@ -29,281 +29,145 @@ def _pct(x, nd=1, dash="—"):
         return str(x)
 
 
-def _m(x, dash="—"):
-    if x is None:
-        return dash
-    try:
-        v = float(x)
-    except (TypeError, ValueError):
-        return dash
-    if v >= 1e9:
-        return f"{v/1e9:.2f}B"
-    if v >= 1e6:
-        return f"{v/1e6:.2f}M"
-    if v >= 1e3:
-        return f"{v/1e3:.1f}K"
-    return f"{v:.0f}"
-
-
 def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
-    p = STRATEGY
-    info = eng.phase_info(a.phase if a.eligible else 0)
-    lv = a.levels or {}
-    tgt = lv.get("targets", {})
+    """تقرير Markdown للسهم: المعايير، النمط، منطقة الهبوط، خطة الصفقة، الدرجة."""
     lines: list[str] = []
-    add = lines.append
 
-    add(f"# تقرير تحليلي — {a.symbol} ({a.name})")
+    def add(line: str = "") -> None:
+        lines.append(line)
+
+    plan = a.trade_plan or {}
+    lv = a.levels or {}
+    pat = a.pattern or {}
+    dz = a.drop_zone or {}
+
+    add(f"# {a.symbol} — {a.name or a.symbol}")
     add("")
-    add(f"> **المرحلة:** {info['ar']}  |  **التقييم:** {a.score}/100 ({a.grade})  |  "
-        f"**مصدر البيانات:** {a.data_source}  |  **آخر جلسة:** {a.as_of}")
+    add(f"**الحالة:** {a.phase_ar}  ·  **الدرجة:** {a.score}/100 ({a.grade})  ·  **آخر جلسة:** {a.as_of or '—'}")
     add("")
-    if a.gam_candidate:
-        add("> **وسم GAM — مسار ثانوي، غير مؤهل:** هذا السهم ليس فرصة مؤهلة ولا يدخل قائمة المتابعة، "
-            "وليس توصية أو إشارة دخول.")
+    if a.synthetic:
+        add("> ⚠ **بيانات تجريبية (demo)** — لا تُستخدم للقرار.")
         add("")
-        add("**أسباب إدراجه في GAM:** " + " | ".join(a.gam_reasons))
-        add("")
-        add("> رفض RSI هنا — إن وُجد — محسوب من سلسلة الأسعار التي يحللها المسح الحالي فقط. "
-            "لا توجد آلية تخزين أو استرجاع لرفض RSI من مسح سابق.")
-        add("")
-    elif a.eligible:
-        add("> **الحالة:** فرصة مؤهلة وفق الشروط الصارمة. وسم GAM غير مستخدم لهذا الصف.")
-        add("")
+    add(f"> {a.action_ar}")
+    add("")
+
+    add("## 1) المعايير")
+    add("")
+    add("| المعيار | الدرجة | النقاط | الوزن |")
+    add("|---------|--------|--------|-------|")
+    for b in a.breakdown:
+        add(f"| {b['ar']} | {b['score']}% | {b['points']} | {b['weight']} |")
+    add(f"| **المجموع** | | **{a.score}** | **100** |")
+    add("")
+
+    add("## 2) النمط والتأكيد")
+    add("")
+    if pat.get("found"):
+        label = "سحب سيولة" if pat.get("type") == "liquidity_sweep" else "قاع ثانٍ (دعم ثابت)"
+        add(f"- **النمط:** {label}")
+        add(f"- **القاع الأول:** {_n(pat.get('low1'), 3)}$  ·  **القاع الثاني:** {_n(pat.get('low2'), 3)}$")
+        add(f"- **خط العنق:** {_n(pat.get('neckline'), 3)}$")
+    elif pat.get("broken"):
+        add("- النمط موجود لكنه **منكسر** (السعر تحت وقف القاع الثاني).")
     else:
-        add("> **الحالة:** مستبعد من الفرص المؤهلة وقائمة المتابعة.")
-        add("")
-    add("## مصادر هذا الصف")
-    add("| نوع البيانات | المصدر الفعلي |")
-    add("|---|---|")
-    for key, label in (("price_source", "الأسعار"), ("split_source", "التقسيم"),
-                       ("fundamentals_source", "الأساسيات"), ("news_source", "الأخبار")):
-        add(f"| {label} | {getattr(a, key) or 'غير متاح — لم يُستبدل ببيانات تجريبية'} |")
-    add(f"\n**بيانات تجريبية (synthetic):** {str(a.synthetic).lower()}")
-    add("")
-    if a.note_ar:
-        add(f"**وصف الحالة:** {a.note_ar}")
-        add("")
-
-    # ---------------- الملخص التنفيذي ---------------- #
-    add("## 1) الملخص التنفيذي")
-    add("")
-    for w in a.why_ar:
-        add(f"- {w}")
-    add("")
-    add(f"**خطة العمل:** {a.action_ar}")
+        add("- لم يظهر قاع ثانٍ أو سحب سيولة بعد.")
+    conf = a.confirmation or {}
+    add(f"- **شمعة التأكيد:** {'✅ مكتملة' if conf.get('confirmed') else '⏳ بانتظار'}")
     add("")
 
-    # ---------------- شروط الاستراتيجية ---------------- #
-    add("## 2) مطابقة شروط الاستراتيجية")
+    add("## 3) منطقة الهبوط (القمة ÷ 2)")
     add("")
-    add("| # | الشرط | المعيار | القراءة الفعلية | الحالة |")
-    add("|---|-------|---------|----------------|--------|")
-    checks = [
-        ("1", "تقسيم عكسي 1:2 – 1:60 خلال شهرين", f"≤ {p.rs_lookback_days} يوماً",
-         f"{a.rs_ratio_str or '—'} بتاريخ {a.rs_date or '—'} ({a.rs_age_days if a.rs_age_days is not None else '—'} يوم)",
-         bool(a.rs_found)),
-        ("2", "صعود يوم التقسيم", f"≥ {p.min_spike_pct:.0f}%",
-         _pct(a.spike_pct), bool(a.spike_pct is not None and a.spike_pct >= p.min_spike_pct)),
-        ("3", "موجة هبوط قوية", f"≥ {p.min_drop_pct:.0f}% (المثالي {p.good_drop_pct:.0f}%+)",
-         _pct(a.decline_pct), bool(a.decline_pct is not None and abs(a.decline_pct) >= p.min_drop_pct)),
-        ("4", "تشبع بيعي RSI", f"< {p.rsi_oversold:.0f}",
-         f"القاع {_n(a.rsi_trough,1)} / الحالي {_n(a.rsi_now,1)}"
-         + (" (بدأ التحسّن)" if a.rsi_recovered else ""),
-         bool(a.rsi_trough is not None and a.rsi_trough < p.rsi_oversold)),
-        ("5", "ثبات على القاع", f"≥ {p.min_base_sessions} جلسات",
-         f"{eng.sessions_ar(a.base_sessions)} على {_n(a.bottom_price,3)}"
-         + (f" ونطاق {_n(a.base_range_pct,1)}%" if a.base_range_pct is not None else ""),
-         bool((a.base_sessions or 0) >= p.min_base_sessions)),
-        ("6", "جفاف الحجم داخل القاعدة", f"< {p.max_volume_dryup_ratio*100:.0f}% من المتوسط",
-         f"{_n((a.volume_dryup or 0)*100,0)}%" if a.volume_dryup else "—",
-         bool(a.volume_dryup is not None and a.volume_dryup < p.max_volume_dryup_ratio)),
-        ("7", "تأكيد الانعكاس", f"≥ 3 تأكيدات فنية", f"{len(a.confirmations)} تأكيد",
-         len(a.confirmations) >= 3),
-    ]
-    for c in checks:
-        add(f"| {c[0]} | {c[1]} | {c[2]} | {c[3]} | {'✅ محقق' if c[4] else '⏳ غير مكتمل'} |")
+    if dz:
+        add(f"- **قمة الصعود:** {_n(dz.get('spike_high'), 3)}$")
+        add(f"- **المنطقة المرجعية:** {_n(dz.get('zone'), 3)}$  (من {_n(dz.get('zone_low'), 3)}$ إلى {_n(dz.get('zone_high'), 3)}$)")
+    else:
+        add("- لا توجد بيانات كافية.")
     add("")
-    if a.rejections:
-        add("**أسباب الاستبعاد:**")
+
+    add("## 4) خطة الصفقة")
+    add("")
+    if plan.get("valid"):
+        add("| البند | القيمة |")
+        add("|-------|--------|")
+        add(f"| الدخول | {_n(plan.get('entry'), 3)}$ |")
+        add(f"| الوقف (3% تحت القاع الثاني) | {_n(plan.get('stop'), 3)}$ |")
+        add(f"| مخاطرة السهم | {_n(plan.get('risk_per_share'), 3)}$ |")
+        add(f"| حجم المركز | {plan.get('position_size', 0):,} سهم |")
+        for i, t in enumerate(plan.get("targets", []), 1):
+            add(f"| الهدف {i} (+{25 * i}%) | {_n(t, 3)}$ |")
+    else:
+        add("- لا توجد خطة صفقة صالحة حالياً.")
+    add("")
+
+    add("## 5) المؤشرات الأساسية")
+    add("")
+    add("| المؤشر | القيمة |")
+    add("|--------|--------|")
+    add(f"| الشورت (أسهم) | {_n(a.short_shares, 0)} |")
+    add(f"| الفلوت | {_n(a.float_shares, 0)} |")
+    add(f"| القيمة المتداولة اليومية | {_n(a.dollar_volume, 0)}$ |")
+    add(f"| ATR % | {_n(a.atr_pct, 2)} |")
+    add("")
+
+    if a.notes or a.rejections:
+        add("## 6) ملاحظات وأسباب الاستبعاد")
         add("")
         for r in a.rejections:
-            add(f"- ❌ {r}")
-        add("")
-    if a.notes:
-        for nt in a.notes:
-            add(f"- ⓘ {nt}")
+            add(f"- ✖ {r}")
+        for note in a.notes:
+            add(f"- {note}")
         add("")
 
-    # ---------------- دورة الحياة بعد الثبات (شرط «جاهز فنياً») ---------------- #
-    add("## 2.ب) دورة الحياة بعد الثبات — شرط «جاهز فنياً»")
-    add("")
-    add(f"**حالة التسلسل:** {a.lifecycle_stage or '—'} "
-        + ("🟣 **GAM — غير مؤهل مهما كانت حالة التسلسل**" if a.gam_candidate else
-           ("✅ **جاهز فنياً**" if a.lifecycle_ready and a.eligible else
-            ("⛔ فشل التسلسل" if a.lifecycle_failed else "⏳ قيد التكوّن"))))
-    add("")
-    add("| # | الخطوة | المعيار | القراءة الفعلية | الحالة |")
-    add("|---|--------|---------|-----------------|--------|")
-    for i, c in enumerate(a.lifecycle_checks or [], 1):
-        mark = {"ok": "✅ محقق", "active": "⏳ جارٍ الآن", "pending": "• لم يبدأ"}.get(c.get("state"), "—")
-        add(f"| {i} | {c['ar']} | {c['std']} | {c['detail']} | {mark} |")
-    add("")
-    if a.lifecycle_failed:
-        add("> ⛔ **إلغاء السيناريو:** كسر السعر الدعم الرئيسي بعد الانطلاقة دون استعادة — "
-            "لا دخول حتى يتكوّن قاع جديد.")
-        add("")
-    if a.pullback_type == "liquidity_sweep":
-        add(f"- **سحب سيولة (Liquidity Sweep):** الفتيل كسر الدعم إلى {_n(a.sweep_low,3)}$ "
-            f"({_n(a.sweep_depth_pct,1)}% تحت الدعم) بتاريخ {a.sweep_date or '—'} ثم أُغلق فوقه.")
-        add(f"- **وقف إلغاء السيناريو انتقل إلى** {_n((a.levels or {}).get('stop_structural'),3)}$ "
-            f"(تحت قاع السحب {_n(a.sweep_low,3)}$).")
-        add("")
-    add(f"- **المستويات المرجعية:** الدعم الرئيسي {_n(a.support_level or a.bottom_price,3)}$ — "
-        f"أقرب مقاومة {_n(a.resistance_level,3)}$ — قمة الانطلاقة {_n(a.impulse_high,3)}$.")
-    add("")
-
-    # ---------------- التفاصيل الفنية ---------------- #
-    add("## 3) التفاصيل الفنية")
-    add("")
-    add("| البند | القيمة |")
-    add("|-------|--------|")
-    add(f"| سعر الافتتاح يوم التقسيم | {_n(a.rs_open,3)}$ |")
-    add(f"| قمة ما بعد التقسيم | {_n(a.spike_high,3)}$ ({a.spike_date or '—'}) |")
-    add(f"| القاع المرجعي | {_n(a.bottom_price,3)}$ ({a.bottom_date or '—'}) |")
-    add(f"| نطاق القاعدة | {_n(a.base_range_pct,1)}% |")
-    add(f"| الانطلاقة بعد الثبات | {_pct(a.impulse_pct)} إلى {_n(a.impulse_high,3)}$ ({a.impulse_date or '—'}) |")
-    add(f"| المقاومة القريبة | {_n(a.resistance_level,3)}$ — تشكّلت {a.resistance_date or '—'}"
-        + (f"، واختُبرت في {a.impulse_date}" if a.impulse_date else "")
-        + (f" (على {_n(a.resistance_distance_pct,1)}% من الدعم) |" if a.resistance_distance_pct is not None else " |"))
-    if a.pullback_type == "liquidity_sweep":
-        add(f"| سحب السيولة | {_n(a.sweep_low,3)}$ ({_n(a.sweep_depth_pct,1)}% تحت الدعم) في {a.sweep_date or '—'} |")
-    elif a.pullback_low is not None:
-        add(f"| العودة للدعم | أدنى نقطة {_n(a.pullback_low,3)}$ ({a.pullback_date or '—'}) — "
-            f"{'إعادة اختبار ناجحة' if a.pullback_type == 'support_retest' else 'تحت المراقبة'} |")
-    add(f"| الاستعادة فوق الدعم | {a.reclaim_sessions} إغلاق فوق {_n(a.reclaim_level,3)}$ "
-        f"(آخرها {a.reclaim_date or '—'}) |")
-    add(f"| الإقفال الحالي | {_n(a.last_close,3)}$ ({_pct(a.change_pct,2)}) |")
-    add(f"| RSI (14) اليومي | {_n(a.rsi_now,1)} (أدنى {_n(a.rsi_trough,1)} بتاريخ {a.rsi_trough_date or '—'}) |")
-    add(f"| MACD Histogram | {_n(a.macd_hist,4)} — {'يتحسّن' if a.macd_turning else 'لم يتحسّن بعد'} |")
-    add(f"| الحجم النسبي (RVOL) | {_n(a.rvol,2)}x |")
-    add(f"| ATR% | {_n(a.atr_pct,2)}% |")
-    add(f"| القناة الهابطة | انحدار {_n(a.channel_slope_pct,2)}% / سقف {_n(a.channel_upper,3)}$ — "
-        f"{'مخترقة ✅' if a.channel_broken else 'غير مخترقة'} |")
-    add(f"| بنية القيعان | {a.higher_lows} قاع صاعد منذ القاع |")
-    add("")
-    if a.h4.get("available"):
-        add("### فريم 4 ساعات")
-        add("")
-        add(f"- الاتجاه: { {'up':'صاعد','down':'هابط','neutral':'عرضي'}.get(a.h4.get('trend'),'—') }"
-            f" | RSI: {_n(a.h4.get('rsi'),1)} | MACD Hist: {_n(a.h4.get('macd_hist'),4)}"
-            f" | RVOL: {_n(a.h4.get('rvol'),2)}x")
-        add(f"- توافق مع الفريم اليومي: {'نعم ✅' if a.h4.get('aligned') else 'لا ⏳'}"
-            f" | قناة مخترقة: {'نعم' if a.h4.get('channel_broken') else 'لا'}"
-            f" | ديفرجنس إيجابي: {'نعم' if a.h4.get('bullish_divergence') else 'لا'}")
-        add("")
-
-    # ---------------- النماذج الفنية ---------------- #
-    add("## 4) النماذج الفنية المرصودة")
-    add("")
-    add("| النموذج | الفريم | الثقة | الحالة | الوصف |")
-    add("|---------|-------|-------|--------|-------|")
-    for pt in (a.patterns_daily + a.patterns_4h):
-        add(f"| {pt['name_ar']} | {pt['tf']} | {int(pt['confidence']*100)}% | "
-            f"{'مؤكد' if pt['status']=='confirmed' else 'قيد التشكّل'} | {pt['description_ar']} |")
-    add("")
-
-    # ---------------- المستويات ---------------- #
-    add("## 5) مستويات فنية مرجعية — ليست خطة تداول" if a.gam_candidate
-        else "## 5) خطة التداول والمستويات")
-    add("")
-    if a.gam_candidate:
-        add("> مرشح GAM غير مؤهل؛ المستويات أدناه وصف آلي للبنية السعرية وليست توصية أو خطة دخول.")
-        add("")
-    add("| البند | المستوى |")
-    add("|-------|---------|")
-    add(f"| نقطة الاختراق (Trigger) | **{_n(lv.get('trigger'),3)}$** |")
-    add(f"| منطقة الدخول | {_n((lv.get('entry_zone') or [None])[0],3)}$ – {_n(lv.get('trigger'),3)}$ |")
-    add(f"| وقف الخسارة التداولي | {_n(lv.get('stop'),3)}$ ({_pct(lv.get('stop_pct'),1)}) |")
-    add(f"| وقف إلغاء السيناريو (بنيوي) | {_n(lv.get('stop_structural'),3)}$ |")
-    add(f"| الهدف 1 (38.2% ارتداد) | {_n(tgt.get('t1_382'),3)}$ |")
-    add(f"| الهدف 2 (61.8% ارتداد) | {_n(tgt.get('t2_618'),3)}$ |")
-    add(f"| الهدف 3 (القمة السابقة) | {_n(tgt.get('t3_full'),3)}$ |")
-    add(f"| مخاطرة/عائد عند الهدف 1 | {_n(lv.get('rr_t1'),2)} : 1 |")
-    add(f"| مخاطرة/عائد عند الهدف 2 | {_n(lv.get('rr_t2'),2)} : 1 |")
-    add("")
-    add(f"> {lv.get('position_note_ar','')}")
-    add("")
-
-    # ---------------- الأساسيات ---------------- #
-    add("## 6) البيانات الأساسية والأساس المالي")
-    add("")
-    add("| البند | القيمة |")
-    add("|-------|--------|")
-    add(f"| اسم الشركة | {a.name} |")
-    add(f"| البورصة / القطاع | {a.exchange or '—'} / {a.sector or '—'} |")
-    add(f"| عدد الأسهم القائمة | {_m(a.shares_out)} |")
-    add(f"| الفلوت (الأسهم الحرة) | {_m(a.float_shares)} |")
-    add(f"| القيمة السوقية | {_m(a.market_cap)}$ |")
-    add(f"| متوسط الحجم اليومي | {_m(a.avg_volume)} |")
-    add(f"| متوسط قيمة التداول | {_m(a.dollar_volume)}$ |")
-    add(f"| نسبة البيع على المكشوف من الفلوت | {_n(a.short_pct_float,1)}% |")
-    add(f"| أسهم مبيعة على المكشوف | {_m(a.short_shares)} |")
-    add(f"| أيام التغطية (Days to Cover) | {_n(a.days_to_cover,1)} |")
-    add(f"| نسبة حجم البيع المكشوف اليومي | {_n((a.short_volume_ratio or 0)*100,1)}% |")
-    add(f"| المصدر | {a.short_source or '—'} |")
-    add("")
-
-    # ---------------- الأخبار ---------------- #
-    add("## 7) الأخبار والمحفزات (إيجابية/سلبية/مستقبلية)")
-    add("")
-    if a.catalysts:
-        add("| التاريخ | النوع | الاتجاه | الأثر | العنوان |")
-        add("|--------|------|---------|-------|---------|")
-        for c in a.catalysts[:20]:
-            ar = {"positive": "إيجابي 🟢", "negative": "سلبي 🔴", "neutral": "محايد ⚪"}.get(c.get("sentiment"), "—")
-            add(f"| {c.get('date')} | {c.get('type')} | {ar} | {c.get('impact')} | {str(c.get('title'))[:110]} |")
-    else:
-        add("_لا توجد أخبار مرصودة._")
-    add("")
-    if a.dilution:
-        add("### إفصاحات التخفيف (Dilution)")
-        add("")
-        for d in a.dilution[:10]:
-            add(f"- [{d.get('severity')}] {d.get('date')} — {d.get('title')}")
-        add("")
-    if a.risk_flags:
-        add("### تحذيرات المخاطر")
-        add("")
-        for r in a.risk_flags:
-            add(f"- {r}")
-        add("")
-
-    # ---------------- التقييم ---------------- #
-    add("## 8) تفصيل التقييم (0-100)")
-    add("")
-    add("| المكوّن | الوزن | الدرجة | النقاط | التفصيل |")
-    add("|---------|-------|--------|--------|---------|")
-    for b in a.breakdown:
-        add(f"| {b['ar']} | {b['weight']} | {b['score']} | {b['points']} | {b['detail']} |")
-    add(f"| **المجموع** | **100** | | **{a.score}** | التقدير {a.grade} |")
-    add("")
-
-    # ---------------- التذييل ---------------- #
     add("---")
     add("")
     add(f"_تم توليد التقرير آلياً بواسطة {settings.app_name_ar} v{settings.version} — "
         f"{datetime.now().strftime('%Y-%m-%d %H:%M')}_")
     add("")
     add("> **إخلاء مسؤولية:** هذا التقرير أداة تحليل فني/كمّي وليس نصيحة استثمارية. "
-        "أسهم التقسيم العكسي عالية المخاطر (تخفيف، شطب محتمل، سيولة ضعيفة) — "
-        "استخدم إدارة مخاطر صارمة ولا تخاطر بأكثر مما تتحمل خسارته.")
+        "أسهم الشركات الصغيرة عالية المخاطر — استخدم إدارة مخاطر صارمة.")
     add("")
     if sources:
         parts = [
             "%s (%s)" % (p.get("name"), "متصل" if p.get("ok") else "غير متصل")
             for p in sources.get("providers", [])
         ]
+        add("_مصادر البيانات: " + "، ".join(parts) + "_")
+    return "\n".join(lines)
+
+
+def watchlist_markdown(results: list[eng.Analysis], sources: dict | None = None) -> str:
+    """قائمة المتابعة: الأسهم READY / NEAR / WATCH مرتبة حسب المرحلة ثم الدرجة."""
+    lines: list[str] = []
+
+    def add(line: str = "") -> None:
+        lines.append(line)
+
+    rows = sorted([a for a in results if a.watchlist], key=lambda x: (-x.phase, -x.score))
+    add("# قائمة المتابعة")
+    add("")
+    add(f"_تاريخ المسح: {datetime.now().strftime('%Y-%m-%d %H:%M')}_")
+    add("")
+    add(f"**عدد الأسهم:** {len(rows)}  ·  **جاهز للدخول:** {sum(1 for a in rows if a.phase == 6)}  ·  "
+        f"**قريب من الاكتمال:** {sum(1 for a in rows if a.phase == 5)}  ·  **مراقبة:** {sum(1 for a in rows if a.phase == 2)}")
+    add("")
+    add("| الرمز | الحالة | الدرجة | السعر | دخول | وقف | هدف 1 | مخاطرة/سهم |")
+    add("|-------|--------|--------|-------|------|-----|-------|------------|")
+    for a in rows:
+        plan = a.trade_plan or {}
+        valid = plan.get("valid")
+        add(f"| **{a.symbol}** | {a.phase_ar} | {a.score} ({a.grade}) | {_n(a.last_close, 3)}$ | "
+            f"{_n(plan.get('entry'), 3) if valid else '—'} | {_n(plan.get('stop'), 3) if valid else '—'} | "
+            f"{_n(plan['targets'][0], 3) if valid else '—'} | {_n(plan.get('risk_per_share'), 3) if valid else '—'} |")
+    if not rows:
+        add("| — | لا توجد أسهم في قائمة المتابعة لهذا المسح | — | — | — | — | — | — |")
+    add("")
+    add("> قائمة المتابعة ليست توصية شراء. راجع تقرير كل سهم قبل أي قرار.")
+    if sources:
+        parts = [
+            "%s (%s)" % (p.get("name"), "متصل" if p.get("ok") else "غير متصل")
+            for p in sources.get("providers", [])
+        ]
+        add("")
         add("_مصادر البيانات: " + "، ".join(parts) + "_")
     return "\n".join(lines)
 
@@ -437,70 +301,7 @@ def write_reports(symbols: list[str], hub: DataHub, out_dir: Path | None = None,
             json.dumps(a.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8")
         written.append({"symbol": a.symbol, "phase": a.phase, "score": a.score,
                         "eligible": a.eligible, "watchlist": a.watchlist,
-                        "gam_candidate": a.gam_candidate,
+                        "status": a.strategy_status,
                         "md": str(out_dir / f"{a.symbol}_analysis_{stamp}.md"),
                         "html": str(out_dir / f"{a.symbol}_analysis_{stamp}.html")})
     return written
-
-
-def watchlist_markdown(results: list[eng.Analysis], sources: dict | None = None) -> str:
-    """تقرير موحّد لقائمة أفضل الفرص."""
-    lines: list[str] = []
-    add = lines.append
-    add("# تقرير قائمة الفرص — استراتيجية التقسيم العكسي والانعكاس")
-    add("")
-    add(f"_تاريخ التوليد: {datetime.now().strftime('%Y-%m-%d %H:%M')} — "
-        f"عدد الرموز المفحوصة: {len(results)}_")
-    add("")
-    elig = [a for a in results if a.eligible]
-    watch = [a for a in results if a.watchlist and a.eligible]
-    gam = [a for a in results if a.gam_candidate]
-    add(f"**فرص مؤهلة:** {len(elig)} | **في قائمة المتابعة (ثبات 3+ جلسات):** {len(watch)} | "
-        f"**مرشحو GAM (غير مؤهلين):** {len(gam)}")
-    add("")
-    add("> GAM مسار ثانوي فقط ولا يخفّف الأهلية الصارمة؛ مرشحوه ليسوا فرصاً مؤهلة ولا توصيات. "
-        "رفض RSI مبني على بيانات السعر في المسح الحالي، ولا توجد حالة رفض تاريخية محفوظة.")
-    add("")
-    add("## أفضل الفرص المؤهلة")
-    add("")
-    add("| الرمز | المرحلة | التقييم | السعر | التقسيم | صعود | هبوط | جلسات الثبات | RSI | الفلوت | بيع مكشوف | نقطة الاختراق | مخاطرة/عائد |")
-    add("|-------|---------|---------|-------|---------|------|------|--------------|-----|--------|-----------|----------------|-------------|")
-    for a in sorted(watch, key=lambda x: -x.score)[:25]:
-        lv = a.levels or {}
-        add(f"| **{a.symbol}** | {eng.phase_info(a.phase)['ar'].split('—')[-1].strip()} | {a.score} ({a.grade}) | "
-            f"{_n(a.last_close,3)}$ | {a.rs_ratio_str} {a.rs_date or ''} | {_pct(a.spike_pct)} | "
-            f"{_pct(a.decline_pct)} | {a.base_sessions} | {_n(a.rsi_trough,0)}→{_n(a.rsi_now,0)} | "
-            f"{_m(a.float_shares)} | {_n(a.short_pct_float,1)}% | {_n(lv.get('trigger'),3)}$ | {_n(lv.get('rr_t2'),2)}:1 |")
-    add("")
-    add("## مرشحو GAM — مسار ثانوي غير مؤهل")
-    add("")
-    add("| الرمز | السعر | التقسيم الحديث | الهبوط | أدنى RSI | سبب/أسباب الرفض المسموح بها | الحالة |")
-    add("|---|---:|---|---:|---:|---|---|")
-    for a in sorted(gam, key=lambda x: -x.score)[:25]:
-        add(f"| **{a.symbol}** | {_n(a.last_close,3)}$ | {a.rs_ratio_str} {a.rs_date or ''} | "
-            f"{_pct(a.decline_pct)} | {_n(a.rsi_trough,1)} | {' ؛ '.join(a.gam_reasons)} | "
-            "غير مؤهل · ليس توصية |")
-    if not gam:
-        add("| — | — | — | — | — | لا يوجد مرشح GAM في بيانات هذا المسح | — |")
-    add("")
-    add("## مصادر جميع الصفوف")
-    add("| الرمز | الأسعار | التقسيم | الأساسيات | الأخبار | تجريبي |")
-    add("|---|---|---|---|---|---|")
-    for a in results:
-        add(f"| {a.symbol} | {a.price_source or 'غير متاح'} | {a.split_source or 'غير متاح'} | "
-            f"{a.fundamentals_source or 'غير متاح'} | {a.news_source or 'غير متاح'} | {str(a.synthetic).lower()} |")
-    add("")
-    add("## كل الرموز ذات التقسيم العكسي داخل النافذة")
-    add("")
-    add("| الرمز | التصنيف | المرحلة | التقييم | سبب الاستبعاد / الملاحظة |")
-    add("|-------|---------|---------|---------|--------------------------|")
-    for a in sorted([x for x in results if x.rs_found], key=lambda x: (-x.phase, -x.score)):
-        reason = " | ".join(a.rejections) if a.rejections else " | ".join(a.notes) or "مطابق للشروط"
-        status = ("GAM — غير مؤهل" if a.gam_candidate else
-                  "فرصة مؤهلة" if a.eligible else "مستبعد")
-        phase = eng.phase_info(a.phase if a.eligible else 0)["ar"]
-        add(f"| {a.symbol} | {status} | {phase} | {a.score} | {reason[:160]} |")
-    add("")
-    add("---")
-    add("> إخلاء مسؤولية: أداة تحليل فني/كمّي وليست نصيحة استثمارية.")
-    return "\n".join(lines)

@@ -18,46 +18,6 @@ from app.strategy import engine as eng
 # --------------------------------------------------------------------------- #
 # 1) الحدث التاريخي المتجاهَل لا يُبطل الأهلية
 # --------------------------------------------------------------------------- #
-def test_historical_split_event_does_not_invalidate_recent_valid_split():
-    """إضافة تقسيم قديم (منذ 200 يوم، 1-for-10) لتقسيمات JZ يجب ألا تغيّر الأهلية.
-
-    قبل التصحيح كانت أسباب تجاهل الحدث القديم تُضاف إلى a.rejections، فتتحول
-    الأهلية من True إلى False رغم اختيار حدث حديث صحيح. بعد التصحيح تُسجَّل
-    كملاحظة «حدث تاريخي متجاهَل» فقط.
-    """
-    hub = DataHub(mode="demo")
-    base = eng.analyze_symbol("JZ", hub, STRATEGY)
-    assert base.rs_found is True
-    assert base.eligible is True
-
-    original_splits = hub.demo.splits
-    old_event = ReverseSplitEvent(
-        symbol="JZ",
-        date=pd.Timestamp(base.as_of) - pd.Timedelta(days=200),
-        ratio_str="1-for-10",
-        factor=10.0,
-        source="demo-generator",
-        url="",
-    )
-    hub.demo.splits = lambda sym: original_splits(sym) + [old_event]
-    try:
-        a = eng.analyze_symbol("JZ", hub, STRATEGY)
-    finally:
-        hub.demo.splits = original_splits
-
-    assert a.rs_found is True, "الحدث الحديث الصحيح يجب أن يبقى مرصوداً"
-    assert a.eligible == base.eligible, "تجاهل حدث تاريخي يجب ألا يغيّر الأهلية"
-    assert a.rejections == base.rejections, "أسباب الرفض يجب ألا تتغير بسبب حدث تاريخي متجاهَل"
-    assert a.rs_ratio_str == base.rs_ratio_str
-    assert a.rs_date == base.rs_date
-    historical = [nt for nt in a.notes if nt.startswith("حدث تاريخي متجاهَل")]
-    assert historical, "يجب تسجيل تجاهل الحدث القديم كملاحظة تاريخية لا كرفض"
-    assert any("200" in nt for nt in historical)
-
-
-# --------------------------------------------------------------------------- #
-# 2) تعدد صفحات screener حتى نهاية النتائج
-# --------------------------------------------------------------------------- #
 @pytest.fixture()
 def yahoo_env(tmp_path, monkeypatch):
     """مزوّد Yahoo معزول عن الشبكة: قوائم يدوية فارغة وsleep مُبطّل."""

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#080b11">
-<title>منصة رصد التقسيم العكسي والانعكاس | RS Reversal Terminal</title>
+<title>لوحة الاستراتيجية — قاع ثانٍ وقمة ÷ 2 | Double-Bottom Terminal</title>
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -15,10 +15,10 @@
 
 <header class="topbar">
   <div class="brand">
-    <img class="logo" src="icons/icon-192.png" alt="أيقونة رصد الانعكاس">
+    <img class="logo" src="icons/icon-192.png" alt="أيقونة لوحة الاستراتيجية">
     <div>
-      <h1>منصة رصد التقسيم العكسي والانعكاس</h1>
-      <span class="sub">Reverse-Split Oversold Reversal Terminal · Daily &amp; 4H</span>
+      <h1>لوحة الاستراتيجية — قاع ثانٍ وقمة ÷ 2</h1>
+      <span class="sub">Double-Bottom · Drop Zone · 4×25% Targets · Daily &amp; 4H</span>
     </div>
   </div>
   <button class="btn menu-btn" id="menuBtn" aria-label="القائمة">القائمة</button>
@@ -39,19 +39,18 @@
   <div class="progress-bar"><div id="progressFill"></div></div>
 </div>
 
-<section class="gam-banner" aria-label="تعريف مسار GAM">
-  <b>GAM — مسار ثانوي فقط:</b>
-  يعرض مرشحين قريبين رفضتهم الشروط الصارمة حصراً بسبب هبوط أقل من 30% و/أو شرط RSI،
-  مع تقسيم عكسي حديث وسعر بين 0.50 و20 دولاراً. المرشح غير مؤهل، لا يدخل قائمة المتابعة، وليس توصية.
-  رفض RSI محسوب من بيانات السعر في المسح الحالي؛ لا توجد حالة رفض تاريخية محفوظة.
+<section class="strategy-banner" aria-label="تعريف الاستراتيجية">
+  <b>الاستراتيجية:</b>
+  قاع أول ← ارتداد ← قاع ثانٍ ضمن 4% (أو سحب سيولة يعود فوق القاع الأول)، مع منطقة الهبوط «القمة ÷ 2» وإغلاق تأكيدي.
+  الحالات: <b>جاهز للدخول</b> · <b>قريب من الاكتمال</b> · <b>مراقبة</b> · <b>مستبعد</b>. الأهداف +25% / +50% / +75% / +100%. ليست توصية.
 </section>
 
 <section class="kpis">
   <div class="kpi"><span class="kpi-label">رموز مفحوصة</span><b id="kpiScanned">—</b></div>
-  <div class="kpi"><span class="kpi-label">تقسيم عكسي داخل النافذة</span><b id="kpiRs" class="c-blue">—</b></div>
-  <div class="kpi"><span class="kpi-label">مرشحو GAM (غير مؤهلين)</span><b id="kpiGam" class="c-purple">—</b></div>
-  <div class="kpi"><span class="kpi-label">قائمة المتابعة (ثبات 3+)</span><b id="kpiWatch" class="c-green">—</b></div>
-  <div class="kpi"><span class="kpi-label">جاهز فنياً (اكتمال التسلسل)</span><b id="kpiReady" class="c-green">—</b></div>
+  <div class="kpi"><span class="kpi-label">لها قاع ثانٍ / سحب سيولة</span><b id="kpiPattern" class="c-blue">—</b></div>
+  <div class="kpi"><span class="kpi-label">قريب من الاكتمال</span><b id="kpiNear" class="c-amber">—</b></div>
+  <div class="kpi"><span class="kpi-label">قائمة المتابعة</span><b id="kpiWatch" class="c-green">—</b></div>
+  <div class="kpi"><span class="kpi-label">جاهز للدخول</span><b id="kpiReady" class="c-green">—</b></div>
   <div class="kpi"><span class="kpi-label">متوسط تقييم الفرص</span><b id="kpiAvg" class="c-amber">—</b></div>
   <div class="kpi"><span class="kpi-label">آخر تحديث</span><b id="kpiTime" class="small">—</b></div>
 </section>
@@ -70,9 +69,9 @@
       <button class="chip active" data-filter="all">الكل</button>
       <button class="chip" data-filter="watch">قائمة المتابعة</button>
       <button class="chip" data-filter="eligible">فرص مؤهلة</button>
-      <button class="chip chip-gam" data-filter="gam">GAM (غير مؤهل)</button>
-      <button class="chip" data-filter="ready">جاهز فنياً</button>
-      <button class="chip" data-filter="rs">لها تقسيم عكسي</button>
+      <button class="chip" data-filter="near">قريب من الاكتمال</button>
+      <button class="chip" data-filter="ready">جاهز للدخول</button>
+      <button class="chip" data-filter="pattern">لها قاع ثانٍ / سحب</button>
       <button class="chip" data-filter="rejected">مستبعدة</button>
     </div>
     <input id="searchBox" class="search" type="search" placeholder="ابحث برمز السهم أو الاسم…">
@@ -83,15 +82,14 @@
       <thead>
         <tr>
           <th>#</th><th>الرمز</th><th>المرحلة</th><th>التقييم</th><th>السعر</th>
-          <th>التقسيم العكسي</th><th>صعود التقسيم</th><th>الهبوط</th><th>جلسات الثبات</th>
-          <th>RSI</th><th>الفلوت</th><th>بيع مكشوف</th><th>RVOL</th>
-          <th>نقطة الاختراق</th><th>مخاطرة/عائد</th>
-          <th title="التسلسل: ثبات الدعم → انطلاقة → مقاومة → عودة للدعم/سحب سيولة → استعادة">التسلسل</th>
+          <th>القاع الأول / الثاني</th><th>منطقة القمة ÷ 2</th><th>القمة</th>
+          <th>المعايير</th><th>الدخول</th><th>الوقف</th><th>الهدف 1 (+25%)</th><th>مخاطرة/عائد</th>
+          <th title="القاع الثاني ثم شمعة تأكيد تكسر قمة الشمعة السابقة">التأكيد</th>
           <th>أبرز نموذج</th><th></th>
         </tr>
       </thead>
       <tbody id="scanBody">
-        <tr><td colspan="18" class="empty">اضغط «مسح السوق الآن» لبدء الرصد…</td></tr>
+        <tr><td colspan="16" class="empty">اضغط «مسح السوق الآن» لبدء الرصد…</td></tr>
       </tbody>
     </table>
   </div>
@@ -247,7 +245,7 @@
         <h3>التحليل السردي</h3>
         <ul class="narrative" id="anWhy"></ul>
         <div class="action-box" id="anAction"></div>
-        <h4>تأكيدات الانعكاس</h4>
+        <h4>تأكيدات الدخول</h4>
         <div class="chips" id="anConfirmations"></div>
       </div>
       <div class="card">
@@ -268,12 +266,11 @@
   <div class="card">
     <h3>تسلسل الاستراتيجية — كيف ينتقل السهم بين المراحل</h3>
     <p class="muted">
-      الاستراتيجية تبحث عن سهم أُجري له <b>تقسيم عكسي</b> (1:2 حتى 1:60) خلال آخر شهرين،
-      صعد صعوداً محدوداً يوم التقسيم، ثم دخل <b>موجة هبوط قوية</b> (≥30%، والمثالي 40-50%+)
-      حتى وصل إلى <b>تشبع بيعي</b> (RSI &lt; 30)، وكوّن <b>قاعاً وثبت عليه</b> 3-5 جلسات مع جفاف حجم،
-      ثم <b>ينطلق بنسبة ≈20%</b> (أقل/أكثر قليلاً) لاختبار <b>أقرب مقاومة</b>، وبعدها
-      <b>يعود لاختبار الدعم الرئيسي</b> أو <b>يسحب سيولة تحته ويعود فوقه</b> —
-      وعندها فقط يتحوّل السهم إلى <b>جاهز فنياً</b> (اكتمال التسلسل).
+      الاستراتيجية تبحث عن سهم سعره قريب من <b>1.50–2.00</b>، هبط <b>40%+</b> بعد قمة خلال 90 يوماً،
+      ثم كوّن <b>قاعاً أول</b> وارتد منه بنسبة 15% على الأقل، ثم <b>قاعاً ثانياً</b> ضمن ±4% من الأول
+      (أو <b>سحب سيولة</b> تحت القاع الأول يعود فوقه). المنطقة المرجعية «قمة ÷ 2» يجب أن يقع فيها القاع الثاني أو السعر.
+      السهم <b>جاهز للدخول</b> عند إغلاق فوق القاع الثاني مع شمعة خضراء تكسر قمة الشمعة السابقة.
+      الوقف <b>3% تحت القاع الثاني</b>، والأهداف <b>+25% / +50% / +75% / +100%</b>، وحجم المركز يُحسب من مبلغ مخاطرة ثابت.
     </p>
   </div>
   <div id="phasesList" class="phases"></div>
@@ -282,8 +279,7 @@
     <div id="weightsList" class="weights"></div>
     <p class="muted small">
       التقييم مرجّح: كل مكوّن يُنقّط من 0 إلى 100 ثم يُضرب في وزنه، والمجموع يُقسم على مجموع الأوزان.
-      الرموز بلا حدث تقسيم عكسي تُخفض نقاطها بنسبة 45%، وكسر القاع المرجعي يخفض النتيجة 20%،
-      وفشل تسلسل الانعكاس يخفض «جودة المخاطر» 25%.
+      غياب بيانات الشورت أو الأخبار يُحسب محايداً (نصف الوزن)، وكسر وقف القاع الثاني يُلغي النمط.
     </p>
   </div>
 </main>

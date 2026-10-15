@@ -1,4 +1,4 @@
-"""اختبارات المسح اليومي وبناء موقع النشر (tools/daily_scan.py)."""
+"""اختبارات المسح اليومي وبناء موقع النشر (tools/daily_scan.py) — الاستراتيجية الحالية."""
 from __future__ import annotations
 
 import importlib.util
@@ -27,44 +27,31 @@ def tool():
 
 
 # ------------------------- وحدات مساعدة ------------------------- #
-def test_sequence_state_for_ready_symbol(tool):
-    from app.providers.hub import get_hub
-    from app.config import STRATEGY
-    from app.strategy import engine as eng
-
-    hub = get_hub(mode="demo", refresh=True)
-    a = eng.analyze_symbol("JZ", hub, STRATEGY)
-    done, label, color = tool.sequence_state(a)
-    assert len(a.lifecycle_checks) == 6
-    assert 0 <= done <= 6
-    assert label and color in {"ok", "warn", "bad", "muted"}
-
-
 def test_dots_html_has_six_dots(tool):
-    from app.config import STRATEGY
     from app.providers.hub import get_hub
     from app.strategy import engine as eng
 
     hub = get_hub(mode="demo")
-    a = eng.analyze_symbol("BRTX", hub, STRATEGY)
+    a = eng.analyze_symbol("BRTX", hub)
     html = tool.dots_html(a)
     assert html.count('<i class="dot') == 6
-    assert "<span class=\"dots\">" in html
+    assert '<span class="dots">' in html
 
 
 def test_summarize_counts(tool):
-    from app.config import STRATEGY
     from app.providers.hub import get_hub
     from app.strategy import engine as eng
 
     hub = get_hub(mode="demo")
-    results = [eng.analyze_symbol(s, hub, STRATEGY) for s in ("JZ", "NVEX", "UPC")]
+    results = [eng.analyze_symbol(s, hub) for s in ("JZ", "TRVN", "IMPL", "UPC")]
     s = tool.summarize(results)
-    assert s["scanned"] == 3
+    assert s["scanned"] == 4
     assert s["ready"] == len(s["ready_symbols"])
-    assert s["with_reverse_split"] <= 3
-    assert s["gam_candidates"] == len(s["gam_symbols"])
-    assert set(s["eligible_symbols"]).isdisjoint(s["gam_symbols"])
+    assert s["eligible"] == len(s["eligible_symbols"])
+    assert s["watchlist"] == len(s["watchlist_symbols"])
+    # الأهلية = NEAR أو READY؛ قائمة المتابعة تشملهما مع WATCH
+    assert set(s["eligible_symbols"]) <= set(s["watchlist_symbols"])
+    assert "gam_candidates" not in s
 
 
 # ------------------------- مسار كامل (CLI) ------------------------- #
@@ -72,7 +59,7 @@ def test_cli_builds_publishable_site(tmp_path):
     """يشغّل الأداة فعلياً (وضع تجريبي) ويتحقّق من ملفات النشر."""
     site = tmp_path / "site"
     env = {**os.environ, "RSS_DATA_MODE": "demo"}
-    env.pop("GITHUB_ACTIONS", None)  # isolate local test-only subprocess, not deployment
+    env.pop("GITHUB_ACTIONS", None)  # تشغيل محلي للاختبار فقط، ليس نشراً
     proc = subprocess.run(
         [sys.executable, str(ROOT / "tools" / "daily_scan.py"),
          "--site", str(site), "--limit", "5", "--mode", "demo",
@@ -88,20 +75,22 @@ def test_cli_builds_publishable_site(tmp_path):
     assert (site / ".nojekyll").exists() and (site / "manifest.json").exists()
 
     html = index.read_text(encoding="utf-8")
-    assert "لوحة رصد التقسيم العكسي" in html
+    assert "لوحة الاستراتيجية" in html
     assert "dashboard.html" in html and "data/latest.csv" in html
     assert "$" not in html.split("<style>")[0]           # لا تبقى عناصر قالب غير مُستبدلة
     assert html.count('<i class="dot') >= 6                # نقاط دورة الحياة في الجدول
+    assert "GAM" not in html
 
     payload = json.loads(data.read_text(encoding="utf-8"))
     assert payload["summary"]["scanned"] == 5
     assert len(payload["rows"]) == 5
     assert payload["mode"] in {"demo", "live"}
+    assert all(r["strategy_status"] in {"READY", "NEAR", "WATCH", "EXCLUDED"} for r in payload["rows"])
 
     header = csv.read_text(encoding="utf-8-sig").splitlines()[0]
-    assert "الرمز" in header and "التقييم" in header
-    assert "مرشح GAM" in header and "أسباب GAM" in header
-    assert "GAM" in html and "غير مؤهل" in html
+    assert "الرمز" in header and "التقييم" in header and "الحالة" in header
+    assert "الهدف 1 (+25%)" in header and "حجم المركز (أسهم)" in header
+    assert "GAM" not in header
 
     stamp = payload["stamp"]
     assert (site / "history" / f"{stamp}.json").exists()
@@ -110,13 +99,12 @@ def test_cli_builds_publishable_site(tmp_path):
     assert list((site / "reports").glob("*.html"))
 
 
-def test_dataset_separates_gam_from_eligible_and_watchlist(tool, tmp_path):
-    from app.config import STRATEGY
+def test_dataset_status_maps_to_eligibility(tool, tmp_path):
     from app.providers.hub import get_hub
     from app.strategy import engine as eng
 
     hub = get_hub(mode="demo", refresh=True)
-    results = [eng.analyze_symbol(s, hub, STRATEGY) for s in ("JZ", "BIOK", "QLGN")]
+    results = [eng.analyze_symbol(s, hub) for s in ("JZ", "TRVN", "BIOK", "QLGN")]
     site = tmp_path / "site"
     started = tool.now_riyadh()
     sources = hub.sources_report()
@@ -124,16 +112,15 @@ def test_dataset_separates_gam_from_eligible_and_watchlist(tool, tmp_path):
     payload = tool.write_dataset(site, results, sources, "demo", started)
 
     rows = {r["symbol"]: r for r in payload["rows"]}
-    assert rows["JZ"]["eligible"] is True and rows["JZ"]["gam_candidate"] is False
-    assert rows["BIOK"]["gam_candidate"] is True
-    assert rows["BIOK"]["eligible"] is False and rows["BIOK"]["watchlist"] is False
-    assert rows["QLGN"]["last_close"] < STRATEGY.min_price
-    assert rows["QLGN"]["gam_candidate"] is False
-    assert payload["summary"]["gam_candidates"] == 1
-    assert payload["gam_policy"]["historical_state_persisted"] is False
-    assert payload["gam_policy"]["rsi_scope"] == "current_scan_price_series"
+    for sym, r in rows.items():
+        assert r["eligible"] == (r["strategy_status"] in {"READY", "NEAR"}), sym
+        assert r["watchlist"] == (r["strategy_status"] in {"READY", "NEAR", "WATCH"}), sym
+    assert rows["TRVN"]["eligible"] is True
+    assert rows["JZ"]["strategy_status"] == "WATCH"
+    assert payload["summary"]["eligible"] == len(payload["summary"]["eligible_symbols"])
+    assert "gam_policy" not in payload
 
     csv_text = (site / "data" / "latest.csv").read_text(encoding="utf-8-sig")
-    assert "مرشح GAM" in csv_text
-    biok_line = next(line for line in csv_text.splitlines() if line.startswith("BIOK,"))
-    assert "نعم — غير مؤهل" in biok_line
+    trvn_line = next(line for line in csv_text.splitlines() if line.startswith("TRVN,"))
+    assert "الهدف 1" not in trvn_line  # الترويسة فقط
+    assert trvn_line.count(",") >= 20

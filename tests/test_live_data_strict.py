@@ -156,7 +156,6 @@ class TestLiveAnalysisHasSourceFields:
         assert a.fundamentals_source, "fundamentals_source يجب أن يكون ممتلئاً"
         # split_source/news_source قد تكونا فارغتين إن لم يوجد تقسيم/أخبار
         # لكن الحقل موجود
-        assert hasattr(a, "split_source")
         assert hasattr(a, "news_source")
 
     def test_live_analysis_analysis_dict_has_synthetic_key(self, monkeypatch):
@@ -165,7 +164,6 @@ class TestLiveAnalysisHasSourceFields:
         d = a.to_dict()
         assert "synthetic" in d
         assert "price_source" in d
-        assert "split_source" in d
         assert "fundamentals_source" in d
         assert "news_source" in d
 
@@ -181,7 +179,7 @@ class TestLiveAnalysisHasSourceFields:
         a = eng.analyze_symbol("BADSYM", hub)
         assert a.synthetic is False or a.synthetic == (hub.effective_mode == "demo")
         assert len(a.rejections) > 0
-        assert not a.rs_found
+        assert a.strategy_status == "EXCLUDED"
 
 
 # --------------------------------------------------------------------------- #
@@ -277,17 +275,13 @@ def test_actions_rejects_even_explicit_demo_test_flag(tmp_path, monkeypatch):
     assert tool.main() == 4
 
 
-def test_pending_sequence_not_mislabeled_as_no_split():
-    from tools.daily_scan import sequence_state
-    a = eng.Analysis(symbol="TEST", rs_found=True)
-    assert sequence_state(a)[1] == "تسلسل الثبات لم يبدأ بعد"
-
-
 def test_watchlist_report_includes_sources_and_html_table():
     from app.reporting import watchlist_markdown, markdown_to_html
     a = eng.Analysis(symbol="TEST", synthetic=False, price_source="yahoo-finance",
-                     fundamentals_source="yahoo-finance", split_source="yahoo-finance", news_source="rss:yahoo")
+                     fundamentals_source="yahoo-finance", news_source="rss:yahoo",
+                     phase=6, watchlist=True, eligible=True, strategy_status="READY", score=80.0)
     text = watchlist_markdown([a])
-    assert "مصادر جميع الصفوف" in text and "rss:yahoo" in text and "false" in text
+    assert "قائمة المتابعة" in text and "| **TEST** |" in text
+    assert "جاهز للدخول" in text
     html = markdown_to_html(text)
-    assert "|---|" not in html
+    assert "<table>" in html or "<table " in html

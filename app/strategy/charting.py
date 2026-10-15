@@ -7,7 +7,6 @@ import numpy as np
 import pandas as pd
 
 from ..analytics import indicators as ind
-from ..config import STRATEGY, StrategyParams
 from ..providers.hub import DataHub
 
 
@@ -39,16 +38,15 @@ def _bars(df: pd.DataFrame, tf: str) -> tuple[list[dict], list[dict]]:
     return candles, volumes
 
 
-def build_chart_payload(symbol: str, tf: str, hub: DataHub,
-                        params: StrategyParams = STRATEGY, limit: int = 220,
+def build_chart_payload(symbol: str, tf: str, hub: DataHub, limit: int = 220,
                         analysis: Any = None) -> dict[str, Any]:
-    """حِزمة كاملة لرسم فني: شموع + متوسطات + RSI/MACD/Stoch + أحداث + مستويات."""
+    """حِزمة كاملة لرسم فني: شموع + متوسطات + مؤشرات + علامات النمط."""
     tf = (tf or "1D").upper().replace("D", "D")
     is_intraday = tf in {"4H", "1H", "60M"}
     raw = hub.intraday_4h(symbol, 90) if is_intraday else hub.daily(symbol, 400)
     if raw is None or raw.empty:
         return {"symbol": symbol, "tf": tf, "candles": [], "error": "لا توجد بيانات"}
-    df = ind.add_indicators(raw, params)
+    df = ind.add_indicators(raw, None)
     df = df.tail(limit)
     candles, volumes = _bars(df, tf)
 
@@ -76,33 +74,21 @@ def build_chart_payload(symbol: str, tf: str, hub: DataHub,
         "rvol": _line(df["rvol"], tf, 2),
     }
 
-    # الأحداث على المخطط (تقسيم عكسي / قمة / قاع / اختراق)
+    # علامات النمط (القاعان) — من نتيجة التحليل إن وُجدت
     markers: list[dict] = []
-    events = hub.splits(symbol)
-    ev, _ = _pick(events, params)
-    first_t = candles[0]["time"] if candles else None
-    if ev is not None:
-        t = str(pd.Timestamp(ev.date).date())
-        if tf in {"4H", "1H", "60M"}:
-            t = _nearest_time(df, ev.date, tf) or first_t
-        markers.append({"time": t, "position": "aboveBar", "color": "#58a6ff",
-                        "shape": "arrowDown", "text": f"تقسيم عكسي {ev.ratio_str}"})
-        seg = df.loc[df.index >= pd.Timestamp(ev.date)]
-        if len(seg) > 3:
-            peak_i = seg["high"].idxmax()
-            markers.append({"time": _t(peak_i, tf), "position": "aboveBar", "color": "#d29922",
-                            "shape": "circle", "text": f"قمة {float(seg['high'].max()):.2f}"})
-            after_peak = df.loc[df.index >= peak_i]
-            if len(after_peak) > 3:
-                if analysis is not None and getattr(analysis, "bottom_price", None):
-                    bot_price, bot_date = analysis.bottom_price, analysis.bottom_date
-                else:
-                    bot_price, bot_date = float(after_peak["low"].min()), None
-                    bot_i = after_peak["low"].idxmin()
-                    bot_date = _t(bot_i, tf)
-                if bot_price is not None and bot_date:
-                    markers.append({"time": bot_date, "position": "belowBar", "color": "#3fb950",
-                                    "shape": "arrowUp", "text": f"قاع {float(bot_price):.2f}"})
+    pat = (getattr(analysis, "pattern", None) or {}) if analysis is not None else {}
+    if pat.get("found"):
+        series_markers = (getattr(analysis, "series", None) or {}).get("markers", {})
+        for key, label, color, pos, shape in (
+            ("low1", "قاع 1", "#58a6ff", "belowBar", "circle"),
+            ("low2", "قاع 2", "#3fb950", "belowBar", "arrowUp"),
+        ):
+            date = series_markers.get(f"{key}_date")
+            if tf in {"4H", "1H", "60M"}:
+                date = _nearest_time(df, pat.get(f"{key}_date") or date, tf) if date else None
+            if date:
+                markers.append({"time": date, "position": pos, "color": color, "shape": shape,
+                                "text": f"{label} {float(pat[key]):.2f}"})
 
     return {
         "symbol": symbol.upper(), "tf": tf, "candles": candles, "volume": volumes,
@@ -127,8 +113,3 @@ def _nearest_time(df: pd.DataFrame, date, tf: str) -> str | None:
         return _t(sub.index[0], tf)
     except Exception:  # noqa: BLE001
         return None
-
-
-def _pick(events, params):
-    from .engine import pick_reverse_split
-    return pick_reverse_split(events, params, None)

@@ -1,270 +1,249 @@
-"""اختبارات محرّك الاستراتيجية — الشروط، المراحل، التقييم، والمستويات."""
+"""اختبارات الاستراتيجية الحالية: قاع ثانٍ / سحب سيولة + منطقة القمة ÷ 2 + أهداف 4×25%.
+
+القسم الأول: محرّك الاستراتيجية (app/strategy/strategy_engine.py) على سلاسل مصنوعة يدوياً.
+القسم الثاني: مُحوّل التحليل (app/strategy/engine.py) على بيانات الديمو.
+"""
 from __future__ import annotations
 
+import numpy as np
 import pandas as pd
 import pytest
 
-from app.config import STRATEGY
-from app.providers.base import ReverseSplitEvent, ShortData, TickerProfile
-from app.providers.demo import DemoProvider, SCENARIOS
-from app.providers.hub import DataHub
 from app.strategy import engine as eng
+from app.strategy.strategy_engine import (
+    StrategyConfig,
+    _find_pattern,
+    _post_peak_drawdown,
+    _targets,
+    evaluate_symbol,
+)
 
 
+# --------------------------------------------------------------------------- #
+#  أدوات بناء السلاسل
+# --------------------------------------------------------------------------- #
+def mk(closes, spread: float = 0.0) -> pd.DataFrame:
+    """شموع يومية من سلسلة إغلاقات: الافتتاح = إغلاق الشمعة السابقة."""
+    c = np.asarray(closes, dtype=float)
+    o = np.r_[c[0], c[:-1]]
+    idx = pd.bdate_range(end="2026-10-14", periods=len(c))
+    return pd.DataFrame({
+        "open": o,
+        "high": np.maximum(o, c) * (1 + spread),
+        "low": np.minimum(o, c) * (1 - spread),
+        "close": c,
+        "volume": 1_000_000.0,
+    }, index=idx)
+
+
+def double_bottom_closes() -> list[float]:
+    """قاع 1.50 ← ارتداد إلى 2.20 ← قاع 2 ≈ 1.55 (ضمن 4%) ← تعافٍ."""
+    return (list(np.linspace(3.0, 1.50, 40))
+            + list(np.linspace(1.50, 2.20, 10))[1:]
+            + list(np.linspace(2.20, 1.55, 15))[1:]
+            + list(np.linspace(1.55, 1.90, 12))[1:])
+
+
+def decline_then_flat(peak=3.0, bottom=1.8, n=120) -> list[float]:
+    """صعود إلى القمة ثم هبوط إلى القاع بعدها (هبوط حقيقي بعد القمة)."""
+    return list(np.linspace(1.0, peak, 40)) + list(np.linspace(peak, bottom, 40))[1:] + [bottom] * (n - 80)
+
+
+# --------------------------------------------------------------------------- #
+#  1) محرّك الاستراتيجية
+# --------------------------------------------------------------------------- #
+class TestDrawdownAfterPeak:
+    def test_drawdown_measured_from_peak_not_from_earlier_low(self):
+        """القاع (1.0) قبل القمة (3.0) لا يُحسب هبوطاً؛ الهبوط الحقيقي من 3.0 إلى 2.0 = 33%."""
+        closes = list(np.linspace(1.0, 3.0, 40)) + list(np.linspace(3.0, 2.0, 40)) + [2.0] * 20
+        df = mk(closes)
+        peak, post_low, dd = _post_peak_drawdown(df, StrategyConfig())
+        assert peak == pytest.approx(3.0, rel=1e-3)
+        assert post_low == pytest.approx(2.0, rel=1e-3)
+        assert dd == pytest.approx(1 - 2.0 / 3.0, abs=1e-3)
+
+    def test_33_percent_drop_fails_40_percent_rule(self):
+        closes = list(np.linspace(1.0, 3.0, 40)) + list(np.linspace(3.0, 2.0, 40)) + [2.0] * 20
+        res = evaluate_symbol(mk(closes), short_interest=5_000, has_news=True)
+        assert any("لا هبوط كافٍ بعد القمة" in f for f in res["failed"])
+        assert not any("سلوك سلبي سابق" in p for p in res["passed"])
+
+    def test_real_40_percent_drop_passes(self):
+        closes = list(np.linspace(1.0, 3.0, 40)) + list(np.linspace(3.0, 1.6, 40)) + [1.6] * 20
+        res = evaluate_symbol(mk(closes), short_interest=5_000, has_news=True)
+        assert any("سلوك سلبي سابق" in p for p in res["passed"])
+
+
+class TestPattern:
+    def test_double_bottom_found(self):
+        df = mk(double_bottom_closes(), spread=0.01)
+        pat = _find_pattern(df.reset_index(drop=True), StrategyConfig())
+        assert pat["found"] is True
+        assert pat["type"] in {"double_bottom", "liquidity_sweep"}
+        assert pat["low1"] < pat["neckline"]
+        assert abs(pat["low2"] - pat["low1"]) / pat["low1"] < 0.10
+
+    def test_no_pattern_on_monotonic_decline(self):
+        df = mk(list(np.linspace(3.0, 1.0, 120)), spread=0.01)
+        pat = _find_pattern(df.reset_index(drop=True), StrategyConfig())
+        assert pat["found"] is False
+
+    def test_broken_pattern_is_not_counted_and_has_no_plan(self):
+        closes = double_bottom_closes() + list(np.linspace(1.90, 1.20, 15))[1:]
+        res = evaluate_symbol(mk(closes, spread=0.01), short_interest=5_000, has_news=True)
+        assert res["pattern"].get("found") is False
+        assert res["pattern"].get("broken") is True
+        assert res["trade_plan"] is None
+        assert any("النمط منكسر" in f for f in res["failed"])
+
+
+class TestTradePlan:
+    def test_targets_are_four_quarter_steps(self):
+        plan = _targets(entry=2.0, low2=1.6, cfg=StrategyConfig())
+        assert plan["valid"] is True
+        assert plan["targets"] == pytest.approx([2.5, 3.0, 3.5, 4.0], rel=1e-6)
+        assert plan["stop"] == pytest.approx(1.6 * 0.97, rel=1e-6)
+        assert plan["position_size"] == int(50.0 / (2.0 - 1.6 * 0.97))
+
+    def test_zero_or_tiny_risk_is_invalid_and_sizes_nothing(self):
+        # الدخول على الوقف نفسه: المخاطرة صفر
+        plan = _targets(entry=1.0038, low2=1.0348, cfg=StrategyConfig())
+        assert plan["valid"] is False
+        assert plan["position_size"] == 0
+
+    def test_negative_risk_is_invalid(self):
+        plan = _targets(entry=1.0, low2=1.5, cfg=StrategyConfig())
+        assert plan["valid"] is False and plan["position_size"] == 0
+
+
+class TestScoring:
+    def test_breakdown_sums_to_score_and_weights_to_100(self):
+        res = evaluate_symbol(mk(double_bottom_closes(), spread=0.01), short_interest=5_000, has_news=True)
+        assert sum(b["weight"] for b in res["breakdown"]) == 100
+        assert sum(b["points"] for b in res["breakdown"]) == pytest.approx(res["score"], abs=0.2)
+
+    def test_unknown_short_and_news_are_neutral(self):
+        closes = double_bottom_closes()
+        known = evaluate_symbol(mk(closes, spread=0.01), short_interest=5_000, has_news=True)
+        unknown = evaluate_symbol(mk(closes, spread=0.01), short_interest=None, has_news=None)
+        assert unknown["score"] == pytest.approx(known["score"] - 8 * 0.5 - 4 * 0.5, abs=0.2)
+        assert any("محايد" in u for u in unknown["unknown"])
+
+    def test_nan_short_interest_is_neutral(self):
+        closes = double_bottom_closes()
+        res = evaluate_symbol(mk(closes, spread=0.01), short_interest=float("nan"), has_news=True)
+        assert any("غير متوفر" in u for u in res["unknown"])
+
+    def test_status_ready_requires_confirmation(self):
+        res = evaluate_symbol(mk(double_bottom_closes(), spread=0.01), short_interest=5_000, has_news=True)
+        if res["status"] == "READY":
+            assert res["confirmation"]["confirmed"] is True
+            assert res["score"] >= 75
+
+    def test_price_out_of_range_excluded_with_full_schema(self):
+        res = evaluate_symbol(mk(list(np.linspace(20, 25, 80))), short_interest=5_000, has_news=True)
+        assert res["status"] == "EXCLUDED"
+        assert res["breakdown"] == [] and res["trade_plan"] is None
+        assert "criteria" in res
+
+    def test_short_history_excluded_with_full_schema(self):
+        res = evaluate_symbol(mk(list(np.linspace(1, 2, 30))))
+        assert res["status"] == "EXCLUDED" and res["breakdown"] == []
+
+
+class TestRobustness:
+    def test_random_series_never_crash_and_keep_invariants(self):
+        rng = np.random.default_rng(7)
+        for _ in range(150):
+            n = int(rng.integers(60, 220))
+            c = np.clip(1.6 * np.exp(np.cumsum(rng.normal(-0.004, 0.07, n))), 0.05, 12)
+            o = np.r_[c[0], c[:-1]]
+            df = pd.DataFrame({
+                "open": o,
+                "high": np.maximum(o, c) * (1 + rng.uniform(0, 0.08, n)),
+                "low": np.minimum(o, c) * (1 - rng.uniform(0, 0.08, n)),
+                "close": c, "volume": 1e5,
+            }, index=pd.bdate_range(end="2026-10-14", periods=n))
+            res = evaluate_symbol(df, short_interest=float(rng.integers(0, 50_000)),
+                                  has_news=bool(rng.integers(0, 2)))
+            assert res["status"] in {"READY", "NEAR", "WATCH", "EXCLUDED"}
+            if res["breakdown"]:
+                assert sum(b["points"] for b in res["breakdown"]) == pytest.approx(res["score"], abs=0.2)
+            plan = res.get("trade_plan")
+            if plan and plan["valid"]:
+                assert plan["risk_per_share"] > 0
+                assert plan["position_size"] >= 0
+
+
+# --------------------------------------------------------------------------- #
+#  2) مُحوّل التحليل (engine.analyze_symbol) على بيانات الديمو
+# --------------------------------------------------------------------------- #
 @pytest.fixture(scope="module")
-def hub() -> DataHub:
-    return DataHub(mode="demo")
-
-
-@pytest.fixture(scope="module")
-def jz(hub) -> eng.Analysis:
-    return eng.analyze_symbol("JZ", hub)
-
-
-# ------------------------- شروط الاستراتيجية ------------------------- #
-def test_reverse_split_within_window(jz):
-    assert jz.rs_found
-    assert jz.rs_ratio_str == "1-for-8"
-    assert jz.rs_ratio == 8.0
-    assert jz.rs_age_days is not None and jz.rs_age_days <= STRATEGY.rs_lookback_days
-
-
-def test_spike_and_decline(jz):
-    assert jz.rs_open == pytest.approx(3.0, abs=0.02)
-    assert jz.spike_high == pytest.approx(3.40, abs=0.03)
-    assert jz.spike_pct == pytest.approx(13.33, abs=1.0)
-    assert jz.decline_pct is not None and abs(jz.decline_pct) >= STRATEGY.min_drop_pct
-
-
-def test_bottom_and_base(jz):
-    assert jz.bottom_price == pytest.approx(1.60, abs=0.02)
-    assert jz.base_sessions >= STRATEGY.min_base_sessions
-    assert jz.base_broken is False
-    assert jz.base_range_pct is not None and jz.base_range_pct <= STRATEGY.base_tolerance_pct * 2
-
-
-def test_oversold_and_recovery(jz):
-    assert jz.rsi_trough is not None and jz.rsi_trough < STRATEGY.rsi_oversold
-    assert jz.rsi_sessions_below_30 >= 3
-
-
-def test_levels_are_consistent(jz):
-    lv = jz.levels
-    t = lv["targets"]
-    assert lv["stop"] < lv["trigger"]
-    assert t["t1_382"] < t["t2_618"] < t["t3_full"]
-    assert lv["rr_t2"] > 1
-    assert lv["stop_structural"] < lv["trigger"]
-
-
-def test_jz_is_watchlisted(jz):
-    assert jz.eligible is True
-    assert jz.watchlist is True
-    assert jz.phase >= 4
-    assert jz.score > 60
-    assert jz.grade in {"A+", "A", "B"}
-
-
-# ------------------------- دورة الحياة (شرط «جاهز فنياً») ------------------------- #
-def test_jz_full_lifecycle_sequence(jz):
-    """JZ: ثبات ← انطلاقة ≈20% ← مقاومة قريبة ← سحب سيولة تحت الدعم ← استعادة."""
-    assert jz.impulse_pct is not None and jz.impulse_pct >= STRATEGY.min_ready_impulse_pct
-    assert abs(jz.impulse_pct - STRATEGY.ideal_impulse_pct) <= 8, "الانطلاقة يجب أن تكون قريبة من 20%"
-    assert jz.resistance_level is not None
-    assert jz.pullback_type == "liquidity_sweep"
-    assert jz.sweep_low is not None and jz.sweep_low < jz.bottom_price   # سحب تحت الدعم
-    assert jz.reclaim_sessions >= 1 and jz.sweep_low < jz.last_close     # عاد فوقه
-    assert jz.lifecycle_ready is True
-    assert jz.phase == 6
-    assert all(c["ok"] for c in jz.lifecycle_checks)
-
-
-def test_nvex_support_retest_variant(hub):
-    """NVEX: النمط البديل — عودة لاختبار الدعم دون سحب سيولة، ثم استعادة."""
-    a = eng.analyze_symbol("NVEX", hub)
-    assert a.pullback_type == "support_retest"
-    assert a.sweep_low is None
-    assert a.return_to_support if hasattr(a, "return_to_support") else True
-    assert a.lifecycle_ready is True and a.phase == 6
-
-
-def test_partial_sequence_not_ready(hub):
-    """SRNA: انطلاقة أقل من الحد (13%) ⇒ لا تكتمل الجاهزية الفنية."""
-    a = eng.analyze_symbol("SRNA", hub)
-    assert a.impulse_pct is not None
-    assert a.impulse_pct < STRATEGY.min_ready_impulse_pct
-    assert a.lifecycle_ready is False
-    assert a.phase < 6
-
-
-def test_lifecycle_checks_structure(jz):
-    keys = [c["key"] for c in jz.lifecycle_checks]
-    assert keys == ["support_hold", "impulse", "resistance", "pullback", "sweep", "reclaim"]
-    for c in jz.lifecycle_checks:
-        assert c["ar"] and c["std"] and c["detail"] and isinstance(c["ok"], bool)
-        assert c["state"] in {"ok", "active", "pending"}
-
-
-def test_support_hold_requires_three_sessions(hub):
-    """WKSP: الثبات جلستان فقط (أقل من 3) ⇒ لا يُعتمد «جاهز فنياً» مهما اكتملت بقية الخطوات."""
-    a = eng.analyze_symbol("WKSP", hub)
-    hold = next(c for c in a.lifecycle_checks if c["key"] == "support_hold")
-    assert hold["ok"] is False
-    assert a.support_hold_ok is False
-    assert a.lifecycle_ready is False
-    assert a.phase < 6
-
-
-def test_stage_reflects_incomplete_sequence(hub):
-    """لا يجوز أن تحمل الأسهم غير المكتملة وصف «مكتمل»."""
-    for sym in ("WKSP", "SRNA", "TGL", "HLIO", "DRTS"):
-        a = eng.analyze_symbol(sym, hub)
-        if not a.lifecycle_ready:
-            assert not a.lifecycle_stage.startswith("مكتمل"), (sym, a.lifecycle_stage)
-
-
-def test_nearest_resistance_is_pivot(jz):
-    assert jz.resistance_kind == "pivot"
-    assert jz.resistance_level is not None and jz.resistance_level < jz.impulse_high * 1.02
-
-
-def test_levels_use_sweep_low_for_invalidation(jz):
-    """وقف إلغاء السيناريو يجب أن يكون تحت قاع السحب عند حدوثه."""
-    assert jz.levels["stop_structural"] < jz.sweep_low
-
-
-def test_narrative_mentions_lifecycle(jz):
-    joined = " ".join(jz.why_ar)
-    assert "الانطلاقة" in joined
-    assert "سحب سيولة" in joined
-    assert "مقاومة" in joined
-
-
-# ------------------------- المراحل والاستبعاد ------------------------- #
-def test_phase_monotonic_with_conditions(hub):
-    res = {a.symbol: a for a in eng.scan(hub.universe(30), hub)}
-    # UPC: تقسيم أقدم من النافذة
-    assert res["UPC"].phase == 0 and any("نافذة" in r for r in res["UPC"].rejections)
-    # HLIO: هبوط مستمر بدون ثبات كافٍ
-    assert res["HLIO"].phase <= 4
-    # NVEX: انعكاس مؤكد ومؤهل
-    assert res["NVEX"].phase == 6 and res["NVEX"].eligible
-    # لا يوجد رمز مؤهل بلا حدث تقسيم
-    for a in res.values():
-        if a.eligible:
-            assert a.rs_found
-        if a.watchlist:
-            assert a.base_sessions >= STRATEGY.min_base_sessions
-
-
-def test_rejection_reasons_are_arabic(hub):
-    a = eng.analyze_symbol("UPC", hub)
-    assert a.rejections and any("تقسيم عكسي" in r for r in a.rejections)
-
-
-def test_pick_reverse_split_filters():
-    events = [
-        ReverseSplitEvent(symbol="X", date=pd.Timestamp.now().normalize() - pd.Timedelta(days=200),
-                          ratio_str="1-for-5", factor=5.0),
-        ReverseSplitEvent(symbol="X", date=pd.Timestamp.now().normalize() - pd.Timedelta(days=30),
-                          ratio_str="1-for-10", factor=10.0),
-    ]
-    ev, reasons = eng.pick_reverse_split(events, STRATEGY)
-    assert ev is not None and ev.factor == 10.0
-    assert any("نافذة" in r for r in reasons)
-
-
-def test_ratio_out_of_range_rejected():
-    ev = ReverseSplitEvent(symbol="Y", date=pd.Timestamp.now().normalize() - pd.Timedelta(days=5),
-                           ratio_str="1-for-120", factor=120.0)
-    picked, reasons = eng.pick_reverse_split([ev], STRATEGY)
-    assert picked is None and any("النطاق" in r for r in reasons)
-
-
-# ------------------------- التقييم والمخرجات ------------------------- #
-def test_score_breakdown_sums_to_score(jz):
-    total = sum(b["points"] for b in jz.breakdown) / sum(b["weight"] for b in jz.breakdown) * 100
-    assert total == pytest.approx(jz.score, abs=0.6)
-
-
-def test_narrative_and_action_present(jz):
-    assert len(jz.why_ar) >= 5
-    assert "اختراق" in jz.action_ar or "متابعة" in jz.action_ar
-
-
-def test_fundamentals_present(jz):
-    assert jz.shares_out and jz.float_shares
-    assert jz.float_shares < jz.shares_out
-    assert jz.short_pct_float is not None
-    assert jz.days_to_cover is not None
-
-
-def test_news_and_dilution_present(jz):
-    assert jz.catalysts, "يجب رصد المحفزات"
-    assert jz.dilution, "يجب رصد إفصاحات التخفيف"
-    assert any(c["type"] == "earnings" for c in jz.catalysts)
-
-
-def test_patterns_detected(jz):
-    assert jz.patterns_daily, "يجب رصد نماذج فنية"
-    names = {p["name"] for p in jz.patterns_daily}
-    assert names & {"base", "volume_dryup", "descending_channel", "double_bottom",
-                    "falling_wedge", "rsi_divergence", "higher_lows", "candlestick_reversal"}
-
-
-def test_h4_analysis(jz):
-    assert jz.h4.get("available") is True
-    assert jz.h4.get("rsi") is not None
-    assert jz.h4.get("trend") in {"up", "down", "neutral"}
-
-
-def test_scan_is_deterministic(hub):
-    a1 = eng.analyze_symbol("JZ", DataHub(mode="demo"))
-    a2 = eng.analyze_symbol("JZ", DataHub(mode="demo"))
-    assert a1.score == a2.score
-    assert a1.bottom_price == a2.bottom_price
-    assert a1.base_sessions == a2.base_sessions
-
-
-def test_all_scenarios_run(hub):
-    for sc in SCENARIOS:
-        a = eng.analyze_symbol(sc.symbol, hub)
-        assert a.symbol == sc.symbol
-        assert a.last_close > 0
-        assert a.phase in eng.PHASES
-        assert 0 <= a.score <= 100
-
-
-def test_resistance_must_stall_not_blow_through(hub):
-    """WKSP: تجاوز المقاومة بقوة (> 3%) ⇒ لا تُعدّ «أقرب مقاومة مختبرة» ولا يكتمل التسلسل."""
-    a = eng.analyze_symbol("WKSP", hub)
-    res = next(c for c in a.lifecycle_checks if c["key"] == "resistance")
-    assert res["ok"] is False
-    assert a.resistance_tested is False
-    assert a.lifecycle_ready is False
-
-
-def test_sequence_order_is_enforced(jz):
-    """الترتيب الزمني: ثبات الدعم ← الانطلاقة ← المقاومة ← العودة للدعم/السحب ← الاستعادة."""
-    assert jz.bottom_date < jz.impulse_date
-    assert jz.resistance_date <= jz.impulse_date
-    assert jz.pullback_date >= jz.impulse_date
-    if jz.sweep_low:
-        assert jz.sweep_low < jz.bottom_price          # الفتيل كسر الدعم فعلاً
-        assert jz.sweep_date >= jz.pullback_date
-
-
-def test_stop_placed_under_sweep_low(jz):
-    """وقف إلغاء السيناريو يجب أن يكون تحت قاع السحب (وإلا تحت الدعم)."""
-    assert jz.levels["stop_structural"] < (jz.sweep_low or jz.bottom_price)
-
-
-def test_ready_requires_base_hold_and_full_sequence(hub):
-    """كل من يُصنّف «جاهز فنياً» لا بد أن يستوفي الثبات ≥3 جلسات والتسلسل كاملاً."""
-    for sym in ("JZ", "NVEX", "BRTX", "FLNT", "SRNA", "HLIO", "WKSP"):
-        a = eng.analyze_symbol(sym, hub)
-        if a.phase == 6:
-            assert a.lifecycle_ready is True
-            assert a.support_hold_ok is True
-            assert a.base_sessions >= STRATEGY.min_base_sessions
-            assert all(c["ok"] for c in a.lifecycle_checks)
+def demo_hub():
+    from app.providers.hub import get_hub
+    return get_hub(mode="demo", refresh=True)
+
+
+@pytest.mark.parametrize("symbol", ["JZ", "BRTX", "NVEX", "QLGN"])
+def test_adapter_status_phase_and_flags_agree(demo_hub, symbol):
+    a = eng.analyze_symbol(symbol, demo_hub)
+    expected_phase = {"READY": 6, "NEAR": 5, "WATCH": 2, "EXCLUDED": 0}
+    if a.strategy_status in expected_phase:
+        assert a.phase == expected_phase[a.strategy_status]
+        assert a.eligible == (a.strategy_status in {"READY", "NEAR"})
+        assert a.watchlist == (a.strategy_status in {"READY", "NEAR", "WATCH"})
+        assert a.lifecycle_ready == (a.strategy_status == "READY")
+    assert a.phase_ar == eng.phase_info(a.phase)["ar"]
+
+
+def test_adapter_checklist_and_breakdown_shape(demo_hub):
+    a = eng.analyze_symbol("JZ", demo_hub)
+    assert len(a.lifecycle_checks) == 6
+    assert len(a.breakdown) == 9
+    assert {b["key"] for b in a.breakdown} == set(StrategyConfig().weights)
+    assert all(c["state"] in {"done", "pending"} for c in a.lifecycle_checks)
+
+
+def test_adapter_levels_consistent_with_plan(demo_hub):
+    for sym in ("JZ", "BRTX", "NVEX", "QLGN"):
+        a = eng.analyze_symbol(sym, demo_hub)
+        plan = a.trade_plan
+        if not (plan and plan.get("valid")):
+            assert a.levels.get("trigger") is None
+            continue
+        assert a.levels["trigger"] == plan["entry"]
+        assert a.levels["stop"] == plan["stop"] < plan["entry"]
+        t = [a.levels["targets"][f"t{i}"] for i in range(1, 5)]
+        assert t == sorted(t) and len(set(t)) == 4
+
+
+def test_adapter_has_no_legacy_gam_or_rs_decision_fields(demo_hub):
+    d = eng.analyze_symbol("JZ", demo_hub).to_dict()
+    for legacy in ("gam_candidate", "gam_reasons", "gam_rsi_scope", "rs_found", "rs_ratio_str"):
+        assert legacy not in d
+
+
+def test_adapter_missing_data_is_rejected_not_demo():
+    from app.providers.hub import DataHub
+
+    class EmptyHub(DataHub):
+        def __init__(self):
+            self.mode = "demo"
+            self.rejections = {}
+
+        @property
+        def effective_mode(self):
+            return "demo"
+
+        def daily(self, symbol, lookback_days=260):
+            return pd.DataFrame()
+
+    a = eng.analyze_symbol("NOPE", EmptyHub())
+    assert a.phase == 0
+    assert a.rejection_codes == ["missing_price_data"]
+
+
+def test_scan_sorts_by_phase_then_score(demo_hub):
+    rows = eng.scan(["JZ", "BRTX", "NVEX", "QLGN", "UPC"], demo_hub)
+    keys = [(-r.phase, -r.score) for r in rows]
+    assert keys == sorted(keys)

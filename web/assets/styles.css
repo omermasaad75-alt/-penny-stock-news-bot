@@ -83,10 +83,10 @@ a:hover{text-decoration:underline}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ------------------------------ المؤشرات ------------------------------ */
-.gam-banner{margin:12px 20px 0;padding:10px 14px;border-radius:11px;
+.strategy-banner{margin:12px 20px 0;padding:10px 14px;border-radius:11px;
   background:rgba(163,113,247,.10);border:1px solid rgba(163,113,247,.38);
   color:#c9d1dc;font-size:12.5px;line-height:1.75}
-.gam-banner b{color:#c9adff}
+.strategy-banner b{color:#c9adff}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:11px;padding:16px 20px 4px}
 .kpi{
   position:relative;overflow:hidden;padding:13px 15px;border-radius:var(--r);

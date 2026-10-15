@@ -6,7 +6,7 @@
   2) يحفظ النتائج:  site/data/latest.json · site/data/latest.csv · site/history/<وقت>.json
   3) يولّد تقارير تحليلية (Markdown + HTML + JSON) لأهم الرموز في site/reports/.
   4) يبني اللوحة التفاعلية الثابتة site/dashboard.html (ملف واحد يعمل بلا مخدم وبلا إنترنت).
-  5) يبني صفحة هبوط عربية site/index.html فيها آخر تحديث والملخّص وأفضل الفرص وروابط التقارير.
+  5) يبني صفحة هبوط عربية site/index.html فيها آخر تحديث والملخّص وقائمة المتابعة وروابط التقارير.
 
 الاستخدام:
     python3 tools/daily_scan.py --site site --limit 40 --mode live
@@ -23,7 +23,7 @@ import socket
 import sys
 import threading
 import time
-import urllib.request
+from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from string import Template
@@ -32,42 +32,40 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from app.config import STRATEGY, settings                      # noqa: E402
-from app.providers.hub import get_hub                          # noqa: E402
+from app.config import settings                                 # noqa: E402
+from app.providers.hub import get_hub                           # noqa: E402
 from app.reporting import markdown_to_html, watchlist_markdown, write_reports   # noqa: E402
-from app.strategy import engine as eng                         # noqa: E402
+from app.strategy import engine as eng                          # noqa: E402
+from app.strategy.strategy_engine import StrategyConfig, WEIGHT_LABELS_AR   # noqa: E402
 
 RIYADH = timezone(timedelta(hours=3))
 REPO_SLUG = "omermasaad75-alt/-penny-stock-news-bot"
 DEFAULT_PAGES = "https://omermasaad75-alt.github.io/-penny-stock-news-bot/"
 
-STEP_SHORT = {
-    "support_hold": "ثبات الدعم 3 جلسات",
-    "impulse": "الانطلاقة ≈20%",
-    "resistance": "أقرب مقاومة",
-    "pullback": "العودة لاختبار الدعم",
-    "sweep": "سحب السيولة/الاستعادة",
-    "reclaim": "الاستعادة فوق الدعم",
+# نقاط دورة الحياة في الجدول = معايير الاستراتيجية الستة (انظر engine.CHECKLIST)
+CHECK_SHORT = {
+    "pattern": "قاع ثانٍ / سحب سيولة",
+    "confirm": "شمعة تأكيد",
+    "drop_zone": "القمة ÷ 2",
+    "negative": "هبوط 40%+",
+    "price": "السعر 1.5–2",
+    "resistance": "مقاومة 20%+",
 }
 
 CSV_COLUMNS = [
-    ("symbol", "الرمز"), ("name", "الاسم"), ("phase", "المرحلة"),
-    ("phase_ar", "وصف المرحلة"), ("eligible", "فرصة مؤهلة"),
-    ("watchlist", "قائمة المتابعة"), ("gam_candidate", "مرشح GAM"),
-    ("gam_reasons", "أسباب GAM"), ("gam_rsi_scope", "نطاق RSI لـ GAM"),
+    ("symbol", "الرمز"), ("name", "الاسم"), ("phase", "المرحلة"), ("phase_ar", "الحالة"),
+    ("eligible", "فرصة مؤهلة"), ("watchlist", "قائمة المتابعة"),
     ("rejections", "أسباب الاستبعاد"),
     ("score", "التقييم"), ("grade", "الدرجة"),
-    ("last_close", "آخر إغلاق"), ("rs_date", "تاريخ التقسيم"), ("rs_ratio", "نسبة التقسيم"),
-    ("impulse_pct", "الانطلاقة %"), ("resistance_level", "أقرب مقاومة"),
-    ("resistance_distance_pct", "بعد المقاومة %"), ("sweep_low", "قاع سحب السيولة"),
-    ("support_level", "الدعم الرئيسي"), ("support_hold_ok", "ثبات الدعم"),
-    ("reclaim_sessions", "جلسات الاستعادة"), ("sequence_done", "خطوات مكتملة"),
-    ("lifecycle_ready", "جاهز فنياً"), ("lifecycle_failed", "فشل"), ("missing_step", "الخطوة الناقصة"),
-    ("trigger", "سعر التفعيل"), ("stop_structural", "وقف هيكلي"), ("rr_t2", "ربح/خطر"),
+    ("last_close", "آخر إغلاق"), ("drop_zone", "منطقة القمة÷2"),
+    ("pattern_low1", "القاع الأول"), ("pattern_low2", "القاع الثاني"),
+    ("entry", "الدخول"), ("stop", "الوقف"), ("target_1", "الهدف 1 (+25%)"),
+    ("position_size", "حجم المركز (أسهم)"), ("risk_per_share", "مخاطرة السهم"),
+    ("short_shares", "الشورت (أسهم)"),
     ("last_close_time", "وقت آخر شمعة"),
     ("synthetic", "بيانات تجريبية"),
-    ("price_source", "مصدر الأسعار"), ("split_source", "مصدر التقسيم"),
-    ("fundamentals_source", "مصدر الأساسيات"), ("news_source", "مصدر الأخبار"),
+    ("price_source", "مصدر الأسعار"), ("fundamentals_source", "مصدر الأساسيات"),
+    ("news_source", "مصدر الأخبار"),
 ]
 
 
@@ -97,77 +95,45 @@ def _pct(x, nd=1, dash="—"):
     return f"{float(x):+,.{nd}f}%"
 
 
-def sequence_state(a: "eng.Analysis") -> tuple[int, str, str]:
-    """(عدد الخطوات المكتملة، وصف الحالة، لون) — مطابق لمنطق الواجهة."""
-    checks = a.lifecycle_checks or []
-    if not checks:
-        return 0, ("تسلسل الثبات لم يبدأ بعد" if a.rs_found else "لا تقسيم عكسي داخل النافذة"), "muted"
-    done = sum(1 for c in checks if c.get("ok"))
-    if a.gam_candidate:
-        return done, "GAM — غير مؤهل (مسار ثانوي)", "warn"
-    if a.lifecycle_ready and a.eligible:
-        return 6, "جاهز فنياً (6/6)", "ok"
-    if a.lifecycle_failed:
-        return done, "فشل — كسر الدعم دون استعادة", "bad"
-    active = next((c for c in checks if not c.get("ok")), None)
-    if active is None:
-        return done, f"{done}/6", "warn"
-    name = STEP_SHORT.get(str(active.get("key")), str(active.get("ar") or ""))
-    return done, f"{done}/6 — ناقص: {name}", "warn"
+def _plan(a) -> dict:
+    return (a.trade_plan or {}) if a.trade_plan and a.trade_plan.get("valid") else {}
 
 
-def dots_html(a: "eng.Analysis") -> str:
+def dots_html(a) -> str:
     checks = a.lifecycle_checks or []
     if not checks:
         return '<span class="dots"><i class="dot muted"></i></span>'
     out = []
     for c in checks:
-        cls = "ok" if c.get("ok") else ("active" if c.get("state") == "active" else "pending")
+        cls = "ok" if c.get("ok") else "pending"
         title = html.escape(str(c.get("ar") or c.get("key") or ""))
         out.append(f'<i class="dot {cls}" title="{title}"></i>')
     return '<span class="dots">' + "".join(out) + "</span>"
 
 
 def summarize(results: list) -> dict:
-    with_rs = [a for a in results if a.rs_found]
     elig = [a for a in results if a.eligible]
     watch = [a for a in results if a.watchlist]
-    gam = [a for a in results if a.gam_candidate]
-    ready = [a for a in results if a.eligible and a.lifecycle_ready]
+    ready = [a for a in results if a.strategy_status == "READY"]
+    near = [a for a in results if a.strategy_status == "NEAR"]
     failed = [a for a in results if a.lifecycle_failed]
     return {
         "scanned": len(results),
-        "with_reverse_split": len(with_rs),
         "eligible": len(elig),
         "watchlist": len(watch),
-        "gam_candidates": len(gam),
         "ready": len(ready),
+        "near": len(near),
         "failed": len(failed),
         "avg_score_watchlist": round(sum(a.score for a in watch) / len(watch), 1) if watch else 0,
-        "top_symbol": elig[0].symbol if elig else "",
+        "top_symbol": watch[0].symbol if watch else "",
         "eligible_symbols": [a.symbol for a in elig],
-        "gam_symbols": [a.symbol for a in gam],
         "ready_symbols": [a.symbol for a in ready],
+        "watchlist_symbols": [a.symbol for a in watch],
     }
 
 
-# حالات التغطية ومسار GAM الثانوي؛ لا يُخلط GAM مع الفرص أو المتابعة.
-COVERAGE_CATEGORY_LABELS = {
-    "unchecked": "لم يُفحص",
-    "no_data": "بيانات غير متاحة",
-    "no_recent_split": "لا تقسيم حديث مطابق",
-    "rs_technically_excluded": "تقسيم حديث — مستبعد لسبب آخر",
-    "gam_candidates": "مرشحو GAM (غير مؤهلين)",
-    "watchlist": "قائمة المتابعة",
-    "ready": "جاهز فنياً",
-}
-
-
 def build_coverage(sources: dict, results: list) -> dict:
-    """تفصيل صريح لحدود التغطية مع فصل GAM عن الأهلية والمتابعة.
-
-    «لم يُفحص» ليست مستبعدة فنياً؛ و«التغطية الجزئية» لا تعني غياب حالات أخرى.
-    """
+    """تفصيل صريح لحدود التغطية: ما لم يُفحص وما لم تتوفر بياناته."""
     scan_cov = sources.get("scan_coverage") or {}
     disc = sources.get("candidate_discovery") or {}
     excluded = sources.get("rejections") or {}
@@ -180,23 +146,17 @@ def build_coverage(sources: dict, results: list) -> dict:
         else:
             no_data.append(sym)   # بيانات غير متاحة / أسعار قديمة / غير قابل للتحقق
 
-    rs_rows = [a for a in results if a.rs_found]
-    rs_excluded = [a.symbol for a in rs_rows if not a.eligible and not a.gam_candidate]
-    gam = [a.symbol for a in results if a.gam_candidate]
     watch = [a.symbol for a in results if a.watchlist]
-    ready = [a.symbol for a in results if a.eligible and a.phase == 6 and a.lifecycle_ready]
+    ready = [a.symbol for a in results if a.strategy_status == "READY"]
 
-    checked = int(scan_cov.get("candidates_checked")
-                  or sources.get("candidates_checked") or 0)
-    collected = int(scan_cov.get("candidates_collected")
-                    or disc.get("candidates_collected") or 0) or checked
+    checked = int(scan_cov.get("candidates_checked") or sources.get("candidates_checked") or 0)
+    collected = int(scan_cov.get("candidates_collected") or disc.get("candidates_collected") or 0) or checked
     unchecked = int(scan_cov.get("candidates_unchecked") or max(collected - checked, 0))
     partial = bool(scan_cov.get("partial") or disc.get("truncated"))
     return {
         "candidates_collected": collected,
         "candidates_checked": checked,
         "candidates_unchecked": unchecked,
-        "rows_after_split_filter": len(rs_rows),
         "partial": partial,
         "stop_reason": str(scan_cov.get("stop_reason") or ""),
         "total_matching_screener": disc.get("total_matching_screener"),
@@ -208,8 +168,6 @@ def build_coverage(sources: dict, results: list) -> dict:
                           "symbols": list(scan_cov.get("unchecked_symbols") or [])[:20]},
             "no_data": {"count": len(no_data), "symbols": no_data[:20]},
             "no_recent_split": {"count": len(no_split), "symbols": no_split[:20]},
-            "rs_technically_excluded": {"count": len(rs_excluded), "symbols": rs_excluded[:20]},
-            "gam_candidates": {"count": len(gam), "symbols": gam[:20]},
             "watchlist": {"count": len(watch), "symbols": watch[:20]},
             "ready": {"count": len(ready), "symbols": ready[:20]},
         },
@@ -227,7 +185,7 @@ def run_scan(mode: str | None, limit: int, symbols: list[str] | None = None):
     t0 = time.time()
     for i, sym in enumerate(syms, 1):
         try:
-            a = eng.analyze_symbol(sym, hub, STRATEGY)
+            a = eng.analyze_symbol(sym, hub)
         except Exception as exc:                                   # noqa: BLE001
             a = eng.Analysis(symbol=sym)
             eng.add_rejection(a, "analysis_error", f"خطأ: {exc}")
@@ -245,14 +203,13 @@ def run_scan(mode: str | None, limit: int, symbols: list[str] | None = None):
           flush=True)
     cov = sources["coverage"]
     print(f"▶ التغطية: مرشحون {cov['candidates_collected']} · مفحوصون {cov['candidates_checked']} · "
-          f"غير مفحوصين {cov['candidates_unchecked']} · صفوف بعد فلترة التقسيم "
-          f"{cov['rows_after_split_filter']}"
+          f"غير مفحوصين {cov['candidates_unchecked']}"
           + (" · التغطية جزئية ⚠" if cov["partial"] else ""), flush=True)
     return results, sources
 
 
 # --------------------------------------------------------------------------- #
-#  2) حفظ البيانات الخام
+#  2) حفظ البيانات
 # --------------------------------------------------------------------------- #
 def write_dataset(site: Path, results: list, sources: dict, mode: str, started: datetime) -> dict:
     (site / "data").mkdir(parents=True, exist_ok=True)
@@ -270,80 +227,57 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
         "excluded": sources.get("rejections", {}),
         "mode_setting": sources.get("mode_setting", mode),
         "summary": summary,
-        "gam_policy": {
-            "secondary_lane_only": True,
-            "eligible": False,
-            "watchlist": False,
-            "price_range": [STRATEGY.min_price, STRATEGY.max_price],
-            "allowed_rejection_codes": sorted(eng.GAM_ALLOWED_REJECTION_CODES),
-            "rsi_scope": eng.GAM_RSI_SCOPE,
-            "historical_state_persisted": False,
-            "disclaimer_ar": eng.GAM_DISCLAIMER_AR,
-        },
+        "strategy": {"params": asdict(StrategyConfig()), "weights_ar": WEIGHT_LABELS_AR},
         "coverage": sources.get("coverage", {}),
         "sources": sources,
         "rows": rows,
     }
     (site / "data" / "latest.json").write_text(
-        json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+        json.dumps(payload, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
 
-    # CSV بعناوين عربية مزدوجة (سهل الفتح في Excel)
+    # CSV بعناوين عربية (سهل الفتح في Excel)
     with (site / "data" / "latest.csv").open("w", encoding="utf-8-sig", newline="") as fh:
         w = csv.writer(fh)
         w.writerow([ar for _, ar in CSV_COLUMNS])
         for a in results:
-            lv = a.levels or {}
-            done, _, _ = sequence_state(a)
-            checks = a.lifecycle_checks or []
-            missing = next((STEP_SHORT.get(str(c.get("key")), "") for c in checks if not c.get("ok")), "")
+            plan = _plan(a)
+            pat = a.pattern or {}
             look = {
-                "symbol": a.symbol, "name": a.name, "phase": a.phase,
-                "phase_ar": eng.phase_info(a.phase if (a.eligible or not a.rs_found) else 0)["ar"],
+                "symbol": a.symbol, "name": a.name, "phase": a.phase, "phase_ar": a.phase_ar,
                 "eligible": "نعم" if a.eligible else "لا",
                 "watchlist": "نعم" if a.watchlist else "لا",
-                "gam_candidate": "نعم — غير مؤهل" if a.gam_candidate else "لا",
-                "gam_reasons": " | ".join(a.gam_reasons),
-                "gam_rsi_scope": ("بيانات المسح الحالي — لا حفظ تاريخي" if a.gam_candidate else "—"),
                 "rejections": " | ".join(a.rejections),
                 "score": a.score, "grade": a.grade, "last_close": a.last_close,
-                "rs_date": a.rs_date, "rs_ratio": a.rs_ratio_str,
-                "impulse_pct": a.impulse_pct, "resistance_level": a.resistance_level,
-                "resistance_distance_pct": a.resistance_distance_pct, "sweep_low": a.sweep_low,
-                "support_level": a.support_level, "support_hold_ok": a.support_hold_ok,
-                "reclaim_sessions": a.reclaim_sessions, "sequence_done": done,
-                "lifecycle_ready": bool(a.eligible and a.lifecycle_ready),
-                "lifecycle_failed": a.lifecycle_failed,
-                "missing_step": missing, "trigger": lv.get("trigger"),
-                "stop_structural": lv.get("stop_structural"), "rr_t2": lv.get("rr_t2"),
+                "drop_zone": (a.drop_zone or {}).get("zone"),
+                "pattern_low1": pat.get("low1"), "pattern_low2": pat.get("low2"),
+                "entry": plan.get("entry"), "stop": plan.get("stop"),
+                "target_1": (plan.get("targets") or [None])[0],
+                "position_size": plan.get("position_size"), "risk_per_share": plan.get("risk_per_share"),
+                "short_shares": a.short_shares,
                 "last_close_time": a.as_of or "",
                 "synthetic": "نعم" if a.synthetic else "لا",
                 "price_source": a.price_source or "—",
-                "split_source": a.split_source or "—",
                 "fundamentals_source": a.fundamentals_source or "—",
                 "news_source": a.news_source or "—",
             }
             w.writerow([look.get(key, "") for key, _ in CSV_COLUMNS])
 
-    # سجل تاريخي مختصر (يفتح على الجوال بسرعة)
+    # سجل تاريخي مختصر
     hist_entry = {
         "stamp": stamp,
         "generated_at_riyadh": payload["generated_at_riyadh"],
         "mode": payload["mode"],
         "summary": summary,
         "top": [
-            {"symbol": a.symbol, "phase": a.phase, "score": a.score, "grade": a.grade,
-             "close": a.last_close, "eligible": a.eligible, "watchlist": a.watchlist,
-             "gam_candidate": a.gam_candidate, "gam_reasons": a.gam_reasons,
-             "impulse_pct": a.impulse_pct, "resistance_distance_pct": a.resistance_distance_pct,
-             "ready": bool(a.eligible and a.lifecycle_ready), "failed": a.lifecycle_failed,
-             "sequence": sequence_state(a)[1], "synthetic": a.synthetic,
-             "price_source": a.price_source, "split_source": a.split_source,
+            {"symbol": a.symbol, "phase": a.phase, "status": a.strategy_status, "score": a.score,
+             "grade": a.grade, "close": a.last_close, "eligible": a.eligible, "watchlist": a.watchlist,
+             "synthetic": a.synthetic, "price_source": a.price_source,
              "fundamentals_source": a.fundamentals_source, "news_source": a.news_source}
             for a in results[:15]
         ],
     }
     (site / "history" / f"{stamp}.json").write_text(
-        json.dumps(hist_entry, ensure_ascii=False, indent=1), encoding="utf-8")
+        json.dumps(hist_entry, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
 
     idx_path = site / "history" / "index.json"
     try:
@@ -366,10 +300,7 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
 def build_reports(site: Path, results: list, hub, top_n: int) -> list[dict]:
     out_dir = site / "reports"
     out_dir.mkdir(parents=True, exist_ok=True)
-    picks: list[str] = []
-    for a in results:
-        if (a.eligible and a.lifecycle_ready) or a.watchlist or a.eligible or a.gam_candidate:
-            picks.append(a.symbol)
+    picks = [a.symbol for a in results if a.watchlist]
     if len(picks) < min(top_n, len(results)):
         picks += [a.symbol for a in results if a.symbol not in picks]
     targets = picks[:top_n]
@@ -379,9 +310,9 @@ def build_reports(site: Path, results: list, hub, top_n: int) -> list[dict]:
         day = now_riyadh().strftime("%Y%m%d")
         (out_dir / f"watchlist_{day}.md").write_text(wl_md, encoding="utf-8")
         (out_dir / f"watchlist_{day}.html").write_text(
-            markdown_to_html(wl_md, "قائمة الفرص — التقسيم العكسي"), encoding="utf-8")
+            markdown_to_html(wl_md, "قائمة المتابعة — الاستراتيجية"), encoding="utf-8")
     except Exception as exc:                                       # noqa: BLE001
-        print(f"تعذّر توليد تقرير قائمة الفرص: {exc}", flush=True)
+        print(f"تعذّر توليد تقرير قائمة المتابعة: {exc}", flush=True)
     print(f"✔ التقارير: {len(written)} رمز في {out_dir}", flush=True)
     return written
 
@@ -445,428 +376,126 @@ def build_dashboard(site: Path, results: list, sources: dict, hub, max_symbols: 
     finally:
         server.should_exit = True
         time.sleep(0.5)
-    # لقطة الهبوط تُشير إلى نفس اللوحة
     return out
 
 
 # --------------------------------------------------------------------------- #
 #  5) صفحة الهبوط
 # --------------------------------------------------------------------------- #
-LANDING_CSS = """
-:root{
-  --bg:#080b11; --bg2:#0d131c; --panel:#111826; --line:#1e2a3d; --txt:#e6edf7; --muted:#8b98ab;
-  --green:#3fb950; --red:#f85149; --amber:#e3b341; --blue:#58a6ff; --purple:#a371f7;
-}
-*{box-sizing:border-box}
-body{margin:0;background:linear-gradient(180deg,#070a0f,#0b1017 40%,#080b11);color:var(--txt);
-  font-family:"Segoe UI","Noto Kufi Arabic",Tahoma,system-ui,-apple-system,sans-serif;line-height:1.6}
-a{color:var(--blue);text-decoration:none}
-.wrap{max-width:1180px;margin:0 auto;padding:18px 14px 60px}
-header.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
-  background:rgba(13,19,28,.9);border:1px solid var(--line);border-radius:16px;padding:14px 16px;
-  position:sticky;top:0;z-index:9;backdrop-filter:blur(8px)}
-.brand{display:flex;gap:12px;align-items:center}
-.logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#a371f7,#58a6ff);
-  display:grid;place-items:center;font-weight:800;color:#05080d}
-h1{font-size:18px;margin:0}
-.sub{color:var(--muted);font-size:12px}
-.badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.badge{font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:#0b111a}
-.badge.live{border-color:#1f6f3d;color:#7ee787;background:rgba(63,185,80,.1)}
-.badge.mixed{border-color:#8a6d1f;color:#ffd87a;background:rgba(227,179,65,.08)}
-.badge.demo{border-color:#8a2828;color:#ff9999;background:rgba(248,81,73,.1)}
-.row-badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:8px;margin-inline-start:4px}
-.row-badge.ok{background:rgba(63,185,80,.15);color:#7ee787}
-.row-badge.warn{background:rgba(227,179,65,.12);color:#e3b341}
-.row-badge.gam{background:rgba(163,113,247,.16);color:#c9adff;border:1px solid rgba(163,113,247,.4)}
-.row-badge.bad{background:rgba(248,81,73,.15);color:#ff7b72}
-.cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 6px}
-.btn{display:inline-flex;gap:8px;align-items:center;padding:12px 18px;border-radius:12px;font-weight:700;
-  border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:14px}
-.btn.primary{background:linear-gradient(135deg,#2ea043,#3fb950);border-color:#2ea043;color:#04170a}
-.btn.purple{background:linear-gradient(135deg,#7c5cd6,#a371f7);border-color:#7c5cd6;color:#0b0616}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:18px 0}
-.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.kpi span{display:block;color:var(--muted);font-size:12px}
-.kpi b{font-size:22px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0}
-.card h2{font-size:15px;margin:0 0 10px;display:flex;gap:8px;align-items:center;justify-content:space-between}
-.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
-table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
-th,td{padding:9px 8px;text-align:right;border-bottom:1px solid #16202f;white-space:nowrap}
-th{background:#0b111a;color:var(--muted);font-weight:600;position:sticky;top:0}
-tr:hover td{background:#0e1520}
-.sym{font-weight:800;color:#fff}
-.dots{display:inline-flex;gap:3px;margin-inline-end:6px;vertical-align:middle}
-.dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#2b3646}
-.dot.ok{background:var(--green)}
-.dot.active{background:var(--amber);box-shadow:0 0 0 2px rgba(227,179,65,.25)}
-.dot.pending{background:#39465a}
-.dot.muted{background:#4a5568}
-.c-green{color:#7ee787}.c-amber{color:#e3b341}.c-red{color:#ff7b72}.muted{color:var(--muted)}
-.grade{font-weight:800;padding:2px 8px;border-radius:8px;background:#0d1620;border:1px solid var(--line)}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-ul.files{list-style:none;margin:0;padding:0}
-ul.files li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed #16202f;font-size:13px}
-footer{color:var(--muted);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
-.note{background:#0d1620;border:1px dashed #26364d;border-radius:12px;padding:10px 12px;font-size:12.5px;color:#b9c6d8}
-.mcards{display:none}
-.mcard{background:#0b111a;border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:10px}
-.mcard-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.mcard-seq{margin-top:7px;font-size:11.5px}
-.mcard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}
-.mcard-grid div{background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:6px 8px;font-size:12.5px}
-.mcard-grid span{display:block;color:var(--muted);font-size:10.5px;margin-bottom:2px}
-.mcard-actions{display:flex;gap:8px;margin-top:10px}
-.mcard-actions .btn{flex:1;justify-content:center;padding:9px 10px;font-size:12.5px;border-radius:10px}
-@media(max-width:760px){
-  .wrap{padding:12px 10px 48px}
-  header.top{position:static;display:block;padding:12px 13px}
-  .brand{align-items:flex-start;gap:10px}
-  .brand>div{min-width:0}
-  .logo{width:38px;height:38px;border-radius:11px;font-size:13px}
-  h1{font-size:15px;line-height:1.45;margin:0 0 3px;overflow-wrap:anywhere}
-  .sub{font-size:11px;line-height:1.5;overflow-wrap:anywhere;display:block}
-  .badges{margin-top:10px;gap:6px}
-  .badge{font-size:11px;padding:4px 9px}
-  .kpi b{font-size:19px}
-  .btn{width:100%;justify-content:center}
-  .cta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .cta .btn.primary{grid-column:1 / -1}
-  .tblwrap{display:none}
-  .mcards{display:block}
-  .card{padding:12px 12px;border-radius:14px}
-  .card h2{font-size:14px;flex-wrap:wrap;gap:4px}
-  ul.files li{font-size:12.5px;flex-wrap:wrap}
-}
-"""
-
 LANDING = Template("""<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#080b11">
-<meta http-equiv="cache-control" content="no-cache, must-revalidate">
-<title>لوحة رصد التقسيم العكسي — آخر تحديث $updated</title>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="manifest" href="manifest.json">
-<style>$css</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة الاستراتيجية — قاع ثانٍ وقمة ÷ 2</title>
+<style>
+  :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--txt:#e6edf3;--muted:#8b949e;
+        --green:#3fb950;--amber:#d29922;--red:#f85149;--blue:#58a6ff}
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+       margin:0;padding:24px;line-height:1.7}
+  .wrap{max-width:1100px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:26px 0 8px;color:var(--blue)}
+  .muted{color:var(--muted);font-size:13px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+  .kpi{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px}
+  .kpi span{display:block;color:var(--muted);font-size:12px} .kpi b{font-size:22px}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:10px;overflow:hidden;font-size:13px}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:right;vertical-align:top}
+  th{background:#1f2630;color:#c9d1d9;font-weight:600}
+  .tw{overflow-x:auto}
+  .dots{display:inline-flex;gap:3px}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#30363d}
+  .dot.ok{background:var(--green)} .dot.pending{background:#30363d}
+  .c-green{color:var(--green)} .c-amber{color:var(--amber)} .c-red{color:var(--red)}
+  .note{background:var(--panel);border:1px solid var(--border);border-right:4px solid var(--amber);
+        border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13px}
+  a{color:var(--blue)} .links a{margin-left:14px}
+</style>
 </head>
-<body>
-<div class="wrap">
-<header class="top">
-  <div class="brand">
-    <img class="logo" src="icons/icon-192.png" alt="أيقونة رصد الانعكاس">
-    <div>
-      <h1>منصة رصد التقسيم العكسي والانعكاس</h1>
-      <div class="sub">Reverse-Split Oversold Reversal · فريم اليومي و4 ساعات</div>
-    </div>
-  </div>
-  <div class="badges">
-    <span class="badge $mode_class">وضع البيانات: $mode_label</span>
-    <span class="badge">آخر مسح: $updated</span>
-  </div>
-</header>
-
-$warning_banner
-
-<div class="cta">
-  <a class="btn primary" href="dashboard.html?v=$stamp">افتح اللوحة التفاعلية</a>
-  <a class="btn purple" href="data/latest.csv">تنزيل الجدول (CSV)</a>
-  <a class="btn" href="data/latest.json">البيانات (JSON)</a>
-  <a class="btn" href="$actions_url">سجل عمليات المسح</a>
+<body><div class="wrap">
+<h1>لوحة الاستراتيجية — قاع ثانٍ · قمة ÷ 2 · أهداف 4×25%</h1>
+<div class="muted">آخر تحديث: $generated (توقيت الرياض) · الوضع: $mode_label · $providers</div>
+<div class="links" style="margin-top:8px">
+  <a href="dashboard.html?v=$stamp">اللوحة التفاعلية</a>
+  <a href="data/latest.csv">تحميل CSV</a>
+  <a href="data/latest.json">بيانات JSON</a>
+  <a href="$actions_url">سجل التشغيل</a>
 </div>
-<div class="note">اللوحة ملف واحد يعمل داخل جوالك بلا إنترنت بعد فتحه أول مرة — يمكنك حفظه في الشاشة الرئيسية
-(من قائمة المتصفح: «إضافة إلى الشاشة الرئيسية»).</div>
-<div class="note" style="margin-top:8px;border-color:rgba(163,113,247,.45)"><b style="color:#c9adff">GAM:</b>
-مسار ثانوي لمرشحين قريبين فقط؛ لا يخفّف شروط الأهلية، ولا يدخل قائمة الفرص أو المتابعة، وليس توصية.
-رفض RSI — إن وُجد — محسوب من سلسلة السعر في المسح الحالي، ولا توجد حالة رفض تاريخية محفوظة.</div>
 
-<section class="kpis">
-  <div class="kpi"><span>رموز مفحوصة</span><b>$scanned</b></div>
-  <div class="kpi"><span>تقسيم عكسي داخل النافذة</span><b class="c-green">$with_rs</b></div>
-  <div class="kpi"><span>فرص مؤهلة</span><b class="c-green">$eligible</b></div>
-  <div class="kpi"><span>مرشحو GAM (غير مؤهلين)</span><b style="color:var(--purple)">$gam_candidates</b></div>
-  <div class="kpi"><span>قائمة المتابعة</span><b class="c-amber">$watchlist</b></div>
-  <div class="kpi"><span>جاهز فنياً (6/6)</span><b class="c-green">$ready</b></div>
-  <div class="kpi"><span>متوسط تقييم المتابعة</span><b>$avg</b></div>
-  <div class="kpi"><span>مرشحون مجموعون</span><b>$cand_collected</b></div>
-  <div class="kpi"><span>مرشحون مفحوصون</span><b>$cand_checked</b></div>
-  <div class="kpi"><span>صفوف بعد فلترة التقسيم</span><b class="c-green">$rows_after_split</b></div>
-</section>
+<div class="kpis">
+  <div class="kpi"><span>أسهم تم فحصها</span><b>$scanned</b></div>
+  <div class="kpi"><span>جاهز للدخول</span><b class="c-green">$ready</b></div>
+  <div class="kpi"><span>قريب من الاكتمال</span><b class="c-amber">$near</b></div>
+  <div class="kpi"><span>قائمة المتابعة</span><b>$watchlist</b></div>
+</div>
 
-$coverage_html
+<div class="note"><b>تغطية المسح:</b> مرشحون $collected · مفحوصون $checked · غير مفحوصين $unchecked$partial_note</div>
 
-<div class="card">
-  <h2><span>الرموز المرصودة — راجع الأهلية</span><span class="muted">$rowcount رمز — مرتّبة بالمرحلة ثم التقييم</span></h2>
-  <div class="tblwrap">
-  <table>
-    <thead><tr>
-      <th>الرمز</th><th>تسلسل دورة الحياة</th><th>المرحلة</th><th>التقييم</th><th>آخر إغلاق</th>
-      <th>التقسيم</th><th>الانطلاقة</th><th>أقرب مقاومة</th><th>سحب السيولة</th><th>الدعم</th><th>التقرير</th>
-    </tr></thead>
-    <tbody>
+<h2>قائمة المتابعة</h2>
+<div class="tw"><table>
+<thead><tr><th>الرمز</th><th>المعايير</th><th>الحالة</th><th>الدرجة</th><th>السعر</th>
+<th>دخول</th><th>وقف</th><th>أهداف (+25% كل)</th><th>التحليل</th></tr></thead>
+<tbody>
 $rows_html
-    </tbody>
-  </table>
-  </div>
-  <div class="mcards">
-$cards_html
-  </div>
-</div>
+</tbody></table></div>
 
-<div class="grid2">
-  <div class="card">
-    <h2><span>تقارير التحليل</span><span class="muted">$report_count تقرير</span></h2>
-    <ul class="files">$reports_html</ul>
-  </div>
-  <div class="card">
-    <h2><span>آخر عمليات المسح</span><span class="muted">سجل زمني</span></h2>
-    <ul class="files">$history_html</ul>
-  </div>
-</div>
-
-<footer>
-  <div>مواعيد المسح التلقائي: ٣ مرات كل يوم عمل (افتتاح السوق · منتصف الجلسة · بعد الإغلاق).</div>
-  <div>المصدر: <a href="$repo_url">$repo_slug</a> · المزوّدون: $providers</div>
-  <div>$disclaimer</div>
-</footer>
-</div>
-</body>
-</html>
+<div class="note">$disclaimer</div>
+<div class="muted">مصادر البيانات: $providers_list</div>
+</div></body></html>
 """)
-
-
-def source_text(a) -> str:
-    return " · ".join(f"{label}: {getattr(a, key, '') or 'غير متاح'}" for key, label in
-                     (("price_source", "الأسعار"), ("split_source", "التقسيم"),
-                      ("fundamentals_source", "الأساسيات"), ("news_source", "الأخبار")))
-
-
-def _rows_html(results: list, report_names: dict, stamp: str) -> str:
-    out = []
-    for a in results[:60]:
-        lv = a.levels or {}
-        done, label, color = sequence_state(a)
-        cls = {"ok": "c-green", "warn": "c-amber", "bad": "c-red", "muted": "muted"}[color]
-        phase_ar = eng.phase_info(a.phase if (a.eligible or not a.rs_found) else 0)["ar"]
-        phase_ar = phase_ar.split("—")[-1].strip() if "—" in phase_ar else phase_ar
-        rep = report_names.get(a.symbol)
-        rep_cell = f'<a href="reports/{rep}">تحليل ›</a>' if rep else '<span class="muted">—</span>'
-        # شارة جودة البيانات للصف
-        if getattr(a, 'synthetic', False):
-            rb = '<span class="row-badge bad">🔴 تجريبي</span>'
-        elif not all(getattr(a, k, "") for k in ("price_source", "split_source", "fundamentals_source", "news_source")):
-            rb = '<span class="row-badge warn">🟠 ناقص</span>'
-        elif getattr(a, 'price_source', ''):
-            rb = '<span class="row-badge ok">🟢 حقيقي</span>'
-        else:
-            rb = '<span class="row-badge warn">🟠 ناقص</span>'
-        gam_badge = ('<span class="row-badge gam" title="مسار ثانوي؛ غير مؤهل وليس توصية">GAM · غير مؤهل</span>'
-                     if getattr(a, "gam_candidate", False) else "")
-        out.append(
-            "<tr>"
-            f'<td class="sym">{html.escape(a.symbol)}{rb}{gam_badge}'
-            f'<div class="muted" style="font-weight:400;font-size:11px">'
-            f'{html.escape((a.name or "")[:22])}</div></td>'
-            f"<td>{dots_html(a)}<div class=\"{cls}\" style=\"font-size:11.5px\">{html.escape(label)}</div></td>"
-            f'<td>{html.escape(phase_ar[:26])}</td>'
-            f'<td><span class="grade">{a.score} {a.grade}</span></td>'
-            f"<td>{_f(a.last_close, 3)}</td>"
-            f"<td>{html.escape(a.rs_ratio_str or '—')}</td>"
-            f"<td>{_pct(a.impulse_pct)}</td>"
-            f"<td>{_f(a.resistance_level, 3)} <span class=\"muted\">{_pct(a.resistance_distance_pct)}</span></td>"
-            f"<td>{_f(a.sweep_low, 3)}</td>"
-            f"<td>{_f(a.support_level, 3)}</td>"
-            f"<td>{rep_cell}<div class=\"muted\">{html.escape(source_text(a))}</div></td>"
-            "</tr>")
-    if not out:
-        out.append('<tr><td colspan="11" class="muted">لا توجد نتائج — أعد تشغيل المسح.</td></tr>')
-    return "\n".join(out)
-
-
-def _cards_html(results: list, report_names: dict, stamp: str) -> str:
-    """بطاقات الجوال (بديل الجدول العريض على الشاشات الصغيرة)."""
-    out = []
-    for a in results[:40]:
-        done, label, color = sequence_state(a)
-        cls = {"ok": "c-green", "warn": "c-amber", "bad": "c-red", "muted": "muted"}[color]
-        rep = report_names.get(a.symbol)
-        links = []
-        if rep:
-            links.append(f'<a class="btn" href="reports/{rep}">تحليل مفصل</a>')
-        links.append(f'<a class="btn" href="dashboard.html?v={stamp}">على اللوحة</a>')
-        gam_badge = ('<span class="row-badge gam">GAM · غير مؤهل</span>'
-                     if getattr(a, "gam_candidate", False) else "")
-        gam_reason = (f'<div class="note" style="margin-top:8px">مسار GAM فقط: '
-                      f'{html.escape(" | ".join(a.gam_reasons or []))} — ليس فرصة أو توصية.</div>'
-                      if getattr(a, "gam_candidate", False) else "")
-        out.append(
-            '<div class="mcard">'
-            '<div class="mcard-head">'
-            f'<div><span class="sym">{html.escape(a.symbol)}</span>{gam_badge} '
-            f'<span class="muted" style="font-size:11px">{html.escape((a.name or "")[:20])}</span></div>'
-            f'<span class="grade">{a.score} {a.grade}</span></div>'
-            f'<div class="mcard-seq">{dots_html(a)}<span class="{cls}">{html.escape(label)}</span></div>'
-            f'{gam_reason}'
-            '<div class="mcard-grid">'
-            f'<div><span>آخر إغلاق</span>{_f(a.last_close, 3)}</div>'
-            f'<div><span>الانطلاقة</span>{_pct(a.impulse_pct)}</div>'
-            f'<div><span>أقرب مقاومة</span>{_f(a.resistance_level, 3)}</div>'
-            f'<div><span>سحب السيولة</span>{_f(a.sweep_low, 3)}</div>'
-            f'<div><span>الدعم الرئيسي</span>{_f(a.support_level, 3)}</div>'
-            f'<div><span>نسبة التقسيم</span>{html.escape(a.rs_ratio_str or "—")}</div>'
-            '</div>'
-            f'<div class="muted">{"🔴 تجريبي" if a.synthetic else "🟠 ناقص" if not a.news_source else "🟢 حقيقي"} · {html.escape(source_text(a))}</div>'
-            f'<div class="mcard-actions">{"".join(links)}</div>'
-            '</div>')
-    if not out:
-        out.append('<div class="mcard muted">لا توجد نتائج — أعد تشغيل المسح.</div>')
-    return "\n".join(out)
 
 
 def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
     summary = payload["summary"]
+    cov = payload.get("coverage", {}).get("categories", {})
+    report_names = {w["symbol"]: Path(w["html"]).name for w in written if w.get("html")}
+    rows = [a for a in payload.get("rows") or [] if a.get("watchlist")]
+    rows_html = []
+    for r in rows[:60]:
+        plan = r.get("trade_plan") or {}
+        valid = plan.get("valid")
+        checks = r.get("lifecycle_checks") or []
+        dots = "".join(f'<i class="dot {"ok" if c.get("ok") else "pending"}"></i>' for c in checks)
+        done = sum(1 for c in checks if c.get("ok"))
+        rep = report_names.get(r["symbol"])
+        link = f'<a href="reports/{rep}">تحليل ›</a>' if rep else "—"
+        rows_html.append(
+            "<tr>"
+            f'<td><b>{html.escape(r["symbol"])}</b><div class="muted">{html.escape((r.get("name") or "")[:22])}</div></td>'
+            f'<td><span class="dots">{dots}</span> <span class="muted">{done}/6</span></td>'
+            f'<td>{html.escape(r.get("phase_ar") or "")}</td>'
+            f'<td>{r.get("score")} {html.escape(str(r.get("grade") or ""))}</td>'
+            f'<td>{_f(r.get("last_close"))}</td>'
+            f'<td>{_f(plan.get("entry")) if valid else "—"}</td>'
+            f'<td>{_f(plan.get("stop")) if valid else "—"}</td>'
+            f'<td>{" / ".join(_f(t) for t in plan.get("targets", [])) if valid else "—"}</td>'
+            f"<td>{link}</td>"
+            "</tr>")
+    if not rows_html:
+        rows_html.append('<tr><td colspan="9" class="muted">لا توجد أسهم في قائمة المتابعة لهذا المسح.</td></tr>')
+
     mode = payload.get("mode", "demo")
-    rows_data = payload.get("rows") or []
-    # حساب عدد الصفوف التجريبية والحقيقية
-    synth_count = sum(1 for r in rows_data if r.get("synthetic"))
-    real_count = len(rows_data) - synth_count
-    all_real = (mode == "live" and synth_count == 0 and all(r.get("price_source") for r in rows_data))
-    incomplete = any(not all(r.get(k) for k in ("price_source", "split_source", "fundamentals_source", "news_source")) for r in rows_data)
-    all_real = all_real and not incomplete
-    is_mixed = mode == "live" and (synth_count > 0 or incomplete)
-    report_names = {}
-    for w in written:
-        name = Path(w.get("html") or "").name
-        if name:
-            report_names[w["symbol"]] = name
-    reports_sorted = sorted(written, key=lambda w: (-w.get("score", 0), w.get("symbol", "")))
-    reports_html = "\n".join(
-        f'<li><span class="sym">{html.escape(w["symbol"])}</span>'
-        f'<span class="muted">'
-        f'{"GAM · غير مؤهل" if w.get("gam_candidate") else "فرصة مؤهلة" if w.get("eligible") else "مستبعد"}'
-        f' · {w.get("score")}</span>'
-        f'<span><a href="reports/{Path(w["html"]).name}">HTML</a> · '
-        f'<a href="reports/{Path(w["md"]).name}">MD</a></span></li>'
-        for w in reports_sorted) or '<li class="muted">لا تقارير</li>'
-    history_html = "\n".join(
-        f'<li><span>{html.escape(str(h.get("generated_at_riyadh", "")))}</span>'
-        f'<span class="muted">{h.get("summary", {}).get("scanned", 0)} رمز · جاهز '
-        f'{h.get("summary", {}).get("ready", 0)}</span>'
-        f'<span><a href="history/{h.get("stamp")}.json">تفاصيل</a></span></li>'
-        for h in (payload.get("history") or [])) or '<li class="muted">لا سجل بعد</li>'
-    providers = " · ".join(
-        f'{p.get("name")} ({p.get("source_kind")}/{p.get("ok")})'
-        for p in (payload.get("sources", {}) or {}).get("providers", [])[:6]) or "—"
-    live = mode == "live"
-    # شارة الوضع
-    if all_real:
-        mode_class = "live"
-        mode_label = "حقيقية 🟢 — Yahoo/SEC/FINRA"
-        warning_banner = ""
-    elif is_mixed:
-        mode_class = "mixed"
-        mode_label = f"مختلطة 🟠 — {synth_count} تجريبي؛ راجع المصادر الناقصة"
-        warning_banner = (
-            '<div class="warn" style="background:#3a2a08;border:1px solid #8a6d1f;'
-            'border-radius:12px;padding:12px 14px;margin:14px 0;color:#ffd87a;font-size:13px;">'
-            '⚠ <b>تحذير:</b> توجد مصادر ناقصة أو صفوف غير حقيقية في هذه النشرة — راجع مصادر كل صف. '
-            'الوضع الحي مُفعّل لكن بعض المزوّدين فشلوا.</div>'
-        )
-    else:
-        mode_class = "demo"
-        mode_label = "تجريبية 🔴 — بيانات محاكاة (محظورة في النشر)"
-        warning_banner = (
-            '<div class="warn" style="background:#3d0f0f;border:1px solid #8a2828;'
-            'border-radius:12px;padding:12px 14px;margin:14px 0;color:#ff9999;font-size:13px;">'
-            '🔴 <b>هذه النشرة تحتوي بيانات تجريبية بالكامل.</b> '
-            'هذه البيانات غير مسموح بها في مسار النشر الإنتاجي.</div>'
-        )
-    # ---- تغطية المسح: التمييز الصريح بين الحالات الست + تحذير الجزئية ---- #
-    cov = payload.get("coverage") or (payload.get("sources") or {}).get("coverage") or {}
-    cats = cov.get("categories") or {}
-
-    def _cat_html(key: str, color: str, note: str = "") -> str:
-        c = cats.get(key) or {}
-        syms = "، ".join(str(s) for s in (c.get("symbols") or []))
-        sym_html = (f'<div class="muted" style="font-size:10.5px;overflow-wrap:anywhere">{html.escape(syms)}</div>'
-                    if syms else "")
-        note_html = (f'<div class="muted" style="font-size:10px">{html.escape(note)}</div>' if note else "")
-        return (
-            '<div style="background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:8px 10px">'
-            f'<span style="display:block;color:var(--muted);font-size:11px">{html.escape(COVERAGE_CATEGORY_LABELS[key])}</span>'
-            f'<b class="{color}" style="font-size:18px">{int(c.get("count") or 0)}</b>'
-            f"{note_html}{sym_html}</div>"
-        )
-
-    coverage_warning = ""
-    if cov.get("partial"):
-        coverage_warning = (
-            '<div class="warn" style="background:#3a2a08;border:1px solid #8a6d1f;'
-            'border-radius:12px;padding:12px 14px;margin:14px 0;color:#ffd87a;font-size:13px;">'
-            '⚠ <b>تحذير:</b> التغطية جزئية؛ لا تعني النتائج غياب حالات أخرى في السوق خلال شهرين.</div>'
-        )
-    disc_bits = []
-    if cov.get("total_matching_screener") is not None:
-        disc_bits.append(f"إجمالي مطابقات screener: {cov['total_matching_screener']}")
-    if cov.get("pages_fetched") is not None:
-        disc_bits.append(f"صفحات مجلوبة: {cov.get('pages_fetched', 0)}")
-    if cov.get("price_ceiling") is not None:
-        disc_bits.append(f"سقف سعر الاكتشاف: {cov['price_ceiling']}$")
-    disc_bits.append(f"سقف المرشحين: {cov.get('candidates_collected', 0)}"
-                     + (" (مقتطع)" if cov.get("discovery_truncated") else ""))
-    coverage_html = coverage_warning + (
-        '<div class="card"><h2><span>حدود التغطية — اقرأ قبل الاعتماد على النتائج</span>'
-        f'<span class="muted">{html.escape(" · ".join(disc_bits))}</span></h2>'
-        '<div class="note" style="margin-bottom:10px">«لم يُفحص» = مرشحون لم تتحقق منهم بعد (مهلة أو سقف) '
-        'وليست مستبعدة فنياً · «بيانات غير متاحة» = تعذّر تحقق الأسعار أو الملف التعريفي · '
-        '«لا تقسيم حديث مطابق» = لا حدث خلال 60 يوماً بنسبة 1:2–1:60 · '
-        '«مستبعد لسبب آخر» = تقسيم حديث مرصود لكنه أخفق السعر/السيولة/الصعود/النموذج أو سبباً مانعاً آخر · '
-        '«GAM» = رفضه الوحيد هبوط دون 30% و/أو RSI في بيانات المسح الحالي، مع سعر 0.50–20$؛ '
-        'يبقى غير مؤهل وليس توصية · «قائمة المتابعة» = مؤهل ومراقب · '
-        '«جاهز فنياً» = فرصة مؤهلة اكتمل تسلسلها 6/6.</div>'
-        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">'
-        + _cat_html("unchecked", "c-amber", "ليست مستبعدة")
-        + _cat_html("no_data", "c-red")
-        + _cat_html("no_recent_split", "muted")
-        + _cat_html("rs_technically_excluded", "c-amber")
-        + _cat_html("gam_candidates", "c-amber", "مسار ثانوي فقط")
-        + _cat_html("watchlist", "c-amber")
-        + _cat_html("ready", "c-green")
-        + "</div></div>"
-    )
-
+    providers = payload.get("sources", {}).get("providers", [])
+    providers_list = "، ".join(
+        f"{p.get('name')} ({'متصل' if p.get('ok') else 'غير متصل'})" for p in providers) or "—"
+    partial = cov.get("unchecked", {}).get("count", 0)
     ctx = {
-        "css": LANDING_CSS,
-        "updated": html.escape(payload["generated_at_riyadh"]),
+        "generated": payload["generated_at_riyadh"],
+        "mode_label": "حقيقي (live)" if mode == "live" else f"{mode} — غير منشور",
+        "providers": html.escape(providers_list),
+        "providers_list": html.escape(providers_list),
         "stamp": payload["stamp"],
-        "mode_class": mode_class,
-        "mode_label": mode_label,
-        "warning_banner": warning_banner + ('<div class="note">لا توجد أسهم مطابقة لشروط التقسيم العكسي في هذا المسح؛ لم تُضف بيانات بديلة.</div>' if not rows_data else ""),
-        "scanned": summary["scanned"], "with_rs": summary["with_reverse_split"],
-        "eligible": summary["eligible"], "gam_candidates": summary.get("gam_candidates", 0),
-        "watchlist": summary["watchlist"],
-        "ready": summary["ready"], "avg": summary["avg_score_watchlist"],
-        "cand_collected": cov.get("candidates_collected", "—"),
-        "cand_checked": cov.get("candidates_checked", "—"),
-        "rows_after_split": cov.get("rows_after_split_filter", "—"),
-        "coverage_html": coverage_html,
-        "rowcount": min(len(payload.get("rows") or []), 60),
-        "rows_html": _rows_html([_RowProxy(r) for r in (payload.get("rows") or [])], report_names,
-                                payload["stamp"]),
-        "cards_html": _cards_html([_RowProxy(r) for r in (payload.get("rows") or [])], report_names,
-                                  payload["stamp"]),
-        "reports_html": reports_html, "report_count": len(written),
-        "history_html": history_html,
-        "repo_slug": REPO_SLUG,
-        "repo_url": f"https://github.com/{REPO_SLUG}",
         "actions_url": f"https://github.com/{REPO_SLUG}/actions/workflows/daily-scan.yml",
-        "providers": html.escape(providers),
-        "disclaimer": ("تنبيه: هذا النظام أداة تحليل فني وليست نصيحة مالية — القرار النهائي للمستثمر."),
+        "scanned": summary["scanned"], "ready": summary["ready"], "near": summary["near"],
+        "watchlist": summary["watchlist"],
+        "collected": payload.get("coverage", {}).get("candidates_collected", "—"),
+        "checked": payload.get("coverage", {}).get("candidates_checked", "—"),
+        "unchecked": partial,
+        "partial_note": " · <b class=\"c-amber\">التغطية جزئية</b>"
+        if payload.get("coverage", {}).get("partial") else "",
+        "rows_html": "\n".join(rows_html),
+        "disclaimer": "تنبيه: هذا النظام أداة تحليل فني وليست نصيحة مالية — القرار النهائي للمستثمر. "
+                      "أسهم الشركات الصغيرة عالية المخاطر.",
     }
     out = site / "index.html"
     out.write_text(LANDING.substitute(ctx), encoding="utf-8")
@@ -874,37 +503,18 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
     return out
 
 
-class _RowProxy:
-    """طبقة رقيقة تجعل صفوف JSON قابلة للاستخدام كما لو كانت كائنات تحليل."""
-
-    def __init__(self, row: dict):
-        self._r = row or {}
-
-    def __getattr__(self, item):
-        return self._r.get(item)
-
-    @property
-    def levels(self) -> dict:
-        return self._r.get("levels") or {}
-
-    @property
-    def lifecycle_checks(self) -> list:
-        return self._r.get("lifecycle_checks") or []
-
-
 def write_manifest(site: Path, stamp: str) -> None:
     import shutil
     icons_dir = site / "icons"
     icons_dir.mkdir(parents=True, exist_ok=True)
-    # نسخ الأيقونات من web/icons إلى site/icons
     src_icons = ROOT / "web" / "icons"
     if src_icons.exists():
         for icon in src_icons.glob("*.png"):
             shutil.copy2(icon, icons_dir / icon.name)
     (site / "manifest.json").write_text(json.dumps({
-        "name": "منصة رصد التقسيم العكسي والانعكاس",
-        "short_name": "RS Reversal",
-        "description": "رصد أسهم التقسيم العكسي — بيانات حقيقية من Yahoo/SEC/FINRA",
+        "name": "لوحة الاستراتيجية — قاع ثانٍ وقمة ÷ 2",
+        "short_name": "Strategy",
+        "description": "مسح يومي بالاستراتيجية — بيانات حقيقية من Yahoo/SEC/FINRA",
         "start_url": "./dashboard.html",
         "display": "standalone",
         "background_color": "#080b11",
@@ -918,12 +528,13 @@ def write_manifest(site: Path, stamp: str) -> None:
         ],
     }, ensure_ascii=False, indent=1), encoding="utf-8")
     (site / ".nojekyll").write_text("", encoding="utf-8")
-    # نسخ favicon إلى جذر الموقع
     favicon_src = src_icons / "favicon-32.png" if src_icons.exists() else None
     if favicon_src and favicon_src.exists():
         shutil.copy2(favicon_src, site / "favicon.png")
 
 
+# --------------------------------------------------------------------------- #
+#  التشغيل
 # --------------------------------------------------------------------------- #
 def main() -> int:
     ap = argparse.ArgumentParser(description="مسح يومي + بناء موقع اللوحة")
@@ -937,7 +548,8 @@ def main() -> int:
     ap.add_argument("--no-dashboard", action="store_true", help="تخطّي بناء اللوحة الثقيلة (اختبار سريع)")
     args = ap.parse_args()
 
-    if args.mode != "live" and (not args.test_only or __import__("os").environ.get("GITHUB_ACTIONS") == "true"):
+    import os
+    if args.mode != "live" and (not args.test_only or os.environ.get("GITHUB_ACTIONS") == "true"):
         print("✖ رفض النشر: البيانات التجريبية محظورة؛ استخدم --mode live.", flush=True)
         return 4
 
@@ -948,7 +560,6 @@ def main() -> int:
     site.mkdir(parents=True, exist_ok=True)
 
     symbols = [s.strip().upper() for s in args.symbols.split(",") if s.strip()] or None
-    # منع نشر بيانات تجريبية: في وضع live/auto نرفض أي synthetic > 0 أو effective != live
     requested = (args.mode or settings.data_mode or "demo").lower()
     if requested in ("live", "auto"):
         print(f"▶ وضع {requested}: البيانات الحقيقية مطلوبة — لن تُنشر أي بيانات تجريبية.", flush=True)
@@ -961,17 +572,15 @@ def main() -> int:
     synth_rows = sum(1 for a in results if a.synthetic)
 
     if requested in ("live", "auto"):
-        # صرامة النشر: وضع live يجب أن يكون فعّالاً فعلاً
         if mode_eff != "live":
             print(f"✖ فشل: وضع البيانات الفعّال هو '{mode_eff}' وليس 'live' — تعذّر الوصول لمزوّدي "
                   f"البيانات الحقيقية. لن تُنشر بيانات تجريبية.", flush=True)
             return 3
-        # في الوضع الحي لا يُسمح بصفوف synthetic
         if synth_rows > 0:
             print(f"✖ فشل: وُجد {synth_rows} صف ببيانات تجريبية في الوضع الحي — "
                   f"هذا تسريب غير مسموح به.", flush=True)
             return 4
-        print(f"✔ تحقق الوضع: كل البيانات حقيقية (mode_effective=live، synthetic=0).", flush=True)
+        print("✔ تحقق الوضع: كل البيانات حقيقية (mode_effective=live، synthetic=0).", flush=True)
 
     if requested == "live":
         from tools.validate_live import validate
@@ -983,9 +592,7 @@ def main() -> int:
     if not results and not (requested == "live" and getattr(get_hub().yahoo, "discovery_ok", False)):
         print("✖ لا نتائج حقيقية ولا اكتشاف موثوق للكون — لن ننشر.", flush=True)
         return 2
-    # في وضع live قد تكون النتائج كلها مستبعدة (لا تقسيمات عكسية) — هذا طبيعي ومقبول
-    real_with_data = sum(1 for a in results if len(getattr(a, 'rejections', [])) == 0)
-    print(f"▶ رموز حقيقية مع بيانات صالحة: {real_with_data} / {len(results)}", flush=True)
+    print(f"▶ أسهم في قائمة المتابعة: {sum(1 for a in results if a.watchlist)} / {len(results)}", flush=True)
 
     payload = write_dataset(site, results, sources, args.mode or settings.data_mode, started)
     hub = get_hub()

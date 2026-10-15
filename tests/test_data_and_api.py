@@ -14,6 +14,14 @@ def demo() -> DemoProvider:
     return DemoProvider()
 
 
+@pytest.fixture(scope="module", autouse=True)
+def _demo_hub():
+    """الخادم يستخدم HUB عامًا؛ نثبّته على الديمو لهذا الملف بغض النظر عن ترتيب الاختبارات."""
+    from app.providers.hub import get_hub
+    get_hub(mode="demo", refresh=True)
+    yield
+
+
 @pytest.fixture(scope="module")
 def client() -> TestClient:
     return TestClient(app)
@@ -90,17 +98,14 @@ def test_index_and_assets(client):
 
 def test_strategy_endpoint(client):
     r = client.get("/api/strategy")
-    p = r.json()["params"]
-    assert p["rs_lookback_days"] == 60
-    assert p["min_drop_pct"] == 30
-    assert p["rsi_oversold"] == 30
+    assert r.status_code == 200
+    body = r.json()
+    p = body["params"]
     assert sum(p["weights"].values()) == 100
-    gam = r.json()["gam_policy"]
-    assert gam["secondary_lane_only"] is True
-    assert gam["eligible"] is False and gam["watchlist"] is False
-    assert gam["min_price"] == 0.5 and gam["max_price"] == 20.0
-    assert gam["historical_state_persisted"] is False
-    assert gam["rsi_scope"] == "current_scan_price_series"
+    assert p["ready_score"] == 75 and p["near_score"] == 55 and p["watch_score"] == 35
+    assert body["status_thresholds"] == {"ready": 75, "near": 55, "watch": 35}
+    assert set(body["phases"]) == {"0", "2", "5", "6"} or set(body["phases"]) == {0, 2, 5, 6}
+    assert "gam_policy" not in body
 
 
 def test_universe_and_demo_metadata(client):
@@ -118,35 +123,44 @@ def test_scan_cycle(client):
         time.sleep(0.5)
     res = client.get("/api/scan/results").json()
     assert res["summary"]["scanned"] >= 10
-    assert res["summary"]["with_reverse_split"] >= 1
     assert res["rows"]
-    # «جاهز فنياً» في الملخّص = المرحلة 6 مع اكتمال التسلسل (مطابق لفلتر الواجهة)
-    row_ready = sum(1 for r in res["rows"] if r["eligible"] and r["phase"] == 6 and r["lifecycle_ready"])
-    assert res["summary"]["ready"] == row_ready
-    gam = [r for r in res["rows"] if r["gam_candidate"]]
-    assert res["summary"]["gam_candidates"] == len(gam)
-    assert all(not r["eligible"] and not r["watchlist"] for r in gam)
+    # «جاهز للدخول» في الملخّص = صفوف READY (المرحلة 6)
+    ready_rows = sum(1 for r in res["rows"] if r["phase"] == 6 and r["lifecycle_ready"])
+    assert res["summary"]["ready"] == ready_rows
+    # قائمة المتابعة = الصفوف المعلّمة watchlist
+    assert res["summary"]["watchlist"] == sum(1 for r in res["rows"] if r["watchlist"])
     assert res["summary"]["phase5_plus"] >= res["summary"]["ready"]
+    for r in res["rows"]:
+        assert r["phase"] in (0, 2, 5, 6)
+        assert r["eligible"] == (r["phase"] in (5, 6))
 
 
 def test_analysis_and_chart(client):
-    client.post("/api/scan/start?limit=12")
+    client.post("/api/scan/start?limit=40")
     import time
-    for _ in range(40):
+    for _ in range(80):
         if not client.get("/api/scan/status").json()["running"]:
             break
         time.sleep(0.5)
-    a = client.get("/api/analysis/JZ").json()
-    assert a["rs_ratio_str"] == "1-for-8"
-    assert a["levels"]["targets"]["t2_618"] > a["levels"]["stop"]
+    rows = client.get("/api/scan/results").json()["rows"]
+    # رمز من المسح به نمط مكتمل (القاع الأول/الثاني) لاختبار العلامات على الرسم
+    sym = next(r["symbol"] for r in rows if (r.get("pattern") or {}).get("found"))
+    a = client.get(f"/api/analysis/{sym}").json()
+    assert a["strategy_status"] in {"READY", "NEAR", "WATCH", "EXCLUDED"}
+    assert len(a["breakdown"]) == 9
+    plan = a["trade_plan"]
+    if plan and plan["valid"]:
+        assert len(plan["targets"]) == 4
+        assert plan["targets"] == sorted(plan["targets"])
+        assert a["levels"]["stop"] < a["levels"]["trigger"]
     for tf in ("1D", "4H"):
-        c = client.get(f"/api/chart/JZ?tf={tf}").json()
+        c = client.get(f"/api/chart/{sym}?tf={tf}").json()
         assert c["candles"], tf
         assert len(c["overlays"]["ema9"]) == len(c["candles"])
-        assert c["markers"]
+        assert c["markers"], tf
 
 
 def test_report_endpoints(client):
-    assert "تقرير تحليلي" in client.get("/api/report/JZ?fmt=md").text
+    assert "## 1) المعايير" in client.get("/api/report/JZ?fmt=md").text
     assert "<html" in client.get("/api/report/JZ?fmt=html").text.lower()
     assert client.get("/api/report/JZ?fmt=json").json()["symbol"] == "JZ"

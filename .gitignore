@@ -29,3 +29,6 @@ reports/output/
 
 # موقع Github Pages المبني تلقائياً
 site/
+
+# بيئة الاختبار المحلية
+.venv_test/

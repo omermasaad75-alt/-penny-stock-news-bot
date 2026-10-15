@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import threading
 import time
+from dataclasses import asdict
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -28,7 +29,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 
-from .config import REPORTS_DIR, STRATEGY, WEB_DIR, settings
+from .config import REPORTS_DIR, WEB_DIR, settings
+from .strategy.strategy_engine import StrategyConfig, WEIGHT_LABELS_AR
 from .providers.hub import DataHub, get_hub
 from .reporting import analysis_to_markdown, markdown_to_html, watchlist_markdown, write_reports
 from .strategy import engine as eng
@@ -77,7 +79,7 @@ class ScanManager:
             out: list[eng.Analysis] = []
             for i, sym in enumerate(syms):
                 try:
-                    a = eng.analyze_symbol(sym, hub, STRATEGY)
+                    a = eng.analyze_symbol(sym, hub)
                 except Exception as exc:  # noqa: BLE001
                     a = eng.Analysis(symbol=sym)
                     eng.add_rejection(a, "analysis_error", f"خطأ في التحليل: {exc}")
@@ -105,21 +107,17 @@ SCAN = ScanManager()
 def _summary(results: list[eng.Analysis]) -> dict[str, Any]:
     phase_counts: dict[str, int] = {}
     for a in results:
-        key = str(a.phase if (a.eligible or not a.rs_found) else 0)
+        key = str(a.phase)
         phase_counts[key] = phase_counts.get(key, 0) + 1
-    with_rs = [a for a in results if a.rs_found]
     elig = [a for a in results if a.eligible]
     watch = [a for a in results if a.watchlist]
-    gam = [a for a in results if a.gam_candidate]
-    # «جاهز فنياً» = المرحلة 6 مع اكتمال تسلسل دورة الحياة فعلياً (نفس منطق فلتر الواجهة)
+    # «جاهز للدخول» = حالة READY من محرّك الاستراتيجية
     ready = [a for a in results if a.phase == 6 and a.lifecycle_ready and a.eligible]
     phase5_plus = [a for a in results if a.phase >= 5 and a.eligible]
     return {
         "scanned": len(results),
-        "with_reverse_split": len(with_rs),
         "eligible": len(elig),
         "watchlist": len(watch),
-        "gam_candidates": len(gam),
         "ready": len(ready),
         "phase5_plus": len(phase5_plus),
         "avg_score_watchlist": round(sum(a.score for a in watch) / len(watch), 1) if watch else 0,
@@ -145,26 +143,12 @@ def health() -> dict[str, Any]:
 
 @app.get("/api/strategy")
 def strategy_params() -> dict[str, Any]:
+    cfg = StrategyConfig()
     return {
-        "params": STRATEGY.to_dict(),
+        "params": asdict(cfg),
         "phases": {k: v for k, v in eng.PHASES.items()},
-        "scoring_keys": {
-            "rs_setup": "حدث التقسيم العكسي", "spike": "صعود يوم التقسيم",
-            "decline": "قوة الموجة الهابطة", "oversold": "التشبع البيعي",
-            "base": "القاع والثبات", "reversal": "تأكيد الانعكاس",
-            "squeeze": "عوامل الضغط والانفجار", "risk": "جودة المخاطر",
-        },
-        "gam_policy": {
-            "secondary_lane_only": True,
-            "eligible": False,
-            "watchlist": False,
-            "min_price": STRATEGY.min_price,
-            "max_price": STRATEGY.max_price,
-            "allowed_rejection_codes": sorted(eng.GAM_ALLOWED_REJECTION_CODES),
-            "rsi_scope": eng.GAM_RSI_SCOPE,
-            "historical_state_persisted": False,
-            "disclaimer_ar": eng.GAM_DISCLAIMER_AR,
-        },
+        "scoring_keys": WEIGHT_LABELS_AR,
+        "status_thresholds": {"ready": cfg.ready_score, "near": cfg.near_score, "watch": cfg.watch_score},
     }
 
 
@@ -211,7 +195,7 @@ def analysis(symbol: str, mode: str | None = None, with_series: bool = True) -> 
     if a is None:
         hub = get_hub(mode=mode, refresh=bool(mode))
         try:
-            a = eng.analyze_symbol(symbol, hub, STRATEGY)
+            a = eng.analyze_symbol(symbol, hub)
         except Exception as exc:  # noqa: BLE001
             raise HTTPException(status_code=500, detail=str(exc)) from exc
     return a.to_dict(with_series=with_series)
@@ -220,85 +204,23 @@ def analysis(symbol: str, mode: str | None = None, with_series: bool = True) -> 
 @app.get("/api/chart/{symbol}")
 def chart(symbol: str, tf: str = "1D", mode: str | None = None) -> dict[str, Any]:
     hub = get_hub(mode=mode, refresh=bool(mode))
-    payload = build_chart_payload(symbol.upper(), tf, hub, STRATEGY,
-                                  analysis=SCAN.by_symbol.get(symbol.upper()))
+    payload = build_chart_payload(symbol.upper(), tf, hub, analysis=SCAN.by_symbol.get(symbol.upper()))
     a = SCAN.by_symbol.get(symbol.upper())
     payload["levels"] = (a.levels if a else {}) or {}
     payload["phase"] = a.phase if a else 0
     if a is not None:
-        payload["lifecycle"] = _lifecycle_summary(a)
-        payload["markers"] = (payload.get("markers") or []) + _lifecycle_markers(payload, a)
+        payload["lifecycle"] = _strategy_summary(a)
     return payload
 
 
-def _lifecycle_summary(a: "eng.Analysis") -> dict[str, Any]:
-    """ملخّص دورة الحياة الذي ترسمه الواجهة (الخطوط، العلامات، شريط الخطوات)."""
+def _strategy_summary(a: "eng.Analysis") -> dict[str, Any]:
+    """ملخّص حالة الاستراتيجية الذي تعرضه الواجهة (المعايير، النمط، منطقة الهبوط، الصفقة)."""
     return {
         "stage": a.lifecycle_stage, "ready": bool(a.eligible and a.lifecycle_ready),
-        "failed": a.lifecycle_failed, "gam_candidate": a.gam_candidate,
-        "support": a.support_level or a.bottom_price, "base_sessions": a.base_sessions,
-        "base_close": a.base_close, "impulse_target": (round(a.base_close * 1.2, 4) if a.base_close else None),
-        "support_hold_ok": a.support_hold_ok,
-        "impulse_pct": a.impulse_pct, "impulse_high": a.impulse_high, "impulse_date": a.impulse_date,
-        "resistance_level": a.resistance_level, "resistance_date": a.resistance_date,
-        "resistance_stall_pct": a.resistance_stall_pct,
-        "pullback_type": a.pullback_type, "pullback_low": a.pullback_low, "pullback_date": a.pullback_date,
-        "sweep_low": a.sweep_low, "sweep_depth_pct": a.sweep_depth_pct, "sweep_date": a.sweep_date,
-        "reclaim_level": a.reclaim_level, "reclaim_sessions": a.reclaim_sessions,
-        "reclaim_date": a.reclaim_date, "checks": a.lifecycle_checks,
+        "failed": a.lifecycle_failed, "checks": a.lifecycle_checks,
+        "pattern": a.pattern, "confirmation": a.confirmation,
+        "drop_zone": a.drop_zone, "trade_plan": a.trade_plan,
     }
-
-
-def _lifecycle_markers(payload: dict[str, Any], a: eng.Analysis) -> list[dict[str, Any]]:
-    """علامات دورة الحياة على المخطط: الانطلاقة، المقاومة، سحب السيولة، الاستعادة."""
-    candles = payload.get("candles") or []
-    if not candles:
-        return []
-    times = [c["time"] for c in candles]
-    intraday = str(payload.get("tf")) in {"4H", "1H", "60M"}
-
-    def to_time(date_str: str | None):
-        if not date_str:
-            return None
-        if intraday:
-            target = pd.Timestamp(date_str).timestamp()
-            chosen = next((t for t in times if float(t) >= target), None)
-            return chosen or times[-1]
-        s = str(date_str)[:10]
-        return s if s in times else None
-
-    out: list[dict[str, Any]] = []
-    if a.impulse_high:
-        t = to_time(a.impulse_date)
-        if t:
-            out.append({"time": t, "position": "aboveBar", "color": "#a371f7", "shape": "arrowUp",
-                        "text": f"انطلاقة {('+%.0f%%' % a.impulse_pct) if a.impulse_pct else ''} {a.impulse_high:.2f}"})
-    if a.resistance_level:
-        t = to_time(a.resistance_date)
-        if t:
-            out.append({"time": t, "position": "aboveBar", "color": "#e3b341", "shape": "circle",
-                        "text": f"مقاومة {a.resistance_level:.2f}"})
-    if a.sweep_low and a.sweep_date:
-        t = to_time(a.sweep_date)
-        if t:
-            out.append({"time": t, "position": "belowBar", "color": "#f85149", "shape": "arrowDown",
-                        "text": f"سحب سيولة {a.sweep_low:.2f}"})
-    if a.pullback_type == "support_retest" and a.pullback_low and a.pullback_date:
-        t = to_time(a.pullback_date)
-        if t:
-            out.append({"time": t, "position": "belowBar", "color": "#f0883e", "shape": "arrowUp",
-                        "text": f"اختبار الدعم {a.pullback_low:.2f}"})
-    if a.reclaim_date:
-        t = to_time(a.reclaim_date)
-        if t:
-            out.append({"time": t, "position": "belowBar", "color": "#3fb950", "shape": "arrowUp",
-                        "text": f"استعادة الدعم ({a.reclaim_sessions})"})
-    if a.support_level and a.bottom_date and not a.lifecycle_ready:
-        t = to_time(a.bottom_date)
-        if t:
-            out.append({"time": t, "position": "belowBar", "color": "#58a6ff", "shape": "circle",
-                        "text": f"الدعم {a.support_level:.2f} (ثبات {a.base_sessions})"})
-    return out
 
 
 @app.get("/api/report/{symbol}")
@@ -307,7 +229,7 @@ def report(symbol: str, fmt: str = "html", mode: str | None = None) -> Any:
     a = SCAN.by_symbol.get(symbol)
     if a is None:
         hub = get_hub(mode=mode, refresh=bool(mode))
-        a = eng.analyze_symbol(symbol, hub, STRATEGY)
+        a = eng.analyze_symbol(symbol, hub)
     md = analysis_to_markdown(a, SCAN.sources or None)
     if fmt == "md":
         return PlainTextResponse(md, media_type="text/markdown; charset=utf-8")
@@ -319,7 +241,7 @@ def report(symbol: str, fmt: str = "html", mode: str | None = None) -> Any:
 @app.post("/api/report/save")
 def report_save(symbols: str | None = None) -> dict[str, Any]:
     syms = ([s.strip().upper() for s in symbols.split(",") if s.strip()] if symbols
-            else [a.symbol for a in SCAN.results if a.rs_found])
+            else [a.symbol for a in SCAN.results if a.watchlist])
     if not syms:
         raise HTTPException(status_code=400, detail="لا توجد رموز — شغّل المسح أولاً")
     hub = get_hub()

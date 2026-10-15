@@ -1,5 +1,5 @@
 /* ============================================================
-   منصة رصد التقسيم العكسي والانعكاس — منطق الواجهة
+   لوحة الاستراتيجية (قاع ثانٍ + قمة ÷ 2) — منطق الواجهة
    ============================================================ */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -172,10 +172,22 @@ function pollStatus() {
   }, 600);
 }
 
-const sourceKeys = ['price_source', 'split_source', 'fundamentals_source', 'news_source'];
+const sourceKeys = ['price_source', 'fundamentals_source', 'news_source'];
+const STATUS_AR = { READY: 'جاهز للدخول', NEAR: 'قريب من الاكتمال', WATCH: 'مراقبة', EXCLUDED: 'مستبعد' };
+const PATTERN_AR = { double_bottom: 'قاع ثانٍ (دعم ثابت)', liquidity_sweep: 'سحب سيولة تحت القاع ثم استعادة' };
+const STEP_SHORT = {
+  pattern: 'قاع ثانٍ / سحب سيولة', confirm: 'شمعة تأكيد', drop_zone: 'منطقة القمة ÷ 2',
+  negative: 'هبوط 40%+ بعد القمة', price: 'السعر 1.50–2.00', resistance: 'مجال المقاومة 20%+',
+};
+/* نسبة المخاطرة/العائد للهدف (من خطة الصفقة) */
+function rrOf(lv, k) {
+  if (!lv || !lv.trigger || !lv.stop || !lv.targets || lv.targets[k] == null) return '—';
+  const risk = lv.trigger - lv.stop;
+  return risk > 0 ? n((lv.targets[k] - lv.trigger) / risk, 2) + ' : 1' : '—';
+}
 function sourceBadge(r) {
   const label = r.synthetic !== false ? '🔴 تجريبي' : sourceKeys.some(k => !r[k]) ? '🟠 ناقص' : '🟢 حقيقي';
-  const names = ['الأسعار', 'التقسيم', 'الأساسيات', 'الأخبار'];
+  const names = ['الأسعار', 'الأساسيات', 'الأخبار'];
   return `<div class="small">${label}</div><div class="muted small">${sourceKeys.map((k,i) => names[i] + ': ' + esc(r[k] || 'غير متاح')).join(' · ')}</div>`;
 }
 async function loadResults() {
@@ -207,18 +219,13 @@ function renderCoverage() {
   const collected = cov.candidates_collected ?? disc.candidates_collected ?? 0;
   const checked = cov.candidates_checked ?? src.candidates_checked ?? 0;
   const unchecked = cov.candidates_unchecked ?? Math.max(collected - checked, 0);
-  const rowsAfterSplit = rows.filter(r => r.rs_found).length;
-  const rsExcluded = rows.filter(r => r.rs_found && !r.eligible && !r.gam_candidate);
-  const gam = rows.filter(r => r.gam_candidate);
-  const watch = rows.filter(r => r.watchlist && r.eligible);
-  const ready = rows.filter(r => r.eligible && r.phase === 6 && r.lifecycle_ready);
+  const withPattern = rows.filter(r => r.pattern && r.pattern.found).length;
+  const near = rows.filter(r => r.strategy_status === 'NEAR').length;
+  const ready = rows.filter(r => r.strategy_status === 'READY').length;
+  const watch = rows.filter(r => r.watchlist).length;
   const excluded = src.rejections || {};
-  let noData = 0, noSplit = 0;
-  Object.values(excluded).forEach(reason => {
-    if (String(reason || '').includes('لا تقسيم')) noSplit += 1; else noData += 1;
-  });
+  let noData = Object.keys(excluded).length;
   const partial = !!(cov.partial || disc.truncated);
-  const totalScreener = disc.total_matching_screener ?? cov.total_matching_screener;
   let box = document.getElementById('coverageBar');
   if (!box) {
     box = document.createElement('div');
@@ -232,34 +239,30 @@ function renderCoverage() {
   box.style.cssText = 'background:#0b111a;border:1px solid #1e2a3d;border-radius:12px;padding:12px;margin:10px 0;font-size:12.5px;color:#e6edf7';
   box.innerHTML =
     `<div style="font-weight:700;margin-bottom:8px">📊 تغطية المسح — ` +
-    `مرشحون مجموعون ${collected} · مفحوصون ${checked} · غير مفحوصين ${unchecked} · ` +
-    `صفوف بعد فلترة التقسيم ${rowsAfterSplit}` +
-    (totalScreener != null ? ` · إجمالي مطابقات screener ${totalScreener}` : '') +
+    `مرشحون ${collected} · مفحوصون ${checked} · غير مفحوصين ${unchecked} · ` +
+    `بنمط قاع/سحب ${withPattern}` +
     `</div>` +
     (partial
       ? `<div style="background:#3a2a08;color:#ffd87a;border:1px solid #8a6d1f;border-radius:10px;` +
-        `padding:10px 12px;margin-bottom:8px">⚠ التغطية جزئية؛ لا تعني النتائج غياب حالات أخرى في السوق خلال شهرين.</div>`
+        `padding:10px 12px;margin-bottom:8px">⚠ التغطية جزئية؛ لا تعني النتائج غياب حالات أخرى في السوق.</div>`
       : '') +
     `<div style="display:flex;flex-wrap:wrap;gap:7px">` +
     chip('لم يُفحص', unchecked, 'c-amber', 'ليست مستبعدة') +
-    chip('بيانات غير متاحة', noData, 'c-red') +
-    chip('لا تقسيم حديث مطابق', noSplit, 'muted') +
-    chip('تقسيم حديث — مستبعد لسبب آخر', rsExcluded.length, 'c-amber') +
-    chip('GAM (غير مؤهل)', gam.length, 'c-purple', 'مسار ثانوي فقط') +
-    chip('قائمة المتابعة', watch.length, 'c-amber') +
-    chip('جاهز فنياً', ready.length, 'c-green') +
+    chip('رموز بأسباب استبعاد', noData, 'c-red') +
+    chip('قريب من الاكتمال', near, 'c-amber') +
+    chip('قائمة المتابعة', watch, 'c-amber') +
+    chip('جاهز للدخول', ready, 'c-green') +
     `</div>` +
     `<div class="muted" style="margin-top:8px;font-size:11px">«لم يُفحص» = مرشحون لم تتحقق منهم بعد (مهلة أو سقف) وليست مستبعدة فنياً؛ ` +
-    `«بيانات غير متاحة» = تعذّر تحقق الأسعار أو الملف؛ «لا تقسيم حديث مطابق» = خارج نافذة 60 يوماً أو النسبة المطلوبة؛ ` +
-    `«مستبعد لسبب آخر» = حدث حديث أخفق السعر/السيولة/الصعود/النموذج أو سبباً مانعاً آخر؛ ` +
-    `«GAM» = رفض حصراً بسبب هبوط أقل من 30% و/أو RSI في المسح الحالي، مع سعر 0.50–20$؛ ليس فرصة أو توصية.</div>`;
+    `«قريب من الاكتمال» = نمط قاع مكتمل بلا شمعة تأكيد بعد؛ «جاهز للدخول» = نقاط ≥ 75 مع إغلاق تأكيدي.</div>`;
 }
 
 function renderKpis() {
   const s = state.summary;
+  const rows = state.rows || [];
   $('#kpiScanned').textContent = s.scanned ?? '—';
-  $('#kpiRs').textContent = s.with_reverse_split ?? '—';
-  $('#kpiGam').textContent = s.gam_candidates ?? 0;
+  $('#kpiPattern').textContent = rows.filter(r => r.pattern && r.pattern.found).length;
+  $('#kpiNear').textContent = s.near ?? rows.filter(r => r.strategy_status === 'NEAR').length;
   $('#kpiWatch').textContent = s.watchlist ?? '—';
   $('#kpiReady').textContent = s.ready ?? '—';
   $('#kpiAvg').textContent = s.avg_score_watchlist ?? '—';
@@ -269,33 +272,27 @@ function renderKpis() {
 
 function rowMatchesFilter(r) {
   switch (state.filter) {
-    case 'watch': return !!r.watchlist && !!r.eligible;
+    case 'watch': return !!r.watchlist;
     case 'eligible': return !!r.eligible;
-    case 'gam': return !!r.gam_candidate && !r.eligible && !r.watchlist;
-    case 'ready': return !!r.eligible && r.phase === 6 && !!r.lifecycle_ready;
-    case 'rs': return !!r.rs_found;
-    case 'rejected': return r.rs_found && !r.eligible;
+    case 'near': return r.strategy_status === 'NEAR';
+    case 'ready': return r.strategy_status === 'READY';
+    case 'pattern': return !!(r.pattern && r.pattern.found);
+    case 'rejected': return r.strategy_status === 'EXCLUDED';
     default: return true;
   }
 }
 
-/* خلية «التسلسل»: خطوات دورة الحياة + اسم الخطوة الناقصة صراحةً */
-const STEP_SHORT = {
-  support_hold: 'ثبات الدعم 3 جلسات', impulse: 'الانطلاقة ≈20%', resistance: 'أقرب مقاومة',
-  pullback: 'العودة لاختبار الدعم', sweep: 'سحب السيولة/الاستعادة', reclaim: 'الاستعادة فوق الدعم',
-};
 function seqCell(r) {
   const checks = r.lifecycle_checks || [];
-  if (!checks.length) return `<span class="muted small">${r.rs_found ? 'تسلسل الثبات لم يبدأ بعد' : 'لا تقسيم داخل النافذة'}</span>`;
+  if (!checks.length) return `<span class="muted small">لا بيانات كافية</span>`;
   const done = checks.filter(c => c.ok).length;
-  const dots = checks.map(c => `<i class="dot ${c.ok ? 'ok' : (c.state === 'active' ? 'active' : 'pending')}"></i>`).join('');
+  const dots = checks.map(c => `<i class="dot ${c.ok ? 'ok' : 'pending'}"></i>`).join('');
   const active = checks.find(c => !c.ok);
   let label, color;
-  if (r.gam_candidate) { label = `GAM — غير مؤهل (${done}/6 بنيوياً)`; color = 'c-purple'; }
-  else if (r.lifecycle_ready && r.eligible) { label = 'جاهز فنياً (6/6)'; color = 'c-green'; }
-  else if (r.lifecycle_failed) { label = 'فشل — كسر الدعم دون استعادة'; color = 'c-red'; }
+  if (r.strategy_status === 'READY') { label = `جاهز للدخول (${done}/6)`; color = 'c-green'; }
+  else if (r.pattern && r.pattern.broken) { label = 'النمط منكسر — تحت وقف القاع الثاني'; color = 'c-red'; }
   else { label = `${done}/6 — ناقص: ${STEP_SHORT[active?.key] || (active?.ar || '')}`; color = 'c-amber'; }
-  return `<span title="${esc(r.lifecycle_stage || '')}" style="cursor:help;white-space:nowrap">
+  return `<span title="${esc(STATUS_AR[r.strategy_status] || '')}" style="cursor:help;white-space:nowrap">
     <span class="seq-icons">${dots}</span>
     <div class="small ${color}">${esc(label)}</div></span>`;
 }
@@ -307,52 +304,48 @@ function renderTable() {
     rows = rows.filter(r => r.symbol.includes(state.search) || (r.name || '').toUpperCase().includes(state.search));
   }
   if (!rows.length) {
-    body.innerHTML = `<tr><td colspan="18" class="empty">لا توجد نتائج مطابقة — جرّب مسح السوق أو تغيير المُرشّح.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="16" class="empty">لا توجد نتائج مطابقة — جرّب مسح السوق أو تغيير المُرشّح.</td></tr>`;
     $('#scanFooter').textContent = '';
     return;
   }
   body.innerHTML = rows.map((r, i) => {
     const ph = r.phase_info || {};
-    const lv = r.levels || {};
-    const pat = (r.patterns_daily && r.patterns_daily[0]) ? r.patterns_daily[0].name_ar : '—';
+    const lv = r.levels || {}, t = lv.targets || {};
+    const pat = r.pattern && r.pattern.found ? PATTERN_AR[r.pattern.type] || r.pattern.type : '—';
     const scoreColor = r.score >= 75 ? '#3fb950' : r.score >= 60 ? '#d29922' : '#8b96a5';
-    const rsTxt = r.rs_found ? `${r.rs_ratio_str}<br><span class="muted small">${r.rs_date || ''} · ${r.rs_age_days ?? '—'}ي</span>` : '<span class="muted">—</span>';
-    const gamBadge = r.gam_candidate ? '<span class="gam-pill" title="مسار ثانوي؛ غير مؤهل وليس توصية">GAM · غير مؤهل</span>' : '';
-    const rowClass = `${r.eligible ? '' : 'phase-rejected'}${r.gam_candidate ? ' gam-row' : ''}`.trim();
-    return `<tr data-sym="${r.symbol}" class="${rowClass}">
+    const checks = r.lifecycle_checks || [];
+    const done = checks.filter(c => c.ok).length;
+    const conf = r.confirmation && r.confirmation.confirmed ? '<span class="c-green">✓ مؤكد</span>' : '<span class="muted">بانتظار</span>';
+    const dz = lv.drop_zone != null ? `${money(lv.drop_zone_low)}–${money(lv.drop_zone_high)}` : '—';
+    return `<tr data-sym="${r.symbol}" class="${r.eligible ? '' : 'phase-rejected'}">
       <td class="muted">${i + 1}</td>
-      <td class="sym-cell">${esc(r.symbol)}${gamBadge}${sourceBadge(r)}<div class="muted small" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc((r.name || '').slice(0, 26))}</div></td>
-      <td><span class="phase-pill" style="background:${(ph.color || '#333')}22;color:${ph.color || '#ccc'};border:1px solid ${(ph.color || '#333')}66">${esc((ph.ar || '—').replace('المرحلة ', 'م'))}</span>${gamBadge}</td>
-      <td class="score-cell" style="color:${scoreColor}">${n(r.score, 1)}<span class="muted small"> ${esc(r.grade)}</span></td>
+      <td class="sym-cell">${esc(r.symbol)}${sourceBadge(r)}<div class="muted small" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc((r.name || '').slice(0, 26))}</div></td>
+      <td><span class="phase-pill" style="background:${(ph.color || '#333')}22;color:${ph.color || '#ccc'};border:1px solid ${(ph.color || '#333')}66">${esc(STATUS_AR[r.strategy_status] || (ph.ar || '—'))}</span></td>
+      <td class="score-cell" style="color:${scoreColor}">${n(r.score, 1)}<span class="muted small"> ${esc(r.grade || '')}</span></td>
       <td>${money(r.last_close)}<br><span class="${cls(r.change_pct)} small">${pct(r.change_pct)}</span></td>
-      <td>${rsTxt}</td>
-      <td class="${cls(r.spike_pct)}">${pct(r.spike_pct)}</td>
-      <td class="${cls(r.decline_pct)}">${pct(r.decline_pct)}</td>
-      <td>${r.base_sessions ?? '—'}${r.base_broken ? ' <span class="c-red">⚠</span>' : ''}</td>
-      <td>${n(r.rsi_trough, 0)} <span class="muted">→</span> <b>${n(r.rsi_now, 0)}</b>${r.rsi_recovered ? ' <span class="c-green">↑</span>' : ''}</td>
-      <td>${big(r.float_shares)}</td>
-      <td>${r.short_pct_float != null ? n(r.short_pct_float, 1) + '%' : '—'}</td>
-      <td>${n(r.rvol, 2)}x</td>
+      <td>${lv.pattern_low1 != null ? `${money(lv.pattern_low1)} / ${money(lv.pattern_low2)}` : '—'}</td>
+      <td>${dz}</td>
+      <td>${r.drop_zone && r.drop_zone.spike_high ? money(r.drop_zone.spike_high) : '—'}</td>
+      <td>${done}/${checks.length || 6}</td>
       <td>${lv.trigger ? money(lv.trigger) : '—'}</td>
-      <td>${lv.rr_t2 ? n(lv.rr_t2, 2) + ' : 1' : '—'}</td>
-      <td>${seqCell(r)}</td>
+      <td>${lv.stop ? money(lv.stop) : '—'}</td>
+      <td>${t.t1 ? money(t.t1) : '—'}</td>
+      <td>${rrOf(lv, 't1')}</td>
+      <td>${conf}</td>
       <td class="muted" style="max-width:190px;white-space:normal">${esc(pat)}</td>
       <td><button class="btn btn-mini" data-open="${r.symbol}">تحليل ›</button></td>
     </tr>`;
   }).join('');
   $$('#scanBody tr[data-sym]').forEach(tr => tr.onclick = () => go('#/sym/' + tr.dataset.sym));
   $('#scanFooter').textContent = `عرض ${rows.length} من ${state.rows.length} رمز — ` +
-    `فرص مؤهلة: ${state.summary.eligible ?? 0} · قائمة المتابعة: ${state.summary.watchlist ?? 0} · ` +
-    `GAM غير مؤهل: ${state.summary.gam_candidates ?? 0}`;
+    `جاهز للدخول: ${state.summary.ready ?? 0} · قريب من الاكتمال: ${state.summary.near ?? 0} · ` +
+    `قائمة المتابعة: ${state.summary.watchlist ?? 0}`;
   if (state.selected) {
     const tr = $(`#scanBody tr[data-sym="${state.selected}"]`);
     if (tr) tr.classList.add('selected');
   }
 }
 
-
-
-/* رسم مصغّر (Sparkline) لسلسلة الإغلاقات */
 function sparkline(values, w = 132, h = 34) {
   const v = (values || []).filter(x => x !== null && x !== undefined);
   if (v.length < 3) return '';
@@ -376,38 +369,32 @@ function renderCards() {
   if (state.search) rows = rows.filter(r => r.symbol.includes(state.search) || (r.name || '').toUpperCase().includes(state.search));
   if (!rows.length) { box.innerHTML = '<div class="empty">لا توجد نتائج مطابقة.</div>'; return; }
   box.innerHTML = rows.map(r => {
-    const ph = r.phase_info || {}, lv = r.levels || {};
+    const ph = r.phase_info || {}, lv = r.levels || {}, t = lv.targets || {};
     const checks = r.lifecycle_checks || [];
     const done = checks.filter(c => c.ok).length;
-    const active = checks.find(c => !c.ok);
-    const stage = r.gam_candidate ? `GAM — غير مؤهل (${done}/6 بنيوياً)`
-      : r.lifecycle_ready && r.eligible ? 'جاهز فنياً — التسلسل مكتمل'
-      : r.lifecycle_failed ? 'فشل التسلسل — كسر الدعم دون استعادة'
-      : checks.length ? `ناقص: ${STEP_SHORT[active?.key] || ''} (${done}/6)` : '—';
-    const gamBadge = r.gam_candidate ? '<span class="gam-pill">GAM · غير مؤهل</span>' : '';
-    const gamReason = r.gam_candidate
-      ? `<div class="gam-reason"><b>مسار ثانوي فقط:</b> ${(r.gam_reasons || []).map(esc).join(' · ')}<br>ليس فرصة مؤهلة ولا توصية.</div>` : '';
-    return `<div class="mcard ${r.eligible ? '' : 'muted-card'}${r.gam_candidate ? ' gam-card' : ''}" data-sym="${r.symbol}">
+    const stage = r.strategy_status === 'READY' ? `جاهز للدخول — ${done}/6`
+      : r.pattern && r.pattern.broken ? 'النمط منكسر'
+      : `${done}/6 — ${STATUS_AR[r.strategy_status] || ''}`;
+    return `<div class="mcard ${r.eligible ? '' : 'muted-card'}" data-sym="${r.symbol}">
       <div class="mcard-head">
-        <div><b class="sym-cell">${esc(r.symbol)}</b>${gamBadge}${sourceBadge(r)}
+        <div><b class="sym-cell">${esc(r.symbol)}</b>${sourceBadge(r)}
           <div class="muted small">${esc((r.name || '').slice(0, 30))}</div></div>
         <div class="mcard-price">${money(r.last_close)}
           <div class="${cls(r.change_pct)} small">${pct(r.change_pct)}</div></div>
-        <span class="phase-pill" style="background:${(ph.color || '#333')}22;color:${ph.color || '#ccc'};border:1px solid ${(ph.color || '#333')}66">${esc((ph.ar || '—').replace('المرحلة ', 'م'))}</span>
+        <span class="phase-pill" style="background:${(ph.color || '#333')}22;color:${ph.color || '#ccc'};border:1px solid ${(ph.color || '#333')}66">${esc(STATUS_AR[r.strategy_status] || '—')}</span>
         <span class="score-pill">${n(r.score, 1)}${r.grade ? ' ' + esc(r.grade) : ''}</span>
       </div>
       <div class="mcard-seq">${seqCell(r)}</div>
-      ${gamReason}
-      <div class="mcard-spark">${sparkline(r.spark)}<span class="muted small">آخر 40 جلسة</span></div>
+      <div class="mcard-spark">${sparkline(r.spark)}<span class="muted small">${esc(stage)}</span></div>
       <div class="mcard-grid">
-        <div><span>التقسيم</span><b>${r.rs_found ? esc(r.rs_ratio_str) : '—'}</b></div>
-        <div><span>صعود/هبوط</span><b>${pct(r.spike_pct)} / ${pct(r.decline_pct)}</b></div>
-        <div><span>الثبات</span><b>${r.base_sessions ?? '—'} جلسة</b></div>
-        <div><span>RSI</span><b>${n(r.rsi_now, 0)} (قاع ${n(r.rsi_trough, 0)})</b></div>
+        <div><span>القاعان</span><b>${lv.pattern_low1 != null ? money(lv.pattern_low1) + ' / ' + money(lv.pattern_low2) : '—'}</b></div>
+        <div><span>منطقة القمة ÷ 2</span><b>${lv.drop_zone != null ? money(lv.drop_zone) : '—'}</b></div>
+        <div><span>الدخول</span><b>${lv.trigger ? money(lv.trigger) : '—'}</b></div>
+        <div><span>الوقف</span><b>${lv.stop ? money(lv.stop) : '—'}</b></div>
+        <div><span>الهدف 1 (+25%)</span><b>${t.t1 ? money(t.t1) : '—'}</b></div>
+        <div><span>مخاطرة/عائد</span><b>${rrOf(lv, 't1')}</b></div>
+        <div><span>حجم المركز</span><b>${lv.position_size ?? '—'} سهم</b></div>
         <div><span>الفلوت</span><b>${big(r.float_shares)}</b></div>
-        <div><span>بيع مكشوف</span><b>${r.short_pct_float != null ? n(r.short_pct_float, 1) + '%' : '—'}</b></div>
-        <div><span>الاختراق</span><b>${lv.trigger ? money(lv.trigger) : '—'}</b></div>
-        <div><span>مخاطرة/عائد</span><b>${lv.rr_t2 ? n(lv.rr_t2, 2) + ':1' : '—'}</b></div>
       </div>
       <button class="btn btn-mini">فتح بطاقة التحليل ›</button>
     </div>`;
@@ -426,7 +413,7 @@ async function openAnalysis(sym) {
   $('#analysisEmpty').classList.add('hidden');
   $('#analysisBody').classList.remove('hidden');
   $('#anSymbol').textContent = sym;
-  document.title = 'تحليل ' + sym + ' | منصة رصد التقسيم العكسي';
+  document.title = 'تحليل ' + sym + ' | لوحة الاستراتيجية';
   try {
     const a = await api('/api/analysis/' + sym);
     state.analysis = a;
@@ -441,23 +428,20 @@ function renderStepper(a) {
   const checks = a.lifecycle_checks || [];
   const box = $('#anStepper');
   if (!checks.length) {
-    box.innerHTML = `<p class="muted">${a.rs_found ? 'تقسيم عكسي مرصود؛ تسلسل الثبات لم يبدأ بعد.' : 'لا تقسيم عكسي داخل النافذة.'}</p>`;
+    box.innerHTML = `<p class="muted">لا توجد معايير محسوبة لهذا الرمز.</p>`;
   } else {
     box.innerHTML = checks.map((c, i) => `
-      <div class="step ${c.state}">
+      <div class="step ${c.ok ? 'done' : 'pending'}">
         <div class="st-num">${c.ok ? '✓' : i + 1}</div>
         <div class="st-title">${esc(c.ar)}</div>
-        <div class="st-std">${esc(c.std)}</div>
-        <div class="st-det">${esc(c.detail)}</div>
+        <div class="st-std">${esc(STEP_SHORT[c.key] || '')}</div>
       </div>`).join('');
   }
   const st = $('#seqStatus');
-  const okAll = a.lifecycle_ready && a.eligible, failed = a.lifecycle_failed;
-  st.className = 'seq-status ' + (failed ? 'fail' : okAll ? 'ok' : 'active');
-  const statusText = a.gam_candidate
-    ? `GAM — غير مؤهل؛ الحالة البنيوية: ${a.lifecycle_stage || '—'}`
-    : (a.lifecycle_stage || '—');
-  st.innerHTML = `<i class="dot ${failed ? 'fail' : okAll ? 'ok' : 'active'}"></i> ${esc(statusText)}`;
+  const status = a.strategy_status || 'EXCLUDED';
+  const failed = !!(a.pattern && a.pattern.broken);
+  st.className = 'seq-status ' + (failed ? 'fail' : status === 'READY' ? 'ok' : 'active');
+  st.innerHTML = `<i class="dot ${failed ? 'fail' : status === 'READY' ? 'ok' : 'active'}"></i> ${esc(STATUS_AR[status] || '—')} · التقييم ${n(a.score, 1)}`;
 }
 
 /* ------------------------- عرض التحليل ------------------------- */
@@ -471,33 +455,29 @@ function renderAnalysis(a) {
   ch.textContent = pct(a.change_pct, 2);
   ch.className = 'chg ' + cls(a.change_pct);
   const badge = $('#anPhaseBadge');
-  badge.textContent = a.gam_candidate ? 'GAM — غير مؤهل (مسار ثانوي)' : (ph.ar || '—');
-  const phaseColor = a.gam_candidate ? '#a371f7' : (ph.color || '#333');
+  const status = a.strategy_status || 'EXCLUDED';
+  badge.textContent = STATUS_AR[status] || (ph.ar || '—');
+  const phaseColor = ph.color || '#333';
   badge.style.background = phaseColor + '22';
-  badge.style.color = a.gam_candidate ? '#c9adff' : (ph.color || '#ccc');
+  badge.style.color = ph.color || '#ccc';
   badge.style.borderColor = phaseColor + '66';
   badge.className = 'badge';
-  $('#anPhaseDesc').textContent = a.gam_candidate
-    ? 'مرشح قريب فقط؛ لا يخفّف الأهلية ولا يدخل قائمة المتابعة، وليس توصية.'
-    : (ph.desc || '');
+  $('#anPhaseDesc').textContent = ph.desc || '';
   const g = $('#anGauge');
   const deg = Math.max(0, Math.min(360, (a.score || 0) * 3.6));
-  const col = a.score >= 85 ? '#3fb950' : a.score >= 75 ? '#7ee787' : a.score >= 62 ? '#d29942' : '#8b96a5';
+  const col = a.score >= 75 ? '#3fb950' : a.score >= 55 ? '#d29942' : a.score >= 35 ? '#8b96a5' : '#5b6472';
   g.style.background = `conic-gradient(${col} 0deg, ${col} ${deg}deg, #1d2530 ${deg}deg 360deg)`;
   $('#anScore').textContent = n(a.score, 0);
   $('#anGrade').textContent = a.grade || '—';
 
   const alerts = [];
   if (a.risk_flags?.length) alerts.push(['bad', 'خطر', a.risk_flags.map(esc).join('<br>')]);
-  if (a.lifecycle_failed) alerts.push(['bad', 'فشل', 'فشل تسلسل الانعكاس: كسر الدعم الرئيسي بعد الانطلاقة دون استعادة — يُلغى السيناريو حتى يتكوّن قاع جديد.']);
+  if (a.pattern && a.pattern.broken) alerts.push(['bad', 'منكسر', 'النمط منكسر: السعر تحت وقف القاع الثاني — يُلغى السيناريو حتى يتكوّن قاع جديد.']);
   if (a.rejections?.length) alerts.push(['warn', 'استبعاد', '<b>أسباب الاستبعاد:</b><br>' + a.rejections.map(esc).join('<br>')]);
   if (a.notes?.length) alerts.push(['info', 'ملاحظة', a.notes.map(esc).join('<br>')]);
-  if (a.gam_candidate) alerts.unshift(['gam', 'GAM — غير مؤهل',
-    '<b>مسار ثانوي فقط:</b> ' + (a.gam_reasons || []).map(esc).join(' · ') +
-    '<br>ليس فرصة مؤهلة ولا في قائمة المتابعة وليس توصية. رفض RSI يخص بيانات المسح الحالي؛ لا حفظ تاريخي.']);
-  if (!a.rejections?.length && a.watchlist && a.eligible) alerts.unshift(['good', 'متابعة', 'السهم مستوفٍ لشروط الاستراتيجية ومرصود في قائمة المتابعة.']);
+  if (status === 'READY') alerts.unshift(['good', 'جاهز', 'الشروط مكتملة وشمعة التأكيد تحققت — راجع خطة الصفقة والوقف قبل الدخول.']);
   $('#anAlerts').innerHTML = alerts.map(([k, tag, t]) =>
-    `<div class="alert alert-${k}"><i class="dot ${k === 'good' ? 'ok' : k === 'bad' ? 'fail' : k === 'warn' || k === 'gam' ? 'active' : 'info'}"></i>
+    `<div class="alert alert-${k}"><i class="dot ${k === 'good' ? 'ok' : k === 'bad' ? 'fail' : k === 'warn' ? 'active' : 'info'}"></i>
       <div><b class="alert-tag">${tag}</b> ${t}</div></div>`).join('');
 
   renderStepper(a);
@@ -505,61 +485,57 @@ function renderAnalysis(a) {
   renderMetrics(a); renderPatterns(a); renderNews(a);
 
   $('#anWhy').innerHTML = (a.why_ar || []).map(w => `<li>${esc(w)}</li>`).join('');
-  $('#anAction').innerHTML = `<b>${a.gam_candidate ? 'حالة GAM:' : 'خطة العمل:'}</b> ${esc(a.action_ar || '')}`;
+  $('#anAction').innerHTML = `<b>خطة العمل:</b> ${esc(a.action_ar || '')}`;
   $('#anConfirmations').innerHTML = (a.confirmations || []).length
     ? a.confirmations.map(c => `<span class="c">✓ ${esc(c)}</span>`).join('')
-    : '<span class="muted small">لا توجد تأكيدات فنية بعد — السهم ما زال في طور التكوين.</span>';
+    : '<span class="muted small">لا توجد تأكيدات بعد.</span>';
 }
 
 function renderLevels(a) {
   const lv = a.levels || {}, t = lv.targets || {};
   const heading = $('#anLevels')?.closest('.card')?.querySelector('h3');
-  if (heading) heading.textContent = a.gam_candidate
-    ? 'مستويات فنية مرجعية — ليست خطة تداول'
-    : 'خطة التداول والمستويات';
+  if (heading) heading.textContent = 'خطة التداول والمستويات';
   const box = (cls2, label, val, extra = '') =>
     `<div class="lvl lvl-${cls2}"><span>${label}</span><b>${val}</b>${extra ? `<div class="muted small">${extra}</div>` : ''}</div>`;
-  const gamNotice = a.gam_candidate
-    ? '<div class="gam-reason"><b>GAM غير مؤهل:</b> هذه مستويات وصفية آلية، وليست توصية أو خطة دخول.</div>' : '';
-  $('#anLevels').innerHTML = gamNotice + [
-    box('trigger', a.gam_candidate ? 'مستوى الاختراق المرجعي' : 'نقطة الاختراق (Trigger)', money(lv.trigger), lv.entry_zone ? `${a.gam_candidate ? 'نطاق مرجعي' : 'منطقة الدخول'} ${money(lv.entry_zone[0])} – ${money(lv.trigger)}` : ''),
-    box('stop', a.gam_candidate ? 'مستوى الإبطال المرجعي' : 'وقف الخسارة', money(lv.stop),
-        a.gam_candidate ? 'للوصف الفني فقط' : (lv.stop_pct != null ? `${n(lv.stop_pct, 1)}% من الدخول` : '')),
-    box('stop', a.gam_candidate ? 'الإبطال الهيكلي' : 'وقف إلغاء السيناريو', money(lv.stop_structural),
-        a.pullback_type === 'liquidity_sweep' && a.sweep_low ? `تحت قاع السحب ${money(a.sweep_low)}` : 'كسر الدعم الرئيسي = إلغاء'),
-    box('target', a.gam_candidate ? 'ارتداد مرجعي 38.2%' : 'الهدف 1 (38.2%)', money(t.t1_382),
-        !a.gam_candidate && lv.rr_t1 ? `مخاطرة/عائد ${n(lv.rr_t1, 2)}:1` : ''),
-    box('target', a.gam_candidate ? 'ارتداد مرجعي 61.8%' : 'الهدف 2 (61.8%)', money(t.t2_618),
-        !a.gam_candidate && lv.rr_t2 ? `مخاطرة/عائد ${n(lv.rr_t2, 2)}:1` : ''),
-    box('target', a.gam_candidate ? 'القمة السابقة المرجعية' : 'الهدف 3 (القمة)', money(t.t3_full), 'استعادة كامل الموجة'),
-  ].join('') + (a.gam_candidate ? '' : `<div class="lvl" style="grid-column:1/-1"><span>إدارة حجم المركز</span><b class="small" style="font-weight:400">${esc(lv.position_note_ar || '')}</b></div>`);
+  const plan = a.trade_plan;
+  const noPlan = !(plan && plan.valid);
+  const notice = noPlan
+    ? `<div class="gam-reason" style="grid-column:1/-1"><b>لا توجد خطة صالحة بعد:</b> ${a.pattern && a.pattern.found ? 'مخاطرة السهم غير صالحة أو النمط لم يكتمل.' : 'لم يتكوّن قاع ثانٍ أو سحب سيولة بعد.'}</div>` : '';
+  const targets = ['t1', 't2', 't3', 't4'].map((k, i) => box('target', `الهدف ${i + 1} (+${25 * (i + 1)}%)`, money(t[k]),
+    !noPlan && lv.trigger ? `مخاطرة/عائد ${n((t[k] - lv.trigger) / (lv.trigger - lv.stop), 2)}:1` : '')).join('');
+  $('#anLevels').innerHTML = notice + [
+    box('trigger', 'نقطة الدخول (إغلاق تأكيدي)', money(lv.trigger), lv.entry_zone ? `نطاق ${money(lv.entry_zone[0])} – ${money(lv.trigger)}` : ''),
+    box('stop', 'وقف الخسارة (3% تحت القاع الثاني)', money(lv.stop), lv.stop_pct != null ? `${n(lv.stop_pct, 1)}% من الدخول` : ''),
+    box('stop', 'القاع الثاني', money(lv.pattern_low2), lv.pattern_low1 != null ? `القاع الأول ${money(lv.pattern_low1)}` : ''),
+    box('target', 'منطقة القمة ÷ 2', money(lv.drop_zone), lv.drop_zone_low != null ? `${money(lv.drop_zone_low)} – ${money(lv.drop_zone_high)}` : ''),
+    targets,
+    `<div class="lvl" style="grid-column:1/-1"><span>إدارة حجم المركز</span><b class="small" style="font-weight:400">${
+      plan && plan.valid ? `حجم المركز ${lv.position_size ?? '—'} سهم · مخاطرة السهم ${money(lv.risk_per_share)} · مخاطرة ثابتة للصفقة` : 'غير متاح بدون خطة صالحة'}</b></div>`,
+  ].join('');
 }
 
 function renderChecklist(a) {
-  const p = state.strategy?.params || {};
-  const items = [
-    ['تقسيم عكسي 1:2 – 1:60 خلال شهرين', `≤ ${p.rs_lookback_days || 60} يوماً`, a.rs_found ? `${a.rs_ratio_str} بتاريخ ${a.rs_date} (${a.rs_age_days} يوم)` : 'لا يوجد حدث', !!a.rs_found],
-    ['صعود يوم التقسيم', `≥ ${p.min_spike_pct || 5}%`, a.spike_pct != null ? `${pct(a.spike_pct)} (${money(a.rs_open)} → ${money(a.spike_high)})` : '—', a.spike_pct != null && a.spike_pct >= (p.min_spike_pct || 5)],
-    ['موجة هبوط قوية', `≥ ${p.min_drop_pct || 30}%`, a.decline_pct != null ? pct(a.decline_pct) : '—', a.decline_pct != null && Math.abs(a.decline_pct) >= (p.min_drop_pct || 30)],
-    ['تشبع بيعي RSI', `< ${p.rsi_oversold || 30}`, `القاع ${n(a.rsi_trough, 1)} → الحالي ${n(a.rsi_now, 1)}`, a.rsi_trough != null && a.rsi_trough < (p.rsi_oversold || 30)],
-    ['ثبات على القاع', `≥ ${p.min_base_sessions || 3} جلسات`, `${a.base_sessions} جلسة على ${money(a.bottom_price)}` + (a.base_range_pct != null ? ` (نطاق ${n(a.base_range_pct, 1)}%)` : ''), (a.base_sessions || 0) >= (p.min_base_sessions || 3)],
-    ['جفاف الحجم داخل القاعدة', `< ${Math.round((p.max_volume_dryup_ratio || .9) * 100)}%`, a.volume_dryup != null ? `${Math.round(a.volume_dryup * 100)}% من متوسط ما قبل القاع` : '—', a.volume_dryup != null && a.volume_dryup < (p.max_volume_dryup_ratio || .9)],
-    ['تأكيد الانعكاس', '≥ 3 تأكيدات', `${(a.confirmations || []).length} تأكيد: ${(a.confirmations || []).join('، ') || '—'}`, (a.confirmations || []).length >= 3],
-    ['الدعم صامد (لم يُكسر)', '—', a.base_broken ? 'تم كسر الدعم الرئيسي ⚠️' : 'لم يُكسر', !a.base_broken],
-  ];
-  const seq = (a.lifecycle_checks || []).map(c => [c.ar, c.std, c.detail, c.ok, c.state]);
-  const rows = items.concat(seq);
-  const doneN = seq.filter(c => c[3]).length;
-  const seqHead = seq.length ? `
+  const p = a.pattern || {}, c = a.confirmation || {}, dz = a.drop_zone || {};
+  const detail = {
+    pattern: p.found ? `${PATTERN_AR[p.type] || p.type} — قاع1 ${money(p.low1)} · قاع2 ${money(p.low2)} · خط العنق ${money(p.neckline)}`
+      : p.broken ? 'النمط منكسر تحت وقف القاع الثاني' : 'لم يتكوّن قاع ثانٍ أو سحب سيولة بعد',
+    confirm: c.confirmed ? `إغلاق فوق القاع الثاني وشمعة خضراء تكسر قمة الشمعة السابقة (الدخول ${money(c.entry)})`
+      : (p.found ? 'بانتظار إغلاق أخضر يكسر قمة الشمعة السابقة' : 'يتطلب نمطاً أولاً'),
+    drop_zone: dz.zone ? `القمة ${money(dz.spike_high)} ÷ 2 = ${money(dz.zone)} (نطاق ${money(dz.zone_low)}–${money(dz.zone_high)})` : '—',
+    negative: 'هبوط 40%+ من القمة إلى ما بعدها خلال 90 يوماً',
+    price: `السعر ${money(a.last_close)} (المثالي 1.50–2.00)`,
+    resistance: 'أعلى سعر في 90 يوماً يجب أن يكون 20%+ فوق السعر',
+  };
+  const seq = (a.lifecycle_checks || []).map(ch => [ch.ar, detail[ch.key] || '', !!ch.ok, ch.key]);
+  const doneN = seq.filter(x => x[2]).length;
+  $('#anChecklist').innerHTML = `
     <div class="seq-head">
-      <b>دورة الحياة — شرط «جاهز فنياً» (${doneN}/${seq.length})</b>
-      <span class="${a.gam_candidate ? 'c-purple' : a.lifecycle_ready && a.eligible ? 'c-green' : a.lifecycle_failed ? 'c-red' : 'c-amber'}">${esc(a.gam_candidate ? 'GAM غير مؤهل — ' + (a.lifecycle_stage || '') : (a.lifecycle_stage || ''))}</span>
-    </div>` : '';
-  $('#anChecklist').innerHTML = seqHead + rows.map(([t, std, val, ok, st]) => `
-    <div class="check ${ok ? 'ok' : (st === 'active' ? 'active' : 'pending')}">
-      <span class="icon"><i class="dot ${ok ? 'ok' : (st === 'active' ? 'active' : 'pending')}"></i></span>
-      <div><b>${esc(t)}</b> <span class="muted small">(${esc(std)})</span><br>
-      <span class="muted small">${esc(val)}</span></div>
+      <b>معايير الاستراتيجية (${doneN}/${seq.length})</b>
+      <span class="${a.strategy_status === 'READY' ? 'c-green' : a.pattern && a.pattern.broken ? 'c-red' : 'c-amber'}">${esc(STATUS_AR[a.strategy_status] || '')}</span>
+    </div>` + seq.map(([t, val, ok]) => `
+    <div class="check ${ok ? 'ok' : 'pending'}">
+      <span class="icon"><i class="dot ${ok ? 'ok' : 'pending'}"></i></span>
+      <div><b>${esc(t)}</b><br><span class="muted small">${esc(val)}</span></div>
     </div>`).join('');
 }
 
@@ -598,31 +574,18 @@ function renderFundamentals(a) {
 function renderMetrics(a) {
   const h4 = a.h4 || {};
   const trendAr = { up: 'صاعد', down: 'هابط', neutral: 'عرضي' }[h4.trend] || '—';
+  const p = a.pattern || {}, dz = a.drop_zone || {}, c = a.confirmation || {};
   const rows = [
-    ['سعر الافتتاح يوم التقسيم', money(a.rs_open)],
-    ['قمة ما بعد التقسيم', money(a.spike_high) + (a.spike_date ? ` (${a.spike_date})` : '')],
-    ['الدعم الرئيسي (القاع)', money(a.support_level || a.bottom_price) + (a.bottom_date ? ` (${a.bottom_date})` : '')],
-    ['نطاق القاعدة', a.base_range_pct != null ? n(a.base_range_pct, 1) + '%' : '—'],
-    ['جلسات الثبات', a.base_sessions ?? '—'],
-    ['جفاف الحجم', a.volume_dryup != null ? Math.round(a.volume_dryup * 100) + '%' : '—'],
-    ['الانطلاقة من إغلاق الثبات', a.impulse_pct != null ? `${pct(a.impulse_pct)} (من ${money(a.base_close)} إلى ${money(a.impulse_high)} في ${a.impulse_date || '—'})` : '—'],
-    ['أقرب مقاومة مختبرة', a.resistance_level != null ? `${money(a.resistance_level)} — توقف السعر عندها بفارق ${n(a.resistance_stall_pct, 1)}%` : '—'],
-    ['العودة لاختبار الدعم', a.pullback_type === 'liquidity_sweep'
-      ? `سحب سيولة إلى ${money(a.sweep_low)} (${n(a.sweep_depth_pct, 1)}% تحت الدعم) في ${a.pullback_date || '—'}`
-      : a.pullback_type === 'support_retest' ? `اختبار ناجح عند ${money(a.pullback_low)} في ${a.pullback_date || '—'}`
-      : a.pullback_type === 'breakdown' ? 'كسر الدعم دون استعادة (فشل)'
-      : a.pullback_type ? 'موجة عائدة لم تصل لمنطقة الدعم بعد' : '—'],
-    ['الاستعادة فوق الدعم', a.reclaim_sessions ? `${a.reclaim_sessions} إغلاق فوق ${money(a.reclaim_level)} (آخرها ${a.reclaim_date || '—'})` : '—'],
-    ['حالة التسلسل', (a.gam_candidate ? 'GAM غير مؤهل — ' : a.lifecycle_ready && a.eligible ? 'جاهز فنياً — ' : a.lifecycle_failed ? 'فشل التسلسل — ' : 'قيد التكوين — ') + (a.lifecycle_stage || '')],
-    ['تصنيف GAM', a.gam_candidate ? `نعم — غير مؤهل: ${(a.gam_reasons || []).join(' | ')}` : 'لا'],
-    ['RSI (يومي)', `${n(a.rsi_now, 1)} (أدنى ${n(a.rsi_trough, 1)})`],
-    ['MACD Hist', n(a.macd_hist, 4) + (a.macd_turning ? ' ↑' : '')],
-    ['EMA9 / EMA20', money(a.levels?.ema9) + ' / ' + money(a.levels?.ema20)],
-    ['إغلاقات فوق EMA9', (a.above_ema9_sessions ?? 0) + ' جلسة'],
-    ['حجم نسبي RVOL', n(a.rvol, 2) + 'x'],
+    ['القمة (أعلى 60 شمعة)', money(dz.spike_high)],
+    ['منطقة القمة ÷ 2', dz.zone ? `${money(dz.zone)} (${money(dz.zone_low)} – ${money(dz.zone_high)})` : '—'],
+    ['القاع الأول', p.found || p.broken ? money(p.low1) : '—'],
+    ['القاع الثاني', p.found || p.broken ? money(p.low2) : '—'],
+    ['خط العنق (أعلى ارتداد)', p.neckline ? money(p.neckline) : '—'],
+    ['نوع النمط', p.found ? (PATTERN_AR[p.type] || p.type) : '—'],
+    ['شموع منذ القاع الثاني', p.bars_since_low2 ?? '—'],
+    ['شمعة التأكيد', c.confirmed ? 'مؤكدة ✓' : (c.green === false ? 'حمراء' : 'بانتظار')],
     ['ATR%', n(a.atr_pct, 2) + '%'],
-    ['القناة الهابطة', (a.channel_slope_pct != null ? n(a.channel_slope_pct, 2) + '%/شمعة' : '—') + (a.channel_broken ? ' · مخترقة ✅' : '')],
-    ['بنية القيعان', (a.higher_lows ?? 0) + ' قاع صاعد'],
+    ['EMA9 / EMA20', money(a.levels?.ema9) + ' / ' + money(a.levels?.ema20)],
     ['فريم 4 ساعات', h4.available ? `${trendAr} · RSI ${n(h4.rsi, 1)} · RVOL ${n(h4.rvol, 2)}x` : '—'],
     ['توافق الفريمين', h4.aligned ? 'متوافق ✅' : 'غير متوافق ⏳'],
     ['مصدر البيانات', a.synthetic ? '🔴 تجريبي' : 'حقيقي — راجع المصادر'],
@@ -760,34 +723,24 @@ function renderChart(p) {
   s.price.chL.setData(p.overlays.ch_low || []);
   if (p.markers?.length) s.price.candles.setMarkers(p.markers);
 
-  // مستويات الدعم/المقاومة/الخطة
+  // مستويات الاستراتيجية: القاعان، خط العنق، منطقة القمة÷2، الدخول والوقف، والأهداف الأربعة
   const lv = p.levels || {}, t = lv.targets || {}, lc = p.lifecycle || {};
   const line = (price, color, title, style = 2, onAxis = true) => price && s.price.candles.createPriceLine({
     price: Number(price), color, lineWidth: 1, lineStyle: style, axisLabelVisible: onAxis, title,
   });
-  // شروط دورة الحياة مرسومة على المخطط (بلا ازدحام: الأساسيات دائماً، والبقية حسب الحاجة)
-  line(lc.support, '#f0883e', 'الدعم الرئيسي', 0);
-  if (lc.resistance_level) line(lc.resistance_level, '#e3b341', 'أقرب مقاومة', 2);
-  if (lc.sweep_low) line(lc.sweep_low, '#f85149', 'قاع السحب', 1);
-  if (!lc.ready) {
-    const tol = ((state.strategy?.params?.support_retest_tolerance_pct ?? 2) / 100);
-    if (lc.support) {
-      line(lc.support * (1 + tol), '#f0883e66', '', 1);
-      line(lc.support * (1 - tol), '#f0883e66', '', 1);
-    }
-    if (lc.impulse_target) line(lc.impulse_target, '#a371f7', 'هدف الانطلاقة +20%', 1);
-  }
-  line(lv.trigger, COLORS.trigger, 'اختراق', 0);
+  line(lv.pattern_low1, '#58a6ff', 'القاع الأول', 1);
+  line(lv.pattern_low2, '#3fb950', 'القاع الثاني', 0);
+  line(lv.neckline, '#e3b341', 'خط العنق', 2);
+  line(lv.drop_zone, '#a371f7', 'القمة ÷ 2', 2, false);
+  line(lv.trigger, COLORS.trigger, 'دخول', 0);
   line(lv.stop, COLORS.stop, 'وقف', 0);
-  line(t.t1_382, COLORS.target, 'هدف1', 3, false);
-  line(t.t2_618, COLORS.target, 'هدف2', 3, false);
+  ['t1', 't2', 't3', 't4'].forEach((k, i) => line(t[k], COLORS.target, `هدف +${25 * (i + 1)}%`, 3, false));
 
   const seqLegend = (p.lifecycle?.checks || []).map(c =>
     `<span><i class="dot ${c.ok ? 'ok' : 'active'}"></i> ${esc((STEP_SHORT[c.key] || c.ar))}</span>`).join('');
   $('#chartLegend').innerHTML = [
     ['EMA9', COLORS.ema9], ['EMA20', COLORS.ema20], ['EMA50', COLORS.ema50],
-    ['الدعم', '#f0883e'], ['المقاومة', '#e3b341'], ['هدف الانطلاقة +20%', '#a371f7'],
-    ['قاع السحب', '#f85149'],
+    ['القاع الأول', '#58a6ff'], ['القاع الثاني', '#3fb950'], ['القمة ÷ 2', '#a371f7'],
   ].map(([k, c]) => `<span><i style="background:${c}"></i>${k}</span>`).join('') +
     (seqLegend ? `<span class="seq-legend">${seqLegend}</span>` : '') +
     `<span>الشموع: ${p.meta?.bars || 0}</span><span>الإقفال: ${money(p.meta?.last_close)}</span>` +
@@ -989,7 +942,7 @@ function renderPhases() {
   if (!el) return;
   el.innerHTML = [
     `<div class="phase-card" style="--pc:#5b6472"><h4>مستبعد (لم يستوفِ الشروط)</h4>
-      <p>رموز لم تُحقق شرط التقسيم العكسي أو الهبوط أو التشبع أو الثبات، أو فشل تسلسل الانعكاس.</p>
+      <p>رموز لم تبلغ حد المراقبة (35) أو كُسر فيها وقف القاع الثاني.</p>
       <div class="cnt">${counts['0'] || 0}</div></div>`
   ].concat(list.map(([k, v]) => `
     <div class="phase-card" style="--pc:${v.color}">
@@ -1038,63 +991,40 @@ $('#helpClose').onclick = () => $('#helpModal').classList.add('hidden');
 $('#helpModal').onclick = e => { if (e.target.id === 'helpModal') $('#helpModal').classList.add('hidden'); };
 
 async function renderHelp() {
-  const p = state.strategy?.params || {};
   const el = $('#helpContent');
   if (!el) return;
   el.innerHTML = `
-  <p>هذه المنصة تنفّذ استراتيجية <b>«التقسيم العكسي + التشبع البيعي + الانعكاس»</b>،
-  وتعمل على الفريم اليومي وفريم 4 ساعات مع نماذج التحليل الفني.</p>
-  <h3>المرحلة الأولى: شروط التقسيم والهبوط والتشبع والثبات</h3>
+  <p>هذه المنصة تنفّذ استراتيجية <b>«قاع ثانٍ + منطقة القمة ÷ 2»</b> على الفريم اليومي مع تأكيد على فريم 4 ساعات.</p>
+  <h3>المعايير التسعة (التقييم من 100)</h3>
   <table>
-    <tr><th>#</th><th>الشرط</th><th>المعيار في النظام</th></tr>
-    <tr><td>1</td><td>تقسيم عكسي حديث</td><td>نسبة 1:${p.rs_min_ratio || 2} حتى 1:${p.rs_max_ratio || 60} خلال آخر ${p.rs_lookback_days || 60} يوماً</td></tr>
-    <tr><td>2</td><td>صعود يوم التقسيم</td><td>≥ ${p.min_spike_pct || 5}% (المثالي ${p.ideal_spike_pct || 15}%)</td></tr>
-    <tr><td>3</td><td>موجة هبوط قوية</td><td>≥ ${p.min_drop_pct || 30}% (جيد ${p.good_drop_pct || 40}% / قوي ${p.strong_drop_pct || 50}%)</td></tr>
-    <tr><td>4</td><td>تشبع بيعي</td><td>RSI &lt; ${p.rsi_oversold || 30} (عميق &lt; ${p.rsi_deep_oversold || 25})</td></tr>
-    <tr><td>5</td><td>قاع وثبات</td><td>≥ ${p.min_base_sessions || 3} جلسات داخل ±${p.base_tolerance_pct || 9}% مع جفاف حجم</td></tr>
-    <tr><td>6</td><td>تحسّن الزخم</td><td>RSI ≥ ${p.rsi_recovery_min || 35} أو +${p.rsi_recovery_delta || 5} عن قاعه</td></tr>
-    <tr><td>7</td><td>تأكيد الانعكاس</td><td>إغلاقان فوق EMA9 + تحسّن MACD + اختراق القناة الهابطة + RVOL ≥ ${p.rvol_threshold || 1.5}x</td></tr>
+    <tr><th>#</th><th>المعيار</th><th>القاعدة في النظام</th></tr>
+    <tr><td>1</td><td>الشورت</td><td>أقل من 20 ألف سهم (غير متوفر = محايد)</td></tr>
+    <tr><td>2</td><td>منطقة القمة ÷ 2</td><td>القمة (أعلى 60 شمعة) ÷ 2 ±15%؛ مثال: افتتح 3 ووصل 3.40 ⇒ المنطقة 1.70</td></tr>
+    <tr><td>3</td><td>السعر</td><td>1.50–2.00 نقاط كاملة؛ دون 5$ نقاط جزئية؛ الفلتر الصلب 0.10–10$</td></tr>
+    <tr><td>4</td><td>المتوسطات</td><td>السعر فوق MA20، وميل MA20 للأعلى، والسعر فوق MA30</td></tr>
+    <tr><td>5</td><td>السلوك السلبي</td><td>هبوط 40%+ من القمة إلى أدنى قاع بعدها خلال 90 شمعة</td></tr>
+    <tr><td>6</td><td>النمط</td><td>قاع أول ← ارتداد 15%+ ← قاع ثانٍ ضمن ±4% <b>أو</b> سحب سيولة تحت القاع الأول يعود فوقه</td></tr>
+    <tr><td>7</td><td>التأكيد</td><td>إغلاق أخضر فوق القاع الثاني وفوق القاع الأول، وتكسر قمة الشمعة السابقة، وبعد القاع الثاني بـ 10 شموع كحد أقصى</td></tr>
+    <tr><td>8</td><td>المقاومة</td><td>أعلى سعر في 90 يوماً على بعد 20%+ من السعر</td></tr>
+    <tr><td>9</td><td>الأخبار</td><td>وجود خبر أو إعلان (غير متوفر = محايد)</td></tr>
   </table>
-  <h3>دورة الحياة — شرط «جاهز فنياً» (إلزامية)</h3>
-  <table>
-    <tr><th>#</th><th>الخطوة</th><th>المعيار في النظام</th></tr>
-    <tr><td>8</td><td><b>ثبات على الدعم</b></td><td>لا تقل مدة الثبات عن <b>${p.min_base_sessions || 3} جلسات تداول</b> داخل نطاق ±${p.base_tolerance_pct || 9}% حول القاع ودون كسره</td></tr>
-    <tr><td>9</td><td><b>الانطلاقة ≈20%</b></td><td>صعود ≈${p.ideal_impulse_pct || 20}% من إغلاق جلسات الثبات (يُقبل ${p.min_ready_impulse_pct || 15}% وأعلى)</td></tr>
-    <tr><td>10</td><td><b>اختبار أقرب مقاومة</b></td><td>مقاومة فعلية قريبة (≤ ${p.max_nearby_resistance_pct || 28}% من الدعم) ويتوقف السعر عندها (فارق ≤ ${p.resistance_stall_pct || 3}%)</td></tr>
-    <tr><td>11</td><td><b>العودة لاختبار الدعم الرئيسي</b></td><td>موجة عائدة تلامس الدعم (تسامح ${p.support_retest_tolerance_pct || 2}%)</td></tr>
-    <tr><td>12</td><td><b>أو سحب سيولة تحت القاع</b></td><td>فتيل يكسر القاع ≥ ${p.sweep_tolerance_pct || 1}% ثم يعود ويغلق فوقه (≥ ${p.min_reclaim_sessions || 1} إغلاق فوق الدعم +${p.reclaim_buffer_pct || 0.5}%)</td></tr>
-  </table>
-  <p class="muted">⚠ لا يُمنح وصف <b>«جاهز فنياً»</b> قبل اكتمال الخطوات 8-12 بالترتيب.
-  وكسر الدعم بعد الانطلاقة دون استعادة = فشل التسلسل وإلغاء السيناريو حتى يتكوّن قاع جديد.</p>
-  <h3>المرحلة الثانية: دورة الحياة — شرط «جاهز فنياً» (إلزامي)</h3>
-  <table>
-    <tr><th>#</th><th>الخطوة</th><th>المعيار في النظام</th></tr>
-    <tr><td>8</td><td><b>ثبات على الدعم</b></td><td>عدد جلسات لا يقل عن <b>${p.min_base_sessions || 3} جلسات تداول</b> داخل نطاق ضيق حول القاع ودون كسره</td></tr>
-    <tr><td>9</td><td><b>الانطلاقة</b></td><td>صعود <b>≈${p.ideal_impulse_pct || 20}%</b> (يزيد أو يقل قليلاً) من إغلاق جلسات الثبات — الحد الأدنى ${p.min_ready_impulse_pct || 15}%</td></tr>
-    <tr><td>10</td><td><b>اختبار أقرب مقاومة</b></td><td>مقاومة قريبة (≤ ${p.max_nearby_resistance_pct || 40}% من الدعم وفي نطاق 10% من قمة الانطلاقة) يختبرها السعر ويفشل عندها</td></tr>
-    <tr><td>11</td><td><b>العودة لاختبار الدعم الرئيسي</b></td><td>موجة عائدة تلامس الدعم (تسامح ${p.support_retest_tolerance_pct || 2}%)</td></tr>
-    <tr><td>12</td><td><b>أو سحب سيولة تحت القاع</b></td><td>فتيل يكسر القاع ≥ ${p.sweep_tolerance_pct || 1}% ثم يعود ويغلق فوقه</td></tr>
-    <tr><td>13</td><td><b>الاستعادة والاستقرار</b></td><td>≥ ${p.min_reclaim_sessions || 1} إغلاق فوق الدعم +${p.reclaim_buffer_pct || 0.5}% بعد السحب</td></tr>
-  </table>
-  <p class="muted">⚠ لا يُرقّى أي سهم إلى <b>«جاهز فنياً»</b> قبل اكتمال الخطوات 8-13.
-  وإن كسر السعر الدعم الرئيسي بعد الانطلاقة <b>دون</b> استعادة = فشل التسلسل وإلغاء السيناريو حتى يتكوّن قاع جديد.</p>
-  <h3>التسلسل العملي</h3>
-  <p>1) رصد التقسيم → 2) متابعة الهبوط والتشبع → 3) تكوّن القاع → 4) ثبات 3-5 جلسات (قائمة المتابعة)
-  → 5) انطلاقة ≈20% واختبار أقرب مقاومة → 6) عودة لاختبار الدعم أو سحب سيولة تحته ثم استعادته
-  → 7) <b>جاهز فنياً</b> (اكتمال التسلسل) → 8) بعد الاختراق (مرحلة التمدد: لا مطاردة).</p>
-  <h3>قواعد إدارة المخاطر</h3>
+  <h3>الحالات</h3>
   <ul>
-    <li>لا شراء أثناء الهبوط (“لا نشتري سكيناً ساقطة”) — الدخول بعد الثبات واكتمال دورة الحياة وتأكيد الاختراق.</li>
-    <li>الوقف التداولي 8-20% من نقطة الدخول، ووقف إلغاء السيناريو <b>تحت قاع السحب</b> إن حدث، وإلا تحت الدعم الرئيسي.</li>
-    <li>أي كسر للدعم الرئيسي بعد الانطلاقة دون استعادة يلغي السيناريو بالكامل.</li>
-    <li>الطرح الجديد (424B5/S-1/S-3) أو مذكرات شراء فعّالة = خطر تخفيف يخفض التقييم تلقائياً.</li>
-    <li>الفلوت الصغير + البيع المكشوف العالي = وقود انفجار، لكن تضخّم السعر مفاجئ وعنيف.</li>
+    <li><b>جاهز للدخول</b>: التقييم ≥ 75 مع تأكيد الإغلاق.</li>
+    <li><b>قريب من الاكتمال</b>: التقييم ≥ 55 مع نمط مكتمل بلا تأكيد بعد.</li>
+    <li><b>مراقبة</b>: التقييم ≥ 35.</li>
+    <li><b>مستبعد</b>: أقل من ذلك، أو كسر السعر وقف القاع الثاني (النمط منكسر).</li>
+  </ul>
+  <h3>خطة الصفقة</h3>
+  <ul>
+    <li>الدخول عند إغلاق التأكيد؛ الوقف 3% تحت القاع الثاني.</li>
+    <li>الأهداف +25% / +50% / +75% / +100% من الدخول.</li>
+    <li>حجم المركز = مبلغ المخاطرة الثابت ÷ مخاطرة السهم (الدخول − الوقف)؛ الخطة تُعتبر غير صالحة إن كانت المخاطرة صفراً أو أقل من 1% من الدخول.</li>
   </ul>
   <h3>أدوات المخطط</h3>
   <ul>
     <li><b>سحب حر:</b> اسحب المخطط بإصبعك أو بالفأرة يميناً/يساراً (الزمن) وأعلى/أسفل (الأسعار).</li>
     <li><b>شريط السحب الجانبي:</b> ▲ / ▼ لتحريك المخطط رأسياً، وشريط التكبير الرأسي لضبط مدى الأسعار.</li>
-    <li><b>الشريط الأسفل:</b> سحب أفقي على محور الزمن من أقدم شمعة إلى الأحدث.</li>
     <li><b>لوحة المفاتيح:</b> ← → للسحب، ↑ ↓ للتحريك الرأسي، + / − للتكبير والتصغير.</li>
   </ul>`;
 }

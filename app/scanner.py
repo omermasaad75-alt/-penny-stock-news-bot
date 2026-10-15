@@ -14,7 +14,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-from .config import REPORTS_DIR, STRATEGY, settings
+from .config import REPORTS_DIR, settings
 from .providers.hub import DataHub, get_hub
 from .reporting import watchlist_markdown, write_reports
 from .strategy import engine as eng
@@ -29,77 +29,54 @@ def _f(x, d=2):
         return str(x)
 
 
-def _pct(x, d=1):
-    if x is None:
-        return "—"
-    return f"{float(x):+,.{d}f}%"
-
-
-def _m(x):
-    if x is None:
-        return "—"
-    v = float(x)
-    if v >= 1e9:
-        return f"{v/1e9:.2f}B"
-    if v >= 1e6:
-        return f"{v/1e6:.2f}M"
-    if v >= 1e3:
-        return f"{v/1e3:.1f}K"
-    return f"{v:.0f}"
-
-
 def print_table(results: list[eng.Analysis], only_watch: bool = False) -> None:
     rows = [a for a in results if a.watchlist] if only_watch else results
     print()
-    print("=" * 150)
-    print(f"{'الرمز':<7}{'المرحلة':<38}{'التقييم':<9}{'السعر':<9}{'التقسيم':<14}"
-          f"{'صعود':<8}{'هبوط':<8}{'ثبات':<6}{'RSI':<10}{'الفلوت':<9}{'م.مكشوف':<9}{'اختراق':<9}{'ر/ع':<7}")
-    print("=" * 150)
+    print("=" * 130)
+    print(f"{'الرمز':<7}{'الحالة':<32}{'الدرجة':<10}{'السعر':<9}{'القمة÷2':<10}"
+          f"{'قاع2':<9}{'دخول':<9}{'وقف':<9}{'هدف 25%':<10}{'قمة الصعود':<8}")
+    print("=" * 130)
     for a in rows:
         lv = a.levels or {}
-        phase = eng.phase_info(a.phase if (a.eligible or not a.rs_found) else 0)["ar"]
-        phase = phase.split("—")[-1].strip() if "—" in phase else phase
-        if a.gam_candidate:
-            phase = "GAM — غير مؤهل (مسار ثانوي)"
-        print(f"{a.symbol:<7}{phase[:36]:<38}{str(a.score)+' '+a.grade:<9}"
-              f"{_f(a.last_close, 3):<9}{(a.rs_ratio_str or '—'):<14}{_pct(a.spike_pct):<8}"
-              f"{_pct(a.decline_pct):<8}{str(a.base_sessions):<6}"
-              f"{(_f(a.rsi_trough,0)+'→'+_f(a.rsi_now,0)):<10}{_m(a.float_shares):<9}"
-              f"{(_f(a.short_pct_float,1)+'%') if a.short_pct_float is not None else '—':<9}"
-              f"{_f(lv.get('trigger'),3):<9}{_f(lv.get('rr_t2'),2):<7}")
+        dz = (a.drop_zone or {}).get("zone")
+        pat = a.pattern or {}
+        print(f"{a.symbol:<7}{a.phase_ar[:30]:<32}{str(a.score)+' '+a.grade:<10}"
+              f"{_f(a.last_close, 3):<9}{_f(dz, 2):<10}{_f(pat.get('low2'), 3):<9}"
+              f"{_f(lv.get('trigger'), 3):<9}{_f(lv.get('stop'), 3):<9}"
+              f"{_f((lv.get('targets') or {}).get('t1'), 3):<10}"
+              f"{_f((a.drop_zone or {}).get('spike_high'), 2):<8}")
         if a.rejections:
             print(f"        ↳ مستبعد: {' | '.join(a.rejections)[:130]}")
-    print("=" * 150)
+    print("=" * 130)
 
 
 def print_symbol_report(a: eng.Analysis) -> None:
-    info = eng.phase_info(a.phase if (a.eligible or not a.rs_found) else 0)
     print()
     print("┌" + "─" * 96)
-    status = "مرشح GAM — غير مؤهل/ليس توصية" if a.gam_candidate else info["ar"]
-    print(f"│ {a.symbol} — {a.name}  |  {status}")
+    print(f"│ {a.symbol} — {a.name}  |  {a.phase_ar}")
     print(f"│ التقييم: {a.score}/100 ({a.grade})  |  مصدر البيانات: {a.data_source}  |  آخر جلسة: {a.as_of}")
-    if a.gam_candidate:
-        print("│ GAM مسار ثانوي فقط؛ RSI من بيانات المسح الحالي ولا توجد حالة رفض تاريخية محفوظة.")
+    print("├" + "─" * 96)
+    for item in a.breakdown:
+        print(f"│   {item['ar']:<36} {item['points']:>5.1f} / {item['weight']:<4.0f}")
     print("├" + "─" * 96)
     for w in a.why_ar:
         print(f"│ • {w[:150]}")
     print(f"│ ▶ {a.action_ar[:190]}")
-    if a.rejections:
-        for r in a.rejections:
-            print(f"│ ✖ {r}")
-    lv = a.levels or {}
-    t = lv.get("targets", {})
-    print(f"│ دخول {_f(lv.get('trigger'),3)} | وقف {_f(lv.get('stop'),3)} ({_pct(lv.get('stop_pct'))}) "
-          f"| أهداف {_f(t.get('t1_382'),3)} / {_f(t.get('t2_618'),3)} / {_f(t.get('t3_full'),3)} "
-          f"| ر/ع {_f(lv.get('rr_t2'),2)}:1")
+    for r in a.rejections:
+        print(f"│ ✖ {r}")
+    plan = a.trade_plan or {}
+    if plan.get("valid"):
+        t = plan.get("targets", [])
+        print(f"│ دخول {plan['entry']:.3f} | وقف {plan['stop']:.3f} | أهداف "
+              + " / ".join(f"{x:.3f}" for x in t)
+              + f" | حجم المركز {plan['position_size']:,} سهم")
     if a.patterns_daily:
         print("│ نماذج: " + " · ".join(p["name_ar"] for p in a.patterns_daily[:4]))
     print("└" + "─" * 96)
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description="منصة رصد التقسيم العكسي والانعكاس — سطر الأوامر")
+    ap = argparse.ArgumentParser(description="ماسح الاستراتيجية — سطر الأوامر")
     ap.add_argument("--scan", action="store_true", help="مسح كل الرموز في الكون")
     ap.add_argument("--symbols", type=str, default="", help="رموز محددة مفصولة بفاصلة")
     ap.add_argument("--mode", type=str, default=None, choices=["demo", "live", "auto"],
@@ -128,7 +105,7 @@ def main(argv: list[str] | None = None) -> int:
     results: list[eng.Analysis] = []
     for i, s in enumerate(syms, 1):
         try:
-            a = eng.analyze_symbol(s, hub, STRATEGY)
+            a = eng.analyze_symbol(s, hub)
         except Exception as exc:  # noqa: BLE001
             a = eng.Analysis(symbol=s)
             eng.add_rejection(a, "analysis_error", f"خطأ: {exc}")
@@ -143,18 +120,9 @@ def main(argv: list[str] | None = None) -> int:
             "mode": src["mode_effective"], "generated_at": datetime.now().isoformat(timespec="seconds"),
             "summary": {
                 "scanned": len(results),
-                "with_reverse_split": sum(1 for a in results if a.rs_found),
                 "watchlist": sum(1 for a in results if a.watchlist),
                 "eligible": sum(1 for a in results if a.eligible),
-                "gam_candidates": sum(1 for a in results if a.gam_candidate),
-            },
-            "gam_policy": {
-                "secondary_lane_only": True,
-                "eligible": False,
-                "price_range": [STRATEGY.min_price, STRATEGY.max_price],
-                "allowed_failures": ["decline", "rsi"],
-                "rsi_scope": eng.GAM_RSI_SCOPE,
-                "historical_state_persisted": False,
+                "ready": sum(1 for a in results if a.lifecycle_ready),
             },
             "rows": [a.to_dict() for a in results],
         }
@@ -168,11 +136,11 @@ def main(argv: list[str] | None = None) -> int:
     else:
         print_table(results, only_watch=args.only_watch)
         for a in results:
-            if a.watchlist or a.gam_candidate:
+            if a.watchlist:
                 print_symbol_report(a)
 
     if args.report:
-        targets = [a.symbol for a in results if a.rs_found] or syms
+        targets = [a.symbol for a in results if a.watchlist] or syms
         written = write_reports(targets, hub, REPORTS_DIR, analyses={a.symbol: a for a in results})
         wl = watchlist_markdown(results, src)
         stamp = datetime.now().strftime("%Y%m%d")

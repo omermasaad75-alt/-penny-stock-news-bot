@@ -4,7 +4,7 @@ import json
 import sys
 from pathlib import Path
 
-SOURCE_KEYS = ("price_source", "split_source", "fundamentals_source", "news_source")
+SOURCE_KEYS = ("price_source", "fundamentals_source", "news_source")
 BLOCKED = {"NVEX", "GNSX", "BIOK", "RUBY", "SRNA"}
 
 
@@ -22,10 +22,8 @@ def validate(payload: dict) -> list[str]:
             errors.append(f"{sym}: حقول مصادر مفقودة")
         if not row.get("price_source") or not row.get("fundamentals_source") or not row.get("last_close", 0) > 0:
             errors.append(f"{sym}: بلا مصدر أسعار/أساسيات حقيقي")
-        if row.get("rs_found") and not row.get("split_source"):
-            errors.append(f"{sym}: تقسيم بلا مصدر")
         # المصادر الاختيارية يمكن أن تكون فارغة؛ لا ننسب بيانات لمصدر لم يُعدها.
-        for key in (*SOURCE_KEYS, "rs_source", "short_source"):
+        for key in (*SOURCE_KEYS, "short_source"):
             value = str(row.get(key, "")).lower()
             if "demo" in value or "synthetic" in value or value == "unknown":
                 errors.append(f"{sym}: مصدر غير حقيقي في {key}")
