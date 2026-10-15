@@ -80,7 +80,7 @@ class ScanManager:
                     a = eng.analyze_symbol(sym, hub, STRATEGY)
                 except Exception as exc:  # noqa: BLE001
                     a = eng.Analysis(symbol=sym)
-                    a.rejections.append(f"خطأ في التحليل: {exc}")
+                    eng.add_rejection(a, "analysis_error", f"خطأ في التحليل: {exc}")
                 if hub.mode == "live" and (not a.price_source or not a.fundamentals_source or a.last_close <= 0):
                     hub._reject(sym, "لا توجد بيانات حقيقية لهذا الرمز")
                 else:
@@ -110,14 +110,16 @@ def _summary(results: list[eng.Analysis]) -> dict[str, Any]:
     with_rs = [a for a in results if a.rs_found]
     elig = [a for a in results if a.eligible]
     watch = [a for a in results if a.watchlist]
+    gam = [a for a in results if a.gam_candidate]
     # «جاهز فنياً» = المرحلة 6 مع اكتمال تسلسل دورة الحياة فعلياً (نفس منطق فلتر الواجهة)
-    ready = [a for a in results if a.phase == 6 and a.lifecycle_ready]
+    ready = [a for a in results if a.phase == 6 and a.lifecycle_ready and a.eligible]
     phase5_plus = [a for a in results if a.phase >= 5 and a.eligible]
     return {
         "scanned": len(results),
         "with_reverse_split": len(with_rs),
         "eligible": len(elig),
         "watchlist": len(watch),
+        "gam_candidates": len(gam),
         "ready": len(ready),
         "phase5_plus": len(phase5_plus),
         "avg_score_watchlist": round(sum(a.score for a in watch) / len(watch), 1) if watch else 0,
@@ -151,6 +153,17 @@ def strategy_params() -> dict[str, Any]:
             "decline": "قوة الموجة الهابطة", "oversold": "التشبع البيعي",
             "base": "القاع والثبات", "reversal": "تأكيد الانعكاس",
             "squeeze": "عوامل الضغط والانفجار", "risk": "جودة المخاطر",
+        },
+        "gam_policy": {
+            "secondary_lane_only": True,
+            "eligible": False,
+            "watchlist": False,
+            "min_price": STRATEGY.min_price,
+            "max_price": STRATEGY.max_price,
+            "allowed_rejection_codes": sorted(eng.GAM_ALLOWED_REJECTION_CODES),
+            "rsi_scope": eng.GAM_RSI_SCOPE,
+            "historical_state_persisted": False,
+            "disclaimer_ar": eng.GAM_DISCLAIMER_AR,
         },
     }
 
@@ -221,7 +234,8 @@ def chart(symbol: str, tf: str = "1D", mode: str | None = None) -> dict[str, Any
 def _lifecycle_summary(a: "eng.Analysis") -> dict[str, Any]:
     """ملخّص دورة الحياة الذي ترسمه الواجهة (الخطوط، العلامات، شريط الخطوات)."""
     return {
-        "stage": a.lifecycle_stage, "ready": a.lifecycle_ready, "failed": a.lifecycle_failed,
+        "stage": a.lifecycle_stage, "ready": bool(a.eligible and a.lifecycle_ready),
+        "failed": a.lifecycle_failed, "gam_candidate": a.gam_candidate,
         "support": a.support_level or a.bottom_price, "base_sessions": a.base_sessions,
         "base_close": a.base_close, "impulse_target": (round(a.base_close * 1.2, 4) if a.base_close else None),
         "support_hold_ok": a.support_hold_ok,

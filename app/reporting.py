@@ -47,7 +47,7 @@ def _m(x, dash="—"):
 
 def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
     p = STRATEGY
-    info = eng.phase_info(a.phase if a.eligible else (a.phase if a.rs_found else 0))
+    info = eng.phase_info(a.phase if a.eligible else 0)
     lv = a.levels or {}
     tgt = lv.get("targets", {})
     lines: list[str] = []
@@ -58,6 +58,21 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
     add(f"> **المرحلة:** {info['ar']}  |  **التقييم:** {a.score}/100 ({a.grade})  |  "
         f"**مصدر البيانات:** {a.data_source}  |  **آخر جلسة:** {a.as_of}")
     add("")
+    if a.gam_candidate:
+        add("> **وسم GAM — مسار ثانوي، غير مؤهل:** هذا السهم ليس فرصة مؤهلة ولا يدخل قائمة المتابعة، "
+            "وليس توصية أو إشارة دخول.")
+        add("")
+        add("**أسباب إدراجه في GAM:** " + " | ".join(a.gam_reasons))
+        add("")
+        add("> رفض RSI هنا — إن وُجد — محسوب من سلسلة الأسعار التي يحللها المسح الحالي فقط. "
+            "لا توجد آلية تخزين أو استرجاع لرفض RSI من مسح سابق.")
+        add("")
+    elif a.eligible:
+        add("> **الحالة:** فرصة مؤهلة وفق الشروط الصارمة. وسم GAM غير مستخدم لهذا الصف.")
+        add("")
+    else:
+        add("> **الحالة:** مستبعد من الفرص المؤهلة وقائمة المتابعة.")
+        add("")
     add("## مصادر هذا الصف")
     add("| نوع البيانات | المصدر الفعلي |")
     add("|---|---|")
@@ -124,8 +139,9 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
     add("## 2.ب) دورة الحياة بعد الثبات — شرط «جاهز فنياً»")
     add("")
     add(f"**حالة التسلسل:** {a.lifecycle_stage or '—'} "
-        + ("✅ **جاهز فنياً**" if a.lifecycle_ready else
-           ("⛔ فشل التسلسل" if a.lifecycle_failed else "⏳ قيد التكوّن")))
+        + ("🟣 **GAM — غير مؤهل مهما كانت حالة التسلسل**" if a.gam_candidate else
+           ("✅ **جاهز فنياً**" if a.lifecycle_ready and a.eligible else
+            ("⛔ فشل التسلسل" if a.lifecycle_failed else "⏳ قيد التكوّن"))))
     add("")
     add("| # | الخطوة | المعيار | القراءة الفعلية | الحالة |")
     add("|---|--------|---------|-----------------|--------|")
@@ -198,8 +214,12 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
     add("")
 
     # ---------------- المستويات ---------------- #
-    add("## 5) خطة التداول والمستويات")
+    add("## 5) مستويات فنية مرجعية — ليست خطة تداول" if a.gam_candidate
+        else "## 5) خطة التداول والمستويات")
     add("")
+    if a.gam_candidate:
+        add("> مرشح GAM غير مؤهل؛ المستويات أدناه وصف آلي للبنية السعرية وليست توصية أو خطة دخول.")
+        add("")
     add("| البند | المستوى |")
     add("|-------|---------|")
     add(f"| نقطة الاختراق (Trigger) | **{_n(lv.get('trigger'),3)}$** |")
@@ -416,6 +436,8 @@ def write_reports(symbols: list[str], hub: DataHub, out_dir: Path | None = None,
         (out_dir / f"{a.symbol}_analysis_{stamp}.json").write_text(
             json.dumps(a.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8")
         written.append({"symbol": a.symbol, "phase": a.phase, "score": a.score,
+                        "eligible": a.eligible, "watchlist": a.watchlist,
+                        "gam_candidate": a.gam_candidate,
                         "md": str(out_dir / f"{a.symbol}_analysis_{stamp}.md"),
                         "html": str(out_dir / f"{a.symbol}_analysis_{stamp}.html")})
     return written
@@ -432,9 +454,14 @@ def watchlist_markdown(results: list[eng.Analysis], sources: dict | None = None)
     add("")
     elig = [a for a in results if a.eligible]
     watch = [a for a in results if a.watchlist and a.eligible]
-    add(f"**فرص مؤهلة:** {len(elig)} | **في قائمة المتابعة (ثبات 3+ جلسات):** {len(watch)}")
+    gam = [a for a in results if a.gam_candidate]
+    add(f"**فرص مؤهلة:** {len(elig)} | **في قائمة المتابعة (ثبات 3+ جلسات):** {len(watch)} | "
+        f"**مرشحو GAM (غير مؤهلين):** {len(gam)}")
     add("")
-    add("## أفضل الفرص")
+    add("> GAM مسار ثانوي فقط ولا يخفّف الأهلية الصارمة؛ مرشحوه ليسوا فرصاً مؤهلة ولا توصيات. "
+        "رفض RSI مبني على بيانات السعر في المسح الحالي، ولا توجد حالة رفض تاريخية محفوظة.")
+    add("")
+    add("## أفضل الفرص المؤهلة")
     add("")
     add("| الرمز | المرحلة | التقييم | السعر | التقسيم | صعود | هبوط | جلسات الثبات | RSI | الفلوت | بيع مكشوف | نقطة الاختراق | مخاطرة/عائد |")
     add("|-------|---------|---------|-------|---------|------|------|--------------|-----|--------|-----------|----------------|-------------|")
@@ -445,6 +472,17 @@ def watchlist_markdown(results: list[eng.Analysis], sources: dict | None = None)
             f"{_pct(a.decline_pct)} | {a.base_sessions} | {_n(a.rsi_trough,0)}→{_n(a.rsi_now,0)} | "
             f"{_m(a.float_shares)} | {_n(a.short_pct_float,1)}% | {_n(lv.get('trigger'),3)}$ | {_n(lv.get('rr_t2'),2)}:1 |")
     add("")
+    add("## مرشحو GAM — مسار ثانوي غير مؤهل")
+    add("")
+    add("| الرمز | السعر | التقسيم الحديث | الهبوط | أدنى RSI | سبب/أسباب الرفض المسموح بها | الحالة |")
+    add("|---|---:|---|---:|---:|---|---|")
+    for a in sorted(gam, key=lambda x: -x.score)[:25]:
+        add(f"| **{a.symbol}** | {_n(a.last_close,3)}$ | {a.rs_ratio_str} {a.rs_date or ''} | "
+            f"{_pct(a.decline_pct)} | {_n(a.rsi_trough,1)} | {' ؛ '.join(a.gam_reasons)} | "
+            "غير مؤهل · ليس توصية |")
+    if not gam:
+        add("| — | — | — | — | — | لا يوجد مرشح GAM في بيانات هذا المسح | — |")
+    add("")
     add("## مصادر جميع الصفوف")
     add("| الرمز | الأسعار | التقسيم | الأساسيات | الأخبار | تجريبي |")
     add("|---|---|---|---|---|---|")
@@ -454,11 +492,14 @@ def watchlist_markdown(results: list[eng.Analysis], sources: dict | None = None)
     add("")
     add("## كل الرموز ذات التقسيم العكسي داخل النافذة")
     add("")
-    add("| الرمز | المرحلة | التقييم | سبب الاستبعاد / الملاحظة |")
-    add("|-------|---------|---------|--------------------------|")
+    add("| الرمز | التصنيف | المرحلة | التقييم | سبب الاستبعاد / الملاحظة |")
+    add("|-------|---------|---------|---------|--------------------------|")
     for a in sorted([x for x in results if x.rs_found], key=lambda x: (-x.phase, -x.score)):
         reason = " | ".join(a.rejections) if a.rejections else " | ".join(a.notes) or "مطابق للشروط"
-        add(f"| {a.symbol} | {eng.phase_info(a.phase)['ar']} | {a.score} | {reason[:160]} |")
+        status = ("GAM — غير مؤهل" if a.gam_candidate else
+                  "فرصة مؤهلة" if a.eligible else "مستبعد")
+        phase = eng.phase_info(a.phase if a.eligible else 0)["ar"]
+        add(f"| {a.symbol} | {status} | {phase} | {a.score} | {reason[:160]} |")
     add("")
     add("---")
     add("> إخلاء مسؤولية: أداة تحليل فني/كمّي وليست نصيحة استثمارية.")
