@@ -36,6 +36,7 @@ from app.config import settings                                 # noqa: E402
 from app.providers.hub import get_hub                           # noqa: E402
 from app.reporting import markdown_to_html, watchlist_markdown, write_reports   # noqa: E402
 from app.strategy import engine as eng                          # noqa: E402
+from app.strategy.reverse_split import gam_policy                # noqa: E402
 from app.strategy.strategy_engine import StrategyConfig, WEIGHT_LABELS_AR   # noqa: E402
 
 RIYADH = timezone(timedelta(hours=3))
@@ -56,6 +57,9 @@ CSV_COLUMNS = [
     ("symbol", "الرمز"), ("name", "الاسم"), ("phase", "المرحلة"), ("phase_ar", "الحالة"),
     ("eligible", "فرصة مؤهلة"), ("watchlist", "قائمة المتابعة"),
     ("rejections", "أسباب الاستبعاد"),
+    ("gam_candidate", "مرشح GAM"), ("gam_reasons", "أسباب GAM"),
+    ("rs_ratio", "التقسيم العكسي"), ("rs_date", "تاريخ التقسيم"),
+    ("rs_spike_pct", "صعود يوم التقسيم %"), ("rs_decline_pct", "هبوط بعد القمة %"),
     ("score", "التقييم"), ("grade", "الدرجة"),
     ("last_close", "آخر إغلاق"), ("drop_zone", "منطقة القمة÷2"),
     ("pattern_low1", "القاع الأول"), ("pattern_low2", "القاع الثاني"),
@@ -123,6 +127,9 @@ def summarize(results: list) -> dict:
         "watchlist": len(watch),
         "ready": len(ready),
         "near": len(near),
+        "with_reverse_split": sum(1 for a in results if a.rs_found),
+        "gam_candidates": sum(1 for a in results if a.gam_candidate),
+        "gam_symbols": [a.symbol for a in results if a.gam_candidate],
         "failed": len(failed),
         "avg_score_watchlist": round(sum(a.score for a in watch) / len(watch), 1) if watch else 0,
         "top_symbol": watch[0].symbol if watch else "",
@@ -228,6 +235,7 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
         "mode_setting": sources.get("mode_setting", mode),
         "summary": summary,
         "strategy": {"params": asdict(StrategyConfig()), "weights_ar": WEIGHT_LABELS_AR},
+        "gam_policy": gam_policy(),
         "coverage": sources.get("coverage", {}),
         "sources": sources,
         "rows": rows,
@@ -247,6 +255,12 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
                 "eligible": "نعم" if a.eligible else "لا",
                 "watchlist": "نعم" if a.watchlist else "لا",
                 "rejections": " | ".join(a.rejections),
+                "gam_candidate": "نعم" if a.gam_candidate else "لا",
+                "gam_reasons": " | ".join(a.gam_reasons),
+                "rs_ratio": a.rs_ratio_str if a.rs_found else "",
+                "rs_date": a.rs_date or "",
+                "rs_spike_pct": a.rs_spike_pct,
+                "rs_decline_pct": a.rs_decline_pct,
                 "score": a.score, "grade": a.grade, "last_close": a.last_close,
                 "drop_zone": (a.drop_zone or {}).get("zone"),
                 "pattern_low1": pat.get("low1"), "pattern_low2": pat.get("low2"),

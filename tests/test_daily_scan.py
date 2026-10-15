@@ -51,7 +51,7 @@ def test_summarize_counts(tool):
     assert s["watchlist"] == len(s["watchlist_symbols"])
     # الأهلية = NEAR أو READY؛ قائمة المتابعة تشملهما مع WATCH
     assert set(s["eligible_symbols"]) <= set(s["watchlist_symbols"])
-    assert "gam_candidates" not in s
+    assert "gam_candidates" in s and "with_reverse_split" in s and "gam_symbols" in s
 
 
 # ------------------------- مسار كامل (CLI) ------------------------- #
@@ -90,7 +90,7 @@ def test_cli_builds_publishable_site(tmp_path):
     header = csv.read_text(encoding="utf-8-sig").splitlines()[0]
     assert "الرمز" in header and "التقييم" in header and "الحالة" in header
     assert "الهدف 1 (+25%)" in header and "حجم المركز (أسهم)" in header
-    assert "GAM" not in header
+    assert "مرشح GAM" in header and "التقسيم العكسي" in header
 
     stamp = payload["stamp"]
     assert (site / "history" / f"{stamp}.json").exists()
@@ -118,7 +118,7 @@ def test_dataset_status_maps_to_eligibility(tool, tmp_path):
     assert rows["TRVN"]["eligible"] is True
     assert rows["JZ"]["strategy_status"] == "WATCH"
     assert payload["summary"]["eligible"] == len(payload["summary"]["eligible_symbols"])
-    assert "gam_policy" not in payload
+    assert payload["gam_policy"]["historical_state_persisted"] is False
 
     csv_text = (site / "data" / "latest.csv").read_text(encoding="utf-8-sig")
     trvn_line = next(line for line in csv_text.splitlines() if line.startswith("TRVN,"))

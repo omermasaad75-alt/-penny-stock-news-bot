@@ -23,7 +23,8 @@ from ..analytics import patterns as pat
 from ..config import STRATEGY as FILTERS  # فلاتر السيولة/الفلوت/الإفصاح (إعدادات التطبيق)
 from ..providers.base import Catalyst, DilutionSignal, ShortData, TickerProfile
 from ..providers.hub import DataHub
-from .strategy_engine import STATUS_AR, StrategyConfig, evaluate_symbol
+from .reverse_split import pick_reverse_split, rs_structure
+from .strategy_engine import STATUS_AR, StrategyConfig, _post_peak_drawdown, evaluate_symbol
 
 # --------------------------------------------------------------------------- #
 #  المراحل
@@ -92,6 +93,29 @@ class Analysis:
     above_ema9_sessions: int = 0
     channel_upper: float | None = None
     channel_broken: bool = False
+    post_drawdown_pct: float | None = None   # الهبوط من القمة (أعلى 90 شمعة) إلى ما بعدها
+
+    # ---------- التقسيم العكسي (RS) ---------- #
+    rs_found: bool = False
+    rs_date: str | None = None
+    rs_age_days: int | None = None
+    rs_ratio_str: str = ""
+    rs_factor: float | None = None
+    rs_source: str = ""
+    rs_url: str = ""
+    rs_open: float | None = None
+    rs_spike_high: float | None = None
+    rs_spike_pct: float | None = None
+    rs_spike_date: str | None = None
+    rs_peak_date: str | None = None
+    rs_bottom_price: float | None = None
+    rs_bottom_date: str | None = None
+    rs_decline_pct: float | None = None
+    rs_rejections: list[str] = field(default_factory=list)
+
+    # ---------- مرشح GAM (مسار ثانوي) ---------- #
+    gam_candidate: bool = False
+    gam_reasons: list[str] = field(default_factory=list)
 
     # -- الأساسيات -- #
     shares_out: float | None = None
@@ -292,7 +316,9 @@ def _apply_strategy_result(a: Analysis, res: dict[str, Any], df: pd.DataFrame) -
     # أسباب الاستبعاد: كل معيار فاشل عند الاستبعاد
     if status == "EXCLUDED":
         for text in res.get("failed", []):
-            add_rejection(a, "criteria", text)
+            # الرفض الصلب للسعر خارج نطاق البني ستوك يُسجَّل بكود "price"
+            code = "price" if text.startswith("السعر") and "خارج نطاق" in text else "criteria"
+            add_rejection(a, code, text)
     elif res.get("failed"):
         a.notes.extend(res["failed"])
 
@@ -408,6 +434,73 @@ def _force_excluded(a: Analysis, status_note: str) -> None:
     a.action_ar = status_note
 
 
+def _attach_reverse_split(a: Analysis, hub: DataHub, symbol: str, df: pd.DataFrame) -> None:
+    """قراءة التقسيم العكسي الصالح (إن وُجد) وبنيته السعرية كحقول rs_*."""
+    try:
+        events = hub.splits(symbol)
+    except Exception as exc:  # noqa: BLE001
+        events = []
+        a.rs_rejections.append(f"تعذّر جلب أحداث التقسيم العكسي: {str(exc)[:80]}")
+    as_of = pd.Timestamp(df.index[-1])
+    ev, reasons = pick_reverse_split(events, FILTERS, as_of)
+    if ev is None:
+        a.rs_rejections.extend(reasons)
+        return
+    a.rs_found = True
+    a.rs_date = _date_str(ev.date)
+    a.rs_age_days = int((as_of.normalize() - pd.Timestamp(ev.date).normalize()).days)
+    a.rs_ratio_str = ev.ratio_str
+    a.rs_factor = _r(ev.factor, 2)
+    a.rs_source = ev.source
+    a.rs_url = ev.url or ""
+    st = rs_structure(df, ev, FILTERS)
+    a.rs_open = st.get("rs_open")
+    a.rs_spike_high = st.get("rs_spike_high")
+    a.rs_spike_pct = st.get("rs_spike_pct")
+    a.rs_spike_date = st.get("rs_spike_date")
+    a.rs_peak_date = st.get("rs_peak_date")
+    a.rs_bottom_price = st.get("rs_bottom_price")
+    a.rs_bottom_date = st.get("rs_bottom_date")
+    a.rs_decline_pct = st.get("rs_decline_pct")
+
+
+def _evaluate_gam(a: Analysis, cfg: StrategyConfig, blocked: bool) -> None:
+    """مرشح GAM (مسار ثانوي للمراقبة، لا يدخل قائمة الجاهزية).
+
+    الشروط:
+      - تقسيم عكسي صالح داخل النافذة (rs_found)، وغير محجوب بالسيولة أو الفلوت.
+      - السعر ضمن نطاق البني ستوك الصلب (cfg.price_hard_min..price_hard_max).
+      - نمط القاع الثاني / سحب السيولة موجود وغير منكسر، والسعر وصل منطقة القمة÷2.
+      - الإخفاق (إن وُجد) يقتصر على: الهبوط ضمن نطاق 30% إلى 40% (min_drop_pct..min_drawdown)
+        و/أو RSI لم يتشبّع (أدنى قراءة ≥ rsi_oversold).
+    """
+    a.gam_candidate = False
+    a.gam_reasons = []
+    if blocked or a.strategy_status != "EXCLUDED" or not a.rs_found:
+        return
+    if not (cfg.price_hard_min <= a.last_close <= cfg.price_hard_max):
+        return
+    checks = {c["key"]: bool(c["ok"]) for c in a.lifecycle_checks}
+    if not a.pattern.get("found") or a.lifecycle_failed or not checks.get("drop_zone"):
+        return
+    if a.post_drawdown_pct is None:
+        return
+    dd = a.post_drawdown_pct / 100.0
+    decline_fail = not checks.get("negative")
+    rsi_fail = a.rsi_trough is not None and a.rsi_trough >= FILTERS.rsi_oversold
+    if not (decline_fail or rsi_fail):
+        return
+    if decline_fail and dd < FILTERS.min_drop_pct / 100.0:
+        return  # هبوط أقل من 30% ليس «منطقة هبوط» بل إخفاق بنيوي
+    reasons: list[str] = []
+    if decline_fail:
+        reasons.append(f"الهبوط {dd:.0%} من القمة — ضمن منطقة 30%–40% (أقل من 40% المطلوبة)")
+    if rsi_fail:
+        reasons.append(f"RSI لم يتشبّع (أدنى قراءة {a.rsi_trough:.0f} ≥ {FILTERS.rsi_oversold:g})")
+    a.gam_candidate = True
+    a.gam_reasons = reasons
+
+
 def analyze_symbol(symbol: str, hub: DataHub, cfg: StrategyConfig | None = None) -> Analysis:
     cfg = cfg or StrategyConfig()
     symbol = symbol.upper()
@@ -516,6 +609,15 @@ def analyze_symbol(symbol: str, hub: DataHub, cfg: StrategyConfig | None = None)
         for code, reason in hard_blocks:
             add_rejection(a, code, reason)
         _force_excluded(a, "لا دخول — الرمز خارج شروط السيولة أو الفلوت.")
+    try:
+        _, _, dd_post = _post_peak_drawdown(df, cfg)
+        a.post_drawdown_pct = _r(dd_post * 100.0, 2)
+    except Exception:  # noqa: BLE001
+        a.post_drawdown_pct = None
+
+    # ---------- التقسيم العكسي و GAM ---------- #
+    _attach_reverse_split(a, hub, symbol, df)
+    _evaluate_gam(a, cfg, blocked=bool(hard_blocks))
 
     # ---------- النماذج الفنية ---------- #
     ctx = {"ref_low": a.levels.get("pattern_low2") or None,

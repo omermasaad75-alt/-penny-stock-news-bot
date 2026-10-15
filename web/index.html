@@ -45,8 +45,16 @@
   الحالات: <b>جاهز للدخول</b> · <b>قريب من الاكتمال</b> · <b>مراقبة</b> · <b>مستبعد</b>. الأهداف +25% / +50% / +75% / +100%. ليست توصية.
 </section>
 
+<section class="strategy-banner gam-banner" aria-label="مسار GAM">
+  <b>مسار GAM (ثانوي — مراقبة فقط):</b>
+  تقسيم عكسي صالح خلال 60 يوماً، ونمط قاع ثانٍ أو سحب سيولة، والإخفاق يقتصر على هبوط بين 30% و40% من القمة و/أو RSI لم يتشبّع (≥ 30).
+  ليس إشارة دخول ولا يدخل قائمة الجاهزية.
+</section>
+
 <section class="kpis">
   <div class="kpi"><span class="kpi-label">رموز مفحوصة</span><b id="kpiScanned">—</b></div>
+  <div class="kpi"><span class="kpi-label">تقسيم عكسي صالح</span><b id="kpiRs" class="c-blue">—</b></div>
+  <div class="kpi"><span class="kpi-label">مرشحو GAM</span><b id="kpiGam" style="color:#c9adff">—</b></div>
   <div class="kpi"><span class="kpi-label">لها قاع ثانٍ / سحب سيولة</span><b id="kpiPattern" class="c-blue">—</b></div>
   <div class="kpi"><span class="kpi-label">قريب من الاكتمال</span><b id="kpiNear" class="c-amber">—</b></div>
   <div class="kpi"><span class="kpi-label">قائمة المتابعة</span><b id="kpiWatch" class="c-green">—</b></div>
@@ -72,6 +80,8 @@
       <button class="chip" data-filter="near">قريب من الاكتمال</button>
       <button class="chip" data-filter="ready">جاهز للدخول</button>
       <button class="chip" data-filter="pattern">لها قاع ثانٍ / سحب</button>
+      <button class="chip" data-filter="rs">تقسيم عكسي صالح</button>
+      <button class="chip chip-gam" data-filter="gam">مرشحو GAM</button>
       <button class="chip" data-filter="rejected">مستبعدة</button>
     </div>
     <input id="searchBox" class="search" type="search" placeholder="ابحث برمز السهم أو الاسم…">
@@ -81,7 +91,7 @@
     <table class="grid" id="scanTable">
       <thead>
         <tr>
-          <th>#</th><th>الرمز</th><th>المرحلة</th><th>التقييم</th><th>السعر</th>
+          <th>#</th><th>الرمز</th><th>المرحلة</th><th>التقييم</th><th>السعر</th><th>التقسيم العكسي</th>
           <th>القاع الأول / الثاني</th><th>منطقة القمة ÷ 2</th><th>القمة</th>
           <th>المعايير</th><th>الدخول</th><th>الوقف</th><th>الهدف 1 (+25%)</th><th>مخاطرة/عائد</th>
           <th title="القاع الثاني ثم شمعة تأكيد تكسر قمة الشمعة السابقة">التأكيد</th>
@@ -89,7 +99,7 @@
         </tr>
       </thead>
       <tbody id="scanBody">
-        <tr><td colspan="16" class="empty">اضغط «مسح السوق الآن» لبدء الرصد…</td></tr>
+        <tr><td colspan="17" class="empty">اضغط «مسح السوق الآن» لبدء الرصد…</td></tr>
       </tbody>
     </table>
   </div>

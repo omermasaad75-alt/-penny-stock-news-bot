@@ -50,6 +50,9 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
         add("")
     add(f"> {a.action_ar}")
     add("")
+    if a.gam_candidate:
+        add("> 🟣 **مرشح GAM (مسار ثانوي للمراقبة فقط — ليس إشارة دخول):** " + " · ".join(a.gam_reasons))
+        add("")
 
     add("## 1) المعايير")
     add("")
@@ -99,7 +102,25 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
         add("- لا توجد خطة صفقة صالحة حالياً.")
     add("")
 
-    add("## 5) المؤشرات الفنية")
+    add("## 5) التقسيم العكسي (RS)")
+    add("")
+    if a.rs_found:
+        add("| البند | القيمة |")
+        add("|-------|--------|")
+        add(f"| النسبة / التاريخ | {a.rs_ratio_str or '—'} · {a.rs_date or '—'} (منذ {a.rs_age_days or 0} يوم) |")
+        add(f"| افتتاح يوم التقسيم | {_n(a.rs_open, 3)}$ |")
+        add(f"| قمة الصعود ({a.rs_spike_date or '—'}) | {_n(a.rs_spike_high, 3)}$ · صعود {_pct(a.rs_spike_pct)} |")
+        add(f"| القاع المرجعي ({a.rs_bottom_date or '—'}) | {_n(a.rs_bottom_price, 3)}$ |")
+        add(f"| الهبوط من قمة الصعود إلى القاع | {_pct(a.rs_decline_pct)} |")
+        add(f"| الهبوط من أعلى 90 شمعة | {_n(a.post_drawdown_pct, 1)}% |")
+        add(f"| المصدر | {a.rs_source or '—'} |")
+    else:
+        add("- لا يوجد تقسيم عكسي صالح داخل النافذة.")
+        for r in a.rs_rejections:
+            add(f"- {r}")
+    add("")
+
+    add("## 6) المؤشرات الفنية")
     add("")
     add("| المؤشر | القيمة |")
     add("|--------|--------|")
@@ -119,7 +140,7 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
         status = "مؤكد" if pt.get("status") == "confirmed" else "قيد التشكّل"
         add(f"- {pt.get('name_ar', '')} ({pt.get('tf', '')}) — ثقة {round((pt.get('confidence') or 0) * 100)}% — {status}")
     add("")
-    add("## 6) المؤشرات الأساسية")
+    add("## 7) المؤشرات الأساسية")
     add("")
     add("| المؤشر | القيمة |")
     add("|--------|--------|")
@@ -130,7 +151,7 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
     add("")
 
     if a.notes or a.rejections:
-        add("## 7) ملاحظات وأسباب الاستبعاد")
+        add("## 8) ملاحظات وأسباب الاستبعاد")
         add("")
         for r in a.rejections:
             add(f"- ✖ {r}")

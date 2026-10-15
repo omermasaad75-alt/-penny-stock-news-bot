@@ -217,10 +217,88 @@ def test_adapter_levels_consistent_with_plan(demo_hub):
         assert t == sorted(t) and len(set(t)) == 4
 
 
-def test_adapter_has_no_legacy_gam_or_rs_decision_fields(demo_hub):
-    d = eng.analyze_symbol("JZ", demo_hub).to_dict()
-    for legacy in ("gam_candidate", "gam_reasons", "gam_rsi_scope", "rs_found", "rs_ratio_str"):
-        assert legacy not in d
+def test_rs_fields_restored_on_demo_reverse_split(demo_hub):
+    """التقسيم العكسي يُقرأ من مزوّد الأحداث ويُعرض كحقول rs_* مع بنية السعر."""
+    rs_rows = [a for a in (eng.analyze_symbol(s, demo_hub) for s in ("JZ", "TRVN", "IMPL", "UPC"))
+               if a.rs_found]
+    assert rs_rows, "demo universe should contain at least one valid reverse split"
+    a = rs_rows[0]
+    assert a.rs_ratio_str and a.rs_date and a.rs_open and a.rs_spike_high
+    assert a.rs_spike_high >= a.rs_open > 0
+    assert a.rs_bottom_price is not None and a.rs_bottom_price <= a.rs_spike_high
+    assert a.rs_decline_pct == pytest.approx((a.rs_bottom_price / a.rs_spike_high - 1) * 100, abs=0.05)
+    d = a.to_dict()
+    for key in ("gam_candidate", "gam_reasons", "rs_found", "rs_ratio_str", "rs_spike_pct",
+                "rs_decline_pct", "post_drawdown_pct"):
+        assert key in d
+
+
+def test_pick_reverse_split_window_and_ratio():
+    from app.config import STRATEGY
+    from app.providers.base import ReverseSplitEvent
+    from app.strategy.reverse_split import pick_reverse_split
+
+    as_of = pd.Timestamp("2026-10-15")
+    old = ReverseSplitEvent("X", pd.Timestamp("2026-06-01"), "1-for-8", 8.0)   # 136 يوم > 60
+    weak = ReverseSplitEvent("X", pd.Timestamp("2026-09-20"), "1-for-1.5", 1.5)  # نسبة < 1:2
+    good = ReverseSplitEvent("X", pd.Timestamp("2026-09-01"), "1-for-8", 8.0)
+    best, reasons = pick_reverse_split([old, weak, good], STRATEGY, as_of)
+    assert best is good
+    assert any("خارج نافذة" in r for r in reasons) and any("خارج النطاق" in r for r in reasons)
+    assert pick_reverse_split(None, STRATEGY, as_of) == (None, ["لا يوجد حدث تقسيم عكسي مسجّل لهذا الرمز"])
+
+
+def _gam_probe(**over):
+    from app.strategy.strategy_engine import StrategyConfig
+
+    a = eng.Analysis(symbol="GAMX")
+    a.strategy_status = "EXCLUDED"
+    a.rs_found = True
+    a.last_close = 1.70
+    a.pattern = {"found": True, "type": "double_bottom"}
+    a.lifecycle_failed = False
+    a.lifecycle_checks = [{"key": "drop_zone", "ok": True}, {"key": "negative", "ok": False}]
+    a.post_drawdown_pct = 35.0
+    a.rsi_trough = 45.0
+    for k, v in over.items():
+        setattr(a, k, v)
+    eng._evaluate_gam(a, StrategyConfig(), blocked=False)
+    return a
+
+
+def test_gam_decline_zone_and_rsi_rule():
+    # هبوط 35% (ضمن 30–40) ⇒ مرشح
+    a = _gam_probe()
+    assert a.gam_candidate and any("30%" in r or "40%" in r for r in a.gam_reasons)
+    # RSI لم يتشبّع فقط (هبوط ≥ 40%) ⇒ مرشح بسبب RSI
+    b = _gam_probe(post_drawdown_pct=55.0, lifecycle_checks=[{"key": "drop_zone", "ok": True}, {"key": "negative", "ok": True}])
+    assert b.gam_candidate and len(b.gam_reasons) == 1 and "RSI" in b.gam_reasons[0]
+    # هبوط أقل من 30% ليس منطقة GAM
+    c = _gam_probe(post_drawdown_pct=20.0)
+    assert not c.gam_candidate
+    # RSI متشبّع والهبوط كافٍ ⇒ لا GAM (لا إخفاق بنيوي)
+    d = _gam_probe(post_drawdown_pct=55.0, rsi_trough=22.0, lifecycle_checks=[{"key": "drop_zone", "ok": True}, {"key": "negative", "ok": True}])
+    assert not d.gam_candidate
+    # بدون تقسيم عكسي صالح ⇒ لا GAM
+    e = _gam_probe(rs_found=False)
+    assert not e.gam_candidate
+    # سيولة/فلوت محجوبة ⇒ لا GAM
+    f = eng.Analysis(symbol="GAMX")
+    f.rs_found = True
+    from app.strategy.strategy_engine import StrategyConfig
+    eng._evaluate_gam(f, StrategyConfig(), blocked=True)
+    assert not f.gam_candidate
+
+
+def test_price_rejection_gets_price_code(demo_hub):
+    from app.analytics import indicators as ind
+
+    df = ind.add_indicators(demo_hub.daily("JZ", 320), None)
+    a = eng.Analysis(symbol="PX")
+    res = {"status": "EXCLUDED", "failed": ["السعر 15.00 خارج نطاق البني ستوك (0.1-10.0)"],
+           "criteria": {}, "passed": [], "unknown": []}
+    eng._apply_strategy_result(a, res, df)
+    assert "price" in a.rejection_codes and "criteria" not in a.rejection_codes
 
 
 def test_adapter_missing_data_is_rejected_not_demo():
@@ -290,7 +368,8 @@ def test_technical_readings_and_patterns_present(demo_hub):
 def test_report_has_technical_section(demo_hub):
     from app.reporting import analysis_to_markdown
     md = analysis_to_markdown(eng.analyze_symbol("TRVN", demo_hub))
-    assert "## 5) المؤشرات الفنية" in md and "RSI" in md and "## 6) المؤشرات الأساسية" in md
+    assert "## 5) التقسيم العكسي (RS)" in md and "## 6) المؤشرات الفنية" in md and "RSI" in md
+    assert "## 7) المؤشرات الأساسية" in md
 
 
 # --------------------------------------------------------------------------- #

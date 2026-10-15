@@ -223,6 +223,8 @@ function renderCoverage() {
   const near = rows.filter(r => r.strategy_status === 'NEAR').length;
   const ready = rows.filter(r => r.strategy_status === 'READY').length;
   const watch = rows.filter(r => r.watchlist).length;
+  const rsCount = rows.filter(r => r.rs_found).length;
+  const gamCount = rows.filter(r => r.gam_candidate).length;
   const excluded = src.rejections || {};
   let noData = Object.keys(excluded).length;
   const partial = !!(cov.partial || disc.truncated);
@@ -252,6 +254,8 @@ function renderCoverage() {
     chip('قريب من الاكتمال', near, 'c-amber') +
     chip('قائمة المتابعة', watch, 'c-amber') +
     chip('جاهز للدخول', ready, 'c-green') +
+    chip('تقسيم عكسي صالح', rsCount, 'c-blue') +
+    chip('مرشح GAM', gamCount, 'c-purple', 'مراقبة فقط') +
     `</div>` +
     `<div class="muted" style="margin-top:8px;font-size:11px">«لم يُفحص» = مرشحون لم تتحقق منهم بعد (مهلة أو سقف) وليست مستبعدة فنياً؛ ` +
     `«قريب من الاكتمال» = نمط قاع مكتمل بلا شمعة تأكيد بعد؛ «جاهز للدخول» = نقاط ≥ 75 مع إغلاق تأكيدي.</div>`;
@@ -263,6 +267,8 @@ function renderKpis() {
   $('#kpiScanned').textContent = s.scanned ?? '—';
   $('#kpiPattern').textContent = rows.filter(r => r.pattern && r.pattern.found).length;
   $('#kpiNear').textContent = s.near ?? rows.filter(r => r.strategy_status === 'NEAR').length;
+  $('#kpiRs').textContent = s.with_reverse_split ?? rows.filter(r => r.rs_found).length;
+  $('#kpiGam').textContent = s.gam_candidates ?? rows.filter(r => r.gam_candidate).length;
   $('#kpiWatch').textContent = s.watchlist ?? '—';
   $('#kpiReady').textContent = s.ready ?? '—';
   $('#kpiAvg').textContent = s.avg_score_watchlist ?? '—';
@@ -278,6 +284,8 @@ function rowMatchesFilter(r) {
     case 'ready': return r.strategy_status === 'READY';
     case 'pattern': return !!(r.pattern && r.pattern.found);
     case 'rejected': return r.strategy_status === 'EXCLUDED';
+    case 'rs': return !!r.rs_found;
+    case 'gam': return !!r.gam_candidate;
     default: return true;
   }
 }
@@ -304,7 +312,7 @@ function renderTable() {
     rows = rows.filter(r => r.symbol.includes(state.search) || (r.name || '').toUpperCase().includes(state.search));
   }
   if (!rows.length) {
-    body.innerHTML = `<tr><td colspan="16" class="empty">لا توجد نتائج مطابقة — جرّب مسح السوق أو تغيير المُرشّح.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="17" class="empty">لا توجد نتائج مطابقة — جرّب مسح السوق أو تغيير المُرشّح.</td></tr>`;
     $('#scanFooter').textContent = '';
     return;
   }
@@ -317,12 +325,17 @@ function renderTable() {
     const done = checks.filter(c => c.ok).length;
     const conf = r.confirmation && r.confirmation.confirmed ? '<span class="c-green">✓ مؤكد</span>' : '<span class="muted">بانتظار</span>';
     const dz = lv.drop_zone != null ? `${money(lv.drop_zone_low)}–${money(lv.drop_zone_high)}` : '—';
-    return `<tr data-sym="${r.symbol}" class="${r.eligible ? '' : 'phase-rejected'}">
+    const rsCell = r.rs_found
+      ? `${esc(r.rs_ratio_str || '')}<div class="muted small">${esc(r.rs_date || '')} · هبوط ${n(r.rs_decline_pct, 1)}%</div>`
+      : '<span class="muted small">—</span>';
+    const gamPill = r.gam_candidate ? `<span class="gam-pill" title="${esc((r.gam_reasons || []).join(' · '))}">GAM</span>` : '';
+    return `<tr data-sym="${r.symbol}" class="${r.eligible ? '' : 'phase-rejected'}${r.gam_candidate ? ' gam-row' : ''}">
       <td class="muted">${i + 1}</td>
-      <td class="sym-cell">${esc(r.symbol)}${sourceBadge(r)}<div class="muted small" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc((r.name || '').slice(0, 26))}</div></td>
+      <td class="sym-cell">${esc(r.symbol)}${sourceBadge(r)}${gamPill}<div class="muted small" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc((r.name || '').slice(0, 26))}</div></td>
       <td><span class="phase-pill" style="background:${(ph.color || '#333')}22;color:${ph.color || '#ccc'};border:1px solid ${(ph.color || '#333')}66">${esc(STATUS_AR[r.strategy_status] || (ph.ar || '—'))}</span></td>
       <td class="score-cell" style="color:${scoreColor}">${n(r.score, 1)}<span class="muted small"> ${esc(r.grade || '')}</span></td>
       <td>${money(r.last_close)}<br><span class="${cls(r.change_pct)} small">${pct(r.change_pct)}</span></td>
+      <td>${rsCell}</td>
       <td>${lv.pattern_low1 != null ? `${money(lv.pattern_low1)} / ${money(lv.pattern_low2)}` : '—'}</td>
       <td>${dz}</td>
       <td>${r.drop_zone && r.drop_zone.spike_high ? money(r.drop_zone.spike_high) : '—'}</td>
@@ -339,7 +352,7 @@ function renderTable() {
   $$('#scanBody tr[data-sym]').forEach(tr => tr.onclick = () => go('#/sym/' + tr.dataset.sym));
   $('#scanFooter').textContent = `عرض ${rows.length} من ${state.rows.length} رمز — ` +
     `جاهز للدخول: ${state.summary.ready ?? 0} · قريب من الاكتمال: ${state.summary.near ?? 0} · ` +
-    `قائمة المتابعة: ${state.summary.watchlist ?? 0}`;
+    `قائمة المتابعة: ${state.summary.watchlist ?? 0} · مرشحو GAM: ${state.summary.gam_candidates ?? state.rows.filter(r => r.gam_candidate).length}`;
   if (state.selected) {
     const tr = $(`#scanBody tr[data-sym="${state.selected}"]`);
     if (tr) tr.classList.add('selected');
@@ -375,9 +388,9 @@ function renderCards() {
     const stage = r.strategy_status === 'READY' ? `جاهز للدخول — ${done}/6`
       : r.pattern && r.pattern.broken ? 'النمط منكسر'
       : `${done}/6 — ${STATUS_AR[r.strategy_status] || ''}`;
-    return `<div class="mcard ${r.eligible ? '' : 'muted-card'}" data-sym="${r.symbol}">
+    return `<div class="mcard ${r.eligible ? '' : 'muted-card'}${r.gam_candidate ? ' gam-card' : ''}" data-sym="${r.symbol}">
       <div class="mcard-head">
-        <div><b class="sym-cell">${esc(r.symbol)}</b>${sourceBadge(r)}
+        <div><b class="sym-cell">${esc(r.symbol)}</b>${sourceBadge(r)}${r.gam_candidate ? ' <span class="gam-pill">GAM</span>' : ''}
           <div class="muted small">${esc((r.name || '').slice(0, 30))}</div></div>
         <div class="mcard-price">${money(r.last_close)}
           <div class="${cls(r.change_pct)} small">${pct(r.change_pct)}</div></div>
@@ -475,6 +488,7 @@ function renderAnalysis(a) {
   if (a.pattern && a.pattern.broken) alerts.push(['bad', 'منكسر', 'النمط منكسر: السعر تحت وقف القاع الثاني — يُلغى السيناريو حتى يتكوّن قاع جديد.']);
   if (a.rejections?.length) alerts.push(['warn', 'استبعاد', '<b>أسباب الاستبعاد:</b><br>' + a.rejections.map(esc).join('<br>')]);
   if (a.notes?.length) alerts.push(['info', 'ملاحظة', a.notes.map(esc).join('<br>')]);
+  if (a.gam_candidate) alerts.unshift(['gam', 'GAM', '<b>مرشح GAM — مسار ثانوي للمراقبة فقط، وليس إشارة دخول:</b><br>' + (a.gam_reasons || []).map(esc).join('<br>')]);
   if (status === 'READY') alerts.unshift(['good', 'جاهز', 'الشروط مكتملة وشمعة التأكيد تحققت — راجع خطة الصفقة والوقف قبل الدخول.']);
   $('#anAlerts').innerHTML = alerts.map(([k, tag, t]) =>
     `<div class="alert alert-${k}"><i class="dot ${k === 'good' ? 'ok' : k === 'bad' ? 'fail' : k === 'warn' ? 'active' : 'info'}"></i>
@@ -576,6 +590,10 @@ function renderMetrics(a) {
   const trendAr = { up: 'صاعد', down: 'هابط', neutral: 'عرضي' }[h4.trend] || '—';
   const p = a.pattern || {}, dz = a.drop_zone || {}, c = a.confirmation || {};
   const rows = [
+    ['التقسيم العكسي', a.rs_found ? `${a.rs_ratio_str || '—'} · ${a.rs_date || '—'} (منذ ${a.rs_age_days ?? 0} يوم)` : (a.rs_rejections?.[0] || 'لا يوجد تقسيم صالح')],
+    ['صعود يوم التقسيم (قمة الصعود)', a.rs_found ? `${money(a.rs_spike_high)} · ${pct(a.rs_spike_pct)}` : '—'],
+    ['الهبوط من قمة الصعود إلى القاع', a.rs_found && a.rs_decline_pct != null ? pct(a.rs_decline_pct) : '—'],
+    ['الهبوط من أعلى 90 شمعة', a.post_drawdown_pct != null ? n(a.post_drawdown_pct, 1) + '%' : '—'],
     ['القمة (أعلى سعر خلال 90 شمعة)', money(dz.spike_high)],
     ['منطقة القمة ÷ 2', dz.zone ? `${money(dz.zone)} (${money(dz.zone_low)} – ${money(dz.zone_high)})` : '—'],
     ['القاع الأول', p.found || p.broken ? money(p.low1) : '—'],

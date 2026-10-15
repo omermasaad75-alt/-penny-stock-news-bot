@@ -105,7 +105,8 @@ def test_strategy_endpoint(client):
     assert p["ready_score"] == 75 and p["near_score"] == 55 and p["watch_score"] == 35
     assert body["status_thresholds"] == {"ready": 75, "near": 55, "watch": 35}
     assert set(body["phases"]) == {"0", "2", "5", "6"} or set(body["phases"]) == {0, 2, 5, 6}
-    assert "gam_policy" not in body
+    assert body["gam_policy"]["historical_state_persisted"] is False
+    assert body["gam_policy"]["decline_zone_pct"] == [30.0, 40.0]
 
 
 def test_universe_and_demo_metadata(client):

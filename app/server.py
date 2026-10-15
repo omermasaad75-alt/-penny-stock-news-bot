@@ -35,6 +35,7 @@ from .providers.hub import DataHub, get_hub
 from .reporting import analysis_to_markdown, markdown_to_html, watchlist_markdown, write_reports
 from .strategy import engine as eng
 from .strategy.charting import build_chart_payload
+from .strategy.reverse_split import gam_policy
 
 app = FastAPI(title=settings.app_name, version=settings.version)
 app.add_middleware(
@@ -120,6 +121,9 @@ def _summary(results: list[eng.Analysis]) -> dict[str, Any]:
         "watchlist": len(watch),
         "ready": len(ready),
         "phase5_plus": len(phase5_plus),
+        "with_reverse_split": sum(1 for a in results if a.rs_found),
+        "gam_candidates": sum(1 for a in results if a.gam_candidate),
+        "gam_symbols": [a.symbol for a in results if a.gam_candidate],
         "avg_score_watchlist": round(sum(a.score for a in watch) / len(watch), 1) if watch else 0,
         "phase_counts": phase_counts,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
@@ -146,6 +150,7 @@ def strategy_params() -> dict[str, Any]:
     cfg = StrategyConfig()
     return {
         "params": asdict(cfg),
+        "gam_policy": gam_policy(cfg=cfg),
         "phases": {k: v for k, v in eng.PHASES.items()},
         "scoring_keys": WEIGHT_LABELS_AR,
         "status_thresholds": {"ready": cfg.ready_score, "near": cfg.near_score, "watch": cfg.watch_score},
