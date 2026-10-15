@@ -588,6 +588,12 @@ function renderMetrics(a) {
     ['EMA9 / EMA20', money(a.levels?.ema9) + ' / ' + money(a.levels?.ema20)],
     ['فريم 4 ساعات', h4.available ? `${trendAr} · RSI ${n(h4.rsi, 1)} · RVOL ${n(h4.rvol, 2)}x` : '—'],
     ['توافق الفريمين', h4.aligned ? 'متوافق ✅' : 'غير متوافق ⏳'],
+    ['RSI (الحالي / أدنى 40 شمعة)', `${n(a.rsi_now, 1)} / ${n(a.rsi_trough, 1)}`],
+    ['MACD Hist', n(a.macd_hist, 4) + (a.macd_turning ? ' ↑' : '')],
+    ['RVOL (حجم نسبي)', n(a.rvol, 2) + 'x'],
+    ['جلسات إغلاق فوق EMA9', (a.above_ema9_sessions ?? 0) + ' جلسة'],
+    ['القناة الهابطة', a.channel_broken ? 'مخترقة ✅' : 'لم تُخترق'],
+    ['قيعان صاعدة (آخر 25 شمعة)', String(a.higher_lows ?? 0)],
     ['مصدر البيانات', a.synthetic ? '🔴 تجريبي' : 'حقيقي — راجع المصادر'],
     ...sourceKeys.map(k => [k, a[k] || 'غير متاح']),
   ];

@@ -247,3 +247,47 @@ def test_scan_sorts_by_phase_then_score(demo_hub):
     rows = eng.scan(["JZ", "BRTX", "NVEX", "QLGN", "UPC"], demo_hub)
     keys = [(-r.phase, -r.score) for r in rows]
     assert keys == sorted(keys)
+
+
+# --------------------------------------------------------------------------- #
+#  3) الفلاتر الصلبة والتحليل الفني (تبقى كما كانت في النظام)
+# --------------------------------------------------------------------------- #
+def test_liquidity_filter_excludes_but_keeps_analysis(demo_hub, monkeypatch):
+    from app.config import STRATEGY
+    monkeypatch.setattr(STRATEGY, "min_avg_dollar_volume", 1e15)
+    a = eng.analyze_symbol("JZ", demo_hub)
+    assert a.strategy_status == "EXCLUDED"
+    assert a.phase == 0 and not a.eligible and not a.watchlist
+    assert "liquidity" in a.rejection_codes
+    # التحليل يبقى معروضاً رغم الاستبعاد
+    assert a.rsi_now is not None and a.breakdown
+
+
+def test_float_filter_excludes_when_cap_set(demo_hub, monkeypatch):
+    from app.config import STRATEGY
+    monkeypatch.setattr(STRATEGY, "max_float_shares", 1.0)
+    a = eng.analyze_symbol("TRVN", demo_hub)
+    assert a.strategy_status == "EXCLUDED" and "float" in a.rejection_codes
+    assert not a.watchlist
+
+
+def test_float_cap_disabled_by_default(demo_hub):
+    from app.config import STRATEGY
+    assert STRATEGY.max_float_shares == 0
+    a = eng.analyze_symbol("TRVN", demo_hub)
+    assert "float" not in a.rejection_codes
+
+
+def test_technical_readings_and_patterns_present(demo_hub):
+    a = eng.analyze_symbol("TRVN", demo_hub)
+    assert a.rsi_now is not None and 0 <= a.rsi_now <= 100
+    assert a.rvol is not None and a.rvol >= 0
+    assert isinstance(a.macd_turning, bool) and isinstance(a.channel_broken, bool)
+    assert isinstance(a.patterns_daily, list) and isinstance(a.patterns_4h, list)
+    assert isinstance(a.h4, dict)
+
+
+def test_report_has_technical_section(demo_hub):
+    from app.reporting import analysis_to_markdown
+    md = analysis_to_markdown(eng.analyze_symbol("TRVN", demo_hub))
+    assert "## 5) المؤشرات الفنية" in md and "RSI" in md and "## 6) المؤشرات الأساسية" in md

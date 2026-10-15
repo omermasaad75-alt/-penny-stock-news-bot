@@ -20,6 +20,7 @@ import pandas as pd
 
 from ..analytics import indicators as ind
 from ..analytics import patterns as pat
+from ..config import STRATEGY as FILTERS  # فلاتر السيولة/الفلوت/الإفصاح (إعدادات التطبيق)
 from ..providers.base import Catalyst, DilutionSignal, ShortData, TickerProfile
 from ..providers.hub import DataHub
 from .strategy_engine import STATUS_AR, StrategyConfig, evaluate_symbol
@@ -83,6 +84,14 @@ class Analysis:
     dollar_volume: float = 0.0
     atr_pct: float | None = None
     higher_lows: int = 0
+    rvol: float | None = None
+    rsi_now: float | None = None
+    rsi_trough: float | None = None
+    macd_hist: float | None = None
+    macd_turning: bool = False
+    above_ema9_sessions: int = 0
+    channel_upper: float | None = None
+    channel_broken: bool = False
 
     # -- الأساسيات -- #
     shares_out: float | None = None
@@ -346,6 +355,59 @@ def _apply_strategy_result(a: Analysis, res: dict[str, Any], df: pd.DataFrame) -
 # --------------------------------------------------------------------------- #
 #  التحليل الرئيسي
 # --------------------------------------------------------------------------- #
+def _days_since(date_str) -> int | None:
+    try:
+        d = pd.Timestamp(date_str).normalize()
+        if d > pd.Timestamp.now():
+            return 0
+        return int((pd.Timestamp.now().normalize() - d).days)
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _technical_snapshot(df: pd.DataFrame) -> dict[str, Any]:
+    """قراءات فنية يومية للعرض: RSI، MACD، RVOL، الجلسات فوق EMA9، القناة الهابطة، القيعان الصاعدة."""
+    out: dict[str, Any] = {}
+    try:
+        out["rsi_now"] = _r(df["rsi"].iloc[-1], 2)
+        out["rsi_trough"] = _r(df["rsi"].tail(40).min(), 2)
+        out["rvol"] = _r(df["rvol"].iloc[-1], 2)
+        out["macd_hist"] = _r(df["macd_hist"].iloc[-1], 4)
+        out["macd_turning"] = bool(
+            df["macd_hist"].notna().tail(3).all()
+            and float(df["macd_hist"].iloc[-1]) > float(df["macd_hist"].iloc[-2]))
+        above = 0
+        for i in range(len(df) - 1, max(-1, len(df) - 15), -1):
+            if float(df["close"].iloc[i]) > float(df["ema9"].iloc[i]):
+                above += 1
+            else:
+                break
+        out["above_ema9_sessions"] = above
+        out["channel_upper"] = _r(df["ch_up"].iloc[-1]) if "ch_up" in df else None
+        out["channel_broken"] = bool(
+            "ch_up" in df and pd.notna(df["ch_up"].iloc[-1])
+            and float(df["close"].iloc[-1]) > float(df["ch_up"].iloc[-1]))
+        out["higher_lows"] = int(ind.count_higher_lows(df, df.index[-25]))
+    except Exception:  # noqa: BLE001
+        pass
+    return out
+
+
+def _force_excluded(a: Analysis, status_note: str) -> None:
+    """استبعاد صلب (سيولة/فلوت): يبقى التحليل معروضاً لكن لا يدخل قائمة المتابعة."""
+    a.strategy_status = "EXCLUDED"
+    a.phase = 0
+    a.display_phase = 0
+    info = phase_info(0)
+    a.phase_key = info["key"]
+    a.phase_ar = info["ar"]
+    a.eligible = False
+    a.watchlist = False
+    a.lifecycle_ready = False
+    a.lifecycle_stage = STATUS_AR["EXCLUDED"]
+    a.action_ar = status_note
+
+
 def analyze_symbol(symbol: str, hub: DataHub, cfg: StrategyConfig | None = None) -> Analysis:
     cfg = cfg or StrategyConfig()
     symbol = symbol.upper()
@@ -389,6 +451,15 @@ def analyze_symbol(symbol: str, hub: DataHub, cfg: StrategyConfig | None = None)
     a.dollar_volume = _r(df["dollar_vol"].iloc[-1], 0) or 0.0
     a.atr_pct = _r(df["atr_pct"].iloc[-1], 2) if "atr_pct" in df else None
 
+    # ---------- الفلاتر الصلبة: السيولة والفلوت (حدود الإعدادات) ---------- #
+    hard_blocks: list[tuple[str, str]] = []
+    if (a.dollar_volume or 0) < FILTERS.min_avg_dollar_volume:
+        hard_blocks.append(("liquidity",
+            f"سيولة متوسطة منخفضة ({_fmt_num(a.dollar_volume)}$ يومياً < {_fmt_num(FILTERS.min_avg_dollar_volume)}$)"))
+    if FILTERS.max_float_shares and (a.float_shares or 0) > FILTERS.max_float_shares:
+        hard_blocks.append(("float",
+            f"الفلوت {_fmt_num(a.float_shares)} أكبر من الحد المسموح ({_fmt_num(FILTERS.max_float_shares)})"))
+
     # ---------- البيع المكشوف ---------- #
     sd: ShortData | None = hub.short_data(symbol, a.float_shares)
     if sd is not None:
@@ -416,9 +487,16 @@ def analyze_symbol(symbol: str, hub: DataHub, cfg: StrategyConfig | None = None)
     if not a.fundamentals_source:
         a.fundamentals_source = "" if is_live else "demo-generator"
 
-    hi_recent = [d for d in dil if d.severity == "high"]
+    hi_recent = [d for d in dil if d.severity == "high"
+                 and (_days_since(d.date) or 999) <= FILTERS.hard_block_recent_offering_days]
     if hi_recent:
-        a.risk_flags.append("⚠ طرح أسهم/تخفيف عالي الخطورة: " + " | ".join(d.title[:70] for d in hi_recent[:2]))
+        a.risk_flags.append(
+            f"⚠ طرح أسهم/تخفيف عالي الخطورة خلال {FILTERS.hard_block_recent_offering_days} أيام: "
+            + " | ".join(d.title[:70] for d in hi_recent[:2]))
+    upcoming = [c for c in cats if (_days_since(c.date) is not None and pd.Timestamp(c.date) > pd.Timestamp(a.as_of))]
+    if upcoming:
+        a.risk_flags.append("محفزات قادمة: " + " | ".join(
+            f"{c.date} {c.title[:45]}" for c in sorted(upcoming, key=lambda x: x.date)[:3]))
     if a.synthetic:
         a.risk_flags.append("ℹ البيانات المعروضة تجريبية (demo) — فعّل الوضع الحي من الإعدادات")
 
@@ -432,6 +510,12 @@ def analyze_symbol(symbol: str, hub: DataHub, cfg: StrategyConfig | None = None)
     _apply_strategy_result(a, res, df)
     if a.lifecycle_failed:
         a.risk_flags.append("⚠ كسر وقف النمط — السيناريو منتهٍ حتى يتكوّن قاع جديد")
+    for key, value in _technical_snapshot(df).items():
+        setattr(a, key, value)
+    if hard_blocks:
+        for code, reason in hard_blocks:
+            add_rejection(a, code, reason)
+        _force_excluded(a, "لا دخول — الرمز خارج شروط السيولة أو الفلوت.")
 
     # ---------- النماذج الفنية ---------- #
     ctx = {"ref_low": a.levels.get("pattern_low2") or None,

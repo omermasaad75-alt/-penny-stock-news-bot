@@ -99,7 +99,27 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
         add("- لا توجد خطة صفقة صالحة حالياً.")
     add("")
 
-    add("## 5) المؤشرات الأساسية")
+    add("## 5) المؤشرات الفنية")
+    add("")
+    add("| المؤشر | القيمة |")
+    add("|--------|--------|")
+    add(f"| RSI (الحالي / أدنى 40 شمعة) | {_n(a.rsi_now, 1)} / {_n(a.rsi_trough, 1)} |")
+    add(f"| MACD Hist | {_n(a.macd_hist, 4)}{' ↑' if a.macd_turning else ''} |")
+    add(f"| RVOL | {_n(a.rvol, 2)}x |")
+    add(f"| جلسات إغلاق فوق EMA9 | {a.above_ema9_sessions or 0} |")
+    add(f"| القناة الهابطة | {'مخترقة' if a.channel_broken else 'لم تُخترق'} |")
+    add(f"| قيعان صاعدة (آخر 25 شمعة) | {a.higher_lows or 0} |")
+    add("")
+    add("### النماذج الفنية المرصودة")
+    add("")
+    patterns = list(a.patterns_daily or []) + list(a.patterns_4h or [])
+    if not patterns:
+        add("- لا توجد نماذج فنية مؤكدة حالياً.")
+    for pt in patterns:
+        status = "مؤكد" if pt.get("status") == "confirmed" else "قيد التشكّل"
+        add(f"- {pt.get('name_ar', '')} ({pt.get('tf', '')}) — ثقة {round((pt.get('confidence') or 0) * 100)}% — {status}")
+    add("")
+    add("## 6) المؤشرات الأساسية")
     add("")
     add("| المؤشر | القيمة |")
     add("|--------|--------|")
@@ -110,7 +130,7 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
     add("")
 
     if a.notes or a.rejections:
-        add("## 6) ملاحظات وأسباب الاستبعاد")
+        add("## 7) ملاحظات وأسباب الاستبعاد")
         add("")
         for r in a.rejections:
             add(f"- ✖ {r}")
