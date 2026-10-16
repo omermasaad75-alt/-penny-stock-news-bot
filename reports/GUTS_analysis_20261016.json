@@ -1,0 +1,916 @@
+{
+  "symbol": "GUTS",
+  "name": "Fractyl Health, Inc.",
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "exchange": "NGM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+  "synthetic": false,
+  "as_of": "2026-10-16",
+  "last_close": 1.55,
+  "change_pct": -62.74,
+  "dollar_volume": 2117286.0,
+  "rs_found": true,
+  "rs_date": "2026-10-05",
+  "rs_age_days": 11,
+  "rs_ratio_str": "1-for-12",
+  "rs_ratio": 12.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 4.8,
+  "spike_high": 4.815,
+  "spike_pct": 0.3125,
+  "spike_date": "2026-10-05",
+  "decline_pct": -68.2243,
+  "peak_date": "2026-10-05",
+  "bottom_price": 1.53,
+  "bottom_date": "2026-10-16",
+  "base_sessions": 0,
+  "base_high": 1.53,
+  "base_low": 1.53,
+  "base_range_pct": 0.0,
+  "base_broken": false,
+  "volume_dryup": 25.545,
+  "atr_pct": 44.5,
+  "rsi_now": 16.68,
+  "rsi_trough": 16.68,
+  "rsi_trough_date": "2026-10-16",
+  "rsi_sessions_below_30": 10,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": -0.17395,
+  "channel_slope_pct": -3.235,
+  "channel_upper": 8.043,
+  "channel_broken": false,
+  "rvol": 15.92,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "بانتظار جلسات ما بعد الثبات",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [],
+  "impulse_pct": null,
+  "impulse_high": null,
+  "impulse_date": null,
+  "resistance_level": null,
+  "resistance_distance_pct": null,
+  "resistance_date": null,
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": null,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": null,
+  "support_hold_ok": false,
+  "base_close": 1.55,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": null,
+  "spark": [
+    9.36,
+    9.0,
+    9.408,
+    8.844,
+    8.904,
+    7.908,
+    8.532,
+    8.496,
+    8.484,
+    8.244,
+    8.364,
+    8.22,
+    7.68,
+    7.716,
+    7.68,
+    7.344,
+    6.78,
+    6.756,
+    7.092,
+    7.2,
+    6.864,
+    6.636,
+    5.832,
+    5.64,
+    5.832,
+    5.652,
+    6.24,
+    6.528,
+    5.4,
+    4.884,
+    4.56,
+    4.57,
+    4.52,
+    4.23,
+    4.42,
+    4.41,
+    4.025,
+    4.08,
+    4.16,
+    1.55
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": null,
+  "shares_out": 13264987.0,
+  "float_shares": 12144489.0,
+  "market_cap": 20560730.0,
+  "avg_volume": 146732.0,
+  "insider_pct": 1.45,
+  "institutional_pct": 53.18,
+  "short_pct_float": 1.44,
+  "short_shares": 179215.0,
+  "days_to_cover": 1.19,
+  "short_change_pct": -3.1,
+  "short_volume_ratio": 0.605,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "GUTS",
+      "date": "2026-11-11",
+      "type": "earnings",
+      "title": "موعد الإعلان عن النتائج (تقويم Yahoo)",
+      "sentiment": "neutral",
+      "impact": "high",
+      "source": "yahoo-finance",
+      "url": ""
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "clinical",
+      "title": "Fractyl Health Meets Six-Month Primary Endpoint in Revita Obesity Trial, Supporting FDA Submission Plans",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/38219/fractyl-health-meets-six-month-primary-endpoint-in-revita-obesity-trial-supporting-fda-submission-plans?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "Fractyl Health's Revita Meets Six-Month Co-Primary Endpoint in Ongoing REMAIN-1 Pivotal Study, With Highly Statistically Significant Reduction in Weight Regain After GLP-1 Discontinuation",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/fractyl-healths-revita-meets-six-110000677.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "Why Fractyl Health Stock Is Sinking Friday - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPTmRUcTUwOWs0OGZZLXhwWVhram9va2tFZTF2ZlZDNUdoMWl4MTFfdkpzeUNwSF9aNGNHRkFCUU9HXzB0VGtZOTBOSWRqZkZPdTVtV0N3bXJmLUN3bmdBM2VPaFdtemEwSWpTNXlVLTYwMTR5b2V0U2tkeUl0bFFrU1VESkxoNXFuRy1TSU1haDBiSDE2Y0E0dU51bkk0NzRB?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "After stopping weight-loss drugs, people given a procedure kept about 80% of lost weight - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOcm9vNHh0WmJldE9RcF9uT2xOTy0tdzZtaFBDWkdIcVh0WTdUd3ZvV2dEMFBRNElzeUN4cVlTOGg2UWhzc1ZLdkFJMjh6NS1TQ0t2X1h1aUNDUEQ2V2NtUEl5Tl9RVVRHcWZEc0pSWWhVNHM2cGR1MlFnbXZuSGFaaE5vQVZvOVJQMjR2NVdhUDAyZUN3Rk80bU91ZTRlUkJxQTNJQWZtWmRBbExSMWY3NDEtd0t2RUVv?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "GUTS Stock Slumps As Revita Trial Fallout Fuels Lawsuits - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qM1l2T0R4NENGOWdjQ1NCT0xQQ2txVEs4d08wa2otSFFiQWVGSXZGZlRDQ2VFTkdhbjJhN2VsblY2ZG5pVUZ3ZmxCVE5CNzQxc0l2TmNjVnYxQk5EWjRjd1JRU1NSaWloUEdCLWdkbldZQW5KaGw0b0Y3QUhaWVk?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "GUTS Stock Reels As Revita Trial Fallout Fuels Class Actions - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5yVlR6czl2ZUdxTUtKc29pWTdRSnBXRnNGUzB6NkNiX2FvTURSbjNCREZ3YjFPNGItR1FMOUl0UnU2Q3IxY0ZFTnhIUlcwMEFEaGZkWEUybjV3bTZFak1NRFF5aDRJMnV2Skt0U1hJSzE4VGhBMUNEbmJPcw?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "Fractyl Health, Inc. (GUTS) Discusses Positive Top Line 6-Month Results From REMAIN-1 Study of Revita in Post GLP-1 Weight Maintenance - Slideshow (NASDAQ:GUTS) 2026-10-16 - Seeking Alpha",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxONjhUTHFRaHFMbmhvZ3R5TFVDU1dLVUNOVDlHMDNVVVBJdXM0MzcwSmJPMFNaT0xZcXdURk84SnN2WDlsNVRXNVJBMUdzdkJtVGluWkRJUVZFejM2WnIxLXRvWWQxbUVqQUJhWkFIalZWUHhSTHdxZW1UdjdIM21yMk0zV1QwUXpOVWNKblcwMHZtQlQ1SmQzdE5SS0h2cVk0UWhfbVkyZDYybzd4TV9FZEVNV0MwY29YRUphVXNVQXloREl0WGRGM1ktb29xUQ?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "About 80% of GLP-1 weight loss stayed off at six months in Fractyl Health (GUTS) Revita trial - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOOHhfVThmd2s2b1cxSlRqWTlpcDE5M2ZRWTlYcDhHcTNaZ2VNX281a2kwQlNxQlBsLWpQbzdwM0RyV0Z1YzA1ZkdtbnVDWW9oSHFkejZ6ckZ2S3YyR25OUDBKRUhMbVJReFVmM3hjRFdLSnczLXpTQzJ1ckhzT012Q2RYNWg2SFdpTDU1Z3Zlc1cweEdYVWpaLTJYX2dQSVFIZDl2bHlSTUptaVE?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "GUTS Stock Reels As Class Actions Follow 75% Collapse - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1Ua3FZMlBmdGgtTEFBQVFxUXRQd1ZQY3BLS1Z0NW4yNU1jUTZ2Rk0wdkdyakl2UTV5Wm5QazhDak9hdENnYllKdUZSbnMtVE5iRjVVbW02Zzg5TVZRWFl5TEt3Rmh5cVlIbDRzUWljMG1Ec3pDOHl3UjVXeEFxQQ?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000119312526423377/guts-20261016.htm"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "FRACTYL HEALTH, INC. (GUTS) SHAREHOLDER ALERT Bernstein - GlobeNewswire",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQSE9Nai1vZlFsd3lNUF9LVkkyR0pvZGdDSmIzcGdkMzRFM1l6eXozNXhQMWNLbEF6UTdTamNzRGdXLXJoQkE0WEFTNy10bVJXZVFOSzhONk1lcXBPenVaWFQxem05RHVWalVLeXFwWUt1Qzh4VElCQU9GUVFwMXlwbXlUbjVfYUdXUmRzWEJQLXFTSXdoRXhHdmVQeFZEYWV4b1RwSjctTlVBTVpwTHZLaklLRGwzZFc5Q1NaVnU0QjVVeExpclBILXV0Q2NDaVBxaFpsb0pUeWp2bkhqVU1XdloyQTRSaFU5N1dZOGJXLTI1QW5FNFVzbFZ0TmV2bWhOZ0RsWS1BVVQtU3NUMUVxblNsSndTTEcwRXlqTFI0RQ?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "Fractyl Health (GUTS) 10K Form and Latest SEC Filings 2026 - MarketBeat",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBlZUJwWEpES0dUQzN2WlNwck4xSnhBWTBaLUNiR2hJYU9TNk8teFFkNTZMSmNJdjVHOUNrVUFISTY4WjNLdFpZdEcxQjJHcDBJWUFyRWFRaVVER1Q5X2tSdzZaNFV2eWVaR0E?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "A passive investor reports more than 5% ownership in Fractyl Health (GUTS). - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPZWlxeEhWby1rYVNaTXNtbFVNcVhESks0NmlMd3QyYVhSWEJwcURlc3lVM1d3MlJ2U1hKX2hKclF2ZlZOZlVTNmw4RkVXTWtfVDNUSjVlQ0wwNjA0eWdqNDk1T2FFZHdZU1E2aDVnektCWlpmQmpwLUxHcUdNaDVVNlE0NnJZS19pQmRBTUc2VkwxQ3RCanlDcWRUR3hMcUtueHJzUm5kQUpjLWFZVkZfaWFvQklFaVI3cEZzUWN1ZE9SM3M?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000195812526000008/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "Huffman, Dexter Open Investigation into Insider Trading at Energy Fuels After Trump Guts Bears Ears - House.gov",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxOSHpzbFRXSVVudkxaWnJWTjJ3UWtqNDI2RkZ2Ri1neWpPN0VSUVRRbkNtc3VxbzNiT1czeWE4dVhLU3JtdW9xOWJPUUo5ZVNUVWc1STh1X0hBRlprX0FlMXZrbVkzNDVnY2trQnlITUpxY3BvZVFlRzFtZk8yclRfUGNBVlVpaW1JbHdTNGtDcVlQajRyYUpWYWZTc3ozSFVDaHVkSklTbS1YV2JkUXJ5cldMQUNzN25ZYU1iZ2dNcHhhYUM2TkFLNlVWSXlpOVNURk1aUGtWdUV1WXVETGpLUEJjLUFVRl9VRWR2SlJTcXltekQ3dkpZ?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "GUTS Deadline Alert: SueWallSt Reminds Fractyl Health, Inc. (GUTS) Investors of Securities Class Action Deadline on October 20, 2026 - Morningstar",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxNUjV6dnBNdEFTcWdKWFFCNU1sUzY1R1ZBWFltRGdqazVDNjQyZ0dhT0l6NTZRUnJBYzdsRUxhWGZZWmNxWUw2T2hvVFBZNkMxdUdNSUhnVUg3WGlzaXlDYkt2S2stR3BzQ2RnNFBYUUxPQlhRV01vSTRmajdDWUt6Ym11WThVaHdtcWUyT0tkbHFlR1pmbGcwZ0NVd2VGQm1oT0NwV3JMdkY0RVdYYTN1NGk1U0N0YTBfNnJlbm96cXk0ZjF0VmNzTXdkRHJBbkRVRHZjcFU5WS1MeTh3X3puS3l6RjJKdVB0dEdubG84c3lVZVB0RlVNZzB5MnJFdUZyS2xoS2JHZ056cndWMVBuZEcxYXlSQQ?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-05",
+      "type": "other",
+      "title": "Fractyl Health, Inc. Stock 12‑Month Price Target Raised to $8.7, Implies 78% Upside - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOZWo5UGhxT294NFo4TWN4RTZ6Q0hDQnVPVDJXaC1zb3RlMjEweWpXX2dUdml5TGtuZUpfSzhyNTBKaHROZVpQb2JiTDM1REI1enZJdmFMeWZxV1RoTm9KQXZBaGhlZ00wSmRzNWN2QzVvYTF1TlFfREFXUDRaa0g1MWZkRWJ5NDJUNnFzdEVQeG55c1ZfZW1STTh1X1M1cUhLR2NzQ29OWUlXaW1qdnEtNkRRVmFKeGt2b3RQWVRTNnFKZmw3SVN4bF8zNGJDZncwVm0yaC1OMA?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "$GUTS stock is down 18% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPZXF3OEJhUTVya0R0Z3Q3ODk0SVJFSUpjZ3MxOGpMQTNCVHR2eDQwWTF4N2lRV3pvaVpodzFnWk5HSDg1dzF0RDZkU1hMRU4yVVhjX05VZV9OZHhHMzljZHFUcFBTNmZVYi0wQ0FCNjNVNm5Bd1c4VmhqWFR1UENScm1qUUlDeUI0TExXRjlZVnFDV1V1RjFMUjhxV1ltU2JiV1Nr?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-09-24",
+      "type": "other",
+      "title": "Over 102 million votes backed a possible share consolidation at Fractyl Health (GUTS). The board picks the ratio. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNUlhDa3FzRkV4LW9LS3FGOUZCUW1GaHZtYTNjcVIyeWZCVG0zVDZvOEV6akdpSUNUYkFLVGo0U0RpU0tsdXltU2dicWRQcXRFME56S3RNWTRhbWt0OUd1dVZVbENkbktxd1JVNGF1TDV6VE9rQjBnQ3gxY3RiLWkxckpmeVZQdktyODVPbjBLRGxmOHZNV3hSaGhTTG1ST1lGUnc5SFZvakZYLWM?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-09-23",
+      "type": "other",
+      "title": "$GUTS stock is down 13% today. Here's what we see in our data. | GUTS Stock News - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNY2FWMDBrWGJwYjhmZVRpbzVHandVNTFxRnJYQzdPMzBXN1lXblNHS0VYZXhOY0k5SWszbUp3UGVxVmwxbjdKOEFkM3cwdFk0RWZHbzBjQ0ZxWUJZdmVWMEYwcDdRXzdLQ3VHSXdSd25qRlFSMm9ieG5IVEg3N25MdnRZNjFYY1RjY05GOW5iX2ZvaG1jVHJsSVNuVjRWNG9XNG1Z?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-09-09",
+      "type": "other",
+      "title": "Fractyl Health to Participate in Upcoming September Investor Conferences",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/fractyl-health-participate-upcoming-september-110000866.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-09-01",
+      "type": "other",
+      "title": "Fractyl Health Eyes 2028 Revita Launch for Post-GLP-1 Weight Maintenance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://www.marketbeat.com/instant-alerts/event-fractyl-health-eyes-2028-revita-launch-for-post-glp-1-weight-maintenance-2026-09-01/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-09-01",
+      "type": "other",
+      "title": "Fractyl Health shares rise 2.8% ahead of Virtual Commercial Strategy Day",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/35366/fractyl-health-shares-rise-2-8-ahead-of-virtual-commercial-strategy-day?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-26",
+      "type": "other",
+      "title": "GUTS Shareholder Alert: Investors With Losses May Seek to Lead the Class Action in Fractyl Health, Inc. Securities Lawsuit - Contact Levi & Korsinsky - PR Newswire",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxOLVVvOGRXMDJMZHhTeWR1dDR2T0xwXzJmSWZFVW5uaUVQY21wLURWcGpSWE44bWNWd2NVbWZLdDZ2cTJBTVlEb2dtZUZ2Tm8zUGpYUHZOeDBfQWR6bjR1Y0kwOG9PU1BLTURDUkdFcldleHkwZlI1RnNNYjU1clhva09oNXBHSlpJU3prdzFad1pnMERrcHdzMS1jdjIxLXlmT0paTG5lTDk3N0lkbzB2YlVsdy1LbS1tUEwzZS1aS0gzUUVKYXNydXprSTFnZFZlLXVZbjdxVUhtcWx6UlJXN2pfdXJTbE1vazZIZUZ2QU1HMW5Eb0NtSWhBazJUQWFUV05EcUZLT01qcnFQMUZQbzZjNVRHTU5xQVVnaVZLcE5LWW51TVVZZg?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-24",
+      "type": "other",
+      "title": "إفصاح SEC: DEF 14A — DEF 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000119312526363587/guts-20260824.htm"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-20",
+      "type": "other",
+      "title": "Fractyl Health to Host Virtual Commercial Strategy Day on Tuesday, September 1, 2026: The Potential Path to Commercializing Revita®, a Procedural Therapy for Post-GLP-1 Weight Maintenance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/fractyl-health-host-virtual-commercial-110000848.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "Fractyl Health Eyes Q4 Revita Data, Launches Rejuva Gene Therapy Trial",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://www.marketbeat.com/instant-alerts/fractyl-health-eyes-q4-revita-data-launches-rejuva-gene-therapy-trial-2026-08-14/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "إفصاح SEC: PRE 14A — PRE 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000119312526352234/guts-20260814.htm"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-12",
+      "type": "other",
+      "title": "Fractyl Health, Inc. Common Stock Q2 2026 Earnings Call Summary",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-fractyl-health-inc-common-stock-q2-2026-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-11",
+      "type": "other",
+      "title": "Fractyl Health Inc (GUTS) (Q2 2026) Earnings Call Highlights: Pivotal Data on Track and ...",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/fractyl-health-inc-guts-q2-050349746.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-10",
+      "type": "other",
+      "title": "Fractyl Health Q2 Earnings Call Highlights",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://www.marketbeat.com/instant-alerts/fractyl-health-q2-earnings-call-highlights-2026-08-10/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-10",
+      "type": "other",
+      "title": "Fractyl Health Reports Second Quarter 2026 Financial Results and Business Updates",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/fractyl-health-reports-second-quarter-200500713.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-10",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-Q — 10-Q",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000119312526342345/guts-20260630.htm"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-03",
+      "type": "other",
+      "title": "Fractyl Health to Report Second Quarter 2026 Financial Results and Provide Business Updates on August 10, 2026",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/fractyl-health-report-second-quarter-200500013.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-08-03",
+      "type": "other",
+      "title": "Fractyl Health to Share Q2 Results Aug. 10 at 4:30 p.m. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPRGxGWUw3XzVuSHB5RF9TWVYwWlZzX2pSNHN2eVFiSjFsM1VkUjNWQUZMa2JOSl9Za0MwLTJjOG9TOWdna01KTGtRMWRyd29mX1d3bDRkMGxpUlNlamNuVVl2ZXNHUFdEM1M5ZW1GenRudGxFU2lyNG5hZ1pQbGNXeFFTRE0zZWNrdllZTkdzeW1TWGVwWGNJbFdqR2QzY0ZzSDlVclE5N2ppYVd1MllHYzVNeFE0cVYtYzlKRUx3?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-07-22",
+      "type": "other",
+      "title": "Fractyl Health to Participate in Upcoming Investor Events",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/fractyl-health-participate-upcoming-investor-200100734.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-07-22",
+      "type": "other",
+      "title": "Fractyl Health CEO to Join Meetings and Aug. 12 Fireside Chat - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPcDFUNnZkVHM2N3dLM1BJNFlLOEtESklJclk3b2tyLVBBeFNtY1EwM0Q0MVNpWnQ2WmQ0d1ZKc0tvRzFvZXRXZ25tdnJnaGMwQWZtaDlUcjJobWlYRzgxdlBLS0c3LVF5UGx2Q0g1WEZlbTJWMGdCM0liUTFibnBZWlBuNkZNcWFzX2RxNDRJbXk5R1hldnVVdl9XaGFRRWlxMWR2dXZDVDc?oc=5"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-07-16",
+      "type": "other",
+      "title": "Fractyl Health Stock Up on Encouraging One-Year Revita Study Results",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/fractyl-health-stock-encouraging-one-141300703.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GUTS",
+      "date": "2026-07-15",
+      "type": "other",
+      "title": "Fractyl Health Says Revita Helped Patients Keep Weight Off After Stopping GLP-1s",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://www.marketbeat.com/instant-alerts/fractyl-health-says-revita-helped-patients-keep-weight-off-after-stopping-glp-1s-2026-07-15/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "GUTS",
+      "kind": "424B5",
+      "date": "2025-09-26",
+      "title": "إفصاح 424B5 — 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000119312525220768/d935179d424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GUTS",
+      "kind": "8-K",
+      "date": "2025-09-26",
+      "title": "8-K بند 1.01,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000119312525218515/d140541d8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GUTS",
+      "kind": "8-K",
+      "date": "2025-08-07",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000119312525175581/d944083d8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GUTS",
+      "kind": "effectiveness",
+      "date": "2025-03-18",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/999999999525000716/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GUTS",
+      "kind": "S-3",
+      "date": "2025-03-13",
+      "title": "إفصاح S-3/A — S-3/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000119312525054048/d919294ds3a.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GUTS",
+      "kind": "S-3",
+      "date": "2025-03-03",
+      "title": "إفصاح S-3 — S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1572616/000119312525044297/d919294ds3.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "محفزات قادمة: 2026-11-11 موعد الإعلان عن النتائج (تقويم Yahoo)"
+  ],
+  "positive_news": [
+    {
+      "symbol": "GUTS",
+      "date": "2026-10-16",
+      "type": "clinical",
+      "title": "Fractyl Health Meets Six-Month Primary Endpoint in Revita Obesity Trial, Supporting FDA Submission Plans",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/38219/fractyl-health-meets-six-month-primary-endpoint-in-revita-obesity-trial-supporting-fda-submission-plans?.tsrc=rss"
+    }
+  ],
+  "negative_news": [],
+  "phase": 1,
+  "display_phase": 1,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "spike"
+  ],
+  "rejections": [
+    "صعود يوم التقسيم 0.3% أقل من الحد الأدنى 5.0%"
+  ],
+  "notes": [
+    "الثبات على القاع 0 جلسة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 52.5,
+  "grade": "C",
+  "breakdown": [
+    {
+      "key": "rs_setup",
+      "ar": "حدث التقسيم العكسي",
+      "score": 100.0,
+      "weight": 18,
+      "detail": "1-for-12 بتاريخ 2026-10-05 (عمر 11 يوم)",
+      "points": 18.0
+    },
+    {
+      "key": "spike",
+      "ar": "صعود يوم التقسيم",
+      "score": 2.8,
+      "weight": 8,
+      "detail": "0.3% من الافتتاح 4.8 إلى 4.815",
+      "points": 0.23
+    },
+    {
+      "key": "decline",
+      "ar": "قوة الموجة الهابطة",
+      "score": 99.6,
+      "weight": 14,
+      "detail": "هبوط 68.2% من القمة 4.815 إلى القاع 1.53",
+      "points": 13.95
+    },
+    {
+      "key": "oversold",
+      "ar": "التشبع البيعي",
+      "score": 100.0,
+      "weight": 14,
+      "detail": "أدنى RSI 16.68 (2026-10-16) — الحالي 16.68",
+      "points": 14.0
+    },
+    {
+      "key": "base",
+      "ar": "القاع والثبات",
+      "score": 0.0,
+      "weight": 18,
+      "detail": "ثبات (0 جلسة) — نطاق القاعدة 0.0% — جفاف حجم 2554% من المتوسط",
+      "points": 0.0
+    },
+    {
+      "key": "reversal",
+      "ar": "تأكيد الانعكاس",
+      "score": 10.0,
+      "weight": 18,
+      "detail": "حجم نسبي 15.92x",
+      "points": 1.8
+    },
+    {
+      "key": "squeeze",
+      "ar": "عوامل الضغط والانفجار",
+      "score": 8.5,
+      "weight": 6,
+      "detail": "بيع مكشوف 1.4% من الفلوت، فلوت 12.14M سهم، أيام تغطية 1.2، تغيّر المراكز -3%",
+      "points": 0.51
+    },
+    {
+      "key": "risk",
+      "ar": "جودة المخاطر",
+      "score": 100.0,
+      "weight": 4,
+      "detail": "لا مخاطر بارزة خلال 30 يوماً",
+      "points": 4.0
+    }
+  ],
+  "confirmations": [
+    "حجم نسبي 15.92x يدعم الحركة"
+  ],
+  "levels": {
+    "trigger": 1.9375,
+    "entry_zone": [
+      1.5376,
+      1.9375
+    ],
+    "stop": 1.55,
+    "stop_pct": -20.0,
+    "stop_structural": 1.4382,
+    "stop_structural_pct": -25.77,
+    "targets": {
+      "t1_382": 2.7849,
+      "t2_618": 3.5601,
+      "t3_full": 4.815
+    },
+    "rr_t1": 2.19,
+    "rr_t2": 4.19,
+    "risk_per_share": 0.3875,
+    "reward_t2_per_share": 1.6226,
+    "atr_pct": 44.5,
+    "bottom": 1.53,
+    "peak": 4.815,
+    "last": 1.55,
+    "base_high": 1.53,
+    "ema9": 3.8816,
+    "ema20": 4.864,
+    "support": 1.53,
+    "impulse_high": null,
+    "resistance": null,
+    "sweep_low": null,
+    "reclaim_level": null,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 44.5%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 1.55$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 48% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 15.9x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "rsi_divergence",
+      "name_ar": "ديفرجنس إيجابي RSI",
+      "tf": "1D",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ديفرجنس إيجابي على RSI: السعر سجّل قاعاً أدنى بينما RSI سجّل قاعاً أعلى → تلاشي ضغط البيع.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "1D",
+      "confidence": 0.6738462786823891,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 5 قمة و6 قاع؛ السقف ينحدر 2.28% للشمعة والقاع 1.80%، والسعر ما زال داخل الوتد وسقفه عند 4.666 — الاختراق فوقه هو الإشارة.",
+      "levels": {
+        "resistance": 4.6664,
+        "support": 3.9278
+      },
+      "status": "forming"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -2.63% للشمعة (30 شمعة). سقف القناة عند 8.784 والسعر أسفله بفارق 82.4% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 8.7845,
+        "channel_mid": 6.3943,
+        "channel_lower": 4.6544
+      },
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "1D",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 4.330 بتاريخ 2026-10-05 وقاع 4.140 بتاريخ 2026-10-08 بفارق 4.6%، وخط العنق عند 4.815 (16.3% فوق القاع). ننتظر إغلاقاً فوق 4.815 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 4.33,
+        "bottom2": 4.14,
+        "neckline": 4.815
+      },
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "1D",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-14 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 46% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 2.7x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 2 قاع صاعد منذ بداية القاعدة (4.330 → 3.780) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 4.33,
+        "last_low": 3.78
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "4H",
+      "confidence": 0.6785520216078188,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 6 قمة و5 قاع؛ السقف ينحدر 1.68% للشمعة والقاع 1.28%، والسعر ما زال داخل الوتد وسقفه عند 3.928 — الاختراق فوقه هو الإشارة.",
+      "levels": {
+        "resistance": 3.9285,
+        "support": 3.5155
+      },
+      "status": "forming"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -2.02% للشمعة (30 شمعة). سقف القناة عند 7.014 والسعر أسفله بفارق 77.9% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 7.0136,
+        "channel_mid": 4.924,
+        "channel_lower": 3.457
+      },
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 4.330 بتاريخ 2026-10-05 وقاع 4.140 بتاريخ 2026-10-08 بفارق 4.6%، وخط العنق عند 4.814 (16.3% فوق القاع). ننتظر إغلاقاً فوق 4.814 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 4.33,
+        "bottom2": 4.1401,
+        "neckline": 4.8145
+      },
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (ابتلاع شرائي)",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-14 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 1.5501,
+    "rsi": 16.26,
+    "trend": "down",
+    "ema20": 4.0167,
+    "ema50": 5.2263,
+    "rvol": 2.69,
+    "macd_hist": -0.18116,
+    "channel_broken": false,
+    "higher_lows": 3,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-12 نافذ في 2026-10-05 (عمر 11 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 4.8$ وصعد إلى 4.815$ (+0.3%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 68.2% من القمة 4.815$ إلى القاع المرجعي 1.53$ بتاريخ 2026-10-16 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 16.68 (تشبع بيعي متطرف و 10 جلسة تحت 30) والحالي 16.68 ولم يتأكد التحسّن بعد.",
+    "ثبات 0 جلسة على القاع 1.53$ داخل نطاق 0.0% مع جفاف حجم (2554% من المتوسط)، والقاع صامد.",
+    "حالة التسلسل: بانتظار جلسات ما بعد الثبات.",
+    "تأكيدات فنية: حجم نسبي 15.92x يدعم الحركة.",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 16.26",
+    "عدد الأسهم 13.26M — الفلوت 12.14M سهم.",
+    "البيع المكشوف 1.4% من الفلوت (أيام التغطية 1.19).",
+    "أبرز نموذج فني: جفاف حجم ثم انفجار — جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 48% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 15.9x → دخول مؤسسي محتمل.",
+    "محفزات إيجابية: Fractyl Health Meets Six-Month Primary Endpoint in Revita Obesity Trial, Support"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

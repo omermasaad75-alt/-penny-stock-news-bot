@@ -1,0 +1,26 @@
+[
+ {
+  "stamp": "2026-10-17_0238",
+  "generated_at_riyadh": "2026-10-17 02:38",
+  "mode": "live",
+  "summary": {
+   "scanned": 14,
+   "with_reverse_split": 14,
+   "eligible": 2,
+   "watchlist": 0,
+   "gam_candidates": 1,
+   "ready": 0,
+   "failed": 1,
+   "avg_score_watchlist": 0,
+   "top_symbol": "SGRX",
+   "eligible_symbols": [
+    "SGRX",
+    "GRML"
+   ],
+   "gam_symbols": [
+    "TNMG"
+   ],
+   "ready_symbols": []
+  }
+ }
+]

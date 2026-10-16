@@ -1,0 +1,957 @@
+{
+  "symbol": "RETO",
+  "name": "ReTo Eco-Solutions, Inc.",
+  "sector": "Basic Materials",
+  "industry": "Building Materials",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-16",
+  "last_close": 0.8892,
+  "change_pct": -3.35,
+  "dollar_volume": 8986229.0,
+  "rs_found": true,
+  "rs_date": "2026-10-02",
+  "rs_age_days": 14,
+  "rs_ratio_str": "1-for-20",
+  "rs_ratio": 20.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 1.935,
+  "spike_high": 2.4,
+  "spike_pct": 24.031,
+  "spike_date": "2026-10-05",
+  "decline_pct": -63.5833,
+  "peak_date": "2026-10-05",
+  "bottom_price": 0.874,
+  "bottom_date": "2026-10-14",
+  "base_sessions": 1,
+  "base_high": 0.95,
+  "base_low": 0.874,
+  "base_range_pct": 8.6956,
+  "base_broken": true,
+  "volume_dryup": 0.053,
+  "atr_pct": 916.65,
+  "rsi_now": 38.08,
+  "rsi_trough": 38.08,
+  "rsi_trough_date": "2026-10-16",
+  "rsi_sessions_below_30": 0,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": 0.99737,
+  "channel_slope_pct": -10.089,
+  "channel_upper": 10.3526,
+  "channel_broken": false,
+  "rvol": 0.65,
+  "higher_lows": 0,
+  "squeeze": true,
+  "lifecycle_stage": "تجاوز المقاومة بقوة (27.4% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 0.874 — القاع مكسور ⚠",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+28.6% من 0.941 إلى 1.210",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 0.950 (على 8.7% من الدعم 0.874) — توقف السعر عندها بفارق 27.4%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 28.59,
+  "impulse_high": 1.21,
+  "impulse_date": "2026-10-16",
+  "resistance_level": 0.95,
+  "resistance_distance_pct": 8.7,
+  "resistance_date": "2026-10-15",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 0.8784,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.874,
+  "support_hold_ok": false,
+  "base_close": 0.941,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "swing",
+  "spark": [
+    31.6,
+    33.0,
+    32.4,
+    28.3,
+    28.0,
+    25.8,
+    26.8,
+    25.2,
+    24.8,
+    21.2,
+    21.2,
+    10.72,
+    8.44,
+    8.22,
+    7.76,
+    7.22,
+    56.0,
+    36.8,
+    4.18,
+    3.72,
+    3.78,
+    3.52,
+    3.18,
+    3.32,
+    3.06,
+    2.84,
+    1.82,
+    2.3,
+    1.86,
+    1.55,
+    1.95,
+    1.66,
+    1.57,
+    1.4,
+    1.32,
+    1.14,
+    1.055,
+    0.941,
+    0.92,
+    0.889
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 27.37,
+  "shares_out": 2319915.0,
+  "float_shares": 163490.0,
+  "market_cap": 2107328.0,
+  "avg_volume": 1911559.0,
+  "insider_pct": null,
+  "institutional_pct": 0.0,
+  "short_pct_float": 3.31,
+  "short_shares": 76755.0,
+  "days_to_cover": 0.02,
+  "short_change_pct": 8162.1,
+  "short_volume_ratio": 0.505,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "RETO",
+      "date": "2026-10-10",
+      "type": "other",
+      "title": "ReTo Eco-Solutions Stock Short Interest Rises to 66.17% - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQNk9QbFFTd05nYmdSX1RvTzNhOHRHTlNOZmJfOUNDUnZHZzd2cjVHSjZicEhteGYtdlUta3Z2cWpjZmlpRkNiMEFIQm44bHVJV2ZQckpHOU80WHJQMWVfUUxFWmRSX2luQzV3R2RaUS1XR2MwdFEwSWkxaC0talBPSU9lT1JFVEtTQmhQdkdXMG5lb1RW?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "ReTo Eco-Solutions Company Profile & Introduction - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigwNBVV95cUxOQmZUR1Z1eXZoTGFyNWp3T3NZYnRuWEdUSTJuTTN5c1BnYVpuNXUtOGNIRUEtcWlWNzlUNkgyd1Y5ZjllelRqR0cxRllZeW1BWDVkLUhxeTFlUElhajIwWTNTdGJrZ2JBT1lKVUZkUVAzMzFmS2hsUzExcWNWNXdxRWNOVC1Bb2t2RXNHZFUzOTFJbGd2U2NmQ0NEYXdyMXhQSi1zakpUZmlkcEZJQUR6UWFHM3h0OXdSbVJIM3pVZ1g2YTF2eEpRa0hiZU5aSXlaNWJfQUc2b2NWTEIxVU5XMWNBODRYTTFmTEpTbEJRWTRuay05LVNKRmNjdzV3RjdMYkpLbV95V0d5SkI1MGd4NjV6eTE5NXRNTHZQMTB3QTM0YkhES2VOd0pZejZhR2hEYjl1Y194clI0TjlzOVNuQ3p2QnBZaG5qNU56dmx2blljdmtYOFhvVC0xSmRjQ3BFVi1TMmJUTlNlMXdubHZiaTdNZHNpc2VScUY1ZE91Unp0MU0?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-10-05",
+      "type": "other",
+      "title": "Discover the top movers in Monday's pre-market session. - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOc0pEYjFNMlZQOE90Q280LWFadDNHdkpVaVdXNUdUcnl5RXhCLTZRbFJNY2NLbzdqczNvOGlGbmRmekxTWTRhcEw3NW9XdmhKd1hsSVY1cjZyZnRsREM0eG5CQXEyVmpKTjNjS1pDX25sdDZkQW04R1BjaVdWV29kbWxuOFR4dlhYeGJCU3g1Q0NEeW1hQXRReUFnRXhBU1ZDQ0NMYkNKU3ZDUQ?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-10-03",
+      "type": "other",
+      "title": "RETO Stock Surges After Sharp Low-Priced Breakout - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5MMktWMEMtU204ZlktRUhNU2E3cjhXY01UNDAwb3YyeTFOeEdFRWZZb2JrSl9oTHg0LTZTZ0NEUEFHV2YxUWlsTTY3WFZfbERyb0t6Q0ZpbmxicGNKWkYwVWtydmZraTlqWmh4akNEQUhpeEZDMnNwelh1U0xXZG8?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "Top movers analysis one hour before the close of the markets on 2026-09-30: top gainers and losers in today's session. - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxORVg1RGRHYXR0MlpYTkE5Sk1LYnQtQmlMRm1PMFdmYTMtNzk1R093ekhJaE1JQlNmRl94SWs3U1BaNW1laE81TTF1SEJNUlNIZ0ZiVndGR2ZaS2pLV0lpdHVTNTZnMkdQSTloRkV1R254ZVV6YzVFQjIzMkFIdVJhTDJvaVhjMTNpd2tSNjZRXzl3bU5tLTl4Q0pMSmNQS09GcE5LQ0hsSHFBbzVqbkZERjhnUG5XSEluNFpsaUlnR2JyUWEwaE9OV1hWdHJ0alVZSlBzZXpxOFJ2blZUT2pBMUpqelJDeFdtT3N6MEJTUE5RU2xBRjhNUURPWQ?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "ReTo Eco-Solutions, Inc. Announces Share Consolidation",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/reto-eco-solutions-inc-announces-150000511.html?.tsrc=rss"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "ReTo Eco-Solutions, Inc. Announces Share Consolidation - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQOHA2TFhUTGdDRTJ3Ty1GcEZqNXhkT09XMXNMUFlLQTBiaEhnc0V6X291dGhxelQxT3RqLVI4MzNadS1JRTdPT0g5OE1xcV9YblQ4WVVHQktENjlrdDg5aHE2eDEwR1FPd2w4SXdzYlAwVWwyc2tGbUdYRnVwc1hYXzF5eDRRcnl6S3MwQ01GLU81NGFzV0dkYVNQaG1xZw?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "20 shares in ReTo Eco-Solutions will become one on Oct. 2 - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNYk0xOGRjRGV3UEVONVdCM2lOc2JYMUlxUXNuWmZDclo1WUtLSDBucWlzSmluekdyVHI1ZzFpMTRqQll1eUJHVGRHaVRiWk1iR0FWQ25qVGY0VlZMQmdPYy04UlFpWU9ZQWtRTjcxb1lZcDdFTXJhbGlvQ0puOGQtNWp5dzJHYnc4eDFSUk9aOTRSZ3hVVk00OWR3?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-26",
+      "type": "offering",
+      "title": "ReTo Eco-Solutions Closes Over-Allotment Offering Following September Registered Direct Deal - The Globe and Mail",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNTmRRS3FJWUhQaURYbXUtdjdIVENuT0dwbDUtNHlWQklndzZ5WUUzLWxmMEVlMThXQlJZUUtZUEE5cUR5M2JLMmJmamFRNWF6eEp4RFBYWHpIaGhJdjlUeElDalRxdHFHOXJPNUY4b0JiTVM3d3MwY0Q2UWhWVWNVdXV3SzJhb3owUTEtUHdiZFZrV2JZNWMtWXVnUVZvc1JXc21kcUpuc216c1FVbFFncmpMTkU3RkxlYll1QWN5aVM1aVhBLUdyOVhBN3UxblVwWnZDeFJfUXNLVEd3d2w2dGVYOFJwdlZma0pvRVkxWmdjQm1jeGM4ZVdNTUZVTHRoTzdCSlNWeUF6TFk?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "At $1.50 a share, ReTo Eco-Solutions (RETO) closes an additional sale with warrants. - Stock Titan",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNSWRyR2lpS1l4OE1WVkV1VTFQMk9mcHo1SEZtVi1Ed3BoMkpQbG9IYkZXcEIzZEl6U2ZQSkM0REV0OWNScE9Zd1Z2ZXEzLWN3Wk1GSjNPVkdUQk9rV0dRaC1yVjhiVDhRSmJnazhRdVRfWHpsZ3hxQ09EUl9tc3VXRHJ0b1c2b1pwM2xFaUdhUmdfMG9SekFpN1RjckVURUVSYkJDWHBNODlORWVGUXZ5NDZ2U1FOOUkzZzdZ?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-25",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — REPORT OF FOREIGN PRIVATE ISSUER",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026103587/ea0306668-6k_reto.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026103264/ea0306662-424b5_retoeco.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "Unusual volume stocks in Tuesday's session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNLXRIUjVrSWlZYWhrbXlFZzg5UWtFRTlZZkpodHVZd0tJWkpheUpIYmNMQkNjNnR2QjVrNzNlYWsyQXpPOFRMcFYtbGFfZTREa3FpR3VuOV93U3BpWGlxRVBlR0NONjBNWjdtNURiNndhS2VRd1BGZVlHUHBHMjFZTDlsc0o3ZTh6dVpxcnZsSzYyRDV2Sng2bg?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-18",
+      "type": "offering",
+      "title": "Univest Securities, LLC Announces Closing of $15.0 Million Registered Direct Offering for its Client ReTo Eco-Solutions, Inc. (NASDAQ: RETO)",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/univest-securities-llc-announces-closing-210000837.html?.tsrc=rss"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-18",
+      "type": "offering",
+      "title": "Zero-price warrants add twist to ReTo Eco-Solutions (RETO) $15M deal - Stock Titan",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPekdCbGM2dGItb1hNMXlEX0pTX2hxTU9jcmtDcXl2WnNrZVNwZG1xdnBESzVfYlItbFptSE1EVmJwLWdqbjY1ZExSaGhqQ1V1QkdHU25YcWJsUlk5VTR5VThJb1VyN0g5Q0xSYlNfTnktYVZESklSR2I0a045UnRIWUVwMURPWWp1SlNNMTd2bTVaUnlMb01mM2tMS0FSbFpkNnBVVl9PT1JKSlN1Zy1DR1FHWlNUa0h3MDZ3?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-17",
+      "type": "offering",
+      "title": "ReTo Eco-Solutions Prices $15 Million Registered Direct Offering With Warrants and Additional Purchase Rights",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/36517/reto-eco-solutions-prices-15-million-registered-direct-offering-with-warrants-and-additional-purchase-rights?.tsrc=rss"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-17",
+      "type": "offering",
+      "title": "ReTo Eco-Solutions, Inc. Announces Pricing of $15 Million Registered Direct Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/reto-eco-solutions-inc-announces-124100633.html?.tsrc=rss"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-17",
+      "type": "other",
+      "title": "RETO Stock Whipsaws As Traders Target Volatile Move - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE90RkFDUDRUbm1qdlJTeGdmVm1SU24tRUw4emQybDliQVVmSU8zMm1uT0l0Q2JjNFR0S01WeF8yWGpPdVpFOUZuUWlVdFlhc21MMEJpS081YmZzcExMQzREVDA3ZTJoWlR0WW9DZ3lyazlhSlJnVTUzcUE4OUlYS0E?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-16",
+      "type": "other",
+      "title": "RETO Stock Rockets On Extreme Volatility As Traders Pile In - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1JNnJGeDloT2ZXUkhDZnZ1S1pJczJCcXdtUlYwR0Zjd0hYYjFrRW80RmtpNklLR09vSjIwd2oxZmVYbzMyano1cW16Z3FrNnZoN3VrOWFBZ2ZsNEg2bE9DQTk2SFZ0SklqbnVCU3pLTHM0SDlwWnhNTWhaTkdDZ0k?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-16",
+      "type": "other",
+      "title": "RETO Stock Rockets On Wild Low-Float Breakout - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOU2pBcGtqMFE5Vlg3Mm9DMUlBNFY3LWwtU3VHVnVuaVd0Q2xYUFZIMmRWSXpMNUxFU1NBeUREaEZOcElqUFpFQXRFejgzZkVBSlpDeG1VT21MZGJHdC1jZVdhUlhkVlo0bktqVlBIM215c3FzZ1BzNi1wSHBHMjdIaQ?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-15",
+      "type": "other",
+      "title": "ReTo Eco-Solutions stock skyrockets on heavy speculative trading with no clear fresh catalyst - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQbVFVOF8tc0VWYWZ4YlVtcEswcFktR01Eb1liUmF6c0lLcUx2S2FXaTN1UXZLZ0h1cDhZTE1RQzFpOTltUFR0VmpQVXBUR2pkbzJlRzZfTDRYS2VpYjNqQmtSZDNCTU1HVFA2dFZkT0ppX3JSVEZESDNZYVF6S3JGbVQ3TlJmOGNnMlJyb0JQSE1tV2piU0pkRVpUc1pIb1F5SWxodnczMkVTLXIzNk5TUE1Md005LWt0NC1YUy00ZWJXWFBw?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-15",
+      "type": "other",
+      "title": "ReTo Eco-Solutions Stock Surged 676% on Tuesday: RETO Stock Keeps Trending After Hours - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPbk04UE9hNmhjWjQ1RmRpMzdwSzlFNzdNY3FteDJpd2xLU1dNU20wYkVzU0JWM19hWFFMalMwdjAyZmp2UDlOMG84Z0FablFreXF5bHVSbkR6cUxBQ1daTVVYYkd0ajVoRC1vTGh1SmoyNndXLTRvY0ptSjRBSmpTNUhySnJ3UUpxRzlpcUNrMXVGeGF2V0JRQWg5dmtrREZS?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-11",
+      "type": "other",
+      "title": "إفصاح SEC: SEC STAFF ACTION",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/999999999726001492/filename1.pdf"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-08-07",
+      "type": "other",
+      "title": "ReTo Eco-Solutions (Nasdaq: RETO) arranges $36M prepaid share purchases - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPUnlUbVpFclp6UmNMRmRLLVl3Q09yNTcxZEFvajl5VEZVYTQtYndsSlNhU2FIVVk4djEwVGp0dTdVM3JUcXBPM0dqdUlvTHMzS1g1STFpenhScFJIeElmd0ZTTWpmenJMbW1xOVo4NEJ3cWFrVnBDdU9HNXlYN2pGdWk2aXpHUEFPYjdQWmlnRTlOdEF5QUpRMlU0WkpwYXZ4VU1RaGVLOFlBU1FQa2JsbDZ0Y1A3Q3FZN3Mw?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-07-08",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/999999999526002226/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-07-07",
+      "type": "other",
+      "title": "إفصاح SEC: F-3/A — AMENDMENT NO. 1 TO FORM F-3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026075775/ea0297237-f3a1_reto.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-06-25",
+      "type": "other",
+      "title": "إفصاح SEC: F-3 — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026071764/ea0292924-f3_reto.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-06-24",
+      "type": "other",
+      "title": "إفصاح SEC: POS AM — POST-EFFECTIVE AMENDMENT NO. 1 TO FORM F-3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026071286/ea0295740-posam_retoeco.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-06-10",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000185141626000019/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-05-13",
+      "type": "other",
+      "title": "ReTo Eco-Solutions, Inc. Announces Share Combination",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/reto-eco-solutions-inc-announces-201000353.html?.tsrc=rss"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-05-01",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — ANNUAL REPORT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026050658/ea0287277-20f_retoeco.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-05-01",
+      "type": "other",
+      "title": "إفصاح SEC: NT 20-F — NOTIFICATION OF LATE FILING",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026050626/ea0288684-nt20f_retoeco.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-04-22",
+      "type": "other",
+      "title": "These stocks are moving in today's session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNUjNXQ3hrSlNoRm1NN214LXBVdzJfcnRPdVlIT1g5WWpmQmhiRkxUYUJJRFhSV013YWYzOWRpeVQySWVEX0ZVSVFQYkxmZHNEZGM2cTVTelhwbnkyd0V5dHZIV3hUc3NabVdLOVlKeGktRlpBU3VETnJxQjJwSnFoWHdfSEZrQ3htdnk1ZENFTkt1d0cxMTc3Rg?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-03-18",
+      "type": "other",
+      "title": "إفصاح SEC: 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026031079/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-03-04",
+      "type": "other",
+      "title": "ReTo Eco-Solutions, Inc. Announces Acquisition of Majority Interest in Seven Arrows Supply Chain Limited",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/reto-eco-solutions-inc-announces-140000137.html?.tsrc=rss"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-02-05",
+      "type": "other",
+      "title": "إفصاح SEC: S-8 — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026012491/ea0275323-s8_reto.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2025-12-12",
+      "type": "other",
+      "title": "ReTo Eco-Solutions Subsidiary Showcases Equipment and Intelligent Solutions at Excon 2025 to Advance India Market Presence",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/reto-eco-solutions-subsidiary-showcases-130000452.html?.tsrc=rss"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2025-11-21",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — CURRENT REPORT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390025113636/ea0266632-01.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2025-11-13",
+      "type": "other",
+      "title": "ReTo Eco-Solutions, Inc. to Hold Its Annual Meeting of Shareholders at Its Headquarters on December 23, 2025 Beijing Time",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/reto-eco-solutions-inc-hold-211500074.html?.tsrc=rss"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "RETO",
+      "kind": "news-offering",
+      "date": "2026-09-26",
+      "title": "ReTo Eco-Solutions Closes Over-Allotment Offering Following September Registered Direct Deal - The Globe and Mail",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNTmRRS3FJWUhQaURYbXUtdjdIVENuT0dwbDUtNHlWQklndzZ5WUUzLWxmMEVlMThXQlJZUUtZUEE5cUR5M2JLMmJmamFRNWF6eEp4RFBYWHpIaGhJdjlUeElDalRxdHFHOXJPNUY4b0JiTVM3d3MwY0Q2UWhWVWNVdXV3SzJhb3owUTEtUHdiZFZrV2JZNWMtWXVnUVZvc1JXc21kcUpuc216c1FVbFFncmpMTkU3RkxlYll1QWN5aVM1aVhBLUdyOVhBN3UxblVwWnZDeFJfUXNLVEd3d2w2dGVYOFJwdlZma0pvRVkxWmdjQm1jeGM4ZVdNTUZVTHRoTzdCSlNWeUF6TFk?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "RETO",
+      "kind": "424B5",
+      "date": "2026-09-25",
+      "title": "إفصاح 424B5 — PROSPECTUS SUPPLEMENT",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026103264/ea0306662-424b5_retoeco.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "RETO",
+      "kind": "news-offering",
+      "date": "2026-09-25",
+      "title": "At $1.50 a share, ReTo Eco-Solutions (RETO) closes an additional sale with warrants. - Stock Titan",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNSWRyR2lpS1l4OE1WVkV1VTFQMk9mcHo1SEZtVi1Ed3BoMkpQbG9IYkZXcEIzZEl6U2ZQSkM0REV0OWNScE9Zd1Z2ZXEzLWN3Wk1GSjNPVkdUQk9rV0dRaC1yVjhiVDhRSmJnazhRdVRfWHpsZ3hxQ09EUl9tc3VXRHJ0b1c2b1pwM2xFaUdhUmdfMG9SekFpN1RjckVURUVSYkJDWHBNODlORWVGUXZ5NDZ2U1FOOUkzZzdZ?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "RETO",
+      "kind": "news-offering",
+      "date": "2026-09-18",
+      "title": "Univest Securities, LLC Announces Closing of $15.0 Million Registered Direct Offering for its Client ReTo Eco-Solutions, Inc. (NASDAQ: RETO)",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/univest-securities-llc-announces-closing-210000837.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "RETO",
+      "kind": "news-offering",
+      "date": "2026-09-18",
+      "title": "Zero-price warrants add twist to ReTo Eco-Solutions (RETO) $15M deal - Stock Titan",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPekdCbGM2dGItb1hNMXlEX0pTX2hxTU9jcmtDcXl2WnNrZVNwZG1xdnBESzVfYlItbFptSE1EVmJwLWdqbjY1ZExSaGhqQ1V1QkdHU25YcWJsUlk5VTR5VThJb1VyN0g5Q0xSYlNfTnktYVZESklSR2I0a045UnRIWUVwMURPWWp1SlNNMTd2bTVaUnlMb01mM2tMS0FSbFpkNnBVVl9PT1JKSlN1Zy1DR1FHWlNUa0h3MDZ3?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "RETO",
+      "kind": "news-offering",
+      "date": "2026-09-17",
+      "title": "ReTo Eco-Solutions Prices $15 Million Registered Direct Offering With Warrants and Additional Purchase Rights",
+      "severity": "high",
+      "url": "https://investorshub.advfn.com/market-news/article/36517/reto-eco-solutions-prices-15-million-registered-direct-offering-with-warrants-and-additional-purchase-rights?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "RETO",
+      "kind": "news-offering",
+      "date": "2026-09-17",
+      "title": "ReTo Eco-Solutions, Inc. Announces Pricing of $15 Million Registered Direct Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/reto-eco-solutions-inc-announces-124100633.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "RETO",
+      "kind": "effectiveness",
+      "date": "2026-07-08",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/999999999526002226/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "⚠ كسر القاع المرجعي — احتمال استمرار الهبوط"
+  ],
+  "positive_news": [],
+  "negative_news": [
+    {
+      "symbol": "RETO",
+      "date": "2026-09-26",
+      "type": "offering",
+      "title": "ReTo Eco-Solutions Closes Over-Allotment Offering Following September Registered Direct Deal - The Globe and Mail",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNTmRRS3FJWUhQaURYbXUtdjdIVENuT0dwbDUtNHlWQklndzZ5WUUzLWxmMEVlMThXQlJZUUtZUEE5cUR5M2JLMmJmamFRNWF6eEp4RFBYWHpIaGhJdjlUeElDalRxdHFHOXJPNUY4b0JiTVM3d3MwY0Q2UWhWVWNVdXV3SzJhb3owUTEtUHdiZFZrV2JZNWMtWXVnUVZvc1JXc21kcUpuc216c1FVbFFncmpMTkU3RkxlYll1QWN5aVM1aVhBLUdyOVhBN3UxblVwWnZDeFJfUXNLVEd3d2w2dGVYOFJwdlZma0pvRVkxWmdjQm1jeGM4ZVdNTUZVTHRoTzdCSlNWeUF6TFk?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "At $1.50 a share, ReTo Eco-Solutions (RETO) closes an additional sale with warrants. - Stock Titan",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNSWRyR2lpS1l4OE1WVkV1VTFQMk9mcHo1SEZtVi1Ed3BoMkpQbG9IYkZXcEIzZEl6U2ZQSkM0REV0OWNScE9Zd1Z2ZXEzLWN3Wk1GSjNPVkdUQk9rV0dRaC1yVjhiVDhRSmJnazhRdVRfWHpsZ3hxQ09EUl9tc3VXRHJ0b1c2b1pwM2xFaUdhUmdfMG9SekFpN1RjckVURUVSYkJDWHBNODlORWVGUXZ5NDZ2U1FOOUkzZzdZ?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687277/000121390026103264/ea0306662-424b5_retoeco.htm"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-18",
+      "type": "offering",
+      "title": "Univest Securities, LLC Announces Closing of $15.0 Million Registered Direct Offering for its Client ReTo Eco-Solutions, Inc. (NASDAQ: RETO)",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/univest-securities-llc-announces-closing-210000837.html?.tsrc=rss"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-18",
+      "type": "offering",
+      "title": "Zero-price warrants add twist to ReTo Eco-Solutions (RETO) $15M deal - Stock Titan",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPekdCbGM2dGItb1hNMXlEX0pTX2hxTU9jcmtDcXl2WnNrZVNwZG1xdnBESzVfYlItbFptSE1EVmJwLWdqbjY1ZExSaGhqQ1V1QkdHU25YcWJsUlk5VTR5VThJb1VyN0g5Q0xSYlNfTnktYVZESklSR2I0a045UnRIWUVwMURPWWp1SlNNMTd2bTVaUnlMb01mM2tMS0FSbFpkNnBVVl9PT1JKSlN1Zy1DR1FHWlNUa0h3MDZ3?oc=5"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-17",
+      "type": "offering",
+      "title": "ReTo Eco-Solutions Prices $15 Million Registered Direct Offering With Warrants and Additional Purchase Rights",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/36517/reto-eco-solutions-prices-15-million-registered-direct-offering-with-warrants-and-additional-purchase-rights?.tsrc=rss"
+    },
+    {
+      "symbol": "RETO",
+      "date": "2026-09-17",
+      "type": "offering",
+      "title": "ReTo Eco-Solutions, Inc. Announces Pricing of $15 Million Registered Direct Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/reto-eco-solutions-inc-announces-124100633.html?.tsrc=rss"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "rsi",
+    "base_broken"
+  ],
+  "rejections": [
+    "RSI لم ينزل تحت 30 (أدنى قيمة 38.08) — لا يوجد تشبع بيعي",
+    "كسر القاع المرجعي بأكثر من الحد المسموح (السيناريو مهدد)"
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 151 يوماً (1-for-4) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 347 يوماً (1-for-5) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 959 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 1250 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 1253 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "تسلسل «جاهز فنياً» قيد التكوّن — تجاوز المقاومة بقوة (27.4% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 40.5,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "rs_setup",
+      "ar": "حدث التقسيم العكسي",
+      "score": 100.0,
+      "weight": 18,
+      "detail": "1-for-20 بتاريخ 2026-10-02 (عمر 14 يوم)",
+      "points": 18.0
+    },
+    {
+      "key": "spike",
+      "ar": "صعود يوم التقسيم",
+      "score": 99.2,
+      "weight": 8,
+      "detail": "24.0% من الافتتاح 1.935 إلى 2.4",
+      "points": 7.94
+    },
+    {
+      "key": "decline",
+      "ar": "قوة الموجة الهابطة",
+      "score": 98.7,
+      "weight": 14,
+      "detail": "هبوط 63.6% من القمة 2.4 إلى القاع 0.874",
+      "points": 13.82
+    },
+    {
+      "key": "oversold",
+      "ar": "التشبع البيعي",
+      "score": 9.6,
+      "weight": 14,
+      "detail": "أدنى RSI 38.08 (2026-10-16) — الحالي 38.08",
+      "points": 1.34
+    },
+    {
+      "key": "base",
+      "ar": "القاع والثبات",
+      "score": 6.5,
+      "weight": 18,
+      "detail": "ثبات (جلسة واحدة) — نطاق القاعدة 8.7% — جفاف حجم 5% من المتوسط — ⚠ كسر القاع",
+      "points": 1.17
+    },
+    {
+      "key": "reversal",
+      "ar": "تأكيد الانعكاس",
+      "score": 37.4,
+      "weight": 18,
+      "detail": "MACD يتحسّن، انطلاقة +29% بعد الثبات، اختبار مقاومة قريبة عند 0.95",
+      "points": 6.74
+    },
+    {
+      "key": "squeeze",
+      "ar": "عوامل الضغط والانفجار",
+      "score": 26.4,
+      "weight": 6,
+      "detail": "بيع مكشوف 3.3% من الفلوت، فلوت 0.16M سهم، أيام تغطية 0.0، ضغط تقلب (Squeeze)، تغيّر المراكز +8162%",
+      "points": 1.58
+    },
+    {
+      "key": "risk",
+      "ar": "جودة المخاطر",
+      "score": 0.0,
+      "weight": 4,
+      "detail": "طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، 7 إفصاح تخفيف عالي الخطورة، كسر القاع المرجعي",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "انطلاقة +29% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 1.1115,
+    "entry_zone": [
+      0.8784,
+      1.1115
+    ],
+    "stop": 0.8892,
+    "stop_pct": -20.0,
+    "stop_structural": 0.8216,
+    "stop_structural_pct": -26.09,
+    "targets": {
+      "t1_382": 1.4569,
+      "t2_618": 1.8171,
+      "t3_full": 2.4
+    },
+    "rr_t1": 1.55,
+    "rr_t2": 3.17,
+    "risk_per_share": 0.2223,
+    "reward_t2_per_share": 0.7056,
+    "atr_pct": 916.65,
+    "bottom": 0.874,
+    "peak": 2.4,
+    "last": 0.8892,
+    "base_high": 0.95,
+    "ema9": 1.4028,
+    "ema20": 4.3621,
+    "support": 0.874,
+    "impulse_high": 1.21,
+    "resistance": 0.95,
+    "sweep_low": null,
+    "reclaim_level": 0.8784,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 916.6%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.8892$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -9.98% للشمعة (30 شمعة). سقف القناة عند 15.577 والسعر أسفله بفارق 94.3% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 15.5773,
+        "channel_mid": 6.2286,
+        "channel_lower": 2.4905
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 6% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة، ابتلاع شرائي)",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-15، 2026-10-16 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -3.83% للشمعة (30 شمعة). سقف القناة عند 2.250 والسعر أسفله بفارق 61.7% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 2.2502,
+        "channel_mid": 1.8726,
+        "channel_lower": 1.5583
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 3% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.8611,
+    "rsi": 43.66,
+    "trend": "down",
+    "ema20": 1.7524,
+    "ema50": 7.3639,
+    "rvol": 0.33,
+    "macd_hist": 0.48384,
+    "channel_broken": false,
+    "higher_lows": 1,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-20 نافذ في 2026-10-02 (عمر 14 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 1.935$ وصعد إلى 2.4$ (+24.0%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 63.6% من القمة 2.4$ إلى القاع المرجعي 0.874$ بتاريخ 2026-10-14 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 38.08 (تشبع بيعي و 0 جلسة تحت 30) والحالي 38.08 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 0.874$ داخل نطاق 8.7% مع جفاف حجم (5% من المتوسط)، والقاع مكسور ⚠",
+    "الانطلاقة بعد الثبات: +28.6% من إغلاق القاعدة (0.941$) إلى 1.21$ (2026-10-16) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 0.95$ (تشكّلت 2026-10-15) — على 8.7% من الدعم الرئيسي، واختُبرها السعر في 2026-10-16 عند 1.21$ وتوقف عندها بفارق 27.4% ثم تراجع.",
+    "حالة التسلسل: تجاوز المقاومة بقوة (27.4% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة.",
+    "تأكيدات فنية: MACD يتجه للتحسّن، انطلاقة +29% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 43.66",
+    "عدد الأسهم 2.32M — الفلوت 163.5K سهم.",
+    "البيع المكشوف 3.3% من الفلوت (أيام التغطية 0.02).",
+    "أبرز نموذج فني: قناة هابطة — قناة هابطة بانحدار -9.98% للشمعة (30 شمعة). سقف القناة عند 15.577 والسعر أسفله بفارق 94.3% — ننتظر اختراقاً بإغلاق.",
+    "أخبار سلبية: ReTo Eco-Solutions Closes Over-Allotment Offering Following September Registered | At $1.50 a share, ReTo Eco-Solutions (RETO) closes an additional sale with warra"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

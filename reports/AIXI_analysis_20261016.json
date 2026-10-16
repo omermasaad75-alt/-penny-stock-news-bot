@@ -1,0 +1,907 @@
+{
+  "symbol": "AIXI",
+  "name": "Xiao-I Corporation",
+  "sector": "Technology",
+  "industry": "Software - Application",
+  "exchange": "NGM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-16",
+  "last_close": 2.92,
+  "change_pct": 3.91,
+  "dollar_volume": 27090038.0,
+  "rs_found": true,
+  "rs_date": "2026-09-08",
+  "rs_age_days": 38,
+  "rs_ratio_str": "1-for-7",
+  "rs_ratio": 7.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 3.26,
+  "spike_high": 3.375,
+  "spike_pct": 3.5276,
+  "spike_date": "2026-09-08",
+  "decline_pct": -65.037,
+  "peak_date": "2026-09-08",
+  "bottom_price": 1.18,
+  "bottom_date": "2026-10-01",
+  "base_sessions": 1,
+  "base_high": 2.26,
+  "base_low": 1.18,
+  "base_range_pct": 91.5254,
+  "base_broken": false,
+  "volume_dryup": 88.981,
+  "atr_pct": 23.69,
+  "rsi_now": 59.21,
+  "rsi_trough": 44.57,
+  "rsi_trough_date": "2026-10-01",
+  "rsi_sessions_below_30": 0,
+  "rsi_recovered": true,
+  "above_ema9_sessions": 7,
+  "macd_turning": true,
+  "macd_hist": 0.14613,
+  "channel_slope_pct": 0.435,
+  "channel_upper": 4.1827,
+  "channel_broken": false,
+  "rvol": 0.18,
+  "higher_lows": 3,
+  "squeeze": false,
+  "lifecycle_stage": "تجاوز المقاومة بقوة (15.7% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 1.180",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+209.5% من 1.215 إلى 3.760",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 3.250 (على 175.4% من الدعم 1.180) — توقف السعر عندها بفارق 15.7%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "أدنى نقطة بعد القمة 2.700 مقابل الدعم 1.180",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": true,
+      "detail": "3 إغلاق فوق 1.186 (آخرها 2026-10-16)",
+      "state": "ok"
+    }
+  ],
+  "impulse_pct": 209.47,
+  "impulse_high": 3.76,
+  "impulse_date": "2026-10-13",
+  "resistance_level": 3.25,
+  "resistance_distance_pct": 175.42,
+  "resistance_date": "2026-10-06",
+  "pullback_type": "shallow_pullback",
+  "pullback_low": 2.7,
+  "pullback_date": "2026-10-14",
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 1.1859,
+  "reclaim_sessions": 3,
+  "reclaim_date": "2026-10-16",
+  "support_level": 1.18,
+  "support_hold_ok": false,
+  "base_close": 1.215,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    0.458,
+    0.458,
+    1.31,
+    0.805,
+    0.59,
+    0.546,
+    0.503,
+    0.483,
+    0.471,
+    0.484,
+    0.472,
+    3.26,
+    3.09,
+    3.1,
+    2.69,
+    2.39,
+    2.32,
+    2.075,
+    2.095,
+    2.09,
+    1.88,
+    2.04,
+    1.9,
+    1.88,
+    1.72,
+    1.6,
+    1.49,
+    1.39,
+    1.215,
+    1.81,
+    1.51,
+    1.85,
+    1.32,
+    1.93,
+    2.03,
+    2.4,
+    3.01,
+    2.88,
+    2.81,
+    2.92
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 15.69,
+  "shares_out": 565211.0,
+  "float_shares": 557400.0,
+  "market_cap": 1650416.0,
+  "avg_volume": 5042060.0,
+  "insider_pct": null,
+  "institutional_pct": 8.18,
+  "short_pct_float": null,
+  "short_shares": 43575.0,
+  "days_to_cover": 0.07,
+  "short_change_pct": 3.0,
+  "short_volume_ratio": 0.606,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "Xiao-I(AIXI) Stock Options Chain | Quotes & News - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxQMFo0QTMyWTczQmdFaVpUeGpkOG91cVNDajhUb1pRWmlJdkFiTmdHMFRTMUROaGpPeUxuZGNLeTkxNF9WR3N1NTBpOWxsWTQyaXFhVjdaU01fUlR4OVI4d09lQ05rWVYyU2xYMjlHTmpMS1pMNUM2eTBtWkEwWjBORzVfVDNCSDBtY1ZydXVvczlWdDgtbTlLV1ktbmQ2RjNnWHR5SE4wOWlqZHFCS0ppMmJhaWFPWG1NS2hQX3RzOWtveE1VdjNXRVFwV1p0Qi1lV2kyWmJydnlGNEFKQXNoLVkxcVhMa3dVbzhtUUdnOWZ6Um5lNDNnamphWm1WM3RqeXJhMm14NjQ0Z3hkc1kzemt1VnlheVdXaVhxLVdRaGNqWEIwZ19BWXdONGphY2lyRjZ0WVh4M0lrYUVLX1F4UjE5NVdwOFpCSi0wLUtSVWE1MWtQbFlnSk4yU0h4UlFDTVdCN2tza3ZKZWt5ZldkQlNkNURJbzRpczlzenRfY09nVXZSRERVcDVjOTk4RFIzenB3VXoya1lWalU1bHc2MnpvUQ?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "Xiao-I (AIXI) Stock Forum and Discussion - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBSUzJLRDMxZEM3ZE1yTWdCYTNuUU9UTDZFQ0dOYlNsUDdPQjM0ZjJfLXZKRUdDYWlnQjRUTThBenZIb0h2N00zSlJvUk1oa0V5Z28zV3ZTQUxlZw?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "AIXI Stock Whipsaws As Traders Target Volatile AI Play - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5tWlFCZkg5dU1ONy1JTzNMbzJYUGJPOVpCX1pkNm11d1EwYjNzLTl0Q1RRbHVLTnJFVTlFbVhaUTFaNElMekdnWnctSEpfaHZZUnV3Wkw3ZTNYNG83TXY4a2x5bmMxOHd2NVlRNU96SDVpQjVsYzUyT01uRm9VQQ?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "AIXI Stock Jumps As Traders Zero In On Volatile AI Move - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9OaTU3empDNk1NTUdqckxiZW1PcjFWRXBZV3VRRHdkelo0SXJCbjBHcHJBUzVmcFRSdWwtSjRPSl9TSlB2OFkwX016U2I2UDY1dnkxakJyZVFrZ1VVZk8yeXFRQ1g0Mm4taV9vYXhPUDN4b0ZmTDBKQ2F3?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "12 Information Technology Stocks Moving In Tuesday's After-Market Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOMnRHcXZMSDJoaGxWMl9oV2xrSll1aUZ5X0hrTWZxZ1d1a3RFbmJ6NGl2dUpiODJERmoycTU1YTNEOVlXckgySW9wM3BtUmxGVTVlMVhibGE2OGc5UnJ1VEhUcHE3eXhoRmt4WTBScDVxd3JIVzU1cHlpQjZQUFQ3dEI3d2Y3eXlyNF9vcDZzY3RSSVlrQzY3TXdQemNXX2FZX1VQQklNaXBwa2czWXFNbTVtdUhiVTlJcnpPUUx4TXB6dE5ld3J2WEd3dw?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "HCAI Stock Soars 220% Pre-Market, Eyes Break Above 50-DMA After Two-Month Gap - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxObmI1UUxGb0NkSVVkWlhUT0x4QTU0N0EybGlFS1B4Q1dMWVMyX1VTZ1k5Qm12RlVoV2dEaTY2aGZ2czNrVENFalYta0RnYkg5RzAtSmotM1lxLTk5VGhQTGNRVFRrSjhUY3JNSno3WkpDdnFKLWwzV3VzaVk2aVNJWXNjMW0tMzlNcEJRZ0RQa3Q4aGMzNVYyQmNQRG1uSDlUSGJIY3F0REt5NXpSTkZzVnU0bXlBU0JVaHVOYTY5Q00wMWY5eUdya1RRMC05Vk9R?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "Discover the top movers in Tuesday's pre-market session. - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQSDdHcVUzcEFSSVRDMnpieEV2Umh2YWduRmZ5VUJKV2t3NHl3RnZpbFhiVFhMdFJGVDZ2S2Q2blpVdmQ1b20tWkVLNi1ibENFY2YzLWhHNUY2T3l1LXZhUHg2aWx6THVwNVA1bUhFLUZ1dHl5Tk81VURZcEJoYWNPdDNnU2VJb1BRam4zTjlnOGlqcWJvUlpPS1dFZ1dJWFc2OVd4Z3BRX043dw?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "AIXI Stock Volatility Spikes As Traders Target AI Micro-Cap - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBhbjQzdUpaN1Nrd2luQzFsd0prSlpVbTI2aTAzb1lsV3Q1NVdDQ1pGZzV4cFM1R05lSFFsaEkzVmxxbllzMi1ya1Z6U3UxTjR5cHVyZW1NR2NYN0NvaGFjd01sQ2I5NWhTWVphNlF5OHpVUmhudE5DU3pWaw?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "Premarket Movers Oct. 13, 2026: Small-Cap Gainers and Losers - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQRUxOaDZWVFlVTHRVVnlwZjNCck1nT1BvbGJ4aXRNSXQ5djItRkRUZTNrWlhZY0RHUGlWdEdveU16enlRNmpSaVhQZms5Qjk2TEJRYkl5YlRGTlB2VGVVWVJRN290YmtaRGZZV0tEQ0JDeVZQYjEtTVRyMTV3OUVtXy05WGg5d25FOGNCUU9pdGtQX2ROUl9FQ3QyLU5sTkRHVUNwODNiems5QTBhb2c?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-12",
+      "type": "other",
+      "title": "What's going on in today's session - Chart Mill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPRUJiRjhsWjlzd1VBVXBNaUFzRWFNT1NVcjM5eDJ4cnQtdW10eTItVDRRbDJNWWNCTVFuV1gwbVdGQndTVnhnY1JCY3R3OUJWNWtfUnpLdHB4NXRHVEFJLVJhaVVnUU5pU0J2Z09ibnlRR0JlekdHT3JDUVN0VEFHeFU5eV9YdjRxU2RTbw?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-12",
+      "type": "other",
+      "title": "12 Information Technology Stocks Moving In Monday's Intraday Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPNGtSNjQwczlUSHV2TE9PTGZmZGF5Nkp1Ml9SUXNELWFIT241RXA0dk5fTVBHN21OMDRQbUpFdnFkNFl1ZzR2bFF1MzgzY2RjRXlUWWJGeERqS0ozOGc3ajY5dUVPNV9yTDl3Y2gwUGZMRVplSldXT3RoSXZQNE9XMVUxWGxRR1ZGandNeXFkUXF3UDhJU3hUTVVEOUdMZU5BSHBSbzBRVExEVlEwdXdzaEdjSnNjUVZ3SUZ2WGV1Y0x6SjB1?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "AIXI Stock Whipsaws As Traders Target AI Volatility - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5aUDN4OVBKTVRma1M5NlBUTm9OaDlRWmV4MmZHdXhIRTBUTWxDLWNwODMwY3JIUEgwdU9Ja1JRR3Q2TGtQS2o2RXZuYTYyYmhvV2E5TjJ1dXdnQ3J2RXpiQWdYSkpCVTJTN2k1YjRmSk9LaFAwaHY5Y1dR?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-04",
+      "type": "other",
+      "title": "AIXI Stock Dips As Traders Focus On Weak Balance Sheet - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5JeVNxX2VZX1dZM2dzYXVSRzdkS2dOSklmM1JPZF9ERVVMVEswWWxQSDVHQU5GR1JCTEQ4VzB4a3RQSkVEUkVncVFZNnRvRWNISEJ3SjBRNzRQZXFHdnl3d2xWbW5Kb1pGa0pYeE9TR2p5N1RDYU9xZQ?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-03",
+      "type": "other",
+      "title": "AIXI Stock Dips As Traders Weigh Weak Balance Sheet And Volatile Price Action - timothysykes.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5ZaWotWF9qRVk5ekwzMEE3Q1dKc3VQQW53TEVvTkJMN191QjZ3NV9mSXF4ZlJjRUF2N21VZ2FhNjJXMXY2NjRnc2RmUFhSbTJ3enBzTUQwZS1YNzItMU5HMEpNcDZod2drUG1xbm5fV25jZllyTjhv?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-02",
+      "type": "other",
+      "title": "AIXI Stock Slides As Traders Weigh Weak Balance Sheet - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5KRXB0YVQzNWp3SS1udzJtNHBnbUltV1FxWkFBdW5aVWE4NkJHcnZmQkYwUUZjXzJUU2tRTFJQWUJITWZreXc5ZkNCc1ozOVdBWklQSDBiTzZJa1F3LS1ocU91UmpsTm92S21kLXF1OHN1MXlUaDNaai1rVQ?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-02",
+      "type": "other",
+      "title": "AIXI Stock Slides As Charts Flag Heavy Selling Pressure - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE4zTXotZkY3VXBZSEF1amRCUFkzbTRZQndkb0hvS2FHRGswTF92YVUzS3ZUeGxNd3BTOTJ4TTN4dThYLTRSZjQzTU5VeUp5UW9lOHFIMEVBZDJTQy02T1FaLUdwTkZqcEo3YVFKcU13LXR5SjlVMUdfdHFmb3I?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — REPORT OF FOREIGN PRIVATE ISSUER",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000121390026105823/ea0306791-6k_xiao1.htm"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-09-03",
+      "type": "other",
+      "title": "Xiao-I Corporation Announces ADS Ratio Change with Marketplace Effective Date on September 8, 2026",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/xiao-corporation-announces-ads-ratio-131500532.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-28",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000185141626000029/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-26",
+      "type": "other",
+      "title": "AIXI Stock Faces Reverse Split As Nasdaq Pressure Mounts - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE84RmxPMm9qVnhzdTRBVWU4OFV3bHJ6d0RueDZXUDllNlpFSGx2SkdsVEItSmhQek9UZ1YxR2xYWXZFVUtYM3NYUDBMaGVMSV9qbXE1SFJCa3BBb29YTkd1YXIzMnhxd3lpclVDZ1NVaTZiNlJxQnZIZzJR?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-26",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000121390026093890/ea0303406-424b5_xiao1.htm"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-25",
+      "type": "other",
+      "title": "Xiao-I surges as traders appear to react to planned ADS ratio change | AIXI Stock News - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNZEZ4RDgxWTBLeFlyYS16ZFZVbGxmZk9CcXZDdzlnb3JHMDUyVVZ1aFY3U3hGdVZpcEJ5TFJzYkt1MlUzd2N1Z2J5WkVKOXAwVDdvbzh6VmFqbG1IMkdoMkRldUFvSDZ0T25BRFVlNDEyaUp2QzBCNng4cmR5bWZKUWlRNmRyUEI5ejg2Nzc0V2VsV2VmY19ZYVZHX1JVS2N3bmhr?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-20",
+      "type": "other",
+      "title": "Xiao-I Corporation Announces Plan to Implement ADS Ratio Change",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/xiao-corporation-announces-plan-implement-131500112.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-20",
+      "type": "offering",
+      "title": "Xiao-I Corporation Announces Receipt of Nasdaq Listing Deficiency Notice",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/xiao-corporation-announces-receipt-nasdaq-131500688.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-20",
+      "type": "other",
+      "title": "Xiao-I plans to exchange every seven American depositary shares for one on or about Sept. 8 - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxORFVmWXRPR3Z1MGhXVHRDQk5mbVhld09KSDhZT0JDZlhTNFVEenRwN2Y2NlE3bmtUR3hXdGxMQzRod2FicGYwNm1JOTlPSjNubHVqcnRGcjdVenlnNndNR21MaG5HLThZV0dUMWFFeDVTY283TnJYblc2OVpTd1RjX3hyTVhyWVJxOWNxbGJ0MWdhd25CQkE0aVhWbTN6VFF5TlE2MmdrejFCSWFlMU9TUg?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-20",
+      "type": "other",
+      "title": "إفصاح SEC: F-6 POS",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000119380526001118/e665724_f6pos-xiao.htm"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-06-19",
+      "type": "other",
+      "title": "Xiao-I Corporation Provides Update on First-Instance Rulings in Patent Litigation Against Apple; Company Intends to Appeal to the Supreme People's Court",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/xiao-corporation-provides-first-instance-210000164.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-06-03",
+      "type": "other",
+      "title": "Xiao-I Corporation Regains Full Compliance with Nasdaq Continued Listing Standards",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/xiao-corporation-regains-full-compliance-131500956.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-05-29",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000185141626000018/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-05-22",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F/A — AMENDMENT NO. 1 TO FORM 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000121390026060270/ea0291729-20fa1_xiao.htm"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-05-15",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — ANNUAL REPORT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000121390026057986/ea0290336-20f_xiao.htm"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-04-29",
+      "type": "other",
+      "title": "إفصاح SEC: NT 20-F — NOTIFICATION OF LATE FILING",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000121390026049353/ea0288234-nt20f_xiao1.htm"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-04-24",
+      "type": "other",
+      "title": "Why Is AIXI Stock Crashing Premarket Today? - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPRUluZk9VeWU0SWJJYTItOFg0N3p2WUtTRW9BbzJGcURsLWZEMlN3U29sRTlPOFhLUll4MEFpOTVnNVRfV1dHRDVGZ1UxOFZnTXN5eVdxaDA5UmJpY29fOVlwb1JaY1Z4OGpRMlpBN1MyVzR2MDRraDlPMkpnQ2ZoWlhBOXdzVHdYOVM4Nmh6RDNteDRDR1V6Q1N6M0xGbm1JNlJacFRqdTRadw?oc=5"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-04-07",
+      "type": "other",
+      "title": "Apple Drops 5% as Foldable iPhone Delays and China Patent Battle Rattle Investor Confidence",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://247wallst.com/investing/2026/04/07/apple-drops-5-as-foldable-iphone-delays-and-china-patent-battle-rattle-investor-confidence/?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-04-07",
+      "type": "other",
+      "title": "Penny Stock Xiao-I Is Surging on Apple Patent Win. Should You Buy Little-Known AIXI Now?",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://www.barchart.com/story/news/1185349/penny-stock-xiao-i-is-surging-on-apple-patent-win-should-you-buy-little-known-aixi-now?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-04-01",
+      "type": "other",
+      "title": "China Court Ruling On AI Patents Puts Apple Valuation In Focus",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/china-court-ruling-ai-patents-161115377.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-03-31",
+      "type": "other",
+      "title": "Xiao-I Corporation Provides Further Update on Shanghai Xiao-I's Patent Infringement Lawsuit Against Apple",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/xiao-corporation-provides-further-shanghai-132500208.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2025-11-21",
+      "type": "contract",
+      "title": "Xiao-I Corporation Renews Contract with Major Automotive Joint Venture for Cognitive AI Services",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/xiao-corporation-renews-contract-major-143500921.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2025-10-31",
+      "type": "contract",
+      "title": "Xiao-I Corporation Renews Strategic Partnership with Premier Multinational Insurer to Elevate Customer Experience with AI-Powered Conversational Platform",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/xiao-corporation-renews-strategic-partnership-134500350.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2025-04-11",
+      "type": "other",
+      "title": "إفصاح SEC: S-8 — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000121390025030788/ea0237773-s8_xiaoicorp.htm"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "AIXI",
+      "kind": "424B5",
+      "date": "2026-08-26",
+      "title": "إفصاح 424B5 — PROSPECTUS SUPPLEMENT",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000121390026093890/ea0303406-424b5_xiao1.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "AIXI",
+      "kind": "news-offering",
+      "date": "2026-08-20",
+      "title": "Xiao-I Corporation Announces Receipt of Nasdaq Listing Deficiency Notice",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/xiao-corporation-announces-receipt-nasdaq-131500688.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "AIXI",
+      "kind": "effectiveness",
+      "date": "2024-05-20",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/999999999524001592/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [],
+  "positive_news": [
+    {
+      "symbol": "AIXI",
+      "date": "2025-11-21",
+      "type": "contract",
+      "title": "Xiao-I Corporation Renews Contract with Major Automotive Joint Venture for Cognitive AI Services",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/xiao-corporation-renews-contract-major-143500921.html?.tsrc=rss"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2025-10-31",
+      "type": "contract",
+      "title": "Xiao-I Corporation Renews Strategic Partnership with Premier Multinational Insurer to Elevate Customer Experience with AI-Powered Conversational Platform",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/xiao-corporation-renews-strategic-partnership-134500350.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-26",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1935172/000121390026093890/ea0303406-424b5_xiao1.htm"
+    },
+    {
+      "symbol": "AIXI",
+      "date": "2026-08-20",
+      "type": "offering",
+      "title": "Xiao-I Corporation Announces Receipt of Nasdaq Listing Deficiency Notice",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/xiao-corporation-announces-receipt-nasdaq-131500688.html?.tsrc=rss"
+    }
+  ],
+  "phase": 7,
+  "display_phase": 7,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "spike",
+    "rsi"
+  ],
+  "rejections": [
+    "صعود يوم التقسيم 3.5% أقل من الحد الأدنى 5.0%",
+    "RSI لم ينزل تحت 30 (أدنى قيمة 44.57) — لا يوجد تشبع بيعي"
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 158 يوماً (1-for-20) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 784 يوماً (1-for-9) — خارج نافذة 60 يوماً المطلوبة",
+    "تسلسل «جاهز فنياً» قيد التكوّن — تجاوز المقاومة بقوة (15.7% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 56.2,
+  "grade": "C",
+  "breakdown": [
+    {
+      "key": "rs_setup",
+      "ar": "حدث التقسيم العكسي",
+      "score": 77.7,
+      "weight": 18,
+      "detail": "1-for-7 بتاريخ 2026-09-08 (عمر 38 يوم)",
+      "points": 13.98
+    },
+    {
+      "key": "spike",
+      "ar": "صعود يوم التقسيم",
+      "score": 31.7,
+      "weight": 8,
+      "detail": "3.5% من الافتتاح 3.26 إلى 3.375",
+      "points": 2.54
+    },
+    {
+      "key": "decline",
+      "ar": "قوة الموجة الهابطة",
+      "score": 99.0,
+      "weight": 14,
+      "detail": "هبوط 65.0% من القمة 3.375 إلى القاع 1.18",
+      "points": 13.86
+    },
+    {
+      "key": "oversold",
+      "ar": "التشبع البيعي",
+      "score": 8.0,
+      "weight": 14,
+      "detail": "أدنى RSI 44.57 (2026-10-01) — الحالي 59.21 وقد بدأ التحسّن",
+      "points": 1.12
+    },
+    {
+      "key": "base",
+      "ar": "القاع والثبات",
+      "score": 20.0,
+      "weight": 18,
+      "detail": "ثبات (جلسة واحدة) — نطاق القاعدة 91.5% — جفاف حجم 8898% من المتوسط",
+      "points": 3.6
+    },
+    {
+      "key": "reversal",
+      "ar": "تأكيد الانعكاس",
+      "score": 89.0,
+      "weight": 18,
+      "detail": "إغلاق 7 جلسات فوق EMA9، MACD يتحسّن، 3 قاع صاعد، RSI خارج التشبع، انطلاقة +209% بعد الثبات، اختبار مقاومة قريبة عند 3.25",
+      "points": 16.02
+    },
+    {
+      "key": "squeeze",
+      "ar": "عوامل الضغط والانفجار",
+      "score": 17.8,
+      "weight": 6,
+      "detail": "فلوت 0.56M سهم، أيام تغطية 0.1، تغيّر المراكز +3%",
+      "points": 1.07
+    },
+    {
+      "key": "risk",
+      "ar": "جودة المخاطر",
+      "score": 100.0,
+      "weight": 4,
+      "detail": "لا مخاطر بارزة خلال 30 يوماً",
+      "points": 4.0
+    }
+  ],
+  "confirmations": [
+    "إغلاق 7 جلسات فوق EMA9",
+    "MACD يتجه للتحسّن",
+    "RSI خرج من التشبع البيعي وتحسّن",
+    "3 قاع صاعد في البنية",
+    "انطلاقة +209% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 3.65,
+    "entry_zone": [
+      2.8616,
+      3.65
+    ],
+    "stop": 2.92,
+    "stop_pct": -20.0,
+    "stop_structural": 1.1092,
+    "stop_structural_pct": -69.61,
+    "targets": {
+      "t1_382": 2.0185,
+      "t2_618": 2.5365,
+      "t3_full": 3.375
+    },
+    "rr_t1": -2.23,
+    "rr_t2": -1.53,
+    "risk_per_share": 0.73,
+    "reward_t2_per_share": -1.1135,
+    "atr_pct": 23.69,
+    "bottom": 1.18,
+    "peak": 3.375,
+    "last": 2.92,
+    "base_high": 2.26,
+    "ema9": 2.4769,
+    "ema20": 2.1642,
+    "support": 1.18,
+    "impulse_high": 3.76,
+    "resistance": 3.25,
+    "sweep_low": null,
+    "reclaim_level": 1.1859,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 23.7%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 2.92$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "bull_flag",
+      "name_ar": "علم صاعد",
+      "tf": "1D",
+      "confidence": 0.85,
+      "bias": "bullish",
+      "description_ar": "علم صاعد: سارية بارتفاع 102% من 1.490 إلى 3.010 ثم تصحيح مضبوط بنطاق 39.3% وارتداد 6% من السارية. اختراق 3.760 يفتح استكمال السارية.",
+      "levels": {
+        "flag_high": 3.76,
+        "flag_low": 2.7,
+        "pole_target": 5.28
+      },
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "1D",
+      "confidence": 0.85,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 3 قاع صاعد منذ بداية القاعدة (1.180 → 2.700) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.18,
+        "last_low": 2.7
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 8% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "bull_flag",
+      "name_ar": "علم صاعد",
+      "tf": "4H",
+      "confidence": 0.85,
+      "bias": "bullish",
+      "description_ar": "علم صاعد: سارية بارتفاع 159% من 1.215 إلى 3.150 ثم تصحيح مضبوط بنطاق 39.3% وارتداد 14% من السارية. اختراق 3.760 يفتح استكمال السارية.",
+      "levels": {
+        "flag_high": 3.76,
+        "flag_low": 2.7,
+        "pole_target": 5.695
+      },
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.85,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 3 قاع صاعد منذ بداية القاعدة (1.450 → 2.760) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.45,
+        "last_low": 2.76
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 2% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 2.87,
+    "rsi": 58.41,
+    "trend": "neutral",
+    "ema20": 2.4878,
+    "ema50": 2.5158,
+    "rvol": 0.02,
+    "macd_hist": 0.0759,
+    "channel_broken": true,
+    "higher_lows": 5,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-7 نافذ في 2026-09-08 (عمر 38 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 3.26$ وصعد إلى 3.375$ (+3.5%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 65.0% من القمة 3.375$ إلى القاع المرجعي 1.18$ بتاريخ 2026-10-01 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 44.57 (تشبع بيعي و 0 جلسة تحت 30) والحالي 59.21 مع بدء التحسّن.",
+    "ثبات جلسة واحدة على القاع 1.18$ داخل نطاق 91.5% مع جفاف حجم (8898% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +209.5% من إغلاق القاعدة (1.215$) إلى 3.76$ (2026-10-13) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 3.25$ (تشكّلت 2026-10-06) — على 175.4% من الدعم الرئيسي، واختُبرها السعر في 2026-10-13 عند 3.76$ وتوقف عندها بفارق 15.7% ثم تراجع.",
+    "حالة التسلسل: تجاوز المقاومة بقوة (15.7% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة.",
+    "تأكيدات فنية: إغلاق 7 جلسات فوق EMA9، MACD يتجه للتحسّن، RSI خرج من التشبع البيعي وتحسّن، 3 قاع صاعد في البنية، انطلاقة +209% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه عرضي، RSI 58.41، والقناة الهابطة مكسورة على الفريم.",
+    "عدد الأسهم 565.2K — الفلوت 557.4K سهم.",
+    "أبرز نموذج فني: علم صاعد — علم صاعد: سارية بارتفاع 102% من 1.490 إلى 3.010 ثم تصحيح مضبوط بنطاق 39.3% وارتداد 6% من السارية. اختراق 3.760 يفتح استكمال السارية.",
+    "أخبار سلبية: إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT | Xiao-I Corporation Announces Receipt of Nasdaq Listing Deficiency Notice",
+    "محفزات إيجابية: Xiao-I Corporation Renews Contract with Major Automotive Joint Venture for Cogni | Xiao-I Corporation Renews Strategic Partnership with Premier Multinational Insur"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

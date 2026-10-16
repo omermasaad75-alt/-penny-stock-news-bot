@@ -1,0 +1,1049 @@
+{
+  "symbol": "GRML",
+  "name": "Greenland Mines Ltd",
+  "sector": "Basic Materials",
+  "industry": "Other Precious Metals & Mining",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-16",
+  "last_close": 6.0,
+  "change_pct": -13.79,
+  "dollar_volume": 287640532.0,
+  "rs_found": true,
+  "rs_date": "2026-08-24",
+  "rs_age_days": 53,
+  "rs_ratio_str": "1-for-50",
+  "rs_ratio": 50.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 9.43,
+  "spike_high": 11.66,
+  "spike_pct": 23.6479,
+  "spike_date": "2026-08-25",
+  "decline_pct": -75.8148,
+  "peak_date": "2026-08-25",
+  "bottom_price": 2.82,
+  "bottom_date": "2026-09-18",
+  "base_sessions": 1,
+  "base_high": 11.68,
+  "base_low": 2.82,
+  "base_range_pct": 314.1844,
+  "base_broken": false,
+  "volume_dryup": 260.513,
+  "atr_pct": 29.27,
+  "rsi_now": 45.21,
+  "rsi_trough": 28.33,
+  "rsi_trough_date": "2026-09-18",
+  "rsi_sessions_below_30": 6,
+  "rsi_recovered": true,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": -0.26885,
+  "channel_slope_pct": 2.162,
+  "channel_upper": 15.4894,
+  "channel_broken": false,
+  "rvol": 0.06,
+  "higher_lows": 2,
+  "squeeze": false,
+  "lifecycle_stage": "تجاوز المقاومة بقوة (55.9% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 2.820",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+538.9% من 2.850 إلى 18.210",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 11.680 (على 314.2% من الدعم 2.820) — توقف السعر عندها بفارق 55.9%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "أدنى نقطة بعد القمة 4.930 مقابل الدعم 2.820",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": true,
+      "detail": "6 إغلاق فوق 2.834 (آخرها 2026-10-16)",
+      "state": "ok"
+    }
+  ],
+  "impulse_pct": 538.95,
+  "impulse_high": 18.21,
+  "impulse_date": "2026-09-22",
+  "resistance_level": 11.68,
+  "resistance_distance_pct": 314.18,
+  "resistance_date": "2026-09-21",
+  "pullback_type": "shallow_pullback",
+  "pullback_low": 4.93,
+  "pullback_date": "2026-10-09",
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 2.8341,
+  "reclaim_sessions": 6,
+  "reclaim_date": "2026-10-16",
+  "support_level": 2.82,
+  "support_hold_ok": false,
+  "base_close": 2.85,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    10.15,
+    8.55,
+    9.71,
+    5.04,
+    5.26,
+    4.88,
+    4.85,
+    4.65,
+    4.87,
+    4.48,
+    4.76,
+    4.35,
+    4.19,
+    3.82,
+    3.15,
+    3.26,
+    3.11,
+    2.995,
+    2.98,
+    2.85,
+    9.42,
+    14.15,
+    11.19,
+    14.89,
+    14.66,
+    11.85,
+    10.375,
+    10.62,
+    9.11,
+    7.88,
+    7.34,
+    6.38,
+    5.83,
+    5.88,
+    5.17,
+    6.02,
+    5.54,
+    6.49,
+    6.96,
+    6.0
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 55.91,
+  "shares_out": 13347132.0,
+  "float_shares": 3075412.0,
+  "market_cap": 80082792.0,
+  "avg_volume": 8662734.0,
+  "insider_pct": 3.78,
+  "institutional_pct": 6.34,
+  "short_pct_float": 7.14,
+  "short_shares": 935276.0,
+  "days_to_cover": 0.04,
+  "short_change_pct": 45.3,
+  "short_volume_ratio": 0.579,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "GRML",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "Greenland Mines Applauds President Trump’s Focus on Greenland Mineral Exploration, Reinforcing Its Importance to U.S. and Allied Security",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/greenland-mines-applauds-president-trump-132500669.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "GLND, GRML, CRML Stocks Surge Premarket: Trump Announces ‘Massive’ Oil, Gas And Mineral Exploration Plans In Greenland",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://stocktwits.com/news-articles/markets/equity/glnd-grml-crml-stocks-surge-premarket-trump-greenland/cZxfZB5RBpr?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "Greenland Mines Ltd (GRML) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9zSjVZaHdTaTQ4Y1lMWk5iWmJEOFMtMFdiQ1ZzUG9yNlFEbWN3YlJnQVhFM3E3NXNPQ1pydVJoSklyRE9VVC1QX2NPa1dhRVUxTkE?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "GRML stock jumps as Greenland minerals theme gains traction after fresh company update - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOQi1ZYUY2Rmd4YzdHSlpMcDRTWU9FS2l3XzZ6R0VoQ3M0blgwd0FIbVlINVN4M3kzV0VqSkdXVUpSaS1pOFBKYnRTc1JtSEdabUpXbEwzWUNJaXBsdmdOaWc3a2N3ZU5XdkhpSlJWOXRyT2hYTjZhZjJlNktSUFpPNEFaajlaZXoxNU5CdEE4MFFBNUJ0N08tanNEWDQ5cnhXd2ZGWTV5VWtFS0pManhwUzZmaXhTQUdOUk1R?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "Trump spotlights Greenland minerals; one project’s high-case estimated present-day value is about $2.05B before tax. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOcXF0N2RNZFdHdEl5Z0JJbktUNnFONDZyTFpyUEZCMF9XM0NsUFFLek9BYldBdWVnZ2t6SmxNbk9xdG8zamJVbDRLcFgzN0V2cW90WF9RNzNUU1lBelVVWlNzZTVLZVFLWGhyeHVVR0JoeUhIWnRzOWpMc3Y1RVVJSC1yQmUzUXRHY3ZqSTNkVmRTX2RsR3BBZ1ZiR3U4RkYtYmNvelB6STViZDU5aDVyOGQxZXNJSGc?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "GRML Stock Rockets On Security Pact And Rare Earths Land Grab - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1NelJyUVpaUHN2THlYWTh4bFdGTmlUZEdiXzlNMktzSWpNSmVKak9VbXktSUdqUUdVRl85OU9ocE84RUQwekNfQjFPMjRGNEZGZWFPMzRpRjJWOEpydW1zOFVGUU05aHdCb0FmaUVvUmNtQnpXUHFkcVMtb0xWR2s?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "GRML Stock Rockets On Greenland Security Pact And Rare Earth Expansion - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOTWhRZE9QbnlxVVBsUHVPVFhiOFJDX0pDc1pKQzU1RHktUjZRRVJzdGJWSzRwLXJ4eW5UekxjZm1Ud092REh0Y3VhdjZ0SWpic3FleXJLX09qVXk1OFpyTFg2aTRleWRMTjFaTTdRM3dybUM1d3hnNGxlXzJrT1Z3RDhnQQ?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "$Greenland Mines (GRML.US)$ Trading volume has reached 150 million so far, with a net inflow of 3.5 million. The daily-level technical indicators look promising. - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNUlBjRi1XYnJRdDh3MW9xcGR2YTgtdFRBeUwtTVJVUU5URkhhQ09KSlFoTDc0cU9rdE9VSi01X21DTVZvMVRWNENpY1JmNzZaanlEUzFXQUtjWFRLMGdtdlBjdUh3OXRPUGdYVGc1MGI2UjhJVW9KRFJaQ3RTN2pvWGg4czFhNVI2QUFJVTAzU3RGY3E2U2IwNDVwX0NubnNqQXlWVXpwMVloTFlyV0pB?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "GRML Stock Rockets On Security Pact And Rare Earths Ambitions - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5WLUJ3d284OEd0UWktb0F0TDE3cG80R2JyQjY3UXA3Z1J6ZjFFMElMTXBwTWhFMUVhQUZ6d0J4ZGtlV0pUZk9IVng1RlFTMDgxWnUtU3pLakJTQmZkYUs4OFYyVWpFQm85a1R1M3JLc25aMEExNWE5WkJaYmg?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-12",
+      "type": "other",
+      "title": "Greenland Mines (GRML) Welcomes EU Strategic Project Designation for Neo Performance Materials Silmet 2.0",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/greenland-mines-grml-welcomes-eu-183000264.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-12",
+      "type": "other",
+      "title": "Greenland Mines Welcomes EU Selection of Neo Performance Materials’ Silmet 2.0 as Strategic Project; Highlights Sarfartoq’s Potential Role in Secure Transatlantic Rare Earth Supply",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/greenland-mines-welcomes-eu-selection-110000398.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-12",
+      "type": "other",
+      "title": "EU selects an Estonian rare-earth plant plan; Neo holds rights to up to 60% of a Greenland project's future output. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNbkd4REFMRUMyS3dZMjdGZklHZkVrN1EyTjdNMk1VZUNYZ2tMRk5YOUdiamZ5dFNtSjkzU1JNdExkbFRGbWRtYjJTMGZ6TGlxcHZwcW1iWDNtN2VzVmZENXdwMDVXMjlGaVRuUmZsQXNua29oc3lfZDZpdzUtbnVwUzJlM0VBOVEwRUd3di1qYTlVVGRfQXNCbVZadzVuS0lIRHZJTWExT3NUUXpzWlZ0M0RXeWpiY3RiNGV5OXh3?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Greenland Mines (GRML) to Participate in Arctic Mining Roundtable at 2026 Arctic Circle Assembly",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/greenland-mines-grml-participate-arctic-190000129.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Greenland Mines President Invited to Join Global Business and Policy Leaders at 2026 Arctic Circle Assembly and Mining Roundtable",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/greenland-mines-president-invited-join-124500115.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "Greenland Mines Brings Two Major Critical Minerals Opportunities Together",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/37664/greenland-mines-brings-two-major-critical-minerals-opportunities-together?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "Greenland Mines (GRML) Draws Expert Attention as Greenland's Rare Earth Race Shifts from Discovery to Delivery",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/commodities/articles/greenland-mines-grml-draws-expert-185048773.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "Greenland Mines Authorizes $20 Million Share Repurchase Program and Announces Capital Allocation Priorities",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/greenland-mines-authorizes-20-million-131500324.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "Greenland Mines (GRML) Exercises Option to Increase AnorTech Stake to 19.9%",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/greenland-mines-grml-exercises-option-180000377.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "$GRML stock is down 8% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPR2pXNmJtem9BT3NSa0tWZUZHZjF0Nzh1cTRmbHJWb1ZmVkUzdmp2S3ZmVmx6Y194T05xRGlwQkJxdHBndGdHYzNHZHNsbTVNbGFsQVBQVHE0b182UUh6NXNjYmlQQTQ2OWVObExkX3hadlhsQTQ2SEcwNEV0cUxxQUFvam1IYkNOTXhTbTlEenYwMlcwMTNUelNfcVJJWjJJOVE?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "After raising more than $59 million, Greenland Mines may buy back up to $20 million in shares. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQclQ3Wl9LUU8xbFdJXzNqMXBmSTZVXzJLZXFnOFJuT19wd2JHRF9GQ3RIU0x4UVQtUlcyRUpZNGgzV25Ua0IybWtVblM5TWU4UWl1YTdhSFFKRUNUR1JoZHViU2w2YXdqeFlGRXRlZl9paVkteFBFakcxOVBHTVVBeHlqWVpaZmxNUE1vc2dnWlNFaWdNWnpJajNLZk1kWHVQZEJXY205VTdtNS1ia2dfcGJzd3Q0Wlo5VE9LRzhn?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-05",
+      "type": "other",
+      "title": "Greenland Mines (GRML) Completes 2026 Skaergaard Field Program",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/commodities/articles/greenland-mines-grml-completes-2026-183000096.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-05",
+      "type": "other",
+      "title": "AnorTech Secures Strategic Cornerstone as Greenland Mines Doubles Stake to 19.9%",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/anortech-secures-strategic-cornerstone-greenland-130000509.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-05",
+      "type": "other",
+      "title": "Greenland Mines Doubles AnorTech Stake to 19.9%; Extends Critical-Minerals Platform to Smelter-Grade Alumina, Lunar Construction Materials",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/greenland-mines-doubles-anortech-stake-124500429.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-05",
+      "type": "offering",
+      "title": "Greenland Mines Has More Funding And More Dilution Than The Headline Suggests - Seeking Alpha",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPY09XTGFrQ2dkaXNsODE5dXFCWERSbmEzLUdYTms3Y05DdTNsam9yLVA5YWFpZk1aMzBFdm52WG9VUG9WR0VsQVh4OUNFcm00WkcyYlEzaXhmYWlDMnZZbks0blNjSlo2WnVBTHp2N0F6ZW9wT2dnYUt5OTl0eGtaMjNpMDdhS1B1emRmT1ozNDYzR29na1VKNUFEUFIteExrSUdxZXZmWWZOMVFQMmRuNEYxTklCZXVZSmc?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-02",
+      "type": "other",
+      "title": "Greenland Mines (GRML) Management Outlines Pipeline, Path From Exploration to Production",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/commodities/articles/greenland-mines-grml-management-outlines-183000532.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-02",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — CURRENT REPORT",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026106394/ea0307566-8k_greenland.htm"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "Greenland Mines Identifies Critical Minerals Additions Including Gallium and Vanadium as Landmark 2026 Skaergaard PGM Program Concludes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/greenland-mines-identifies-critical-minerals-163300450.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "إفصاح SEC: 144",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000195824426000632/xsl144X01/primary_doc.xml"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "Greenland Mines (GRML) Raises Over $17 Million, Adds Two Directors",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/greenland-mines-grml-raises-over-184403563.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "Greenland Mines Brings Total New Capital to Over $59 Million with Above-Market Raise from Existing Shareholders",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/greenland-mines-brings-total-capital-123500633.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "Over $59 million was raised in a week by Greenland Mines. Shares in its latest sale cost $13 each. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNVzN5Rk81WWdHWkliQ2hRWF9LUVY5cnlMejZBTmV0YnpLR2hkU25ncW5jdkpXT3NVQVozU05lS2tNNmNpZUVEU3BzcTFiUmlMaVFRV3l3blo4MVprUjVrYUZNM0RkU0J2S2dKZDN0eGhMdFBWTlZoWjRRQUVYQ0dyVkxQbVhUeVlFYjBlZlNlNkhBUkJlTGRrVXFWOGRuSUdlS1VyNVRrWFRCeGpXZ09EWnRMUXVxdEZlQnRN?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "Greenland Mines (GRML) Raises Over $17 Million, Adds Two Directors - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVFBHZDNvZmd6TVRrSGNGX0RBZlgxT1lhMHNCM1djZWRlOTBJWHhDa3lEWnNnX01nN3liTDN6TWJlSTRaVlVPZEVmTnR5c2l0UUFPWUN2b09NQ3k3RWxLVmgzSFVRUjd6WVJWdTRjSkduMXJPcjZ4T0syYmVWWkVmdkNITkRIdi1ZVXF5QWVPX0JzcjVMWUhPbExKYmM3QQ?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-28",
+      "type": "other",
+      "title": "Greenland Mines (GRML) Begins Trading on Frankfurt Stock Exchange",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/greenland-mines-grml-begins-trading-193000902.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-28",
+      "type": "earnings",
+      "title": "Top Midday Decliners",
+      "sentiment": "negative",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/top-midday-decliners-182357644.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-28",
+      "type": "other",
+      "title": "Greenland Mines (GRML) Begins Trading on Frankfurt Stock Exchange - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNOGItR0RyR1phYk9mWGlQNHUxQ095S0V6TUdHQVpJaGhFc0VWeW1DNHZrWjBhZXhzaFUwNXQ2eVp4Y25BNUNLSG54eDc2SEFibVFTQ0dFVWpveWl3NkNxZ3VPN0NlWEpvS043MjE1alhZcENtMWxvM01tcm5FZGozZzVHbGp3V2tCVmFCQW9BT3UzcTVFSktQc0tFNzR1R3JrdXc?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-28",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026104114/ea0306753-424b5_green.htm"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-25",
+      "type": "other",
+      "title": "European investors can now trade Greenland Mines shares in Frankfurt. No new shares are being issued. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQRzJJUllWY0ItVHJSMy13cHl5Ui0xTHpaQWJFWmNLR3N0czF2RVZrcmNMb19qeHBfeVIzQndvQ0xxZWUwSGM0ZmV3c191X210VnlIdGwwYkY0cWRhTEtaMHA1ZWI5XzcxdlZWbnFYZmM3ZkQ2VjN5VFBrZGpMUTZDeTVlSEpoRkJ4S2NTVk5kUWtBUjMzSnRWeGtqaG1WUXVjc29CZG0yS1pJbTFHb2NBN2RQYkdjaU9ETHc?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-24",
+      "type": "other",
+      "title": "Why Is GRML Stock Surging In Pre-Market Today? - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOUG5LRUFTZGlFcENqOUFfRV91OXhqSldtbjh3eTI4UHhXN3Y5MHA1S1k5LU9CdXFaZ0kxY2VpbmZoZFBfWHloSmhjaFo4X3VPS2pPLWlsQUFlNW5tVDlUb3JEYmhVc1VoODJEc0NIZjVINGtrLVhyeWxHa1N0T1duX3JxNW40LTBCcmJzWWozbnJ1enBCM1E?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-23",
+      "type": "other",
+      "title": "Why Is GRML Stock Surging Over 15% Premarket Today? - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNVlIyN0xkYjhSQWFubzY3NUgzZ3RXVlBiTnhhRHVlODdJVVhHOHJTcEkwMktrVk1qNlV3SDdBM2VWTXlqZVJIN1J1c2tMeUVJVmF6enR5VVMyRVZQYTZKaDU4cVhFMS1YQVhsTzlxR25Qc0h3NE9SSFlic1RpRm9nVUNRcmFCaG5iYS10NVFmU25EbzRjRUNv?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000091957426006145/xslSCHEDULE_13G_X02/primary_doc.xml"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "GRML",
+      "kind": "news-offering",
+      "date": "2026-10-05",
+      "title": "Greenland Mines Has More Funding And More Dilution Than The Headline Suggests - Seeking Alpha",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPY09XTGFrQ2dkaXNsODE5dXFCWERSbmEzLUdYTms3Y05DdTNsam9yLVA5YWFpZk1aMzBFdm52WG9VUG9WR0VsQVh4OUNFcm00WkcyYlEzaXhmYWlDMnZZbks0blNjSlo2WnVBTHp2N0F6ZW9wT2dnYUt5OTl0eGtaMjNpMDdhS1B1emRmT1ozNDYzR29na1VKNUFEUFIteExrSUdxZXZmWWZOMVFQMmRuNEYxTklCZXVZSmc?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "424B5",
+      "date": "2026-09-28",
+      "title": "إفصاح 424B5 — PROSPECTUS SUPPLEMENT",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026104114/ea0306753-424b5_green.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "8-K",
+      "date": "2026-09-28",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026104099/ea0306751-8k_greenland.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "8-K",
+      "date": "2026-09-04",
+      "title": "8-K بند 1.01,2.01,3.02,5.03,5.07,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026097770/ea0304732-8k_greenland.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "8-K",
+      "date": "2026-08-27",
+      "title": "8-K بند 1.01,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026094429/ea0303537-8k_greenland.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "424B5",
+      "date": "2026-08-25",
+      "title": "إفصاح 424B5 — PROSPECTUS SUPPLEMENTAL",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026093597/ea0303382-424b5_green.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "news-offering",
+      "date": "2026-08-20",
+      "title": "Greenland Mines Approves 1-for-50 Reverse Stock Split as Skaergaard Development Advances - Yahoo Finance",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOTEtBUGNzdW9lOFFfRDdQd1JLbHAzN3ZURXVSOS1VSHVmWG9tYzlXcFJOQWpMYS1CaEI5dVJwRnVrdFN3U3dkOVRsQ3RoRzJ6Wk5sLUszemFNdnBKWVpPU1U0a2RIbnkxV0tiZDQyeGJTZGJqcjJ3VXNPbkNsVXJ2UFl6X0dRNVFyd05uYzdlX01NVDBjV2JYenJB?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "delay",
+      "date": "2026-08-14",
+      "title": "تأخير في تقديم NT 10-Q (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026089768/ea0302190-nt10q_greenland.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "8-K",
+      "date": "2026-07-23",
+      "title": "8-K بند 1.01,3.03,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026080649/ea0298948-8k_greenland.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "8-K",
+      "date": "2026-06-25",
+      "title": "8-K بند 3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026072105/ea0295680-8k_greenland.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "424B3",
+      "date": "2026-06-22",
+      "title": "إفصاح 424B3 — PROSPECTUS SUPPLEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026070673/ea0294880-424b3_greenland.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "8-K",
+      "date": "2026-06-22",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026070477/ea0295319-8k_greenland.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "delay",
+      "date": "2026-04-01",
+      "title": "تأخير في تقديم NT 10-K (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026038209/ea0284594-nt10k_greenland.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "8-K",
+      "date": "2026-03-10",
+      "title": "8-K بند 1.01,2.01,3.02,5.03,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026025750/ea0280692-8k_klotho.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "8-K",
+      "date": "2026-03-02",
+      "title": "8-K بند 3.02 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026022411/ea0279426-8k_klotho.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "effectiveness",
+      "date": "2025-12-12",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/999999999525003720/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "S-1",
+      "date": "2025-12-05",
+      "title": "إفصاح S-1 — REGISTRATION STATEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390025118825/ea0268254-s1_klotho.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "424B3",
+      "date": "2025-07-28",
+      "title": "إفصاح 424B3 — PROSPECTUS",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390025068145/ea0250456-424b3_klotho.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "S-3",
+      "date": "2025-07-07",
+      "title": "إفصاح S-3 — REGISTRATION STATEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390025061591/ea0248090-s3_klotho.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GRML",
+      "kind": "8-K",
+      "date": "2025-06-10",
+      "title": "8-K بند 1.01,3.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390025052898/ea0245180-8k_klotho.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [],
+  "positive_news": [],
+  "negative_news": [
+    {
+      "symbol": "GRML",
+      "date": "2026-10-05",
+      "type": "offering",
+      "title": "Greenland Mines Has More Funding And More Dilution Than The Headline Suggests - Seeking Alpha",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPY09XTGFrQ2dkaXNsODE5dXFCWERSbmEzLUdYTms3Y05DdTNsam9yLVA5YWFpZk1aMzBFdm52WG9VUG9WR0VsQVh4OUNFcm00WkcyYlEzaXhmYWlDMnZZbks0blNjSlo2WnVBTHp2N0F6ZW9wT2dnYUt5OTl0eGtaMjNpMDdhS1B1emRmT1ozNDYzR29na1VKNUFEUFIteExrSUdxZXZmWWZOMVFQMmRuNEYxTklCZXVZSmc?oc=5"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-28",
+      "type": "earnings",
+      "title": "Top Midday Decliners",
+      "sentiment": "negative",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/top-midday-decliners-182357644.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GRML",
+      "date": "2026-09-28",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1907223/000121390026104114/ea0306753-424b5_green.htm"
+    }
+  ],
+  "phase": 7,
+  "display_phase": 7,
+  "phase_key": "EXTENDED",
+  "phase_ar": "مرحلة التمدد — بعد الاختراق",
+  "eligible": true,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [],
+  "rejections": [],
+  "notes": [
+    "تسلسل «جاهز فنياً» قيد التكوّن — تجاوز المقاومة بقوة (55.9% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)"
+  ],
+  "score": 61.0,
+  "grade": "C",
+  "breakdown": [
+    {
+      "key": "rs_setup",
+      "ar": "حدث التقسيم العكسي",
+      "score": 62.0,
+      "weight": 18,
+      "detail": "1-for-50 بتاريخ 2026-08-24 (عمر 53 يوم)",
+      "points": 11.16
+    },
+    {
+      "key": "spike",
+      "ar": "صعود يوم التقسيم",
+      "score": 98.9,
+      "weight": 8,
+      "detail": "23.6% من الافتتاح 9.43 إلى 11.66",
+      "points": 7.91
+    },
+    {
+      "key": "decline",
+      "ar": "قوة الموجة الهابطة",
+      "score": 100,
+      "weight": 14,
+      "detail": "هبوط 75.8% من القمة 11.66 إلى القاع 2.82",
+      "points": 14.0
+    },
+    {
+      "key": "oversold",
+      "ar": "التشبع البيعي",
+      "score": 81.4,
+      "weight": 14,
+      "detail": "أدنى RSI 28.33 (2026-09-18) — الحالي 45.21 وقد بدأ التحسّن",
+      "points": 11.39
+    },
+    {
+      "key": "base",
+      "ar": "القاع والثبات",
+      "score": 20.0,
+      "weight": 18,
+      "detail": "ثبات (جلسة واحدة) — نطاق القاعدة 314.2% — جفاف حجم 26051% من المتوسط",
+      "points": 3.6
+    },
+    {
+      "key": "reversal",
+      "ar": "تأكيد الانعكاس",
+      "score": 64.0,
+      "weight": 18,
+      "detail": "MACD يتحسّن، 2 قاع صاعد، RSI خارج التشبع، انطلاقة +539% بعد الثبات، اختبار مقاومة قريبة عند 11.68",
+      "points": 11.52
+    },
+    {
+      "key": "squeeze",
+      "ar": "عوامل الضغط والانفجار",
+      "score": 18.8,
+      "weight": 6,
+      "detail": "بيع مكشوف 7.1% من الفلوت، فلوت 3.08M سهم، أيام تغطية 0.0، تغيّر المراكز +45%",
+      "points": 1.13
+    },
+    {
+      "key": "risk",
+      "ar": "جودة المخاطر",
+      "score": 7.0,
+      "weight": 4,
+      "detail": "طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، 2 إفصاح تخفيف عالي الخطورة",
+      "points": 0.28
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "RSI خرج من التشبع البيعي وتحسّن",
+    "2 قاع صاعد في البنية",
+    "انطلاقة +539% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 7.5,
+    "entry_zone": [
+      5.88,
+      7.5
+    ],
+    "stop": 6.0,
+    "stop_pct": -20.0,
+    "stop_structural": 2.6508,
+    "stop_structural_pct": -64.66,
+    "targets": {
+      "t1_382": 6.1969,
+      "t2_618": 8.2831,
+      "t3_full": 11.66
+    },
+    "rr_t1": -0.87,
+    "rr_t2": 0.52,
+    "risk_per_share": 1.5,
+    "reward_t2_per_share": 0.7831,
+    "atr_pct": 29.27,
+    "bottom": 2.82,
+    "peak": 11.66,
+    "last": 6.0,
+    "base_high": 11.68,
+    "ema9": 6.5533,
+    "ema20": 7.1057,
+    "support": 2.82,
+    "impulse_high": 18.21,
+    "resistance": 11.68,
+    "sweep_low": null,
+    "reclaim_level": 2.8341,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 29.3%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 6.0$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "bull_flag",
+      "name_ar": "علم صاعد",
+      "tf": "1D",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "علم صاعد: سارية بارتفاع 422% من 2.850 إلى 14.890 ثم تصحيح مضبوط بنطاق 252.5% وارتداد 74% من السارية. اختراق 17.380 يفتح استكمال السارية.",
+      "levels": {
+        "flag_high": 17.38,
+        "flag_low": 4.93,
+        "pole_target": 29.42
+      },
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "1D",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 2 قاع صاعد منذ بداية القاعدة (2.820 → 5.810) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 2.82,
+        "last_low": 5.81
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 3% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 2 قاع صاعد منذ بداية القاعدة (6.050 → 5.820) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 6.0501,
+        "last_low": 5.82
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -2.52% للشمعة (30 شمعة). سقف القناة عند 12.467 والسعر أسفله بفارق 51.8% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 12.4673,
+        "channel_mid": 8.5094,
+        "channel_lower": 5.8079
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 28% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (نجمة الصباح)",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-15 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 6.01,
+    "rsi": 44.32,
+    "trend": "down",
+    "ema20": 6.6501,
+    "ema50": 7.2313,
+    "rvol": 0.22,
+    "macd_hist": 0.13658,
+    "channel_broken": false,
+    "higher_lows": 4,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-50 نافذ في 2026-08-24 (عمر 53 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 9.43$ وصعد إلى 11.66$ (+23.6%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 75.8% من القمة 11.66$ إلى القاع المرجعي 2.82$ بتاريخ 2026-09-18 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 28.33 (تشبع بيعي و 6 جلسة تحت 30) والحالي 45.21 مع بدء التحسّن.",
+    "ثبات جلسة واحدة على القاع 2.82$ داخل نطاق 314.2% مع جفاف حجم (26051% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +539.0% من إغلاق القاعدة (2.85$) إلى 18.21$ (2026-09-22) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 11.68$ (تشكّلت 2026-09-21) — على 314.2% من الدعم الرئيسي، واختُبرها السعر في 2026-09-22 عند 18.21$ وتوقف عندها بفارق 55.9% ثم تراجع.",
+    "حالة التسلسل: تجاوز المقاومة بقوة (55.9% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة.",
+    "تأكيدات فنية: MACD يتجه للتحسّن، RSI خرج من التشبع البيعي وتحسّن، 2 قاع صاعد في البنية، انطلاقة +539% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 44.32",
+    "عدد الأسهم 13.35M — الفلوت 3.08M سهم.",
+    "البيع المكشوف 7.1% من الفلوت (أيام التغطية 0.04).",
+    "أبرز نموذج فني: علم صاعد — علم صاعد: سارية بارتفاع 422% من 2.850 إلى 14.890 ثم تصحيح مضبوط بنطاق 252.5% وارتداد 74% من السارية. اختراق 17.380 يفتح استكمال السارية.",
+    "أخبار سلبية: Greenland Mines Has More Funding And More Dilution Than The Headline Suggests -  | Top Midday Decliners"
+  ],
+  "action_ar": "ممتد بعد الاختراق: انتظر إعادة اختبار القاعدة أو استخدام حجم مركز أصغر بكثير.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "EXTENDED",
+    "ar": "مرحلة التمدد — بعد الاختراق",
+    "color": "#8957e5",
+    "desc": "السهم ابتعد عن منطقة الارتكاز — الدخول يحتاج انتظار إعادة اختبار."
+  },
+  "phase_color": "#8957e5"
+}

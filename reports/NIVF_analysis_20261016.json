@@ -1,0 +1,1021 @@
+{
+  "symbol": "NIVF",
+  "name": "NewGenIvf Group Limited",
+  "sector": "Healthcare",
+  "industry": "Medical Care Facilities",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-16",
+  "last_close": 0.279,
+  "change_pct": 11.6,
+  "dollar_volume": 14961009.0,
+  "rs_found": true,
+  "rs_date": "2026-10-12",
+  "rs_age_days": 4,
+  "rs_ratio_str": "1-for-4",
+  "rs_ratio": 4.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 0.28,
+  "spike_high": 0.36,
+  "spike_pct": 28.5714,
+  "spike_date": "2026-10-14",
+  "decline_pct": -37.5,
+  "peak_date": "2026-10-14",
+  "bottom_price": 0.225,
+  "bottom_date": "2026-10-15",
+  "base_sessions": 1,
+  "base_high": 0.2798,
+  "base_low": 0.225,
+  "base_range_pct": 24.3556,
+  "base_broken": false,
+  "volume_dryup": 0.677,
+  "atr_pct": 142.1,
+  "rsi_now": 22.99,
+  "rsi_trough": 22.24,
+  "rsi_trough_date": "2026-10-15",
+  "rsi_sessions_below_30": 3,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": 0.18839,
+  "channel_slope_pct": -11.842,
+  "channel_upper": 2.6538,
+  "channel_broken": false,
+  "rvol": 0.65,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "انطلاقة ضعيفة (+12% — المستهدف ≈20%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 0.225",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": false,
+      "detail": "+11.9% من 0.250 إلى 0.280",
+      "state": "pending"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": true,
+      "detail": "أقرب مقاومة 0.280 (على 24.4% من الدعم 0.225) — توقف السعر عندها بفارق 0.0%",
+      "state": "ok"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 11.92,
+  "impulse_high": 0.2798,
+  "impulse_date": "2026-10-16",
+  "resistance_level": 0.2798,
+  "resistance_distance_pct": 24.36,
+  "resistance_date": "2026-10-16",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 0.2261,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.225,
+  "support_hold_ok": false,
+  "base_close": 0.25,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    6.984,
+    5.94,
+    6.588,
+    5.7,
+    5.616,
+    5.064,
+    5.4,
+    5.32,
+    4.84,
+    4.72,
+    4.56,
+    4.44,
+    4.4,
+    4.44,
+    4.24,
+    3.716,
+    3.36,
+    3.14,
+    2.86,
+    2.876,
+    2.88,
+    3.256,
+    2.36,
+    2.164,
+    2.24,
+    1.38,
+    0.288,
+    0.672,
+    0.404,
+    0.516,
+    0.44,
+    0.396,
+    0.424,
+    0.324,
+    0.288,
+    0.236,
+    0.195,
+    0.294,
+    0.25,
+    0.279
+  ],
+  "resistance_tested": true,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 6821751.0,
+  "float_shares": 72158.0,
+  "market_cap": 1904150.0,
+  "avg_volume": 9507311.0,
+  "insider_pct": 3.48,
+  "institutional_pct": 0.08,
+  "short_pct_float": 2.52,
+  "short_shares": 17510.0,
+  "days_to_cover": null,
+  "short_change_pct": 129.1,
+  "short_volume_ratio": 0.531,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "Most Active Stocks: NIVF, GLND, SDST Lead Heavy-Volume Session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQdTVRUDFOQXhnX2FKVUlBbEN6VTYtVFo1MktUd3pETzNVdnNkU1dwcXY4NzVyM1BzeGJRZWZ5SndpX1dEU25DbmFYekttLTZMVHEzMG5heEdhRjNpUFh1emdwZ2VtWXVIZjJ4LVI2OUdweG1mLWVvaGJsWUhqWGZiOHpZNkVSRm5DUnlXM29CTFloVldHcy1sY1Ezb2piVVJ2Z3JQQS1RWGVEMVdTQ0RZ?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "NewGenIvf Company Profile & Introduction - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi_gJBVV95cUxPcWFHWUNhVXBuNjAyX2NRdEExcWVocFl4RS1OY2FNTF9DdkxMMFRaaDVpVTlWQ1k4VWp1ODR3M1lRQlZ3MWFQVnVDUjA1NEhqTW4yZ1hlVTlqcmJjTmQ3TWk1T2RuX1RsM2JILTFaTmE3c0Q0Q2p6QlVJbUcwRlduUTdzNGFTamJqZGZjd3FfeFk2WF9ESHVCaVM5dExLOVJVb0oyT19fSzBHYmhlRXpKUEljbW9nOF93cEZjeDlKdEl6V3RuNjQ1aFE2ckNYcFVOeWI1WmFGdEFSUnJNS2traVRQT1E1QnZueV91QnlodENfWE0wd29FREJkbFpvM09Ccks3X3kwQkE4R24xMWZ2N0pLa0gyZHJBUC1LU2FHN2lVeURvZUpHdFFDcDJ4NjZqZE41Q3pETDVBdGJKbnl3S1BnT2R3cXhjb2NES245U1JkTWpiUTVzbk9VWlZqRHBrSVhUcTFIUHFyS1Y1aWVyVjFqcm5NR3Eza3VTUWdB?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "US Gap-Up and Gap-Down Stocks for October 14, 2026 - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNY3Z5aURjSUU0Qll1cEU4a3g5S1U0RENTcFBTMGo1Q2RUMGx4N2p6UUF3d1QwN1dHNkZJWWl2ZEhBSEdPUWN3V0VoNDE4WnJ4QkFjSEZQTTNaTGk0eVQxODJHWUVPT3ZRbmlYMXE2ZGNfa3VBd3FmYVZvemhkeDZVTncxZklGcEwxQmVvMElDdDJDLUt3OWQ1UmVDdVRjU3pVMVE?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "Top movers in Wednesday's pre-market session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOY3JkN000TVdjaFVqX2Y3ODE3clJTemtYcjA3VlJiVEtPWmxzWGRvU0RPeUJBUHJCSGthZmh0NGhJRzBxYkdTa1hLYVdtb3VmU1hvNEd5VDl1aWxndzdSa19UbmpOM0VWWW5UVExyQmU5ZXlHcHdESmdVQ0tyRUVwN2FqVWdwZVh5Q25GbEhvT3dzbTNDTW1oSzlrcw?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "NewGenIvf(NIVF) Stock Options Chain | Quotes & News - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi6AJBVV95cUxQZGFFSXBqdWc4YlRCb0FyNmgwS0tFZG9JNG1QM1g1bmdreVg5M0k1eXMwbEZ4WGctcWplNmVrNWVPbkoxdFZuaV9MU3lmazIzTXF0NVJtRmxUZDhpR0RMUlhCOTZXRWVHcW5FWjlzN3ltNG9maURSSGJMZGl4YzVnNlR3WW1Ba1htRHY3empfUS1LLVl2eTNUNlBRQmp4Q2F1S0N6NnBBYUlkQ2QxOExZeVhtX1MtVFFKTUVIaU1BR0tHZ3ZsZlZQei1MVzA3cGxHY1lyU1BaYmpBdnpZUTlsc3FCdld0cERjVk1lRWhUX0FhTkh2bFJGZGtlVFhsRVZfd1VNQ2dMOC0yYmItWnBQYUM1Smktemo3ODRmMV9UTzR2QWxFbmZ6eFVfZVhxVXV3MHp5SW9LQ0E3dS1yVXB4XzJDa3ZJb0t6WEF0WFBtT1VWbF9Dc2VVcmFGY19KMHVoWFpIU285TFA?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-08",
+      "type": "offering",
+      "title": "NewGenIvf Group to Implement One-for-Four Reverse Stock Split on October 12 - The Globe and Mail",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNVkxGN1VWUG1ZZ1hhM2xGMEpNX3ZkeFN0aExtcV9ETHRSSTRuU2toT3ZLT0lsTHFHUnVqSktqakhobU9Cdzl6XzZwYXd3SWdUTVl1eTJGcmZIRUt5UVhxLU5fYUxqb3U5azNvWlpHOHZxY21GM2hZU0JTclN2YnZWcUNxSDVhblpBRG5FUjQtSTh3YkszT1gzOFpBN2lFbGNYSFlod1hveXBnaVczVDZycG9zVE5vd1Z0TG1QTkdhYTlqcTVFYkpEandBeE9ZMnIwcHhoQkRGWUpaWUI3VVh3dDVGc1BSMlNtQzdueGFyM2dRdw?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-08",
+      "type": "offering",
+      "title": "NewGenIvf To Carry Out 1-for-4 Reverse Stock Split On October 12th, 2026 - Moomoo",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQZGljRVNOcnZ4b29obGNzZ0JUV0g0VXZCV1NZZ2toQ3hGTzdqQ1ZSTWpoUTB0RHdsRmIxUUZ1cjFEcUctbUNTS2REdWRtT2NTNWJwZHhWRFJOd1Y0eTd2SndoNW44NGlJV2ZESzBaYTJNVkNqNl9XczdRRDl3Znp4YmVIV0lYUnZfX3N4cDNodTRyOW92UHk5RGZR?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "BC-Most Active Stocks",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-143018409.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "Unusual volume stocks are being observed in Wednesday's session. - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNYXlzcnFFSkd3MWF0WVpDRmFmWG1hMF9tWVFNeERXeTJmWnhLbTVNQ0NJMEZRbkpvVk5sWExQLWR3X0F3dGJSR0liMlZDbVI4SnNtcWpkMkRGZ1lmdUtrdFBPX0FaaFpfbGhRUXFnUkRaR2IyQlk4VlFLR1RoLTFnNFdJUUQtdjNLUGktNzhJMWk3UnpZSms3RzFxb0NPbmxGNXZiU3BwY0tlN1dWLTBRZWl0YUU?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — REPORT OF FOREIGN PRIVATE ISSUER",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/000121390026107570/ea0307980-6k_newgen.htm"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "NewGenIVF Group Updates Share Count Following Equity Issuances - The Globe and Mail",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQT3prT0RLNGFCVDk2dkV0ZUtXWWVlNm01aXMwbjJkUGJ2SWwxZ3hEejJaaDQyY2hSLS14OVRjdTFKc3BubnAtMWRkRUdwWUx1R0tEV3M1azBvMG5TNzJkRXEwYlRjSjRERFNTVm43QUl5djRhVlQ3OTFSQzRpcFBsZGY2dVFLbE5JcXBETkV5NTVxYVFnNFJBVWhXOE5aall5SWV6T2o5UXNoNmhBTHFyWTZLYW5kdk15SzdSNXJPTVBNWEpIUUZGZXV0VTNLOEx0T1BGNlZXQXZGZHN5WExpSg?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13D/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/000121390026107054/xslSCHEDULE_13D_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-05",
+      "type": "other",
+      "title": "$NIVF stock is down 15% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPMFhaM0dOOVQ3VzM4Ylg0VzBCWTUzd1dhRFZ4MEhwQmVETlFCcDNMdVpETGp3Q0EydkRMSVlwT3RYM2hYT2lPWTIzT2hCM2ZLNzl4NXhJN0tzc21zSTZ1OUdTQzNVeEZwdUhSU05CUDBmdzJxLVEtX3VpcDRTbjN3VndCazZSdTlHNXRpODlHVmd4Uy1YeTdudks2cXNUZkMtRGFZ?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-02",
+      "type": "other",
+      "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQ3JYOGJmelkycWFod3dxa3pQU21KamtXcm5BSVVTcFc1dkZXaWpNOUY1OWtkR1ctQU9hYjlyQWlWWFBpYmdiUVRmejREYktxS2VNMW9CZWJqVjk3MTBpR214NE1UbkhZYXJMZFRIbkdCbW1lVnh3TVBFTlhGYUR3RFVqTnZDUlFZMUpscmJ0VnB5MVVOY1pSa0F4UWZZaDgydU9tbV9VdW1DbWktNl9UYmFLU19XQmph?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-30",
+      "type": "offering",
+      "title": "NewGen Announces Closing of $1.25 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-announces-closing-1-25-181000990.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "Premarket Movers Sept. 30, 2026: NIVF, CNTB Gain; DKI, DXST Fall - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOVlZoZ2hjRWFNX1pxLTFpcmUyb1RlZUY4dFVwSWw5d0ZCcDFINUMzbDJ2TzdEUkRpd2NERG55OUpEY3FoT3VIZUltdFU1M0JMOXNpR1duT2xVSFZVVXlhdWVpTUlLUDN1MEpzQVNYbFR6YlloSEVUNnRFcDdubFkxRmxHQTBCdXk3TUozUnI5NDllUTlHWkNIUlB3ZEIwOEt6QmN2SlVtTFdLbW81a3hv?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-30",
+      "type": "offering",
+      "title": "NewGenIvf Group Limited Closes $1.25 Million Public Offering - Quiver Quantitative",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPSlNHZ2xXdktoYUZhQXc5Ujhsdl9QZEk3dE92Rjhuby14b3F2LWVGZFNLcUY3MVBWemx0dC1IV1RHaHc1a2tpQWpVR2cwcHl0QnNjb1l0NE9qV1dkazRhdXU5UFg0SHktcXR3Mlp3Z0QxZGpMU0hJSUhBLXZ4U2h0ektuQmV4a3ExcTh2STJRbDZEbzdrb2VaRA?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-29",
+      "type": "offering",
+      "title": "NewGen Announces Pricing of $1.25 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-announces-pricing-1-25-023000099.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-29",
+      "type": "offering",
+      "title": "NewGenIVF Group Limited Prices $1.25 Million Public Offering of Ordinary Shares and Pre-Funded Warrants - Quiver Quantitative",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOak4wU2tQZ0txdlE1MExUVTkxU0x2a2RZLXhvc04wNUVfWTZGV1RNNG1oMm1nZHV6c3NEYW5adUNKZ2czWXNZUTJUdlAtWU9KbUdMMkpMbVRxeS1Wcm56cjIzZEFfTXg2Ty1aYnViNVhQME5kV2VuOGhaSFlyTjFRbC14NmhaalRaRFk5R1N4aDk4Zmxmd1ZOb2Noby1CSjcxSzEwOWFBSFA1UjczSzBhcG0zb0kwNTNwa1BlR0NpLTZpWlIyUzRzNkpGbERKQ3dsMXc?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-28",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/999999999526003079/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-10",
+      "type": "other",
+      "title": "إفصاح SEC: F-1/A — AMENDMENT NO. 2 TO FORM F-1",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/000121390026098823/ea0305084-f1a2_newgenivf.htm"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-04",
+      "type": "other",
+      "title": "إفصاح SEC: 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/000121390026097416/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "Insider steps up NewGenIvf (NIVF) stake in four share deals - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNdUxEVFJtS0xOc2UzZXptNVl3cUw1YU5RMS1Ed01OVTMxV053a3ZCSlJsQWRMZG1iNXFtUGhSTEpWdXFrNVhhZGxsYmpFamhRNXBFVWVUaXI0dHU5ZVZpSHl6a18wcUpfQUlfbzZINk5qVE5mNEJrVzZISmJWQlNSRHVWZV9vcE9LVTNPX3JCNEJ4YXlKcE1aRmk4NE44eW5zd25QSUx3R3dVOXlLZlplRnpnZHRHQQ?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "NewGenIvf Group Stock (NIVF) Opinions on Recent Insider Purchase - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPcjlELXNLYlpzN0txQXdGVWNtMU5IemZrMzRuWE5EbzNXcURjckhhUkc0NjZnRzhwTTdOU295UDdqMlBNMkIyMnI5ZGF5TTIxT1B4WmlYZlRIbUZpLVYtWGNNTFFfal9ZTlp1RTUzdVVsWEtZbUlVSl9KY1VOVklpWkNwOF9lQnhVY1MwV213andaWTZ4d3MzVnp5bVJmMy1zU1FN?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "Insider Purchase: Director at $NIVF Buys 2,500,000 Shares - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPSTNFSUhwaTFjbkNoamNMZHB6bkZGNU9qZUdjVDlkdFl6cWRUNWFIVXVtMFVMR2VjZmgzSlZwd3BIMnZ3RXpOZ0NLMi1iRWtvenVwcUFwNjZpRDFYMGwwNmhBaFlmSnpYc3UzajhoeFRpUXVxdWR3bnVobGljUDNFWlNodDJtOW1kRVpQZVdVbzcxeFhGR0xKTHBFcHhUSUE?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-01",
+      "type": "other",
+      "title": "إفصاح SEC: F-1/A — AMENDMENT NO. 1 TO FORM F-1",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/000121390026096245/ea0304196-f1a1_newgenivf.htm"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-08-20",
+      "type": "other",
+      "title": "إفصاح SEC: F-1 — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/000121390026091922/ea0301325-f1_newgenivf.htm"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-08-17",
+      "type": "other",
+      "title": "NewGenIVF Completes Exchange of Convertible Notes with Institutional Investor",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgenivf-completes-exchange-convertible-notes-123000946.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-08-17",
+      "type": "other",
+      "title": "$NIVF stock is up 12% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQbUd4RXpnNGNVNTlLcno1cmRuRDdlaVUyeEhyR2VfSFNORkY4TUk5bkt4OW5qOWtUbEtGMWl2QS04bHdFYXRDWUxnYzBmT25FeXY3LWdxejAweWVqd1A2WmhpT2xWeGRHazlfTjNscEhoNHlrZFZtTm1UeEFxYW81VTd5TTh3Q3dZT3dQY0VoNFcwVDN1aHJCQXBUd1ZGSWtI?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-07-30",
+      "type": "other",
+      "title": "NewGen Provides Update on K25.ai Investment and Strengthened Financial Position",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-provides-k25-ai-investment-123000920.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-07-27",
+      "type": "other",
+      "title": "NewGen to Acquire Additional 3% of K25.ai at US$250 Million Valuation Following Strong Community Beta; Strengthening Market Cap Above US$5 Million",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/newgen-acquire-additional-3-k25-123000959.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-07-23",
+      "type": "other",
+      "title": "NewGen’s Strategic Pre-A Investment in K25.ai Doubles in Value as K25.ai’s Valuation Reaches US$200 Million",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/newgen-strategic-pre-investment-k25-123000929.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-07-13",
+      "type": "other",
+      "title": "إفصاح SEC: DRS",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/000121390026077367/filename1.htm"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-07-06",
+      "type": "other",
+      "title": "NewGen’s Advanced Cytometry Platform Poised for Major UAE/GCC Expansion with Big Four Valuation of US$19 Million",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/newgen-advanced-cytometry-platform-poised-130000161.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-06-22",
+      "type": "clinical",
+      "title": "NewGen Issues 3,666,667 New Shares in Connection with Strategic K25.ai Acquisition, Reaches Milestone of US$7.6 Million Market Capitalization",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-issues-3-666-667-123000414.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-06-18",
+      "type": "other",
+      "title": "NewGen Increases K25.ai Ownership to 10% in Closed Pre-A Round at US$100 Million Valuation with Total US$10 Million Invested",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/newgen-increases-k25-ai-ownership-123000661.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-06-16",
+      "type": "offering",
+      "title": "NewGen Eliminates Convertible Note and Warrant Overhang with a Significant Investor, Enters Into Settlement Agreement Strengthening Capital Structure",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-eliminates-convertible-note-warrant-123000248.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-06-16",
+      "type": "other",
+      "title": "إفصاح SEC: 3/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/000121390026069003/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-06-05",
+      "type": "other",
+      "title": "$NIVF stock is down 16% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPUkhWcHVGM0FKLUxRTGxZT1JxcG96Ul9uaWZHZ0F6eUVPNGFvZ29NZWF5RmJXVktPcGJjaFh5MFhCbEl1TGttRVFNSDFGVkZEYjJVV1dWZzNldFctc0k4MXdQc3RRWENOSXY3Y1I1TlRPQ3hBQnpTLUQ3cXg4MlMyTDN1dG51QzhMNEhJb1Y2NHZsMGs0NGo5YlZZZkpNalJjWXZz?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-06-04",
+      "type": "other",
+      "title": "NewGen Adds to K25.ai Investment as AI Prediction Market Push Deepens",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://www.cryptoprowl.com/releases/newgen-adds-to-k25ai-investment-as-ai-prediction-market-push-deepens-5782?.tsrc=rss"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "NIVF",
+      "kind": "news-offering",
+      "date": "2026-10-08",
+      "title": "NewGenIvf Group to Implement One-for-Four Reverse Stock Split on October 12 - The Globe and Mail",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNVkxGN1VWUG1ZZ1hhM2xGMEpNX3ZkeFN0aExtcV9ETHRSSTRuU2toT3ZLT0lsTHFHUnVqSktqakhobU9Cdzl6XzZwYXd3SWdUTVl1eTJGcmZIRUt5UVhxLU5fYUxqb3U5azNvWlpHOHZxY21GM2hZU0JTclN2YnZWcUNxSDVhblpBRG5FUjQtSTh3YkszT1gzOFpBN2lFbGNYSFlod1hveXBnaVczVDZycG9zVE5vd1Z0TG1QTkdhYTlqcTVFYkpEandBeE9ZMnIwcHhoQkRGWUpaWUI3VVh3dDVGc1BSMlNtQzdueGFyM2dRdw?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "NIVF",
+      "kind": "news-offering",
+      "date": "2026-10-08",
+      "title": "NewGenIvf To Carry Out 1-for-4 Reverse Stock Split On October 12th, 2026 - Moomoo",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQZGljRVNOcnZ4b29obGNzZ0JUV0g0VXZCV1NZZ2toQ3hGTzdqQ1ZSTWpoUTB0RHdsRmIxUUZ1cjFEcUctbUNTS2REdWRtT2NTNWJwZHhWRFJOd1Y0eTd2SndoNW44NGlJV2ZESzBaYTJNVkNqNl9XczdRRDl3Znp4YmVIV0lYUnZfX3N4cDNodTRyOW92UHk5RGZR?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "NIVF",
+      "kind": "news-offering",
+      "date": "2026-09-30",
+      "title": "NewGen Announces Closing of $1.25 Million Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-announces-closing-1-25-181000990.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "NIVF",
+      "kind": "news-offering",
+      "date": "2026-09-30",
+      "title": "NewGenIvf Group Limited Closes $1.25 Million Public Offering - Quiver Quantitative",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPSlNHZ2xXdktoYUZhQXc5Ujhsdl9QZEk3dE92Rjhuby14b3F2LWVGZFNLcUY3MVBWemx0dC1IV1RHaHc1a2tpQWpVR2cwcHl0QnNjb1l0NE9qV1dkazRhdXU5UFg0SHktcXR3Mlp3Z0QxZGpMU0hJSUhBLXZ4U2h0ektuQmV4a3ExcTh2STJRbDZEbzdrb2VaRA?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "NIVF",
+      "kind": "news-offering",
+      "date": "2026-09-29",
+      "title": "NewGen Announces Pricing of $1.25 Million Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-announces-pricing-1-25-023000099.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "NIVF",
+      "kind": "news-offering",
+      "date": "2026-09-29",
+      "title": "NewGenIVF Group Limited Prices $1.25 Million Public Offering of Ordinary Shares and Pre-Funded Warrants - Quiver Quantitative",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOak4wU2tQZ0txdlE1MExUVTkxU0x2a2RZLXhvc04wNUVfWTZGV1RNNG1oMm1nZHV6c3NEYW5adUNKZ2czWXNZUTJUdlAtWU9KbUdMMkpMbVRxeS1Wcm56cjIzZEFfTXg2Ty1aYnViNVhQME5kV2VuOGhaSFlyTjFRbC14NmhaalRaRFk5R1N4aDk4Zmxmd1ZOb2Noby1CSjcxSzEwOWFBSFA1UjczSzBhcG0zb0kwNTNwa1BlR0NpLTZpWlIyUzRzNkpGbERKQ3dsMXc?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "NIVF",
+      "kind": "effectiveness",
+      "date": "2026-09-28",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/999999999526003079/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "NIVF",
+      "kind": "news-offering",
+      "date": "2026-06-16",
+      "title": "NewGen Eliminates Convertible Note and Warrant Overhang with a Significant Investor, Enters Into Settlement Agreement Strengthening Capital Structure",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-eliminates-convertible-note-warrant-123000248.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "NIVF",
+      "kind": "424B3",
+      "date": "2026-03-13",
+      "title": "إفصاح 424B3 — PROSPECTUS",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1981662/000121390026027267/ea0281038-424b3_newgenivf.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "⚠ طرح أسهم/تخفيف عالي الخطورة خلال 10 أيام: NewGenIvf Group to Implement One-for-Four Reverse Stock Split on Octob | NewGenIvf To Carry Out 1-for-4 Reverse Stock Split On October 12th, 20"
+  ],
+  "positive_news": [
+    {
+      "symbol": "NIVF",
+      "date": "2026-06-22",
+      "type": "clinical",
+      "title": "NewGen Issues 3,666,667 New Shares in Connection with Strategic K25.ai Acquisition, Reaches Milestone of US$7.6 Million Market Capitalization",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-issues-3-666-667-123000414.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-08",
+      "type": "offering",
+      "title": "NewGenIvf Group to Implement One-for-Four Reverse Stock Split on October 12 - The Globe and Mail",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNVkxGN1VWUG1ZZ1hhM2xGMEpNX3ZkeFN0aExtcV9ETHRSSTRuU2toT3ZLT0lsTHFHUnVqSktqakhobU9Cdzl6XzZwYXd3SWdUTVl1eTJGcmZIRUt5UVhxLU5fYUxqb3U5azNvWlpHOHZxY21GM2hZU0JTclN2YnZWcUNxSDVhblpBRG5FUjQtSTh3YkszT1gzOFpBN2lFbGNYSFlod1hveXBnaVczVDZycG9zVE5vd1Z0TG1QTkdhYTlqcTVFYkpEandBeE9ZMnIwcHhoQkRGWUpaWUI3VVh3dDVGc1BSMlNtQzdueGFyM2dRdw?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-10-08",
+      "type": "offering",
+      "title": "NewGenIvf To Carry Out 1-for-4 Reverse Stock Split On October 12th, 2026 - Moomoo",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQZGljRVNOcnZ4b29obGNzZ0JUV0g0VXZCV1NZZ2toQ3hGTzdqQ1ZSTWpoUTB0RHdsRmIxUUZ1cjFEcUctbUNTS2REdWRtT2NTNWJwZHhWRFJOd1Y0eTd2SndoNW44NGlJV2ZESzBaYTJNVkNqNl9XczdRRDl3Znp4YmVIV0lYUnZfX3N4cDNodTRyOW92UHk5RGZR?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-30",
+      "type": "offering",
+      "title": "NewGen Announces Closing of $1.25 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-announces-closing-1-25-181000990.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-30",
+      "type": "offering",
+      "title": "NewGenIvf Group Limited Closes $1.25 Million Public Offering - Quiver Quantitative",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPSlNHZ2xXdktoYUZhQXc5Ujhsdl9QZEk3dE92Rjhuby14b3F2LWVGZFNLcUY3MVBWemx0dC1IV1RHaHc1a2tpQWpVR2cwcHl0QnNjb1l0NE9qV1dkazRhdXU5UFg0SHktcXR3Mlp3Z0QxZGpMU0hJSUhBLXZ4U2h0ektuQmV4a3ExcTh2STJRbDZEbzdrb2VaRA?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-29",
+      "type": "offering",
+      "title": "NewGen Announces Pricing of $1.25 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-announces-pricing-1-25-023000099.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-09-29",
+      "type": "offering",
+      "title": "NewGenIVF Group Limited Prices $1.25 Million Public Offering of Ordinary Shares and Pre-Funded Warrants - Quiver Quantitative",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOak4wU2tQZ0txdlE1MExUVTkxU0x2a2RZLXhvc04wNUVfWTZGV1RNNG1oMm1nZHV6c3NEYW5adUNKZ2czWXNZUTJUdlAtWU9KbUdMMkpMbVRxeS1Wcm56cjIzZEFfTXg2Ty1aYnViNVhQME5kV2VuOGhaSFlyTjFRbC14NmhaalRaRFk5R1N4aDk4Zmxmd1ZOb2Noby1CSjcxSzEwOWFBSFA1UjczSzBhcG0zb0kwNTNwa1BlR0NpLTZpWlIyUzRzNkpGbERKQ3dsMXc?oc=5"
+    },
+    {
+      "symbol": "NIVF",
+      "date": "2026-06-16",
+      "type": "offering",
+      "title": "NewGen Eliminates Convertible Note and Warrant Overhang with a Significant Investor, Enters Into Settlement Agreement Strengthening Capital Structure",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/newgen-eliminates-convertible-note-warrant-123000248.html?.tsrc=rss"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.279$ خارج نطاق الاستراتيجية (0.5$ - 20.0$)"
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 102 يوماً (1-for-3) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 214 يوماً (1-for-4) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 263 يوماً (1-for-3) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 319 يوماً (1-for-5) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 438 يوماً (1-for-5) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 529 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 60.3,
+  "grade": "C",
+  "breakdown": [
+    {
+      "key": "rs_setup",
+      "ar": "حدث التقسيم العكسي",
+      "score": 95.3,
+      "weight": 18,
+      "detail": "1-for-4 بتاريخ 2026-10-12 (عمر 4 يوم)",
+      "points": 17.16
+    },
+    {
+      "key": "spike",
+      "ar": "صعود يوم التقسيم",
+      "score": 98.0,
+      "weight": 8,
+      "detail": "28.6% من الافتتاح 0.28 إلى 0.36",
+      "points": 7.84
+    },
+    {
+      "key": "decline",
+      "ar": "قوة الموجة الهابطة",
+      "score": 78.5,
+      "weight": 14,
+      "detail": "هبوط 37.5% من القمة 0.36 إلى القاع 0.225",
+      "points": 10.99
+    },
+    {
+      "key": "oversold",
+      "ar": "التشبع البيعي",
+      "score": 98.3,
+      "weight": 14,
+      "detail": "أدنى RSI 22.24 (2026-10-15) — الحالي 22.99",
+      "points": 13.76
+    },
+    {
+      "key": "base",
+      "ar": "القاع والثبات",
+      "score": 26.0,
+      "weight": 18,
+      "detail": "ثبات (جلسة واحدة) — نطاق القاعدة 24.4% — جفاف حجم 68% من المتوسط",
+      "points": 4.68
+    },
+    {
+      "key": "reversal",
+      "ar": "تأكيد الانعكاس",
+      "score": 26.0,
+      "weight": 18,
+      "detail": "MACD يتحسّن، اختبار مقاومة قريبة عند 0.2798",
+      "points": 4.68
+    },
+    {
+      "key": "squeeze",
+      "ar": "عوامل الضغط والانفجار",
+      "score": 20.0,
+      "weight": 6,
+      "detail": "بيع مكشوف 2.5% من الفلوت، فلوت 0.07M سهم، تغيّر المراكز +129%",
+      "points": 1.2
+    },
+    {
+      "key": "risk",
+      "ar": "جودة المخاطر",
+      "score": 0.0,
+      "weight": 4,
+      "detail": "طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، طرح أسهم خلال 30 يوماً، 6 إفصاح تخفيف عالي الخطورة",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن"
+  ],
+  "levels": {
+    "trigger": 0.3488,
+    "entry_zone": [
+      0.2734,
+      0.3488
+    ],
+    "stop": 0.279,
+    "stop_pct": -20.0,
+    "stop_structural": 0.2115,
+    "stop_structural_pct": -39.35,
+    "targets": {
+      "t1_382": 0.2766,
+      "t2_618": 0.3084,
+      "t3_full": 0.36
+    },
+    "rr_t1": -1.03,
+    "rr_t2": -0.58,
+    "risk_per_share": 0.0697,
+    "reward_t2_per_share": -0.0403,
+    "atr_pct": 142.1,
+    "bottom": 0.225,
+    "peak": 0.36,
+    "last": 0.279,
+    "base_high": 0.2798,
+    "ema9": 0.3946,
+    "ema20": 1.141,
+    "support": 0.225,
+    "impulse_high": 0.2798,
+    "resistance": 0.2798,
+    "sweep_low": null,
+    "reclaim_level": 0.2261,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 142.1%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.279$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (نجمة الصباح، شمعة المطرقة)",
+      "tf": "1D",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-14، 2026-10-16 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -9.45% للشمعة (30 شمعة). سقف القناة عند 4.268 والسعر أسفله بفارق 93.5% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 4.2683,
+        "channel_mid": 1.8313,
+        "channel_lower": 0.7857
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 6% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "4H",
+      "confidence": 0.8457360344433471,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 6 قمة و6 قاع؛ السقف ينحدر 8.15% للشمعة والقاع 5.88%، والسعر اخترق سقف الوتد فعلياً → انعكاس مؤكد.",
+      "levels": {
+        "resistance": 0.166,
+        "support": 0.1225
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -7.08% للشمعة (30 شمعة). سقف القناة عند 1.520 والسعر أسفله بفارق 82.3% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.5202,
+        "channel_mid": 0.6458,
+        "channel_lower": 0.2744
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 2% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-15 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (0.419 → 0.225) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 0.4192,
+        "last_low": 0.2249
+      },
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.2689,
+    "rsi": 29.74,
+    "trend": "down",
+    "ema20": 0.4396,
+    "ema50": 1.5593,
+    "rvol": 0.06,
+    "macd_hist": 0.10089,
+    "channel_broken": false,
+    "higher_lows": 3,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-4 نافذ في 2026-10-12 (عمر 4 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 0.28$ وصعد إلى 0.36$ (+28.6%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 37.5% من القمة 0.36$ إلى القاع المرجعي 0.225$ بتاريخ 2026-10-15 — يحقق شرط 30% على الأقل.",
+    "RSI وصل إلى 22.24 (تشبع بيعي قوي و 3 جلسة تحت 30) والحالي 22.99 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 0.225$ داخل نطاق 24.4% مع جفاف حجم (68% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +11.9% من إغلاق القاعدة (0.25$) إلى 0.2798$ (2026-10-16) — أقل من المستهدف (20%) قليلاً.",
+    "أقرب مقاومة عند 0.2798$ (تشكّلت 2026-10-16) — على 24.4% من الدعم الرئيسي، واختُبرها السعر في 2026-10-16 عند 0.2798$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "حالة التسلسل: انطلاقة ضعيفة (+12% — المستهدف ≈20%).",
+    "تأكيدات فنية: MACD يتجه للتحسّن.",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 29.74",
+    "عدد الأسهم 6.82M — الفلوت 72.2K سهم.",
+    "البيع المكشوف 2.5% من الفلوت (أيام التغطية —).",
+    "أبرز نموذج فني: شموع انعكاسية (نجمة الصباح، شمعة المطرقة) — ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-14، 2026-10-16 — دليل دخول مشترين.",
+    "أخبار سلبية: NewGenIvf Group to Implement One-for-Four Reverse Stock Split on October 12 - Th | NewGenIvf To Carry Out 1-for-4 Reverse Stock Split On October 12th, 2026 - Moomo",
+    "محفزات إيجابية: NewGen Issues 3,666,667 New Shares in Connection with Strategic K25.ai Acquisiti"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}
