@@ -463,14 +463,14 @@ def watchlist_markdown(results: list[eng.Analysis], sources: dict | None = None)
     add("")
     add("## أفضل الفرص المؤهلة")
     add("")
-    add("| الرمز | المرحلة | التقييم | السعر | التقسيم | صعود | هبوط | جلسات الثبات | RSI | الفلوت | بيع مكشوف | نقطة الاختراق | مخاطرة/عائد |")
+    add("| الرمز | المرحلة | التقييم | السعر | التقسيم | صعود | هبوط | جلسات الثبات | RSI | الفلوت | الأسهم المكشوفة | نقطة الاختراق | مخاطرة/عائد |")
     add("|-------|---------|---------|-------|---------|------|------|--------------|-----|--------|-----------|----------------|-------------|")
-    for a in sorted(watch, key=lambda x: -x.score)[:25]:
+    for a in sorted(elig, key=lambda x: (-x.score, x.symbol)):
         lv = a.levels or {}
         add(f"| **{a.symbol}** | {eng.phase_info(a.phase)['ar'].split('—')[-1].strip()} | {a.score} ({a.grade}) | "
             f"{_n(a.last_close,3)}$ | {a.rs_ratio_str} {a.rs_date or ''} | {_pct(a.spike_pct)} | "
             f"{_pct(a.decline_pct)} | {a.base_sessions} | {_n(a.rsi_trough,0)}→{_n(a.rsi_now,0)} | "
-            f"{_m(a.float_shares)} | {_n(a.short_pct_float,1)}% | {_n(lv.get('trigger'),3)}$ | {_n(lv.get('rr_t2'),2)}:1 |")
+            f"{_m(a.float_shares)} | {_n(a.short_shares,0)} | {_n(lv.get('trigger'),3)}$ | {_n(lv.get('rr_t2'),2)}:1 |")
     add("")
     add("## مرشحو GAM — مسار ثانوي غير مؤهل")
     add("")
@@ -494,7 +494,7 @@ def watchlist_markdown(results: list[eng.Analysis], sources: dict | None = None)
     add("")
     add("| الرمز | التصنيف | المرحلة | التقييم | سبب الاستبعاد / الملاحظة |")
     add("|-------|---------|---------|---------|--------------------------|")
-    for a in sorted([x for x in results if x.rs_found], key=lambda x: (-x.phase, -x.score)):
+    for a in sorted([x for x in results if x.rs_found], key=lambda x: (-x.score, x.symbol)):
         reason = " | ".join(a.rejections) if a.rejections else " | ".join(a.notes) or "مطابق للشروط"
         status = ("GAM — غير مؤهل" if a.gam_candidate else
                   "فرصة مؤهلة" if a.eligible else "مستبعد")

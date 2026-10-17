@@ -87,7 +87,7 @@ class ScanManager:
                     out.append(a)
                 with self.lock:
                     self.state.update(progress=i + 1, current=sym)
-            out.sort(key=lambda x: (-x.phase, -x.score))
+            out.sort(key=lambda x: (-x.score, x.symbol))
             with self.lock:
                 self.results = out
                 self.by_symbol = {a.symbol: a for a in out}
@@ -149,11 +149,12 @@ def strategy_params() -> dict[str, Any]:
         "params": STRATEGY.to_dict(),
         "phases": {k: v for k, v in eng.PHASES.items()},
         "scoring_keys": {
-            "rs_setup": "حدث التقسيم العكسي", "spike": "صعود يوم التقسيم",
-            "decline": "قوة الموجة الهابطة", "oversold": "التشبع البيعي",
-            "base": "القاع والثبات", "reversal": "تأكيد الانعكاس",
-            "squeeze": "عوامل الضغط والانفجار", "risk": "جودة المخاطر",
+            "volume": "جفاف الحجم", "patterns": "النماذج الفنية البديلة",
+            "support": "اختبار الدعم وسحب السيولة", "ema": "تفاعل EMA20 / 30 / 50",
         },
+        "hard_filters_ar": ["السعر من 1 إلى 5 دولارات", "تقسيم عكسي منفّذ خلال 60 يوماً",
+                            "هبوط 30% أو أكثر من قمة ما بعد التقسيم", "RSI أقل من 30 خلال تكوّن القاع",
+                            "عدد الأسهم المكشوفة أقل من 20,000؛ المفقود غير مؤهل"],
         "gam_policy": {
             "secondary_lane_only": True,
             "eligible": False,

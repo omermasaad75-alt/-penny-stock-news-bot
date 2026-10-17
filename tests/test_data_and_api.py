@@ -98,7 +98,7 @@ def test_strategy_endpoint(client):
     gam = r.json()["gam_policy"]
     assert gam["secondary_lane_only"] is True
     assert gam["eligible"] is False and gam["watchlist"] is False
-    assert gam["min_price"] == 0.5 and gam["max_price"] == 20.0
+    assert gam["min_price"] == 1.0 and gam["max_price"] == 5.0
     assert gam["historical_state_persisted"] is False
     assert gam["rsi_scope"] == "current_scan_price_series"
 

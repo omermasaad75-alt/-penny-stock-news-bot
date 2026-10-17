@@ -33,7 +33,7 @@ def test_historical_split_event_does_not_invalidate_recent_valid_split():
     original_splits = hub.demo.splits
     old_event = ReverseSplitEvent(
         symbol="JZ",
-        date=pd.Timestamp(base.as_of) - pd.Timedelta(days=200),
+        date=pd.Timestamp.now().normalize() - pd.Timedelta(days=200),
         ratio_str="1-for-10",
         factor=10.0,
         source="demo-generator",

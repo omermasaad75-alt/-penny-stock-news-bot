@@ -55,6 +55,7 @@ def build_chart_payload(symbol: str, tf: str, hub: DataHub,
     overlays = {
         "ema9": _line(df["ema9"], tf),
         "ema20": _line(df["ema20"], tf),
+        "ema30": _line(df["ema30"], tf),
         "ema50": _line(df["ema50"], tf),
         "ema200": _line(df["ema200"], tf),
         "bb_up": _line(df["bb_up"], tf),

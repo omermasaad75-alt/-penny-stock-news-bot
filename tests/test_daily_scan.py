@@ -99,7 +99,7 @@ def test_cli_builds_publishable_site(tmp_path):
     assert payload["mode"] in {"demo", "live"}
 
     header = csv.read_text(encoding="utf-8-sig").splitlines()[0]
-    assert "الرمز" in header and "التقييم" in header
+    assert "الرمز" in header and "النقاط الفنية" in header
     assert "مرشح GAM" in header and "أسباب GAM" in header
     assert "GAM" in html and "غير مؤهل" in html
 
@@ -125,15 +125,16 @@ def test_dataset_separates_gam_from_eligible_and_watchlist(tool, tmp_path):
 
     rows = {r["symbol"]: r for r in payload["rows"]}
     assert rows["JZ"]["eligible"] is True and rows["JZ"]["gam_candidate"] is False
-    assert rows["BIOK"]["gam_candidate"] is True
+    assert rows["BIOK"]["gam_candidate"] is False
+    assert "short_shares" in rows["BIOK"]["rejection_codes"]
     assert rows["BIOK"]["eligible"] is False and rows["BIOK"]["watchlist"] is False
     assert rows["QLGN"]["last_close"] < STRATEGY.min_price
     assert rows["QLGN"]["gam_candidate"] is False
-    assert payload["summary"]["gam_candidates"] == 1
+    assert payload["summary"]["gam_candidates"] == 0
     assert payload["gam_policy"]["historical_state_persisted"] is False
     assert payload["gam_policy"]["rsi_scope"] == "current_scan_price_series"
 
     csv_text = (site / "data" / "latest.csv").read_text(encoding="utf-8-sig")
     assert "مرشح GAM" in csv_text
     biok_line = next(line for line in csv_text.splitlines() if line.startswith("BIOK,"))
-    assert "نعم — غير مؤهل" in biok_line
+    assert "نعم — غير مؤهل" not in biok_line

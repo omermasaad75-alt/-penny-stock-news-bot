@@ -56,7 +56,8 @@ CSV_COLUMNS = [
     ("watchlist", "قائمة المتابعة"), ("gam_candidate", "مرشح GAM"),
     ("gam_reasons", "أسباب GAM"), ("gam_rsi_scope", "نطاق RSI لـ GAM"),
     ("rejections", "أسباب الاستبعاد"),
-    ("score", "التقييم"), ("grade", "الدرجة"),
+    ("score", "النقاط الفنية"), ("grade", "الدرجة"),
+    ("short_shares", "الأسهم المكشوفة"), ("short_as_of", "تاريخ تقرير الأسهم المكشوفة"),
     ("last_close", "آخر إغلاق"), ("rs_date", "تاريخ التقسيم"), ("rs_ratio", "نسبة التقسيم"),
     ("impulse_pct", "الانطلاقة %"), ("resistance_level", "أقرب مقاومة"),
     ("resistance_distance_pct", "بعد المقاومة %"), ("sweep_low", "قاع سحب السيولة"),
@@ -236,7 +237,7 @@ def run_scan(mode: str | None, limit: int, symbols: list[str] | None = None):
             continue
         results.append(a)
         print(f"  [{i}/{len(syms)}] {sym:<8} مرحلة={a.phase} تقييم={a.score}", flush=True)
-    results.sort(key=lambda x: (-x.phase, -x.score))
+    results.sort(key=lambda x: (-x.score, x.symbol))
     sources = hub.sources_report()
     sources["candidates_checked"] = getattr(hub.yahoo, "candidates_checked", len(syms))
     sources["verified_symbols"] = getattr(hub.yahoo, "verified_symbols", [a.symbol for a in results])
@@ -306,6 +307,7 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
                 "gam_rsi_scope": ("بيانات المسح الحالي — لا حفظ تاريخي" if a.gam_candidate else "—"),
                 "rejections": " | ".join(a.rejections),
                 "score": a.score, "grade": a.grade, "last_close": a.last_close,
+                "short_shares": a.short_shares, "short_as_of": a.short_as_of,
                 "rs_date": a.rs_date, "rs_ratio": a.rs_ratio_str,
                 "impulse_pct": a.impulse_pct, "resistance_level": a.resistance_level,
                 "resistance_distance_pct": a.resistance_distance_pct, "sweep_low": a.sweep_low,
@@ -605,8 +607,8 @@ $coverage_html
   <div class="tblwrap">
   <table>
     <thead><tr>
-      <th>الرمز</th><th>تسلسل دورة الحياة</th><th>المرحلة</th><th>التقييم</th><th>آخر إغلاق</th>
-      <th>التقسيم</th><th>الانطلاقة</th><th>أقرب مقاومة</th><th>سحب السيولة</th><th>الدعم</th><th>التقرير</th>
+      <th>الرمز</th><th>تسلسل دورة الحياة</th><th>المرحلة</th><th>النقاط الفنية</th><th>آخر إغلاق</th>
+      <th>التقسيم</th><th>الانطلاقة</th><th>أقرب مقاومة</th><th>سحب السيولة</th><th>الدعم</th><th>الأسهم المكشوفة</th><th>التقرير</th>
     </tr></thead>
     <tbody>
 $rows_html
@@ -648,7 +650,7 @@ def source_text(a) -> str:
 
 def _rows_html(results: list, report_names: dict, stamp: str) -> str:
     out = []
-    for a in results[:60]:
+    for a in sorted((r for r in results if r.eligible), key=lambda r: (-r.score, r.symbol)):
         lv = a.levels or {}
         done, label, color = sequence_state(a)
         cls = {"ok": "c-green", "warn": "c-amber", "bad": "c-red", "muted": "muted"}[color]
@@ -681,17 +683,18 @@ def _rows_html(results: list, report_names: dict, stamp: str) -> str:
             f"<td>{_f(a.resistance_level, 3)} <span class=\"muted\">{_pct(a.resistance_distance_pct)}</span></td>"
             f"<td>{_f(a.sweep_low, 3)}</td>"
             f"<td>{_f(a.support_level, 3)}</td>"
+            f"<td>{_f(a.short_shares, 0)}</td>"
             f"<td>{rep_cell}<div class=\"muted\">{html.escape(source_text(a))}</div></td>"
             "</tr>")
     if not out:
-        out.append('<tr><td colspan="11" class="muted">لا توجد نتائج — أعد تشغيل المسح.</td></tr>')
+        out.append('<tr><td colspan="12" class="muted">لا توجد نتائج — أعد تشغيل المسح.</td></tr>')
     return "\n".join(out)
 
 
 def _cards_html(results: list, report_names: dict, stamp: str) -> str:
     """بطاقات الجوال (بديل الجدول العريض على الشاشات الصغيرة)."""
     out = []
-    for a in results[:40]:
+    for a in sorted((r for r in results if r.eligible), key=lambda r: (-r.score, r.symbol)):
         done, label, color = sequence_state(a)
         cls = {"ok": "c-green", "warn": "c-amber", "bad": "c-red", "muted": "muted"}[color]
         rep = report_names.get(a.symbol)
@@ -718,6 +721,7 @@ def _cards_html(results: list, report_names: dict, stamp: str) -> str:
             f'<div><span>أقرب مقاومة</span>{_f(a.resistance_level, 3)}</div>'
             f'<div><span>سحب السيولة</span>{_f(a.sweep_low, 3)}</div>'
             f'<div><span>الدعم الرئيسي</span>{_f(a.support_level, 3)}</div>'
+            f'<div><span>الأسهم المكشوفة</span>{_f(a.short_shares, 0)}</div>'
             f'<div><span>نسبة التقسيم</span>{html.escape(a.rs_ratio_str or "—")}</div>'
             '</div>'
             f'<div class="muted">{"🔴 تجريبي" if a.synthetic else "🟠 ناقص" if not a.news_source else "🟢 حقيقي"} · {html.escape(source_text(a))}</div>'
@@ -826,7 +830,7 @@ def build_landing(site: Path, payload: dict, written: list[dict]) -> Path:
         'وليست مستبعدة فنياً · «بيانات غير متاحة» = تعذّر تحقق الأسعار أو الملف التعريفي · '
         '«لا تقسيم حديث مطابق» = لا حدث خلال 60 يوماً بنسبة 1:2–1:60 · '
         '«مستبعد لسبب آخر» = تقسيم حديث مرصود لكنه أخفق السعر/السيولة/الصعود/النموذج أو سبباً مانعاً آخر · '
-        '«GAM» = رفضه الوحيد هبوط دون 30% و/أو RSI في بيانات المسح الحالي، مع سعر 0.50–20$؛ '
+        '«GAM» = رفضه الوحيد هبوط دون 30% و/أو RSI في بيانات المسح الحالي، مع سعر 1–5$؛ '
         'يبقى غير مؤهل وليس توصية · «قائمة المتابعة» = مؤهل ومراقب · '
         '«جاهز فنياً» = فرصة مؤهلة اكتمل تسلسلها 6/6.</div>'
         '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">'

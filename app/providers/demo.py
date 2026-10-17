@@ -82,7 +82,7 @@ SCENARIOS: list[Scenario] = [
         exchange="NASDAQ",
         rs_offset=-24, rs_ratio=8.0,
         shares_out=9_500_000, float_shares=3_200_000,
-        short_pct_float=18.4, days_to_cover=3.1, short_change=+12.0,
+        short_pct_float=0.5, days_to_cover=3.1, short_change=+12.0,
         base_volume=1_450_000,
         spike_pct=13.33, drop_pct=52.9, bottom_offset=-16,
         rsi_trough=21.5, rsi_now_target=48.0, recovery_strength=0.9,
@@ -124,7 +124,7 @@ SCENARIOS: list[Scenario] = [
         exchange="NASDAQ",
         rs_offset=-36, rs_ratio=20.0,
         shares_out=6_800_000, float_shares=1_900_000,
-        short_pct_float=31.2, days_to_cover=4.8, short_change=+22.0,
+        short_pct_float=0.5, days_to_cover=4.8, short_change=+22.0,
         base_volume=980_000,
         spike_pct=22.0, drop_pct=61.0, bottom_offset=-18,
         rsi_trough=16.8, rsi_now_target=55.0, recovery_strength=1.0,
@@ -136,7 +136,7 @@ SCENARIOS: list[Scenario] = [
         note_ar=(
             "حالة مكتملة: تقسيم عكسي 1:20، هبوط 61% إلى القاع، ثم ثبات على الدعم، "
             "انطلاقة +20% إلى 2.86$ عند مقاومة قريبة، ثم إعادة اختبار الدعم الرئيسي "
-            "والاستعادة فوقه. مع فلوت 1.9M وبيع مكشوف 31% من الفلوت → أفضلية ضغط قصير."
+            "والاستعادة فوقه. بيانات اصطناعية: فلوت 1.9M و9,500 سهم مكشوف (0.5%)."
         ),
         catalysts=[
             {"offset": -20, "type": "clinical", "sentiment": "positive", "impact": "high",
@@ -282,7 +282,7 @@ SCENARIOS: list[Scenario] = [
         pre_price=1.42,
         tail_gain_pct=4.0, rs_open=1.44,
         lifecycle=False,
-        note_ar="تحقق الهبوط (-31%) لكن RSI لم ينزل تحت 30 → شرط التشبع البيعي غير محقق.",
+        note_ar="مثال اصطناعي؛ نتيجة الأهلية تُحسب من البيانات الفعلية للسيناريو، لا هذا الوصف.",
     ),
 ]
 

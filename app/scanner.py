@@ -49,11 +49,11 @@ def _m(x):
 
 
 def print_table(results: list[eng.Analysis], only_watch: bool = False) -> None:
-    rows = [a for a in results if a.watchlist] if only_watch else results
+    rows = [a for a in results if a.watchlist] if only_watch else [a for a in results if a.eligible]
     print()
     print("=" * 150)
     print(f"{'الرمز':<7}{'المرحلة':<38}{'التقييم':<9}{'السعر':<9}{'التقسيم':<14}"
-          f"{'صعود':<8}{'هبوط':<8}{'ثبات':<6}{'RSI':<10}{'الفلوت':<9}{'م.مكشوف':<9}{'اختراق':<9}{'ر/ع':<7}")
+          f"{'صعود':<8}{'هبوط':<8}{'ثبات':<6}{'RSI':<10}{'الفلوت':<9}{'أسهم مكشوفة':<9}{'اختراق':<9}{'ر/ع':<7}")
     print("=" * 150)
     for a in rows:
         lv = a.levels or {}
@@ -65,7 +65,7 @@ def print_table(results: list[eng.Analysis], only_watch: bool = False) -> None:
               f"{_f(a.last_close, 3):<9}{(a.rs_ratio_str or '—'):<14}{_pct(a.spike_pct):<8}"
               f"{_pct(a.decline_pct):<8}{str(a.base_sessions):<6}"
               f"{(_f(a.rsi_trough,0)+'→'+_f(a.rsi_now,0)):<10}{_m(a.float_shares):<9}"
-              f"{(_f(a.short_pct_float,1)+'%') if a.short_pct_float is not None else '—':<9}"
+              f"{_f(a.short_shares,0):<9}"
               f"{_f(lv.get('trigger'),3):<9}{_f(lv.get('rr_t2'),2):<7}")
         if a.rejections:
             print(f"        ↳ مستبعد: {' | '.join(a.rejections)[:130]}")
@@ -111,20 +111,23 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--json", action="store_true", help="طباعة الناتج كـ JSON")
     args = ap.parse_args(argv)
 
+    def status(*values, **kwargs):
+        print(*values, file=sys.stderr if args.json else sys.stdout, **kwargs)
+
     hub: DataHub = get_hub(mode=args.mode, refresh=bool(args.mode))
     src = hub.sources_report()
-    print(f"▶ {settings.app_name_ar} v{settings.version}")
-    print(f"▶ وضع البيانات الفعّال: {src['mode_effective']} (المُعدّ: {src['mode_setting']})")
+    status(f"▶ {settings.app_name_ar} v{settings.version}")
+    status(f"▶ وضع البيانات الفعّال: {src['mode_effective']} (المُعدّ: {src['mode_setting']})")
 
     syms = [s.strip().upper() for s in args.symbols.split(",") if s.strip()] if args.symbols else []
     if not syms:
         syms = hub.universe(limit=args.limit)
 
     if not (args.scan or args.symbols):
-        print("استخدم --scan لمسح الكون أو --symbols لتحديد رموز. مثال: python -m app.scanner --scan")
+        status("استخدم --scan لمسح الكون أو --symbols لتحديد رموز. مثال: python -m app.scanner --scan")
         return 0
 
-    print(f"▶ عدد الرموز: {len(syms)} — بدء التحليل…")
+    status(f"▶ عدد الرموز: {len(syms)} — بدء التحليل…")
     results: list[eng.Analysis] = []
     for i, s in enumerate(syms, 1):
         try:
@@ -133,10 +136,10 @@ def main(argv: list[str] | None = None) -> int:
             a = eng.Analysis(symbol=s)
             eng.add_rejection(a, "analysis_error", f"خطأ: {exc}")
         results.append(a)
-        print(f"\r  [{i}/{len(syms)}] {s:<8}", end="", flush=True)
-    print("\r" + " " * 40 + "\r", end="")
+        status(f"\r  [{i}/{len(syms)}] {s:<8}", end="", flush=True)
+    status("\r" + " " * 40 + "\r", end="")
 
-    results.sort(key=lambda x: (-x.phase, -x.score))
+    results.sort(key=lambda x: (-x.score, x.symbol))
 
     if args.json:
         payload = {
@@ -156,13 +159,14 @@ def main(argv: list[str] | None = None) -> int:
                 "rsi_scope": eng.GAM_RSI_SCOPE,
                 "historical_state_persisted": False,
             },
-            "rows": [a.to_dict() for a in results],
+            "rows": [a.to_dict() for a in results if a.eligible],
+            "rejected": [a.to_dict() for a in results if not a.eligible],
         }
         text = json.dumps(payload, ensure_ascii=False, indent=2)
         if args.out:
             Path(args.out).parent.mkdir(parents=True, exist_ok=True)
             Path(args.out).write_text(text, encoding="utf-8")
-            print(f"✔ تم كتابة JSON إلى {args.out}")
+            status(f"✔ تم كتابة JSON إلى {args.out}")
         else:
             print(text)
     else:
@@ -177,7 +181,7 @@ def main(argv: list[str] | None = None) -> int:
         wl = watchlist_markdown(results, src)
         stamp = datetime.now().strftime("%Y%m%d")
         (REPORTS_DIR / f"watchlist_{stamp}.md").write_text(wl, encoding="utf-8")
-        print(f"✔ تم توليد {len(written)} تقريراً في {REPORTS_DIR}")
+        status(f"✔ تم توليد {len(written)} تقريراً في {REPORTS_DIR}")
     return 0
 
 

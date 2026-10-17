@@ -1,15 +1,7 @@
-"""محرّك الاستراتيجية — RS Reversal Strategy Engine.
+"""ماسح عربي: خمسة فلاتر إلزامية، ونقاط فنية اختيارية مستقلة (0–100).
 
-تنفيذ حرفي لشروط ورقة الاستراتيجية:
-
-  1) رصد تقسيم عكسي (Reverse Split) بنسبة 1:2 حتى 1:60 خلال آخر 60 يوماً.
-  2) قياس صعود يوم التقسيم (نسبة الصعود من سعر الافتتاح إلى قمة اليوم/الجلسات التالية).
-  3) قياس الموجة الهابطة من القمة إلى القاع (≥ 30% ، والمثالي 40-50%+).
-  4) رصد التشبع البيعي (RSI < 30 ، والأفضل < 25 أو < 20).
-  5) رصد القاع والثبات عليه 3-5 جلسات (مع جفاف الحجم وضيق النطاق).
-  6) تأكيد الانعكاس فنيًا: استعادة EMA9، تحسّن MACD، قيعان صاعدة، اختراق القناة الهابطة.
-  7) البيانات الأساسية: عدد الأسهم، الفلوت، البيع المكشوف، الأخبار والمحفزات المستقبلية.
-  8) تصنيف المرحلة + تقييم 0-100 + مستويات دخول/وقف/أهداف مع نسبة مخاطرة/عائد.
+السعر 1–5$، تقسيم منفّذ خلال 60 يوماً، هبوط ≥30%، RSI<30 عند تكوّن القاع،
+وShort Shares<20,000. النماذج والثبات والسيولة ودورة الحياة لا تضيف موانع أهلية.
 """
 from __future__ import annotations
 
@@ -22,6 +14,7 @@ import pandas as pd
 
 from ..analytics import indicators as ind
 from ..analytics import patterns as pat
+from ..analytics.technical_score import technical_components
 from ..config import StrategyParams, STRATEGY
 from ..providers.base import Catalyst, DilutionSignal, ReverseSplitEvent, ShortData, TickerProfile
 from ..providers.hub import DataHub
@@ -183,6 +176,7 @@ class Analysis:
     insider_pct: float | None = None
     institutional_pct: float | None = None
     short_pct_float: float | None = None
+    short_as_of: str | None = None
     short_shares: float | None = None
     days_to_cover: float | None = None
     short_change_pct: float | None = None
@@ -366,6 +360,7 @@ def pick_reverse_split(events: list[ReverseSplitEvent], params: StrategyParams,
     for ev in sorted(events, key=lambda e: e.date, reverse=True):
         age = int((as_of.normalize() - pd.Timestamp(ev.date).normalize()).days)
         if age < 0:
+            reasons.append(f"تقسيم بتاريخ مستقبلي {ev.date} — لم يُنفّذ بعد")
             continue
         if age > params.rs_lookback_days:
             reasons.append(
@@ -373,7 +368,8 @@ def pick_reverse_split(events: list[ReverseSplitEvent], params: StrategyParams,
                 f"{params.rs_lookback_days} يوماً المطلوبة"
             )
             continue
-        if not (params.rs_min_ratio <= float(ev.factor) <= params.rs_max_ratio):
+        if not (math.isfinite(float(ev.factor)) and float(ev.factor) > params.rs_min_ratio
+                and (not params.rs_max_ratio or float(ev.factor) <= params.rs_max_ratio)):
             reasons.append(
                 f"نسبة التقسيم {ev.ratio_str} خارج النطاق المقبول "
                 f"1:{params.rs_min_ratio:g} – 1:{params.rs_max_ratio:g}"
@@ -400,8 +396,8 @@ def analyse_structure(df: pd.DataFrame, ev: ReverseSplitEvent, params: StrategyP
     rs_open = float(rs_bar["open"]) or float(rs_bar["close"])
 
     # (2) قمة ما بعد التقسيم خلال نافذة الصعود
-    end_pos = min(len(df), rs_pos + max(1, params.spike_window_sessions) + 1)
-    seg = df.iloc[rs_pos:end_pos]
+    # قمة كامل الفترة بعد تنفيذ التقسيم، لا أول خمس جلسات فقط.
+    seg = df.iloc[rs_pos:]
     peak_pos = int(seg["high"].to_numpy().argmax()) + rs_pos
     spike_high = float(df["high"].iloc[peak_pos])
     spike_pct = _pct(spike_high, rs_open)
@@ -434,10 +430,10 @@ def analyse_structure(df: pd.DataFrame, ev: ReverseSplitEvent, params: StrategyP
     else:
         bottom_pos = peak_pos
     bottom_price = float(df["low"].iloc[bottom_pos])
-    decline_pct = _pct(bottom_price, spike_high)
+    decline_pct = _pct(float(seg["low"].min()), spike_high)
     out.update(
         bottom_pos=bottom_pos, bottom_price=_r(bottom_price), bottom_date=_date_str(df.index[bottom_pos]),
-        peak_date=_date_str(df.index[peak_pos]), decline_pct=_r(decline_pct),
+        peak_date=_date_str(df.index[peak_pos]), decline_pct=decline_pct,
     )
 
     # (5) الثبات على القاع
@@ -501,17 +497,19 @@ def analyse_momentum(df: pd.DataFrame, struct: dict, params: StrategyParams) -> 
     peak_pos = struct["peak_pos"]
     bottom_pos = struct["bottom_pos"]
 
-    seg = rsi.iloc[peak_pos:]
+    # التشبع خلال تكوّن القاع فقط، وليس أي تشبع لاحق غير مرتبط به.
+    bottom_end = max(bottom_pos, struct.get("base_end_pos", bottom_pos)) + 1
+    seg = rsi.iloc[peak_pos:bottom_end]
     if seg.dropna().empty:
         out.update(rsi_now=_r(rsi.iloc[-1], 2), rsi_trough=None)
     else:
         trough_pos = int(seg.fillna(100).to_numpy().argmin()) + peak_pos
         out.update(
             rsi_now=_r(rsi.iloc[-1], 2),
-            rsi_trough=_r(float(rsi.iloc[trough_pos]), 2),
+            rsi_trough=float(rsi.iloc[trough_pos]),
             rsi_trough_date=_date_str(df.index[trough_pos]),
         )
-    below = int((rsi.iloc[peak_pos:] < params.rsi_oversold).sum())
+    below = int((seg < params.rsi_oversold).sum())
     out["rsi_sessions_below_30"] = below
     trough = out.get("rsi_trough")
     now = out.get("rsi_now")
@@ -881,163 +879,11 @@ def analyse_4h(df4: pd.DataFrame, params: StrategyParams) -> dict[str, Any]:
 # --------------------------------------------------------------------------- #
 #  التقييم
 # --------------------------------------------------------------------------- #
-def score_setup(a: Analysis, params: StrategyParams) -> list[ScorePart]:
-    w = params.weights
-    parts: list[ScorePart] = []
-
-    # 1) حدث التقسيم: كلما كان أحدث ونسبته أوضح كانت الدرجة أعلى
-    rs_score = 0.0
-    if a.rs_found:
-        age = a.rs_age_days or 0
-        rs_score = _scaled(age, [(0, 100), (10, 95), (25, 85), (45, 70), (60, 55)])
-        ratio_bonus = _scaled(a.rs_ratio, [(2, -8), (5, 0), (10, 6), (20, 8), (40, 4), (60, -4)])
-        rs_score = float(np.clip(rs_score + ratio_bonus, 0, 100))
-    parts.append(ScorePart(
-        "rs_setup", "حدث التقسيم العكسي", rs_score, w["rs_setup"],
-        f"1-for-{a.rs_ratio:g} بتاريخ {a.rs_date} (عمر {a.rs_age_days} يوم)" if a.rs_found else "غير متحقق"))
-
-    # 2) صعود يوم التقسيم
-    spike = _scaled(a.spike_pct, [(0, 0), (5, 45), (10, 70), (15, 92), (25, 100), (60, 80)])
-    parts.append(ScorePart("spike", "صعود يوم التقسيم", spike, w["spike"],
-                           f"{a.spike_pct:.1f}% من الافتتاح {a.rs_open} إلى {a.spike_high}"
-                           if a.spike_pct is not None else "غير متحقق"))
-
-    # 3) عمق الموجة الهابطة
-    drop = _scaled(abs(a.decline_pct) if a.decline_pct is not None else None,
-                   [(0, 0), (22, 30), (30, 62), (40, 84), (50, 96), (70, 100)])
-    parts.append(ScorePart("decline", "قوة الموجة الهابطة", drop, w["decline"],
-                           f"هبوط {abs(a.decline_pct):.1f}% من القمة {a.spike_high} إلى القاع {a.bottom_price}"
-                           if a.decline_pct is not None else "غير متحقق"))
-
-    # 4) التشبع البيعي وتحسّنه
-    over = _scaled(a.rsi_trough, [(40, 0), (35, 25), (30, 60), (25, 85), (20, 100), (10, 100)])
-    if a.rsi_recovered:
-        over = min(100.0, over + 8)
-    if (a.rsi_sessions_below_30 or 0) >= 3:
-        over = min(100.0, over + 5)
-    parts.append(ScorePart("oversold", "التشبع البيعي", float(np.clip(over, 0, 100)), w["oversold"],
-                           f"أدنى RSI {a.rsi_trough} ({a.rsi_trough_date}) — الحالي {a.rsi_now}"
-                           + (" وقد بدأ التحسّن" if a.rsi_recovered else "")))
-
-    # 5) القاع والثبات
-    s = a.base_sessions or 0
-    base_score = _scaled(s, [(0, 0), (1, 20), (2, 45), (3, 78), (5, 100), (6, 100),
-                             (10, 88), (15, 70), (20, 55), (30, 35)])
-    detail_bits = [f"ثبات ({sessions_ar(s)})", f"نطاق القاعدة {a.base_range_pct:.1f}%" if a.base_range_pct is not None else ""]
-    if a.volume_dryup is not None:
-        detail_bits.append(f"جفاف حجم {a.volume_dryup*100:.0f}% من المتوسط")
-        if a.volume_dryup < params.max_volume_dryup_ratio:
-            base_score = min(100.0, base_score + 6)
-    if a.base_broken:
-        base_score *= 0.25
-        detail_bits.append("⚠ كسر القاع")
-    parts.append(ScorePart("base", "القاع والثبات", float(np.clip(base_score, 0, 100)), w["base"],
-                           " — ".join([b for b in detail_bits if b])))
-
-    # 6) تأكيد الانعكاس
-    rev = 0.0
-    rev_detail: list[str] = []
-    if a.above_ema9_sessions >= params.min_sessions_above_ema9:
-        rev += 25
-        rev_detail.append(f"إغلاق {sessions_ar(a.above_ema9_sessions)} فوق EMA9")
-    elif a.above_ema9_sessions == 1:
-        rev += 12
-        rev_detail.append("جلسة واحدة فوق EMA9")
-    if a.macd_turning:
-        rev += 20
-        rev_detail.append("MACD يتحسّن")
-    if a.channel_broken:
-        rev += 25
-        rev_detail.append("اختراق القناة الهابطة")
-    if (a.higher_lows or 0) >= 1:
-        rev += min(15, 8 * a.higher_lows)
-        rev_detail.append(f"{a.higher_lows} قاع صاعد")
-    if a.rsi_recovered:
-        rev += 15
-        rev_detail.append("RSI خارج التشبع")
-    if (a.rvol or 0) >= params.rvol_threshold:
-        rev += 10
-        rev_detail.append(f"حجم نسبي {a.rvol}x")
-    if a.h4.get("aligned"):
-        rev += 10
-        rev_detail.append("توافق فريم 4 ساعات")
-
-    # دورة الحياة: انطلاقة → مقاومة → عودة للدعم/سحب سيولة → استعادة
-    if a.impulse_pct is not None and a.impulse_pct >= params.min_ready_impulse_pct:
-        closeness = 1 - min(1.0, abs(a.impulse_pct - params.ideal_impulse_pct) / params.ideal_impulse_pct)
-        rev += 8 + 6 * closeness
-        rev_detail.append(f"انطلاقة +{a.impulse_pct:.0f}% بعد الثبات")
-    if a.resistance_level:
-        rev += 6
-        rev_detail.append(f"اختبار مقاومة قريبة عند {a.resistance_level}")
-    if a.pullback_type == "liquidity_sweep":
-        rev += 12
-        rev_detail.append(f"سحب سيولة تحت الدعم {a.sweep_low} ثم استعادة")
-    elif a.pullback_type == "support_retest":
-        rev += 8
-        rev_detail.append("إعادة اختبار الدعم الرئيسي")
-    if a.lifecycle_ready:
-        rev += 18
-        rev_detail.append("تسلسل «جاهز فنياً» مكتمل (انطلاقة → مقاومة → عودة للدعم/سحب سيولة → استعادة)")
-    elif a.lifecycle_failed:
-        rev -= 20
-        rev_detail.append("فشل التسلسل — كسر الدعم دون استعادة")
-    parts.append(ScorePart("reversal", "تأكيد الانعكاس", float(np.clip(rev, 0, 100)), w["reversal"],
-                           "، ".join(rev_detail) or "لا يوجد تأكيد فني بعد"))
-
-    # 7) عوامل الانفجار (فلوت صغير + بيع مكشوف + ضغط تقلب)
-    squeeze = 0.0
-    sq_bits: list[str] = []
-    if a.short_pct_float is not None:
-        squeeze += _scaled(a.short_pct_float, [(3, 2), (8, 8), (15, 16), (25, 22), (40, 25)])
-        sq_bits.append(f"بيع مكشوف {a.short_pct_float:.1f}% من الفلوت")
-    if a.float_shares:
-        squeeze += _scaled(a.float_shares / 1e6, [(0.5, 18), (2, 14), (5, 8), (15, 3), (50, 0)])
-        sq_bits.append(f"فلوت {a.float_shares/1e6:.2f}M سهم")
-    if a.days_to_cover:
-        squeeze += _scaled(a.days_to_cover, [(0.5, 0), (1.5, 3), (3, 6), (6, 8)])
-        sq_bits.append(f"أيام تغطية {a.days_to_cover:.1f}")
-    if a.squeeze:
-        squeeze += 6
-        sq_bits.append("ضغط تقلب (Squeeze)")
-    if a.short_change_pct:
-        sq_bits.append(f"تغيّر المراكز {a.short_change_pct:+.0f}%")
-    parts.append(ScorePart("squeeze", "عوامل الضغط والانفجار", float(np.clip(squeeze, 0, 100)),
-                           w["squeeze"], "، ".join(sq_bits) or "لا بيانات كافية"))
-
-    # 8) المخاطر (تخفيف وأخبار سلبية وسيولة)
-    risk = 100.0
-    rk_bits: list[str] = []
-    recent_neg = [c for c in a.negative_news
-                  if _days_since(c.get("date")) is not None and _days_since(c["date"]) <= 30]
-    for c in recent_neg:
-        if c.get("type") == "offering":
-            risk -= 34
-            rk_bits.append("طرح أسهم خلال 30 يوماً")
-        elif c.get("impact") == "high":
-            risk -= 15
-            rk_bits.append("خبر سلبي عالي الأثر")
-        else:
-            risk -= 7
-    hi_dil = [d for d in a.dilution if d.get("severity") == "high"
-              and (_days_since(d.get("date")) or 999) <= 45]
-    if hi_dil:
-        risk -= 18
-        rk_bits.append(f"{len(hi_dil)} إفصاح تخفيف عالي الخطورة")
-    if (a.dollar_volume or 0) < params.min_avg_dollar_volume:
-        risk -= 20
-        rk_bits.append("سيولة متوسطة منخفضة")
-    if a.base_broken:
-        risk -= 20
-        rk_bits.append("كسر القاع المرجعي")
-    if a.lifecycle_failed:
-        risk -= 25
-        rk_bits.append("فشل تسلسل الانعكاس (كسر الدعم بعد الانطلاقة)")
-    if a.pullback_type == "liquidity_sweep":
-        rk_bits.append("سحب سيولة تحت الدعم حدث ثم تمت استعادته")
-    parts.append(ScorePart("risk", "جودة المخاطر", float(np.clip(risk, 0, 100)), w["risk"],
-                           "، ".join(rk_bits) or "لا مخاطر بارزة خلال 30 يوماً"))
-    return parts
+def score_setup(a: Analysis, params: StrategyParams, df: pd.DataFrame | None = None) -> list[ScorePart]:
+    """نقاط فنية فقط؛ لا تحدد أهلية السهم."""
+    if df is None:
+        return []
+    return [ScorePart(*part) for part in technical_components(df, a.patterns_daily, params, start=a.rs_date)]
 
 
 def _days_since(date_str) -> int | None:
@@ -1350,7 +1196,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     a.data_source = hub.effective_mode
 
     raw_daily = hub.daily(symbol, 320)
-    if raw_daily is None or len(raw_daily) < 40:
+    if raw_daily is None or len(raw_daily) < 2:
         reason = hub.rejections.get(symbol, "لا توجد بيانات سعرية كافية")
         add_rejection(a, "missing_price_data", reason)
         a.synthetic = (hub.effective_mode == "demo")
@@ -1359,11 +1205,8 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
 
     prof: TickerProfile | None = hub.profile(symbol)
     if prof is None:
-        reason = hub.rejections.get(symbol, "لا توجد بيانات حقيقية لهذا الرمز")
-        add_rejection(a, "missing_profile_data", reason)
-        a.synthetic = False  # وُجدت أسعار فقط بدون ملف تعريفي — ليس تجريبي
-        a.price_source = "yahoo-finance"
-        return a
+        prof = TickerProfile(symbol=symbol, name=symbol, source="غير متاح")
+        a.notes.append("البيانات الأساسية غير متاحة؛ ليست شرط أهلية إضافياً")
     a.name = prof.name or symbol
     a.sector = prof.sector or ""
     a.industry = prof.industry or ""
@@ -1396,7 +1239,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
 
     # ---------- التقسيم ---------- #
     events = hub.splits(symbol)
-    ev, rs_reasons = pick_reverse_split(events, params, pd.Timestamp(df.index[-1]))
+    ev, rs_reasons = pick_reverse_split(events, params)
     if ev is None:
         # لا حدث حديث صالح: أسباب تجاهل الأحداث القديمة/غير المطابقة تصبح أسباب رفض.
         for reason in rs_reasons:
@@ -1404,7 +1247,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     else:
         # حدث حديث صالح مختار: تجاهل الأحداث التاريخية ملاحظة فقط — لا يُبطل الأهلية.
         a.notes.extend(f"حدث تاريخي متجاهَل: {reason}" for reason in rs_reasons)
-    size_ok = (params.min_price <= a.last_close <= params.max_price)
+    size_ok = (params.min_price <= float(df["close"].iloc[-1]) <= params.max_price)
     if not size_ok:
         add_rejection(
             a, "price",
@@ -1412,13 +1255,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
             f"({params.min_price}$ - {params.max_price}$)",
         )
     if (a.dollar_volume or 0) < params.min_avg_dollar_volume:
-        add_rejection(
-            a, "liquidity",
-            f"سيولة متوسطة منخفضة ({_fmt_num(a.dollar_volume)}$ يومياً < "
-            f"{_fmt_num(params.min_avg_dollar_volume)}$)",
-        )
-    if params.max_float_shares and (a.float_shares or 0) > params.max_float_shares:
-        add_rejection(a, "float", f"الفلوت {_fmt_num(a.float_shares)} أكبر من الحد المسموح")
+        a.risk_flags.append("سيولة منخفضة — تنبيه فقط وليس شرط استبعاد")
 
     # مصدر التقسيم: من الحدث المختار (yahoo/sec/demo)
     if ev is not None:
@@ -1484,22 +1321,13 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         a.resistance_stall_pct = seq.get("resistance_stall_pct")
 
         if a.lifecycle_failed:
-            add_rejection(
-                a, "lifecycle_failure",
-                "كسر الدعم الرئيسي بعد الانطلاقة دون استعادة (سحب سيولة فاشل) — "
-                "إلغاء السيناريو حتى يتكوّن قاع جديد",
-            )
+            a.risk_flags.append("كسر الدعم دون استعادة — تنبيه فني فقط")
         if a.lifecycle_ready:
             a.notes.append(f"تسلسل الاستراتيجية مكتمل — {a.lifecycle_stage}")
         elif a.impulse_pct is not None and not a.rejections:
             a.notes.append(f"تسلسل «جاهز فنياً» قيد التكوّن — {a.lifecycle_stage}")
 
         # شروط الاستراتيجية الصارمة
-        if a.spike_pct is not None and a.spike_pct < params.min_spike_pct:
-            add_rejection(
-                a, "spike",
-                f"صعود يوم التقسيم {a.spike_pct:.1f}% أقل من الحد الأدنى {params.min_spike_pct}%",
-            )
         if a.decline_pct is None:
             add_rejection(a, "missing_decline_data", "بيانات الهبوط بعد التقسيم غير كافية للتحقق")
         elif abs(a.decline_pct) < params.min_drop_pct:
@@ -1519,20 +1347,23 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
                 f"الثبات على القاع {sessions_ar(a.base_sessions)} — لم يكتمل شرط "
                 f"{params.min_base_sessions} جلسات بعد (مرحلة تكوّن القاعدة)")
         if a.base_broken:
-            add_rejection(a, "base_broken", "كسر القاع المرجعي بأكثر من الحد المسموح (السيناريو مهدد)")
+            a.risk_flags.append("كسر القاع المرجعي — تنبيه فني لا يلغي الأهلية")
 
     # ---------- البيع المكشوف ---------- #
     sd: ShortData | None = hub.short_data(symbol, a.float_shares)
     if sd is not None:
         a.short_pct_float = _r(sd.short_pct_float, 2)
-        a.short_shares = _r(sd.short_shares, 0)
+        a.short_shares = float(sd.short_shares) if sd.short_shares is not None and math.isfinite(float(sd.short_shares)) else None
+        a.short_as_of = sd.as_of
         a.days_to_cover = _r(sd.days_to_cover, 2)
         a.short_change_pct = _r(sd.change_pct, 1)
         a.short_volume_ratio = _r(sd.short_volume_ratio, 3)
         a.short_source = sd.source
-        if a.short_pct_float is None and a.short_volume_ratio is not None and a.float_shares:
-            # تقدير: نسبة حجم البيع المكشوف اليومي كمؤشر ضغط (لا تُخلط مع نسبة الفلوت)
-            pass
+
+    if a.short_shares is None or a.short_shares < 0:
+        add_rejection(a, "missing_short_shares", "عدد الأسهم المكشوفة غير متاح/غير صالح؛ لا يمكن التحقق من شرط أقل من 20,000")
+    elif a.short_shares >= params.max_short_shares:
+        add_rejection(a, "short_shares", f"الأسهم المكشوفة {a.short_shares:,.0f} ليست أقل من {params.max_short_shares:,.0f}")
 
     # ---------- الأخبار والمخاطر ---------- #
     cats: list[Catalyst] = hub.catalysts(symbol)
@@ -1576,7 +1407,11 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     ctx = {"ref_low": a.bottom_price, "base_sessions": a.base_sessions,
            "low_date": pd.Timestamp(a.bottom_date) if a.bottom_date else None,
            "rs_date": pd.Timestamp(a.rs_date) if a.rs_date else None}
-    a.patterns_daily = [p.to_dict() for p in pat.detect_all(df, "1D", ctx)]
+    pattern_df = df.loc[pd.Timestamp(a.rs_date):] if a.rs_date else df
+    try:
+        a.patterns_daily = [p.to_dict() for p in pat.detect_all(pattern_df, "1D", ctx)]
+    except Exception as exc:
+        a.notes.append(f"النماذج غير متاحة؛ لا استبعاد: {str(exc)[:100]}")
     try:
         df4 = ind.add_indicators(hub.intraday_4h(symbol, 90), params)
         if len(df4) > 30:
@@ -1639,12 +1474,8 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     elif a.rs_found and not a.eligible:
         a.notes.append("مستبعد من قائمة الفرص — راجع أسباب الاستبعاد")
 
-    parts = score_setup(a, params)
+    parts = score_setup(a, params, df)
     total = sum(p.points for p in parts) / max(1e-9, sum(p.weight for p in parts)) * 100
-    if not a.rs_found:
-        total *= 0.55
-    if a.base_broken:
-        total *= 0.8
     a.score = round(float(np.clip(total, 0, 100)), 1)
     a.grade = grade_for(a.score)
     a.breakdown = [p.to_dict() for p in parts]
@@ -1654,7 +1485,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     a.note_ar = hub.scenario_note(symbol)
 
     # ---------- السلسلة الزمنية للرسم ----------
-    keep = ["open", "high", "low", "close", "volume", "ema9", "ema20", "ema50", "rsi",
+    keep = ["open", "high", "low", "close", "volume", "ema9", "ema20", "ema30", "ema50", "rsi",
             "macd", "macd_signal", "macd_hist", "bb_up", "bb_mid", "bb_low",
             "ch_up", "ch_mid", "ch_low", "rvol", "atr_pct", "stoch_k", "stoch_d", "mfi"]
     cols = [c for c in keep if c in df.columns]
@@ -1701,5 +1532,5 @@ def scan(symbols: list[str], hub: DataHub, params: StrategyParams = STRATEGY,
                 progress(i + 1, len(symbols), sym)
             except Exception:  # noqa: BLE001
                 pass
-    results.sort(key=lambda x: (-x.phase, -x.score))
+    results.sort(key=lambda x: (-x.score, x.symbol))
     return results
