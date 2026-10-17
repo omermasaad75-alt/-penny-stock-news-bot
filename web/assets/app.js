@@ -7,7 +7,7 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const state = {
   rows: [], summary: {}, sources: {}, strategy: null, phases: {},
   selected: null, analysis: null, tf: '1D', osc: 'rsi',
-  filter: 'all', search: '', polling: null, charts: { price: null, osc: null },
+  filter: 'eligible', search: '', polling: null, charts: { price: null, osc: null },
   series: { price: {}, osc: {} }, bars: 0, autoScanStarted: false,
 };
 
@@ -302,7 +302,7 @@ function seqCell(r) {
 
 function renderTable() {
   const body = $('#scanBody');
-  let rows = state.rows.filter(rowMatchesFilter);
+  let rows = state.rows.filter(rowMatchesFilter).sort((a, b) => b.score - a.score || a.symbol.localeCompare(b.symbol));
   if (state.search) {
     rows = rows.filter(r => r.symbol.includes(state.search) || (r.name || '').toUpperCase().includes(state.search));
   }
@@ -331,7 +331,7 @@ function renderTable() {
       <td>${r.base_sessions ?? '—'}${r.base_broken ? ' <span class="c-red">⚠</span>' : ''}</td>
       <td>${n(r.rsi_trough, 0)} <span class="muted">→</span> <b>${n(r.rsi_now, 0)}</b>${r.rsi_recovered ? ' <span class="c-green">↑</span>' : ''}</td>
       <td>${big(r.float_shares)}</td>
-      <td>${r.short_pct_float != null ? n(r.short_pct_float, 1) + '%' : '—'}</td>
+      <td>${r.short_shares != null ? Number(r.short_shares).toLocaleString('en-US') : '—'}</td>
       <td>${n(r.rvol, 2)}x</td>
       <td>${lv.trigger ? money(lv.trigger) : '—'}</td>
       <td>${lv.rr_t2 ? n(lv.rr_t2, 2) + ' : 1' : '—'}</td>
@@ -372,7 +372,7 @@ function sparkline(values, w = 132, h = 34) {
 function renderCards() {
   const box = $('#scanCards');
   if (!box) return;
-  let rows = state.rows.filter(rowMatchesFilter);
+  let rows = state.rows.filter(rowMatchesFilter).sort((a, b) => b.score - a.score || a.symbol.localeCompare(b.symbol));
   if (state.search) rows = rows.filter(r => r.symbol.includes(state.search) || (r.name || '').toUpperCase().includes(state.search));
   if (!rows.length) { box.innerHTML = '<div class="empty">لا توجد نتائج مطابقة.</div>'; return; }
   box.innerHTML = rows.map(r => {
@@ -405,7 +405,7 @@ function renderCards() {
         <div><span>الثبات</span><b>${r.base_sessions ?? '—'} جلسة</b></div>
         <div><span>RSI</span><b>${n(r.rsi_now, 0)} (قاع ${n(r.rsi_trough, 0)})</b></div>
         <div><span>الفلوت</span><b>${big(r.float_shares)}</b></div>
-        <div><span>بيع مكشوف</span><b>${r.short_pct_float != null ? n(r.short_pct_float, 1) + '%' : '—'}</b></div>
+        <div><span>الأسهم المكشوفة</span><b>${r.short_shares != null ? Number(r.short_shares).toLocaleString('en-US') : '—'}</b></div>
         <div><span>الاختراق</span><b>${lv.trigger ? money(lv.trigger) : '—'}</b></div>
         <div><span>مخاطرة/عائد</span><b>${lv.rr_t2 ? n(lv.rr_t2, 2) + ':1' : '—'}</b></div>
       </div>
@@ -590,6 +590,7 @@ function renderFundamentals(a) {
     ['نسبة حجم البيع المكشوف اليومي', a.short_volume_ratio != null ? n(a.short_volume_ratio * 100, 1) + '%' : '—'],
     ['تغيّر المراكز عن التقرير السابق', a.short_change_pct != null ? pct(a.short_change_pct) : '—'],
     ['مصدر بيانات البيع المكشوف', a.short_source || '—'],
+    ['تاريخ تقرير الأسهم المكشوفة', a.short_as_of || 'غير متاح'],
   ];
   $('#anFundamentals').innerHTML =
     rows.concat(shorts).map(([k, v]) => `<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
@@ -671,7 +672,7 @@ function renderNews(a) {
 }
 
 /* ------------------------- الرسوم البيانية ------------------------- */
-const COLORS = { up: '#2ea043', down: '#f85149', ema9: '#e3b341', ema20: '#58a6ff', ema50: '#a371f7',
+const COLORS = { up: '#2ea043', down: '#f85149', ema9: '#e3b341', ema20: '#58a6ff', ema30: '#39c5cf', ema50: '#a371f7',
   rsi: '#58a6ff', macd: '#58a6ff', signal: '#e3b341', hist: '#3fb950', stoch: '#a371f7', trigger: '#58a6ff',
   stop: '#f85149', target: '#3fb950', muted: '#6b7684' };
 
@@ -746,6 +747,7 @@ function renderChart(p) {
   s.price.vol.setData(p.volume || []);
   s.price.ema9 = state.charts.price.addLineSeries({ color: COLORS.ema9, lineWidth: 1.4, priceLineVisible: false, lastValueVisible: false });
   s.price.ema20 = state.charts.price.addLineSeries({ color: COLORS.ema20, lineWidth: 1.4, priceLineVisible: false, lastValueVisible: false });
+  s.price.ema30 = state.charts.price.addLineSeries({ color: COLORS.ema30, lineWidth: 1.4, priceLineVisible: false, lastValueVisible: false });
   s.price.ema50 = state.charts.price.addLineSeries({ color: COLORS.ema50, lineWidth: 1.4, priceLineVisible: false, lastValueVisible: false });
   s.price.bbU = state.charts.price.addLineSeries({ color: 'rgba(107,118,132,.45)', lineWidth: 1, lineStyle: 2, priceLineVisible: false, lastValueVisible: false });
   s.price.bbL = state.charts.price.addLineSeries({ color: 'rgba(107,118,132,.45)', lineWidth: 1, lineStyle: 2, priceLineVisible: false, lastValueVisible: false });
@@ -753,6 +755,7 @@ function renderChart(p) {
   s.price.chL = state.charts.price.addLineSeries({ color: 'rgba(163,113,247,.5)', lineWidth: 1.2, lineStyle: 1, priceLineVisible: false, lastValueVisible: false });
   s.price.ema9.setData(p.overlays.ema9 || []);
   s.price.ema20.setData(p.overlays.ema20 || []);
+  s.price.ema30.setData(p.overlays.ema30 || []);
   s.price.ema50.setData(p.overlays.ema50 || []);
   s.price.bbU.setData(p.overlays.bb_up || []);
   s.price.bbL.setData(p.overlays.bb_low || []);
@@ -785,7 +788,7 @@ function renderChart(p) {
   const seqLegend = (p.lifecycle?.checks || []).map(c =>
     `<span><i class="dot ${c.ok ? 'ok' : 'active'}"></i> ${esc((STEP_SHORT[c.key] || c.ar))}</span>`).join('');
   $('#chartLegend').innerHTML = [
-    ['EMA9', COLORS.ema9], ['EMA20', COLORS.ema20], ['EMA50', COLORS.ema50],
+    ['EMA9', COLORS.ema9], ['EMA20', COLORS.ema20], ['EMA30', COLORS.ema30], ['EMA50', COLORS.ema50],
     ['الدعم', '#f0883e'], ['المقاومة', '#e3b341'], ['هدف الانطلاقة +20%', '#a371f7'],
     ['قاع السحب', '#f85149'],
   ].map(([k, c]) => `<span><i style="background:${c}"></i>${k}</span>`).join('') +
@@ -1042,61 +1045,19 @@ async function renderHelp() {
   const el = $('#helpContent');
   if (!el) return;
   el.innerHTML = `
-  <p>هذه المنصة تنفّذ استراتيجية <b>«التقسيم العكسي + التشبع البيعي + الانعكاس»</b>،
-  وتعمل على الفريم اليومي وفريم 4 ساعات مع نماذج التحليل الفني.</p>
-  <h3>المرحلة الأولى: شروط التقسيم والهبوط والتشبع والثبات</h3>
-  <table>
-    <tr><th>#</th><th>الشرط</th><th>المعيار في النظام</th></tr>
-    <tr><td>1</td><td>تقسيم عكسي حديث</td><td>نسبة 1:${p.rs_min_ratio || 2} حتى 1:${p.rs_max_ratio || 60} خلال آخر ${p.rs_lookback_days || 60} يوماً</td></tr>
-    <tr><td>2</td><td>صعود يوم التقسيم</td><td>≥ ${p.min_spike_pct || 5}% (المثالي ${p.ideal_spike_pct || 15}%)</td></tr>
-    <tr><td>3</td><td>موجة هبوط قوية</td><td>≥ ${p.min_drop_pct || 30}% (جيد ${p.good_drop_pct || 40}% / قوي ${p.strong_drop_pct || 50}%)</td></tr>
-    <tr><td>4</td><td>تشبع بيعي</td><td>RSI &lt; ${p.rsi_oversold || 30} (عميق &lt; ${p.rsi_deep_oversold || 25})</td></tr>
-    <tr><td>5</td><td>قاع وثبات</td><td>≥ ${p.min_base_sessions || 3} جلسات داخل ±${p.base_tolerance_pct || 9}% مع جفاف حجم</td></tr>
-    <tr><td>6</td><td>تحسّن الزخم</td><td>RSI ≥ ${p.rsi_recovery_min || 35} أو +${p.rsi_recovery_delta || 5} عن قاعه</td></tr>
-    <tr><td>7</td><td>تأكيد الانعكاس</td><td>إغلاقان فوق EMA9 + تحسّن MACD + اختراق القناة الهابطة + RVOL ≥ ${p.rvol_threshold || 1.5}x</td></tr>
-  </table>
-  <h3>دورة الحياة — شرط «جاهز فنياً» (إلزامية)</h3>
-  <table>
-    <tr><th>#</th><th>الخطوة</th><th>المعيار في النظام</th></tr>
-    <tr><td>8</td><td><b>ثبات على الدعم</b></td><td>لا تقل مدة الثبات عن <b>${p.min_base_sessions || 3} جلسات تداول</b> داخل نطاق ±${p.base_tolerance_pct || 9}% حول القاع ودون كسره</td></tr>
-    <tr><td>9</td><td><b>الانطلاقة ≈20%</b></td><td>صعود ≈${p.ideal_impulse_pct || 20}% من إغلاق جلسات الثبات (يُقبل ${p.min_ready_impulse_pct || 15}% وأعلى)</td></tr>
-    <tr><td>10</td><td><b>اختبار أقرب مقاومة</b></td><td>مقاومة فعلية قريبة (≤ ${p.max_nearby_resistance_pct || 28}% من الدعم) ويتوقف السعر عندها (فارق ≤ ${p.resistance_stall_pct || 3}%)</td></tr>
-    <tr><td>11</td><td><b>العودة لاختبار الدعم الرئيسي</b></td><td>موجة عائدة تلامس الدعم (تسامح ${p.support_retest_tolerance_pct || 2}%)</td></tr>
-    <tr><td>12</td><td><b>أو سحب سيولة تحت القاع</b></td><td>فتيل يكسر القاع ≥ ${p.sweep_tolerance_pct || 1}% ثم يعود ويغلق فوقه (≥ ${p.min_reclaim_sessions || 1} إغلاق فوق الدعم +${p.reclaim_buffer_pct || 0.5}%)</td></tr>
-  </table>
-  <p class="muted">⚠ لا يُمنح وصف <b>«جاهز فنياً»</b> قبل اكتمال الخطوات 8-12 بالترتيب.
-  وكسر الدعم بعد الانطلاقة دون استعادة = فشل التسلسل وإلغاء السيناريو حتى يتكوّن قاع جديد.</p>
-  <h3>المرحلة الثانية: دورة الحياة — شرط «جاهز فنياً» (إلزامي)</h3>
-  <table>
-    <tr><th>#</th><th>الخطوة</th><th>المعيار في النظام</th></tr>
-    <tr><td>8</td><td><b>ثبات على الدعم</b></td><td>عدد جلسات لا يقل عن <b>${p.min_base_sessions || 3} جلسات تداول</b> داخل نطاق ضيق حول القاع ودون كسره</td></tr>
-    <tr><td>9</td><td><b>الانطلاقة</b></td><td>صعود <b>≈${p.ideal_impulse_pct || 20}%</b> (يزيد أو يقل قليلاً) من إغلاق جلسات الثبات — الحد الأدنى ${p.min_ready_impulse_pct || 15}%</td></tr>
-    <tr><td>10</td><td><b>اختبار أقرب مقاومة</b></td><td>مقاومة قريبة (≤ ${p.max_nearby_resistance_pct || 40}% من الدعم وفي نطاق 10% من قمة الانطلاقة) يختبرها السعر ويفشل عندها</td></tr>
-    <tr><td>11</td><td><b>العودة لاختبار الدعم الرئيسي</b></td><td>موجة عائدة تلامس الدعم (تسامح ${p.support_retest_tolerance_pct || 2}%)</td></tr>
-    <tr><td>12</td><td><b>أو سحب سيولة تحت القاع</b></td><td>فتيل يكسر القاع ≥ ${p.sweep_tolerance_pct || 1}% ثم يعود ويغلق فوقه</td></tr>
-    <tr><td>13</td><td><b>الاستعادة والاستقرار</b></td><td>≥ ${p.min_reclaim_sessions || 1} إغلاق فوق الدعم +${p.reclaim_buffer_pct || 0.5}% بعد السحب</td></tr>
-  </table>
-  <p class="muted">⚠ لا يُرقّى أي سهم إلى <b>«جاهز فنياً»</b> قبل اكتمال الخطوات 8-13.
-  وإن كسر السعر الدعم الرئيسي بعد الانطلاقة <b>دون</b> استعادة = فشل التسلسل وإلغاء السيناريو حتى يتكوّن قاع جديد.</p>
-  <h3>التسلسل العملي</h3>
-  <p>1) رصد التقسيم → 2) متابعة الهبوط والتشبع → 3) تكوّن القاع → 4) ثبات 3-5 جلسات (قائمة المتابعة)
-  → 5) انطلاقة ≈20% واختبار أقرب مقاومة → 6) عودة لاختبار الدعم أو سحب سيولة تحته ثم استعادته
-  → 7) <b>جاهز فنياً</b> (اكتمال التسلسل) → 8) بعد الاختراق (مرحلة التمدد: لا مطاردة).</p>
-  <h3>قواعد إدارة المخاطر</h3>
-  <ul>
-    <li>لا شراء أثناء الهبوط (“لا نشتري سكيناً ساقطة”) — الدخول بعد الثبات واكتمال دورة الحياة وتأكيد الاختراق.</li>
-    <li>الوقف التداولي 8-20% من نقطة الدخول، ووقف إلغاء السيناريو <b>تحت قاع السحب</b> إن حدث، وإلا تحت الدعم الرئيسي.</li>
-    <li>أي كسر للدعم الرئيسي بعد الانطلاقة دون استعادة يلغي السيناريو بالكامل.</li>
-    <li>الطرح الجديد (424B5/S-1/S-3) أو مذكرات شراء فعّالة = خطر تخفيف يخفض التقييم تلقائياً.</li>
-    <li>الفلوت الصغير + البيع المكشوف العالي = وقود انفجار، لكن تضخّم السعر مفاجئ وعنيف.</li>
-  </ul>
-  <h3>أدوات المخطط</h3>
-  <ul>
-    <li><b>سحب حر:</b> اسحب المخطط بإصبعك أو بالفأرة يميناً/يساراً (الزمن) وأعلى/أسفل (الأسعار).</li>
-    <li><b>شريط السحب الجانبي:</b> ▲ / ▼ لتحريك المخطط رأسياً، وشريط التكبير الرأسي لضبط مدى الأسعار.</li>
-    <li><b>الشريط الأسفل:</b> سحب أفقي على محور الزمن من أقدم شمعة إلى الأحدث.</li>
-    <li><b>لوحة المفاتيح:</b> ← → للسحب، ↑ ↓ للتحريك الرأسي، + / − للتكبير والتصغير.</li>
-  </ul>`;
+    <h3>الشروط الإلزامية الخمسة</h3>
+    <ol><li>السعر بين ${p.min_price} و${p.max_price} دولار، شامل الحدين.</li>
+    <li>تقسيم عكسي منفّذ خلال ${p.rs_lookback_days} يوماً تقويمياً؛ الإعلانات المستقبلية لا تكفي.</li>
+    <li>هبوط لا يقل عن ${p.min_drop_pct}% من أعلى قمة بعد التقسيم إلى أدنى قاع لاحق.</li>
+    <li>RSI اليومي (${p.rsi_period}) وصل إلى أقل من ${p.rsi_oversold} خلال تكوّن القاع.</li>
+    <li>Short Shares أقل حصراً من ${p.max_short_shares?.toLocaleString('en-US')} سهم. البيانات المفقودة لا تعني صفراً.</li></ol>
+    <h3>النقاط الفنية: من صفر إلى 100</h3>
+    <p>جفاف الحجم 25، أفضل نموذج من W أو الوتد الهابط أو تباعد RSI الصاعد 35، اختبار الدعم وسحب السيولة 25، وتفاعل EMA20/30/50 مقدار 15 نقطة.</p>
+    <p>النماذج بدائل وليست شروط AND. غيابها يمنح صفراً في حصتها، دون استبعاد أو إعادة توزيع وزنها.
+    جميع الأسهم المؤهلة تظهر افتراضياً، حتى بدرجة صفر، بترتيب تنازلي للنقاط. مراحل دورة الحياة وصف إضافي لا شرط ظهور.</p>
+    <p>حجم البيع المكشوف اليومي ونسبته لا يعوّضان عدد المراكز المكشوفة. بيانات Short Shares دورية وقد تتأخر؛ راجع تاريخها ومصدرها.
+    لا حد إضافي للقيمة السوقية أو الفلوت أو السيولة. النماذج تقديرية والنقاط ليست احتمال ربح أو توصية استثمارية.</p>
+  `;
 }
 
 /* ------------------------- الإقلاع ------------------------- */

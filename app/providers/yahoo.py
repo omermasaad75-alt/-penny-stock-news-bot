@@ -273,16 +273,18 @@ class YahooProvider(BaseProvider):
         got = self._timed(lambda: self._ticker(symbol).get_info())
         if isinstance(got, dict):
             info = got
-        short_shares = info.get("sharesShort") or info.get("shares_short")
+        short_shares = info.get("sharesShort")
+        if short_shares is None:
+            short_shares = info.get("shares_short")
         pct_float = info.get("shortPercentOfFloat") or info.get("short_percent_of_float")
         dtc = info.get("shortRatio") or info.get("short_ratio")
         prev = info.get("sharesShortPriorMonth") or info.get("shares_short_prior_month")
-        if not any([short_shares, pct_float, dtc]):
+        if short_shares is None and not any([pct_float, dtc]):
             return None
         sd = ShortData(
             symbol=symbol.upper(),
             as_of=str(info.get("dateShortInterest") or info.get("sharesShortPreviousMonthDate") or ""),
-            short_shares=float(short_shares) if short_shares else None,
+            short_shares=float(short_shares) if short_shares is not None else None,
             short_pct_float=(float(pct_float) * 100) if pct_float and float(pct_float) <= 1 else (
                 float(pct_float) if pct_float else None),
             days_to_cover=float(dtc) if dtc else None,
@@ -464,7 +466,7 @@ class YahooProvider(BaseProvider):
                 continue
             time.sleep(0.25)
             df = self.daily(sym, 320)
-            if df is None or len(df) < 40 or df["close"].dropna().empty:
+            if df is None or len(df) < 2 or df["close"].dropna().empty:
                 self.universe_rejections[sym] = "لا توجد بيانات حقيقية لهذا الرمز"
                 continue
             # لا تُقبل أسعار قديمة لرموز مشطوبة أو معاد تسميتها.
@@ -478,11 +480,12 @@ class YahooProvider(BaseProvider):
                 events = sec.splits(sym)
             valid = [e for e in events if
                      0 <= (now - e.date.normalize()).days <= STRATEGY.rs_lookback_days
-                     and STRATEGY.rs_min_ratio <= e.factor <= STRATEGY.rs_max_ratio]
+                     and e.factor > STRATEGY.rs_min_ratio
+                     and (not STRATEGY.rs_max_ratio or e.factor <= STRATEGY.rs_max_ratio)]
             if valid:
                 out.append(sym)
             else:
-                self.universe_rejections[sym] = "لا تقسيم عكسي مؤكّد خلال 60 يوماً بنسبة 1:2–1:60"
+                self.universe_rejections[sym] = "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً"
             if limit and len(out) >= limit:
                 unchecked = list(candidates[i + 1:])
                 stop_reason = "result_limit_reached"

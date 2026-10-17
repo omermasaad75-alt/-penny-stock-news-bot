@@ -326,6 +326,7 @@ def add_indicators(df: pd.DataFrame, params=None) -> pd.DataFrame:
     out = df.copy()
     out["ema9"] = ema(out["close"], ema_f)
     out["ema20"] = ema(out["close"], ema_m)
+    out["ema30"] = ema(out["close"], 30)
     out["ema50"] = ema(out["close"], ema_s)
     out["ema200"] = ema(out["close"], 200)
     out["sma20"] = sma(out["close"], 20)

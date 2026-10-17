@@ -152,7 +152,7 @@ class DataHub:
             except Exception as exc:  # noqa: BLE001
                 self._reject(sym, f"فشل جلب الأسعار اليومية: {exc}")
                 return pd.DataFrame()
-            if df is not None and len(df) > 30:
+            if df is not None and len(df) >= 2:
                 return df
             self._reject(sym, "لا توجد بيانات سعر يومية حقيقية لهذا الرمز")
             return pd.DataFrame()
@@ -172,7 +172,7 @@ class DataHub:
             except Exception as exc:  # noqa: BLE001
                 self._reject(sym, f"فشل جلب بيانات 4 ساعات: {exc}")
                 return pd.DataFrame()
-            if df is not None and len(df) > 30:
+            if df is not None and len(df) >= 2:
                 return df
             return pd.DataFrame()
         if self._is_live_mode():
@@ -246,7 +246,7 @@ class DataHub:
             elif sd is not None and regsho is not None:
                 sd.short_volume_ratio = regsho
                 sd.source = f"{sd.source}+finra-regsho"
-            # لا fallback للديمو — قد نعيد None (بيانات البيع المكشوف اختيارية)
+            # لا fallback للديمو — قد نعيد None؛ يتولى المحرك رفض غياب Short Shares
             return sd
         return self.demo.short_data(sym)
 

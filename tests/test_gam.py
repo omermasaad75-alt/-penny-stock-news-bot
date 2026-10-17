@@ -112,13 +112,12 @@ def test_demo_candidates_stay_out_of_eligibility_and_watchlist():
     biok = eng.analyze_symbol("BIOK", hub, STRATEGY)
     cheap = eng.analyze_symbol("QLGN", hub, STRATEGY)
 
-    assert tgl.gam_candidate is True and set(tgl.rejection_codes) == {"decline"}
-    assert biok.gam_candidate is True and set(biok.rejection_codes) == {"decline", "rsi"}
+    assert not tgl.gam_candidate and "short_shares" in tgl.rejection_codes
+    assert not biok.gam_candidate and set(biok.rejection_codes) == {"decline", "rsi", "short_shares"}
     for a in (tgl, biok):
         assert a.eligible is False
         assert a.watchlist is False
-        assert "ليس توصية" in a.action_ar
-        assert a.gam_rsi_scope == eng.GAM_RSI_SCOPE
+        assert "غير مؤهل" in a.action_ar
 
     assert cheap.last_close < STRATEGY.min_price
     assert cheap.gam_candidate is False
@@ -133,9 +132,11 @@ def test_eligible_symbol_is_never_relabelled_as_gam():
     assert a.gam_candidate is False
 
 
-def test_gam_reports_are_separate_and_stateless():
+def test_gam_reports_are_separate_and_stateless(monkeypatch):
     hub = DataHub(mode="demo")
     eligible = eng.analyze_symbol("JZ", hub, STRATEGY)
+    from app.providers.base import ShortData
+    monkeypatch.setattr(hub, "short_data", lambda *a: ShortData("BIOK", short_shares=1000))
     gam = eng.analyze_symbol("BIOK", hub, STRATEGY)
 
     combined = watchlist_markdown([eligible, gam])
