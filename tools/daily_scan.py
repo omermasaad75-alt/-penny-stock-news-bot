@@ -57,6 +57,9 @@ CSV_COLUMNS = [
     ("gam_reasons", "أسباب GAM"), ("gam_rsi_scope", "نطاق RSI لـ GAM"),
     ("rejections", "أسباب الاستبعاد"),
     ("score", "النقاط الفنية"), ("grade", "الدرجة"),
+    ("core_price", "فلتر السعر 1–5$"), ("core_reverse_split", "فلتر التقسيم العكسي"),
+    ("core_decline", "فلتر الهبوط ≥30%"), ("core_rsi", "فلتر RSI<30"),
+    ("core_short_shares", "فلتر Short Shares<20,000"),
     ("short_shares", "الأسهم المكشوفة"), ("short_as_of", "تاريخ تقرير الأسهم المكشوفة"),
     ("last_close", "آخر إغلاق"), ("rs_date", "تاريخ التقسيم"), ("rs_ratio", "نسبة التقسيم"),
     ("impulse_pct", "الانطلاقة %"), ("resistance_level", "أقرب مقاومة"),
@@ -297,6 +300,7 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
             done, _, _ = sequence_state(a)
             checks = a.lifecycle_checks or []
             missing = next((STEP_SHORT.get(str(c.get("key")), "") for c in checks if not c.get("ok")), "")
+            core = {str(f.get("key")): bool(f.get("ok")) for f in (a.core_filters or [])}
             look = {
                 "symbol": a.symbol, "name": a.name, "phase": a.phase,
                 "phase_ar": eng.phase_info(a.phase if (a.eligible or not a.rs_found) else 0)["ar"],
@@ -307,6 +311,11 @@ def write_dataset(site: Path, results: list, sources: dict, mode: str, started: 
                 "gam_rsi_scope": ("بيانات المسح الحالي — لا حفظ تاريخي" if a.gam_candidate else "—"),
                 "rejections": " | ".join(a.rejections),
                 "score": a.score, "grade": a.grade, "last_close": a.last_close,
+                "core_price": "نعم" if core.get("price") else "لا",
+                "core_reverse_split": "نعم" if core.get("reverse_split") else "لا",
+                "core_decline": "نعم" if core.get("decline") else "لا",
+                "core_rsi": "نعم" if core.get("rsi") else "لا",
+                "core_short_shares": "نعم" if core.get("short_shares") else "لا",
                 "short_shares": a.short_shares, "short_as_of": a.short_as_of,
                 "rs_date": a.rs_date, "rs_ratio": a.rs_ratio_str,
                 "impulse_pct": a.impulse_pct, "resistance_level": a.resistance_level,

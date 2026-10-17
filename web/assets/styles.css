@@ -278,6 +278,8 @@ input[type=range].h-slider::-moz-range-thumb{width:15px;height:15px;border-radiu
 .check.ok{border-inline-start:3px solid var(--green)}
 .check.pending{border-inline-start:3px solid var(--line2);opacity:.85}
 .check.active{border-inline-start:3px solid var(--amber);background:rgba(227,179,65,.06)}
+.check.fail{border-inline-start:3px solid var(--red);background:rgba(248,81,73,.06)}
+.check-head{padding:9px 2px 3px;font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.1px}
 .seq-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;
   border-radius:var(--r-sm);background:linear-gradient(180deg,rgba(56,139,253,.16),rgba(56,139,253,.05));
   border:1px solid rgba(56,139,253,.5);font-size:12.5px;margin-bottom:3px}

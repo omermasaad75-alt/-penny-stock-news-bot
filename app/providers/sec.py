@@ -233,16 +233,16 @@ def _parse_ratio(text: str) -> tuple[str, float]:
     import re
     t = (text or "").lower()
     patterns = [
-        r"1[\s\-]*(?:for|:) *(\d{1,3})",           # 1-for-20
-        r"one[\s\-]*(?:for|:) *(\d{1,3})",
-        r"reverse (?:stock )?split[^\d]{0,30}(\d{1,3})[\s\-]*(?:to|for|:) *1",
+        r"1[\s\-]*(?:for|:) *(\d{1,6})",           # 1-for-20 — بلا سقف عملي
+        r"one[\s\-]*(?:for|:) *(\d{1,6})",
+        r"reverse (?:stock )?split[^\d]{0,30}(\d{1,6})[\s\-]*(?:to|for|:) *1",
     ]
     for pat in patterns:
         m = re.search(pat, t)
         if m:
             try:
                 f = float(m.group(1))
-                if 1 < f <= 100:
+                if f > 1:
                     return f"1-for-{f:g}", f
             except ValueError:
                 continue

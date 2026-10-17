@@ -1,0 +1,20 @@
+{
+  "_comment": "إعداد مثال للماسح المرن — الفلاتر الخمسة فقط تحدد الأهلية. الأوزان للنقاط.",
+  "core": {
+    "min_price": 1.0,
+    "max_price": 5.0,
+    "rs_window_days": 60,
+    "min_drop_pct": 30,
+    "rsi_period": 14,
+    "rsi_oversold": 30,
+    "max_short_shares": 20000
+  },
+  "scoring": {
+    "weights": {
+      "volume": 25,
+      "patterns": 35,
+      "support": 25,
+      "ema": 15
+    }
+  }
+}

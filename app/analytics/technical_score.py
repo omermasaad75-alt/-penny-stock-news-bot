@@ -5,11 +5,14 @@ import math
 import pandas as pd
 
 
-def technical_components(df: pd.DataFrame, patterns: list[dict], params, start=None) -> list[tuple]:
+def technical_components(df: pd.DataFrame, patterns: list[dict], params,
+                         start=None, base_dryup: float | None = None) -> list[tuple]:
     """أوزان ثابتة المقام؛ النماذج بدائل OR ولا تُشترط معاً.
 
     الدعم لكل شمعة هو أدنى سعر في الجلسات العشرين السابقة (دون الشمعة نفسها).
     تُرصد الاختبارات والسحوبات في آخر خمس جلسات فقط، بلا معلومات مستقبلية.
+    ``base_dryup`` = جفاف الحجم داخل قاعدة القاع من ``analyse_structure``؛ يُدمج
+    مع أفضل مرحلة جفاف بعد التقسيم كي لا يضيع الجفاف الذي سبق الانطلاقة.
     """
     def finite(x):
         return x is not None and math.isfinite(float(x))
@@ -17,12 +20,39 @@ def technical_components(df: pd.DataFrame, patterns: list[dict], params, start=N
     ema_df = df
     if start is not None:
         df = df.loc[pd.Timestamp(start):]
-    recent = df.tail(3)["volume"].mean()
-    prior = df.iloc[-23:-3]["volume"].mean()
-    ratio = float(recent / prior) if len(df) >= 23 and finite(prior) and prior > 0 and finite(recent) else None
+    # جفاف الحجم: نبحث عن أفضل مرحلة جفاف (أدنى متوسط 3 جلسات / متوسط 20 جلسة
+    # سابقة غير متداخلة) داخل فترة ما بعد التقسيم. هذا يلتقط الجفاف الذي سبق
+    # الانطلاقة حتى لو عاد الحجم للارتفاع في الجلسات الأخيرة.
+    ratio = None
+    latest_ratio = None
+    if len(df) >= 23:
+        volume = pd.to_numeric(df["volume"], errors="coerce")
+        recent_avg = volume.rolling(3, min_periods=3).mean()
+        prior_avg = volume.shift(3).rolling(20, min_periods=20).mean()
+        ratios = (recent_avg / prior_avg).replace([float("inf"), float("-inf")], float("nan"))
+        valid = ratios[(ratios >= 0) & ratios.notna()]
+        if not valid.empty:
+            ratio = float(valid.min())
+            last_valid = ratios.dropna()
+            latest_ratio = float(last_valid.iloc[-1]) if not last_valid.empty else None
+    base_ratio = None
+    if base_dryup is not None and finite(base_dryup) and float(base_dryup) >= 0:
+        base_ratio = float(base_dryup)
+    candidates = [x for x in (ratio, base_ratio) if x is not None]
+    effective_ratio = min(candidates) if candidates else None
     dry = 0.0
-    if ratio is not None and 0 <= ratio < params.max_volume_dryup_ratio:
-        dry = min(100.0, (1 - ratio / params.max_volume_dryup_ratio) * 200)
+    if effective_ratio is not None and 0 <= effective_ratio < params.max_volume_dryup_ratio:
+        dry = min(100.0, (1 - effective_ratio / params.max_volume_dryup_ratio) * 200)
+    if effective_ratio is not None:
+        volume_detail = (f"أدنى جفاف مستخدم (3 جلسات / 20 سابقة): {effective_ratio:.2f}"
+                         f" · قاعدة القاع: {base_ratio:.2f}" if base_ratio is not None
+                         else f"أدنى جفاف مستخدم (3 جلسات / 20 سابقة): {effective_ratio:.2f}")
+        if ratio is not None and abs(ratio - effective_ratio) > 0.005:
+            volume_detail += f" · أفضل مرحلة بعد التقسيم: {ratio:.2f}"
+        if latest_ratio is not None and abs(latest_ratio - effective_ratio) > 0.005:
+            volume_detail += f" · آخر 3 جلسات: {latest_ratio:.2f}"
+    else:
+        volume_detail = "بيانات الحجم غير كافية — صفر نقاط"
 
     names = {"double_bottom": "قاع مزدوج W", "falling_wedge": "وتد هابط",
              "rsi_divergence": "تباعد RSI صاعد"}
@@ -62,8 +92,7 @@ def technical_components(df: pd.DataFrame, patterns: list[dict], params, start=N
         ma_details.append(f"EMA{period}: {'فوقه' if above else 'تحته'} / {'صاعد' if rising else 'غير صاعد'}")
 
     return [
-        ("volume", "جفاف الحجم", dry, params.weights["volume"],
-         f"متوسط 3 جلسات / العشرين السابقة: {ratio:.2f}" if ratio is not None else "بيانات الحجم غير كافية — صفر نقاط"),
+        ("volume", "جفاف الحجم", dry, params.weights["volume"], volume_detail),
         ("patterns", "النماذج الفنية البديلة", pattern_score, params.weights["patterns"],
          " · ".join(name for name, _ in detected) or "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد"),
         ("support", "اختبار الدعم وسحب السيولة", support_score, params.weights["support"],
