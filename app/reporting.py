@@ -94,35 +94,38 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
     add(f"**خطة العمل:** {a.action_ar}")
     add("")
 
-    # ---------------- شروط الاستراتيجية ---------------- #
-    add("## 2) مطابقة شروط الاستراتيجية")
+    # ---------------- فلاتر الأهلية الخمسة ---------------- #
+    add("## 2) فلاتر الأهلية الخمسة — وحدها تحدد الظهور")
     add("")
-    add("| # | الشرط | المعيار | القراءة الفعلية | الحالة |")
+    add("| # | الفلتر | القاعدة | القراءة الفعلية | الحالة |")
     add("|---|-------|---------|----------------|--------|")
-    checks = [
-        ("1", "تقسيم عكسي 1:2 – 1:60 خلال شهرين", f"≤ {p.rs_lookback_days} يوماً",
-         f"{a.rs_ratio_str or '—'} بتاريخ {a.rs_date or '—'} ({a.rs_age_days if a.rs_age_days is not None else '—'} يوم)",
-         bool(a.rs_found)),
-        ("2", "صعود يوم التقسيم", f"≥ {p.min_spike_pct:.0f}%",
-         _pct(a.spike_pct), bool(a.spike_pct is not None and a.spike_pct >= p.min_spike_pct)),
-        ("3", "موجة هبوط قوية", f"≥ {p.min_drop_pct:.0f}% (المثالي {p.good_drop_pct:.0f}%+)",
-         _pct(a.decline_pct), bool(a.decline_pct is not None and abs(a.decline_pct) >= p.min_drop_pct)),
-        ("4", "تشبع بيعي RSI", f"< {p.rsi_oversold:.0f}",
-         f"القاع {_n(a.rsi_trough,1)} / الحالي {_n(a.rsi_now,1)}"
-         + (" (بدأ التحسّن)" if a.rsi_recovered else ""),
-         bool(a.rsi_trough is not None and a.rsi_trough < p.rsi_oversold)),
-        ("5", "ثبات على القاع", f"≥ {p.min_base_sessions} جلسات",
-         f"{eng.sessions_ar(a.base_sessions)} على {_n(a.bottom_price,3)}"
-         + (f" ونطاق {_n(a.base_range_pct,1)}%" if a.base_range_pct is not None else ""),
-         bool((a.base_sessions or 0) >= p.min_base_sessions)),
-        ("6", "جفاف الحجم داخل القاعدة", f"< {p.max_volume_dryup_ratio*100:.0f}% من المتوسط",
+    core = a.core_filters or []
+    if core:
+        for i, f in enumerate(core, 1):
+            add(f"| {i} | {f.get('label_ar', f.get('key', '—'))} | {f.get('rule_ar', '—')} | "
+                f"{f.get('display', '—')} | {'✅ محقق' if f.get('ok') else '❌ غير محقق'} |")
+    else:
+        add("| — | — | — | تعذّر بناء تدقيق الفلاتر | — |")
+    add("")
+    add("### إشارات فنية مساعدة — لا تحدد الأهلية")
+    add("")
+    add("| الإشارة | القراءة | التوصيف |")
+    add("|---------|---------|---------|")
+    signals = [
+        ("صعود ما بعد التقسيم", _pct(a.spike_pct) if a.spike_pct is not None else "—",
+         "متوفر" if a.spike_pct is not None and a.spike_pct >= p.min_spike_pct else "غير متوفر"),
+        ("ثبات على القاع", f"{eng.sessions_ar(a.base_sessions)} على {_n(a.bottom_price,3)}",
+         "متوفر" if (a.base_sessions or 0) >= p.min_base_sessions else "غير مكتمل"),
+        ("جفاف الحجم داخل القاعدة",
          f"{_n((a.volume_dryup or 0)*100,0)}%" if a.volume_dryup else "—",
-         bool(a.volume_dryup is not None and a.volume_dryup < p.max_volume_dryup_ratio)),
-        ("7", "تأكيد الانعكاس", f"≥ 3 تأكيدات فنية", f"{len(a.confirmations)} تأكيد",
-         len(a.confirmations) >= 3),
+         "متوفر" if a.volume_dryup is not None and a.volume_dryup < p.max_volume_dryup_ratio else "غير متوفر"),
+        ("تأكيدات الانعكاس", f"{len(a.confirmations)} تأكيد", "متوفر" if len(a.confirmations) >= 3 else "غير مكتمل"),
+        ("الدعم الرئيسي",
+         f"{_n(a.support_level or a.bottom_price,3)}$",
+         "مكسور ⚠️" if a.base_broken else "صامد"),
     ]
-    for c in checks:
-        add(f"| {c[0]} | {c[1]} | {c[2]} | {c[3]} | {'✅ محقق' if c[4] else '⏳ غير مكتمل'} |")
+    for title, reading, state in signals:
+        add(f"| {title} | {reading} | {state} |")
     add("")
     if a.rejections:
         add("**أسباب الاستبعاد:**")
@@ -135,8 +138,8 @@ def analysis_to_markdown(a: eng.Analysis, sources: dict | None = None) -> str:
             add(f"- ⓘ {nt}")
         add("")
 
-    # ---------------- دورة الحياة بعد الثبات (شرط «جاهز فنياً») ---------------- #
-    add("## 2.ب) دورة الحياة بعد الثبات — شرط «جاهز فنياً»")
+    # ---------------- دورة الحياة بعد الثبات (توصيف فني) ---------------- #
+    add("## 2.ب) دورة الحياة الفنية — توصيف لا يحدد الأهلية")
     add("")
     add(f"**حالة التسلسل:** {a.lifecycle_stage or '—'} "
         + ("🟣 **GAM — غير مؤهل مهما كانت حالة التسلسل**" if a.gam_candidate else

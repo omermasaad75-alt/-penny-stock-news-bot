@@ -56,6 +56,20 @@ GAM_DISCLAIMER_AR = (
     "تقييم RSI مبني على بيانات السعر في المسح الحالي ولا تُحفظ حالات رفض تاريخية بين المسوح."
 )
 
+# --------------------------------------------------------------------------- #
+#  فلاتر الأهلية الخمسة — المصدر الوحيد لقرار الظهور في الجدول الرئيسي
+# --------------------------------------------------------------------------- #
+CORE_FILTER_KEYS: tuple[str, ...] = (
+    "price", "reverse_split", "decline", "rsi", "short_shares",
+)
+CORE_FILTER_LABELS_AR: dict[str, str] = {
+    "price": "السعر ضمن نطاق البيني",
+    "reverse_split": "تقسيم عكسي منفّذ حديثاً",
+    "decline": "هبوط كافٍ من قمة ما بعد التقسيم",
+    "rsi": "تشبع بيعي أثناء تكوّن القاع",
+    "short_shares": "انخفاض الأسهم المكشوفة",
+}
+
 
 # --------------------------------------------------------------------------- #
 #  بنية النتيجة
@@ -203,6 +217,8 @@ class Analysis:
     gam_rsi_scope: str = GAM_RSI_SCOPE
     rejection_codes: list[str] = field(default_factory=list)
     rejections: list[str] = field(default_factory=list)
+    # تدقيق الفلاتر الخمسة فقط (المصدر الوحيد للأهلية) مع القراءة الفعلية لكل فلتر.
+    core_filters: list[dict] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
     score: float = 0.0
     grade: str = "—"
@@ -294,6 +310,134 @@ def add_rejection(a: Analysis, code: str, reason: str) -> None:
     a.rejections.append(str(reason))
 
 
+def _finite_num(value: Any) -> float | None:
+    """قراءة رقمية منتهية أو None — لمقارنات الفلاتر قبل تقريب العرض."""
+    try:
+        candidate = float(value)
+    except (TypeError, ValueError):
+        return None
+    return candidate if math.isfinite(candidate) else None
+
+
+def _rejection_text_by_code(a: Analysis) -> dict[str, str]:
+    """يجمع نص الرفض لكل رمز سبب (قد يتكرر الرمز عند أكثر من حدث تقسيم)."""
+    out: dict[str, list[str]] = {}
+    for code, reason in zip(a.rejection_codes, a.rejections):
+        out.setdefault(str(code), []).append(str(reason))
+    return {code: " | ".join(values) for code, values in out.items()}
+
+
+def build_core_filters(a: Analysis, params: StrategyParams = STRATEGY,
+                       last_close_raw: float | None = None) -> list[dict[str, Any]]:
+    """يبني تدقيق الفلاتر الإلزامية الخمسة فقط — لا يضيف أي شرط سادس.
+
+    كل فلتر يحمل: القراءة الفعلية، النص العربي، القاعدة المطبّقة، وحالة النجاح.
+    ``eligible`` في المحرك لا تزال محكومة بهذه القائمة وحدها (مع اشتراط اكتمال
+    قراءة البيانات)، بينما النماذج والثبات والمتوسطات تبقى نقاطاً وصفية.
+    """
+    reasons = _rejection_text_by_code(a)
+    price = _finite_num(last_close_raw)
+
+    price_ok = bool(price is not None and params.min_price <= price <= params.max_price)
+    price_display = f"{price:.4f}$" if price is not None else "غير متاح"
+
+    age = _finite_num(a.rs_age_days)
+    rs_ratio = _finite_num(a.rs_ratio)
+    rs_ok = bool(
+        a.rs_found and age is not None
+        and 0 <= int(age) <= int(params.rs_lookback_days)
+        and rs_ratio is not None and rs_ratio > float(params.rs_min_ratio)
+    )
+    if a.rs_found:
+        rs_display = (f"{a.rs_ratio_str or '—'} · {a.rs_date or '—'} · "
+                      f"عمر {a.rs_age_days if a.rs_age_days is not None else '—'} يوم")
+    else:
+        rs_display = "لا يوجد حدث تقسيم عكسي داخل النافذة"
+
+    decline = _finite_num(a.decline_pct)
+    decline_ok = bool(decline is not None and abs(decline) >= float(params.min_drop_pct))
+    peak_value = _finite_num(a.spike_high)
+    if decline is not None:
+        peak = f" · القمة {peak_value:.4f}$" if peak_value is not None else ""
+        decline_display = f"{abs(decline):.2f}% من قمة ما بعد التقسيم{peak}"
+    else:
+        decline_display = "بيانات الهبوط غير متاحة"
+
+    rsi_val = _finite_num(a.rsi_trough)
+    rsi_ok = bool(rsi_val is not None and rsi_val < float(params.rsi_oversold))
+    if rsi_val is not None:
+        rsi_display = f"أدنى RSI {rsi_val:.2f}"
+        if a.rsi_trough_date:
+            rsi_display += f" ({a.rsi_trough_date})"
+    else:
+        rsi_display = "بيانات RSI غير متاحة"
+
+    short = _finite_num(a.short_shares)
+    short_ok = bool(short is not None and short >= 0 and short < float(params.max_short_shares))
+    short_display = (f"{short:,.0f} سهم" if short is not None
+                     else "بيانات المراكز المكشوفة غير متاحة")
+
+    short_keys = ("short_shares", "missing_short_shares")
+    rsi_keys = ("rsi", "missing_rsi_data")
+    decline_keys = ("decline", "missing_decline_data")
+
+    def _reason(keys: tuple[str, ...]) -> str:
+        return " | ".join(reasons[k] for k in keys if reasons.get(k))
+
+    return [
+        {
+            "key": "price", "label_ar": CORE_FILTER_LABELS_AR["price"],
+            "rule_ar": f"{params.min_price:g}$ ≤ آخر إغلاق ≤ {params.max_price:g}$ (الحدان مشمولان)",
+            "value": round(price, 6) if price is not None else None,
+            "display": price_display, "ok": price_ok,
+            "data_available": price is not None,
+            "reason": _reason(("price", "missing_price_data")),
+        },
+        {
+            "key": "reverse_split", "label_ar": CORE_FILTER_LABELS_AR["reverse_split"],
+            "rule_ar": (f"تقسيم عكسي منفّذ خلال ≤ {params.rs_lookback_days} يوماً "
+                        f"وبعامل > {params.rs_min_ratio:g}"),
+            "value": a.rs_age_days if a.rs_found else None,
+            "display": rs_display, "ok": rs_ok,
+            "data_available": bool(a.rs_found),
+            "reason": _reason(("reverse_split",)),
+        },
+        {
+            "key": "decline", "label_ar": CORE_FILTER_LABELS_AR["decline"],
+            "rule_ar": f"هبوط ≥ {params.min_drop_pct:g}% من أعلى قمة بعد التقسيم",
+            "value": round(decline, 4) if decline is not None else None,
+            "display": decline_display, "ok": decline_ok,
+            "data_available": decline is not None,
+            "reason": _reason(decline_keys),
+        },
+        {
+            "key": "rsi", "label_ar": CORE_FILTER_LABELS_AR["rsi"],
+            "rule_ar": f"RSI({params.rsi_period}) < {params.rsi_oversold:g} أثناء تكوّن القاع",
+            "value": round(rsi_val, 4) if rsi_val is not None else None,
+            "display": rsi_display, "ok": rsi_ok,
+            "data_available": rsi_val is not None,
+            "reason": _reason(rsi_keys),
+        },
+        {
+            "key": "short_shares", "label_ar": CORE_FILTER_LABELS_AR["short_shares"],
+            "rule_ar": f"عدد الأسهم المكشوفة < {params.max_short_shares:,.0f} سهم (حصرياً)",
+            "value": round(short, 4) if short is not None else None,
+            "display": short_display, "ok": short_ok,
+            "data_available": bool(short is not None and short >= 0),
+            "reason": _reason(short_keys),
+        },
+    ]
+
+
+def core_filters_passed(a: Analysis) -> bool:
+    """أهلية صريحة = خمسة فلاتر مكتملة القراءة وناجحة، بلا شرط سادس."""
+    return bool(
+        len(a.core_filters) == len(CORE_FILTER_KEYS)
+        and [f.get("key") for f in a.core_filters] == list(CORE_FILTER_KEYS)
+        and all(bool(f.get("ok")) for f in a.core_filters)
+    )
+
+
 def evaluate_gam_candidate(a: Analysis, params: StrategyParams = STRATEGY) -> bool:
     """يحدّد مسار GAM دون المساس بالأهلية الصارمة أو قائمة المتابعة.
 
@@ -320,16 +464,19 @@ def evaluate_gam_candidate(a: Analysis, params: StrategyParams = STRATEGY) -> bo
 
     # منع نقص البيانات حتى لو تغيّر منطق الرفض مستقبلاً، والتحقق من أن الرفض
     # يعكس قراءات المسح الحالي فعلاً (لا رمز RSI قديم أو حالة مخزنة).
-    if a.decline_pct is None or a.rsi_trough is None or a.spike_pct is None:
+    decline_value = _finite_num(a.decline_pct)
+    rsi_value = _finite_num(a.rsi_trough)
+    spike_value = _finite_num(a.spike_pct)
+    if decline_value is None or rsi_value is None or spike_value is None:
         return False
     current_failures: set[str] = set()
-    if abs(a.decline_pct) < params.min_drop_pct:
+    if abs(decline_value) < params.min_drop_pct:
         current_failures.add("decline")
-    if a.rsi_trough >= params.rsi_oversold:
+    if rsi_value >= params.rsi_oversold:
         current_failures.add("rsi")
     if codes != current_failures:
         return False
-    if a.spike_pct < params.min_spike_pct:
+    if spike_value < params.min_spike_pct:
         return False
     if (a.dollar_volume or 0) < params.min_avg_dollar_volume:
         return False
@@ -883,7 +1030,8 @@ def score_setup(a: Analysis, params: StrategyParams, df: pd.DataFrame | None = N
     """نقاط فنية فقط؛ لا تحدد أهلية السهم."""
     if df is None:
         return []
-    return [ScorePart(*part) for part in technical_components(df, a.patterns_daily, params, start=a.rs_date)]
+    return [ScorePart(*part) for part in technical_components(
+        df, a.patterns_daily, params, start=a.rs_date, base_dryup=a.volume_dryup)]
 
 
 def _days_since(date_str) -> int | None:
@@ -1036,7 +1184,7 @@ def build_narrative(a: Analysis, params: StrategyParams) -> tuple[list[str], str
     why: list[str] = []
     if a.rs_found:
         why.append(
-            f"تقسيم عكسي {a.rs_ratio_str} نافذ في {a.rs_date} (عمر {a.rs_age_days} يوماً) — "
+            f"تقسيم عكسي {a.rs_ratio_str} منفّذ في {a.rs_date} (عمر {a.rs_age_days} يوماً) — "
             f"داخل نافذة الشهرين المطلوبة بالاستراتيجية."
         )
     if a.spike_pct is not None:
@@ -1053,7 +1201,7 @@ def build_narrative(a: Analysis, params: StrategyParams) -> tuple[list[str], str
         )
     if a.rsi_trough is not None:
         why.append(
-            f"RSI وصل إلى {a.rsi_trough} ({'تشبع بيعي متطرف' if a.rsi_trough < 20 else 'تشبع بيعي قوي' if a.rsi_trough < 25 else 'تشبع بيعي'} "
+            f"RSI وصل إلى {a.rsi_trough:.2f} ({'تشبع بيعي متطرف' if a.rsi_trough < 20 else 'تشبع بيعي قوي' if a.rsi_trough < 25 else 'تشبع بيعي'} "
             f"و {a.rsi_sessions_below_30} جلسة تحت 30) والحالي {a.rsi_now}"
             + (" مع بدء التحسّن." if a.rsi_recovered else " ولم يتأكد التحسّن بعد.")
         )
@@ -1200,6 +1348,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         reason = hub.rejections.get(symbol, "لا توجد بيانات سعرية كافية")
         add_rejection(a, "missing_price_data", reason)
         a.synthetic = (hub.effective_mode == "demo")
+        a.core_filters = build_core_filters(a, params, None)
         return a
     df = ind.add_indicators(raw_daily, params)
 
@@ -1224,8 +1373,11 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     a.price_source = "yahoo-finance" if is_live else "demo-generator"
     a.fundamentals_source = prof.source or ("yahoo-finance" if is_live else "demo-generator")
 
-    a.last_close = _r(df["close"].iloc[-1]) or 0.0
-    a.change_pct = _r(_pct(df["close"].iloc[-1], df["close"].iloc[-2]), 2) or 0.0
+    # السعر الخام (بلا تقريب عرض) هو المرجع الوحيد لفلتر 1–5$، حتى لا يمر
+    # سعر 5.00001 بعد تقريبه إلى 5.0000.
+    last_close_raw = float(df["close"].iloc[-1])
+    a.last_close = _r(last_close_raw) or 0.0
+    a.change_pct = _r(_pct(last_close_raw, df["close"].iloc[-2]), 2) or 0.0
     a.as_of = _date_str(df.index[-1]) or ""
     a.dollar_volume = _r(df["dollar_vol"].iloc[-1], 0) or 0.0
 
@@ -1247,7 +1399,7 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     else:
         # حدث حديث صالح مختار: تجاهل الأحداث التاريخية ملاحظة فقط — لا يُبطل الأهلية.
         a.notes.extend(f"حدث تاريخي متجاهَل: {reason}" for reason in rs_reasons)
-    size_ok = (params.min_price <= float(df["close"].iloc[-1]) <= params.max_price)
+    size_ok = (params.min_price <= last_close_raw <= params.max_price)
     if not size_ok:
         add_rejection(
             a, "price",
@@ -1327,20 +1479,22 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         elif a.impulse_pct is not None and not a.rejections:
             a.notes.append(f"تسلسل «جاهز فنياً» قيد التكوّن — {a.lifecycle_stage}")
 
-        # شروط الاستراتيجية الصارمة
-        if a.decline_pct is None:
+        # شروط الاستراتيجية الصارمة — غياب القراءة أو عدم finiteness = نقص بيانات.
+        decline_value = _finite_num(a.decline_pct)
+        if decline_value is None:
             add_rejection(a, "missing_decline_data", "بيانات الهبوط بعد التقسيم غير كافية للتحقق")
-        elif abs(a.decline_pct) < params.min_drop_pct:
+        elif abs(decline_value) < params.min_drop_pct:
             add_rejection(
                 a, "decline",
-                f"الهبوط {abs(a.decline_pct):.1f}% أقل من الحد المطلوب {params.min_drop_pct}%",
+                f"الهبوط {abs(decline_value):.1f}% أقل من الحد المطلوب {params.min_drop_pct}%",
             )
-        if a.rsi_trough is None:
+        rsi_value = _finite_num(a.rsi_trough)
+        if rsi_value is None:
             add_rejection(a, "missing_rsi_data", "بيانات RSI غير كافية للتحقق من التشبع البيعي")
-        elif a.rsi_trough >= params.rsi_oversold:
+        elif rsi_value >= params.rsi_oversold:
             add_rejection(
                 a, "rsi",
-                f"RSI لم ينزل تحت {params.rsi_oversold:g} (أدنى قيمة {a.rsi_trough}) — لا يوجد تشبع بيعي",
+                f"RSI لم ينزل تحت {params.rsi_oversold:g} (أدنى قيمة {rsi_value:.2f}) — لا يوجد تشبع بيعي",
             )
         if (a.base_sessions or 0) < params.min_base_sessions:
             a.notes.append(
@@ -1458,8 +1612,14 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         conf.append("ديفرجنس إيجابي على فريم 4 ساعات")
     a.confirmations = conf
 
-    a.phase = classify_phase(a, params)
-    a.eligible = bool(a.rs_found and not a.rejections)
+    try:
+        a.phase = classify_phase(a, params)
+    except Exception as exc:  # noqa: BLE001 - التوصيف لا يسقط الأهلية
+        a.phase = 0
+        a.notes.append(f"تعذّر تصنيف المرحلة؛ لا استبعاد: {str(exc)[:100]}")
+    # تدقيق الفلاتر الخمسة قبل قرار الأهلية: لا شرط سادس، ولا اعتماد على النقاط.
+    a.core_filters = build_core_filters(a, params, last_close_raw)
+    a.eligible = bool(a.rs_found and not a.rejections and core_filters_passed(a))
     a.display_phase = a.phase if a.eligible else (a.phase if a.rs_found else 0)
     a.watchlist = bool(
         a.rs_found and not a.rejections and a.phase >= 4
@@ -1474,14 +1634,29 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
     elif a.rs_found and not a.eligible:
         a.notes.append("مستبعد من قائمة الفرص — راجع أسباب الاستبعاد")
 
-    parts = score_setup(a, params, df)
-    total = sum(p.points for p in parts) / max(1e-9, sum(p.weight for p in parts)) * 100
-    a.score = round(float(np.clip(total, 0, 100)), 1)
-    a.grade = grade_for(a.score)
-    a.breakdown = [p.to_dict() for p in parts]
+    # النقاط والمستويات والسرد تحليل اختياري: أي فشل فيها يعطي صفراً/فراغاً
+    # ولا يغيّر قرار الأهلية المحسوب من الفلاتر الخمسة.
+    try:
+        parts = score_setup(a, params, df)
+        total = sum(p.points for p in parts) / max(1e-9, sum(p.weight for p in parts)) * 100
+        a.score = round(float(np.clip(total, 0, 100)), 1)
+        a.grade = grade_for(a.score)
+        a.breakdown = [p.to_dict() for p in parts]
+    except Exception as exc:  # noqa: BLE001
+        a.score, a.grade, a.breakdown = 0.0, grade_for(0), []
+        a.notes.append(f"تعذّر حساب النقاط الفنية؛ لا استبعاد: {str(exc)[:100]}")
 
-    a.levels = build_levels(a, df, params)
-    a.why_ar, a.action_ar = build_narrative(a, params)
+    try:
+        a.levels = build_levels(a, df, params)
+    except Exception as exc:  # noqa: BLE001
+        a.levels = {}
+        a.notes.append(f"تعذّر بناء المستويات؛ لا استبعاد: {str(exc)[:100]}")
+    try:
+        a.why_ar, a.action_ar = build_narrative(a, params)
+    except Exception as exc:  # noqa: BLE001
+        a.why_ar = []
+        a.action_ar = "تعذّر توليد السرد الفني؛ الأهلية محسوبة من الفلاتر الخمسة فقط."
+        a.notes.append(f"تعذّر توليد السرد؛ لا استبعاد: {str(exc)[:100]}")
     a.note_ar = hub.scenario_note(symbol)
 
     # ---------- السلسلة الزمنية للرسم ----------

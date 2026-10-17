@@ -5,6 +5,7 @@ Live market-data provider built on `yfinance` (بدون مفاتيح API).
 """
 from __future__ import annotations
 
+import inspect
 import time
 from datetime import datetime, timedelta
 
@@ -348,15 +349,17 @@ class YahooProvider(BaseProvider):
         return out
 
     # ---------------- الكون ---------------- #
-    def market_candidates(self, cap: int | None = None) -> list[str]:
+    def market_candidates(self, cap: int | None = None,
+                          max_price: float | None = None) -> list[str]:
         """مرشحون ديناميكيون من Yahoo screener متعدد الصفحات + القوائم اليدوية.
 
-        النطاق: أسهم أمريكية بسعر أعلى من صفر وحتى سقف سعر الاستراتيجية
-        (STRATEGY.max_price) — وليس جرداً شاملاً لكل تقسيمات السوق.
-        القوائم اليدوية (watchlist/universe) تُضاف كمرشحين يحتاجون التحقق،
-        وليست إثباتاً لصلاحية الرمز.
+        النطاق: أسهم أمريكية بسعر أعلى من صفر وحتى سقف سعر الفحص الفعّال
+        (``max_price`` أو ``STRATEGY.max_price``) — وليس جرداً شاملاً لكل
+        تقسيمات السوق. القوائم اليدوية (watchlist/universe) تُضاف كمرشحين
+        يحتاجون التحقق، وليست إثباتاً لصلاحية الرمز.
         """
         from ..config import STRATEGY, settings
+        price_ceiling = float(max_price if max_price is not None else STRATEGY.max_price)
 
         if cap is None:
             cap = int(settings.universe_max_candidates)
@@ -374,10 +377,10 @@ class YahooProvider(BaseProvider):
         discovery: dict = {
             "scope": (
                 "أسهم أمريكية (region=us) بسعر intraday > 0 وحتى "
-                f"{STRATEGY.max_price:g}$ عبر Yahoo Equity Screener، مرتبة بالنشاط — "
+                f"{price_ceiling:g}$ عبر Yahoo Equity Screener، مرتبة بالنشاط — "
                 "نطاق مقصود لأسهم البيني، وليس جرداً شاملاً لكل تقسيمات السوق"
             ),
-            "price_ceiling": STRATEGY.max_price,
+            "price_ceiling": price_ceiling,
             "total_matching_screener": None,
             "candidate_cap": cap,
             "pages_fetched": 0,
@@ -391,7 +394,7 @@ class YahooProvider(BaseProvider):
             query = yf.EquityQuery("and", [
                 yf.EquityQuery("eq", ["region", "us"]),
                 yf.EquityQuery("gt", ["intradayprice", 0]),
-                yf.EquityQuery("lte", ["intradayprice", STRATEGY.max_price]),
+                yf.EquityQuery("lte", ["intradayprice", price_ceiling]),
             ])
             page_size = 100          # حد عملي لكل صفحة (حد Yahoo 250)
             offset = 0
@@ -432,13 +435,14 @@ class YahooProvider(BaseProvider):
         self.candidate_discovery = discovery
         return combined
 
-    def universe(self, limit: int = 100) -> list[str]:
-        """تحقق أسعار ثم تقسيم عكسي 60 يوماً بنسبة 1:2–1:60 قبل التحليل المكلف.
+    def universe(self, limit: int = 100, params=None) -> list[str]:
+        """تحقق أسعار ثم تقسيم عكسي داخل النافذة (افتراضياً 60 يوماً) قبل التحليل.
 
-        ميزانية الاكتشاف 15 دقيقة، مع إبطاء الطلبات واحترام المعدل.
-        قائمة المتابعة اليدوية ليست إثباتاً لوجود الرمز؛ تُفحص كأي مرشح.
-        الرموز التي لم تُفحص (انتهاء المهلة أو بلوغ limit) تُسجَّل «لم يُفحص»
-        في scan_coverage وليست مستبعدة فنياً.
+        يقبل ``StrategyParams`` مخصّصة كي تتوافق تغييرات CLI/JSON مع اكتشاف
+        المرشحين، لا مع التحليل فقط. ميزانية الاكتشاف 15 دقيقة، مع إبطاء
+        الطلبات واحترام المعدل. قائمة المتابعة اليدوية ليست إثباتاً لوجود
+        الرمز؛ تُفحص كأي مرشح. الرموز التي لم تُفحص تُسجَّل «لم يُفحص» وليست
+        مستبعدة فنياً.
         """
         from ..config import STRATEGY
         from .hub import FAKE_SYMBOLS
@@ -451,7 +455,14 @@ class YahooProvider(BaseProvider):
         deadline = time.monotonic() + 900      # ميزانية الاكتشاف 15 دقيقة
         now = pd.Timestamp.now().normalize()
         sec = SECProvider(cache=self.cache)
-        candidates = self.market_candidates()
+        rules = params or STRATEGY
+        try:
+            mc_params = inspect.signature(self.market_candidates).parameters
+        except (TypeError, ValueError):
+            mc_params = {}
+        candidates = self.market_candidates(
+            **({"max_price": rules.max_price} if "max_price" in mc_params else {})
+        )
         self.discovery_ok = bool(candidates)
         unchecked: list[str] = []
         stop_reason = "all_candidates_checked" if candidates else "no_candidates_discovered"
@@ -479,9 +490,9 @@ class YahooProvider(BaseProvider):
             if not events:
                 events = sec.splits(sym)
             valid = [e for e in events if
-                     0 <= (now - e.date.normalize()).days <= STRATEGY.rs_lookback_days
-                     and e.factor > STRATEGY.rs_min_ratio
-                     and (not STRATEGY.rs_max_ratio or e.factor <= STRATEGY.rs_max_ratio)]
+                     0 <= (now - e.date.normalize()).days <= rules.rs_lookback_days
+                     and e.factor > rules.rs_min_ratio
+                     and (not rules.rs_max_ratio or e.factor <= rules.rs_max_ratio)]
             if valid:
                 out.append(sym)
             else:

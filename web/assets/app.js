@@ -252,7 +252,7 @@ function renderCoverage() {
     `<div class="muted" style="margin-top:8px;font-size:11px">«لم يُفحص» = مرشحون لم تتحقق منهم بعد (مهلة أو سقف) وليست مستبعدة فنياً؛ ` +
     `«بيانات غير متاحة» = تعذّر تحقق الأسعار أو الملف؛ «لا تقسيم حديث مطابق» = خارج نافذة 60 يوماً أو النسبة المطلوبة؛ ` +
     `«مستبعد لسبب آخر» = حدث حديث أخفق السعر/السيولة/الصعود/النموذج أو سبباً مانعاً آخر؛ ` +
-    `«GAM» = رفض حصراً بسبب هبوط أقل من 30% و/أو RSI في المسح الحالي، مع سعر 0.50–20$؛ ليس فرصة أو توصية.</div>`;
+    `«GAM» = رفض حصراً بسبب هبوط أقل من 30% و/أو RSI في المسح الحالي، مع سعر داخل نطاق الفلاتر 1–5$؛ ليس فرصة أو توصية.</div>`;
 }
 
 function renderKpis() {
@@ -535,32 +535,92 @@ function renderLevels(a) {
   ].join('') + (a.gam_candidate ? '' : `<div class="lvl" style="grid-column:1/-1"><span>إدارة حجم المركز</span><b class="small" style="font-weight:400">${esc(lv.position_note_ar || '')}</b></div>`);
 }
 
+/* فلاتر الأهلية الخمسة فقط — تُعرض أولاً وبشكل صريح قبل أي إشارة مساعدة. */
+function coreFilterRows(a) {
+  if (Array.isArray(a.core_filters) && a.core_filters.length === 5) return a.core_filters;
+  const p = state.strategy?.params || {};
+  const minP = p.min_price ?? 1, maxP = p.max_price ?? 5;
+  const priceOk = a.last_close != null && a.last_close >= minP && a.last_close <= maxP;
+  return [
+    { key: 'price', label_ar: 'السعر ضمن نطاق البيني',
+      rule_ar: `${minP}$ ≤ آخر إغلاق ≤ ${maxP}$ (شامل)`,
+      display: a.last_close != null ? `${money(a.last_close)}` : 'غير متاح', ok: priceOk,
+      reason: priceOk ? '' : 'السعر خارج نطاق الفلتر' },
+    { key: 'reverse_split', label_ar: 'تقسيم عكسي منفّذ حديثاً',
+      rule_ar: `خلال ≤ ${p.rs_lookback_days || 60} يوماً`,
+      display: a.rs_found ? `${a.rs_ratio_str} · ${a.rs_date} · عمر ${a.rs_age_days} يوم` : 'لا يوجد حدث',
+      ok: !!a.rs_found, reason: a.rs_found ? '' : 'لا يوجد تقسيم عكسي داخل النافذة' },
+    { key: 'decline', label_ar: 'هبوط كافٍ من قمة ما بعد التقسيم',
+      rule_ar: `≥ ${p.min_drop_pct || 30}%`,
+      display: a.decline_pct != null ? pct(a.decline_pct) : 'غير متاح',
+      ok: a.decline_pct != null && Math.abs(a.decline_pct) >= (p.min_drop_pct || 30),
+      reason: a.decline_pct != null && Math.abs(a.decline_pct) < (p.min_drop_pct || 30) ? 'الهبوط أقل من الحد' : '' },
+    { key: 'rsi', label_ar: 'تشبع بيعي أثناء تكوّن القاع',
+      rule_ar: `RSI < ${p.rsi_oversold || 30}`,
+      display: a.rsi_trough != null ? `أدنى RSI ${n(a.rsi_trough, 1)}` : 'غير متاح',
+      ok: a.rsi_trough != null && a.rsi_trough < (p.rsi_oversold || 30),
+      reason: a.rsi_trough != null && a.rsi_trough >= (p.rsi_oversold || 30) ? 'RSI لم ينزل تحت الحد' : '' },
+    { key: 'short_shares', label_ar: 'انخفاض الأسهم المكشوفة',
+      rule_ar: `Short Shares < ${Number(p.max_short_shares || 20000).toLocaleString('en-US')} (حصرياً)`,
+      display: a.short_shares != null ? `${Number(a.short_shares).toLocaleString('en-US')} سهم` : 'غير متاح',
+      ok: a.short_shares != null && Number(a.short_shares) >= 0 && Number(a.short_shares) < Number(p.max_short_shares || 20000),
+      reason: a.short_shares == null ? 'بيانات المراكز المكشوفة غير متاحة' : 'عدد الأسهم المكشوفة عند الحد أو أعلى' },
+  ];
+}
+
 function renderChecklist(a) {
   const p = state.strategy?.params || {};
-  const items = [
-    ['تقسيم عكسي 1:2 – 1:60 خلال شهرين', `≤ ${p.rs_lookback_days || 60} يوماً`, a.rs_found ? `${a.rs_ratio_str} بتاريخ ${a.rs_date} (${a.rs_age_days} يوم)` : 'لا يوجد حدث', !!a.rs_found],
-    ['صعود يوم التقسيم', `≥ ${p.min_spike_pct || 5}%`, a.spike_pct != null ? `${pct(a.spike_pct)} (${money(a.rs_open)} → ${money(a.spike_high)})` : '—', a.spike_pct != null && a.spike_pct >= (p.min_spike_pct || 5)],
-    ['موجة هبوط قوية', `≥ ${p.min_drop_pct || 30}%`, a.decline_pct != null ? pct(a.decline_pct) : '—', a.decline_pct != null && Math.abs(a.decline_pct) >= (p.min_drop_pct || 30)],
-    ['تشبع بيعي RSI', `< ${p.rsi_oversold || 30}`, `القاع ${n(a.rsi_trough, 1)} → الحالي ${n(a.rsi_now, 1)}`, a.rsi_trough != null && a.rsi_trough < (p.rsi_oversold || 30)],
-    ['ثبات على القاع', `≥ ${p.min_base_sessions || 3} جلسات`, `${a.base_sessions} جلسة على ${money(a.bottom_price)}` + (a.base_range_pct != null ? ` (نطاق ${n(a.base_range_pct, 1)}%)` : ''), (a.base_sessions || 0) >= (p.min_base_sessions || 3)],
+  const core = coreFilterRows(a);
+  const coreDone = core.filter(f => f.ok).length;
+  const coreAll = coreDone === core.length;
+  const coreHead = `
+    <div class="seq-head">
+      <b>فلاتر الأهلية الإلزامية (${coreDone}/5) — وحدها تحدد الظهور في الجدول</b>
+      <span class="${coreAll ? 'c-green' : 'c-red'}">${coreAll ? 'مؤهل' : 'غير مؤهل'}</span>
+    </div>`;
+  const coreHtml = core.map(f => `
+    <div class="check ${f.ok ? 'ok' : 'fail'}">
+      <span class="icon"><i class="dot ${f.ok ? 'ok' : 'fail'}"></i></span>
+      <div><b>${esc(f.label_ar)}</b> <span class="muted small">(${esc(f.rule_ar)})</span><br>
+      <span class="muted small">${esc(f.display || '—')}</span>
+      ${!f.ok && f.reason ? `<br><span class="c-red small">${esc(f.reason)}</span>` : ''}
+      </div>
+    </div>`).join('');
+
+  /* إشارات مساعدة: تُحسب في النقاط فقط ولا تضيف فلتر أهلية سادساً. */
+  const optional = [
+    ['صعود ما بعد التقسيم (وصفي)', `≥ ${p.min_spike_pct || 5}%`, a.spike_pct != null ? `${pct(a.spike_pct)} (${money(a.rs_open)} → ${money(a.spike_high)})` : '—', a.spike_pct != null && a.spike_pct >= (p.min_spike_pct || 5)],
+    ['ثبات على القاع (وصفي)', `≥ ${p.min_base_sessions || 3} جلسات`, `${a.base_sessions} جلسة على ${money(a.bottom_price)}` + (a.base_range_pct != null ? ` (نطاق ${n(a.base_range_pct, 1)}%)` : ''), (a.base_sessions || 0) >= (p.min_base_sessions || 3)],
     ['جفاف الحجم داخل القاعدة', `< ${Math.round((p.max_volume_dryup_ratio || .9) * 100)}%`, a.volume_dryup != null ? `${Math.round(a.volume_dryup * 100)}% من متوسط ما قبل القاع` : '—', a.volume_dryup != null && a.volume_dryup < (p.max_volume_dryup_ratio || .9)],
-    ['تأكيد الانعكاس', '≥ 3 تأكيدات', `${(a.confirmations || []).length} تأكيد: ${(a.confirmations || []).join('، ') || '—'}`, (a.confirmations || []).length >= 3],
-    ['الدعم صامد (لم يُكسر)', '—', a.base_broken ? 'تم كسر الدعم الرئيسي ⚠️' : 'لم يُكسر', !a.base_broken],
+    ['تحسّن RSI بعد التشبع', '≥ 35 أو +5', `القاع ${n(a.rsi_trough, 1)} → الحالي ${n(a.rsi_now, 1)}`, !!a.rsi_recovered],
+    ['تأكيدات انعكاس مساعدة', '≥ 3 تأكيدات', `${(a.confirmations || []).length} تأكيد: ${(a.confirmations || []).join('، ') || '—'}`, (a.confirmations || []).length >= 3],
+    ['الدعم صامد (تنبيه مخاطر)', '—', a.base_broken ? 'تم كسر الدعم الرئيسي ⚠️' : 'لم يُكسر', !a.base_broken],
   ];
+  const optionalHtml = `
+    <div class="check-head">إشارات فنية مساعدة — للنقاط والتوصيف فقط، ولا تستبعد أي سهم</div>` +
+    optional.map(([t, std, val, ok]) => `
+      <div class="check ${ok ? 'ok' : 'pending'}">
+        <span class="icon"><i class="dot ${ok ? 'ok' : 'pending'}"></i></span>
+        <div><b>${esc(t)}</b> <span class="muted small">(${esc(std)})</span><br>
+        <span class="muted small">${esc(val)}</span></div>
+      </div>`).join('');
+
   const seq = (a.lifecycle_checks || []).map(c => [c.ar, c.std, c.detail, c.ok, c.state]);
-  const rows = items.concat(seq);
   const doneN = seq.filter(c => c[3]).length;
   const seqHead = seq.length ? `
+    <div class="check-head">دورة الحياة الفنية — توصيف فقط، ولا تحدد الأهلية (${doneN}/${seq.length})</div>
     <div class="seq-head">
-      <b>دورة الحياة — شرط «جاهز فنياً» (${doneN}/${seq.length})</b>
+      <b>حالة التسلسل</b>
       <span class="${a.gam_candidate ? 'c-purple' : a.lifecycle_ready && a.eligible ? 'c-green' : a.lifecycle_failed ? 'c-red' : 'c-amber'}">${esc(a.gam_candidate ? 'GAM غير مؤهل — ' + (a.lifecycle_stage || '') : (a.lifecycle_stage || ''))}</span>
     </div>` : '';
-  $('#anChecklist').innerHTML = seqHead + rows.map(([t, std, val, ok, st]) => `
+  const seqHtml = seq.map(([t, std, val, ok, st]) => `
     <div class="check ${ok ? 'ok' : (st === 'active' ? 'active' : 'pending')}">
       <span class="icon"><i class="dot ${ok ? 'ok' : (st === 'active' ? 'active' : 'pending')}"></i></span>
       <div><b>${esc(t)}</b> <span class="muted small">(${esc(std)})</span><br>
       <span class="muted small">${esc(val)}</span></div>
     </div>`).join('');
+
+  $('#anChecklist').innerHTML = coreHead + coreHtml + optionalHtml + seqHead + seqHtml;
 }
 
 function renderBreakdown(a) {

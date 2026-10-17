@@ -31,6 +31,7 @@ from fastapi.staticfiles import StaticFiles
 from .config import REPORTS_DIR, STRATEGY, WEB_DIR, settings
 from .providers.hub import DataHub, get_hub
 from .reporting import analysis_to_markdown, markdown_to_html, watchlist_markdown, write_reports
+from .screener import rank_eligible, rank_all, rules_snapshot
 from .strategy import engine as eng
 from .strategy.charting import build_chart_payload
 
@@ -152,6 +153,8 @@ def strategy_params() -> dict[str, Any]:
             "volume": "جفاف الحجم", "patterns": "النماذج الفنية البديلة",
             "support": "اختبار الدعم وسحب السيولة", "ema": "تفاعل EMA20 / 30 / 50",
         },
+        "eligibility": "five_hard_filters_only",
+        "core_filters": rules_snapshot(STRATEGY)["core_filters"],
         "hard_filters_ar": ["السعر من 1 إلى 5 دولارات", "تقسيم عكسي منفّذ خلال 60 يوماً",
                             "هبوط 30% أو أكثر من قمة ما بعد التقسيم", "RSI أقل من 30 خلال تكوّن القاع",
                             "عدد الأسهم المكشوفة أقل من 20,000؛ المفقود غير مؤهل"],
@@ -193,13 +196,16 @@ def scan_status() -> dict[str, Any]:
 
 @app.get("/api/scan/results")
 def scan_results(only_watch: bool = False, include_rejected: bool = True) -> dict[str, Any]:
-    rows = SCAN.results
+    # الجدول الرئيسي = المؤهلون فقط بترتيب النقاط؛ التشخيص يطلب include_rejected=true.
     if only_watch:
-        rows = [a for a in rows if a.watchlist]
+        rows = rank_all([a for a in SCAN.results if a.watchlist])
     elif not include_rejected:
-        rows = [a for a in rows if a.eligible]
+        rows = rank_eligible(SCAN.results)
+    else:
+        rows = rank_all(SCAN.results)
     return {
         "summary": _summary(SCAN.results),
+        "rules": rules_snapshot(STRATEGY),
         "sources": SCAN.sources,
         "rows": [a.to_dict() for a in rows],
     }

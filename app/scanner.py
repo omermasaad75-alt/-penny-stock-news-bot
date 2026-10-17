@@ -14,9 +14,19 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-from .config import REPORTS_DIR, STRATEGY, settings
+from .config import REPORTS_DIR, settings
 from .providers.hub import DataHub, get_hub
 from .reporting import watchlist_markdown, write_reports
+from .screener import (
+    ScreenConfigError,
+    build_params,
+    load_overrides,
+    parse_weights,
+    rank_all,
+    rank_eligible,
+    rules_snapshot,
+    write_scan_csv,
+)
 from .strategy import engine as eng
 
 
@@ -109,19 +119,66 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--report", action="store_true", help="توليد تقارير Markdown/HTML/JSON")
     ap.add_argument("--out", type=str, default="", help="مسار ملف JSON للناتج")
     ap.add_argument("--json", action="store_true", help="طباعة الناتج كـ JSON")
+    # تعديلات مرنة للفلاتر الخمسة فقط (لا تضيف شرطاً سادساً).
+    ap.add_argument("--config", type=str, default="",
+                    help="ملف JSON لمعاملات StrategyParams (قسم core/scoring أو مسطح)")
+    ap.add_argument("--min-price", type=float, default=None, help="أدنى سعر (افتراضي 1.0$)")
+    ap.add_argument("--max-price", type=float, default=None, help="أعلى سعر (افتراضي 5.0$)")
+    ap.add_argument("--rs-window-days", type=int, default=None,
+                    help="نافذة التقسيم العكسي بالأيام (افتراضي 60)")
+    ap.add_argument("--min-drop-pct", type=float, default=None,
+                    help="أدنى هبوط من قمة ما بعد التقسيم (افتراضي 30%%)")
+    ap.add_argument("--rsi-oversold", type=float, default=None,
+                    help="حد التشبع البيعي RSI (افتراضي 30)")
+    ap.add_argument("--max-short-shares", type=float, default=None,
+                    help="سقف الأسهم المكشوفة الحصري (افتراضي 20,000)")
+    ap.add_argument("--weights", type=str, default="",
+                    help="أوزان النقاط: volume=25,patterns=35,support=25,ema=15")
+    ap.add_argument("--csv", type=str, default="", help="مسار CSV للجدول الرئيسي (المؤهلون فقط)")
+    ap.add_argument("--csv-all", action="store_true",
+                    help="مع --csv: تصدير كل الصفوف (للتشخيص) مع عمود الأهلية")
     args = ap.parse_args(argv)
 
     def status(*values, **kwargs):
         print(*values, file=sys.stderr if args.json else sys.stdout, **kwargs)
 
+    # بناء معاملات الجلسة: الملف أولاً ثم أعلام CLI تتغلب عليه.
+    overrides: dict = {}
+    try:
+        if args.config:
+            overrides.update(load_overrides(args.config))
+        for key, value in (
+            ("min_price", args.min_price), ("max_price", args.max_price),
+            ("rs_lookback_days", args.rs_window_days),
+            ("min_drop_pct", args.min_drop_pct),
+            ("rsi_oversold", args.rsi_oversold),
+            ("max_short_shares", args.max_short_shares),
+        ):
+            if value is not None:
+                overrides[key] = value
+        if args.weights:
+            overrides["weights"] = parse_weights(args.weights)
+        params = build_params(overrides)
+    except ScreenConfigError as exc:
+        print(f"✖ إعداد فحص غير صالح: {exc}", file=sys.stderr)
+        return 2
+
     hub: DataHub = get_hub(mode=args.mode, refresh=bool(args.mode))
     src = hub.sources_report()
     status(f"▶ {settings.app_name_ar} v{settings.version}")
     status(f"▶ وضع البيانات الفعّال: {src['mode_effective']} (المُعدّ: {src['mode_setting']})")
+    status(
+        "▶ فلاتر الأهلية الخمسة: "
+        f"{params.min_price:g}–{params.max_price:g}$ · "
+        f"تقسيم ≤{params.rs_lookback_days}ي · "
+        f"هبوط ≥{params.min_drop_pct:g}% · "
+        f"RSI<{params.rsi_oversold:g} · "
+        f"Short<{params.max_short_shares:,.0f}"
+    )
 
     syms = [s.strip().upper() for s in args.symbols.split(",") if s.strip()] if args.symbols else []
     if not syms:
-        syms = hub.universe(limit=args.limit)
+        syms = hub.universe(limit=args.limit, params=params)
 
     if not (args.scan or args.symbols):
         status("استخدم --scan لمسح الكون أو --symbols لتحديد رموز. مثال: python -m app.scanner --scan")
@@ -131,7 +188,7 @@ def main(argv: list[str] | None = None) -> int:
     results: list[eng.Analysis] = []
     for i, s in enumerate(syms, 1):
         try:
-            a = eng.analyze_symbol(s, hub, STRATEGY)
+            a = eng.analyze_symbol(s, hub, params)
         except Exception as exc:  # noqa: BLE001
             a = eng.Analysis(symbol=s)
             eng.add_rejection(a, "analysis_error", f"خطأ: {exc}")
@@ -139,29 +196,31 @@ def main(argv: list[str] | None = None) -> int:
         status(f"\r  [{i}/{len(syms)}] {s:<8}", end="", flush=True)
     status("\r" + " " * 40 + "\r", end="")
 
-    results.sort(key=lambda x: (-x.score, x.symbol))
+    eligible_rows = rank_eligible(results)
+    ordered = rank_all(results)
 
+    payload = {
+        "mode": src["mode_effective"], "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "rules": rules_snapshot(params),
+        "summary": {
+            "scanned": len(results),
+            "with_reverse_split": sum(1 for a in results if a.rs_found),
+            "watchlist": sum(1 for a in results if a.watchlist),
+            "eligible": len(eligible_rows),
+            "gam_candidates": sum(1 for a in results if a.gam_candidate),
+        },
+        "gam_policy": {
+            "secondary_lane_only": True,
+            "eligible": False,
+            "price_range": [params.min_price, params.max_price],
+            "allowed_failures": ["decline", "rsi"],
+            "rsi_scope": eng.GAM_RSI_SCOPE,
+            "historical_state_persisted": False,
+        },
+        "rows": [a.to_dict() for a in eligible_rows],
+        "rejected": [a.to_dict() for a in ordered if not a.eligible],
+    }
     if args.json:
-        payload = {
-            "mode": src["mode_effective"], "generated_at": datetime.now().isoformat(timespec="seconds"),
-            "summary": {
-                "scanned": len(results),
-                "with_reverse_split": sum(1 for a in results if a.rs_found),
-                "watchlist": sum(1 for a in results if a.watchlist),
-                "eligible": sum(1 for a in results if a.eligible),
-                "gam_candidates": sum(1 for a in results if a.gam_candidate),
-            },
-            "gam_policy": {
-                "secondary_lane_only": True,
-                "eligible": False,
-                "price_range": [STRATEGY.min_price, STRATEGY.max_price],
-                "allowed_failures": ["decline", "rsi"],
-                "rsi_scope": eng.GAM_RSI_SCOPE,
-                "historical_state_persisted": False,
-            },
-            "rows": [a.to_dict() for a in results if a.eligible],
-            "rejected": [a.to_dict() for a in results if not a.eligible],
-        }
         text = json.dumps(payload, ensure_ascii=False, indent=2)
         if args.out:
             Path(args.out).parent.mkdir(parents=True, exist_ok=True)
@@ -170,10 +229,20 @@ def main(argv: list[str] | None = None) -> int:
         else:
             print(text)
     else:
-        print_table(results, only_watch=args.only_watch)
-        for a in results:
+        print_table(ordered, only_watch=args.only_watch)
+        for a in ordered:
             if a.watchlist or a.gam_candidate:
                 print_symbol_report(a)
+        if args.out:
+            Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+            Path(args.out).write_text(json.dumps(payload, ensure_ascii=False, indent=2),
+                                      encoding="utf-8")
+            status(f"✔ تم كتابة JSON إلى {args.out}")
+
+    if args.csv:
+        count = write_scan_csv(args.csv, results, include_rejected=args.csv_all)
+        scope = "كل الصفوف (تشخيص)" if args.csv_all else "المؤهلون فقط (الجدول الرئيسي)"
+        status(f"✔ CSV: {count} صفاً — {scope} — {args.csv}")
 
     if args.report:
         targets = [a.symbol for a in results if a.rs_found] or syms

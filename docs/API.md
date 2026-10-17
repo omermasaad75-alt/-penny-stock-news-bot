@@ -18,6 +18,16 @@
 | GET | `/api/demo-metadata` | وصف السيناريوهات التجريبية |
 | GET | `/reports/{filename}` | تنزيل تقرير مولّد (html/md) |
 
+## قاعدة الأهلية (خمسة فلاتر فقط)
+
+`eligible=true` يعني نجاح كل `core_filters` الخمسة واكتمال قراءتها: السعر 1–5$ شاملًا
+الحدين، تقسيم عكسي منفّذ خلال ≤60 يوماً بعامل >1، هبوط ≥30% من قمة ما بعد التقسيم،
+RSI<30 أثناء تكوّن القاع، وShort Shares<20,000 حصرياً. النماذج والثبات وEMA ودورة
+الحياة تُرجع في `breakdown`/`patterns_daily`/`lifecycle_checks` ولا تستبعد أحداً.
+`/api/scan/results` يُرجع كل النتائج افتراضياً للتشخيص؛ استخدم `include_rejected=false`
+للجدول الرئيسي (المؤهلين فقط مرتبين بالنقاط). كل صف يحمل `core_filters` الخمسة مع
+`value` و`display` و`reason` لتدقيق القرار.
+
 ## أمثلة
 
 ```bash
@@ -43,31 +53,48 @@ curl -X POST "http://localhost:8000/api/report/save"       # يكتب كل ال�
 
 ```jsonc
 {
-  "symbol": "JZ", "name": "JZ Holdings Inc.", "data_source": "demo", "as_of": "2026-10-13",
-  "rs_found": true, "rs_date": "2026-09-10", "rs_age_days": 34, "rs_ratio_str": "1-for-8", "rs_ratio": 8.0,
-  "rs_open": 3.0, "spike_high": 3.4, "spike_pct": 13.33,
-  "decline_pct": -52.94, "bottom_price": 1.6, "bottom_date": "2026-10-05",
-  "base_sessions": 6, "base_range_pct": 9.2, "volume_dryup": 0.75, "base_broken": false,
-  "rsi_trough": 14.89, "rsi_now": 28.49, "rsi_recovered": true, "rsi_sessions_below_30": 19,
-  "above_ema9_sessions": 1, "macd_turning": true, "channel_broken": false, "rvol": 1.65, "atr_pct": 6.75,
-  "shares_out": 9500000, "float_shares": 3200000, "short_pct_float": 18.4, "days_to_cover": 3.1,
+  "symbol": "JZ", "name": "JZ Holdings Inc.", "data_source": "demo", "as_of": "2026-10-16",
+  "rs_found": true, "rs_date": "2026-09-15", "rs_age_days": 32, "rs_ratio_str": "1-for-8", "rs_ratio": 8.0,
+  "rs_open": 3.0, "spike_high": 3.3999, "spike_pct": 13.33,
+  "decline_pct": -55.06, "bottom_price": 1.6, "bottom_date": "2026-09-25",
+  "base_sessions": 5, "base_range_pct": 10.9, "volume_dryup": 0.44, "base_broken": false,
+  "rsi_trough": 11.82, "rsi_now": 31.02, "rsi_recovered": true, "rsi_sessions_below_30": 11,
+  "above_ema9_sessions": 0, "macd_turning": true, "channel_broken": false, "rvol": 1.16, "atr_pct": 7.22,
+  "shares_out": 9500000, "float_shares": 3200000, "short_shares": 16000, "short_pct_float": 0.5, "days_to_cover": 3.1,
   "phase": 6, "watchlist": true, "eligible": true,
   "gam_candidate": false, "gam_reasons": [], "gam_rsi_scope": "current_scan_price_series",
-  "rejection_codes": [], "score": 82.1, "grade": "A",
-  "levels": { "trigger": 1.7678, "stop": 1.6007, "stop_structural": 1.564,
-              "targets": { "t1_382": 2.2876, "t2_618": 2.7123, "t3_full": 3.3999 }, "rr_t2": 5.65 },
-  "breakdown": [ { "key": "base", "ar": "القاع والثبات", "weight": 18, "score": 100, "points": 18.0 } ],
-  "patterns_daily": [ { "name_ar": "جفاف حجم ثم انفجار", "confidence": 0.9, "status": "confirmed" } ],
+  "rejection_codes": [], "score": 64.5, "grade": "C",
+  "core_filters": [
+    { "key": "price", "label_ar": "السعر ضمن نطاق البيني", "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 1.681, "display": "1.6810$", "ok": true, "data_available": true, "reason": "" },
+    { "key": "reverse_split", "label_ar": "تقسيم عكسي منفّذ حديثاً", "rule_ar": "خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 32, "display": "1-for-8 · 2026-09-15 · عمر 32 يوم", "ok": true, "data_available": true, "reason": "" },
+    { "key": "decline", "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم", "rule_ar": "هبوط ≥ 30%",
+      "value": -55.0575, "display": "55.06% من قمة ما بعد التقسيم", "ok": true, "data_available": true, "reason": "" },
+    { "key": "rsi", "label_ar": "تشبع بيعي أثناء تكوّن القاع", "rule_ar": "RSI(14) < 30",
+      "value": 11.82, "display": "أدنى RSI 11.82", "ok": true, "data_available": true, "reason": "" },
+    { "key": "short_shares", "label_ar": "انخفاض الأسهم المكشوفة", "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم",
+      "value": 16000, "display": "16,000 سهم", "ok": true, "data_available": true, "reason": "" }
+  ],
+  "levels": { "trigger": 2.0355, "stop": 1.8298, "stop_structural": 1.4912,
+              "targets": { "t1_382": 2.2876, "t2_618": 2.7123, "t3_full": 3.3999 }, "rr_t2": 3.29 },
+  "breakdown": [
+    { "key": "volume", "ar": "جفاف الحجم", "weight": 25, "score": 100, "points": 25.0 },
+    { "key": "patterns", "ar": "النماذج الفنية البديلة", "weight": 35, "score": 70, "points": 24.5 },
+    { "key": "support", "ar": "اختبار الدعم وسحب السيولة", "weight": 25, "score": 60, "points": 15.0 },
+    { "key": "ema", "ar": "تفاعل EMA 20 / 30 / 50", "weight": 15, "score": 0, "points": 0.0 }
+  ],
+  "patterns_daily": [ { "name_ar": "ديفرجنس إيجابي RSI", "confidence": 0.7, "status": "confirmed" } ],
   "catalysts": [ { "date": "2026-11-12", "type": "earnings", "sentiment": "neutral", "title": "..." } ],
   "dilution": [ { "date": "2026-09-28", "kind": "S-1", "severity": "medium", "title": "..." } ],
-  "why_ar": [ "..." ], "action_ar": "جاهز فنياً: الدخول بعد اختراق 1.7678 ..."
+  "why_ar": [ "..." ], "action_ar": "جاهز فنياً: الدخول بعد اختراق 2.0355 ..."
 }
 ```
 
 ## حقول وسياسة GAM
 
 - `summary.gam_candidates`: عدد المرشحين في المسار الثانوي، منفصل عن `eligible` و`watchlist`.
-- `gam_candidate=true` لا يظهر إلا مع تقسيم عكسي حديث وسعر 0.50–20$، وحين تكون كل
+- `gam_candidate=true` لا يظهر إلا مع تقسيم عكسي حديث وسعر داخل نطاق الفلاتر 1–5$، وحين تكون كل
   `rejection_codes` محصورة في `decline` و/أو `rsi`.
 - `gam_reasons`: نصوص أسباب الرفض نفسها، وليست أسباب ترقية.
 - `gam_rsi_scope=current_scan_price_series` و`/api/strategy.gam_policy.historical_state_persisted=false`:

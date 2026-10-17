@@ -163,3 +163,57 @@ def test_missing_optional_profile_does_not_hide_eligible(monkeypatch):
     hub = DataHub(mode='demo')
     monkeypatch.setattr(hub, 'profile', lambda *a: None)
     assert eng.analyze_symbol('JZ', hub).eligible
+
+
+def _boundary_analysis(**overrides):
+    a = eng.Analysis(
+        symbol="TEST", rs_found=True, rs_age_days=60, rs_ratio=8.0,
+        decline_pct=-30.0, rsi_trough=29.9999, short_shares=19999.0,
+        last_close=5.0,
+    )
+    for key, value in overrides.items():
+        setattr(a, key, value)
+    a.core_filters = eng.build_core_filters(a, StrategyParams(), a.last_close)
+    return a
+
+
+def test_core_filter_boundaries_are_exact_and_inclusive():
+    assert all(f["ok"] for f in _boundary_analysis().core_filters)
+    assert all(f["ok"] for f in _boundary_analysis(last_close=1.0).core_filters)
+    assert all(f["ok"] for f in _boundary_analysis(short_shares=0.0).core_filters)
+    assert all(f["ok"] for f in _boundary_analysis(rs_age_days=0, rs_ratio=1.0001).core_filters)
+    # 60 يوماً هو الحد الأقصى، ونسبة أي حجم مقبولة بلا سقف.
+    for kwargs, key in [
+        ({"last_close": 5.00001}, "price"),
+        ({"last_close": 0.99999}, "price"),
+        ({"rs_age_days": 61}, "reverse_split"),
+        ({"rs_ratio": 1.0}, "reverse_split"),
+        ({"decline_pct": -29.9999}, "decline"),
+        ({"rsi_trough": 30.0}, "rsi"),
+        ({"short_shares": 20000.0}, "short_shares"),
+    ]:
+        status = {f["key"]: f["ok"] for f in _boundary_analysis(**kwargs).core_filters}
+        assert status[key] is False, (kwargs, key, status)
+        assert sum(not ok for ok in status.values()) == 1, (kwargs, status)
+
+
+def test_missing_numeric_core_readings_are_data_gaps_not_passes():
+    a = _boundary_analysis(decline_pct=float("nan"), rsi_trough=float("nan"), short_shares=None)
+    status = {f["key"]: f for f in a.core_filters}
+    for key in ("decline", "rsi", "short_shares"):
+        assert status[key]["ok"] is False
+        assert status[key]["data_available"] is False
+        assert status[key]["display"] in {"بيانات الهبوط غير متاحة", "بيانات RSI غير متاحة",
+                                          "بيانات المراكز المكشوفة غير متاحة"}
+
+
+def test_optional_scoring_failure_never_rejects_hard_filter_pass(monkeypatch):
+    hub = DataHub(mode="demo")
+    def broken(*args, **kwargs):
+        raise RuntimeError("scoring unavailable")
+    monkeypatch.setattr(eng, "technical_components", broken)
+    a = eng.analyze_symbol("JZ", hub)
+    assert a.eligible is True
+    assert a.score == 0 and a.breakdown == []
+    assert any("تعذّر حساب النقاط" in note for note in a.notes)
+    assert a.symbol in [row.symbol for row in eng.scan(["JZ"], hub)]

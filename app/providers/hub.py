@@ -8,6 +8,7 @@
 """
 from __future__ import annotations
 
+import inspect
 import time
 
 import pandas as pd
@@ -294,11 +295,20 @@ class DataHub:
             return uniq[:25]
         return self.demo.dilution(sym)
 
-    def universe(self, limit: int = 60) -> list[str]:
-        """كون السوق: في الوضع live يُبنى من ياهو + قوائم التكوين بعد التحقق."""
+    def universe(self, limit: int = 60, params=None) -> list[str]:
+        """كون السوق: في الوضع live يُبنى من ياهو + قوائم التكوين بعد التحقق.
+
+        ``params`` اختياري لتطبيق نافذة التقسيم/سقف السعر نفسها على الاكتشاف.
+        """
         if self._is_live_mode() and self.yahoo:
             try:
-                syms = self.yahoo.universe(limit=limit)
+                try:
+                    accepts_params = "params" in inspect.signature(self.yahoo.universe).parameters
+                except (TypeError, ValueError):
+                    accepts_params = True
+                syms = self.yahoo.universe(
+                    limit=limit, **({"params": params} if accepts_params else {})
+                )
             except Exception as exc:  # noqa: BLE001
                 self.log.append(f"فشل بناء الكون من Yahoo: {exc}")
                 syms = []
