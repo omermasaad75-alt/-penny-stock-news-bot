@@ -7,7 +7,9 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const state = {
   rows: [], summary: {}, sources: {}, strategy: null, phases: {},
   selected: null, analysis: null, tf: '1D', osc: 'rsi',
-  filter: 'eligible', search: '', polling: null, charts: { price: null, osc: null },
+  // اعرض الأسهم التي اجتازت فلترة التقسيم أولاً؛ لا تُخفِ حالات الاقتراب
+  // لمجرد أنها لم تحقق الفلاتر الخمسة كاملة بعد.
+  filter: 'rs', search: '', polling: null, charts: { price: null, osc: null },
   series: { price: {}, osc: {} }, bars: 0, autoScanStarted: false,
 };
 
