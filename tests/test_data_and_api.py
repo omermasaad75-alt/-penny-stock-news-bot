@@ -129,6 +129,20 @@ def test_scan_cycle(client):
     assert res["summary"]["phase5_plus"] >= res["summary"]["ready"]
 
 
+def test_scan_results_keep_partial_rows_for_dashboard_diagnostics(client):
+    """الصفوف غير المؤهلة لا تختفي؛ الواجهة تعرضها عبر فلتر التقسيم العكسي."""
+    client.post("/api/scan/start?limit=12")
+    import time
+    for _ in range(40):
+        if not client.get("/api/scan/status").json()["running"]:
+            break
+        time.sleep(0.5)
+    rows = client.get("/api/scan/results").json()["rows"]
+    assert rows
+    assert any(r["rs_found"] and not r["eligible"] for r in rows)
+    assert all("core_filters" in r and len(r["core_filters"]) == 5 for r in rows)
+
+
 def test_analysis_and_chart(client):
     client.post("/api/scan/start?limit=12")
     import time
