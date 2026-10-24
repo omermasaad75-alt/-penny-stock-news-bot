@@ -1,0 +1,1042 @@
+{
+  "symbol": "HOST",
+  "name": "Host Digital Inc.",
+  "sector": "Technology",
+  "industry": "Software - Infrastructure",
+  "exchange": "ASE",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-22",
+  "last_close": 2.4,
+  "change_pct": -15.49,
+  "dollar_volume": 1656439.0,
+  "rs_found": true,
+  "rs_date": "2026-08-31",
+  "rs_age_days": 54,
+  "rs_ratio_str": "1-for-35",
+  "rs_ratio": 35.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 8.16,
+  "spike_high": 14.72,
+  "spike_pct": 80.3922,
+  "spike_date": "2026-09-17",
+  "decline_pct": -89.94565222672907,
+  "peak_date": "2026-09-17",
+  "bottom_price": 1.48,
+  "bottom_date": "2026-10-19",
+  "base_sessions": 1,
+  "base_high": 2.88,
+  "base_low": 1.48,
+  "base_range_pct": 94.5946,
+  "base_broken": false,
+  "volume_dryup": 32.104,
+  "atr_pct": 33.16,
+  "rsi_now": 33.52,
+  "rsi_trough": 26.012228479300163,
+  "rsi_trough_date": "2026-10-16",
+  "rsi_sessions_below_30": 3,
+  "rsi_recovered": true,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": 0.08245,
+  "channel_slope_pct": -6.032,
+  "channel_upper": 7.0468,
+  "channel_broken": false,
+  "rvol": 1.24,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "تجاوز المقاومة بقوة (6.9% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 1.480",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+61.5% من 1.920 إلى 3.100",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 2.900 (على 95.9% من الدعم 1.480) — توقف السعر عندها بفارق 6.9%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 61.46,
+  "impulse_high": 3.1,
+  "impulse_date": "2026-10-22",
+  "resistance_level": 2.9,
+  "resistance_distance_pct": 95.95,
+  "resistance_date": "2026-10-21",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 1.4874,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 1.48,
+  "support_hold_ok": false,
+  "base_close": 1.92,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    9.065,
+    8.435,
+    8.41,
+    7.44,
+    7.18,
+    6.99,
+    7.02,
+    8.69,
+    8.5,
+    9.65,
+    9.88,
+    10.55,
+    10.07,
+    14.15,
+    11.33,
+    8.09,
+    8.0,
+    8.06,
+    8.0,
+    8.0,
+    6.14,
+    4.95,
+    4.8,
+    4.75,
+    3.88,
+    3.6,
+    3.09,
+    3.37,
+    3.21,
+    3.2,
+    3.17,
+    3.14,
+    3.16,
+    2.89,
+    2.5,
+    1.9,
+    1.92,
+    2.83,
+    2.84,
+    2.4
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 6.9,
+  "shares_out": 28200321.0,
+  "float_shares": null,
+  "market_cap": 67962776.0,
+  "avg_volume": 552694.0,
+  "insider_pct": 80.63,
+  "institutional_pct": 8.46,
+  "short_pct_float": null,
+  "short_as_of": "1790726400",
+  "short_shares": 219177.0,
+  "days_to_cover": 0.95,
+  "short_change_pct": null,
+  "short_volume_ratio": 0.409,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "HOST",
+      "date": "2026-10-23",
+      "type": "other",
+      "title": "A sugar refiner will release third-quarter results before markets open, then discuss them at 10 a.m. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNRnlqeVJFNTFENFVUdWxJYS1zN0w3WEJKalB4SGFubFNOV09nMWt4eFhyc2JpRGdQclRKQ1BWeGRCOG9fdllqZGFJak9CNkliaTFSYUJwdEx1OURKODVjNTR5RlZXVHJsYzM0QUFGRmgwWkRXbVRUcUxGRm9Jc3JtdDZIQlp6NUFjV2FrSkRmd2hxSHhZU1pmc2s3QmpEY2wt?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-21",
+      "type": "other",
+      "title": "Host Digital(HOST) Stock Options Chain | Quotes & News - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqgNBVV95cUxQY3p1aFJ4cU9ZdWJJdkdSSVd0TDBXdERiV1dvN01IUDVzMko1WDVORTY0aTVlTjRmSm5acEdyQnozeWVRV2xxM3QxcmY0VEpHY1QwaDNuWkNwWnZzUVlHUURzSm1EU3V6cVA0VlFNMTNzRC1QZFE4NjI0UVdtM2RoaUNQYTBOVWhSVl9GVTIyQWdYdUVFeDZDLXEwcG1mcHM2U2RzQWctWEJpeUVkRnd4Z2lmVGh3cXVnWkVneXQ0MGhNeDFlS3BnVllxdEk3ckl1QjM3bnd5aHJLVDhvd090YnpaaVpaWDk2RVVRcU1LdjYxUWNoeEVHSVRlSHlaTVV6YUZSdmFzb245SWo5cW5tbDhQME5zdzN5RGw0cXk4THp6TXFEMFYxUEFvcGtXaDEta2dvSnZqWWZuX2NrS0JfN0g4dnJOQkgwZm5FMG5DZkszRnBNaDI2RE0xQ3RnakxveFFZVnB1My1OcmtDd3NYQXN6N19rTkc5dEdFZ05sd0o2b1BXUEpNMTlEMVk1cWxCNG1LUFNYTEM4SHRlSlloTHlPY2JXX3p6SEE?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-21",
+      "type": "other",
+      "title": "Host Hotels & Resorts Inc. stock outperforms competitors on strong trading day - MarketWatch",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPRmlNbVJlQ2FiM0NUdzA0cjBMOXl3Q0FlNmEzcmRNYlgwUG5VdFp3SE5wMDdaelIwTUpTY2VhSGV3MFI0MlhTNDJNMXBhUURwSW4xZDNmWUhzTnVvUlZiRHkzTzhNRDBrdlFYU2x1S01NU0N4TGFBNmhFLU01V2NuTy1hSHZ3TzloMlB5TFVjVzJLUlFTSWdXNjFqZEZPTFJjR0ZfZ3dsZ09WMHJFQXRCNC1Ed3Z4NzhzdVh5aUdVbkdIbEYxVDNlZFA2OTVDd2licE9tbmlSN2RiT0JTSXM3YTF0NHFxME1H?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-21",
+      "type": "earnings",
+      "title": "Host Digital Authorizes $15 Million Class A Buyback - The Globe and Mail",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxORjdDa0Z0N2s0WUItTzdfUWV0VHZZZU9RM1YtbFlMejRVdEJuZlZVR1BtNHNXblliWFJFYUpaaGp3dk1HaU12MlN5X2VXU1pVN09LcEZJZUhSOC0tbEFrMGY2WjMzNzZZQTJXYklCWmFJSFRLb0ducXhQNnh4eTVMMGFoZ195allVdng2cHUtVGpnVnF2RVFaNVl4SHNXNTNZWjJLSzgzWXpHSTVfNkxBSGt1THlvcm9iaWthdUNTM0JubHlWT0xkcFZaS3NhUHJxemNR?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-21",
+      "type": "other",
+      "title": "Host Digital (HOST) Stock Forum and Discussion - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiyAJBVV95cUxNNHZQTEpXOWIwanlITHZyOEp4bHNPZjFxNndMQTgyX1JudzhBWXg5ZlFUc0dkN1UzRnBEd0N0N1J3d0MtYnJhdjY5dzJZRWgybnFsUUNvczdnTmJiTWFDSEpCeWFwMFIyV3NSWWVVX0ZVeVB0M1RyV2NVd2pid3pNak0wU0hJTVNUQ0tUUVN1dzBhQ1NyQjBCMGg4T0Rnc0xNTW8xOGh0NlptclBjbGxiaEw1ampRRUltbTcyMzd5X1otTUNHbnVaZi1yQlgtLWxBMU5BSEFjWHhYNGxtYUVRSnFmUUk0TU1XWGEtLVlZWkJmQWp0MVNTUlZxRDdQdzFRejB6elhtNkt1UzZqZXdXa0d2OGw4UjYyaXJSbDJ4Sm1FVHBadGVIb0hESEtpODQ5VW5tWlUzd1NCNTEzcWFFUnAxRlh6WWE4?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-21",
+      "type": "other",
+      "title": "HOST 261120 7.50P (HOST261120P7500) Stock Options Chain | Quotes & News - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBoMzk4R19NYUNKQTBOMklXbkpOTUVzdnlybHg5WUFpbVdSNkNIcWtJc3VuOURKczV0N2tiZENVRXk3VEt1b2tpdTFxR3RWLUN5UWsyLWtBV2RYMEhLenc?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "earnings",
+      "title": "Host Digital Authorizes $15 Million Share Buyback Program",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/host-digital-authorizes-15-million-121500301.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "earnings",
+      "title": "Host Digital authorizes $15M share buyback as Board cites undervaluation - TradingView",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxONHJaYWFpd3dXc01MVTNXbDFDbG83dWNLalNhOGtHa2VBYVhHeTRjZDlrRXNPTjVwWXpTYUdBRnFWOGE1eEJvd2dISlJUZjFOLTJPZlZwandEX1E3ZGNMWUJmcmFMWVk2VmRRTmFIUnFzYmpGWklZbjlGLWFrQUJ2TGNhWmx6bzk1aDU2N2FKS1B3TzFUZVRaYlhDenF5dFJ4elpNNjJMZ2ozcWxMa244MzJldVlGMmt4c1d5LVJnNXRfc2pRSVRUZWhVQVJuUQ?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "earnings",
+      "title": "Host Digital Hikes on Share Buyback - Baystreet.ca",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE10M1hUbTBYSnNwNTNnaGVPaXNaYllURTVBVXFtLUVId0NnbnlMZFNaNDJ4S2psSUlUOUtubEYxY2VRMDZ0OTdpYWRZZjM2THd4bHBjemdhV3lNc0JfUnRrdC02MFpLR0h2d3ItSFFuTHk1bUVENXVvcnJDWkc2d9IBfkFVX3lxTE10M1hUbTBYSnNwNTNnaGVPaXNaYllURTVBVXFtLUVId0NnbnlMZFNaNDJ4S2psSUlUOUtubEYxY2VRMDZ0OTdpYWRZZjM2THd4bHBjemdhV3lNc0JfUnRrdC02MFpLR0h2d3ItSFFuTHk1bUVENXVvcnJDWkc2dw?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "earnings",
+      "title": "Host Digital announces $15M share buyback, shares jump - TradingView",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPaUgwZ1ZRMUoxTXZpSnI2ZnZ1bDhHeWw1LUdHNmIxQ0hKUHZtNXNFcHBJaXBvYWc2MVdhdWJlN2FVdGhPcDVlQUp4QjM3WmxvMWJPb2czWWp1UG9Gb0pBcVctb05GWFBUcGhhMG5pcml6QkRNQmg2Zy13aTFCQzA1MW55YWI0dzlnVm1hMzEwTG9BWnNEaEYzd25acUVwMTlZTWlkRWpVNlhkbHNCS1BxeDJ2dEZoZw?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "other",
+      "title": "Host Digital (NYSEAM:HOST) - Stock Analysis - Simply Wall Street",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQQWxmTmRHUVAtVFN6TXQ0Y3BPeXotcm9JMVFhcGxlSHd0enJWNzExNkFJaG95LWZIV2J5cDFCVGtzc01lYmtFbjRTdUhZTTVuM0dOa2ZEXzAxa2FOUzdYS0xia2tGUThLT1N4S0JjSTZhbzdUUVZsZXJ0VlpNREhIS3lR?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226047777/form8-k.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "Money, Rates, and Megawatts. The Three Questions Deciding the AI Buildout.",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/money-rates-megawatts-three-questions-131400722.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "Host Hotels & Resorts (HST) Stock May Be A Bargain As Guidance Rises - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOOHYwam1kMDNTTjltQzd4b0ZsZGg2ZnlRc0xfTmlWanZCY3ljWEJXaDN2VXJvYXRWaGJYSDlJYlhqRVR0dDdtQTFhU2dHM1IyMm5zbFRxMndSdXoxcVVOTEd6cjBGOWJjWTNyVzlzOENvdEhRakZ3OFZiT09PaEw5VkNvOHhGNGc1czNWMFdaUzFTejZaYjlqejZB?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "إفصاح SEC: S-3 — S-3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226047468/forms-3.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "Jim Cramer says don't give up on this unpredictable market. Here's why - CNBC",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE83VjZieVhWSXFlblhlZkltMHRnemdkWERwUVdvVldWSXZFald0SndJblRZeXlWRE9aUFAxT2Rwdi1FRHphV2FTcU1HY1Q3bE4xUElzaVZmbDhFc3JMaEdram5nZEpDNENuVmlLNV9BRW1DSUVTcHVCLXRPREo4TXfSAYQBQVVfeXFMTmpSLW9EWm5vNEVCOEk5a3VTTTlkUlA2YXZNME5pMDdtNEhWVFllMDA2bEpLdUhHNFJyZXdMd25qSjAtWERXZ1lzS25rUjRnU2RFT0RHWkV5MVhmOG5xRzlObTlWWUl0SXhYaEYwVXpqczVBZVUyR0s0eU40dEp2cEtLT25E?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "Host Hotels & Resorts Inc. stock outperforms competitors despite losses on the day - MarketWatch",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQRDRvaGE5ZmM1RTJ6OVNNSzVOWTVpMGIyb1N1LXRpalZtX2dRclZmYzJFR19sR0FmZlR2YUh5Tk1iZGlwYmpXX3dwUzBzT0M2QURnR29LcGRselhieVVzVFlHWFFxMnpyQi1JdWF6WW5mR3NNZVJONHZFeFpyd3NIMjdUdHF0OGVFZ1U5Qk1FUlo5Rm5aZkRVVkYxV2hHXzdNWFltblI4WWRJZGhrQzgtdndJR3VNalNRQmYtTldMU1NrXzhtUW5yRXZoY0tiT0tzRGxOcHNn?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "Host Digital Letter to Shareholders",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/host-digital-letter-shareholders-123000864.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-28",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — FORM 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000090514826004285/xslF345X06/form3.xml"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-24",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13D",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000090514826004270/xslSCHEDULE_13D_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-24",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000090514826004268/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "Energized Power Capacity Is Shaping the Next Phase of AI Infrastructure",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/energized-power-capacity-shaping-next-123300855.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "Host Digital Debuts on NYSE American as HOST and Exercises its Right to Acquire a Second Site from its Sponsor for its AI Data Center Platform",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/host-digital-debuts-nyse-american-120000530.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-22",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — 424B5",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226043648/form424b5.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K/A — 8-K/A",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226043623/form8-ka.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-21",
+      "type": "offering",
+      "title": "Host Digital Inc. Announces Closing of Common Stock Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/host-digital-inc-announces-closing-202300935.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-19",
+      "type": "other",
+      "title": "Host Hotels And Resorts (HST) Stock Looks To Trade At A Discount - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOU2xMVFhGcU5FMU1pVG9JTWZTd0ZuYy03NHY3WjAzcUYwLTNFejRrX3hSZkl3bmxQN1N2blhKRGtSU2QxSW80QVBnbElMVHRPTWRuckpMY29Wek1XZTlMMHVZbFh1YWZSQlJTdGhFS1JxUE1DYlMzSlY2Y1ZqRlFSTl90bEhEV1BPN3ROUUQtTnhPNlh2R2ZDMDZn?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-18",
+      "type": "other",
+      "title": "symbol__ Stock Quote Price and Forecast - CNN",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBvMm0zVDdzRGxwSmdtNmdSdGp2dl9NUTRfLVdpVWFZQWI2aWxTMUZrV3dEX0FPMUJCX0pLY2h6ZUJheGFkYS1YLWx5SEdTZXQ1?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-07",
+      "type": "other",
+      "title": "4 Reasons to Add Host Hotels Stock to Your Portfolio Now - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQVHpjMHgzM2V3bnN3b3I1bkJOWV8tdU5PS1JidWZHckRIYWVuVl9HQk1JT2VtbXB5c1dUN3V1Y2h1UXQxejJVNnJiYXRUTmdYS1lvSi1iQi03ekZlU3ZNRXBtM3dNTmkxbHdzNzVXSmNNVlM0ZlRITG43aDNsbUM0RnFfblpVRTI2TDBqX2UyTnJKM1VX?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-01",
+      "type": "other",
+      "title": "Is Host Hotels & Resorts (HST) a Great Value Stock Right Now? - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPdnBKWXcyODJsQzl3dWNMM0tqV0tRRE5CaWotdkpnQjdRMEpBUFhCa05EVE1obU5yWUNsdHF1NTlQY1o1SzZMcDJmYks4Tk9keHY2QV9xbUxSQ2tZMUNPMFhveGZfMHpLczdaa01FUVNydnkxS2pCaV9MM1AtMlVkdnh5aVZ2Zk9MaFlxNUFSNzctVnQtQTJSYTFR?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-08-26",
+      "type": "other",
+      "title": "إفصاح SEC: DEFA14A — DEFA14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226040241/formdefa14a.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-08-18",
+      "type": "other",
+      "title": "إفصاح SEC: 10-Q/A — 10-Q/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226038884/form10-qa.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-08-14",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-Q — 10-Q",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226038496/form10-q.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-08-08",
+      "type": "other",
+      "title": "Host Hotels & Resorts (HST) Stock May Be Cheap Despite Its 86% Run - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNdjliY0ZhWjJUa2RiRFRWbzBoejhuOUN1TUdRLXJoU1FHZGE3WktUMDdNOTM4UUJzMVp4R0tVN19tMUNZUW93ZXdNMjV5cGxPY0RLX01acURTbzBCem55aWVSV2RoLVlOLWYwZVh5U0tzdFlGOFRmTWxPWktCNWlNbnEzUzJueEo4QURycmthaW5wZlJNUFlmR0NB?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-08-06",
+      "type": "other",
+      "title": "إفصاح SEC: DEF 14A — DEF 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226036418/formdef14a.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-07-24",
+      "type": "other",
+      "title": "إفصاح SEC: PRER14A — PRER14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226034557/formprer14a.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-06-09",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13D/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226027919/xslSCHEDULE_13D_X02/primary_doc.xml"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "HOST",
+      "kind": "S-3",
+      "date": "2026-10-19",
+      "title": "إفصاح S-3 — S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226047468/forms-3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "8-K",
+      "date": "2026-10-07",
+      "title": "8-K بند 1.01,5.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226046165/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "424B5",
+      "date": "2026-09-22",
+      "title": "إفصاح 424B5 — 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226043648/form424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "8-K",
+      "date": "2026-09-21",
+      "title": "8-K بند 1.01,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226043572/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "news-offering",
+      "date": "2026-09-21",
+      "title": "Host Digital Inc. Announces Closing of Common Stock Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/host-digital-inc-announces-closing-202300935.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "8-K",
+      "date": "2026-09-17",
+      "title": "8-K بند 1.01,2.01,2.02,3.02,3.03,4.01,5.01,5.02,5.03,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226043135/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "8-K",
+      "date": "2026-08-13",
+      "title": "8-K بند 3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226037865/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "8-K",
+      "date": "2026-06-03",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226026988/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "8-K",
+      "date": "2026-02-17",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226007192/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "8-K",
+      "date": "2025-11-14",
+      "title": "8-K بند 1.01,3.02,3.03,5.03,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315225023636/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "424B3",
+      "date": "2025-07-28",
+      "title": "إفصاح 424B3 — 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000164117225021068/form424b3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "effectiveness",
+      "date": "2025-07-23",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/999999999525002328/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "S-1",
+      "date": "2025-07-02",
+      "title": "إفصاح S-1 — S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000164117225017487/forms-1.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "8-K",
+      "date": "2025-03-03",
+      "title": "8-K بند 1.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315225008888/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "HOST",
+      "kind": "S-1",
+      "date": "2024-09-13",
+      "title": "إفصاح S-1/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315224036164/forms-1a.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "محفزات قادمة: 2026-10-23 A sugar refiner will release third-quarter re"
+  ],
+  "positive_news": [
+    {
+      "symbol": "HOST",
+      "date": "2026-10-21",
+      "type": "earnings",
+      "title": "Host Digital Authorizes $15 Million Class A Buyback - The Globe and Mail",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxORjdDa0Z0N2s0WUItTzdfUWV0VHZZZU9RM1YtbFlMejRVdEJuZlZVR1BtNHNXblliWFJFYUpaaGp3dk1HaU12MlN5X2VXU1pVN09LcEZJZUhSOC0tbEFrMGY2WjMzNzZZQTJXYklCWmFJSFRLb0ducXhQNnh4eTVMMGFoZ195allVdng2cHUtVGpnVnF2RVFaNVl4SHNXNTNZWjJLSzgzWXpHSTVfNkxBSGt1THlvcm9iaWthdUNTM0JubHlWT0xkcFZaS3NhUHJxemNR?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "earnings",
+      "title": "Host Digital Authorizes $15 Million Share Buyback Program",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/host-digital-authorizes-15-million-121500301.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "earnings",
+      "title": "Host Digital authorizes $15M share buyback as Board cites undervaluation - TradingView",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxONHJaYWFpd3dXc01MVTNXbDFDbG83dWNLalNhOGtHa2VBYVhHeTRjZDlrRXNPTjVwWXpTYUdBRnFWOGE1eEJvd2dISlJUZjFOLTJPZlZwandEX1E3ZGNMWUJmcmFMWVk2VmRRTmFIUnFzYmpGWklZbjlGLWFrQUJ2TGNhWmx6bzk1aDU2N2FKS1B3TzFUZVRaYlhDenF5dFJ4elpNNjJMZ2ozcWxMa244MzJldVlGMmt4c1d5LVJnNXRfc2pRSVRUZWhVQVJuUQ?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "earnings",
+      "title": "Host Digital Hikes on Share Buyback - Baystreet.ca",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE10M1hUbTBYSnNwNTNnaGVPaXNaYllURTVBVXFtLUVId0NnbnlMZFNaNDJ4S2psSUlUOUtubEYxY2VRMDZ0OTdpYWRZZjM2THd4bHBjemdhV3lNc0JfUnRrdC02MFpLR0h2d3ItSFFuTHk1bUVENXVvcnJDWkc2d9IBfkFVX3lxTE10M1hUbTBYSnNwNTNnaGVPaXNaYllURTVBVXFtLUVId0NnbnlMZFNaNDJ4S2psSUlUOUtubEYxY2VRMDZ0OTdpYWRZZjM2THd4bHBjemdhV3lNc0JfUnRrdC02MFpLR0h2d3ItSFFuTHk1bUVENXVvcnJDWkc2dw?oc=5"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-10-20",
+      "type": "earnings",
+      "title": "Host Digital announces $15M share buyback, shares jump - TradingView",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPaUgwZ1ZRMUoxTXZpSnI2ZnZ1bDhHeWw1LUdHNmIxQ0hKUHZtNXNFcHBJaXBvYWc2MVdhdWJlN2FVdGhPcDVlQUp4QjM3WmxvMWJPb2czWWp1UG9Gb0pBcVctb05GWFBUcGhhMG5pcml6QkRNQmg2Zy13aTFCQzA1MW55YWI0dzlnVm1hMzEwTG9BWnNEaEYzd25acUVwMTlZTWlkRWpVNlhkbHNCS1BxeDJ2dEZoZw?oc=5"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "HOST",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "إفصاح SEC: S-3 — S-3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226047468/forms-3.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-22",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — 424B5",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1948864/000149315226043648/form424b5.htm"
+    },
+    {
+      "symbol": "HOST",
+      "date": "2026-09-21",
+      "type": "offering",
+      "title": "Host Digital Inc. Announces Closing of Common Stock Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/host-digital-inc-announces-closing-202300935.html?.tsrc=rss"
+    }
+  ],
+  "phase": 7,
+  "display_phase": 7,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "short_shares"
+  ],
+  "rejections": [
+    "الأسهم المكشوفة 219,177 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 2.4,
+      "display": "2.4000$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 54,
+      "display": "1-for-35 · 2026-08-31 · عمر 54 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -89.9457,
+      "display": "89.95% من قمة ما بعد التقسيم · القمة 14.7200$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 26.0122,
+      "display": "أدنى RSI 26.01 (2026-10-16)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 219177.0,
+      "display": "219,177 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 219,177 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "تسلسل «جاهز فنياً» قيد التكوّن — تجاوز المقاومة بقوة (6.9% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 39.8,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 99.2,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.45 · قاعدة القاع: 32.10 · آخر 3 جلسات: 12.10",
+      "points": 24.81
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 60,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: نعم",
+      "points": 15.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "RSI خرج من التشبع البيعي وتحسّن",
+    "انطلاقة +61% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 3.0,
+    "entry_zone": [
+      2.352,
+      3.0
+    ],
+    "stop": 2.4,
+    "stop_pct": -20.0,
+    "stop_structural": 1.3912,
+    "stop_structural_pct": -53.63,
+    "targets": {
+      "t1_382": 6.5377,
+      "t2_618": 9.6623,
+      "t3_full": 14.72
+    },
+    "rr_t1": 5.9,
+    "rr_t2": 11.1,
+    "risk_per_share": 0.6,
+    "reward_t2_per_share": 6.6623,
+    "atr_pct": 33.16,
+    "bottom": 1.48,
+    "peak": 14.72,
+    "last": 2.4,
+    "base_high": 2.88,
+    "ema9": 2.7361,
+    "ema20": 3.7623,
+    "support": 1.48,
+    "impulse_high": 3.1,
+    "resistance": 2.9,
+    "sweep_low": null,
+    "reclaim_level": 1.4874,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 33.2%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 2.4$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة، نجمة الصباح)",
+      "tf": "1D",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-19، 2026-10-20 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -4.50% للشمعة (30 شمعة). سقف القناة عند 8.933 والسعر أسفله بفارق 73.1% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 8.9329,
+        "channel_mid": 5.3602,
+        "channel_lower": 3.2164
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 21% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -1.93% للشمعة (30 شمعة). سقف القناة عند 4.096 والسعر أسفله بفارق 43.4% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 4.0962,
+        "channel_mid": 3.1445,
+        "channel_lower": 2.414
+      },
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 2.925 بتاريخ 2026-10-05 وقاع 2.970 بتاريخ 2026-10-12 بفارق 1.5%، وخط العنق عند 3.490 (19.3% فوق القاع). ننتظر إغلاقاً فوق 3.490 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 2.925,
+        "bottom2": 2.97,
+        "neckline": 3.4899
+      },
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (2.970 → 2.100) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 2.97,
+        "last_low": 2.1
+      },
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 2.32,
+    "rsi": 37.44,
+    "trend": "down",
+    "ema20": 2.7072,
+    "ema50": 3.9045,
+    "rvol": 0.51,
+    "macd_hist": 0.10966,
+    "channel_broken": false,
+    "higher_lows": 2,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-35 منفّذ في 2026-08-31 (عمر 54 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 8.16$ وصعد إلى 14.72$ (+80.4%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 89.9% من القمة 14.72$ إلى القاع المرجعي 1.48$ بتاريخ 2026-10-19 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 26.01 (تشبع بيعي و 3 جلسة تحت 30) والحالي 33.52 مع بدء التحسّن.",
+    "ثبات جلسة واحدة على القاع 1.48$ داخل نطاق 94.6% مع جفاف حجم (3210% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +61.5% من إغلاق القاعدة (1.92$) إلى 3.1$ (2026-10-22) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 2.9$ (تشكّلت 2026-10-21) — على 96.0% من الدعم الرئيسي، واختُبرها السعر في 2026-10-22 عند 3.1$ وتوقف عندها بفارق 6.9% ثم تراجع.",
+    "حالة التسلسل: تجاوز المقاومة بقوة (6.9% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة.",
+    "تأكيدات فنية: MACD يتجه للتحسّن، RSI خرج من التشبع البيعي وتحسّن، انطلاقة +61% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 37.44",
+    "أبرز نموذج فني: شموع انعكاسية (شمعة المطرقة، نجمة الصباح) — ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-19، 2026-10-20 — دليل دخول مشترين.",
+    "أخبار سلبية: إفصاح SEC: S-3 — S-3 | إفصاح SEC: 424B5 — 424B5",
+    "محفزات إيجابية: Host Digital Authorizes $15 Million Class A Buyback - The Globe and Mail | Host Digital Authorizes $15 Million Share Buyback Program"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

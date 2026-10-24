@@ -1,0 +1,902 @@
+{
+  "symbol": "DKI",
+  "name": "Darkiris Inc.",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-23",
+  "last_close": 2.16,
+  "change_pct": -4.0,
+  "dollar_volume": 10248324.0,
+  "rs_found": true,
+  "rs_date": "2026-10-22",
+  "rs_age_days": 2,
+  "rs_ratio_str": "1-for-50",
+  "rs_ratio": 50.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 2.0,
+  "spike_high": 2.43,
+  "spike_pct": 21.5,
+  "spike_date": "2026-10-22",
+  "decline_pct": -25.514407693208085,
+  "peak_date": "2026-10-22",
+  "bottom_price": 1.81,
+  "bottom_date": "2026-10-22",
+  "base_sessions": 1,
+  "base_high": 2.19,
+  "base_low": 1.81,
+  "base_range_pct": 20.9945,
+  "base_broken": false,
+  "volume_dryup": 0.053,
+  "atr_pct": 509.2,
+  "rsi_now": 46.99,
+  "rsi_trough": 47.025017439596034,
+  "rsi_trough_date": "2026-10-22",
+  "rsi_sessions_below_30": 0,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": -0.39441,
+  "channel_slope_pct": -14.382,
+  "channel_upper": 100.5189,
+  "channel_broken": false,
+  "rvol": 0.05,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "انطلاقة ضعيفة (+-3% — المستهدف ≈20%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 1.810",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": false,
+      "detail": "+-2.7% من 2.250 إلى 2.190",
+      "state": "pending"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": true,
+      "detail": "أقرب مقاومة 2.190 (على 21.0% من الدعم 1.810) — توقف السعر عندها بفارق 0.0%",
+      "state": "ok"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": -2.67,
+  "impulse_high": 2.19,
+  "impulse_date": "2026-10-23",
+  "resistance_level": 2.19,
+  "resistance_distance_pct": 20.99,
+  "resistance_date": "2026-10-22",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 1.819,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 1.81,
+  "support_hold_ok": false,
+  "base_close": 2.25,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "base",
+  "spark": [
+    3.57,
+    3.4,
+    3.13,
+    2.87,
+    2.94,
+    2.885,
+    2.86,
+    2.8,
+    2.47,
+    2.66,
+    126.75,
+    123.0,
+    131.5,
+    134.0,
+    2.75,
+    2.7,
+    2.54,
+    2.58,
+    2.9,
+    2.73,
+    2.6,
+    2.55,
+    1.57,
+    1.29,
+    1.38,
+    1.5,
+    68.0,
+    1.67,
+    37.3,
+    0.342,
+    0.143,
+    0.086,
+    0.068,
+    3.15,
+    0.053,
+    0.051,
+    2.4,
+    2.0,
+    2.25,
+    2.16
+  ],
+  "resistance_tested": true,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 51333.0,
+  "float_shares": 14920.0,
+  "market_cap": 129448.0,
+  "avg_volume": 272362.0,
+  "insider_pct": null,
+  "institutional_pct": null,
+  "short_pct_float": 2.82,
+  "short_as_of": "1790726400",
+  "short_shares": 907.0,
+  "days_to_cover": 0.17,
+  "short_change_pct": 232.2,
+  "short_volume_ratio": 0.588,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "DKI",
+      "date": "2026-10-23",
+      "type": "other",
+      "title": "DarkIris Inc. Estimates – NASDAQ:DKI - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1MVThWX0FPUkZuUzZQSV9iNXpzWVEtVHNIUVZuM2hRYlVIaVBtSDhjaTNtd2hxSW9rTVowc1ZyTnlGUElrM1gtUEN3YXdvSGpRZHRlbE12SmFmZV9mREdDOHNrQk12amd4ZzQ4T0NMcFU5ckZuX3ZJ?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-23",
+      "type": "other",
+      "title": "Most Active Stocks in Today's US Session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPcm5RMHkyVzU5X3dLZkp4X3lRdnlObkNuQWtQM1dGQTUzd3c3X3oxc3pZYWx4Ukd5M1JwYmxFSHkxV3oxLUg0Z29Gb25FM1lheWJzSXF3T01DNUtxN0FjbGM1NGl0eHZkSlAta2NpanExUHJwWDZydjdjZDJNLWppdld6NUFqQy1yMGRWeG5idTE4OXR5T1E?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-20",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/000149315226047778/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "BC-Most Active Stocks",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-143017355.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "DarkIris Inc. Announces Share Consolidation",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/darkiris-inc-announces-share-consolidation-120000241.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "DarkIris Inc. Announces Share Consolidation - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNTlNEdjlSRXAwcVZpVGpBSmdXMXNWaFpKUGJxel93SS1GeVBtNFpSUmJVTDJlSWlxcVNVZXRTX3Q5RGcySzg4aTZNZ1JHcnA0Sy1SZXhYRkNxSnd1VVRfeVRpTkFvMlNpaHlGdFRMNk5fblNsVk5EWU1KdUdHQm81VVotNEQyLTJuQ3JMOFJFb092NUtzS1hmWUdGU1NiUTRqRWJGWHJFelRRYzg?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "DarkIris Inc. Announces Share Consolidation - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNMWlLWmUxem9LMUw0X3BUOWR4LW9iZDMtazNMbm5QVjAyUGx2SWVFY2hMN1pJZVVWVWhPcGtLTDZoX0gtR0dMQU83U05SbFZON2J6M2tnVDFXTHRYWDlBcktoc190OFphSUNNSXJtWXNEV240b1FzYmo4QUVvV3E5dFBzMElXYjVleDhJdzB0cw?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "DarkIris to implement 1-for-50 reverse stock split Wednesday - Investing.com",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNamhvMWZoTk5sM213QXZiQmwtR2pxSjN6QXJvZFVNYk13UGc3YkZQWGJEcTgyX21pMU1sWkZ1QzFhcC1HMzJQRzhYMzNZMTM0TGE5djBXREVNYk8wb2hGRV81dWNXWUlnMVJ6QkMtNHZ0TGg2V2lPZTlLSjJSMFQyX0gxMWxDTmJjMXhmQ0Q1aFJuaG9scnhjR05zTWVZM0pfaEVNSGNMb0JSMUVVOVYtWW9mWFlKZw?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "Most Active Stocks: SAFX, WFF and EYPT in Heavy-Volume Session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQMmlZVi04QnN4WkRBREJDRDh6b3FHWWpkbWUyRWhoNjh0bkJaWThFdHU2djRHVG83SURSR2V5WW1zS3NjZDJSZ01nTFlFY0J2U3lDcEZhd3NXX2pFT3ZXX3ZrZm9CT2tfaVllQzN6czhQN25kSXpuVklDazBJVEhHVmZTRjlVSEd3VGRCR2w0dFQ5NkctbWhqS3NER2wzcHlzQkVoQm5kMExlc0dhRjlVX0tn?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "DarkIris to implement 1-for-50 reverse stock split Wednesday By Investing.com - Investing.com Nigeria",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOYjkyMFdzSmJ4d2VHRVktQ0FldWE0clJWTHBfZUJFbk5OdkVSX2dtc1ZucG12ZlBrdTdkdGdzTWtrSUFvb2R5M3ZtRGlrU3RZcmJzeTJNMFlmVUpxLTRrWTRrV0xPTzBPZnZBUnhTUVVfSThXdUV4YkJWSWZla2hFWWVMd250ekROc2J1OUNEd0F3NTZoTWRTZnF3SFlJSkZ3MmJKYUwtN05iUV9xRFNfTVBhWHY5WWhaRXlN?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "DarkIris shares sink on announcing share consolidation - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQeEh5MGUwd2tybHIzanEzV2QxbVE2QlVFMHFMM1FJV1ZDRG03MldSWWN1Zzd5Z29rVVV3aWVrMzlWR1dUbDlBeWZwX0RlZU9fdXJRc3B6bnlGX1lGb0t6dUpjYjZFZ2daUjB3NVhDNEViZ25GMkdjLVBnTjlIMkdtMTBQa213ZFJ3Y2xtZ1l4QjJ0amJZd1M5TG9fWThaOFhtWmZtb0ZjblpLbTluMXRWal9sU05KWnBM?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "Most Active Stocks by Volume on October 16, 2026 - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOM1hmQUdsRWVlSS1BT3l2VGdiRHFmX2I1b2Q1TVRxLW5TLTNyMThGNElOaUZFUUpmemdlc2lkVC1HeC1qbFJoTnNhZ1lTR3FtLTdOVXo1Z2o0bmNMVHBKU3ZPcnRlODJiS1FFbXN3a2k3Mnc3OHZFMS1ucnNReGJqNkN5WGQydGVlc2lQN1NuQlNXLTV6UVIwOHU1bGRmbmgy?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "Today's Unusual Volume Stocks: DKI, WFF, HUBC, and More - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQTFNKazYybE9nSWlsT1pDVGdCSXBhcGFJTFhNYTVqWnlYbTFtNTlNTVZyQUhhdnJBTnROOWU2Qm1lZWJMMjNNaGlNQlRkVFB0dWRKSHFrZTV2YTc5OHh3WXYtMXE1WHNrcmpzRmNXZWtreEVkVDgyY1BpdWJ4aE5XM3NBa0l0RWpEOU9yTHZ2Z0ZuczNGbXpQZEZnX3hfNXd0NTMwYw?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "Which stocks are most active on Thursday? - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPV19KenVOOWtlT3VuZ01pWWloTlF6MDV0dGtMSEdYLUNBTzhWVy10N2R3QlBFT2ZSMTVtODU0LVMxTEtqZHFvYTgwZUZ1YnQ2OG9BQnk5Vk1leWVJdzJRVWd2Rmw0NGJKcFJvVEhvWmVWUFVla05JQkdLcnJUM2NiV2ozQl9iaG5oVlYtSVlid3hUckdVU3pJ?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/000149315226047268/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "Let's uncover which stocks are experiencing notable gaps during today's session. - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRlg5ekx3UGlvVHBBNEtqZ1dtNTNUZWZ5d01tdmhVQVJUUVJBTE5wVHpBUC1JSFl2Z1JwMV9wVm9ERC1vRmtyTWdDV2hGRkxfZ1daRDRkRVZQeEF5MnpoT2k3bkRYVmVOcl9OekQ1V0pVLVhOU2VkTmdGdnU3MzBaSHItX0ZyZXZrRzBzMHhjMXNqQ0MtSUlzRkVWQjdjRUpDYmE0aHdyMlVjSF85ZllZdURxTHNZM21FeGpzalVodDhJWEFrbHpERA?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "These stocks are moving in today's after hours session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNZW9nMkVvenBZNXpsbUpQeVpDZFNhR0hxdWIzdFUwZkRnbklPZFhZUXhHWU1kWktUbUFIZGo1T25JNEFkZ0FQN2Z2M0RabVgxQ0ZaSTBRM2wyMzh3RzFFRkYzMGs5TEZRU0tmcjBTcXdWY3REWWx3OXpKOXp0d25rT0hMeW8tLWlHaUpwbExEYVhraXhuMmF5RkJ1NmhPaHJhRWMyYXdQdw?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "These stocks are gapping in today's session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNMzVzU1p6Z1B4RGt2dE1ES3h4VnNqb01nMGUyWkJaNTZqNVNzMTllVDAzWDR5YzNGNmFfQ1B1cmM3SHRuakxqVW1CX0NLenB6b09zU1hMblFFZjhxQ0xvT3I1YmRYSGs3RW00N2ZEcER2Z3o2RGtBckw4QzFwRzc1bHFRTDh1aFpyWE96NXJVUTNNN1dLTFk5V0N3?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — 6-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/000149315226046619/form6-k.htm"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-08",
+      "type": "offering",
+      "title": "DarkIris Prices $6 Million Public Offering at $1.44 Per Unit With Potential for Significant Share Dilution",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/37749/darkiris-prices-6-million-public-offering-at-1-44-per-unit-with-potential-for-significant-share-dilution?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-08",
+      "type": "offering",
+      "title": "DarkIris Inc. Announces Pricing of $6 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/darkiris-inc-announces-pricing-6-132500249.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "darkiris-shares-after-hours-reverse-splits - Darkiris (NASDAQ:DKI) - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQV3Y0Z2RGNXZrenlWbEh1a3pDd0lwcjNzZktmZFBLRVE1NEYxVnF3UU51ZGc2MUkyNUtPT19NdG5FT3d1XzQ1LTVhTzB0MDBXNElHcnFfM01lOGJKdnRrYUpyaVJTbjlqdk9pdk9ySGpldXp5bmg3ZWNWdDlqWHhOS09DRGdEUzhqOGRPR0hNWXZNaXpucVJ3?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "Top stock movements in today's session. - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPcXRBMTJpbWVkT2JWM3VWbWlfZmZZNVN0ZEV4RTdZQlJ4ZzI3TS1pVlpzRGJHOG42REEtS1hycG9mSU5LS0Vubnl0enhxaDVPLWtHa185dmVaRkdnRVZZWlR4WXptYzFPYTNoZXJabkQ3ajVVcDR5RHVKd3hFVjBsOVVESzJCdWVYcFliV0RnT1k4UQ?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "Traders are paying attention to the gapping stocks in Thursday's session. - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQcE9hWWJ3bE9Demwyc0hQU21GcGY3cS03c1pCMkxfQ0J3akpJY2hwZGxNTzFFRW41UEZyakpnSWJUQmk4MXlfMlpTa2dsS3JDREtLWWd3WmxMZWpaVHZ5b2U3UkJfMXZ2TGNRVnp2cllKTXFWYnJOT2N1VUZ1dllXR2ZXZ2MyRVd3VmtMWUxac0UyM1BmdkVyYzVyczBnWlhMZDMybXhnRm4xLWlZd2VKamw2RWY0RDREU0xDbmp4VVM?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/999999999526003191/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "إفصاح SEC: F-1MEF — F-1MEF",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/000149315226046273/formf-1mef.htm"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "DarkIris (DKI) Stock Gains 16% After Hours: What's Behind the Move? - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQbnY4Q01Fa29mQl85RTdfM3BfSkEySmVqcTRhWm5QTS11OGd5YzZsZl9tckw1UE42SkpxSFl4WFhxXy1SSmUxdXZ2Q2JCbkZFczg1aVBRQXFmLXJmMFlWbmVWNlJoR05ZQ3UzbDFER05LQkVNRUpVd1B3Y0k0RG9WMXZrS2s2cXdzcE1ydnVKQjBJNTFEU1h6eE0zcGtTQjEyOHUtRXJ1NTBwRkI2blBUa3phQzkwamRpTnMtZGJ3?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "What's going on in today's session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOUTVaLW1NZ2xjY3VUTUUtUXNJNXYtTXp5bkI4V0tPQU1QeGVoSF9VYWx2eGdCQnlTa2RuUG53Qy1oQzd0aEk5VUhCbzRSU2psWWVwdG1zWElhMTZrQXpaMllrcjdFWWg0REotZTBpTGJqYThVRjNTamhHTzhtSVNwZUwyZFAwSkd3a3c3LXl3?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "DarkIris Advances Cine3.AI Global Rollout and Establishes U.S. Subsidiary for North American Expansion",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/37253/darkiris-advances-cine3-ai-global-rollout-and-establishes-u-s-subsidiary-for-north-american-expansion?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "DarkIris Inc. Provides Business Update on Cine3.AI Global Expansion and Entertainment Technology Ecosystem",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/darkiris-inc-provides-business-cine3-120000781.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "إفصاح SEC: F-1 — F-1",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/000149315226045008/formf-1.htm"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-08-20",
+      "type": "other",
+      "title": "إفصاح SEC: DRS",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/000149315226039401/filename1.htm"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "DarkIris Inc. Updates Strategic and Operational Progress on AI Initiatives and Gaming Business",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/darkiris-inc-updates-strategic-operational-200500440.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-08-13",
+      "type": "other",
+      "title": "DarkIris Inc. Reports 13.9% Revenue Growth for the First Half of Fiscal Year 2026",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/darkiris-inc-reports-13-9-120000930.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-05-29",
+      "type": "other",
+      "title": "DarkIris Announces Commercial Launch of AIGC Video Platform, video.aideptus.com, Integrating ByteDance’s Seedance 2.0 Model",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/darkiris-announces-commercial-launch-aigc-120000579.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-05-07",
+      "type": "other",
+      "title": "DarkIris Inc. Announces 16 for 1 Share Consolidation",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/darkiris-inc-announces-16-1-120000570.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-04-28",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13D/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/000149315226019355/xslSCHEDULE_13D_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-04-24",
+      "type": "other",
+      "title": "DarkIris Inc. Announces Closing of $3.8 Million PIPE Financing and $800,000 Content Asset Acquisition, Launching Full-Scale AIGC “Gaming + Film & Television” Ecosystem",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/darkiris-inc-announces-closing-3-200500969.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-04-09",
+      "type": "other",
+      "title": "DarkIris Establishes Global R&D Headquarter in Singapore to Accelerate AIGC Development and AGI Transformation Across the Gaming and Film Industries",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/darkiris-establishes-global-r-d-123000729.html?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-04-03",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13D",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/000149315226015050/xslSCHEDULE_13D_X02/primary_doc.xml"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "DKI",
+      "kind": "news-offering",
+      "date": "2026-10-19",
+      "title": "DarkIris to implement 1-for-50 reverse stock split Wednesday - Investing.com",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNamhvMWZoTk5sM213QXZiQmwtR2pxSjN6QXJvZFVNYk13UGc3YkZQWGJEcTgyX21pMU1sWkZ1QzFhcC1HMzJQRzhYMzNZMTM0TGE5djBXREVNYk8wb2hGRV81dWNXWUlnMVJ6QkMtNHZ0TGg2V2lPZTlLSjJSMFQyX0gxMWxDTmJjMXhmQ0Q1aFJuaG9scnhjR05zTWVZM0pfaEVNSGNMb0JSMUVVOVYtWW9mWFlKZw?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "DKI",
+      "kind": "news-offering",
+      "date": "2026-10-19",
+      "title": "DarkIris to implement 1-for-50 reverse stock split Wednesday By Investing.com - Investing.com Nigeria",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOYjkyMFdzSmJ4d2VHRVktQ0FldWE0clJWTHBfZUJFbk5OdkVSX2dtc1ZucG12ZlBrdTdkdGdzTWtrSUFvb2R5M3ZtRGlrU3RZcmJzeTJNMFlmVUpxLTRrWTRrV0xPTzBPZnZBUnhTUVVfSThXdUV4YkJWSWZla2hFWWVMd250ekROc2J1OUNEd0F3NTZoTWRTZnF3SFlJSkZ3MmJKYUwtN05iUV9xRFNfTVBhWHY5WWhaRXlN?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "DKI",
+      "kind": "effectiveness",
+      "date": "2026-10-08",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2058584/999999999526003191/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "DKI",
+      "kind": "news-offering",
+      "date": "2026-10-08",
+      "title": "DarkIris Prices $6 Million Public Offering at $1.44 Per Unit With Potential for Significant Share Dilution",
+      "severity": "high",
+      "url": "https://investorshub.advfn.com/market-news/article/37749/darkiris-prices-6-million-public-offering-at-1-44-per-unit-with-potential-for-significant-share-dilution?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "DKI",
+      "kind": "news-offering",
+      "date": "2026-10-08",
+      "title": "DarkIris Inc. Announces Pricing of $6 Million Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/darkiris-inc-announces-pricing-6-132500249.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    }
+  ],
+  "risk_flags": [
+    "⚠ طرح أسهم/تخفيف عالي الخطورة خلال 10 أيام: DarkIris to implement 1-for-50 reverse stock split Wednesday - Investi | DarkIris to implement 1-for-50 reverse stock split Wednesday By Invest"
+  ],
+  "positive_news": [],
+  "negative_news": [
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "DarkIris to implement 1-for-50 reverse stock split Wednesday - Investing.com",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNamhvMWZoTk5sM213QXZiQmwtR2pxSjN6QXJvZFVNYk13UGc3YkZQWGJEcTgyX21pMU1sWkZ1QzFhcC1HMzJQRzhYMzNZMTM0TGE5djBXREVNYk8wb2hGRV81dWNXWUlnMVJ6QkMtNHZ0TGg2V2lPZTlLSjJSMFQyX0gxMWxDTmJjMXhmQ0Q1aFJuaG9scnhjR05zTWVZM0pfaEVNSGNMb0JSMUVVOVYtWW9mWFlKZw?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "DarkIris to implement 1-for-50 reverse stock split Wednesday By Investing.com - Investing.com Nigeria",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOYjkyMFdzSmJ4d2VHRVktQ0FldWE0clJWTHBfZUJFbk5OdkVSX2dtc1ZucG12ZlBrdTdkdGdzTWtrSUFvb2R5M3ZtRGlrU3RZcmJzeTJNMFlmVUpxLTRrWTRrV0xPTzBPZnZBUnhTUVVfSThXdUV4YkJWSWZla2hFWWVMd250ekROc2J1OUNEd0F3NTZoTWRTZnF3SFlJSkZ3MmJKYUwtN05iUV9xRFNfTVBhWHY5WWhaRXlN?oc=5"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-08",
+      "type": "offering",
+      "title": "DarkIris Prices $6 Million Public Offering at $1.44 Per Unit With Potential for Significant Share Dilution",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/37749/darkiris-prices-6-million-public-offering-at-1-44-per-unit-with-potential-for-significant-share-dilution?.tsrc=rss"
+    },
+    {
+      "symbol": "DKI",
+      "date": "2026-10-08",
+      "type": "offering",
+      "title": "DarkIris Inc. Announces Pricing of $6 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/darkiris-inc-announces-pricing-6-132500249.html?.tsrc=rss"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": true,
+  "gam_reasons": [
+    "الهبوط 25.5% أقل من الحد المطلوب 30.0%",
+    "RSI لم ينزل تحت 30 (أدنى قيمة 47.03) — لا يوجد تشبع بيعي"
+  ],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "decline",
+    "rsi"
+  ],
+  "rejections": [
+    "الهبوط 25.5% أقل من الحد المطلوب 30.0%",
+    "RSI لم ينزل تحت 30 (أدنى قيمة 47.03) — لا يوجد تشبع بيعي"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 2.16,
+      "display": "2.1600$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 2,
+      "display": "1-for-50 · 2026-10-22 · عمر 2 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -25.5144,
+      "display": "25.51% من قمة ما بعد التقسيم · القمة 2.4300$",
+      "ok": false,
+      "data_available": true,
+      "reason": "الهبوط 25.5% أقل من الحد المطلوب 30.0%"
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 47.025,
+      "display": "أدنى RSI 47.03 (2026-10-22)",
+      "ok": false,
+      "data_available": true,
+      "reason": "RSI لم ينزل تحت 30 (أدنى قيمة 47.03) — لا يوجد تشبع بيعي"
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 907.0,
+      "display": "907 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "تسلسل «جاهز فنياً» قيد التكوّن — انطلاقة ضعيفة (+-3% — المستهدف ≈20%)",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مرشح GAM للمراجعة فقط — غير مؤهل وفق الشروط الصارمة، وليس فرصة أو توصية. تقييم RSI مبني على بيانات السعر في المسح الحالي ولا تُحفظ حالات رفض تاريخية بين المسوح."
+  ],
+  "score": 25.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.05 · قاعدة القاع: 0.05",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن"
+  ],
+  "levels": {
+    "trigger": 2.4794,
+    "entry_zone": [
+      2.0034,
+      2.4794
+    ],
+    "stop": 1.9835,
+    "stop_pct": -20.0,
+    "stop_structural": 1.7014,
+    "stop_structural_pct": -31.38,
+    "targets": {
+      "t1_382": 2.0468,
+      "t2_618": 2.1932,
+      "t3_full": 2.43
+    },
+    "rr_t1": -0.87,
+    "rr_t2": -0.58,
+    "risk_per_share": 0.4959,
+    "reward_t2_per_share": -0.2862,
+    "atr_pct": 509.2,
+    "bottom": 1.81,
+    "peak": 2.43,
+    "last": 2.16,
+    "base_high": 2.19,
+    "ema9": 3.2069,
+    "ema20": 7.5939,
+    "support": 1.81,
+    "impulse_high": 2.19,
+    "resistance": 2.19,
+    "sweep_low": null,
+    "reclaim_level": 1.819,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 509.2%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 1.9835$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [],
+  "patterns_4h": [
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (ابتلاع شرائي، نجمة الصباح)",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-22، 2026-10-22 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -12.69% للشمعة (30 شمعة). سقف القناة عند 47.750 والسعر أسفله بفارق 95.5% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 47.7502,
+        "channel_mid": 16.0716,
+        "channel_lower": 5.4093
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 1% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 2.13,
+    "rsi": 28.48,
+    "trend": "down",
+    "ema20": 12.1781,
+    "ema50": 50.1878,
+    "rvol": 0.01,
+    "macd_hist": 3.91644,
+    "channel_broken": false,
+    "higher_lows": 2,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-50 منفّذ في 2026-10-22 (عمر 2 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 2.0$ وصعد إلى 2.43$ (+21.5%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 25.5% من القمة 2.43$ إلى القاع المرجعي 1.81$ بتاريخ 2026-10-22 — أقل من شرط 30%.",
+    "RSI وصل إلى 47.03 (تشبع بيعي و 0 جلسة تحت 30) والحالي 46.99 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 1.81$ داخل نطاق 21.0% مع جفاف حجم (5% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +-2.7% من إغلاق القاعدة (2.25$) إلى 2.19$ (2026-10-23) — أقل من المستهدف (20%) قليلاً.",
+    "أقرب مقاومة عند 2.19$ (تشكّلت 2026-10-22) — على 21.0% من الدعم الرئيسي، واختُبرها السعر في 2026-10-23 عند 2.19$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "حالة التسلسل: انطلاقة ضعيفة (+-3% — المستهدف ≈20%).",
+    "تأكيدات فنية: MACD يتجه للتحسّن.",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 28.48",
+    "عدد الأسهم 51.3K — الفلوت 14.9K سهم.",
+    "البيع المكشوف 2.8% من الفلوت (أيام التغطية 0.17).",
+    "أخبار سلبية: DarkIris to implement 1-for-50 reverse stock split Wednesday - Investing.com | DarkIris to implement 1-for-50 reverse stock split Wednesday By Investing.com - "
+  ],
+  "action_ar": "مرشح GAM للمراجعة في المسار الثانوي فقط؛ لم يجتز الأهلية الصارمة بسبب الهبوط 25.5% أقل من الحد المطلوب 30.0% وRSI لم ينزل تحت 30 (أدنى قيمة 47.03) — لا يوجد تشبع بيعي. لا يُعرض كفرصة مؤهلة أو في قائمة المتابعة، وليس توصية أو إشارة دخول.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

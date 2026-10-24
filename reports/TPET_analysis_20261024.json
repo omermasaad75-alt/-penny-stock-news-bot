@@ -1,0 +1,1100 @@
+{
+  "symbol": "TPET",
+  "name": "Trio Petroleum Corp.",
+  "sector": "Energy",
+  "industry": "Oil & Gas E&P",
+  "exchange": "ASE",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-23",
+  "last_close": 1.72,
+  "change_pct": 13.16,
+  "dollar_volume": 343393.0,
+  "rs_found": true,
+  "rs_date": "2026-08-31",
+  "rs_age_days": 54,
+  "rs_ratio_str": "1-for-9",
+  "rs_ratio": 9.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 1.88,
+  "spike_high": 2.34,
+  "spike_pct": 24.4681,
+  "spike_date": "2026-09-10",
+  "decline_pct": -39.188032894836724,
+  "peak_date": "2026-09-10",
+  "bottom_price": 1.423,
+  "bottom_date": "2026-10-21",
+  "base_sessions": 2,
+  "base_high": 1.78,
+  "base_low": 1.423,
+  "base_range_pct": 25.0878,
+  "base_broken": false,
+  "volume_dryup": 3.887,
+  "atr_pct": 7.1,
+  "rsi_now": 54.46,
+  "rsi_trough": 31.352056098550776,
+  "rsi_trough_date": "2026-10-15",
+  "rsi_sessions_below_30": 0,
+  "rsi_recovered": true,
+  "above_ema9_sessions": 1,
+  "macd_turning": true,
+  "macd_hist": 0.02057,
+  "channel_slope_pct": -0.75,
+  "channel_upper": 1.8065,
+  "channel_broken": false,
+  "rvol": 3.52,
+  "higher_lows": 0,
+  "squeeze": true,
+  "lifecycle_stage": "اختبار المقاومة القريبة (بانتظار العودة لاختبار الدعم)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلستان ثبات على الدعم 1.423",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+17.1% من 1.520 إلى 1.780",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": true,
+      "detail": "أقرب مقاومة 1.780 (على 25.1% من الدعم 1.423) — توقف السعر عندها بفارق 0.0%",
+      "state": "ok"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 17.11,
+  "impulse_high": 1.78,
+  "impulse_date": "2026-10-23",
+  "resistance_level": 1.78,
+  "resistance_distance_pct": 25.09,
+  "resistance_date": "2026-10-23",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 1.4301,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 1.423,
+  "support_hold_ok": false,
+  "base_close": 1.52,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    1.881,
+    1.84,
+    1.91,
+    1.78,
+    1.78,
+    1.76,
+    1.81,
+    1.81,
+    2.02,
+    1.88,
+    1.94,
+    1.97,
+    1.84,
+    1.89,
+    1.76,
+    1.77,
+    1.7,
+    1.76,
+    1.71,
+    1.71,
+    1.7,
+    1.69,
+    1.69,
+    1.63,
+    1.61,
+    1.55,
+    1.57,
+    1.59,
+    1.63,
+    1.62,
+    1.57,
+    1.6,
+    1.55,
+    1.47,
+    1.57,
+    1.54,
+    1.51,
+    1.46,
+    1.52,
+    1.72
+  ],
+  "resistance_tested": true,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 5323907.0,
+  "float_shares": 5169088.0,
+  "market_cap": 9157120.0,
+  "avg_volume": 602836.0,
+  "insider_pct": 2.91,
+  "institutional_pct": 3.92,
+  "short_pct_float": 10.97,
+  "short_as_of": "1790726400",
+  "short_shares": 564958.0,
+  "days_to_cover": 0.39,
+  "short_change_pct": 39.1,
+  "short_volume_ratio": 0.5,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "TPET",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "TRIO PETROLEUM ANNOUNCES LLOYDMINSTER ACQUISITION WITH CUMMINGS MULTILATERAL OIL WELL AND WORKOVER PRODUCTION GROWTH OPPORTUNITY",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/trio-petroleum-announces-lloydminster-acquisition-120000181.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "Four of 24 acquired oil wells are producing; 20 are shut in. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPT05wal9IZDZzUS1WejVuRlhmS1UtVFBzczUzc1ZqM3JBYkdVdDB0bzB4Z2Z1d04xWmdkTEpOZFdhVF9ZZnBBVnhVZTBNbVdBbHFWMnJfQmQyWU1MVGhWVWJLLUhqUGpVVVNBUW5TMmg4VUhpVy00eGVGOEpZWXhFOGNBTU5aWGpmeXJuaHkzT05aTkl3Zkl2LVpnT1lnbVFfTzFpeXpLSDlUc0xPRHAzek5sM0JSSUJqYVE?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "TPET 8-K & SEC Filings - Yahoo Finance - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBEUE90MzhfdXVnek8tTGhvSHBTQnZuTXhWTlNrUVNlUHM4YXI0R3UxQUhoWnBpeHJTb2Q2cGxPVlNPODFYaFJSTkxMX3pFbV9NcWwyaVNmeDcxZGV5Ti1wdjNub21vT051ZFI5N0hhZks5QXpCNWg2NFlENDVJUQ?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226045044/form8-k.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-09-21",
+      "type": "other",
+      "title": "Trio Petroleum Announces Lloydminster Heavy-Oil Farm-In And Multilateral Development Program With Croverro Energy",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/trio-petroleum-announces-lloydminster-heavy-123000629.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-09-10",
+      "type": "other",
+      "title": "Trio Petroleum Stock Rallies: What's Driving the Action? - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPR2lnYWMyMUt4amVpSnphdkc4YUJPZ252TVBXWUxqMndkWERybEswU194MEN0UEtJa1FKQ0hUMU5HSFVkeGFoWDNESXRFV3l0TnBoNExmLWZCN1hSVEtxU0dCTzFUOHZkZENVbWpEWjBFNHpZWTV3SFBWNEVlczhUUlRVZ3F2UUx5NXh1Y1ZzUjV6V0l1U3lyOUhGTzNiMTNpT2Nqc182SWRleWlUYlhaMGJaX1U?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-09-10",
+      "type": "other",
+      "title": "TPET Stock Explodes Higher As Traders Pile Into Momentum - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBXUWRiU1dTeEVuZmZ2Q1AyczRVTjh0QzFkNzdqZFY0SU5UTEtIUzQ4YlV3SnVUSld6ZDR4bXV1a3NsYWphN3Vid0RZYjNyTWZRakZlRndNTy10dXBtOTY2ZnJSYklfNFNRUGViSURjUVY0SkZMdEJ2TXQ5b0EyZw?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-09-09",
+      "type": "other",
+      "title": "Trio Petroleum Corp 3Q 2026: Revenue $348581 EPS $(0.39) — 10-Q Summary - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPNVJsUjlrLVFfdWNrc1JtLTJBQzUwU19jelE0VURqeFVXUG4yWlhOUS1JSjJiU0tsM2FrclVYdFdiU1d5VEFkLVlmVklhYzlNM1M1WHpEUDFzdTBIOFhmTmJ5ZG5YTXVvRXZfbkwwWUlVWEY3RHRERlVRQ202bUNnNkRHc210eGdQSV9EMWptT0JNaDIySEtUdmQ3aGV4SWFUNUN3NE9qcEMtUDdLaWIxR043S1ZjUlJSZThRVnhiSXdJaE9M?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-09-09",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-Q — 10-Q",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226041903/form10-q.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-08-18",
+      "type": "offering",
+      "title": "Trio Petroleum Corp Announces Proactive Reverse Stock Split and Provides Shareholder Update on Acquisition and Drilling Strategy",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trio-petroleum-corp-announces-proactive-200500914.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-08-18",
+      "type": "offering",
+      "title": "Trio Petroleum plunges after announcing 1-for-9 reverse stock split (TPET:NYSE) - Seeking Alpha",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNcWltYmRrdXBSdFdUSjNreGl6T2h5d0x6TG9FTHBydndWdW5OdGRZYjVObDBrX0ZCck1wVGJvYWx0UTdNb1NhUUNGajZlSHBwcWJVNHJ1S0l5U3dwS2xhQTZZYVBHZnRObzBiQmpZTTdvTlA0aW5oTUttaXYtTWYyNVlDVW13WFFtQktfNU5IZ0VnQWtHOXdhN1pJRjJ5UEhPSXJWQVRSTmsxcm1KTkw0?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-07-20",
+      "type": "other",
+      "title": "Why Are BATL, TPET, XOM, CVX, USO, UCO Stocks Rising Overnight? - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOcjdhQ0ktYzh1bTRwOWxnZmxVaGQzeHFLbGlEYnBVNzhpM3lpcllTN3ZzdUF6US1NbnlqVFpSQTE5cUYxWjU5QUFLbTU5NWlUR214eWNlbTh0Zl81eENxWDJKTlNScXlyT3gycldzZVNnTk0zY01hd3JOdzZHdlc0NnhzNmdGRVFDTll4Mmc2X3JUbjRYZklqeUhzbjJ4d2FqZU9fRHJnR1NLZUc0MUtzeUlSVjZxWUQ4dGVUaEZn?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-07-13",
+      "type": "other",
+      "title": "BATL, TPET, WTI, XOM, USO Stocks Climb Amid Escalating US-Iran Conflict: Oil Nears $80 A Barrel",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://stocktwits.com/news-articles/markets/equity/batl-tpet-wti-xom-uso-stocks-climb-amid-escalating-us-iran-conflict/cZmz9IfR7oa?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-06-18",
+      "type": "other",
+      "title": "Trio Petroleum Corp Provides Update on Acquisition Strategy and Ongoing Operations",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/trio-petroleum-corp-provides-acquisition-120000760.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-06-12",
+      "type": "other",
+      "title": "Trio Petroleum director Pernice sells stock for $0 - Investing.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNOW8wYmRuSE44TmZiRkZqVTNKVDkwUnNGN1g2ZnRCTG84OXp6TmtUeHRRRGhIanQ5RkUxTjVNbkNCMlc0M2ZIN0hiaGgwYjJ2aDA2dlUyY1FpMlNOVEdUaEI1UXY4c0E5enBiVjZEVTltUS13OEdkUmZWT09yVDJRaWRUNWNLYkxTSE9FUl9WN2FPdU1OdS0xVWNwbzJDUXJWVUJlbVluMjdGU0pFTEh2MDd4M3I?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-06-11",
+      "type": "other",
+      "title": "TPET: Revenue soared 795% year-over-year, but high costs led to a gross loss; liquidity greatly improved - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxOS1cybmhrblI3VE55cFRjMHVwRFVJZmQ0QXZpWm45WG1wN01UUzhxZ1BIQ3RqZ1laMnllT2c4dnNzWDhVNXg3NU9rR1F5bjZLUXlKQm9pVjZHMnVNelJGWW8xR1VrX2tQN0MzVFZfMEZwY3dKdzE3cEhjNTVrRDBQbWtpel84bFFidFF2VVViRmktU2dDeVc2R0xLTC1yakRJTUhuakw4eE9DaG5NbDlqZmx5ZmNnWWQ1TnExdGJkb0JGX2hzenZWODYtUHRHd09mODBBdUNGYjF1VGI5Tk9yYWE3X1kwOXNKYnRLUVZmR3paZHRnbzB4SFJ3VzJfQXdLd0RaMWFjVVFBaEFTUWQyYw?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-28",
+      "type": "other",
+      "title": "BATL, TPET, SKYQ, INDO Stocks Surge Premarket: Oil Prices Spike On Renewed US-Iran Hostilities",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://stocktwits.com/news-articles/markets/equity/batl-tpet-skyq-indo-stocks-surge-premarket-as-oil-prices-spike/cZgi9rgResX?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-28",
+      "type": "other",
+      "title": "Nasdaq, S&P 500 Futures Dip As Markets Brace For Inflation Data, More Hormuz Tensions: SNOW, DELL, ONDS, NBIS, SIDU Are In Focus",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-slip-core-pce-oil-iran-snow-crm-dell-onds-sidu-stocks-to-watch/cZgif1FResi?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-26",
+      "type": "other",
+      "title": "USO, UCO, BATL, XOM Slip: Oil Dips Below $100 After Trump Says Iran Talks ‘Proceeding Nicely’",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://stocktwits.com/news-articles/markets/equity/uso-uco-batl-xom-slip-oil-dips-after-trump-says-iran-talks-proceeding-nicely/cZgaoRARep9?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-20",
+      "type": "other",
+      "title": "Trio Petroleum Corp Issues Broker-Dealer Action Notice Ahead of May 21, 2026 Annual Meeting",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trio-petroleum-corp-issues-broker-120000514.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-15",
+      "type": "other",
+      "title": "Trio Petroleum Corp. Urges Shareholders to Vote Ahead of May 21, 2026 Annual Meeting",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trio-petroleum-corp-urges-shareholders-120000743.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-11",
+      "type": "other",
+      "title": "TRIO PETROLEUM CORP ANNOUNCES STRATEGIC EXPANSION INITIATIVE FOLLOWING SUCCESSFUL CAPITAL RAISE AND ENCOURAGES STOCKHOLDER SUPPORT AT MAY 21ST ANNUAL MEETING",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/trio-petroleum-corp-announces-strategic-120000205.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-11",
+      "type": "other",
+      "title": "إفصاح SEC: RW — RW",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226022177/formrw.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-07",
+      "type": "other",
+      "title": "Trio Petroleum CEO Robin Ross sells $5,822 in common stock - Investing.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQakptQnhodlMtOUJKTEtrVXdFLUZMZnlLVTNKdjN3M0h4aE5tOU5oQUdsanh2Y1dyZ1RzNUVsVjZuNzhzLTVvZFdJbG8xSTBPbDlEcmFsTDVCMElFaTRZQVdlQnpUTjQwSVNkcVRETzhkYkNmdmlwd1VPMnE2clBhWkVDSXVLT095bTdMZ2FfYUstYThEemhBX2dBM3JCUUM3TEt2VllaRF94Y1VaR0dxSU1qR1EySFlsYkRZS0Rn?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-06",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — 424B5",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226021413/form424b5.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-04-13",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/999999999526001174/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-04-10",
+      "type": "other",
+      "title": "إفصاح SEC: CORRESP",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226016072/filename1.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-04-09",
+      "type": "other",
+      "title": "إفصاح SEC: UPLOAD",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000000000026003609/filename1.pdf"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-04-06",
+      "type": "other",
+      "title": "EONR, TPET, INDO Drop As Iran Ceasefire Talks Emerge — But Analysts Warn Refinery Damage Could Keep Summer Oil Prices Elevated - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNS0RmV0pJLXphMjlBbzRZX0hoMEsxaGNjYnNHT2hiRTlwOGMyY0tEdDJxcXp0Mm5qaUp4c3JYTGhhQUkyZ0dzam5Qdmh2UzF2Zm5naVhHVXNmVFdpU3RUdVpfVXhEdi13U3BKbjdHcUMxNzE5X05YVzd3MmtrbTJLSlZoVGRnUmlBdzZjWkNzZVo5Qm5IUC1LUWQydFpBb2lmNmFLRVFGdnIwbm5XbXFMcTR3?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-04-06",
+      "type": "other",
+      "title": "إفصاح SEC: DEFA14A — DEFA14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226015306/formdefa14a.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-04-06",
+      "type": "other",
+      "title": "إفصاح SEC: DEF 14A — DEF 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226015300/formdef14a.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-04-03",
+      "type": "offering",
+      "title": "إفصاح SEC: S-3 — S-3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226015046/forms-3.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-03-27",
+      "type": "other",
+      "title": "إفصاح SEC: PRE 14A — PRE 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226013204/formpre14a.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-03-25",
+      "type": "other",
+      "title": "USO, BATL, TPET, EONR Slide Premarket: Analysts Say The Oil ‘War Premium’ Is Fading Amid Iran Diplomacy - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPaV9lVU5QMEdRbEM2dmloY2NhZ29QSEVNZ3lQUXpZRFV0N0NLcXpOWklLUmdfMXpxWm5JS2pRVFZRR3paZk95UWJFbGEtNjZHcFQ0RWlmNUd2cmF1aXRBSUlnVjF5UE8zOEpRbW5TVUlhQU1TVE9DRVJHY2pXMm91Z3NaaDk5TFpIOUhmUjltdXZhTHY4THMzdlZYVHEwZVZFQTJhVlRRbXUzSzVzZVJOTVNNdUdEQlBmRFhnR0JQXzlZcy1QVFctd2pDRQ?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-03-23",
+      "type": "other",
+      "title": "USO, TPET, EONR, INDO Jump Premarket: Analysts Call Trump's Hormuz Deadline A 'Ticking Time Bomb' For Oil Supply - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQdGl1d205bERTZmJ3QTBZRTNyNnB1bl83Ymx4OGozcnpFVHpfQ1VtRDBfQVluYnVpVFp2UkFCNmZELVozblRDWWJfdFpfNWJKSThac0Q5b3lsNTkyNDM4UlE3SF9Gamt6TmxoSlNLR1loOF9lN1g2cnZnbWpOeFBaWjFTQ0NvVjR1aE80aE5GZWRRMDFLOHFpdDh1eU9wLTJ3THBscDV1aDR4Y29vSEtmQzZwTV9LLUNEZ1hXeG8za0puS2RYT3A2ZjdTOGpORTNORExvRzExR293VDht?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-03-19",
+      "type": "other",
+      "title": "BATL, TPET Stocks Surge Pre-Market, Oil Breaks $115 On Gulf Attacks: Analysts Flag Real Supply Shock As Shorts Pile In - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNM2ptUVVuV0NjR05XU1k2OWZicndoVkhFbG9WbkJwN19tNWVKWnl5WW1LeVlKSV9ldEotYzQ4bTZqeFJYelZjVGMxd3FQUVBhYkZDMkxfaXFFNGxXc2xWZExIN3dmYTk2MzZfQkpSM1U5YmRNd3B5d0lMdmdaWTM3WXI3Y3M4YTZpR2VLT2hlZElWVWhydE83bEJ4WmRtajRKdTBLbGFONWxRQXAyVjRlMmY2THZmWUZ1N2FoNXhtOEl2MC1Rdkt5amQ2ZFRGdUVpWUZlWQ?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-03-18",
+      "type": "offering",
+      "title": "Trio Petroleum Corp Completes Transformational $19 Million Raise Under ATM Program",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/trio-petroleum-corp-completes-transformational-120000342.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-03-13",
+      "type": "other",
+      "title": "Why Trio Petroleum Stock Is Pulling Back Today? - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOdVJvdURPWXhmd0djb18xeERnZUdRNFdpOUNwMUZLMEU0T1pJYUh5bzYySlduXzY0b0t1TUtMdjM2YlowWXlaaG1kdUJHV3NDb3VZOTNXVGNPLUpjT3U1M2lTVC1wNVdHalZhX2pmLWdwcFI2N0RHSHBTOFdZS29ub1JTNkRFaU9aQWFUTjZ1U0I4SGp5czJKQmY1QS1oYkU0amU2a1lyeUwzcUE?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-03-09",
+      "type": "other",
+      "title": "Saudi Arabia Begins Slashing Oil Production – TPET, BATL, INDO Stocks Continue To Draw Retail Buzz - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNbGhZNXhocWRKalBQdkdJSHkyeTdoTHFsLWpReVRDZ2hUQ25LWjRQd0NwU1VNYThmUUY1MWFnUVhyTi1vVlY3MG5PNTNSR21jSF82OUQtcEpLc2lfWUpIT1ZhZGpGNTJMZmx2dE1lalgxR2NzNnZUTmNVQXgyb2syRzVnalJLb19DaXdrZWw2bmM5ZVpicV9Cb2VHLTV6RmUyQnZyZ21CVGRvVWh3dmpJRGV4SDNpUDFQM1hzTzd5M1dHM2d2eGJKVUFGZk9xb2trdFhkbHhKZk5sY3A4UTVCdkZvMkZfa1BFSjFMV3QwMA?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-03-06",
+      "type": "other",
+      "title": "TPET Stock Jumps 35% Pre-Market: Oil Price At $150 Per Barrel Warning In Focus, Retail Eyes ‘Huge Upside’ - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNcmhncDZCR0t5RU42MFBpMWFzd0stRllVcnY3bVRxQVNsNzh0Yl95VkVYRlRqNVpaNzNZWG9ZbktDR1Nabm9IXzBNdTRnT2hpQkwweWFERncxaGRrU2hxRE9ZZ0FDb05Ldi02bXlsX3pTUU9Vd3pvWURkWWc4dFktYVdYajZxZHNjOVJhdGdYTTJPejdrYmE0M0YzeFdESXlTaHNjdlBJcjFzWlMzNFBYSU0xeXRhSTA?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "TPET",
+      "kind": "8-K",
+      "date": "2026-09-30",
+      "title": "8-K بند 1.01,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226045044/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "news-offering",
+      "date": "2026-08-18",
+      "title": "Trio Petroleum Corp Announces Proactive Reverse Stock Split and Provides Shareholder Update on Acquisition and Drilling Strategy",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trio-petroleum-corp-announces-proactive-200500914.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "news-offering",
+      "date": "2026-08-18",
+      "title": "Trio Petroleum plunges after announcing 1-for-9 reverse stock split (TPET:NYSE) - Seeking Alpha",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNcWltYmRrdXBSdFdUSjNreGl6T2h5d0x6TG9FTHBydndWdW5OdGRZYjVObDBrX0ZCck1wVGJvYWx0UTdNb1NhUUNGajZlSHBwcWJVNHJ1S0l5U3dwS2xhQTZZYVBHZnRObzBiQmpZTTdvTlA0aW5oTUttaXYtTWYyNVlDVW13WFFtQktfNU5IZ0VnQWtHOXdhN1pJRjJ5UEhPSXJWQVRSTmsxcm1KTkw0?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "8-K",
+      "date": "2026-07-01",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226031558/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "424B5",
+      "date": "2026-05-06",
+      "title": "إفصاح 424B5 — 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226021413/form424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "effectiveness",
+      "date": "2026-04-13",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/999999999526001174/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "S-3",
+      "date": "2026-04-03",
+      "title": "إفصاح S-3 — S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226015046/forms-3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "8-K",
+      "date": "2026-03-27",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226013097/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "news-offering",
+      "date": "2026-03-18",
+      "title": "Trio Petroleum Corp Completes Transformational $19 Million Raise Under ATM Program",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/news/trio-petroleum-corp-completes-transformational-120000342.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "8-K",
+      "date": "2026-01-05",
+      "title": "8-K بند 1.01,2.01,3.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226000386/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "8-K",
+      "date": "2025-11-04",
+      "title": "8-K بند 2.01,3.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315225020729/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "8-K",
+      "date": "2025-08-18",
+      "title": "8-K بند 1.01,2.03,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315225012110/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "S-3",
+      "date": "2025-05-14",
+      "title": "إفصاح S-3/A — S-3/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000164117225010351/forms-3a.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "S-3",
+      "date": "2025-04-28",
+      "title": "إفصاح S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000164117225006503/forms-3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "8-K",
+      "date": "2025-04-10",
+      "title": "8-K بند 1.01,2.01,3.02,7.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000164117225003622/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TPET",
+      "kind": "S-1",
+      "date": "2025-02-28",
+      "title": "إفصاح S-1/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315225008715/forms-1a.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [],
+  "positive_news": [],
+  "negative_news": [
+    {
+      "symbol": "TPET",
+      "date": "2026-08-18",
+      "type": "offering",
+      "title": "Trio Petroleum Corp Announces Proactive Reverse Stock Split and Provides Shareholder Update on Acquisition and Drilling Strategy",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trio-petroleum-corp-announces-proactive-200500914.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-08-18",
+      "type": "offering",
+      "title": "Trio Petroleum plunges after announcing 1-for-9 reverse stock split (TPET:NYSE) - Seeking Alpha",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNcWltYmRrdXBSdFdUSjNreGl6T2h5d0x6TG9FTHBydndWdW5OdGRZYjVObDBrX0ZCck1wVGJvYWx0UTdNb1NhUUNGajZlSHBwcWJVNHJ1S0l5U3dwS2xhQTZZYVBHZnRObzBiQmpZTTdvTlA0aW5oTUttaXYtTWYyNVlDVW13WFFtQktfNU5IZ0VnQWtHOXdhN1pJRjJ5UEhPSXJWQVRSTmsxcm1KTkw0?oc=5"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-05-06",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — 424B5",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226021413/form424b5.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-04-03",
+      "type": "offering",
+      "title": "إفصاح SEC: S-3 — S-3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1898766/000149315226015046/forms-3.htm"
+    },
+    {
+      "symbol": "TPET",
+      "date": "2026-03-18",
+      "type": "offering",
+      "title": "Trio Petroleum Corp Completes Transformational $19 Million Raise Under ATM Program",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/trio-petroleum-corp-completes-transformational-120000342.html?.tsrc=rss"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "rsi",
+    "short_shares"
+  ],
+  "rejections": [
+    "RSI لم ينزل تحت 30 (أدنى قيمة 31.35) — لا يوجد تشبع بيعي",
+    "الأسهم المكشوفة 564,958 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 1.72,
+      "display": "1.7200$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 54,
+      "display": "1-for-9 · 2026-08-31 · عمر 54 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -39.188,
+      "display": "39.19% من قمة ما بعد التقسيم · القمة 2.3400$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 31.3521,
+      "display": "أدنى RSI 31.35 (2026-10-15)",
+      "ok": false,
+      "data_available": true,
+      "reason": "RSI لم ينزل تحت 30 (أدنى قيمة 31.35) — لا يوجد تشبع بيعي"
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 564958.0,
+      "display": "564,958 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 564,958 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 708 يوماً (1-for-20) — خارج نافذة 60 يوماً المطلوبة",
+    "تسلسل «جاهز فنياً» قيد التكوّن — اختبار المقاومة القريبة (بانتظار العودة لاختبار الدعم)",
+    "الثبات على القاع جلستان — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 73.5,
+  "grade": "B",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.09 · قاعدة القاع: 3.89 · آخر 3 جلسات: 2.97",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 90.0,
+      "weight": 35,
+      "detail": "قاع مزدوج W · وتد هابط",
+      "points": 31.5
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 40,
+      "weight": 25,
+      "detail": "اختبار دعم: نعم · سحب واستعادة: لا",
+      "points": 10.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 46.7,
+      "weight": 15,
+      "detail": "EMA20: فوقه / غير صاعد · EMA30: فوقه / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 7.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "RSI خرج من التشبع البيعي وتحسّن",
+    "حجم نسبي 3.52x يدعم الحركة",
+    "انطلاقة +17% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 1.8014,
+    "entry_zone": [
+      1.6385,
+      1.8014
+    ],
+    "stop": 1.6223,
+    "stop_pct": -9.94,
+    "stop_structural": 1.3893,
+    "stop_structural_pct": -22.87,
+    "targets": {
+      "t1_382": 1.7733,
+      "t2_618": 1.9897,
+      "t3_full": 2.34
+    },
+    "rr_t1": -0.16,
+    "rr_t2": 1.05,
+    "risk_per_share": 0.1791,
+    "reward_t2_per_share": 0.1883,
+    "atr_pct": 7.1,
+    "bottom": 1.423,
+    "peak": 2.34,
+    "last": 1.72,
+    "base_high": 1.78,
+    "ema9": 1.5707,
+    "ema20": 1.6092,
+    "support": 1.423,
+    "impulse_high": 1.78,
+    "resistance": 1.78,
+    "sweep_low": null,
+    "reclaim_level": 1.4301,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 7.1%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 1.6223$ (-9.94% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "1D",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 1.490 بتاريخ 2026-10-06 وقاع 1.435 بتاريخ 2026-10-16 بفارق 3.8%، وخط العنق عند 1.669 (16.3% فوق القاع). تم اختراق خط العنق → النموذج مكتمل.",
+      "levels": {
+        "bottom1": 1.49,
+        "bottom2": 1.435,
+        "neckline": 1.669
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "1D",
+      "confidence": 0.8883223412243286,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 3 قمة و5 قاع؛ السقف ينحدر 1.68% للشمعة والقاع 0.84%، والسعر اخترق سقف الوتد فعلياً → انعكاس مؤكد.",
+      "levels": {
+        "resistance": 1.3533,
+        "support": 1.374
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.75,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 50% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 3.5x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة، نجمة الصباح)",
+      "tf": "1D",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-22، 2026-10-23 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -0.64% للشمعة (30 شمعة). سقف القناة عند 1.860 والسعر أسفله بفارق 7.5% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.8601,
+        "channel_mid": 1.7048,
+        "channel_lower": 1.5625
+      },
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 47% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 2.0x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (ابتلاع شرائي، شمعة المطرقة، نجمة الصباح)",
+      "tf": "4H",
+      "confidence": 0.85,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-21، 2026-10-22، 2026-10-22 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.8,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 1.502 بتاريخ 2026-10-13 وقاع 1.435 بتاريخ 2026-10-16 بفارق 4.6%، وخط العنق عند 1.630 (13.6% فوق القاع). تم اختراق خط العنق → النموذج مكتمل.",
+      "levels": {
+        "bottom1": 1.5018,
+        "bottom2": 1.4352,
+        "neckline": 1.63
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 2 قاع صاعد منذ بداية القاعدة (1.502 → 1.423) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.5018,
+        "last_low": 1.4229
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.5715409336014957,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -0.21% للشمعة (30 شمعة). سقف القناة عند 1.716 والسعر أسفله بفارق 0.4% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.7161,
+        "channel_mid": 1.5925,
+        "channel_lower": 1.4777
+      },
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 1.71,
+    "rsi": 61.81,
+    "trend": "neutral",
+    "ema20": 1.5738,
+    "ema50": 1.6371,
+    "rvol": 2.05,
+    "macd_hist": 0.02526,
+    "channel_broken": true,
+    "higher_lows": 3,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-9 منفّذ في 2026-08-31 (عمر 54 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 1.88$ وصعد إلى 2.34$ (+24.5%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 39.2% من القمة 2.34$ إلى القاع المرجعي 1.423$ بتاريخ 2026-10-21 — يحقق شرط 30% على الأقل.",
+    "RSI وصل إلى 31.35 (تشبع بيعي و 0 جلسة تحت 30) والحالي 54.46 مع بدء التحسّن.",
+    "ثبات جلستان على القاع 1.423$ داخل نطاق 25.1% مع جفاف حجم (389% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +17.1% من إغلاق القاعدة (1.52$) إلى 1.78$ (2026-10-23) — بالقدر المطلوب (≈20%).",
+    "أقرب مقاومة عند 1.78$ (تشكّلت 2026-10-23) — على 25.1% من الدعم الرئيسي، واختُبرها السعر في 2026-10-23 عند 1.78$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "حالة التسلسل: اختبار المقاومة القريبة (بانتظار العودة لاختبار الدعم).",
+    "تأكيدات فنية: MACD يتجه للتحسّن، RSI خرج من التشبع البيعي وتحسّن، حجم نسبي 3.52x يدعم الحركة، انطلاقة +17% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه عرضي، RSI 61.81، والقناة الهابطة مكسورة على الفريم.",
+    "عدد الأسهم 5.32M — الفلوت 5.17M سهم.",
+    "البيع المكشوف 11.0% من الفلوت (أيام التغطية 0.39).",
+    "أبرز نموذج فني: قاع مزدوج (W) — قاع مزدوج: قاع 1.490 بتاريخ 2026-10-06 وقاع 1.435 بتاريخ 2026-10-16 بفارق 3.8%، وخط العنق عند 1.669 (16.3% فوق القاع). تم اختراق خط العنق → النموذج مكتمل.",
+    "أخبار سلبية: Trio Petroleum Corp Announces Proactive Reverse Stock Split and Provides Shareho | Trio Petroleum plunges after announcing 1-for-9 reverse stock split (TPET:NYSE) "
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

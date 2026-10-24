@@ -1,0 +1,27 @@
+[
+ {
+  "stamp": "2026-10-24_0252",
+  "generated_at_riyadh": "2026-10-24 02:52",
+  "mode": "live",
+  "summary": {
+   "scanned": 23,
+   "with_reverse_split": 22,
+   "eligible": 2,
+   "watchlist": 0,
+   "gam_candidates": 2,
+   "ready": 0,
+   "failed": 4,
+   "avg_score_watchlist": 0,
+   "top_symbol": "FGL",
+   "eligible_symbols": [
+    "FGL",
+    "HCAI"
+   ],
+   "gam_symbols": [
+    "DKI",
+    "NIVF"
+   ],
+   "ready_symbols": []
+  }
+ }
+]

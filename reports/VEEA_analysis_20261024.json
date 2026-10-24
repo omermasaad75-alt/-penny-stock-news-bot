@@ -1,0 +1,1234 @@
+{
+  "symbol": "VEEA",
+  "name": "Veea Inc.",
+  "sector": "Technology",
+  "industry": "Information Technology Services",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-23",
+  "last_close": 4.93,
+  "change_pct": 17.66,
+  "dollar_volume": 61846134.0,
+  "rs_found": true,
+  "rs_date": "2026-08-31",
+  "rs_age_days": 54,
+  "rs_ratio_str": "1-for-20",
+  "rs_ratio": 20.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 1.34,
+  "spike_high": 8.88,
+  "spike_pct": 562.6866,
+  "spike_date": "2026-09-17",
+  "decline_pct": -76.57657773761176,
+  "peak_date": "2026-09-17",
+  "bottom_price": 2.08,
+  "bottom_date": "2026-09-30",
+  "base_sessions": 1,
+  "base_high": 4.08,
+  "base_low": 2.08,
+  "base_range_pct": 96.1538,
+  "base_broken": false,
+  "volume_dryup": 6.007,
+  "atr_pct": 19.01,
+  "rsi_now": 56.35,
+  "rsi_trough": 41.2265698245018,
+  "rsi_trough_date": "2026-09-30",
+  "rsi_sessions_below_30": 0,
+  "rsi_recovered": true,
+  "above_ema9_sessions": 1,
+  "macd_turning": true,
+  "macd_hist": -0.05999,
+  "channel_slope_pct": 0.799,
+  "channel_upper": 6.7646,
+  "channel_broken": false,
+  "rvol": 0.19,
+  "higher_lows": 3,
+  "squeeze": false,
+  "lifecycle_stage": "تجاوز المقاومة بقوة (4.6% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 2.080",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+226.7% من 2.170 إلى 7.090",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 6.780 (على 226.0% من الدعم 2.080) — توقف السعر عندها بفارق 4.6%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "أدنى نقطة بعد القمة 3.820 مقابل الدعم 2.080",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": true,
+      "detail": "4 إغلاق فوق 2.090 (آخرها 2026-10-23)",
+      "state": "ok"
+    }
+  ],
+  "impulse_pct": 226.73,
+  "impulse_high": 7.09,
+  "impulse_date": "2026-10-09",
+  "resistance_level": 6.78,
+  "resistance_distance_pct": 225.96,
+  "resistance_date": "2026-10-05",
+  "pullback_type": "shallow_pullback",
+  "pullback_low": 3.82,
+  "pullback_date": "2026-10-20",
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 2.0904,
+  "reclaim_sessions": 4,
+  "reclaim_date": "2026-10-23",
+  "support_level": 2.08,
+  "support_hold_ok": false,
+  "base_close": 2.17,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    2.06,
+    1.8,
+    1.71,
+    1.67,
+    1.75,
+    1.7,
+    1.73,
+    1.73,
+    1.66,
+    1.56,
+    2.29,
+    5.71,
+    6.1,
+    5.33,
+    4.45,
+    3.63,
+    3.59,
+    3.22,
+    3.04,
+    3.08,
+    2.86,
+    2.5,
+    2.17,
+    3.47,
+    3.33,
+    5.72,
+    4.94,
+    4.71,
+    3.87,
+    5.7,
+    4.61,
+    5.2,
+    5.11,
+    4.84,
+    4.21,
+    4.06,
+    4.02,
+    3.98,
+    4.19,
+    4.93
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 4.57,
+  "shares_out": 3110708.0,
+  "float_shares": 1582044.0,
+  "market_cap": 15335790.0,
+  "avg_volume": 8176325.0,
+  "insider_pct": 39.49,
+  "institutional_pct": 3.29,
+  "short_pct_float": 2.7,
+  "short_as_of": "1790726400",
+  "short_shares": 50744.0,
+  "days_to_cover": null,
+  "short_change_pct": -92.4,
+  "short_volume_ratio": 0.511,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-21",
+      "type": "other",
+      "title": "Veea (Nasdaq:VEEA) - Stock Analysis - Simply Wall Street",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA2VWY2MGlVUHBnVU11SDU1Vmp5NnJnY0Ezb2xsVXFHbHFBUzhrRzdUbzlmdVRVbUhsUTA1MWJqNTZrNktqUm9oMmtWUERKenpVZFk3YVBrS253MWZWdklWTXMxQmU1U0tt?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Veea Regains Full Nasdaq Listing Compliance After Resolving Governance Deficiencies - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNNTZUNDExZG1KZ2dsaDdKUXA5TTAwZS1qZzJXb2pwWHlQU21pOXEyRGtCbzB3RTZmaFlZd3RzWkliMU9JdGJzbXdLTWZIbDFBdUlPT3ZLMHAtVDlMQ2RfcEt2dEpIcUNKeTNrQXNla2NJZU11MTUtcUN0aFZxMzhjdTU2bm5pR1g3WEtvYUlja2xtZHBhdkNLS3oyWkdfdw?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "These stocks are moving in today's session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPRTlmWV9xbkNoT0tmVGw2b2dkeHJGWlI1NVh1Q21NaGpYVGVMWFFfU216Z19BVmZCeW5nbXAxYkFKbU1QMVk4SE8tNjZIMTg2a3h1a0VVNVJlX1dSLWZYWF9JYmFvX0pzd2ZJcTNfdTdBNkc4cXBXMzdrWVBxdDBpQ3BUWHZMbmItSURVR2xNa0ZfaWctT3lEbQ?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Trending Stocks Today | Veea Inc Shoots up 39.47% Pre-Market - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPekw4YWVNOFhQTE5id1VrajgyQi1NTmVUbzhTV05HQU1jRWt3cHRzSjl3T244eUZaWjBFZGREQnc0MEJDQnVBU1RxajctT1VSTnRpcEJsb3lXV0Y4R0laLXY3MlNiOV9hT0RudU5fanN5UFM4a3lLYUZBc3ZrNDNwU2FCc3VZZURiMGNZOUJZS1ppeTFDWjYtSi1B?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Veea Shares Jump 49% After Hours on Nasdaq Compliance - Veea (NASDAQ:VEEA) - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNenRXLS1kZ0NvM184dEFDbnVTRnhaM3hjdDFaV1lvUWMxZGx1LWVPQ0k0d09EeUdJNlRHOVBiaUp5SlB3M0l5RVVaTDdmSjhVLVRyU055Z2h2Qkpzd2VkM2xQUmNfNkJBZ2dmN0lWVzVEQnhSU1B4bV9Hc3dWSHpQMkwyTzU4dno5S3R0bHlqamJmZGJVYjJmaU9fUUtZYmo3?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "These stocks are moving in today's pre-market session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQMV9Ud0dlZzE1SXdsNXFRWXprNnFrTWxiOWFqYjE0cjVJcm1iZjEzNlRBMjM4eTRJYTh6THlwdjZCOHBRWG1YcTZmckl1aExmTUF2WmdZVld2Vl9OLTd5SWpHbDRBRnAyb1lBbG5qcTV6Qk9XaWZoclNRZTBzdmdZVWRReUVrQkNfQm9VdHJnazJzSnZpWHVJc0hxVWQyWWwzMHg1UGZFaw?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Why Veea Shares Are Trading Higher By Around 34%; Here Are 20 Stocks Moving Premarket - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPN1JUNjNwbHlURzAteUVzRHdYUHZIZWxPc2c5MDIxMElWRlBUUEJNc2VpakFGSjZMcnlwdjlVRmF0ZElZYUtwaVI5Vmh4X1llZkNYX1F3Z1JHd2o5RlJVMHVFMkNrenZXTW1VYk4ta1pvZ2h6eE92MmlTMXZudWJmSDhycTZRaHJhYk0td1hNcEIyS3Iya2JhdW1Pc1FpZEFwMEhrcEFYeS1BQXlkbnEyWFBhMVhQU3g4UnlvRUZtb1RmUExEU1gyLVZkTFpZaUNzaDRMTUxTQUZQVmpp?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "10 Information Technology Stocks Moving In Friday's Pre-Market Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOSWR3ZmVXZXlNRnp1czZ0cDA2c210Mkp0Wk8zNzltUFVhNGlPRVJvU3VEdXBKTmxGUDNFWkxHVWR2NUxxWVpBeGdSOHN3VFVxMm1qMUd5SVNtd1VfRGdMM2V5YTFtNWtuT3lja1B4dF81eFBiYmZLZTNlRzFabTBVZlZmN2ZJSThkSE1hUlhNblBheHQycUtLMmEwMjVUUW9kOWotUGJpaGJLdU1hbXoxUTJMQXdYOVR2QlltU2xSdVBIckE2YzZr?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Gapping stocks in Friday's session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTmZMS2M3WGdnVnRpYXZ4Z0RSb09ldUxzZGktNUlxNUxmOGNNT1VIWEVZM2ZMRTVxMHo1SkUtUVhQbHd5cmR3andPaG5qWHptWmwzQmtwdTFLQVdVRlZxSXFNRjBMU1pRR2hCdW9KYU9kb04tZHQ4eWxzblJ1LWJWM3kyUFdoWTNUQm5CaEdn?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — CURRENT REPORT",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026108466/ea0308208-8k_veea.htm"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "Veea regains full Nasdaq listing compliance; shares surge - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNTV9fcWxqXzhIWnpaTEFyWFMwZmIyV3FNSlBSdnU5ckhuREhlalBCOUoydW5jTzE0Sy1wNVA1SmtnTUE5SkplcWhTVVZHUlFqSUNQVGNWUERiREVCcWRzM2JnWDM5Z0NqdVdVYjJka3BldERFX0ZCMTlTZTdrX3M4QUZYTlo4dmFicmJLb3VJdnotSWVjcERRcW1MbnlITndSb245cl9yS0hwRklUQ0dLQm1yZkJwTWlWUzdZ?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "Veea Regains Compliance With Nasdaq Listing Rule - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPc2dFVlZXQ1g4NC1yV09HZGlpZGhmcTY3Qy13TXFKc3N6SUJpTGE1alJ0QXlDMWhwNVVqcnZEWVltZWhLZldFMktsNEtfYzREUFRKeHg4ck0wdzg4LTh6VWlsVFhjZ19JVEFad2dHZTRKVXRUeXp5LW5zclVqOC05cE5oRFUwcm5KV2VNa2pta294TXgwd0c2cjM1Yjd0YVluOVFXeW5R?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-06",
+      "type": "contract",
+      "title": "Veea Secures Landmark Smart Community Agreement with La Estadia Community for Agentic Real-time Aware and Secure Community",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-secures-landmark-smart-community-120000799.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-06",
+      "type": "contract",
+      "title": "Veea Secures Smart Community Agreement for SecureConnect and AI Video Analytics Deployment - Yahoo Finance",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQdThWMUZCX1VZeWdqdTJlQTRkQUMxbXotcUJpM1RGVXB3OWsyZlBiSE9lbE5oREFwZ0s4U0tzZjNzX3M0NDFzY1BoM2pDTG5DeW43U0VCYUZTaWpZRi1BZ0llVmMwOHV6dFVZanljcXlIMGZKT2dhYjRlOEplRVk0Y2JCd3BUVG1Xd3VMLXZyLXAtQzNYTDRFVTE2dE1NM1ZTc1pIRw?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "contract",
+      "title": "Veea Announces TROLLEE Agreement for Phased Deployment of VeeaONE to 1,000 Unattended Stores",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-announces-trollee-agreement-phased-120000280.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "Why Is Veea Stock Gaining Thursday? - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNWmN6b2E5N1VGakp0cFo0MVZ1YlA2d1ZDRDUwZVppZFdmeEl3RGxtR3JUa2ZXRUEwZVdocVNRNmRvVkpnaktQVFhaN1FGdGVrSmw4R3ZIN2NPcmxZWVQ1bmdqZ2xvYW83aG5IUHRTZTgxckVPeFZwbHhHOEo5TVY0a3hXS2xzYW9wM3MyTnVGNU80bnljOUhwYWc1SQ?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "VEEA Stock Soars On $750M NovaGen Merger Deal - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1GMmFXQUVhYk12QkQydkdCb1VfNkpOckhkOEZXQmoxbF9xbEpiNVhYWnVzdEktUXBQcWYzQ19KQUdQVmdjUkNYb2d5RF9IOHdUSmsyWE9lNThCZWVBdXVzTDZ1ekJ4MDkwM015N2hlSQ?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "contract",
+      "title": "Veea Shares Rise on Trollee Agreement to Deploy VeeaONE Across 1,000 Stores - Yahoo Finance",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxObHhIUGxFOWx3SUJhaEZsaFVSX0U5MHh5YUNOTWtqTVlkamVkZjNmcmNJRmZJVTFJWE0wMWhqTkUyMXdVam10NDZFTW1Yc3dkTUlOSnFseTRLR0hFZG1ZUUwyODI3eWo2c0NlbkdmV3ZYSDhpM1NDSkF0UHFYMG9xRG1OazBXb0dYdHR1VTJ4cHZnYmhsdEVqN25qcw?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "Thursday's session: gap up and gap down stocks - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPUFgtSm9zejFlSFYxeHBJaF9vYkZOZl9iRU1XeGtjaGdMU1BpZnBCM2xVWnpoYVNwaGRUaGt1d3k2NmV5eTVMUG1IdEU5N3dGdGw2WVpiMVFJWUloR08xd2ttM1dSNFhQa0dTQzNEa2tKdUxEdzNRdTBvYlBtcHBKUEVXQVdsdC1NTjhJVmZvYlJ4MHhWelZ0S3ZGSkg?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "contract",
+      "title": "Veea Signs TROLLEE Agreement for Phased VeeaONE Deployment Across 1,000 Unattended Stores - Yahoo Finance",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSktub1VRYmdqaGdxSnk1ZlBZb3AzTEVlNG1heEJZc3hvY0E1T3FWRW1uT3AyU2xUT3RRT0pVY0NWaDA1aHpiWnVHTTIwZjI1UlRCc2U0bjB3OENic3JfZFY5NkxBUE05Wk9icThacDlZVjNSVG11Zm5KQjd6NC1GclF5enZUUUxFbjhLZUczRVVwUFk1Z0hHbW4tYXRyQTF6?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "12 Information Technology Stocks Moving In Thursday's Pre-Market Session - Veea (NASDAQ:VEEA), Socket Mob - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNTG9BRkdfdjNCUFBURHdrbzRjZC1VTjNaajh4Y19zR3Jwa3NoaFRydV9zY3l5dU03MVBWWFZRQ2ZHU01VamFwWWZvU3lSSmtkelRUajhFZjlGQ2U1ZkUyQ1ctcUNwSHA2eTI1VmlQTGcwOXhBUy14SWZYbzF5QUtMQldvN1I5TDVTM1lWa2hHVEtaem5WU3NBY2ttV3NRaWhrYmRmc3Ewd19Ec2V3VkRCczRPTzdKcjNrNnVzZmpVbXhuQ1BsaGNOdnpR?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-09-17",
+      "type": "other",
+      "title": "GEONOVA CAPITAL ANNOUNCES CORNERSTONE INVESTMENT IN NOVAGEN FOLLOWING PROPOSED BUSINESS COMBINATION WITH NASDAQ-LISTED VEEA",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/geonova-capital-announces-cornerstone-investment-190500363.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-09-15",
+      "type": "other",
+      "title": "Veea Stock Surges Tuesday: What's Driving the Action? - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPcW5jUWs5NEdOSllHSVdPSXhna2g1Q3h1RlZHMHFuU09pMW8tMFMwdG02dklKTFpvblhvZGNOUllScXRveUxFMWVwYkFLQklLNkJvM1ZORS1iSXBnaER5eVNMNzZxbXBacHFxS1h3UTlQREVsY3pKSERRU2kxY0lOcnkwTm9jaDFDV2JTLXhZS1VPcjJlczlaUlRxOTZ5dU1zblVVbU5mVGU2VmxJYUs1Qw?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-09-14",
+      "type": "other",
+      "title": "Veea Inc. and NovaGen announce potential merger to launch an Edge AI-Powered Global Health Platform",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/veea-inc-novagen-announce-potential-204200709.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-27",
+      "type": "contract",
+      "title": "Veea and Telarus Sign Technology Services Distribution Agreement to Expand Access to Secure, Intelligent Connectivity Solutions",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/veea-telarus-sign-technology-services-113000857.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-26",
+      "type": "offering",
+      "title": "Veea Inc. announces reverse stock split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/veea-inc-announces-reverse-stock-200500965.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-26",
+      "type": "other",
+      "title": "Veea and Totalplay Advance Commercial Plans for Secure, AI-Powered Business Services in Mexico",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-totalplay-advance-commercial-plans-110000072.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-26",
+      "type": "offering",
+      "title": "Veea Inc. announces reverse stock split - GlobeNewswire",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOTmpqckpuak5GTXlIMmlZZVdaanFlQVVUMXNZeGEyRGVnYjU2b3hnZkxqMnF5T1lxNEoyOTBhRUZvVTl0ZTNqVmhHNEZvbTdJTXBHd09BWGVkWlJQYXB4eTlOcktVcGZtLXU0UFlQWlNLZXYwOUQ0MnZ0SXVKU2NjUFk0VXg4MVZJYVBsRDNUWGZQQjREZEtVY0ZCNGNBVGZuclEyNWF3SnhzdVlid3FZ?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-18",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K/A — AMENDMENT NO. 1 TO FORM 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026091206/ea0302406-8ka1_veea.htm"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-13",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026088706/ea0301578-424b5_veea.htm"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-12",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-Q — QUARTERLY REPORT",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026087946/ea0301195-10q_veea.htm"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-04",
+      "type": "other",
+      "title": "MCN Build Deploys Veea’s Crowdkeep™ Platform at Sidwell Friends School, Marking Tenth Deployment with Genesys Impact",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/mcn-build-deploys-veea-crowdkeep-120000306.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-07-21",
+      "type": "other",
+      "title": "Veea Launches Free VigiLynx™ Service for Telcel Internet Gestionado — Plug-and-Play Automation Platform Bringing Cybersecurity, Connectivity, Monitoring, and Edge Intelligence with Agentic AI in Mexico and Globally",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-launches-free-vigilynx-telcel-123000420.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-07-16",
+      "type": "other",
+      "title": "Veea Announces the VeeaONE Distributed Intelligence Platform, Enabling Cybersecure Sovereign Data Fabrics and Enterprise AI Grids for Physical AI",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-announces-veeaone-distributed-intelligence-043700382.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-07-15",
+      "type": "other",
+      "title": "Veea Begins Generating Revenue from SecureConnect Sales Through Telcel’s Internet Gestionado Service",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-begins-generating-revenue-secureconnect-024300128.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-07-07",
+      "type": "other",
+      "title": "Kayan Announces US-Regulated ATS Sets August 3, 2026 Listing Date",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/kayan-announces-us-regulated-ats-032500492.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-07-01",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/999999999526002184/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-06-26",
+      "type": "offering",
+      "title": "إفصاح SEC: S-3 — REGISTRATION STATEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026072701/ea0295954-s3_veea.htm"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-06-23",
+      "type": "contract",
+      "title": "Veea Inc. and TROLLEE Holdings Ltd. Extend Strategic Partnership to Deliver a Highly Advanced AI-Powered Autonomous Retail Ecosystem",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-inc-trollee-holdings-ltd-120000047.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-06-22",
+      "type": "other",
+      "title": "Veea Strengthens Executive Leadership Team to Accelerate its Commercial Growth and Market Expansion",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-strengthens-executive-leadership-team-120000849.html?.tsrc=rss"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2026-10-02",
+      "title": "8-K بند 1.01,2.03,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026106421/ea0307544-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2026-08-26",
+      "title": "8-K بند 1.01,2.03,3.03,5.03,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026093996/ea0303433-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "news-offering",
+      "date": "2026-08-26",
+      "title": "Veea Inc. announces reverse stock split",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/veea-inc-announces-reverse-stock-200500965.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "news-offering",
+      "date": "2026-08-26",
+      "title": "Veea Inc. announces reverse stock split - GlobeNewswire",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOTmpqckpuak5GTXlIMmlZZVdaanFlQVVUMXNZeGEyRGVnYjU2b3hnZkxqMnF5T1lxNEoyOTBhRUZvVTl0ZTNqVmhHNEZvbTdJTXBHd09BWGVkWlJQYXB4eTlOcktVcGZtLXU0UFlQWlNLZXYwOUQ0MnZ0SXVKU2NjUFk0VXg4MVZJYVBsRDNUWGZQQjREZEtVY0ZCNGNBVGZuclEyNWF3SnhzdVlid3FZ?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2026-08-13",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026088713/ea0301833-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "424B5",
+      "date": "2026-08-13",
+      "title": "إفصاح 424B5 — PROSPECTUS SUPPLEMENT",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026088706/ea0301578-424b5_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2026-08-05",
+      "title": "8-K بند 1.01,2.03,5.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026085763/ea0300722-8k_veeainc.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "effectiveness",
+      "date": "2026-07-01",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/999999999526002184/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "S-3",
+      "date": "2026-06-26",
+      "title": "إفصاح S-3 — REGISTRATION STATEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026072701/ea0295954-s3_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2026-06-26",
+      "title": "8-K بند 1.01,3.02,5.03,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026072610/ea0296031-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2026-06-11",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026067858/ea0294499-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "S-1",
+      "date": "2026-05-08",
+      "title": "إفصاح S-1/A — AMENDMENT NO. 1 TO FORM S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026053967/ea0288866-s1a1_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2026-04-02",
+      "title": "8-K بند 1.01,3.01,3.02,5.03,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026038861/ea0284040-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "delay",
+      "date": "2026-04-01",
+      "title": "تأخير في تقديم NT 10-K (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026038496/ea0284573-nt10k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "S-1",
+      "date": "2026-02-17",
+      "title": "إفصاح S-1 — REGISTRATION STATEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026017472/ea0277211-s1_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2026-01-20",
+      "title": "8-K بند 1.01,2.03,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026005692/ea0273267-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2026-01-08",
+      "title": "8-K بند 1.01,1.02,2.03,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026002557/ea0272163-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2025-08-15",
+      "title": "8-K بند 1.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390025077430/ea0253409-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "delay",
+      "date": "2025-08-15",
+      "title": "تأخير في تقديم NT 10-Q (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390025077432/ea0253467-nt10q_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "S-1",
+      "date": "2025-08-12",
+      "title": "إفصاح S-1/A — AMENDMENT NO. 2 TO FORM S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390025074676/ea0252781-s1a2_veeainc.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2025-05-19",
+      "title": "8-K بند 1.01,2.01,2.03,3.02,7.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390025045462/ea0242538-8k_veea.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "424B3",
+      "date": "2025-01-15",
+      "title": "إفصاح 424B3 — PROSPECTUS",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390025003892/ea0227685-424b3_veeainc.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2024-09-24",
+      "title": "8-K بند 1.01,2.01,3.02,3.03,4.01,5.01,5.02,5.06,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390024081217/ea0214727-8k_veeainc.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VEEA",
+      "kind": "8-K",
+      "date": "2024-09-12",
+      "title": "8-K بند 1.01,5.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390024077860/ea0213893-8k425_plumacq1.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [],
+  "positive_news": [
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-06",
+      "type": "contract",
+      "title": "Veea Secures Landmark Smart Community Agreement with La Estadia Community for Agentic Real-time Aware and Secure Community",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-secures-landmark-smart-community-120000799.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-06",
+      "type": "contract",
+      "title": "Veea Secures Smart Community Agreement for SecureConnect and AI Video Analytics Deployment - Yahoo Finance",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQdThWMUZCX1VZeWdqdTJlQTRkQUMxbXotcUJpM1RGVXB3OWsyZlBiSE9lbE5oREFwZ0s4U0tzZjNzX3M0NDFzY1BoM2pDTG5DeW43U0VCYUZTaWpZRi1BZ0llVmMwOHV6dFVZanljcXlIMGZKT2dhYjRlOEplRVk0Y2JCd3BUVG1Xd3VMLXZyLXAtQzNYTDRFVTE2dE1NM1ZTc1pIRw?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "contract",
+      "title": "Veea Announces TROLLEE Agreement for Phased Deployment of VeeaONE to 1,000 Unattended Stores",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-announces-trollee-agreement-phased-120000280.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "contract",
+      "title": "Veea Shares Rise on Trollee Agreement to Deploy VeeaONE Across 1,000 Stores - Yahoo Finance",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxObHhIUGxFOWx3SUJhaEZsaFVSX0U5MHh5YUNOTWtqTVlkamVkZjNmcmNJRmZJVTFJWE0wMWhqTkUyMXdVam10NDZFTW1Yc3dkTUlOSnFseTRLR0hFZG1ZUUwyODI3eWo2c0NlbkdmV3ZYSDhpM1NDSkF0UHFYMG9xRG1OazBXb0dYdHR1VTJ4cHZnYmhsdEVqN25qcw?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-10-01",
+      "type": "contract",
+      "title": "Veea Signs TROLLEE Agreement for Phased VeeaONE Deployment Across 1,000 Unattended Stores - Yahoo Finance",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSktub1VRYmdqaGdxSnk1ZlBZb3AzTEVlNG1heEJZc3hvY0E1T3FWRW1uT3AyU2xUT3RRT0pVY0NWaDA1aHpiWnVHTTIwZjI1UlRCc2U0bjB3OENic3JfZFY5NkxBUE05Wk9icThacDlZVjNSVG11Zm5KQjd6NC1GclF5enZUUUxFbjhLZUczRVVwUFk1Z0hHbW4tYXRyQTF6?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-27",
+      "type": "contract",
+      "title": "Veea and Telarus Sign Technology Services Distribution Agreement to Expand Access to Secure, Intelligent Connectivity Solutions",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/veea-telarus-sign-technology-services-113000857.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-06-23",
+      "type": "contract",
+      "title": "Veea Inc. and TROLLEE Holdings Ltd. Extend Strategic Partnership to Deliver a Highly Advanced AI-Powered Autonomous Retail Ecosystem",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/veea-inc-trollee-holdings-ltd-120000047.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-26",
+      "type": "offering",
+      "title": "Veea Inc. announces reverse stock split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/veea-inc-announces-reverse-stock-200500965.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-26",
+      "type": "offering",
+      "title": "Veea Inc. announces reverse stock split - GlobeNewswire",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOTmpqckpuak5GTXlIMmlZZVdaanFlQVVUMXNZeGEyRGVnYjU2b3hnZkxqMnF5T1lxNEoyOTBhRUZvVTl0ZTNqVmhHNEZvbTdJTXBHd09BWGVkWlJQYXB4eTlOcktVcGZtLXU0UFlQWlNLZXYwOUQ0MnZ0SXVKU2NjUFk0VXg4MVZJYVBsRDNUWGZQQjREZEtVY0ZCNGNBVGZuclEyNWF3SnhzdVlid3FZ?oc=5"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-08-13",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026088706/ea0301578-424b5_veea.htm"
+    },
+    {
+      "symbol": "VEEA",
+      "date": "2026-06-26",
+      "type": "offering",
+      "title": "إفصاح SEC: S-3 — REGISTRATION STATEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1840317/000121390026072701/ea0295954-s3_veea.htm"
+    }
+  ],
+  "phase": 7,
+  "display_phase": 7,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "rsi",
+    "short_shares"
+  ],
+  "rejections": [
+    "RSI لم ينزل تحت 30 (أدنى قيمة 41.23) — لا يوجد تشبع بيعي",
+    "الأسهم المكشوفة 50,744 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 4.93,
+      "display": "4.9300$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 54,
+      "display": "1-for-20 · 2026-08-31 · عمر 54 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -76.5766,
+      "display": "76.58% من قمة ما بعد التقسيم · القمة 8.8800$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 41.2266,
+      "display": "أدنى RSI 41.23 (2026-09-30)",
+      "ok": false,
+      "data_available": true,
+      "reason": "RSI لم ينزل تحت 30 (أدنى قيمة 41.23) — لا يوجد تشبع بيعي"
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 50744.0,
+      "display": "50,744 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 50,744 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "تسلسل «جاهز فنياً» قيد التكوّن — تجاوز المقاومة بقوة (4.6% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 61.0,
+  "grade": "C",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.01 · قاعدة القاع: 6.01 · آخر 3 جلسات: 0.08",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 60.0,
+      "weight": 35,
+      "detail": "قاع مزدوج W",
+      "points": 21.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 100.0,
+      "weight": 15,
+      "detail": "EMA20: فوقه / صاعد · EMA30: فوقه / صاعد · EMA50: فوقه / صاعد",
+      "points": 15.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "RSI خرج من التشبع البيعي وتحسّن",
+    "3 قاع صاعد في البنية",
+    "انطلاقة +227% بعد الثبات (التسلسل قيد التكوين)",
+    "توافق فريم 4 ساعات (اتجاه صاعد)"
+  ],
+  "levels": {
+    "trigger": 5.3433,
+    "entry_zone": [
+      4.3174,
+      5.3433
+    ],
+    "stop": 4.2746,
+    "stop_pct": -20.0,
+    "stop_structural": 1.9552,
+    "stop_structural_pct": -63.41,
+    "targets": {
+      "t1_382": 4.6776,
+      "t2_618": 6.2824,
+      "t3_full": 8.88
+    },
+    "rr_t1": -0.62,
+    "rr_t2": 0.88,
+    "risk_per_share": 1.0687,
+    "reward_t2_per_share": 0.9391,
+    "atr_pct": 19.01,
+    "bottom": 2.08,
+    "peak": 8.88,
+    "last": 4.93,
+    "base_high": 4.08,
+    "ema9": 4.4203,
+    "ema20": 4.2319,
+    "support": 2.08,
+    "impulse_high": 7.09,
+    "resistance": 6.78,
+    "sweep_low": null,
+    "reclaim_level": 2.0904,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 19.0%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 4.2746$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "bull_flag",
+      "name_ar": "علم صاعد",
+      "tf": "1D",
+      "confidence": 0.85,
+      "bias": "bullish",
+      "description_ar": "علم صاعد: سارية بارتفاع 164% من 2.170 إلى 5.720 ثم تصحيح مضبوط بنطاق 96.4% وارتداد 22% من السارية. اختراق 7.090 يفتح استكمال السارية.",
+      "levels": {
+        "flag_high": 7.09,
+        "flag_low": 3.61,
+        "pole_target": 10.64
+      },
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "1D",
+      "confidence": 0.85,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 3 قاع صاعد منذ بداية القاعدة (2.080 → 3.860) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 2.08,
+        "last_low": 3.86
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 0% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "1D",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 3.610 بتاريخ 2026-10-08 وقاع 3.820 بتاريخ 2026-10-20 بفارق 5.8%، وخط العنق عند 7.090 (96.4% فوق القاع). ننتظر إغلاقاً فوق 7.090 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 3.61,
+        "bottom2": 3.82,
+        "neckline": 7.09
+      },
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "1D",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-20 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 3.820 بتاريخ 2026-10-20 وقاع 3.860 بتاريخ 2026-10-22 بفارق 1.0%، وخط العنق عند 4.440 (16.2% فوق القاع). تم اختراق خط العنق → النموذج مكتمل.",
+      "levels": {
+        "bottom1": 3.82,
+        "bottom2": 3.86,
+        "neckline": 4.4399
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "bull_flag",
+      "name_ar": "علم صاعد",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "علم صاعد: سارية بارتفاع 70% من 3.795 إلى 6.455 ثم تصحيح مضبوط بنطاق 85.6% وارتداد 58% من السارية. اختراق 7.090 يفتح استكمال السارية.",
+      "levels": {
+        "flag_high": 7.09,
+        "flag_low": 3.82,
+        "pole_target": 9.75
+      },
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 2 قاع صاعد منذ بداية القاعدة (4.400 → 3.860) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 4.4,
+        "last_low": 3.86
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 3% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (ابتلاع شرائي)",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-22 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 4.92,
+    "rsi": 57.44,
+    "trend": "up",
+    "ema20": 4.3802,
+    "ema50": 4.1039,
+    "rvol": 1.14,
+    "macd_hist": 0.00564,
+    "channel_broken": false,
+    "higher_lows": 5,
+    "bullish_divergence": false,
+    "aligned": true
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-20 منفّذ في 2026-08-31 (عمر 54 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 1.34$ وصعد إلى 8.88$ (+562.7%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 76.6% من القمة 8.88$ إلى القاع المرجعي 2.08$ بتاريخ 2026-09-30 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 41.23 (تشبع بيعي و 0 جلسة تحت 30) والحالي 56.35 مع بدء التحسّن.",
+    "ثبات جلسة واحدة على القاع 2.08$ داخل نطاق 96.2% مع جفاف حجم (601% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +226.7% من إغلاق القاعدة (2.17$) إلى 7.09$ (2026-10-09) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 6.78$ (تشكّلت 2026-10-05) — على 226.0% من الدعم الرئيسي، واختُبرها السعر في 2026-10-09 عند 7.09$ وتوقف عندها بفارق 4.6% ثم تراجع.",
+    "حالة التسلسل: تجاوز المقاومة بقوة (4.6% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة.",
+    "تأكيدات فنية: MACD يتجه للتحسّن، RSI خرج من التشبع البيعي وتحسّن، 3 قاع صاعد في البنية، انطلاقة +227% بعد الثبات (التسلسل قيد التكوين)، توافق فريم 4 ساعات (اتجاه صاعد).",
+    "فريم 4 ساعات: الاتجاه صاعد، RSI 57.44",
+    "عدد الأسهم 3.11M — الفلوت 1.58M سهم.",
+    "البيع المكشوف 2.7% من الفلوت (أيام التغطية —).",
+    "أبرز نموذج فني: علم صاعد — علم صاعد: سارية بارتفاع 164% من 2.170 إلى 5.720 ثم تصحيح مضبوط بنطاق 96.4% وارتداد 22% من السارية. اختراق 7.090 يفتح استكمال السارية.",
+    "أخبار سلبية: Veea Inc. announces reverse stock split | Veea Inc. announces reverse stock split - GlobeNewswire",
+    "محفزات إيجابية: Veea Secures Landmark Smart Community Agreement with La Estadia Community for Ag | Veea Secures Smart Community Agreement for SecureConnect and AI Video Analytics "
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

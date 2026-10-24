@@ -1,0 +1,934 @@
+{
+  "symbol": "YMT",
+  "name": "Yimutian Inc.",
+  "sector": "Technology",
+  "industry": "Software - Application",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-23",
+  "last_close": 0.549,
+  "change_pct": 2.04,
+  "dollar_volume": 4500829.0,
+  "rs_found": true,
+  "rs_date": "2026-08-27",
+  "rs_age_days": 58,
+  "rs_ratio_str": "1-for-16",
+  "rs_ratio": 16.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 3.05,
+  "spike_high": 3.45,
+  "spike_pct": 13.1148,
+  "spike_date": "2026-08-27",
+  "decline_pct": -85.4782614434524,
+  "peak_date": "2026-08-27",
+  "bottom_price": 0.532,
+  "bottom_date": "2026-10-22",
+  "base_sessions": 0,
+  "base_high": 0.72,
+  "base_low": 0.532,
+  "base_range_pct": 35.3383,
+  "base_broken": true,
+  "volume_dryup": 0.302,
+  "atr_pct": 43.12,
+  "rsi_now": 19.11,
+  "rsi_trough": 18.39159091837884,
+  "rsi_trough_date": "2026-10-22",
+  "rsi_sessions_below_30": 38,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": 0.03761,
+  "channel_slope_pct": -5.161,
+  "channel_upper": 1.5435,
+  "channel_broken": false,
+  "rvol": 0.3,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "0 جلسة ثبات على الدعم 0.532 — القاع مكسور ⚠",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+33.8% من 0.538 إلى 0.720",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 0.720 (على 35.3% من الدعم 0.532) — توقف السعر عندها بفارق 0.0%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 33.83,
+  "impulse_high": 0.72,
+  "impulse_date": "2026-10-23",
+  "resistance_level": 0.72,
+  "resistance_distance_pct": 35.34,
+  "resistance_date": "2026-10-23",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 0.5347,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.532,
+  "support_hold_ok": false,
+  "base_close": 0.538,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    2.81,
+    2.83,
+    2.5,
+    2.22,
+    1.89,
+    2.12,
+    2.23,
+    2.12,
+    2.2,
+    2.24,
+    2.2,
+    2.02,
+    2.06,
+    2.02,
+    2.0,
+    1.93,
+    2.03,
+    1.84,
+    1.78,
+    1.81,
+    1.77,
+    1.79,
+    1.25,
+    1.12,
+    1.12,
+    1.25,
+    1.3,
+    1.17,
+    1.1,
+    0.991,
+    0.894,
+    0.876,
+    0.815,
+    0.705,
+    0.6,
+    0.62,
+    0.591,
+    0.582,
+    0.538,
+    0.549
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 25330941.0,
+  "float_shares": 60086.0,
+  "market_cap": 13938051.0,
+  "avg_volume": 1076729.0,
+  "insider_pct": null,
+  "institutional_pct": 0.16,
+  "short_pct_float": 0.78,
+  "short_as_of": "1790726400",
+  "short_shares": 176487.0,
+  "days_to_cover": 0.08,
+  "short_change_pct": 512.2,
+  "short_volume_ratio": 0.316,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "YMT",
+      "date": "2026-10-23",
+      "type": "other",
+      "title": "Nasdaq Confirms Yimutian’s Return to Compliance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-confirms-yimutian-return-compliance-161500251.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-10-23",
+      "type": "other",
+      "title": "Nasdaq Confirms Yimutian’s Return to Compliance - The Manila Times",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPLUpVaFU2bnAwUWp3d3RzOHd3WnNfMEdNMVR1Z0tqaFpzMW5zbTJLWUVUUXlGYXR3M3h1dU5IS0FXM21zanI2TVhILWktZ09ia1prU1pQUEUzMF9oOUFISDZtRXB5YVpoZHY2QV9WUEZMcGtueXRBMzJWdWFSTmZieVJHMU4xWWtGY3owcHZBUGZKV0RTOU1neXcxZXFpUEpmcDNhdEFaSWNMbUluNEplSmlGSTNPZldZUWdUbdIBwgFBVV95cUxNUUxlVzItLUNVRjNuaU5fYUhtU3RvbWp1dHRfZXk5N2swYWMtWkF4QlppZnIzVjVyY3NWUEhHa2QwWk0tOTJ4VGxmZFlEaVJZektfWmRDME4zMXFfN3J1UkRleTFONTZkaWI0UnF2X1hJeVltRDlRTXItQ1NZZnpFRlljR2g1bVRNai1NQUxkV29QcmpyTnVSNWs4aVBpR2FCbjh6VE0zYUZYV2tnOEx5ZjRoak9WV1Q5akEweTc3Vld3UQ?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-10-23",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — REPORT OF FOREIGN PRIVATE ISSUER",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026112091/ea0309501-6k_yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "Why Is Yimutian Stock Gaining Tuesday?",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/why-yimutian-stock-gaining-tuesday-113826010.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "Why Is Yimutian Stock Gaining Tuesday? - Yimutian (NASDAQ:YMT) - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNOThFeWNHbjhJMFJlcURNSEVmdW5JU2V5S2sybVViVzRxX2xoc1BJUktNMDJXY05xV2NhSUZwSVJ2aFJXbGRUMFhLZ2huLVgtSjlJdjhESEg2aV9wNkVLb0EtaHE1enk5LWo0aVpFSTk0ZS1kSDQ5Q3J0SlRndGt5eDFqUFN2ekhITjRRSlNHRFZRejJIN0czSURWTGdaRlA2Mnc?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "YMT Stock Slides As Volatility And Weak Financials Rattle Traders - timothysykes.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBDSkFpODJsaS1TZy1Gc0taZzdKMVVKX1BycFRUMnB0bG1MMmx5SU1HZHEzYnZzWUdCWUNpS2gtM2ZpQmJGczh0UDk1N09PRFc4dmVGdFpFeDRmc2tnUXFBNzFtaHlkWjNXSEdaVUxzSEY?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "YMT Stock Slides As Traders Focus On Weak Balance Sheet - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE42dENfZ0JSWkRyQ3czQnFCZzFHRWcxSGVYT2FMbHdkOXU2QzN1OGZ1dTVMNDZEcE9sd2ZOZmlUVHQxM1NBLW02a1BjZ29KMl8wam8tYnFFeWRvNDNrd2JhcGFncGo1Y0ZrLWNHS2ppaS1TalFP?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "YMT Stock Slides As Volatility And Weak Fundamentals Collide - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE15dFNwQ1VlckdCeUIyMEo2MnVOZjd6VFF1NHNEYnl0aUxKeGpJb3NSZUo2eFBMRlJITW1adnUycnFQLXQ4UUlsVVBGejBudlZIM1YwU1ZLOWRTMmVfVVAzeTROWDU3RWhlTldtaWVaa0EwdW1Q?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "YMT Stock Slides As Traders Gauge Debt And Volatility - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE8yVGZlRXZKeFJHdnNjVjBqQWRKb1pBUDFmTi1uVm9FUi0td1N1eDdCQ19DQ3I5NTBVVXhpdTJHNElRU1NndXN2UHlIM1dqdElIWEVuNWxrWFpOVTlodnhSRmVBNzRFRE1iSDhSaHVHY3ljQQ?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-24",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K/A — AMENDMENT NO. 1 TO FORM 6-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026103044/ea0306546-6ka1_yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-24",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026102833/ea0306400-424b3_yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-23",
+      "type": "other",
+      "title": "9 Communication Services Stocks Moving In Wednesday's Intraday Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNYTlVY3FJdmVIWlU2MlY3T2NQTmtjeWVwQ1B3VU9idEhGYmljVEphYlJ0OF9VZmptSjFrVzNQeVVfUUU1NGVxQ3VhUW9YdWY4RVhNeWRGTDlEMWx3aXRIWWFoNGNnOERoak1FdndCTDZxb2VsLUg1QmVqWEJxX0QzcG92U2pqWkd5YWd6U1JteWV5bG9BcUVMd21UZTZHamtJU1B6cXFqQXVKU3lXVG9kR19uclhrbDZQMzFQenQ4OGoxRmlLWmdr?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-09-19",
+      "type": "other",
+      "title": "YIMUTIAN INC (YMT) Stock Chart - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1rOE9ObzFhUU8yVUZtcl9nMW9LQmFfcUtJa0x3R2RJazVlNVdtdVp1QV9SOTFqNUxOTHJOVG1zS2NnUFZnbWloTllIVmV5T3d1WVZWM2JXaXdITE54c1RUQjZCbw?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-08-06",
+      "type": "other",
+      "title": "إفصاح SEC: F-6 POS",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000119380526001031/e665681_f6pos-yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-07-10",
+      "type": "other",
+      "title": "Yimutian Inc. Receives Positive Nasdaq Listing Determination",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-receives-positive-nasdaq-061100449.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-05-22",
+      "type": "other",
+      "title": "Yimutian’s WolaiCai AI Agent Goes Live Across All Platforms: 200 Million Daily Token Consumption, Agricultural AI Revenue Exceeds US$3,000 Per Day",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/yimutian-wolaicai-ai-agent-goes-101600044.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-05-22",
+      "type": "other",
+      "title": "Yimutian Inc. Announces Submission of Hearing Request to Nasdaq and Proactive Measures to Regain Full Compliance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-announces-submission-hearing-032000322.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-05-19",
+      "type": "offering",
+      "title": "Yimutian Inc. Announces Receipt of Nasdaq Notification Regarding Market Value of Listed Securities Requirement and Nasdaq Delisting Notice Subject to Hearing Request",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-announces-receipt-nasdaq-081500573.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-05-18",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F/A — AMENDMENT NO. 1 TO FORM 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026058084/ea0291232-20f_yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-05-15",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — ANNUAL REPORT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026057895/ea0287322-20f_yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-05-07",
+      "type": "other",
+      "title": "Yimutian Launches Wolaicai Sales Assistant, an Agricultural AI Agent for Produce Trading, expecting AI initiatives to contribute over US$10 million in full-year revenue growth",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/yimutian-launches-wolaicai-sales-assistant-125400752.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-04-30",
+      "type": "other",
+      "title": "Yimutian Inc. Increased Registered ADS Facility by 200 Million Additional ADSs",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-increased-registered-ads-102100871.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-04-30",
+      "type": "other",
+      "title": "إفصاح SEC: NT 20-F — NOTIFICATION OF LATE FILING",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026050173/ea0288502-nt20f_yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-04-29",
+      "type": "other",
+      "title": "Yimutian Inc. Announces Plan to Implement Change in American Depositary Shares (ADS) to Ordinary Share Ratio",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-announces-plan-implement-103300179.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-04-29",
+      "type": "other",
+      "title": "إفصاح SEC: F-6EF",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000119380526000537/e665427_f6ef-yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-04-08",
+      "type": "other",
+      "title": "Yimutian Inc. Announces Receipt of Nasdaq Notification Regarding Minimum Bid Price",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-announces-receipt-nasdaq-082000633.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-04-08",
+      "type": "other",
+      "title": "Yimutian Inc. Reports Record Harvest Results at Wozhongtian AI-Enabled Demonstration Farms, Advancing Digital Agriculture Platform Expansion",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/yimutian-inc-reports-record-harvest-021800035.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-03-31",
+      "type": "other",
+      "title": "إفصاح SEC: 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026037313/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-03-25",
+      "type": "other",
+      "title": "Yimutian Inc. Announces Resignation of Independent Director",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-announces-resignation-independent-051700631.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-03-25",
+      "type": "other",
+      "title": "إفصاح SEC: RW — REGISTRATION WITHDRAWAL",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026034210/ea0283465-rw_yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-03-24",
+      "type": "other",
+      "title": "Yimutian Inc. Provides 2026 Strategic Update: Financing on Track, Management to Purchase No Less Than US$3 Million in Company Shares, Full-Year Revenue Expected to Reach RMB 1 Billion",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-provides-2026-strategic-104100600.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-03-09",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — PROSPECTUS",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026024962/ea0280509-424b3_yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-03-05",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/999999999526000738/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-02-13",
+      "type": "other",
+      "title": "YMT Earning Date, Earning Analysis and Earning Prediction - Intellectia AI",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE44bmpENGZkdW1KSFFIYjFFN1NRdmtGeUF4QnFFekpTeG16SVJjbjBMemVTdnhPR1prNXlQV3Y0aE5xekhpTS0tY3V3VFNlMVZxY2NsTmpIVQ?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-02-06",
+      "type": "contract",
+      "title": "Yimutian Announces Preliminary Acquisition Agreement with Premium Camellia Oil Producer Jiufeng Agriculture",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/small-business/articles/yimutian-announces-preliminary-acquisition-agreement-003500002.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2025-08-21",
+      "type": "other",
+      "title": "Yimutian Inc. American Depositary Shares (YMT) News Headlines - Nasdaq",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE0yOVhyX0x0U01xWXdlTzV5dGkxXzlvUXhhbkt5SGJuNUYtanlzRF95Tlo4SlRDRHA3Z2xNQTdnZ3pJd0dyYXo5STRkdnlsaVBWMmNnTVFPajlqOWRTVXhjYnJfSkdSR0xzTWZocnFWVXRRQQ?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2025-08-20",
+      "type": "other",
+      "title": "Yimutian Inc. (YMT) Stock Historical Prices & Data - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5LRmxvelN6VHNQZ3lya3psOEVjMjk0MFFjb3ViZTdJNi1kaUswb05kdl9WZXBOMHR3QXoxYmlHNE9IdWMtakx4SG9sUllJQ1RueUJDQ216clhzNU0?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2025-08-19",
+      "type": "other",
+      "title": "Yimutian Inc. (YMT) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9TVEJDQzBjNlA1WlpDR3dsdnlVdFlFLXVtQjZaYi1WZVBoNFI0QWprQTFGa0p3dXdXdGh4VWFiUmhXZm9NdG5PUUFPR0FxTW9R?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2025-08-19",
+      "type": "other",
+      "title": "Yimutian Inc. (YMT) stock price, news, quote and history - Yahoo Finance UK",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE51RWRKdnVHWm5xdUpoNEl5M2daSExEeFVEd1JmLVF0R1ZRdDUwLXo2TmY4NFJHVVpEN0JERW1EWlIxZERNakxpa3FSNFV0Nnlh?oc=5"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2025-08-19",
+      "type": "other",
+      "title": "Yimutian Inc. (YMT) latest stock news and headlines – Yahoo Finance - Yahoo Finance Singapore",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBCLXFucDRmXzRQZjZza01zdW5FLTl1WVdlZnBtbW0taURQVnBUcV9NT1pLeUJrZUpJSXAxZWtZRmE1akFXLVpidGViU0RGem1zeGhYd1E0QQ?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "YMT",
+      "kind": "424B3",
+      "date": "2026-09-24",
+      "title": "إفصاح 424B3 — PROSPECTUS SUPPLEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026102833/ea0306400-424b3_yimutian.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "YMT",
+      "kind": "news-offering",
+      "date": "2026-05-19",
+      "title": "Yimutian Inc. Announces Receipt of Nasdaq Notification Regarding Market Value of Listed Securities Requirement and Nasdaq Delisting Notice Subject to Hearing Request",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-announces-receipt-nasdaq-081500573.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "YMT",
+      "kind": "424B3",
+      "date": "2026-03-09",
+      "title": "إفصاح 424B3 — PROSPECTUS",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026024962/ea0280509-424b3_yimutian.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "YMT",
+      "kind": "effectiveness",
+      "date": "2026-03-05",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/999999999526000738/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "كسر القاع المرجعي — تنبيه فني لا يلغي الأهلية",
+    "⚠ كسر القاع المرجعي — احتمال استمرار الهبوط"
+  ],
+  "positive_news": [
+    {
+      "symbol": "YMT",
+      "date": "2026-02-06",
+      "type": "contract",
+      "title": "Yimutian Announces Preliminary Acquisition Agreement with Premium Camellia Oil Producer Jiufeng Agriculture",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/small-business/articles/yimutian-announces-preliminary-acquisition-agreement-003500002.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "YMT",
+      "date": "2026-09-24",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026102833/ea0306400-424b3_yimutian.htm"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-05-19",
+      "type": "offering",
+      "title": "Yimutian Inc. Announces Receipt of Nasdaq Notification Regarding Market Value of Listed Securities Requirement and Nasdaq Delisting Notice Subject to Hearing Request",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/yimutian-inc-announces-receipt-nasdaq-081500573.html?.tsrc=rss"
+    },
+    {
+      "symbol": "YMT",
+      "date": "2026-03-09",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — PROSPECTUS",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1991605/000121390026024962/ea0280509-424b3_yimutian.htm"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price",
+    "short_shares"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.549$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الأسهم المكشوفة 176,487 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.549,
+      "display": "0.5490$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.549$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 58,
+      "display": "1-for-16 · 2026-08-27 · عمر 58 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -85.4783,
+      "display": "85.48% من قمة ما بعد التقسيم · القمة 3.4500$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 18.3916,
+      "display": "أدنى RSI 18.39 (2026-10-22)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 176487.0,
+      "display": "176,487 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 176,487 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 159 يوماً (1-for-15) — خارج نافذة 60 يوماً المطلوبة",
+    "الثبات على القاع 0 جلسة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 50.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.02 · قاعدة القاع: 0.30 · آخر 3 جلسات: 0.12",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 100,
+      "weight": 25,
+      "detail": "اختبار دعم: نعم · سحب واستعادة: نعم",
+      "points": 25.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "انطلاقة +34% بعد الثبات (التسلسل قيد التكوين)",
+    "ديفرجنس إيجابي على فريم 4 ساعات"
+  ],
+  "levels": {
+    "trigger": 0.6863,
+    "entry_zone": [
+      0.538,
+      0.6863
+    ],
+    "stop": 0.549,
+    "stop_pct": -20.0,
+    "stop_structural": 0.5001,
+    "stop_structural_pct": -27.13,
+    "targets": {
+      "t1_382": 1.6467,
+      "t2_618": 2.3353,
+      "t3_full": 3.45
+    },
+    "rr_t1": 7.0,
+    "rr_t2": 12.02,
+    "risk_per_share": 0.1372,
+    "reward_t2_per_share": 1.6491,
+    "atr_pct": 43.12,
+    "bottom": 0.532,
+    "peak": 3.45,
+    "last": 0.549,
+    "base_high": 0.72,
+    "ema9": 0.6809,
+    "ema20": 1.0063,
+    "support": 0.532,
+    "impulse_high": 0.72,
+    "resistance": 0.72,
+    "sweep_low": null,
+    "reclaim_level": 0.5347,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 43.1%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.549$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -4.06% للشمعة (30 شمعة). سقف القناة عند 1.979 والسعر أسفله بفارق 72.3% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.9788,
+        "channel_mid": 1.4549,
+        "channel_lower": 1.0697
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 1% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 11% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 9.7x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "rsi_divergence",
+      "name_ar": "ديفرجنس إيجابي RSI",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ديفرجنس إيجابي على RSI: السعر سجّل قاعاً أدنى بينما RSI سجّل قاعاً أعلى → تلاشي ضغط البيع.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -3.02% للشمعة (30 شمعة). سقف القناة عند 1.187 والسعر أسفله بفارق 54.5% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.1865,
+        "channel_mid": 0.9598,
+        "channel_lower": 0.7763
+      },
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (0.855 → 0.501) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 0.8555,
+        "last_low": 0.501
+      },
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.5395,
+    "rsi": 31.17,
+    "trend": "down",
+    "ema20": 0.7229,
+    "ema50": 1.1678,
+    "rvol": 9.74,
+    "macd_hist": 0.02574,
+    "channel_broken": false,
+    "higher_lows": 1,
+    "bullish_divergence": true,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-16 منفّذ في 2026-08-27 (عمر 58 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 3.05$ وصعد إلى 3.45$ (+13.1%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 85.5% من القمة 3.45$ إلى القاع المرجعي 0.532$ بتاريخ 2026-10-22 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 18.39 (تشبع بيعي متطرف و 38 جلسة تحت 30) والحالي 19.11 ولم يتأكد التحسّن بعد.",
+    "ثبات 0 جلسة على القاع 0.532$ داخل نطاق 35.3% مع جفاف حجم (30% من المتوسط)، والقاع مكسور ⚠",
+    "الانطلاقة بعد الثبات: +33.8% من إغلاق القاعدة (0.538$) إلى 0.72$ (2026-10-23) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 0.72$ (تشكّلت 2026-10-23) — على 35.3% من الدعم الرئيسي، واختُبرها السعر في 2026-10-23 عند 0.72$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "حالة التسلسل: المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%).",
+    "تأكيدات فنية: MACD يتجه للتحسّن، انطلاقة +34% بعد الثبات (التسلسل قيد التكوين)، ديفرجنس إيجابي على فريم 4 ساعات.",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 31.17",
+    "عدد الأسهم 25.33M — الفلوت 60.1K سهم.",
+    "البيع المكشوف 0.8% من الفلوت (أيام التغطية 0.08).",
+    "أبرز نموذج فني: قناة هابطة — قناة هابطة بانحدار -4.06% للشمعة (30 شمعة). سقف القناة عند 1.979 والسعر أسفله بفارق 72.3% — ننتظر اختراقاً بإغلاق.",
+    "أخبار سلبية: إفصاح SEC: 424B3 — PROSPECTUS SUPPLEMENT | Yimutian Inc. Announces Receipt of Nasdaq Notification Regarding Market Value of",
+    "محفزات إيجابية: Yimutian Announces Preliminary Acquisition Agreement with Premium Camellia Oil P"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}
