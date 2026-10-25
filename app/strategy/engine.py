@@ -493,6 +493,28 @@ def evaluate_gam_candidate(a: Analysis, params: StrategyParams = STRATEGY) -> bo
     return True
 
 
+def _short_report_ts(value) -> "pd.Timestamp | None":
+    """يقرأ تاريخ تقرير الأسهم المكشوفة (نص تاريخ أو Unix بالثواني) أو None."""
+    if value in (None, "", "None", "nan"):
+        return None
+    try:
+        text = str(value).strip()
+        if text.replace(".", "", 1).isdigit():
+            num = float(text)
+            if num > 1e11:      # ميلي ثانية
+                num /= 1000.0
+            if num < 1e8:       # ليس تاريخاً معقولاً
+                return None
+            ts = pd.Timestamp(num, unit="s")
+        else:
+            ts = pd.Timestamp(text)
+        if ts.tzinfo is not None:
+            ts = ts.tz_localize(None)
+        return ts.normalize()
+    except (ValueError, TypeError, OverflowError):
+        return None
+
+
 # --------------------------------------------------------------------------- #
 #  كشف التقسيم العكسي
 # --------------------------------------------------------------------------- #
@@ -1513,6 +1535,17 @@ def analyze_symbol(symbol: str, hub: DataHub, params: StrategyParams = STRATEGY)
         a.short_change_pct = _r(sd.change_pct, 1)
         a.short_volume_ratio = _r(sd.short_volume_ratio, 3)
         a.short_source = sd.source
+
+    # تقارير الأسهم المكشوفة السابقة لتاريخ التقسيم العكسي مُقاسة بأسهم ما قبل التقسيم،
+    # فتبدو أكبر بمقدار نسبة التقسيم؛ نحوّلها إلى أسهم ما بعد التقسيم قبل المقارنة بالحد.
+    if a.short_shares is not None and a.short_shares >= 0 and a.rs_date and (a.rs_ratio or 0) > 1:
+        report_ts = _short_report_ts(a.short_as_of)
+        if report_ts is not None and report_ts < pd.Timestamp(a.rs_date).normalize():
+            raw_short = a.short_shares
+            a.short_shares = raw_short / float(a.rs_ratio)
+            a.notes.append(
+                f"تقرير الأسهم المكشوفة ({report_ts.date()}) سابق للتقسيم العكسي ({a.rs_date}) — "
+                f"عُدّل {raw_short:,.0f} ÷ {a.rs_ratio:g} = {a.short_shares:,.0f} سهماً")
 
     if a.short_shares is None or a.short_shares < 0:
         add_rejection(a, "missing_short_shares", "عدد الأسهم المكشوفة غير متاح/غير صالح؛ لا يمكن التحقق من شرط أقل من 20,000")
