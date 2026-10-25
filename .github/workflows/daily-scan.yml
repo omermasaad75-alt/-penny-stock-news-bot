@@ -102,8 +102,12 @@ jobs:
                                               "eligible", "watchlist", "gam_candidate", "gam_reasons",
                                               "lifecycle_ready", "lifecycle_failed",
                                               "resistance_distance_pct", "impulse_pct", "price_source", "split_source",
-                                              "fundamentals_source", "news_source", "synthetic")}
-                      for r in d["rows"][:12]],
+                                              "fundamentals_source", "news_source", "synthetic",
+                                              "phase_ar", "rejections", "missing_step", "sequence_done",
+                                              "core_price", "core_reverse_split", "core_decline",
+                                              "core_rsi", "core_short_shares",
+                                              "short_shares", "short_as_of", "rs_date", "rs_ratio")}
+                      for r in d["rows"][:60]],
               "providers": [{k: p.get(k) for k in ("name", "ok", "source_kind", "detail")}
                             for p in d["sources"]["providers"]],
               "run_url": f"{__import__('os').environ.get('GITHUB_SERVER_URL','https://github.com')}/"
@@ -139,6 +143,19 @@ jobs:
           print("**GAM (مسار ثانوي؛ غير مؤهل وليس توصية):**", " · ".join(r["symbol"] for r in gam[:8]) or "—")
           print()
           print("رفض RSI في GAM يخص بيانات السعر في المسح الحالي؛ لا توجد حالة رفض تاريخية محفوظة.")
+          print()
+          print("**كل الأسهم ذات التقسيم العكسي: المرحلة وسبب الرفض**")
+          print()
+          print("| السهم | مؤهل | المرحلة | الفلاتر الخمسة (سعر/تقسيم/هبوط/RSI/مكشوف) | سبب الاستبعاد |")
+          print("|---|---|---|---|---|")
+          def _mark(v):
+              return "✅" if v == "نعم" else "❌"
+          for r in d["rows"][:60]:
+              if r.get("rs_date") in (None, "", "—") and not r.get("eligible"):
+                  continue
+              core = "".join(_mark(r.get(k)) for k in ("core_price", "core_reverse_split", "core_decline", "core_rsi", "core_short_shares"))
+              why = (r.get("rejections") or "—").replace("|", "؛").replace("\n", " ")[:160]
+              print(f"| {r['symbol']} | {'نعم' if r.get('eligible') else 'لا'} | {r.get('phase')} | {core} | {why} |")
           print()
           print("**الرابط الثابت للجوال:** https://omermasaad75-alt.github.io/-penny-stock-news-bot/")
           PY
