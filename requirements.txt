@@ -1,3 +1,10 @@
-flask
+pandas
+numpy
+fastapi
+uvicorn[standard]
+jinja2
+python-dotenv
 requests
-pytz
+httpx
+yfinance
+pillow
