@@ -185,3 +185,6 @@ STRATEGY.min_base_sessions = _env("RSS_MIN_BASE_SESSIONS", STRATEGY.min_base_ses
 STRATEGY.max_base_sessions = _env("RSS_MAX_BASE_SESSIONS", STRATEGY.max_base_sessions, int)
 STRATEGY.rsi_oversold = _env("RSS_RSI_OVERSOLD", STRATEGY.rsi_oversold, float)
 STRATEGY.rvol_threshold = _env("RSS_MIN_RVOL", STRATEGY.rvol_threshold, float)
+STRATEGY.max_short_shares = _env("RSS_MAX_SHORT_SHARES", STRATEGY.max_short_shares, float)
+STRATEGY.min_price = _env("RSS_MIN_PRICE", STRATEGY.min_price, float)
+STRATEGY.max_price = _env("RSS_MAX_PRICE", STRATEGY.max_price, float)
