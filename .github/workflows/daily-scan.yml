@@ -125,6 +125,7 @@ jobs:
           git push -q || echo "تعذّر رفع مؤشر الحالة (سيُحدَّث في المسح القادم)"
 
       - name: ملخّص في صفحة العملية
+        continue-on-error: true
         run: |
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
           import json
@@ -154,7 +155,10 @@ jobs:
               if r.get("rs_date") in (None, "", "—") and not r.get("eligible"):
                   continue
               core = "".join(_mark(r.get(k)) for k in ("core_price", "core_reverse_split", "core_decline", "core_rsi", "core_short_shares"))
-              why = (r.get("rejections") or "—").replace("|", "؛").replace("\n", " ")[:160]
+              rej = r.get("rejections") or []
+              if isinstance(rej, (list, tuple)):
+                  rej = " ؛ ".join(str(x) for x in rej)
+              why = (str(rej) or "—").replace("|", "؛").replace("\n", " ")[:160] or "—"
               print(f"| {r['symbol']} | {'نعم' if r.get('eligible') else 'لا'} | {r.get('phase')} | {core} | {why} |")
           print()
           print("**الرابط الثابت للجوال:** https://omermasaad75-alt.github.io/-penny-stock-news-bot/")
