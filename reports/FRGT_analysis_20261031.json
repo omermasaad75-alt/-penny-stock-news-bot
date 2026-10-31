@@ -1,0 +1,1004 @@
+{
+  "symbol": "FRGT",
+  "name": "Freight Technologies, Inc.",
+  "sector": "Technology",
+  "industry": "Software - Application",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-29",
+  "last_close": 0.942,
+  "change_pct": -5.8,
+  "dollar_volume": 10962952.0,
+  "rs_found": true,
+  "rs_date": "2026-10-19",
+  "rs_age_days": 12,
+  "rs_ratio_str": "1-for-10",
+  "rs_ratio": 10.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 2.01,
+  "spike_high": 2.15,
+  "spike_pct": 6.9652,
+  "spike_date": "2026-10-19",
+  "decline_pct": -63.302328384651,
+  "peak_date": "2026-10-19",
+  "bottom_price": 0.789,
+  "bottom_date": "2026-10-28",
+  "base_sessions": 1,
+  "base_high": 1.085,
+  "base_low": 0.789,
+  "base_range_pct": 37.5159,
+  "base_broken": false,
+  "volume_dryup": 0.093,
+  "atr_pct": 94.07,
+  "rsi_now": 24.85,
+  "rsi_trough": 23.757585268023732,
+  "rsi_trough_date": "2026-10-26",
+  "rsi_sessions_below_30": 8,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": 0.33956,
+  "channel_slope_pct": -5.63,
+  "channel_upper": 3.4437,
+  "channel_broken": false,
+  "rvol": 0.1,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "انطلاقة ضعيفة (+9% — المستهدف ≈20%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 0.789",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": false,
+      "detail": "+8.5% من 1.000 إلى 1.085",
+      "state": "pending"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 1.085 (على 37.5% من الدعم 0.789) — توقف السعر عندها بفارق 0.0%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 8.5,
+  "impulse_high": 1.085,
+  "impulse_date": "2026-10-29",
+  "resistance_level": 1.085,
+  "resistance_distance_pct": 37.52,
+  "resistance_date": "2026-10-29",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 0.7929,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.789,
+  "support_hold_ok": false,
+  "base_close": 1.0,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    10.9,
+    10.7,
+    10.2,
+    9.7,
+    9.8,
+    8.7,
+    8.35,
+    7.91,
+    10.3,
+    9.77,
+    6.3,
+    5.0,
+    4.95,
+    4.9,
+    4.0,
+    3.5,
+    3.3,
+    3.03,
+    2.8,
+    2.59,
+    2.52,
+    2.45,
+    3.22,
+    2.52,
+    2.56,
+    2.94,
+    3.5,
+    2.78,
+    2.46,
+    1.87,
+    1.48,
+    1.47,
+    1.54,
+    1.34,
+    1.23,
+    1.11,
+    1.0,
+    1.16,
+    1.0,
+    0.942
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 1681420.0,
+  "float_shares": 38790.0,
+  "market_cap": 1799119.0,
+  "avg_volume": 1548764.0,
+  "insider_pct": null,
+  "institutional_pct": 0.23,
+  "short_pct_float": 3.29,
+  "short_as_of": "1792022400",
+  "short_shares": 5535.9,
+  "days_to_cover": 0.02,
+  "short_change_pct": 971.2,
+  "short_volume_ratio": 0.496,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "FedEx Freight delivers a much-needed quarterly beat. Where we stand on shares now - CNBC",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQc3VkNTRKb0tsUmlndXU4RnZQZTdMVWFOWl9MUVV4M3VFV25ZRUlWbWNLX1FQaHNUai0yOFRUTXlRS3hXV01OUmd2c3kteHRJVGxGTHJHSHN6ZER0WC1ER21SUGY1ZnZ5Tm5Tdk5oT2E2WDFnQklzaFRXSkJRQy1FNEV5YXBEQ3g3RkZQMWdtQjdBWWdSeFpmVURrRDcyckE5ZGczLURuMGRuREZnQTRGZTJhZ0g4YXNLbHRlNWVqNDBpSUpFQ1ZOT1YyYw?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Freight Technologies (NASDAQ:FRGT) Penny Stock Gains 10% Today, With Its Zayren AI Rollout and Post-Split Trading in View - kalkine.ca",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPazVJVkM3WDUxcmF2OU9YY3MySDU1Nnh5cDRKME9jdldac20taGJlWENyMDhwamt5SE9OUkVNdGVOa2FaQS1xM0tMWHFVa3cyalJIRVRXYUtqMy01dmZtXy1ON251TTNieVA1MVJQbnF2empZbkNFMG83aDVuU2tCOHB3TTNuclc0VGZLOGJORVQyNWJ6ZHNCRzVkU0J0Tk5ueTExMGpfSzdXc1BpOUx5U09Qb09aVWV3elkyUjQ5VktHR3dkVTdfY0lsWkJKakpxYlg1UzV4ZUc1cVNxLTVKZ20zNzZ5UQ?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Freight Technologies (FRGT) Stock Forum and Discussion - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixgJBVV95cUxOU21TMnFpYzI3Yml3Z00yeUxQN1hERnJZOHlrZWhVdkpqcHBxTUhSZ25JSWIzYVhTRG1UTDdsZ1FEUGpYZWMzRUtKclNaTEZKRjZjcjUxWVpxeVozeERBT1ZRMm1zTTc3TWlUaHZSNlN2d3ItTTR3RHNxU2h1MFNxSHUxcEx0WWV2Z2ZXVGlqdXZtZlR0VDlaQS1aS0p1UkpLeGZCaVpFbjBiV2hpQlYzR1JSY2p6eGxUYzA1dXU2aTNoalhsYjRXckVRRGYtT29tbi1oMG1ncURsMDBvZGd2T1d1WlU5b1RabFp2ZTY4Qmc3N0hfdHNjUjV0SC0wLW1LanBMS0Eyc2hvTHk1d2Y1bU5wUHFfTUo4MXNaQ0lXNXdRWEVQLUJZRklreFVVZUpzVFYtdVM3UVB1Mk03RldNNzBoLXRxUQ?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "Freight Technologies Expands Zayren With AI Agents That Can Negotiate With Dozens of Carriers Simultaneously and AI Enterprise Logistics Analytics",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/freight-technologies-expands-zayren-ai-123000373.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "An AI tool can negotiate 50 shipping prices at once, within customer-set limits. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQVXVjTEdRMnpkQ2dMNGNGT05ESUlfc24zbFV4M0Y0Mm5fU3h5QllFQ3ZlZVd5NTZ6V3JmVE96dmVqemdRckdPdDVxZUNJc0NwN3R2ZS1JV253aXQ2WlN4bUZjMTkxTFJUekJpbG9iWURZOEV4QXIydmZWQ3pmTGlYVkdkWFVBb3NjWjIyTGY2a2s4STZNaHpQSEFWeEotcE1JWWZLcFY5UWtLQXFGQ1FreDVsXzE?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-23",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000182049026000003/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "Freight Technologies Retires Preferred Shares and Clears 2023 Warrants as 1-for-10 Reverse Split Takes Effect",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/38327/freight-technologies-retires-preferred-shares-and-clears-2023-warrants-as-1-for-10-reverse-split-takes-effect?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "Fr8Tech Simplifies Capital Structure by Retiring Legacy Preferred Shares and Clearing 2023 Warrants",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/fr8tech-simplifies-capital-structure-retiring-131100638.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "FRGT Stock Rockets On High-Volume Breakout As Traders Circle - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPMjgwbkxUNEFKODN1cDE2Y0x0Nk0xVFBYbG5ZczZmbk02S1gxSnZxdE5KUFRSVEtUWjBGMzREQTlrRkRLdmlrSld5anBISkNCUjY3VGJZSHhMenRQWHVXbkI3cnpQN3ZTQ2VFWk1WRmQzUlJKbTBXS1R0Q09Hb2ZoUXh3?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "FRGT Stock Whipsaws Higher As Volatility Attracts Day Traders - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPU0lRYllmQ2ZLdEEwZ1JPengyek1HYkh1c0RTNHM4bExCZElBRkM2YU14X0oxUUZka0o0QU5FV0M0T2VOTGJBWEg5Ymstc0w3cXZvSUdJanNMYWNoUVdDak5ObFItSTRzNWh5WVlxS2M2SEtwYlRnWHhvdWVCWU9mdWQ0Yw?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "3.19 million preferred shares were exchanged for stock rights at Freight Technologies. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNckxsZ1VOeDB0VTRIVXFzbUtYd3M2S2J6eFRKU0NoclEzWm5ldUg4SzR3SGQzdXNzWXVWUGhmZGhCQjBRMnlWNzJ5RTdOQ0Ytb1dOY0w2aG1nbUx5MER0V0ZSU3ZxLWtYX2lXRUQ5WmgtbmNmMjBxSkhYOEdJMUdiaHdiWUxWaTVGUTVDeXVtdHJiSmtXdkIySGVLVWhIMkZrYXFVQmJEM2JhQU9sdG9GR0pDY20zcGd2bktnbA?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — 6-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000149315226047518/form6-k.htm"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "$FRGT stock is down 18% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQWkdadHBuOVlLOVJES21CU0FmaE5JSWRkbm84Um1OU2R2bl96TGFNektybG1BaVpnNFY5RV80dlJMQThPRm9aUzdkYnJqN20tTkdsWnppX0hVb181VUtWSmdUVXNsSF90cEN3NDJRQ2MzMFNwMUplbTRxcDFUWlZmZVBxdUpHd05ZUGI1ZnZDSkdEalhYZ1RtMjhNNzhHTjhGRlRR?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-12",
+      "type": "other",
+      "title": "BC-Most Active Stocks",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-143015049.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-09-18",
+      "type": "other",
+      "title": "Freight Technologies Launches AI-Powered Proof-of-Delivery Validation",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/freight-technologies-launches-ai-powered-131500417.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-09-01",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — PRIMARY DOCUMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000147559726000223/xslF345X06/primary_doc.xml"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "Freight Technologies Integrates Fleet Rocket TMS with Highway to Automate Carrier Compliance and Onboarding",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/freight-technologies-integrates-fleet-rocket-131500154.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-08-13",
+      "type": "other",
+      "title": "FRGT Stock Draws Traders As AI Logistics Pivot Accelerates - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPQmtCR2Nxa3poc3NTNTRUZXplRkVSVDBZUXI0cGI2bXNQX1JHeWVTNWdzVk1SMnlYWjM3QU1adkVtb2t4d04xRmVHWkxCdjBhQlE0SzZ4WXQ3S0NBM29hMy1abUI1NFQwNFIydkRjbzFYQ0dacm1YdEJsYi10NUgxTXR5VU4?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-08-13",
+      "type": "other",
+      "title": "FRGT Stock Slides As Freight Tech Pivot Meets Liquidity Squeeze - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNOTNqYmFEejNTTXFqTjNVdG9WZW10SGdPMW5sZEExV0dEVzlBcDhPQkR3b1B1MjVmZ3BJMXpQZGltWFVBbjE0TGs3SUJIU3VYN01zREw0TVBwSFpHMFFfZkZFQUlkUzdnXzhIMjg3aFpFbEJSOFBEZTBYOEkwb3QzMHJEaEpmUQ?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-08-10",
+      "type": "other",
+      "title": "Freight Technologies Adds Native CFDI Invoicing (Timbrado) to Fleet Rocket TMS",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/freight-technologies-adds-native-cfdi-131500888.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-07-28",
+      "type": "other",
+      "title": "Freight Technologies Expands Fleet Rocket to 92 Integrated GPS Providers",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/freight-technologies-expands-fleet-rocket-131000610.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-07-15",
+      "type": "other",
+      "title": "Fr8Tech Advances AI-Native Transformation, Reduces Workforce and Raises Additional Capital",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/fr8tech-advances-ai-native-transformation-134300931.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-05-14",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000149315226023206/form20-f.htm"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-04-30",
+      "type": "other",
+      "title": "إفصاح SEC: NT 20-F — NT 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000149315226020585/formnt20-f.htm"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-04-21",
+      "type": "other",
+      "title": "Freight Technologies Formalizes Agentic AI Across the Organization to Scale Software-First Transformation",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/freight-technologies-formalizes-agentic-ai-130000811.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-04-07",
+      "type": "other",
+      "title": "Freight Technologies Launches DODA Smart, an AI-Powered Customs Compliance Platform for Mexican Trade Operators",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/freight-technologies-launches-doda-smart-103000080.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-04-02",
+      "type": "other",
+      "title": "Freight Technologies Announces Strategic Update on Transition to AI-Powered, Software-First Logistics Technology Company",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/freight-technologies-announces-strategic-transition-103000931.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-03-19",
+      "type": "other",
+      "title": "Freight Technologies Releases Pro Forma Financial Statements for JAK Solar Acquisition",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/freight-technologies-releases-pro-forma-215000272.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-03-19",
+      "type": "other",
+      "title": "إفصاح SEC: 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000149315226011498/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-03-19",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000149315226011494/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-02-24",
+      "type": "contract",
+      "title": "Freight Technologies Reports Robust Productivity Gains: AI-Native Solutions Enable 15x Domestic and 5x Cross-Border Efficiency Gains",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/freight-technologies-reports-robust-productivity-142100130.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-02-20",
+      "type": "other",
+      "title": "Freight Technologies Completes ISO 9001:2015 Annual Audit",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/freight-technologies-completes-iso-9001-140000543.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-02-19",
+      "type": "contract",
+      "title": "Freight Technologies Announces Two-Year Fleet Rocket Agreement with Marksman",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/freight-technologies-announces-two-fleet-140000295.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-01-29",
+      "type": "other",
+      "title": "Some Freight Technologies, Inc. (NASDAQ:FRGT) Shareholders Look For Exit As Shares Take 29% Pounding - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOV0FiVFBCWnQ3UkFyN3Z1OW1JSF9RUWlwWW1ZSUZmQXp5dTRRTURfUU5HdVNXUzE0RDZWOEwyRUFWenVGRGRTOFFsU0Fob21YMFlMcnpxSllBY3J2QzNmZ1RObm9jUGFlQ3NnNXFKZThmVkNDeFdFT3lVVEE1VC1HSTNsank3OU5BUDd2cTNSTW9WQzBrRXpLSzZoQjdlTHQ5d3h5Q3ZBdnFRbDl5QzhtYU9DbnpkbzRBcFl0bXJsNUJBa01pVkg4UEhWZjBjelVNMkItRFlnTC1RRDVWeVHSAeMBQVVfeXFMTmtkMTMzR3lOeFNLWlpSMUU2ZGZfMHUzeDl0VElzTy0wR3FaOU9BbTBtOHRRSkROeVA0c0dtenBZeUpFYU9UTzRhMk02c1JUS0tGYVJlcVI1djdORkF0d0M4cl9PTl80SURHQ3dROUxpUzAzNmMtTkJUWjE0VlNxNjI0cTlzRVlfR3hkUVJ5YkU2RENXay1MaEtXYWZPTFJadjJXdFotUjFiTEJfZjZqTF84cTJ0T0MycVZZMVA0REtRRHBSYXJPRDRsNzZWQ3ktZllQVmpVNFQ2c1JlMk5NRnpSY2c?oc=5"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-01-22",
+      "type": "other",
+      "title": "Freight Technologies Launches Zayren Pro with Next-Generation AI Agents",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/freight-technologies-launches-zayren-pro-140000555.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-01-13",
+      "type": "other",
+      "title": "Freight Technologies Bolsters Fleet Rocket With 19 New Integrated GPS Providers",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/freight-technologies-bolsters-fleet-rocket-140000221.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-01-12",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000182046526000003/xslSCHEDULE_13G_X01/primary_doc.xml"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2025-10-29",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K/A — 6-K/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000149315225019983/form6-ka.htm"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2025-09-22",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000149315225014408/form8-k.htm"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2025-08-25",
+      "type": "other",
+      "title": "إفصاح SEC: UPLOAD",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000000000025009071/filename1.pdf"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "FRGT",
+      "kind": "news-offering",
+      "date": "2026-10-19",
+      "title": "Freight Technologies Retires Preferred Shares and Clears 2023 Warrants as 1-for-10 Reverse Split Takes Effect",
+      "severity": "high",
+      "url": "https://investorshub.advfn.com/market-news/article/38327/freight-technologies-retires-preferred-shares-and-clears-2023-warrants-as-1-for-10-reverse-split-takes-effect?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "news-offering",
+      "date": "2026-10-19",
+      "title": "Fr8Tech Simplifies Capital Structure by Retiring Legacy Preferred Shares and Clearing 2023 Warrants",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/technology/articles/fr8tech-simplifies-capital-structure-retiring-131100638.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "delay",
+      "date": "2025-08-14",
+      "title": "تأخير في تقديم NT 10-Q (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000164117225024069/formnt10-q.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "8-K",
+      "date": "2025-08-12",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000164117225023254/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "8-K",
+      "date": "2025-07-02",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000164117225017413/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "8-K",
+      "date": "2025-05-28",
+      "title": "8-K بند 1.01,2.03,3.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000164117225012557/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "8-K",
+      "date": "2025-05-09",
+      "title": "8-K بند 2.03,3.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000164117225009373/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "8-K",
+      "date": "2025-04-30",
+      "title": "8-K بند 1.01,5.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000164117225007246/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "8-K",
+      "date": "2025-04-01",
+      "title": "8-K بند 1.01,3.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000164117225002016/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "delay",
+      "date": "2025-03-31",
+      "title": "تأخير في تقديم NT 10-K (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000164117225001732/formnt10-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "8-K",
+      "date": "2025-02-03",
+      "title": "8-K بند 1.01,3.02,7.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000149315225004617/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "FRGT",
+      "kind": "424B5",
+      "date": "2024-06-24",
+      "title": "إفصاح 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1687542/000149315224024831/form424b5.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "محفزات قادمة: 2026-10-30 FedEx Freight delivers a much-needed quarterl | 2026-10-30 Freight Technologies (NASDAQ:FRGT) Penny Stoc"
+  ],
+  "positive_news": [
+    {
+      "symbol": "FRGT",
+      "date": "2026-02-24",
+      "type": "contract",
+      "title": "Freight Technologies Reports Robust Productivity Gains: AI-Native Solutions Enable 15x Domestic and 5x Cross-Border Efficiency Gains",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/freight-technologies-reports-robust-productivity-142100130.html?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-02-19",
+      "type": "contract",
+      "title": "Freight Technologies Announces Two-Year Fleet Rocket Agreement with Marksman",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/freight-technologies-announces-two-fleet-140000295.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "Freight Technologies Retires Preferred Shares and Clears 2023 Warrants as 1-for-10 Reverse Split Takes Effect",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/38327/freight-technologies-retires-preferred-shares-and-clears-2023-warrants-as-1-for-10-reverse-split-takes-effect?.tsrc=rss"
+    },
+    {
+      "symbol": "FRGT",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "Fr8Tech Simplifies Capital Structure by Retiring Legacy Preferred Shares and Clearing 2023 Warrants",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/fr8tech-simplifies-capital-structure-retiring-131100638.html?.tsrc=rss"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.942$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.942,
+      "display": "0.9420$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.942$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 12,
+      "display": "1-for-10 · 2026-10-19 · عمر 12 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -63.3023,
+      "display": "63.30% من قمة ما بعد التقسيم · القمة 2.1500$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 23.7576,
+      "display": "أدنى RSI 23.76 (2026-10-26)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 5535.9,
+      "display": "5,536 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 166 يوماً (1-for-5) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 320 يوماً (1-for-5) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 522 يوماً (1-for-4) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 766 يوماً (1-for-25) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 999 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 1317 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 1719 يوماً (1-for-2.20264) — خارج نافذة 60 يوماً المطلوبة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "تقرير الأسهم المكشوفة (2026-10-15) سابق للتقسيم العكسي (2026-10-19) — عُدّل 55,359 ÷ 10 = 5,536 سهماً",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 49.5,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.09 · قاعدة القاع: 0.09",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 70.0,
+      "weight": 35,
+      "detail": "تباعد RSI صاعد",
+      "points": 24.5
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [],
+  "levels": {
+    "trigger": 1.1775,
+    "entry_zone": [
+      0.9232,
+      1.1775
+    ],
+    "stop": 0.942,
+    "stop_pct": -20.0,
+    "stop_structural": 0.7417,
+    "stop_structural_pct": -37.01,
+    "targets": {
+      "t1_382": 1.3089,
+      "t2_618": 1.6301,
+      "t3_full": 2.15
+    },
+    "rr_t1": 0.56,
+    "rr_t2": 1.92,
+    "risk_per_share": 0.2355,
+    "reward_t2_per_share": 0.4526,
+    "atr_pct": 94.07,
+    "bottom": 0.789,
+    "peak": 2.15,
+    "last": 0.942,
+    "base_high": 1.085,
+    "ema9": 1.2899,
+    "ema20": 2.313,
+    "support": 0.789,
+    "impulse_high": 1.085,
+    "resistance": 1.085,
+    "sweep_low": null,
+    "reclaim_level": 0.7929,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 94.1%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.942$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "rsi_divergence",
+      "name_ar": "ديفرجنس إيجابي RSI",
+      "tf": "1D",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ديفرجنس إيجابي على RSI: السعر سجّل قاعاً أدنى بينما RSI سجّل قاعاً أعلى → تلاشي ضغط البيع.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "4H",
+      "confidence": 0.8864790786380308,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 5 قمة و6 قاع؛ السقف ينحدر 5.62% للشمعة والقاع 2.84%، والسعر اخترق سقف الوتد فعلياً → انعكاس مؤكد.",
+      "levels": {
+        "resistance": 0.7988,
+        "support": 0.7849
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة، نجمة الصباح)",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-28، 2026-10-30 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -3.42% للشمعة (30 شمعة). سقف القناة عند 2.510 والسعر أسفله بفارق 58.0% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 2.5102,
+        "channel_mid": 1.7967,
+        "channel_lower": 1.286
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 6% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (1.250 → 0.940) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.25,
+        "last_low": 0.94
+      },
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 1.055,
+    "rsi": 34.38,
+    "trend": "down",
+    "ema20": 1.3188,
+    "ema50": 2.8347,
+    "rvol": 0.49,
+    "macd_hist": 0.08131,
+    "channel_broken": false,
+    "higher_lows": 3,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-10 منفّذ في 2026-10-19 (عمر 12 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 2.01$ وصعد إلى 2.15$ (+7.0%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 63.3% من القمة 2.15$ إلى القاع المرجعي 0.789$ بتاريخ 2026-10-28 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 23.76 (تشبع بيعي قوي و 8 جلسة تحت 30) والحالي 24.85 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 0.789$ داخل نطاق 37.5% مع جفاف حجم (9% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +8.5% من إغلاق القاعدة (1.0$) إلى 1.085$ (2026-10-29) — أقل من المستهدف (20%) قليلاً.",
+    "أقرب مقاومة عند 1.085$ (تشكّلت 2026-10-29) — على 37.5% من الدعم الرئيسي، واختُبرها السعر في 2026-10-29 عند 1.085$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "حالة التسلسل: انطلاقة ضعيفة (+9% — المستهدف ≈20%).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 34.38",
+    "عدد الأسهم 1.68M — الفلوت 38.8K سهم.",
+    "البيع المكشوف 3.3% من الفلوت (أيام التغطية 0.02).",
+    "أبرز نموذج فني: ديفرجنس إيجابي RSI — ديفرجنس إيجابي على RSI: السعر سجّل قاعاً أدنى بينما RSI سجّل قاعاً أعلى → تلاشي ضغط البيع.",
+    "أخبار سلبية: Freight Technologies Retires Preferred Shares and Clears 2023 Warrants as 1-for- | Fr8Tech Simplifies Capital Structure by Retiring Legacy Preferred Shares and Cle",
+    "محفزات إيجابية: Freight Technologies Reports Robust Productivity Gains: AI-Native Solutions Enab | Freight Technologies Announces Two-Year Fleet Rocket Agreement with Marksman"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

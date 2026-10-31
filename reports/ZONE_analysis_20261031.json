@@ -1,0 +1,1058 @@
+{
+  "symbol": "ZONE",
+  "name": "CleanCore Solutions, Inc.",
+  "sector": "Technology",
+  "industry": "Information Technology Services",
+  "exchange": "ASE",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-29",
+  "last_close": 5.7,
+  "change_pct": 0.0,
+  "dollar_volume": 397562.0,
+  "rs_found": true,
+  "rs_date": "2026-10-30",
+  "rs_age_days": 1,
+  "rs_ratio_str": "1-for-60",
+  "rs_ratio": 60.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 5.7,
+  "spike_high": 5.7,
+  "spike_pct": 0.0,
+  "spike_date": "2026-10-29",
+  "decline_pct": 0.0,
+  "peak_date": "2026-10-29",
+  "bottom_price": 5.7,
+  "bottom_date": "2026-10-29",
+  "base_sessions": 0,
+  "base_high": 5.7,
+  "base_low": 5.7,
+  "base_range_pct": 0.0,
+  "base_broken": false,
+  "volume_dryup": 0.0,
+  "atr_pct": 8.68,
+  "rsi_now": 26.54,
+  "rsi_trough": 26.544220599248987,
+  "rsi_trough_date": "2026-10-29",
+  "rsi_sessions_below_30": 1,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": 0.10619,
+  "channel_slope_pct": -1.553,
+  "channel_upper": 8.0483,
+  "channel_broken": false,
+  "rvol": 0.0,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "بانتظار جلسات ما بعد الثبات",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [],
+  "impulse_pct": null,
+  "impulse_high": null,
+  "impulse_date": null,
+  "resistance_level": null,
+  "resistance_distance_pct": null,
+  "resistance_date": null,
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": null,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": null,
+  "support_hold_ok": false,
+  "base_close": 5.7,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": null,
+  "spark": [
+    8.91,
+    9.264,
+    9.0,
+    9.282,
+    9.096,
+    8.82,
+    8.496,
+    7.758,
+    8.34,
+    8.652,
+    8.148,
+    7.896,
+    8.16,
+    8.7,
+    7.998,
+    7.794,
+    7.614,
+    7.662,
+    7.794,
+    7.608,
+    7.896,
+    7.728,
+    7.938,
+    7.92,
+    7.812,
+    7.83,
+    7.032,
+    6.78,
+    6.9,
+    7.14,
+    5.7,
+    5.7,
+    5.7,
+    5.7,
+    5.7,
+    5.7,
+    5.7,
+    5.7,
+    5.7,
+    5.7
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": null,
+  "shares_out": 8498215.0,
+  "float_shares": 8209292.0,
+  "market_cap": 32293216.0,
+  "avg_volume": 7668722.0,
+  "insider_pct": null,
+  "institutional_pct": null,
+  "short_pct_float": 2.77,
+  "short_as_of": "1792022400",
+  "short_shares": 3827.9333333333334,
+  "days_to_cover": 1.71,
+  "short_change_pct": 79.2,
+  "short_volume_ratio": 0.576,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Zone Frontier Inc. Provides Shareholder Update on Minnesota Execution and Debt Financing Progress, Completed Strategic Transformation, Insider Share Purchases and Texas Project",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zone-frontier-inc-provides-shareholder-123000180.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-30",
+      "type": "offering",
+      "title": "Zone Frontier completes 1-for-60 reverse stock split - Investing.com",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxObl9Zd0xLVThNYXdVTVQzTFRrWXpWd0w3X2NWNjI3b1RicFFYcEloLXhFNnRCZngtcnp0Zmt0aldxU056X2FMLXVSYUhNMkJqcmFOTDczaTJWcVQ1Q0wzS1dpaDhGQVZXNkEydzRKbTZ0a3FZQzhpUF9VSC1LNkVBLW9uYzBFQnhOYVJ3M2lTTmk2UDQzaWRkLTFMMjFId3hsaGFTQ3h2V2xSX3c?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "$ZONE stock is down 30% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQdDZvSWZXanZYd054cjBlV3VGMHdQNGROYjVHVkw5T0xtZzNGZjFReFV0MHRfdWRoUDIzaWxaa25EaUpvekxXbVEtQ01aMjloci1veERpQUhaa0tDc3pWbmdOaW1IQ2Jza2RKUHJyWVlERWlPbFN3eHY1bVU0cUNESFYzMmloRnZaSERWeVJmVWQ2UzhsY3FrYmtDbU8tZUU1eXhZ?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "S&P 500 Ends Three-Day Surge as Alphabet Shares Plunge: Greed Index Remains in ‘Fear’ Zone - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQRDluMFBBQ2tXcVFtdDVLMjlYZF9tSmRSUndZUFZUNXBHMmZLSkwtcjQtY0wzYTFZYjg2R01DQ1oyN2FSR2Ixd19LUGtLdlg2T295eVpFOG81LUdGNXVBWjJsb1BmWFBDVktUMm9CbksyQkFlNEZqWTUzMzZBclpsR3NycnBsLVFEMHZVSFc1N0I1TDBkSVJSU2k2ZWRlQ3VUTEpoZDR2aEtGLW5DcllYSTVoLU1YcS1iVmgwRkwzRDBabUxjWGhwN0kxTGxOSTdQa0F6RmtFckZqb0FXWEZGVEdBdw?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Euro Zone Growth Puts Metso Stock And Industrial Shares In Focus - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPOUg1V3VYR1FYUVdXTFQtZFJicktpLXhfaTNBOVZQajl2WE9aV2dOQ3h4YkZvMnVkc3RsVFRqQWMxVHNiOFBuZHZnWkpmMHFIYjRzTWh6X3EyaFdOVWhNSWIzMmY1MjBzT05mNUpPcUFja0x3UUF2cmswb01JVklLa1l1Z1NQUzdsTTZoTy1jenlncXN2Nll0cTdySEVYeTg3U2JmVFduZFZGY3E4NjI1ZmpYZkhJVEdaX0k0U2MyMjVCMlhRbkZqd0VaTFFpNk9HTDNEM19rNUhOb3M1VmVn0gHkAUFVX3lxTFAtVXhoRWtOalh0YjZhUTUxbHlMZjdsc1FuUm9VRUZmSkktNXB5dGxScmlONVhMblJEWm8zUzluNVVhVElaRGxZYk5BenlrR0pGNHJNa3Z6M2FPekFqSG1NeVh5LXN5TlZIclRfcXEzM1lHd09mZ292S2lvaHJ6bWlYR2pNckp0M0xIaTFNMWpNZzhRVUROQmdoaUZVelJQMGREeTFJbjFMaldBLWQtY2V4dWQ2SXRlM3NSMVhjdHExQ09rZkVwVmNpUHF0U0piNnhsa3YwRUR0eFVMM2Zsbkt2bkJQNA?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Zone Frontier Inc. Provides Shareholder Update on Minnesota - GlobeNewswire",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxPeGN0UUpxNEk0WC1hd1N5WUxjRExya3hub1ZSR09sZ3ZCS1FJeHczc2NBNGMxUTQ2UEFQbmFtWDNKUlV1WEpDSnZURXFzZzVqVTQ0aGFwMkpXMjJNS1Q2YXFUajZfQTZUSk5zTlVlTEl3TGpSRlZmMVZORWY5NmEyUVI4ZEpmYnJHNFptZEhlTGh2Zm9ORlVueDJTV0dqUDkwYnZ6ams0Z3dUaVdWa1VDNkl3MnNFSTFhSFVOeTNxWHo3c1RjbHNWdmxhRU9DV05NejFmQVVnZWVidFYtaWczUFZqV1R5VkJqcjdFT2hNSWVEM1JxcHY3dkY5VWhLU2FlRWwwdWllZXIwaTAwczNKZ3NUeDFjMUhna251ODFrLVlxZmo5M3BwbV9mX0ZsSHV3Zm01NnF3QXFaWWNOOVdfZVdHODJzYk9lXzNIUWhpRU9BejA0SjE3TkF0SkU0ZXUtUG9F?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Selling Stock or Property Before December 31, 2026? When You Fund an Opportunity Zone Investment Could Change When You Pay the Tax - 24/7 Wall St.",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQOTAxUFVyZ3lIR2p4WThKbW5hd0NWOUdWYXNyUXpYOEF6YS1EdDhsWm5XZ19QQUVVUnFFdHpXYmJkVURnVkNUSFFzTWtTSVVUWEN5TnE3ZklReFNRczczQlRkR2lPUUI1dUxydl9SY0lwUDVtM0dLRFdFeGtiZkNMMkxjR19mRDNyNkxadVFhcUNWNGJlSEtld2lzWHh6dlM4NVF3QmJoSHVJS0RaX0VFNDR6S3djREotb1pseEtVWlhSVVJHZEpUUzlGbmxhOXRIUXRBM2lGZmw0R0RtTlNrb1NhcTlsX01CT3Ezdi1kSnhrcjFCbzh3NHkyTEY3N2owVXNSSFkydWcycWM?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — CURRENT REPORT",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026113843/ea0310062-8k_zone.htm"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-28",
+      "type": "offering",
+      "title": "Zone Frontier To Carry Out 1-for-60 Reverse Stock Split On October 30th, 2026 - Moomoo",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNVXZScy1UVEViNkVzdGxzWmpBRUpjaXhTckpoZ215ZDlzU2FrbW40WEdQSnBBZ3RMdWV5TVFKNGkwTUJObnJmc1NuMWJHV1BlSTZXMTZOM0RhNVU2d0xueFY5emREVXA2SHJZLTBZNHlMRENuZ0hNV1dSTkJwYUVjTmZsbV93VmxkNVU1VWhLTEJEeUItMWNjRQ?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-28",
+      "type": "other",
+      "title": "Bay Area Stock Risers: Saint Francis gaining momentum, title clinching Redwood and Half Moon Bay among Week 9's movers - West Coast Preps",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9xdkF4MGc4V1BROEl2ZjN5V0hQOHJlSDFXT25KTS1ERWJKbWF3M0syc2s1ajZEenRPTDB2SmJmaTVQS1ROUUZaZVM4MFFVampvcHJ4WXhlYXpwZGdHN01mTEFIcldHZ1E?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-28",
+      "type": "other",
+      "title": "TTM Technologies: The Market Is Punishing The Cash Flow, But The Stock Is In An Interesting Zone - Seeking Alpha",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPV18zV051TU9IaEFrb0dFN19NYnYtR1Vzd2J3N1hOSFVzbUFmN1FPdGxvSkFlYUQwb0lTd1lDZk1pdzFSRi0yZ2E0OTJHdDlnSkQ4V2xsTWFaajZrMjRMdGdXdVFnY2lsanBvcHhTNmV6N3gtUXp2ZkVrMzFlWWJISDVCXzJ1ZXB2eGxjdEUydjljZVFFeW9YUGdSWGFWREZla3RTc3VqR1lTWGxfVUxzRGVSX0sxUVNTX0tNR0FqUTVnUjYtbm1qQTNKekZVbkdL?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-28",
+      "type": "other",
+      "title": "Visa, IBD Stock Of The Day, Shows Bullish Action After Earnings Report - Investor's Business Daily",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOb0dyMXRNWWZvcXlhQXNPVEJsUjAzaWRzV3Y1NGhicm9mU3JGNmx2NnM1M0tnWTNreTlDU2ROYlJtcG5QYUhxbXJLbmg2VjFKamFpVG9ReGwtVDdsaW9GUHVaZ0tLY3FkeUhYZjlxZUdValVxYlpqS1Q3UWhEMFBHUFJR?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-28",
+      "type": "other",
+      "title": "إفصاح SEC: 10-K/A — AMENDMENT NO. 1 TO FORM 10-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026113383/ea0309882-10ka1_zone.htm"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "Why is Shoe Zone stock plunging today? - Investing.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNVl93RzhLbjh2UHhuTmpuTGFwZDZoWVJDOWJ3M2ktLWZIRDgteXh2MzBNdmZ3b1B6V3hnMEl4OUNEWjY5ZU9IVWV2b0RfRmVaQVFET1ZxV0Z0V1R3Smp0UHR5Tkp0U3VGeFRDUUxaZFBydjF0Y21FMkgycGNhY1hGejUyOGlYa0k4ZTR0RGs5c0NQaUMtQjVwd1dLVVgzUUY5?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-26",
+      "type": "other",
+      "title": "IBD Stock Of The Day: Software Stock Elastic Rises In Buy Zone After 150% Rally - Investor's Business Daily",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQQ1MzdVN6UmNRci16Y0dvWEIxeGRRLVFCekZMQ1FXaDVranBrQ0diZXZHZHVzZDZnY1ZRcnBkNWVNMVdGUEhJV3FKRkk3SkExem1yb0pySXpLUnJZcWd4eG50MHA2cDhyWTk3Q0VsN1QweThYRmFHdnk1b1hodmhncklUcnNwZ244TzVBWFYwUl9NZw?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-26",
+      "type": "other",
+      "title": "Tesla Stock, Upgraded On SpaceX Prospects, Moves Into A Buy Zone - Investor's Business Daily",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNS09TYTRJaTJCUzM5QTYxZTN1SVpCNzdiQ1d1c0J2VnY4NG9fY3B5LUpibWxOaExMX1ptMU5XTjVoalhKeXl1aU9PdF9MWWoyXzJjak9aWV9FMWRfb1NNWkxYbWJURDF3MnZMNXpQa05LbkdtMFZ2NjZIVXVuOGRVNUJGb1pUTGFFNU5vbUc0SHNjSlk?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-26",
+      "type": "other",
+      "title": "IBD 50 Stock SharkNinja In Buy Zone Ahead Of Pivotal Third-Quarter Earnings Report - Investor's Business Daily",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5SNlpqZUpNM20tTEM4WUs1X0NBZ2x3UVEza3NsQ1pTSDZ3TE9uaHpUbGNZWU1VbTF2Q2dwa3FmcnJBYWJpTm9YZjBXWFdReVlienpCYzNiTjM4djc0NTdOSU1veXZVdw?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-22",
+      "type": "other",
+      "title": "JetBlue Enters Danger Zone as Bonds, Stock Plunge to Record Lows - Bloomberg.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOTHB0eDVPSG40ZlNCd3ZZSmhoMWpUZUNjVHAyUW13RE1VX0FaUXFSbWUzTXh0LU5tZkx3R3I0eWU3b0FDX2tUT3BvSHk4LTRObzd1Tmltdy1WZUZLdE41NzIySXlOd2VnRjFxQlg5NWY2OTBVZHhCNEJTUzVRTHdVdTNvclBqRzVDV2ZiMXRUTGZoZUtIUnY4S1BESEZ3eEtkcmRNM0VOdTZNN1pfdVZlV2RwdFQ?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "Zone Frontier Inc. Announces 1-for-60 Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zone-frontier-inc-announces-1-121900314.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "Zone Frontier announces 1-for-60 reverse stock split - TradingView",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPbTRobDV0VlFlVmJoRFFpeUp1R1E2RHZRRmtfRjJEWUw4SGJ4aDRuQjNOV28xamkzck96NWd3eXlocWFkUG9PbVpRNGNuNnRxazhwUnQyc3F1bDZnLV9fVUc5OUJWeHF6RnJkMTlTM1RIbTJvQXZYc1JQMHo5dGltUGxMQ2daSjVfVEZLWFdnN0hrRi1tajhtVmM4YkRuUUJqTVpEUndSY1RXdnpzTEllbEJRSlNvdw?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "Matson Stock Rides Uptrend Into A Buy Zone, With An Earnings Pop In Sight - Investor's Business Daily",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRmJHSDhBZEFCLVR3ZzFDWmlvYnNRTXhLZzRhYUhMY2hZRURCNlpJQU1KSTI3ZmFJWGx2eDVRT2FWb1BzT0t1ZlAzTTJaYTkzT2ZITFpCaTktWmI4QWVmR3hYZmpvTk5rdXBvU014OUtKWFh5R1ExYzNmSG12NENRUW1MYk11YXpsM251czIwQTJiYklfWGdYMU16MXE4bjRhQmpr?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "Zone Frontier Sells Legacy Cleaning Products Business, Eliminating Approximately $3 Million in Annual Cash Burn While Retaining Significant Potential Upside",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/zone-frontier-sells-legacy-cleaning-123000379.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "AI Infrastructure Stock Lights Up A Breakout. Top Funds Scoop Up Shares. - Investor's Business Daily",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMy12S05pbWhmeWlTaXZ1emhWLThia1hZcnVTcEJoT3Z2UFhBUUx6VllhdmktU19rVmFaXzN2VGJpTXdCOGRkRXhYWFgzZ1VtNEhiZWc0NlZBRXRwUm9taG1kdFUwOTF2bnBXRFFROWw4WHcyV003TURvMmlzZTBYX01BWW9oLWdsWW5kTEV0SDF4VGNPLW1GZExjX09KbnZGUFA4VnhTdlQ4SFV6aGxTbzQydzdMNjgtc2cycWtPQ1NKV0c4dXc?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "Zone Frontier Inc. Signs Long-Term Ground Lease with Purchase Option for more than 4,000 Acres in Potter County, Texas",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/zone-frontier-inc-signs-long-123000399.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-09-28",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-K — ANNUAL REPORT",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026104157/ea0306318-10k_zone.htm"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "\"Inside DOGE\" Launches Today as the First Book to Take Readers Inside the Department of Government Efficiency",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/small-business/articles/inside-doge-launches-today-first-130000894.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "Amazon stock just entered the danger zone - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOZ2RVVUtINXJyMDgxTkJxajJxWFJDdVl3c2d6dFlxRkhEYmVjQ0Q5aHQ1VU4zX0R5S0M4Qm5feVR2Yy1zWmdLcEgzZGh6eXdTeHF5UHg3ZjRiUWtxQWRKZV8wTTBoU1N3TDVTRFQyWktlLXZVRVhZRTVCQ1N4SUhfRm5NVVZXZnNNVnhHb0Z2VzJiblRHcjl0enF5N2JrYm1pYXhaTk9hQWg?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-09-01",
+      "type": "other",
+      "title": "Zone Frontier Inc. Announces Completion of Corporate Name Change",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/zone-frontier-inc-announces-completion-123000690.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "CleanCore Solutions, Inc. Announces Planned Corporate Name Change to Zone Frontier Inc.",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-inc-announces-planned-200500275.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "European shares subdued ahead of euro zone employment data; focus on Middle East - Reuters",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxObDByVlVuTmJXb3RRSnBlU0RzWWtIX1ByZzRQSmNnQ2pGazlYN3dYdFF0Z0tqTXNmMWtIWnh2cU95LVhXUVNEWVQ2RUJxUWh6dE4tM3BmdUFxWnB2VERVRXFMbVVoTWNueWxCbFpXVXhZRm5JLW1KUGVvQ1NEVEVsWTUyeUU5LWp1N0ZwUy1RZDQwSDVvb1dUTDhPTElCRGlWbkxwamhGU1FFTnp3NlhqWUxxeE8?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "إفصاح SEC: 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026090342/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000091228226001115/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-12",
+      "type": "offering",
+      "title": "CleanCore Solutions, Inc. (NYSE American: ZONE) Announces Closing of $100 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-inc-nyse-american-200500269.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-12",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026088085/ea0301704-424b5_cleancore.htm"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-11",
+      "type": "offering",
+      "title": "CleanCore Solutions, Inc. (NYSE American: ZONE) Announces Pricing of $100 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cleancore-solutions-inc-nyse-american-132800580.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-10",
+      "type": "offering",
+      "title": "CleanCore Solutions, Inc. (NYSE AMERICAN: ZONE) Announces Proposed Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-inc-nyse-american-201000831.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-07-31",
+      "type": "other",
+      "title": "This Micro-Cap Penny Stock Just Locked in a Massive AI Data Center Deal",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://www.barchart.com/story/news/3576706/this-micro-cap-penny-stock-just-locked-in-a-massive-ai-data-center-deal?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-07-29",
+      "type": "contract",
+      "title": "CleanCore Solutions, Inc. (NYSE AMERICAN: ZONE) Signs AI Colocation Services Agreement with Cerebras Systems (NASDAQ: CBRS) for a Data Center Campus in Minnesota",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-inc-nyse-american-120000096.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-07-27",
+      "type": "other",
+      "title": "CleanCore Solutions (ZONE) Appoints Tyler Hassen as CEO to Lead AI Infrastructure Buildout",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://stocktwits.com/news-articles/business/others/clean-core-solutions-zone-appoints-tyler-hassen-as-ceo-to-lead-ai-infrastructure-buildout/cZZxpzbR76q?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-07-09",
+      "type": "other",
+      "title": "CleanCore Solutions (ZONE) Announces Closing of First Data Center Project, Establishing its Critical Infrastructure Buildout for the AI Economy",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-zone-announces-closing-123000684.html?.tsrc=rss"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "ZONE",
+      "kind": "news-offering",
+      "date": "2026-10-30",
+      "title": "Zone Frontier completes 1-for-60 reverse stock split - Investing.com",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxObl9Zd0xLVThNYXdVTVQzTFRrWXpWd0w3X2NWNjI3b1RicFFYcEloLXhFNnRCZngtcnp0Zmt0aldxU056X2FMLXVSYUhNMkJqcmFOTDczaTJWcVQ1Q0wzS1dpaDhGQVZXNkEydzRKbTZ0a3FZQzhpUF9VSC1LNkVBLW9uYzBFQnhOYVJ3M2lTTmk2UDQzaWRkLTFMMjFId3hsaGFTQ3h2V2xSX3c?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "news-offering",
+      "date": "2026-10-28",
+      "title": "Zone Frontier To Carry Out 1-for-60 Reverse Stock Split On October 30th, 2026 - Moomoo",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNVXZScy1UVEViNkVzdGxzWmpBRUpjaXhTckpoZ215ZDlzU2FrbW40WEdQSnBBZ3RMdWV5TVFKNGkwTUJObnJmc1NuMWJHV1BlSTZXMTZOM0RhNVU2d0xueFY5emREVXA2SHJZLTBZNHlMRENuZ0hNV1dSTkJwYUVjTmZsbV93VmxkNVU1VWhLTEJEeUItMWNjRQ?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "news-offering",
+      "date": "2026-10-19",
+      "title": "Zone Frontier Inc. Announces 1-for-60 Reverse Stock Split",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zone-frontier-inc-announces-1-121900314.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "news-offering",
+      "date": "2026-10-19",
+      "title": "Zone Frontier announces 1-for-60 reverse stock split - TradingView",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPbTRobDV0VlFlVmJoRFFpeUp1R1E2RHZRRmtfRjJEWUw4SGJ4aDRuQjNOV28xamkzck96NWd3eXlocWFkUG9PbVpRNGNuNnRxazhwUnQyc3F1bDZnLV9fVUc5OUJWeHF6RnJkMTlTM1RIbTJvQXZYc1JQMHo5dGltUGxMQ2daSjVfVEZLWFdnN0hrRi1tajhtVmM4YkRuUUJqTVpEUndSY1RXdnpzTEllbEJRSlNvdw?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2026-10-14",
+      "title": "8-K بند 1.01,1.02,2.01,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026109483/ea0308552-8k_zone.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2026-09-30",
+      "title": "8-K بند 1.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026105332/ea0306953-8k_zone.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "424B5",
+      "date": "2026-08-12",
+      "title": "إفصاح 424B5 — PROSPECTUS SUPPLEMENT",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026088085/ea0301704-424b5_cleancore.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2026-08-12",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026088083/ea0301703-8k_cleancore.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "news-offering",
+      "date": "2026-08-12",
+      "title": "CleanCore Solutions, Inc. (NYSE American: ZONE) Announces Closing of $100 Million Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-inc-nyse-american-200500269.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "news-offering",
+      "date": "2026-08-11",
+      "title": "CleanCore Solutions, Inc. (NYSE American: ZONE) Announces Pricing of $100 Million Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cleancore-solutions-inc-nyse-american-132800580.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "news-offering",
+      "date": "2026-08-10",
+      "title": "CleanCore Solutions, Inc. (NYSE AMERICAN: ZONE) Announces Proposed Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-inc-nyse-american-201000831.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2026-06-08",
+      "title": "8-K بند 1.01,1.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026066054/ea029387401-8k_cleancore.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "424B3",
+      "date": "2026-06-04",
+      "title": "إفصاح 424B3 — PROSPECTUS SUPPLEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026065355/ea0293693-424b3_cleancore.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2026-03-10",
+      "title": "8-K بند 1.01,5.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026025719/ea0280523-8k_clean.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "S-3",
+      "date": "2025-09-24",
+      "title": "إفصاح S-3 — REGISTRATION STATEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390025091217/ea0258608-s3_cleancore.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2025-09-05",
+      "title": "8-K بند 1.01,3.02,5.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390025085107/ea0255944-8k_clean.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2025-09-02",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390025082880/ea0255456-8k_cleancore.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "effectiveness",
+      "date": "2025-08-29",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/999999999525002796/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "S-3",
+      "date": "2025-08-27",
+      "title": "إفصاح S-3/A — AMENDMENT NO. 1 TO FORM S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390025081144/ea0254801-s3a1_cleancore.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2025-06-11",
+      "title": "8-K بند 1.01,3.02,5.07,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390025053508/ea0245374-8k_cleancore.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2025-05-07",
+      "title": "8-K بند 1.01,2.03,3.02,5.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390025040633/ea0241131-8k_clean.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "ZONE",
+      "kind": "8-K",
+      "date": "2025-04-21",
+      "title": "8-K بند 1.01,2.01,2.03,3.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390025033794/ea0239041-8k_clean.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "⚠ طرح أسهم/تخفيف عالي الخطورة خلال 10 أيام: Zone Frontier completes 1-for-60 reverse stock split - Investing.com | Zone Frontier To Carry Out 1-for-60 Reverse Stock Split On October 30t",
+    "محفزات قادمة: 2026-10-30 Zone Frontier Inc. Provides Shareholder Updat | 2026-10-30 Zone Frontier completes 1-for-60 reverse stoc | 2026-10-30 $ZONE stock is down 30% today. Here's what we"
+  ],
+  "positive_news": [
+    {
+      "symbol": "ZONE",
+      "date": "2026-07-29",
+      "type": "contract",
+      "title": "CleanCore Solutions, Inc. (NYSE AMERICAN: ZONE) Signs AI Colocation Services Agreement with Cerebras Systems (NASDAQ: CBRS) for a Data Center Campus in Minnesota",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-inc-nyse-american-120000096.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-30",
+      "type": "offering",
+      "title": "Zone Frontier completes 1-for-60 reverse stock split - Investing.com",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxObl9Zd0xLVThNYXdVTVQzTFRrWXpWd0w3X2NWNjI3b1RicFFYcEloLXhFNnRCZngtcnp0Zmt0aldxU056X2FMLXVSYUhNMkJqcmFOTDczaTJWcVQ1Q0wzS1dpaDhGQVZXNkEydzRKbTZ0a3FZQzhpUF9VSC1LNkVBLW9uYzBFQnhOYVJ3M2lTTmk2UDQzaWRkLTFMMjFId3hsaGFTQ3h2V2xSX3c?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-28",
+      "type": "offering",
+      "title": "Zone Frontier To Carry Out 1-for-60 Reverse Stock Split On October 30th, 2026 - Moomoo",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNVXZScy1UVEViNkVzdGxzWmpBRUpjaXhTckpoZ215ZDlzU2FrbW40WEdQSnBBZ3RMdWV5TVFKNGkwTUJObnJmc1NuMWJHV1BlSTZXMTZOM0RhNVU2d0xueFY5emREVXA2SHJZLTBZNHlMRENuZ0hNV1dSTkJwYUVjTmZsbV93VmxkNVU1VWhLTEJEeUItMWNjRQ?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "Zone Frontier Inc. Announces 1-for-60 Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zone-frontier-inc-announces-1-121900314.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-10-19",
+      "type": "offering",
+      "title": "Zone Frontier announces 1-for-60 reverse stock split - TradingView",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPbTRobDV0VlFlVmJoRFFpeUp1R1E2RHZRRmtfRjJEWUw4SGJ4aDRuQjNOV28xamkzck96NWd3eXlocWFkUG9PbVpRNGNuNnRxazhwUnQyc3F1bDZnLV9fVUc5OUJWeHF6RnJkMTlTM1RIbTJvQXZYc1JQMHo5dGltUGxMQ2daSjVfVEZLWFdnN0hrRi1tajhtVmM4YkRuUUJqTVpEUndSY1RXdnpzTEllbEJRSlNvdw?oc=5"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-12",
+      "type": "offering",
+      "title": "CleanCore Solutions, Inc. (NYSE American: ZONE) Announces Closing of $100 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-inc-nyse-american-200500269.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-12",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026088085/ea0301704-424b5_cleancore.htm"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-11",
+      "type": "offering",
+      "title": "CleanCore Solutions, Inc. (NYSE American: ZONE) Announces Pricing of $100 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cleancore-solutions-inc-nyse-american-132800580.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZONE",
+      "date": "2026-08-10",
+      "type": "offering",
+      "title": "CleanCore Solutions, Inc. (NYSE AMERICAN: ZONE) Announces Proposed Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cleancore-solutions-inc-nyse-american-201000831.html?.tsrc=rss"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price",
+    "decline"
+  ],
+  "rejections": [
+    "سعر الإقفال 5.7$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الهبوط 0.0% أقل من الحد المطلوب 30.0%"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 5.699999,
+      "display": "5.7000$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 5.7$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 1,
+      "display": "1-for-60 · 2026-10-30 · عمر 1 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": 0.0,
+      "display": "0.00% من قمة ما بعد التقسيم · القمة 5.7000$",
+      "ok": false,
+      "data_available": true,
+      "reason": "الهبوط 0.0% أقل من الحد المطلوب 30.0%"
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 26.5442,
+      "display": "أدنى RSI 26.54 (2026-10-29)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 3827.9333,
+      "display": "3,828 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "الثبات على القاع 0 جلسة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "تقرير الأسهم المكشوفة (2026-10-15) سابق للتقسيم العكسي (2026-10-30) — عُدّل 229,676 ÷ 60 = 3,828 سهماً",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 25.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.00 · قاعدة القاع: 0.00",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن"
+  ],
+  "levels": {
+    "trigger": 5.9468,
+    "entry_zone": [
+      5.7285,
+      5.9468
+    ],
+    "stop": 5.5351,
+    "stop_pct": -6.92,
+    "stop_structural": 5.5351,
+    "stop_structural_pct": -6.92,
+    "targets": {
+      "t1_382": 5.7,
+      "t2_618": 5.7,
+      "t3_full": 5.7
+    },
+    "rr_t1": -0.6,
+    "rr_t2": -0.6,
+    "risk_per_share": 0.4117,
+    "reward_t2_per_share": -0.2468,
+    "atr_pct": 8.68,
+    "bottom": 5.7,
+    "peak": 5.7,
+    "last": 5.7,
+    "base_high": 5.7,
+    "ema9": 5.8763,
+    "ema20": 6.5038,
+    "support": 5.7,
+    "impulse_high": null,
+    "resistance": null,
+    "sweep_low": null,
+    "reclaim_level": null,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 8.7%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 5.5351$ (-6.92% من نقطة الدخول)."
+  },
+  "patterns_daily": [],
+  "patterns_4h": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -0.96% للشمعة (30 شمعة). سقف القناة عند 9.382 والسعر أسفله بفارق 58.6% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 9.3817,
+        "channel_mid": 7.4332,
+        "channel_lower": 5.8894
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 11% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.5,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 7.716 بتاريخ 2026-10-05 وقاع 7.506 بتاريخ 2026-10-08 بفارق 2.8%، وخط العنق عند 8.262 (10.1% فوق القاع). ننتظر إغلاقاً فوق 8.262 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 7.716,
+        "bottom2": 7.506,
+        "neckline": 8.262
+      },
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 3.88,
+    "rsi": 11.23,
+    "trend": "down",
+    "ema20": 6.5857,
+    "ema50": 7.6949,
+    "rvol": 0.07,
+    "macd_hist": -0.31478,
+    "channel_broken": false,
+    "higher_lows": 3,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-60 منفّذ في 2026-10-30 (عمر 1 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 5.7$ وصعد إلى 5.7$ (+0.0%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 0.0% من القمة 5.7$ إلى القاع المرجعي 5.7$ بتاريخ 2026-10-29 — أقل من شرط 30%.",
+    "RSI وصل إلى 26.54 (تشبع بيعي و 1 جلسة تحت 30) والحالي 26.54 ولم يتأكد التحسّن بعد.",
+    "ثبات 0 جلسة على القاع 5.7$ داخل نطاق 0.0%، والقاع صامد.",
+    "حالة التسلسل: بانتظار جلسات ما بعد الثبات.",
+    "تأكيدات فنية: MACD يتجه للتحسّن.",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 11.23",
+    "عدد الأسهم 8.50M — الفلوت 8.21M سهم.",
+    "البيع المكشوف 2.8% من الفلوت (أيام التغطية 1.71).",
+    "أخبار سلبية: Zone Frontier completes 1-for-60 reverse stock split - Investing.com | Zone Frontier To Carry Out 1-for-60 Reverse Stock Split On October 30th, 2026 - ",
+    "محفزات إيجابية: CleanCore Solutions, Inc. (NYSE AMERICAN: ZONE) Signs AI Colocation Services Agr"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

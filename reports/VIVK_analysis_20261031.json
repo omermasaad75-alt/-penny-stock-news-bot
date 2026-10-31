@@ -1,0 +1,1173 @@
+{
+  "symbol": "VIVK",
+  "name": "Vivakor, Inc.",
+  "sector": "Energy",
+  "industry": "Oil & Gas Integrated",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-29",
+  "last_close": 1.5,
+  "change_pct": -2.6,
+  "dollar_volume": 7513676.0,
+  "rs_found": true,
+  "rs_date": "2026-10-05",
+  "rs_age_days": 26,
+  "rs_ratio_str": "1-for-15",
+  "rs_ratio": 15.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 4.85,
+  "spike_high": 8.3,
+  "spike_pct": 71.134,
+  "spike_date": "2026-10-09",
+  "decline_pct": -86.25903706931983,
+  "peak_date": "2026-10-09",
+  "bottom_price": 1.1405,
+  "bottom_date": "2026-10-21",
+  "base_sessions": 1,
+  "base_high": 1.92,
+  "base_low": 1.1405,
+  "base_range_pct": 68.3472,
+  "base_broken": false,
+  "volume_dryup": 1.676,
+  "atr_pct": 60.52,
+  "rsi_now": 22.66,
+  "rsi_trough": 17.077474928186376,
+  "rsi_trough_date": "2026-10-21",
+  "rsi_sessions_below_30": 9,
+  "rsi_recovered": true,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": 0.55643,
+  "channel_slope_pct": -7.87,
+  "channel_upper": 5.6291,
+  "channel_broken": false,
+  "rvol": 0.07,
+  "higher_lows": 1,
+  "squeeze": false,
+  "lifecycle_stage": "المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 1.141",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+53.6% من 1.250 إلى 1.920",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 1.920 (على 68.3% من الدعم 1.141) — توقف السعر عندها بفارق 0.0%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "أدنى نقطة بعد القمة 1.280 مقابل الدعم 1.141",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": true,
+      "detail": "4 إغلاق فوق 1.146 (آخرها 2026-10-29)",
+      "state": "ok"
+    }
+  ],
+  "impulse_pct": 53.6,
+  "impulse_high": 1.92,
+  "impulse_date": "2026-10-22",
+  "resistance_level": 1.92,
+  "resistance_distance_pct": 68.35,
+  "resistance_date": "2026-10-22",
+  "pullback_type": "shallow_pullback",
+  "pullback_low": 1.28,
+  "pullback_date": "2026-10-26",
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 1.1462,
+  "reclaim_sessions": 4,
+  "reclaim_date": "2026-10-29",
+  "support_level": 1.1405,
+  "support_hold_ok": false,
+  "base_close": 1.25,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    14.083,
+    12.348,
+    13.293,
+    12.45,
+    12.75,
+    11.808,
+    10.502,
+    9.76,
+    9.12,
+    9.75,
+    9.401,
+    8.809,
+    8.2,
+    7.972,
+    8.009,
+    8.026,
+    7.947,
+    7.788,
+    7.64,
+    4.35,
+    4.644,
+    4.84,
+    4.8,
+    4.35,
+    4.01,
+    3.8,
+    2.17,
+    1.85,
+    1.65,
+    1.5,
+    1.48,
+    1.39,
+    1.27,
+    1.25,
+    1.63,
+    1.46,
+    1.32,
+    1.44,
+    1.54,
+    1.5
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 727759.0,
+  "float_shares": 542045.0,
+  "market_cap": 632859.0,
+  "avg_volume": 876182.0,
+  "insider_pct": 0.59,
+  "institutional_pct": 0.68,
+  "short_pct_float": 16.34,
+  "short_as_of": "1792022400",
+  "short_shares": 118307.0,
+  "days_to_cover": 0.07,
+  "short_change_pct": 45.1,
+  "short_volume_ratio": 0.518,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Vivakor Announces Proposed Hydrogen Plant and Fueling Station at a Texas International Airport",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-announces-proposed-hydrogen-plant-131500059.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Vivakor (NASDAQ:VIVK) Penny Stock Retreats 27% Today, Breaking Beneath Its 52-Week Low Following a Reverse Split - kalkine.ca",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNMHVwQ0k2X0VrVWE5ck5lcHNCWlNUSFJ3WmVrcWFQTXNKMG9NaWZYTUlaV2VjV2p4emYwdk9TUTc3NFJBbzZsTThfbWpYWFJLOXFZVTB1dkxwYmZ2VE04c1RkT2xDYVlxZ21oVlFFRUUzY2NCR2FrOVNSQlN0dzRkOWNZNDNZTVV4VjItbk5uTEtsX0NfNWVMMEU4ek1kMkYzdzZaNVNUY0F2VzY1anlEbXNHOVgtdXRXaVl2ZGxyR1BDMGJwOXlCX3RDbWZKMElLUXJMcg?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "Vivakor (NASDAQ:VIVK) Penny Stock Gains 5% Pre-Market on Improving Margins - kalkine.ca",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPY0xweXdHUmpDdG91SDhmcEVCUG1NQnZiZUdJN1IzWGJmclNtY3VYVzh3NmpnTHBfbVlHc1J4WDZOQkFwNTBmakN5VWlzUnpMdFdfUjdXNlJqRE4xRktzekpCUmtCeVYtUmNRa243ZVVvM0lyNV96LUtkOFdydTRCdHBTY0lJUTRfNjN1dTRvU0w1cndSLWx3dFd0VWZ6WWs0Mk5V?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "Why Do Fuel Costs Hit Differently at JetBlue (NASDAQ:JBLU) and Vivakor (NASDAQ:VIVK)? - kalkine.ca",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPVkFyRlJHZXJteU9kenQyUFEzNmJmcE84ZW5FZ2VmOHNiblE2V25NWThvak96X0RwenJsQmZ2M0NRZXQtUFpGU2NPcVhXT1NBS3k5VENpbVYtMWF1VnR1ekxJU0M0cW9JVVZaNVRrWmdEcElWSXY3SDFuS1RnaVJ1MF8weG9EcVdQejgzOXBvNUl0bFZPSEEzR1p4OTN5TmRWaDd5TUJQRVhJbXZ0MlE?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-26",
+      "type": "other",
+      "title": "Vivakor Inc (VIVK) Fundamental & Financial Data - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBDZnhuUnZBUGVLNF8wb3FBb2d2b3g3Q3czLVd3MXQyT3J1WEZBZVRnTjlLbVpoODZoNFhaWWxkcWRFM3hKcnREVzE0eEFUTThjQk83a2tZaFVXZTg?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-23",
+      "type": "contract",
+      "title": "Vivakor Completes Direct Midstream Due Diligence, Advancing Proposed $40 Million Acquisition Toward Definitive Agreement",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-completes-direct-midstream-due-130000773.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-22",
+      "type": "other",
+      "title": "Vivakor Advances Houston Remediation Processing Center Toward Q1 2027 Commercial Operations",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-advances-houston-remediation-processing-130000774.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-17",
+      "type": "other",
+      "title": "Vivakor, Inc. (VIVK) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE15bklnUUxiTWxXX2Z4M2E2Rm1jeWdYVC1mZDZWQ2t2bnlVa3ZmT3drZGVvek9sZFpLelVuX0VIVFd1aDdBV1B5RldpUC1zZlVHdjRodnZjWWdyenVTQ1ZpcENuNTJUQkQxMHc?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626011193/vivakorinc_8k.htm"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-12",
+      "type": "other",
+      "title": "Monday's session: top gainers and losers - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPTmh5TTRWLWIxZmVCdEtHaGRzY0tPbjRaZnVSTUZVV3JIUlNoODhHbEQtMjZwWEdES3dYWm1icE1OalR1V0lkMnplYk9ZekpLZFFOd2J3YlFqakRfYnlvNlZxa2Q1RmZEdW80NHV2cmFPR2NpSUtKZWY2MlFqanhkV0FYWnItV1BBeHAwUVM3NTNfOVkw?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "VIVK Stock Rockets Today: Retail Eyes Over 12X Upside After Vivakor Unveils Proposed Direct Midstream Deal",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://stocktwits.com/news-articles/markets/equity/vivk-stock-rockets-today-retail-eyes-over-12-x-upside-after-vivakor-unveils-proposed-direct-midstream-deal/cZD6tQhRBn4?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Vivakor Signs LOI for Proposed $40 Million Direct Midstream Acquisition in Permian Basin",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/37807/vivakor-signs-loi-for-proposed-40-million-direct-midstream-acquisition-in-permian-basin?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Vivakor Signs LOI for Proposed $40 Million Acquisition of Direct Midstream",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-signs-loi-proposed-40-130000449.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "Vivakor Stock Rallies on Proposed $40M Direct Midstream Acquisition - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOS082Qll6WndYTkRneTRmczFoejFINy00dzZ2LXZHLWkybGhSdEFrTmRaaUN4NjZUWUktSlNJUms1c1FndXZGRzJXMG5VeHZaZnhkWjFkZE81RzJBRWR1TWIySnFJcjVZLTdEOHNDc3o4dXdXNWhOanFRRF9oSHlOLTB6QzgzYVF1NjBVUWFEVDBWTG1XTkpXYmpzNy1sdm5KNnVHTVUxNlJreFVaOU5v?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "Vivakor Enters into Indication of Interest to Acquire Direct Midstream",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-enters-indication-interest-acquire-130000035.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "A proposed deal could add permitted capacity to dispose of about 11.5 million barrels of water monthly. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPdG1tOEJYYThCQUljRTRDVGl1d1ZJUm5tYXg4RTZHT3pFTzNvMnVDenk5MzBrZE9TZTh6Vjlud2FJMGRPTGFINS1FZGIyOUI3akszU1RVZmR3SzZnOTZER05TU0ZpVVRoeWIwWm55ckpZbFR5ZGcxUzNVY0drUEc3d2JPUkFaVmJyeTlVajROTE8zY21hdWQ4anBXM2pkM0ZCUmxaVzV2d0pkWDk4Y2dseEJ3anhIZw?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "A proposed $40 million deal could add water and oilfield-waste services to Vivakor - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPMTg5UjQ4WWljSC1hNXZEZjdjLUsyVlQzcjA5dHBnbTNpbDVXaDREU1ZTb0dfVHJmcTA0VkhubFRTeFNaWlVlZ1FZc0J0TEpRZUZJcGZtVlZZRi1yamdwRFctdVBIMjE2UmFfYWRlZ0RndnBNbkJlUEViLTExUFZPakZjRGk2b251YjZFcUtWc19UbXVfVlRSNG1IVTd0TFdVTnFSSWRlV2lSSWZHcFlVNDBaU0d5QU00OUE?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-09-30",
+      "type": "offering",
+      "title": "Vivakor Announces 1-for-15 Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/vivakor-announces-1-15-reverse-205000605.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "Vivakor (VIVK) Shares Tumble 27% After Hours: Here's Why - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPYi1hcnV3ZTRhcG5GOXhLZERvMjJZVWVrdmlYZWhaSU1xdTM0TmNpTXkzOEVTWHhJVmRlNi05eGt3U0tuLW9XQndqQ3Jja2Z4T05ueUZrT2xORHo3OTQyWGxWR0N4UEpQMkZYVGRCaFhkVlNpaXBEb2ZxYWZTRzlPMW8yUTgxUllQbWZpZTFiajhGVmJtbm41WG92SEo3dFY0elljZ2hIaF9JS1pmNkJUcw?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-09-03",
+      "type": "earnings",
+      "title": "Vivakor Provides Update on Special Dividend of Adapti Shares",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-provides-special-dividend-adapti-123000235.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "Vivakor Q3 Revenue Guidance Targets Approximately $270 Million as Supply and Trading Scales",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/35541/vivakor-q3-revenue-guidance-targets-approximately-270-million-as-supply-trading-scales?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "VIVAKOR PROVIDES Q3 2026 REVENUE GUIDANCE OF APPROXIMATELY $270 MILLION",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-provides-q3-2026-revenue-130000041.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "EXCLUSIVE: Vivakor To Recognize $270 Million in Q3 Supply & Trading Revenue Amid Crude Oil Demand",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/exclusive-vivakor-recognize-270-million-122906171.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-25",
+      "type": "other",
+      "title": "Vivakor Raises 2026 Supply & Trading Outlook to $3.5 Billion Amid Expanding Crude Oil Market Opportunities",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-raises-2026-supply-trading-130000171.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-24",
+      "type": "clinical",
+      "title": "VIVAKOR'S TRADING PLATFORM SURPASSES $2 BILLION MILESTONE",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakors-trading-platform-surpasses-2-130000912.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-21",
+      "type": "other",
+      "title": "Vivakor Reports Positive Operating Income as Second Quarter Revenue Increases 10% to $32.1 Million",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-reports-positive-operating-income-123000413.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-19",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-Q — 10-Q",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626009067/vivakor_10q.htm"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "إفصاح SEC: NT 10-Q — NT 10-Q",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626008899/vivakorinc_nt10q.htm"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-13",
+      "type": "contract",
+      "title": "Vivakor and M2i Global Announce Strategic Collaboration to Advance U.S. Critical Minerals Supply Chain",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/commodities/articles/vivakor-m2i-global-announce-strategic-131500676.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-13",
+      "type": "other",
+      "title": "EXCLUSIVE: Vivakor Targets Critical Minerals Expansion Through Potential M2i Acquisition",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/exclusive-vivakor-targets-critical-minerals-124520290.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-11",
+      "type": "other",
+      "title": "Vivakor Sees Increased Activity as Oil Pricing Jumps Due to Continuing Middle East Conflict and Rising Uncertainty in Strait of Hormuz",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-sees-increased-activity-oil-131500744.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-10",
+      "type": "other",
+      "title": "Vivakor Accelerates Crude Oil Trading Portfolio toward $2 Billion in Annualized Commercial Activity",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-accelerates-crude-oil-trading-131500802.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-07-30",
+      "type": "other",
+      "title": "$Vivakor (VIVK.US)$ Come quick—it's a triple-bagger stock! - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOR3dEbTFiRUt5NWFUMXkwYWc4U0g3bC1CeEFLZktSUVBQQVRhUlFuYjhKMzQxNmFmbHp3Y2g1ZjdzSTlDOVI1THJ3WTZKczlpSUhfYllGRkV1WjdQWFd4SWVTakxiSl9RcEFYeU91MjJOSDRZTFNoMHl2VHdXU2RheHpZY1ZFd0lYeVNOUXdmRmVPckNNZzBTQmU5Y3FaQQ?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-07-29",
+      "type": "other",
+      "title": "Vivakor Raises Crude Oil Marketing Platform Guidance to Approximately $1.5 Billion Annually",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://investorshub.advfn.com/market-news/article/33017/vivakor-raises-crude-oil-marketing-platform-guidance-to-approximately-1-5-billion-annually?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-07-21",
+      "type": "other",
+      "title": "Vivakor Expands Crude Oil Marketing Platform Beyond $700 Million in Annualized Commercial Activity (NASDAQ:VIVK) - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxONDV4QzhMcGhuVnl5QWpxMW90dTFIQjVPOGJVcmRCS25ybklCSVdLZTZhUURrRnk4ekRzX0RuendnUk9vUVpIUmZnRGV2ZlpldmpKT0JvS1N6QjBzcTVPMXVxSURQclhVVGk0S0ZLUnVZUWtWMGEzVFg5dmVmMDVXdmRZQkwweTFVbF8tSmhWNllpMTdQWldj?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-07-21",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626007718/vivakor_424b3.htm"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-07-16",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/999999999526002331/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-07-02",
+      "type": "other",
+      "title": "EXCLUSIVE: Vivakor Pushes $36 Million Olenox Asset Sale Target to July - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPOHYtZTF5bUFya0Q2VjF4OFNjNnVScTkwb19XeGktbGw2ejF4Y1BsMFFHZ3FxWWMxbnJKdFY5dUZOalFQeDh2TTdRTk9ZRWxXRHlkekpCQXFTVDFWVnRwdzZiVmdsTnh5QTZSbVZDaG04SVcxR1JfYmVjbXhlRmp0SXhZVUVmeXgxZWkzOWlsR2dST1hxYXU4?oc=5"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-06-25",
+      "type": "other",
+      "title": "إفصاح SEC: S-1/A — S-1/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626006843/vivakor_s1a.htm"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-06-10",
+      "type": "other",
+      "title": "إفصاح SEC: S-8 — S-8",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626006316/vivakor_s8.htm"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2026-10-15",
+      "title": "8-K بند 3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626011193/vivakorinc_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2026-10-09",
+      "title": "8-K بند 3.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626010995/vivakorinc_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2026-09-30",
+      "title": "8-K بند 1.01,5.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626010624/vivakorinc_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "news-offering",
+      "date": "2026-09-30",
+      "title": "Vivakor Announces 1-for-15 Reverse Stock Split",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/vivakor-announces-1-15-reverse-205000605.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "delay",
+      "date": "2026-08-14",
+      "title": "تأخير في تقديم NT 10-Q (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626008899/vivakorinc_nt10q.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2026-08-04",
+      "title": "8-K بند 3.02 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626008337/vivakorinc_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2026-07-21",
+      "title": "8-K بند 1.01,3.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626007719/vivakorinc_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "424B3",
+      "date": "2026-07-21",
+      "title": "إفصاح 424B3 — 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626007718/vivakor_424b3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "effectiveness",
+      "date": "2026-07-16",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/999999999526002331/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2026-07-10",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626007518/vivakorinc_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "S-1",
+      "date": "2026-06-25",
+      "title": "إفصاح S-1/A — S-1/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626006843/vivakor_s1a.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "S-1",
+      "date": "2026-05-14",
+      "title": "إفصاح S-1 — S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626005248/vivakor_s1.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "delay",
+      "date": "2026-03-31",
+      "title": "تأخير في تقديم NT 10-K (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626002909/vivakorinc_nt10k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2026-02-05",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626000997/vivakorinc_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2025-12-16",
+      "title": "8-K بند 3.01,3.02 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625010054/vivakorinc_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2025-11-28",
+      "title": "8-K بند 1.01,3.02,3.03,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625009516/vivakorinc_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2025-11-12",
+      "title": "8-K بند 1.01,3.02,5.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625009074/vivakor_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2025-10-31",
+      "title": "8-K بند 1.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625008779/vivakor_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "424B5",
+      "date": "2025-10-31",
+      "title": "إفصاح 424B5 — 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625008687/vivakor_424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2025-10-23",
+      "title": "8-K بند 1.01,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625008389/vivakor_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2025-09-23",
+      "title": "8-K بند 1.01,2.04,3.02 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625007614/vivakor_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "S-3",
+      "date": "2025-08-27",
+      "title": "إفصاح S-3 — S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625006778/vivakor_s3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2025-07-24",
+      "title": "8-K بند 1.01,5.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625005348/vivakor_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2025-03-21",
+      "title": "8-K بند 1.01,3.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625001988/vivakor_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VIVK",
+      "kind": "8-K",
+      "date": "2025-02-14",
+      "title": "8-K بند 1.01,3.02,5.03,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912625001020/vivakor_8k.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "محفزات قادمة: 2026-10-30 Vivakor Announces Proposed Hydrogen Plant and | 2026-10-30 Vivakor (NASDAQ:VIVK) Penny Stock Retreats 27"
+  ],
+  "positive_news": [
+    {
+      "symbol": "VIVK",
+      "date": "2026-10-23",
+      "type": "contract",
+      "title": "Vivakor Completes Direct Midstream Due Diligence, Advancing Proposed $40 Million Acquisition Toward Definitive Agreement",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-completes-direct-midstream-due-130000773.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-09-03",
+      "type": "earnings",
+      "title": "Vivakor Provides Update on Special Dividend of Adapti Shares",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakor-provides-special-dividend-adapti-123000235.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-24",
+      "type": "clinical",
+      "title": "VIVAKOR'S TRADING PLATFORM SURPASSES $2 BILLION MILESTONE",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/vivakors-trading-platform-surpasses-2-130000912.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-08-13",
+      "type": "contract",
+      "title": "Vivakor and M2i Global Announce Strategic Collaboration to Advance U.S. Critical Minerals Supply Chain",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/commodities/articles/vivakor-m2i-global-announce-strategic-131500676.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "VIVK",
+      "date": "2026-09-30",
+      "type": "offering",
+      "title": "Vivakor Announces 1-for-15 Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/vivakor-announces-1-15-reverse-205000605.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VIVK",
+      "date": "2026-07-21",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1450704/000182912626007718/vivakor_424b3.htm"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "short_shares"
+  ],
+  "rejections": [
+    "الأسهم المكشوفة 118,307 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 1.5,
+      "display": "1.5000$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 26,
+      "display": "1-for-15 · 2026-10-05 · عمر 26 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -86.259,
+      "display": "86.26% من قمة ما بعد التقسيم · القمة 8.3000$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 17.0775,
+      "display": "أدنى RSI 17.08 (2026-10-21)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 118307.0,
+      "display": "118,307 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 118,307 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 106 يوماً (1-for-20) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 221 يوماً (1-for-200) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 1720 يوماً (1-for-30) — خارج نافذة 60 يوماً المطلوبة",
+    "تسلسل «جاهز فنياً» قيد التكوّن — المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%)",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 31.5,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 0.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 1.68 · قاعدة القاع: 1.68",
+      "points": 0.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 90.0,
+      "weight": 35,
+      "detail": "وتد هابط",
+      "points": 31.5
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "RSI خرج من التشبع البيعي وتحسّن",
+    "1 قاع صاعد في البنية",
+    "انطلاقة +54% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 1.875,
+    "entry_zone": [
+      1.47,
+      1.875
+    ],
+    "stop": 1.5,
+    "stop_pct": -20.0,
+    "stop_structural": 1.0721,
+    "stop_structural_pct": -42.82,
+    "targets": {
+      "t1_382": 3.8754,
+      "t2_618": 5.5651,
+      "t3_full": 8.3
+    },
+    "rr_t1": 5.33,
+    "rr_t2": 9.84,
+    "risk_per_share": 0.375,
+    "reward_t2_per_share": 3.6901,
+    "atr_pct": 60.52,
+    "bottom": 1.1405,
+    "peak": 8.3,
+    "last": 1.5,
+    "base_high": 1.92,
+    "ema9": 1.6333,
+    "ema20": 2.9632,
+    "support": 1.1405,
+    "impulse_high": 1.92,
+    "resistance": 1.92,
+    "sweep_low": null,
+    "reclaim_level": 1.1462,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 60.5%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 1.5$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "1D",
+      "confidence": 0.8999999999999999,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 2 قمة و2 قاع؛ السقف ينحدر 15.01% للشمعة والقاع 4.31%، والسعر اخترق سقف الوتد فعلياً → انعكاس مؤكد.",
+      "levels": {
+        "resistance": 0.8513,
+        "support": 0.8759
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -6.65% للشمعة (30 شمعة). سقف القناة عند 3.478 والسعر أسفله بفارق 56.9% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 3.4779,
+        "channel_mid": 2.0394,
+        "channel_lower": 1.1959
+      },
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "1D",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (1.140 → 1.280) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.1405,
+        "last_low": 1.28
+      },
+      "status": "confirmed"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -3.69% للشمعة (30 شمعة). سقف القناة عند 3.424 والسعر أسفله بفارق 74.6% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 3.4243,
+        "channel_mid": 2.0013,
+        "channel_lower": 1.1696
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 12% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "4H",
+      "confidence": 0.6476216907421273,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 5 قمة و4 قاع؛ السقف ينحدر 4.68% للشمعة والقاع 3.70%، والسعر ما زال داخل الوتد وسقفه عند 1.087 — الاختراق فوقه هو الإشارة.",
+      "levels": {
+        "resistance": 1.0874,
+        "support": 0.7515
+      },
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-29 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (1.370 → 1.281) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.37,
+        "last_low": 1.281
+      },
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.87,
+    "rsi": 27.0,
+    "trend": "down",
+    "ema20": 1.5641,
+    "ema50": 3.4139,
+    "rvol": 1.13,
+    "macd_hist": 0.11428,
+    "channel_broken": false,
+    "higher_lows": 2,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-15 منفّذ في 2026-10-05 (عمر 26 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 4.85$ وصعد إلى 8.3$ (+71.1%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 86.3% من القمة 8.3$ إلى القاع المرجعي 1.1405$ بتاريخ 2026-10-21 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 17.08 (تشبع بيعي متطرف و 9 جلسة تحت 30) والحالي 22.66 مع بدء التحسّن.",
+    "ثبات جلسة واحدة على القاع 1.1405$ داخل نطاق 68.3% مع جفاف حجم (168% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +53.6% من إغلاق القاعدة (1.25$) إلى 1.92$ (2026-10-22) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 1.92$ (تشكّلت 2026-10-22) — على 68.3% من الدعم الرئيسي، واختُبرها السعر في 2026-10-22 عند 1.92$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "حالة التسلسل: المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%).",
+    "تأكيدات فنية: MACD يتجه للتحسّن، RSI خرج من التشبع البيعي وتحسّن، 1 قاع صاعد في البنية، انطلاقة +54% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 27.0",
+    "عدد الأسهم 727.8K — الفلوت 542.0K سهم.",
+    "البيع المكشوف 16.3% من الفلوت (أيام التغطية 0.07).",
+    "أبرز نموذج فني: وتد هابط — وتد هابط يتشكل من 2 قمة و2 قاع؛ السقف ينحدر 15.01% للشمعة والقاع 4.31%، والسعر اخترق سقف الوتد فعلياً → انعكاس مؤكد.",
+    "أخبار سلبية: Vivakor Announces 1-for-15 Reverse Stock Split | إفصاح SEC: 424B3 — 424B3",
+    "محفزات إيجابية: Vivakor Completes Direct Midstream Due Diligence, Advancing Proposed $40 Million | Vivakor Provides Update on Special Dividend of Adapti Shares"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

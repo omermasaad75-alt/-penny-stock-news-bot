@@ -1,0 +1,901 @@
+{
+  "symbol": "HUBC",
+  "name": "HUB Cyber Security Ltd.",
+  "sector": "Technology",
+  "industry": "Software - Infrastructure",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-29",
+  "last_close": 0.135,
+  "change_pct": 3.05,
+  "dollar_volume": 1106393.0,
+  "rs_found": true,
+  "rs_date": "2026-09-14",
+  "rs_age_days": 47,
+  "rs_ratio_str": "1-for-25",
+  "rs_ratio": 25.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 7.31,
+  "spike_high": 8.675,
+  "spike_pct": 18.6731,
+  "spike_date": "2026-09-14",
+  "decline_pct": -98.59365995748097,
+  "peak_date": "2026-09-14",
+  "bottom_price": 0.123,
+  "bottom_date": "2026-10-28",
+  "base_sessions": 1,
+  "base_high": 0.149,
+  "base_low": 0.123,
+  "base_range_pct": 21.1382,
+  "base_broken": false,
+  "volume_dryup": 0.821,
+  "atr_pct": 419.88,
+  "rsi_now": 20.33,
+  "rsi_trough": 20.263822762263246,
+  "rsi_trough_date": "2026-10-28",
+  "rsi_sessions_below_30": 33,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": 0.65683,
+  "channel_slope_pct": -11.437,
+  "channel_upper": 1.3181,
+  "channel_broken": false,
+  "rvol": 0.78,
+  "higher_lows": 0,
+  "squeeze": true,
+  "lifecycle_stage": "انطلاقة ضعيفة (+14% — المستهدف ≈20%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 0.123",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": false,
+      "detail": "+13.7% من 0.131 إلى 0.149",
+      "state": "pending"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": true,
+      "detail": "أقرب مقاومة 0.149 (على 21.1% من الدعم 0.123) — توقف السعر عندها بفارق 0.0%",
+      "state": "ok"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 13.74,
+  "impulse_high": 0.149,
+  "impulse_date": "2026-10-29",
+  "resistance_level": 0.149,
+  "resistance_distance_pct": 21.14,
+  "resistance_date": "2026-10-29",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 0.1236,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.123,
+  "support_hold_ok": false,
+  "base_close": 0.131,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    18.0,
+    16.8,
+    16.5,
+    15.0,
+    10.4,
+    8.525,
+    7.635,
+    6.33,
+    6.03,
+    5.165,
+    4.6,
+    6.0,
+    4.24,
+    3.21,
+    2.33,
+    1.9,
+    1.49,
+    0.995,
+    0.995,
+    1.03,
+    1.01,
+    1.0,
+    1.05,
+    0.946,
+    1.0,
+    0.99,
+    0.951,
+    0.613,
+    0.379,
+    0.386,
+    0.399,
+    0.35,
+    0.326,
+    0.3,
+    0.202,
+    0.156,
+    0.15,
+    0.145,
+    0.131,
+    0.135
+  ],
+  "resistance_tested": true,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 1795821.0,
+  "float_shares": 1445423.0,
+  "market_cap": 203646.0,
+  "avg_volume": 1339692.0,
+  "insider_pct": 0.3,
+  "institutional_pct": 0.13,
+  "short_pct_float": 13.57,
+  "short_as_of": "1792022400",
+  "short_shares": 243782.0,
+  "days_to_cover": 0.21,
+  "short_change_pct": 626.1,
+  "short_volume_ratio": 0.403,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "HUBC",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "BC-Most Active Stocks",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-143026463.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "12 Information Technology Stocks Moving In Friday's Pre-Market Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQUUVkSEtaUHVLWVB3NGpyZG9mel82dmdkaXRibXo3Qi1uNk9qWllPVVctc29nQ1ltRUxRWWNVWlhEN01STEpUdFVjVXpSUTlIdElmazZHeWlvSFpMQnd0Vnd0bFlBZk9KNlJ0UjdTUmJNaXF5T0pPYzFlMjRNNWFZN2h3Sy1GOWJaeUVHVHBJYUpYVmxRVF9wNDVBaWFHc1JOSzdxNXpxU09Xc1B5T21mM2tQN0xoM0c1dkZ4UVdoOE1XUGY4VUY0?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "HUBC Share Price Today - Hub Power Company Ltd - Investify",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE54TnFRbWhDV056UFg5OWh0NUNVZXQxTkI4QTl1SFBOMTZUY0E2QXNzNEZpd1BuQnVveTZ5U2YxaEsxVnFqZnAxTDdEQW12U2ZEYVNwekNB?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-10-28",
+      "type": "other",
+      "title": "Hub Power (KASE:HUBC) - Stock Analysis - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE0tdW9hZ1poTXVXc1dzUmRCalM3eWVwQnpEeXJqSnNhSGdneGNDOFJfT3Bmc3N1VlcxWTBFaXZ2YzJVZmYwZlE3MGJkbTVpRDl3V0Y3WWVEWlpFSF9EZzhaMlViVHdNNEo0cUpPRFZJWUYtQXhiOU40?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "HUB Cyber Security (Nasdaq:HUBC) - Stock Analysis - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBnTTJtbDlvU2dkcFlTOG84SEpKWEp4U0pjSjNYaDZUenk1S1o4dFdQOHRTWHhYZ0RsTkRDY2thTFJOQ3c5T1NuWlhQckpINXREOVNRUlhJVFNWZWxLTk14cEhZeGZWNkpKUnlHYl9pSkc0VDZ6WDdJRDcycw?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — REPORT OF FOREIGN PRIVATE ISSUER",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1905660/000121390026112826/ea0309792-6k_hub.htm"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-10-22",
+      "type": "other",
+      "title": "إفصاح SEC: 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1905660/000121390026111462/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "HUB Cyber Security Appoints Richard Paolone and Joseph Tung to its Board of Directors",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-cyber-security-appoints-richard-201500310.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-10-13",
+      "type": "other",
+      "title": "Two lawyers with U.S. company board experience join HUB as it restructures - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOLXlUNHlDdkFyd01OU3A2bEhyWGxaSXBUaW1EMFRNQ3JRS0lDeDJYQkdyWjlyZ1B1anh6b0JidVFPbkh0UmtrbERJWjFFTEVUNjdHc2lNV0pFUUVZU0RnaWJReUcxdDFuWDU4OHl3WmhHUFFGOVk5RjltdE0tdjR6VWhDenpINXhUTlRac2hyVmZuS3FpUHVOeFZ1b2lKUEtna21oZDM5YnNzT015SmFJTENfRkdHdU16LU9HNEln?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-09-25",
+      "type": "other",
+      "title": "HUB Cyber Security Announces Receipt of Nasdaq Notification Regarding Market Value of Listed Securities Requirement",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-cyber-security-announces-receipt-200000955.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "HUB Cyber Security gets Nasdaq deficiency notice; shares closed lower - TradingView",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNOGoyZjdQc2JlSGUwbjRfcHUxVDVlOHdoZ3p2V3I2YjkwVUhURGtKSi1IRVVoSEwtT2tLbWRGNk9lM1YxVTl0S1lkNlJxa0xCVXFSYkNLaDVmalYzYjZxR1JfUTJSTGV1SFliSS1yUGRxNlJ4dkdWTFRtbXB0TS1aeHFmTm5GcXpSbUppV2Jkd3hZbHNBTHFTZ0RpTFhVOENmdW0tZE9JUjhyeDlxRjVXSko0Rk1RMUFBSExlQmVGRUw2TF9NcXFpMVdwcw?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-09-18",
+      "type": "other",
+      "title": "HUB Cyber Security Executes 1-for-25 Reverse Share Split to Preserve Nasdaq Listing - The Globe and Mail",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNU1lVdXJJSFhWeWZOT08zX0s3VUtNa1BnNURxTndJS0lTQm5JbXdIQm5oZ09LSGpvakRBV1I1eC1JV1BnelpZcEFZNTh5RzlwaEsxMlFlQlp6RHdEaTNFYjVWdExrdkVhcFdKQUw0YW0zSUdQNkVKajk3UHVjSWtFYTVjRGY1b1ZKR3JkR0VTYmFwMWVtTUt2T3hRSEVpRjNubmxNZmYwenpMZ3Y1bjlBeG1qMGVENWVCVVlsZmcySzdtTWhhSl9DM1FTbGwzajNFMExGbnFZOG1YZ3lhaEx6UkF2WERBOXFvbTdEU19YSl80MXBOeUI4VHphQ3NhU3M?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-09-10",
+      "type": "other",
+      "title": "HUB Announces Reverse Share Split",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-announces-reverse-share-split-123000709.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-08-19",
+      "type": "other",
+      "title": "CommLoan Appoints Noah Hershcoviz Chief Executive Officer to Lead Its Next Stage of Scale",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/real-estate/articles/commloan-appoints-noah-hershcoviz-chief-100300420.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-08-07",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1905660/000137647426000545/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-08-04",
+      "type": "contract",
+      "title": "HUB Cyber Security Ltd. Enters into Agreement to Sell the QPoint Group for Approximately US $8.7 Million to the Malam Team Group",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-cyber-security-ltd-enters-121600041.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-08-04",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13D",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1905660/000121390026084888/xslSCHEDULE_13D_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-08-03",
+      "type": "other",
+      "title": "HUB Security Regains Full Compliance with Nasdaq Listing Requirements",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-security-regains-full-compliance-113000437.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-07-17",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — ANNUAL REPORT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1905660/000121390026079236/ea0297580-20f_hubcyber.htm"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-07-01",
+      "type": "other",
+      "title": "HUB Cyber Security Expands Into Women’s Health With Zero-Cash Acquisition of Evofem Notes, Advances Balance Sheet Turnaround",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/hub-cyber-security-expands-women-110000312.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-06-15",
+      "type": "other",
+      "title": "HUBC Stock Soars As Big Holders Disclose Growing Stakes - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPbUZud0swYzNfSzk0LUIzRzZiOEU2SWFyTGt4aDEyUEJ4ZEZ2aUpxMi1tVDMtTllLRHRFbFgwMWRsVk9pWDltQkROS1N5SndnSmNaNkpNTWJxa1BVZTNfdXRQQ2VBUEdWVWpFRjVVVV9rcTRtNUpCQWZ2MENFOU9uTw?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-06-08",
+      "type": "other",
+      "title": "$HUBC stock is down 46% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOaHhsbnduMzVVVEpTV0tQRXoxMi1lRTBsTG02U0xLSGwwYXJyMEVOemxmR2dZbnQtUi1NOTZKRF9tTXBJbFBBWkZzNVI3WkJUUVVsZVJaLTByNVVOdzFiQ3VtSUw5Q1k0d0RiNU5YRnZzOW13MUVIN2FhMl9SWnRnLWRUWDhtNHE5bkxRbTgwMEZDc1RWb2pYQnNCQUpKdlpPNWc?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-06-05",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — PRIMARY DOCUMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1905660/000147559726000050/xslF345X06/primary_doc.xml"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-06-04",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1905660/000213847926000001/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-06-03",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13D/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1905660/000213656026000004/xslSCHEDULE_13D_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-06-02",
+      "type": "other",
+      "title": "AMC, FLNC, HUBC Stocks Emerge Among Top Daily Gainers: What Fueled The Rally?",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://stocktwits.com/news-articles/markets/equity/amc-flnc-hubc-stocks-emerge-among-top-daily-gainers/cZ0iN80Revs?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-05-29",
+      "type": "other",
+      "title": "HUBC Stock Has Soared Over 350% Today — New Ownership Filings May Be the Catalyst",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://stocktwits.com/news-articles/markets/equity/hubc-stock-soared-over-350-new-ownership-filings-may-be-the-catalyst/cZgSvjTReMt?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-05-29",
+      "type": "other",
+      "title": "HUB Cyber Security (HUBC) soars 376.9% as ownership filings spark a speculative micro-float squeeze - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNUEk2NEM3OElvX0h5bHpDODdZSWNGUElpOWFmejFmVy01SFYzY2JyNnNrd2JCM1JUd2xyU2pFSTJTSW1JaF8yYzB3QjlibkowdU04M2l3VHJYcS0xejZhZ0lObExtY3ZPNW15dHpUM2pXTG1UUVc2Ykl6cVA3ODB3Y3FHdjRRNHp5ODZ3RVgwTl9FVDVRQ3ZoZ3BWMUxIVi1wYkNudktLRGF2RWRQN1F1czBoZzY3NHBTVW9KQVJHTTU2TFFCVkRHU0lRdzJzR1VOTVpCbw?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-05-21",
+      "type": "offering",
+      "title": "HUB Receives Expected Notification of Deficiency from Nasdaq Related to Delayed Filing of Annual Report on Form 20-F for Fiscal Year 2025",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-receives-expected-notification-deficiency-200500177.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-05-19",
+      "type": "other",
+      "title": "$HUBC stock is up 11% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOTERMSnhIN0cwNWFXdXFPb3F5c3dXTzljMlZ6d2RrQllCY3lQUnE4S19jYjlCWWVfSnJJNjhHc2NKYUhnYnN2Vk5iOHJHWDFlR0lkRUNVcWJFZE82QWVZd2Y4SmUwT0tMQnFMSnE3RUVScE9NbEY3aWY5U0ZMNVRsWHdPMGlMU3RtUDNKZUFEYjJGNU41Z0lkWnlNYkxfWkNC?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-04-22",
+      "type": "other",
+      "title": "What's Going On With Hub Cyber Stock Wednesday? - Hub Cyber Security (NASDAQ:HUBC) - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNVGdVS0QzMGEwNU83M2pLSy1wQ0c4dlpUQ2dXVWNxQjdBUy1IMjJ5R3djaXpjNU1nYTk3Vl9GZHFtVHFWOGkxQzhTc19NSDBuTzJ2d1J2bE85Uk5yMGtMbHJoYXZSX2NYOXhyLUVzVXhVQVhFTi1GYXgtdWFyM3FxeXFhcUpQZklQZFNIcy0xYmRPSFp0blJpbHZONzJyWnpLOTlXMTlrZkhqdw?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-04-22",
+      "type": "other",
+      "title": "ALP, ABT, HUBC Stocks Hit 52-Week Lows Today: What's Driving The Selloff? - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNQVhzRlRpTGJrM2NGTjdzUlphckxWemg0TlVjaElnYnR5RTdXMW8td2JZOVBncGFjd243RWpYYkZhUU1famJlcU9Lc0x5cVZUX3huTXVfcG11aXBRdkM4c2lnWW0tZWc0NlhvQWppZWNfcEdBTmVBRDFLTmg5Q1BUeE1DWWMxU0ZCa2MzcUdRMDJMbVh5UjRscVBDOUdsN2Y2STRKZ2NReDk3Y2JiOW1XTllCUmNnQ3luRURfU1ZjVllFeXpEMDJLa0hhLWhqdw?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-04-16",
+      "type": "other",
+      "title": "HUB Announces Reverse Share Split - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQVzFEalR2akdCeEZ0eHctZGV4NFdIb0lpSGxRNHRDaGxQMS1udm4yNVFnV0RjMXVnZzBnQzRPR3NFd21HV1dmSS1QemEtX0xzUjdyalUtTXpSZmV3Z01FVVBvbnktZ3ZYRmdDM0hXamcycFVmM29tWlhIcmNZeE5sYnNyMERySlNwRXc2d3ZURDU2bjRCTUdoR2ZRaXNWMjg?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-04-16",
+      "type": "earnings",
+      "title": "HUBC Stock Declines 35% After A Whopping Two-Day Rally – What’s Driving The Change In Momentum? - Stocktwits",
+      "sentiment": "negative",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQTnh0TGljMWVlREFLZGVpVUQzTTlLVTdqTGVFLUhkZUx2azlBRmxaaVI5N3pORm9mWnppbUlnSzFBT2FZcUFQSWdFSUc2bFZxQ3VOVEtoU3QzdEhKTlFrYkxZUWZvSDNEQVNFQUFESVhsOGVLWW5UaEhPZXp1YlFhV0Zxb3pyR2UweXNlMWNBUjdxX3VBcmFjVkdaOW9GWEhrZGZBVXhXYWpHS2l2bUZ5NFNSVW0?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-04-14",
+      "type": "other",
+      "title": "Why Is HUBC Stock Spiking After A Sharp Selloff? - Stocktwits",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOeW5BUF9QVk5NUUxlUFpCbEtlLXVZOGZ5NHpMY2ZQci1xcXAtNlp1UWh1WnZKWC1EbXEyR1JHcEhaQ2RyQ3piejlfMW1kUG1LSXNzTF9FMFZncEp0dTdfMnloN0l6RUxZUHlXRGZHUWpIVVgwZEYwMmJxUFA4bFpwM3ZFSmJ4OVZkMnVRdkF2cG9LaTRWak5tV25aU0lvQTVySjN6NVRWTHpjV1NTd0l2Mg?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-03-31",
+      "type": "other",
+      "title": "HUB Cyber Security Announces Leadership Transition",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-cyber-security-announces-leadership-203000126.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-03-04",
+      "type": "other",
+      "title": "HUB Cyber Security Ltd. (Nasdaq: HUBC) Highlights Tivani Expansion Into Defense-Grade Strategic Minerals",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/hub-cyber-security-ltd-nasdaq-141500584.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-02-27",
+      "type": "other",
+      "title": "Tivani Tier-1 Critical Minerals Project Enters Pre-Construction; HUB Cyber Security Embeds Trust Infrastructure",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/tivani-tier-1-critical-minerals-140000879.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-02-17",
+      "type": "other",
+      "title": "HUB Cyber Security Signs Term Sheet to Expand Trust Rails Infrastructure into Real-World Asset Validation with a Tier-1 Fully Permitted Critical Minerals Asset",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/hub-cyber-security-signs-term-141500473.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-02-16",
+      "type": "other",
+      "title": "Why Investors Shouldn't Be Surprised By HUB Cyber Security Ltd.'s (NASDAQ:HUBC) 44% Share Price Plunge - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOQXMzTEVrYjZqX192a3kyMnZIYTNoU1M0eDIxSWppMTNSWWRxejNOWlFfdF83QXFnakVQRWFSYkFKanY0TDl5MmkwMlMwS0c4NVA4Qk9uQ3JBWXh5NWN5dnBkWTlNcmZZS05nVjMwYzlRMGM1RUtXRUVyRVo2VWxORjczS25SdVV2TUktdW45M3hyQkUwemo4dUVQbUZjYm1kYlF2X0hUdUd3SVhSRTU5dmcyZTYtZkt3TUc2T3RsRTVGWHZzLWVvR3laTmtkODJGS1hz0gHYAUFVX3lxTE5LWmtpM2tQMUwzbk9NQWRVWktuWTMwSDdfX3NzM1U4X3FYVE9UazltajRCMzNxbkd5WjU0NGNsdXhydmFEVjNLS2ZsUjdERGswa1N6SXJTMjRLZHA2OTJCMVBZTmp1QTU1YnRNYzlneDRnU21BLVE3cEtFWWcyaWE0dFI0Qk42bC11S0tsai1pbENYWUwzb2syUGMxNnBBbmlaS0ZsYUdCXzUwNDB1a1k1ZWF5SVZzU1FLV3lvbFF2WlRpLTRwb2hzbTgzaHhuSW5TaVZYeG9TMw?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "HUBC",
+      "kind": "news-offering",
+      "date": "2026-09-25",
+      "title": "HUB Cyber Security gets Nasdaq deficiency notice; shares closed lower - TradingView",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNOGoyZjdQc2JlSGUwbjRfcHUxVDVlOHdoZ3p2V3I2YjkwVUhURGtKSi1IRVVoSEwtT2tLbWRGNk9lM1YxVTl0S1lkNlJxa0xCVXFSYkNLaDVmalYzYjZxR1JfUTJSTGV1SFliSS1yUGRxNlJ4dkdWTFRtbXB0TS1aeHFmTm5GcXpSbUppV2Jkd3hZbHNBTHFTZ0RpTFhVOENmdW0tZE9JUjhyeDlxRjVXSko0Rk1RMUFBSExlQmVGRUw2TF9NcXFpMVdwcw?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "HUBC",
+      "kind": "news-offering",
+      "date": "2026-05-21",
+      "title": "HUB Receives Expected Notification of Deficiency from Nasdaq Related to Delayed Filing of Annual Report on Form 20-F for Fiscal Year 2025",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-receives-expected-notification-deficiency-200500177.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    }
+  ],
+  "risk_flags": [
+    "محفزات قادمة: 2026-10-30 BC-Most Active Stocks | 2026-10-30 12 Information Technology Stocks Moving In Fr"
+  ],
+  "positive_news": [
+    {
+      "symbol": "HUBC",
+      "date": "2026-08-04",
+      "type": "contract",
+      "title": "HUB Cyber Security Ltd. Enters into Agreement to Sell the QPoint Group for Approximately US $8.7 Million to the Malam Team Group",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-cyber-security-ltd-enters-121600041.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "HUBC",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "HUB Cyber Security gets Nasdaq deficiency notice; shares closed lower - TradingView",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNOGoyZjdQc2JlSGUwbjRfcHUxVDVlOHdoZ3p2V3I2YjkwVUhURGtKSi1IRVVoSEwtT2tLbWRGNk9lM1YxVTl0S1lkNlJxa0xCVXFSYkNLaDVmalYzYjZxR1JfUTJSTGV1SFliSS1yUGRxNlJ4dkdWTFRtbXB0TS1aeHFmTm5GcXpSbUppV2Jkd3hZbHNBTHFTZ0RpTFhVOENmdW0tZE9JUjhyeDlxRjVXSko0Rk1RMUFBSExlQmVGRUw2TF9NcXFpMVdwcw?oc=5"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-05-21",
+      "type": "offering",
+      "title": "HUB Receives Expected Notification of Deficiency from Nasdaq Related to Delayed Filing of Annual Report on Form 20-F for Fiscal Year 2025",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hub-receives-expected-notification-deficiency-200500177.html?.tsrc=rss"
+    },
+    {
+      "symbol": "HUBC",
+      "date": "2026-04-16",
+      "type": "earnings",
+      "title": "HUBC Stock Declines 35% After A Whopping Two-Day Rally – What’s Driving The Change In Momentum? - Stocktwits",
+      "sentiment": "negative",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQTnh0TGljMWVlREFLZGVpVUQzTTlLVTdqTGVFLUhkZUx2azlBRmxaaVI5N3pORm9mWnppbUlnSzFBT2FZcUFQSWdFSUc2bFZxQ3VOVEtoU3QzdEhKTlFrYkxZUWZvSDNEQVNFQUFESVhsOGVLWW5UaEhPZXp1YlFhV0Zxb3pyR2UweXNlMWNBUjdxX3VBcmFjVkdaOW9GWEhrZGZBVXhXYWpHS2l2bUZ5NFNSVW0?oc=5"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price",
+    "short_shares"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.135$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الأسهم المكشوفة 243,782 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.135,
+      "display": "0.1350$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.135$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 47,
+      "display": "1-for-25 · 2026-09-14 · عمر 47 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -98.5937,
+      "display": "98.59% من قمة ما بعد التقسيم · القمة 8.6750$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 20.2638,
+      "display": "أدنى RSI 20.26 (2026-10-28)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 243782.0,
+      "display": "243,782 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 243,782 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 145 يوماً (1-for-20) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 194 يوماً (1-for-50) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 288 يوماً (1-for-15) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 579 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 1051 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 24.3,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 37.1,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.73 · قاعدة القاع: 0.82 · آخر 3 جلسات: 0.76",
+      "points": 9.28
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 60,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: نعم",
+      "points": 15.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [],
+  "levels": {
+    "trigger": 0.1688,
+    "entry_zone": [
+      0.1323,
+      0.1688
+    ],
+    "stop": 0.135,
+    "stop_pct": -20.0,
+    "stop_structural": 0.1156,
+    "stop_structural_pct": -31.48,
+    "targets": {
+      "t1_382": 3.3899,
+      "t2_618": 5.4081,
+      "t3_full": 8.675
+    },
+    "rr_t1": 95.44,
+    "rr_t2": 155.24,
+    "risk_per_share": 0.0338,
+    "reward_t2_per_share": 5.2394,
+    "atr_pct": 419.88,
+    "bottom": 0.123,
+    "peak": 8.675,
+    "last": 0.135,
+    "base_high": 0.149,
+    "ema9": 0.2562,
+    "ema20": 1.1865,
+    "support": 0.123,
+    "impulse_high": 0.149,
+    "resistance": 0.149,
+    "sweep_low": null,
+    "reclaim_level": 0.1236,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 419.9%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.135$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -11.57% للشمعة (30 شمعة). سقف القناة عند 1.566 والسعر أسفله بفارق 91.4% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.5662,
+        "channel_mid": 0.9729,
+        "channel_lower": 0.6043
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 24% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (ابتلاع شرائي، نجمة الصباح)",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-29، 2026-10-29 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -6.46% للشمعة (30 شمعة). سقف القناة عند 0.553 والسعر أسفله بفارق 80.2% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.5527,
+        "channel_mid": 0.3873,
+        "channel_lower": 0.2714
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 11% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.1092,
+    "rsi": 18.28,
+    "trend": "down",
+    "ema20": 0.2616,
+    "ema50": 1.7339,
+    "rvol": 0.76,
+    "macd_hist": 0.07089,
+    "channel_broken": false,
+    "higher_lows": 1,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-25 منفّذ في 2026-09-14 (عمر 47 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 7.31$ وصعد إلى 8.675$ (+18.7%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 98.6% من القمة 8.675$ إلى القاع المرجعي 0.123$ بتاريخ 2026-10-28 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 20.26 (تشبع بيعي قوي و 33 جلسة تحت 30) والحالي 20.33 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 0.123$ داخل نطاق 21.1% مع جفاف حجم (82% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +13.7% من إغلاق القاعدة (0.131$) إلى 0.149$ (2026-10-29) — أقل من المستهدف (20%) قليلاً.",
+    "أقرب مقاومة عند 0.149$ (تشكّلت 2026-10-29) — على 21.1% من الدعم الرئيسي، واختُبرها السعر في 2026-10-29 عند 0.149$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "حالة التسلسل: انطلاقة ضعيفة (+14% — المستهدف ≈20%).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 18.28",
+    "عدد الأسهم 1.80M — الفلوت 1.45M سهم.",
+    "البيع المكشوف 13.6% من الفلوت (أيام التغطية 0.21).",
+    "أبرز نموذج فني: قناة هابطة — قناة هابطة بانحدار -11.57% للشمعة (30 شمعة). سقف القناة عند 1.566 والسعر أسفله بفارق 91.4% — ننتظر اختراقاً بإغلاق.",
+    "أخبار سلبية: HUB Cyber Security gets Nasdaq deficiency notice; shares closed lower - TradingV | HUB Receives Expected Notification of Deficiency from Nasdaq Related to Delayed ",
+    "محفزات إيجابية: HUB Cyber Security Ltd. Enters into Agreement to Sell the QPoint Group for Appro"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

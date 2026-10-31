@@ -1,0 +1,1140 @@
+{
+  "symbol": "BURU",
+  "name": "Nuburu, Inc.",
+  "sector": "Industrials",
+  "industry": "Specialty Industrial Machinery",
+  "exchange": "ASE",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-10-29",
+  "last_close": 0.372,
+  "change_pct": 116.28,
+  "dollar_volume": 20440720.0,
+  "rs_found": true,
+  "rs_date": "2026-09-02",
+  "rs_age_days": 59,
+  "rs_ratio_str": "1-for-40",
+  "rs_ratio": 40.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 1.5,
+  "spike_high": 2.95,
+  "spike_pct": 96.6667,
+  "spike_date": "2026-09-02",
+  "decline_pct": -94.57627139533946,
+  "peak_date": "2026-09-02",
+  "bottom_price": 0.16,
+  "bottom_date": "2026-10-27",
+  "base_sessions": 1,
+  "base_high": 0.237,
+  "base_low": 0.16,
+  "base_range_pct": 48.125,
+  "base_broken": false,
+  "volume_dryup": 3.132,
+  "atr_pct": 45.54,
+  "rsi_now": 34.72,
+  "rsi_trough": 22.813700694366545,
+  "rsi_trough_date": "2026-10-27",
+  "rsi_sessions_below_30": 8,
+  "rsi_recovered": true,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": -0.024,
+  "channel_slope_pct": -5.312,
+  "channel_upper": 1.4819,
+  "channel_broken": false,
+  "rvol": 18.21,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "تجاوز المقاومة بقوة (101.7% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 0.160",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+168.5% من 0.178 إلى 0.478",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 0.237 (على 48.1% من الدعم 0.160) — توقف السعر عندها بفارق 101.7%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 168.54,
+  "impulse_high": 0.478,
+  "impulse_date": "2026-10-29",
+  "resistance_level": 0.237,
+  "resistance_distance_pct": 48.13,
+  "resistance_date": "2026-10-28",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 0.1608,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.16,
+  "support_hold_ok": false,
+  "base_close": 0.178,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    1.28,
+    1.3,
+    1.24,
+    1.68,
+    1.93,
+    2.55,
+    1.35,
+    1.2,
+    1.07,
+    0.94,
+    1.03,
+    1.03,
+    1.04,
+    1.06,
+    1.04,
+    0.99,
+    0.955,
+    0.94,
+    0.986,
+    1.02,
+    1.04,
+    1.12,
+    1.2,
+    1.03,
+    0.974,
+    0.93,
+    0.997,
+    0.99,
+    1.01,
+    0.98,
+    0.59,
+    0.554,
+    0.46,
+    0.436,
+    0.41,
+    0.236,
+    0.226,
+    0.178,
+    0.172,
+    0.372
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 101.69,
+  "shares_out": 9262345.0,
+  "float_shares": 8423177.0,
+  "market_cap": 2658293.0,
+  "avg_volume": 16070105.0,
+  "insider_pct": 20.44,
+  "institutional_pct": 2.73,
+  "short_pct_float": 16.76,
+  "short_as_of": "1792022400",
+  "short_shares": 1531293.0,
+  "days_to_cover": 0.53,
+  "short_change_pct": 561.9,
+  "short_volume_ratio": 0.524,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "BURU",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Nuburu, Inc. (BURU) stock price, news, quote and history - Yahoo Finance UK",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9HUzJvZlVCTHlZV3hELTVEME4tU2VRcllzQUVpYWI2QzNJa2c3YXpXR2stWDFQWk9KU0RTc1U1YXE5SWlyWXFSNFNYOW80Q19PWVE?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Unusual Volume Standouts: Recent Session's High-Volume Movers - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOZ3FKaUJGc3hnNThmYnhxaTFpeUJhN0s5UlRPS2V6bEh2eXFicnRDaGJDNU1uV3JfZm5XM1RPODNYd3g2Nlp6UFBuQnhyNEtVdDVTX0RkT2pyZ093REVPWEExc1RzZzdNYmNYSTZMeFVaZ29xaHgyeFJOTV9oUFFYVUxGM0NfS1U4SzdsRkJuSmVsRGkwamdZMmc4bjBsSERCeW9aSnc1clFJczVhRHo4LQ?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Trending Stocks Today | Nuburu Surges 29.91% Pre-Market - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOaU9famF0WXRhS2E4bFNDX0F4OW5mRXBKSVNUUzdHdzcyU094cWRfUUhnNlM1ZF9pdE54cURzZ3dlbl9CX3Zfem1WdDhMRV80dVpHc0t0RlRuQk9qTkJtWWFLazE4ejJWcWNOSEpLSzNPNlJxLUNDVEJ0a1ZNVk15Z3BBaTlaaU80Z1dOaWh6aUJxc2NCWHVBT0E2cXY?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "11 Industrials Stocks Moving In Friday's Pre-Market Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbDVuaHR1dTMxd0N0ZzVDOXdHNHJ4T08zU0lJekxBMnduUmlEWHRhZ3JTV0xFcjRvS29PR1oyNnlvT2NYblJZTUR3ZGJFRF9MMFBmd2t1QTktdXprbDVCMnhGMFB6WElJVkFBd0c2alhqVWlXUXZhNzdzT1JRbG5VYndQX1dVNDg3Y09jWWI3WlhEOWdXOHVHVVhiaF9naEhPRFoyanY0S2RUbjNpWmNYRmhPbXJBdG5C?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Premarket Movers Oct. 30, 2026: BURU Leads Gainers, ARI Leads Losers - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNaDJkLVNHLW9jbFlsSE41ME1RSWdTWkZBYnJBTVFZZl9FaEtRbmlXdFYwQUVqVmt1Q2pzbzhhS3Nybi1UbjVJZnlTdWhKOUprdm0wbkUzSlBtV1JHaTkzUG81NjA2bVlBSXJnTWYyZzlsUTBNUGNBZmpSU1ZOaU9yLU5LMDZnSlNnRjU1M09UcjRWbm53WmdrRXpVa1JEOUpPcklLSUw4WUdhR1NkTVBQMWwxWEozVFk?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "NUBURU Regains Compliance with NYSE American Continued Listing Standards",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nuburu-regains-compliance-nyse-american-123000545.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Nuburu, Inc. (BURU) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1Lb3ZjUWxJSU4zZUxQczExcTdBdkxqaklqY3lGcnpyZ0JKcjJIVl81aVBKS200SzRLU2RZUzZ4ZDFETFIwRklxaEZCaDV1em9sNWc?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Nuburu Inc (BURU) Stock Price, Quote, News & History - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBwSVlwZmdaM2VFTkFoMUZvZUE2TS1Nd3ZWazlEanNaWmlGUjZUNm8zM2tSWG9WTno2N0dmd0FOcXotdDNZZ2psaUR1aw?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Nuburu (BURU) Regains NYSE American Compliance, Shares Jump 21% - GuruFocus",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNRFo4bWUzTkpYMVdjQ0VRdkNqNDhqa0t4b19YcnBLdTBIalJGNXBhY045Qi1PVnlNYjZPVzViUDBFektyOWZjWjRrMUJPbWRRbDIxTjBMeG1YMHAyMDVyWEtDblZHb1A5dnNoek1naTZNX1BqRGMtSThIbGlNcmR2QkpBTzVCUXJMOE9salZ3Mk12ZzdpRFJoLXVFMnhVVEE?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Most Active Stocks Today: BURU, WFF, INLF and ADT Lead Volume - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOLUprU0VLOHRXS0d3U3RWc29Ca0l1QzkwaW1xdDRSdTJxLU1pWGJpSXJSTUl3UGNQMks0anVjSDZlQklWc3JMT3ZRS0Z2M0hmSkNUT2QtQ1BOR0tMUGlmN2ZuOXZtLUNpNXZBb0FERXYtRXAwX0dhU3NuVzRweF82MUhrZlBNTTJCYjlUcGFpZXBVSVZkcDVET3BJdnRpRGdDeU9vUWpFRm9kRXhhQXc?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "$Nuburu (BURU.US)$ - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5rWnRHUndHRXh3SHFOZGJZV1BwX0NjYWxnbzlsS3BDQmplS21SMDBwQXQweU94QXFXd3BKdm5hVTcxTkRRdEJxZ2hKdE5HMzRVTkRwZ0xZVnJlejJqX0tsOXFkaUVFZUVJUF9Db0Qwa3JUWUZJZm1r?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "12 Industrials Stocks Moving In Thursday's Intraday Session - Nuburu (AMEX:BURU), XCHG (NASDAQ:XCH) - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOckJFUTZDR2M5dHRVVkcxQmV6VkI2V2JtNTFQTjJPbDVBV2ZySUc0R1dUUjdGdnN0Q2pqeS1Jc0hvYnMyQTN2UHgwdTl5Rk1fV09xMlJXT2hlb196QW5qTS1EWUExczZzZlh3T1ZzcmRYdjdaZ2hnNWgxSHM0QnZWS1pvR2FUZllTZE44MFBfSmJHR0F3eXRQZjBtTlY4ckZ5TkcxYUhJOTNTMDExanJiNVNCWmp5aXdY?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Top US Stock Gainers and Losers for Oct. 29, 2026 - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPZWxybS1wcDFSd2lfcUgyYXdCaEx3U0FfaldUd3NEOUhSRzNHYVcxVXl2cUV5NXpUVXdYQjRQdTJGbUlnUVBNSUQ3NlFRVkF1Y204dHh2M2ZaVkIydi1GcnhCeVgtdG5UendlUTl2Y0loT1V3N1NmUFNlYWJ3X3lBQTlCaVcxOEpVVkVqY1lubDlicGlPdncyYWJmbENMYlk?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "After-Hours Market Movers: Oct. 29, 2026 Gainers and Losers - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOS3JhMXBjbEpNZDgzTmFOVEhkNEJlTERxYUJobFFyTVBxX194RGZDWm9OemNfbDBIenpxY0xhemNlbGZPMmlPZTgyX2dNazVWOWhROGh6ZlZib3FpLVdqN2JReXpZNXNwbXlBa0duT3NHelBkb0RObHRXWTU3V25VekN0YkNtNWlla0xNWjJpUXFJSU94eDl4bnl4UDFkNS1PQ1ZQWkRSNjNGVlBq?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "9 Industrials Stocks Moving In Thursday's After-Market Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQb052bXdyNE16TXh0Qk5EMjd4YlVFRERYbVZyZXdfNGNyYmRoc3lCemdobkNobE45Wm9MWHJMRGlOSlk1c0VSYVBnTVZEbE9zc0IzbHdVUVRLMjBYRktrblVUTXEwMlFmdFJDak0td3g3ejExSVYtQ3VKOXZFQUV3c0dld004Nm9iNUM2Rmh0bnJ4bHNLYkRoNUwxM2EtOWVmNmZ4NlJXTEFBN0pQSVhQTUdpVVFadmhwSlpCTw?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-28",
+      "type": "other",
+      "title": "NUBURU Highlights Completed TEKNE Acquisition and Execution Priorities Ahead of NYSE American Equity Compliance Deadline",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-highlights-completed-tekne-acquisition-123000647.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-23",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526430654/424b_buru-s3_-_october_2.htm"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-22",
+      "type": "other",
+      "title": "NUBURU Appoints Gianluca Trezza as CEO of TEKNE and Provides Commercial Update",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-appoints-gianluca-trezza-ceo-123000689.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-22",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/999999999526003323/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-21",
+      "type": "other",
+      "title": "NUBURU Reports Execution Progress on Tekne’s $17.1 Million Special-Vehicle Program Following Acquisition",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nuburu-reports-execution-progress-tekne-123000995.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-21",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526427115/buru-20261015.htm"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "NUBURU Announces Receipt of NYSE American Warning Letter Regarding Disclosure Requirements",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nuburu-announces-receipt-nyse-american-203000115.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "NUBURU Chairman to Shareholders: Tekne Closing Delivers Operating Defense Platform. October 15 Form S-3 Raises No New Capital",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nuburu-chairman-shareholders-tekne-closing-123000805.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "Nuburu (BURU) Shares Drop 17% After The Closing Bell Thursday - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPaUY4eFBZT3dlaF9vMnA1aVk0bTBNcjJrc09PU21XX2hFYVlFckd2YnlXOUZhd2U0OEVDWUVteXlwR2xQZmo4VTF4ZHozb0NOTDZ6Xzl2dHliUGJpNDkzVldob0gtZkxSVV9YZlpqam12WDNUc2ttYzRNRWJzc2RLX0dPOGpUeUpyTGNNZEU1X05tTEJhN3lWcFc4NTNnZUlYbEFBbl9DRm5HdUdFS3RESFlCV21mdw?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "NUBURU Completes Tekne Acquisition, Adding a $93 Million Defense & Dual-Use Program Portfolio and Advancing Expansion Across NATO and Allied Markets",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-completes-tekne-acquisition-adding-123000977.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "Nuburu (BURU) Shares Drop 17% After The Closing Bell Thursday - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQT3NaNzEwQU1DRWtWSUduVlBaZ04xeDlhOUJiM1o0RElGWld5TXhaR1ZDVnloREstMllrY0FCYXpqTGxWdVNZQ05Qd0RBQkdobXo4aDFRdEF5cHpyOFcxZmdRMmdaZGNiNDJ6czg1bWhROVo4X0x1VWZhdlNuMUtrTXgzZTA5ZmYwV2loUE5nNlA3dk5NLTRDczJNYjRKNmdZSG0waEtTdmRkX2NOOEVKMVR0S2ZwODNt?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-15",
+      "type": "offering",
+      "title": "إفصاح SEC: S-3 — S-3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526423021/buru-20261015.htm"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "NUBURU Provides Update on Tekne Acquisition Timetable: Golden Power Approved, October 15 Closing Targeted",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nuburu-provides-tekne-acquisition-timetable-123000644.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "Nuburu Shares Jump 47.5% After Hours - Nuburu (AMEX:BURU) - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQSHdJRW11NU9IUnVCVFVmWVhQWVVCb1lNVEhLaGtSR2tFb3YwTGhBVEw2NEtONlh3cEpkY1ZfaVphTXR1VlRUQU9rVmFWaXllWXlxUUZmLTI5b1VnR2U3ektla1ZOUEVJakttdnRqbURCVGljQTlrS3Jsc1JXaDQyUFFqeWVNaGpyR3NTaC1FNGdzbnE3RVVybjRBZTJXU2ZQMVg4Sk1GVkE4d2lnb2xfQnp4RVRubzFOOEpQWXRmMXFUQ2tUSkNuN1RMcmw1ZzNqN1VlNg?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "إفصاح SEC: DRS",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526414760/filename1.htm"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-01",
+      "type": "offering",
+      "title": "NUBURU Launches Site Dome Offering, Targets Major European Aerospace and Defense Manufacturer",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-launches-dome-offering-targets-123000187.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "A drone security plan is proposed for one site at about $700,000 over three years - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPMnY0VTVJNjZVcFJRNjRVMC1IUDNWRE85VTZYVTFvWDFtTFBKaGdERlVPZUJaWkUzUGVEdlpLSzFPT3U5WkllUkF0SnM1azl6Qm9MWHkwYXgzVDRPTldSSFN3N0swTFFHUkpVdlJOcG9pcjVoV3FTendRZ2dfbUpUcHdoRURUTG1iR0R6MXZSa0RuWFlTb2ZpcGY2Q2k1SFJUYnItc1ZBVlFweUJqNUROczRCdE5RRTQtVUo3YUpjaw?oc=5"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-22",
+      "type": "contract",
+      "title": "NUBURU Confirms Closing Funds in Place for Tekne Acquisition and Approximately $135.4 Million in Net Remaining Order Value",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-confirms-closing-funds-place-123000054.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "إفصاح SEC: 10-Q/A — 10-Q/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526396895/buru-20260630.htm"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-16",
+      "type": "offering",
+      "title": "NUBURU Wins First 1W Laser Dazzler Pilot Order Advancing Its Law Enforcement and Public Security Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-wins-first-1w-laser-123000711.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-14",
+      "type": "contract",
+      "title": "NUBURU Resumes Trading on NYSE American as Shareholder Letter Details Tekne’s $135.4 Million Net Order Value and October Closing Target",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nuburu-resumes-trading-nyse-american-123000863.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-11",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000206299626000002/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-03",
+      "type": "other",
+      "title": "NUBURU Expands Directed-Energy Platform Into Law Enforcement and Public Security Across the U.S. and NATO",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-expands-directed-energy-platform-123000346.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-03",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K/A — 8-K/A",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526380503/buru-20260901.htm"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "NUBURU Announces Corrected CUSIP Number",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nuburu-announces-corrected-cusip-number-203000596.html?.tsrc=rss"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "BURU",
+      "kind": "424B3",
+      "date": "2026-10-23",
+      "title": "إفصاح 424B3 — 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526430654/424b_buru-s3_-_october_2.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "effectiveness",
+      "date": "2026-10-22",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/999999999526003323/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2026-10-21",
+      "title": "8-K بند 1.01,2.01,3.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526427115/buru-20261015.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "S-3",
+      "date": "2026-10-15",
+      "title": "إفصاح S-3 — S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526423021/buru-20261015.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2026-10-06",
+      "title": "8-K بند 1.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526415780/buru-20260930.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "news-offering",
+      "date": "2026-10-01",
+      "title": "NUBURU Launches Site Dome Offering, Targets Major European Aerospace and Defense Manufacturer",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-launches-dome-offering-targets-123000187.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "news-offering",
+      "date": "2026-09-16",
+      "title": "NUBURU Wins First 1W Laser Dazzler Pilot Order Advancing Its Law Enforcement and Public Security Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-wins-first-1w-laser-123000711.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "news-offering",
+      "date": "2026-08-31",
+      "title": "NUBURU Announces 1-for-40 Reverse Stock Split to Support Return to Trading on NYSE American",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nuburu-announces-1-40-reverse-203000381.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2026-07-21",
+      "title": "8-K بند 1.01,3.01,3.03,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526310537/buru-20260715.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "news-offering",
+      "date": "2026-07-17",
+      "title": "NYSE American to Commence Delisting Proceedings Against Nuburu, Inc. (BURU) - Yahoo Finance",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNRkRaRnVYMk1Ka2lENEh6bGJ3eUR0S2FKNUdxNXlUQV9uSGU3TDdiYjdVNFlCR0trcGpIY3ZEMmxLRUFtMTNTdzFjNWI2RUZMVmJkTURzWEpZMEZyd0NmUGJSQld5X2YyMkx5eG9tSzE4TjZQNkJKekoxbms1d3JpekdXYkdaNUlFWUxRRkJkWjNhLTVGeXNGMGRJdWt5dTV3R0gyYUZqb2RLNXpXUVE?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "S-1",
+      "date": "2026-07-13",
+      "title": "إفصاح S-1 — S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526301451/buru-20260713.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "delay",
+      "date": "2026-05-18",
+      "title": "تأخير في تقديم NT 10-Q (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526229124/buru_nt_10q_2026.05.15.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2026-05-15",
+      "title": "8-K بند 1.01,3.01,3.02 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526227202/buru-20260511.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "S-3",
+      "date": "2026-05-07",
+      "title": "إفصاح S-3/A — S-3/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526212401/buru-s3_-_may_2026.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2026-02-18",
+      "title": "8-K بند 1.01,3.01,3.03,5.03,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526057419/buru-20260212.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2026-02-12",
+      "title": "8-K بند 1.01,2.01,2.03,3.02 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526049000/buru-20260206.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "424B5",
+      "date": "2026-01-08",
+      "title": "إفصاح 424B5 — 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526007512/buru_424b5_-_ya_resale_0.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2025-12-18",
+      "title": "8-K بند 1.01,2.03,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312525325078/buru-20251213.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2025-11-06",
+      "title": "8-K بند 1.01,2.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312525270080/buru-20251031.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2025-10-07",
+      "title": "8-K بند 1.01,3.01,5.02 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312525233623/buru-20251001.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2025-09-17",
+      "title": "8-K بند 1.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312525205238/buru-20250915.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "8-K",
+      "date": "2025-07-31",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000095017025101000/buru-20250730.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BURU",
+      "kind": "S-1",
+      "date": "2025-07-16",
+      "title": "إفصاح S-1/A — S-1/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000095017025096318/buru-20250716.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "محفزات قادمة: 2026-10-30 Nuburu, Inc. (BURU) stock price, news, quote  | 2026-10-30 Unusual Volume Standouts: Recent Session's Hi | 2026-10-30 Trending Stocks Today | Nuburu Surges 29.91% "
+  ],
+  "positive_news": [
+    {
+      "symbol": "BURU",
+      "date": "2026-09-22",
+      "type": "contract",
+      "title": "NUBURU Confirms Closing Funds in Place for Tekne Acquisition and Approximately $135.4 Million in Net Remaining Order Value",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-confirms-closing-funds-place-123000054.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-14",
+      "type": "contract",
+      "title": "NUBURU Resumes Trading on NYSE American as Shareholder Letter Details Tekne’s $135.4 Million Net Order Value and October Closing Target",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nuburu-resumes-trading-nyse-american-123000863.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "BURU",
+      "date": "2026-10-23",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526430654/424b_buru-s3_-_october_2.htm"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-15",
+      "type": "offering",
+      "title": "إفصاح SEC: S-3 — S-3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1814215/000119312526423021/buru-20261015.htm"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-10-01",
+      "type": "offering",
+      "title": "NUBURU Launches Site Dome Offering, Targets Major European Aerospace and Defense Manufacturer",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-launches-dome-offering-targets-123000187.html?.tsrc=rss"
+    },
+    {
+      "symbol": "BURU",
+      "date": "2026-09-16",
+      "type": "offering",
+      "title": "NUBURU Wins First 1W Laser Dazzler Pilot Order Advancing Its Law Enforcement and Public Security Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/nuburu-wins-first-1w-laser-123000711.html?.tsrc=rss"
+    }
+  ],
+  "phase": 7,
+  "display_phase": 7,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price",
+    "short_shares"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.372$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الأسهم المكشوفة 1,531,293 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.372,
+      "display": "0.3720$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.372$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 59,
+      "display": "1-for-40 · 2026-09-02 · عمر 59 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -94.5763,
+      "display": "94.58% من قمة ما بعد التقسيم · القمة 2.9500$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 22.8137,
+      "display": "أدنى RSI 22.81 (2026-10-27)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 1531293.0,
+      "display": "1,531,293 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 1,531,293 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 243 يوماً (1-for-5) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 829 يوماً (1-for-40) — خارج نافذة 60 يوماً المطلوبة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 46.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.40 · قاعدة القاع: 3.13 · آخر 3 جلسات: 85.78",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 60.0,
+      "weight": 35,
+      "detail": "قاع مزدوج W",
+      "points": 21.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "RSI خرج من التشبع البيعي وتحسّن",
+    "حجم نسبي 18.21x يدعم الحركة",
+    "انطلاقة +169% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 0.465,
+    "entry_zone": [
+      0.3646,
+      0.465
+    ],
+    "stop": 0.372,
+    "stop_pct": -20.0,
+    "stop_structural": 0.1504,
+    "stop_structural_pct": -67.66,
+    "targets": {
+      "t1_382": 1.2258,
+      "t2_618": 1.8842,
+      "t3_full": 2.95
+    },
+    "rr_t1": 8.18,
+    "rr_t2": 15.26,
+    "risk_per_share": 0.093,
+    "reward_t2_per_share": 1.4192,
+    "atr_pct": 45.54,
+    "bottom": 0.16,
+    "peak": 2.95,
+    "last": 0.372,
+    "base_high": 0.237,
+    "ema9": 0.3788,
+    "ema20": 0.6088,
+    "support": 0.16,
+    "impulse_high": 0.478,
+    "resistance": 0.237,
+    "sweep_low": null,
+    "reclaim_level": 0.1608,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 45.5%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.372$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 28% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 18.2x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة، نجمة الصباح)",
+      "tf": "1D",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-10-26، 2026-10-29 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -4.19% للشمعة (30 شمعة). سقف القناة عند 1.745 والسعر أسفله بفارق 78.7% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.7453,
+        "channel_mid": 0.8681,
+        "channel_lower": 0.4318
+      },
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "1D",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 0.917 بتاريخ 2026-09-30 وقاع 0.870 بتاريخ 2026-10-09 بفارق 5.4%، وخط العنق عند 1.230 (41.4% فوق القاع). ننتظر إغلاقاً فوق 1.230 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 0.917,
+        "bottom2": 0.87,
+        "neckline": 1.23
+      },
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.75,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 67% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 8.4x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -4.88% للشمعة (30 شمعة). سقف القناة عند 0.985 والسعر أسفله بفارق 71.3% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.9854,
+        "channel_mid": 0.5719,
+        "channel_lower": 0.3319
+      },
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (0.428 → 0.250) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 0.4276,
+        "last_low": 0.25
+      },
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.2831,
+    "rsi": 36.39,
+    "trend": "down",
+    "ema20": 0.3816,
+    "ema50": 0.6596,
+    "rvol": 8.39,
+    "macd_hist": 0.0268,
+    "channel_broken": false,
+    "higher_lows": 2,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-40 منفّذ في 2026-09-02 (عمر 59 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 1.5$ وصعد إلى 2.95$ (+96.7%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 94.6% من القمة 2.95$ إلى القاع المرجعي 0.16$ بتاريخ 2026-10-27 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 22.81 (تشبع بيعي قوي و 8 جلسة تحت 30) والحالي 34.72 مع بدء التحسّن.",
+    "ثبات جلسة واحدة على القاع 0.16$ داخل نطاق 48.1% مع جفاف حجم (313% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +168.5% من إغلاق القاعدة (0.178$) إلى 0.478$ (2026-10-29) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 0.237$ (تشكّلت 2026-10-28) — على 48.1% من الدعم الرئيسي، واختُبرها السعر في 2026-10-29 عند 0.478$ وتوقف عندها بفارق 101.7% ثم تراجع.",
+    "حالة التسلسل: تجاوز المقاومة بقوة (101.7% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة.",
+    "تأكيدات فنية: MACD يتجه للتحسّن، RSI خرج من التشبع البيعي وتحسّن، حجم نسبي 18.21x يدعم الحركة، انطلاقة +169% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 36.39",
+    "عدد الأسهم 9.26M — الفلوت 8.42M سهم.",
+    "البيع المكشوف 16.8% من الفلوت (أيام التغطية 0.53).",
+    "أبرز نموذج فني: جفاف حجم ثم انفجار — جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 28% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 18.2x → دخول مؤسسي محتمل.",
+    "أخبار سلبية: إفصاح SEC: 424B3 — 424B3 | إفصاح SEC: S-3 — S-3",
+    "محفزات إيجابية: NUBURU Confirms Closing Funds in Place for Tekne Acquisition and Approximately $ | NUBURU Resumes Trading on NYSE American as Shareholder Letter Details Tekne’s $1"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

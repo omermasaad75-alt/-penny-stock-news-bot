@@ -1,0 +1,25 @@
+[
+ {
+  "stamp": "2026-10-31_0349",
+  "generated_at_riyadh": "2026-10-31 03:49",
+  "mode": "live",
+  "summary": {
+   "scanned": 18,
+   "with_reverse_split": 18,
+   "eligible": 1,
+   "watchlist": 0,
+   "gam_candidates": 1,
+   "ready": 0,
+   "failed": 2,
+   "avg_score_watchlist": 0,
+   "top_symbol": "DKI",
+   "eligible_symbols": [
+    "DKI"
+   ],
+   "gam_symbols": [
+    "WFF"
+   ],
+   "ready_symbols": []
+  }
+ }
+]

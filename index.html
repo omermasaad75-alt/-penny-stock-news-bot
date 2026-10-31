@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080b11">
+<meta http-equiv="cache-control" content="no-cache, must-revalidate">
+<title>لوحة رصد التقسيم العكسي — آخر تحديث 2026-10-31 03:49</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<style>
+:root{
+  --bg:#080b11; --bg2:#0d131c; --panel:#111826; --line:#1e2a3d; --txt:#e6edf7; --muted:#8b98ab;
+  --green:#3fb950; --red:#f85149; --amber:#e3b341; --blue:#58a6ff; --purple:#a371f7;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#070a0f,#0b1017 40%,#080b11);color:var(--txt);
+  font-family:"Segoe UI","Noto Kufi Arabic",Tahoma,system-ui,-apple-system,sans-serif;line-height:1.6}
+a{color:var(--blue);text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 14px 60px}
+header.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
+  background:rgba(13,19,28,.9);border:1px solid var(--line);border-radius:16px;padding:14px 16px;
+  position:sticky;top:0;z-index:9;backdrop-filter:blur(8px)}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#a371f7,#58a6ff);
+  display:grid;place-items:center;font-weight:800;color:#05080d}
+h1{font-size:18px;margin:0}
+.sub{color:var(--muted);font-size:12px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.badge{font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:#0b111a}
+.badge.live{border-color:#1f6f3d;color:#7ee787;background:rgba(63,185,80,.1)}
+.badge.mixed{border-color:#8a6d1f;color:#ffd87a;background:rgba(227,179,65,.08)}
+.badge.demo{border-color:#8a2828;color:#ff9999;background:rgba(248,81,73,.1)}
+.row-badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:8px;margin-inline-start:4px}
+.row-badge.ok{background:rgba(63,185,80,.15);color:#7ee787}
+.row-badge.warn{background:rgba(227,179,65,.12);color:#e3b341}
+.row-badge.gam{background:rgba(163,113,247,.16);color:#c9adff;border:1px solid rgba(163,113,247,.4)}
+.row-badge.bad{background:rgba(248,81,73,.15);color:#ff7b72}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 6px}
+.btn{display:inline-flex;gap:8px;align-items:center;padding:12px 18px;border-radius:12px;font-weight:700;
+  border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:14px}
+.btn.primary{background:linear-gradient(135deg,#2ea043,#3fb950);border-color:#2ea043;color:#04170a}
+.btn.purple{background:linear-gradient(135deg,#7c5cd6,#a371f7);border-color:#7c5cd6;color:#0b0616}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:18px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:12px}
+.kpi b{font-size:22px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0}
+.card h2{font-size:15px;margin:0 0 10px;display:flex;gap:8px;align-items:center;justify-content:space-between}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
+th,td{padding:9px 8px;text-align:right;border-bottom:1px solid #16202f;white-space:nowrap}
+th{background:#0b111a;color:var(--muted);font-weight:600;position:sticky;top:0}
+tr:hover td{background:#0e1520}
+.sym{font-weight:800;color:#fff}
+.dots{display:inline-flex;gap:3px;margin-inline-end:6px;vertical-align:middle}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#2b3646}
+.dot.ok{background:var(--green)}
+.dot.active{background:var(--amber);box-shadow:0 0 0 2px rgba(227,179,65,.25)}
+.dot.pending{background:#39465a}
+.dot.muted{background:#4a5568}
+.c-green{color:#7ee787}.c-amber{color:#e3b341}.c-red{color:#ff7b72}.muted{color:var(--muted)}
+.grade{font-weight:800;padding:2px 8px;border-radius:8px;background:#0d1620;border:1px solid var(--line)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+ul.files{list-style:none;margin:0;padding:0}
+ul.files li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed #16202f;font-size:13px}
+footer{color:var(--muted);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+.note{background:#0d1620;border:1px dashed #26364d;border-radius:12px;padding:10px 12px;font-size:12.5px;color:#b9c6d8}
+.mcards{display:none}
+.mcard{background:#0b111a;border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:10px}
+.mcard-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mcard-seq{margin-top:7px;font-size:11.5px}
+.mcard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}
+.mcard-grid div{background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:6px 8px;font-size:12.5px}
+.mcard-grid span{display:block;color:var(--muted);font-size:10.5px;margin-bottom:2px}
+.mcard-actions{display:flex;gap:8px;margin-top:10px}
+.mcard-actions .btn{flex:1;justify-content:center;padding:9px 10px;font-size:12.5px;border-radius:10px}
+@media(max-width:760px){
+  .wrap{padding:12px 10px 48px}
+  header.top{position:static;display:block;padding:12px 13px}
+  .brand{align-items:flex-start;gap:10px}
+  .brand>div{min-width:0}
+  .logo{width:38px;height:38px;border-radius:11px;font-size:13px}
+  h1{font-size:15px;line-height:1.45;margin:0 0 3px;overflow-wrap:anywhere}
+  .sub{font-size:11px;line-height:1.5;overflow-wrap:anywhere;display:block}
+  .badges{margin-top:10px;gap:6px}
+  .badge{font-size:11px;padding:4px 9px}
+  .kpi b{font-size:19px}
+  .btn{width:100%;justify-content:center}
+  .cta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .cta .btn.primary{grid-column:1 / -1}
+  .tblwrap{display:none}
+  .mcards{display:block}
+  .card{padding:12px 12px;border-radius:14px}
+  .card h2{font-size:14px;flex-wrap:wrap;gap:4px}
+  ul.files li{font-size:12.5px;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand">
+    <img class="logo" src="icons/icon-192.png" alt="أيقونة رصد الانعكاس">
+    <div>
+      <h1>منصة رصد التقسيم العكسي والانعكاس</h1>
+      <div class="sub">Reverse-Split Oversold Reversal · فريم اليومي و4 ساعات</div>
+    </div>
+  </div>
+  <div class="badges">
+    <span class="badge live">وضع البيانات: حقيقية 🟢 — Yahoo/SEC/FINRA</span>
+    <span class="badge">آخر مسح: 2026-10-31 03:49</span>
+  </div>
+</header>
+
+
+
+<div class="cta">
+  <a class="btn primary" href="dashboard.html?v=2026-10-31_0349">افتح اللوحة التفاعلية</a>
+  <a class="btn purple" href="data/latest.csv">تنزيل الجدول (CSV)</a>
+  <a class="btn" href="data/latest.json">البيانات (JSON)</a>
+  <a class="btn" href="https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/workflows/daily-scan.yml">سجل عمليات المسح</a>
+</div>
+<div class="note">اللوحة ملف واحد يعمل داخل جوالك بلا إنترنت بعد فتحه أول مرة — يمكنك حفظه في الشاشة الرئيسية
+(من قائمة المتصفح: «إضافة إلى الشاشة الرئيسية»).</div>
+<div class="note" style="margin-top:8px;border-color:rgba(163,113,247,.45)"><b style="color:#c9adff">GAM:</b>
+مسار ثانوي لمرشحين قريبين فقط؛ لا يخفّف شروط الأهلية، ولا يدخل قائمة الفرص أو المتابعة، وليس توصية.
+رفض RSI — إن وُجد — محسوب من سلسلة السعر في المسح الحالي، ولا توجد حالة رفض تاريخية محفوظة.</div>
+
+<section class="kpis">
+  <div class="kpi"><span>رموز مفحوصة</span><b>18</b></div>
+  <div class="kpi"><span>تقسيم عكسي داخل النافذة</span><b class="c-green">18</b></div>
+  <div class="kpi"><span>فرص مؤهلة</span><b class="c-green">1</b></div>
+  <div class="kpi"><span>مرشحو GAM (غير مؤهلين)</span><b style="color:var(--purple)">1</b></div>
+  <div class="kpi"><span>قائمة المتابعة</span><b class="c-amber">0</b></div>
+  <div class="kpi"><span>جاهز فنياً (6/6)</span><b class="c-green">0</b></div>
+  <div class="kpi"><span>متوسط تقييم المتابعة</span><b>0</b></div>
+  <div class="kpi"><span>مرشحون مجموعون</span><b>1000</b></div>
+  <div class="kpi"><span>مرشحون مفحوصون</span><b>1000</b></div>
+  <div class="kpi"><span>صفوف بعد فلترة التقسيم</span><b class="c-green">18</b></div>
+</section>
+
+<div class="warn" style="background:#3a2a08;border:1px solid #8a6d1f;border-radius:12px;padding:12px 14px;margin:14px 0;color:#ffd87a;font-size:13px;">⚠ <b>تحذير:</b> التغطية جزئية؛ لا تعني النتائج غياب حالات أخرى في السوق خلال شهرين.</div><div class="card"><h2><span>حدود التغطية — اقرأ قبل الاعتماد على النتائج</span><span class="muted">إجمالي مطابقات screener: 10425 · صفحات مجلوبة: 10 · سقف سعر الاكتشاف: 5.0$ · سقف المرشحين: 1000 (مقتطع)</span></h2><div class="note" style="margin-bottom:10px">«لم يُفحص» = مرشحون لم تتحقق منهم بعد (مهلة أو سقف) وليست مستبعدة فنياً · «بيانات غير متاحة» = تعذّر تحقق الأسعار أو الملف التعريفي · «لا تقسيم حديث مطابق» = لا حدث خلال 60 يوماً بنسبة 1:2–1:60 · «مستبعد لسبب آخر» = تقسيم حديث مرصود لكنه أخفق السعر/السيولة/الصعود/النموذج أو سبباً مانعاً آخر · «GAM» = رفضه الوحيد هبوط دون 30% و/أو RSI في بيانات المسح الحالي، مع سعر 1–5$؛ يبقى غير مؤهل وليس توصية · «قائمة المتابعة» = مؤهل ومراقب · «جاهز فنياً» = فرصة مؤهلة اكتمل تسلسلها 6/6.</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px"><div style="background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:8px 10px"><span style="display:block;color:var(--muted);font-size:11px">لم يُفحص</span><b class="c-amber" style="font-size:18px">0</b><div class="muted" style="font-size:10px">ليست مستبعدة</div></div><div style="background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:8px 10px"><span style="display:block;color:var(--muted);font-size:11px">بيانات غير متاحة</span><b class="c-red" style="font-size:18px">14</b><div class="muted" style="font-size:10.5px;overflow-wrap:anywhere">ADTX، GME-WT، NMHI، BRR، SKYD-WT، DHAIW، BTOG، CEROW، DYNCW، LTRYW، TVGNW، AUROW، BRLSW، BIDWR</div></div><div style="background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:8px 10px"><span style="display:block;color:var(--muted);font-size:11px">لا تقسيم حديث مطابق</span><b class="muted" style="font-size:18px">968</b><div class="muted" style="font-size:10.5px;overflow-wrap:anywhere">SLGB، CBIH، AXXA، ONEG، RWAX، RDAR، EARI، CHOW، BBD، NTRR، VGTL، ABOS، GTVH، GRAB، SGRX، BTBT، MPT، FNGR، TIPS، DVLT</div></div><div style="background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:8px 10px"><span style="display:block;color:var(--muted);font-size:11px">تقسيم حديث — مستبعد لسبب آخر</span><b class="c-amber" style="font-size:18px">16</b><div class="muted" style="font-size:10.5px;overflow-wrap:anywhere">SRTM، FRGT، BURU، TNMG، INNI، VIVK، NFE، OPTT، ZONE، HUBC، AXG، CDT، AZTR، GCDT، GCTK، SHFS</div></div><div style="background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:8px 10px"><span style="display:block;color:var(--muted);font-size:11px">مرشحو GAM (غير مؤهلين)</span><b class="c-amber" style="font-size:18px">1</b><div class="muted" style="font-size:10px">مسار ثانوي فقط</div><div class="muted" style="font-size:10.5px;overflow-wrap:anywhere">WFF</div></div><div style="background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:8px 10px"><span style="display:block;color:var(--muted);font-size:11px">قائمة المتابعة</span><b class="c-amber" style="font-size:18px">0</b></div><div style="background:#0e1520;border:1px solid #16202f;border-radius:10px;padding:8px 10px"><span style="display:block;color:var(--muted);font-size:11px">جاهز فنياً</span><b class="c-green" style="font-size:18px">0</b></div></div></div>
+
+<div class="card">
+  <h2><span>الرموز المرصودة — راجع الأهلية</span><span class="muted">18 رمز — مرتّبة بالمرحلة ثم التقييم</span></h2>
+  <div class="tblwrap">
+  <table>
+    <thead><tr>
+      <th>الرمز</th><th>تسلسل دورة الحياة</th><th>المرحلة</th><th>النقاط الفنية</th><th>آخر إغلاق</th>
+      <th>التقسيم</th><th>الانطلاقة</th><th>أقرب مقاومة</th><th>سحب السيولة</th><th>الدعم</th><th>الأسهم المكشوفة</th><th>التقرير</th>
+    </tr></thead>
+    <tbody>
+<tr><td class="sym">DKI<span class="row-badge ok">🟢 حقيقي</span><div class="muted" style="font-weight:400;font-size:11px">Darkiris Inc.</div></td><td><span class="dots"><i class="dot active" title="ثبات على الدعم (أقلها 3 جلسات تداول)"></i><i class="dot ok" title="الانطلاقة بعد الثبات (≈20%)"></i><i class="dot pending" title="اختبار مقاومة قريبة"></i><i class="dot pending" title="العودة لاختبار الدعم الرئيسي"></i><i class="dot pending" title="سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)"></i><i class="dot ok" title="الاستقرار فوق الدعم بعد السحب"></i></span><div class="c-amber" style="font-size:11.5px">2/6 — ناقص: ثبات الدعم 3 جلسات</div></td><td>موجة هبوط وتشبع بيعي</td><td><span class="grade">0.0 D</span></td><td>2.140</td><td>1-for-50</td><td>+24.3%</td><td>2.300 <span class="muted">+39.4%</span></td><td>—</td><td>1.650</td><td>686</td><td><a href="reports/DKI_analysis_20261031.html">تحليل ›</a><div class="muted">الأسعار: yahoo-finance · التقسيم: yahoo-finance · الأساسيات: yahoo-finance · الأخبار: rss:google+rss:yahoo+sec-edgar</div></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="mcards">
+<div class="mcard"><div class="mcard-head"><div><span class="sym">DKI</span> <span class="muted" style="font-size:11px">Darkiris Inc.</span></div><span class="grade">0.0 D</span></div><div class="mcard-seq"><span class="dots"><i class="dot active" title="ثبات على الدعم (أقلها 3 جلسات تداول)"></i><i class="dot ok" title="الانطلاقة بعد الثبات (≈20%)"></i><i class="dot pending" title="اختبار مقاومة قريبة"></i><i class="dot pending" title="العودة لاختبار الدعم الرئيسي"></i><i class="dot pending" title="سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)"></i><i class="dot ok" title="الاستقرار فوق الدعم بعد السحب"></i></span><span class="c-amber">2/6 — ناقص: ثبات الدعم 3 جلسات</span></div><div class="mcard-grid"><div><span>آخر إغلاق</span>2.140</div><div><span>الانطلاقة</span>+24.3%</div><div><span>أقرب مقاومة</span>2.300</div><div><span>سحب السيولة</span>—</div><div><span>الدعم الرئيسي</span>1.650</div><div><span>الأسهم المكشوفة</span>686</div><div><span>نسبة التقسيم</span>1-for-50</div></div><div class="muted">🟢 حقيقي · الأسعار: yahoo-finance · التقسيم: yahoo-finance · الأساسيات: yahoo-finance · الأخبار: rss:google+rss:yahoo+sec-edgar</div><div class="mcard-actions"><a class="btn" href="reports/DKI_analysis_20261031.html">تحليل مفصل</a><a class="btn" href="dashboard.html?v=2026-10-31_0349">على اللوحة</a></div></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <h2><span>تقارير التحليل</span><span class="muted">12 تقرير</span></h2>
+    <ul class="files"><li><span class="sym">SRTM</span><span class="muted">مستبعد · 73.9</span><span><a href="reports/SRTM_analysis_20261031.html">HTML</a> · <a href="reports/SRTM_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">FRGT</span><span class="muted">مستبعد · 49.5</span><span><a href="reports/FRGT_analysis_20261031.html">HTML</a> · <a href="reports/FRGT_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">BURU</span><span class="muted">مستبعد · 46.0</span><span><a href="reports/BURU_analysis_20261031.html">HTML</a> · <a href="reports/BURU_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">TNMG</span><span class="muted">مستبعد · 41.5</span><span><a href="reports/TNMG_analysis_20261031.html">HTML</a> · <a href="reports/TNMG_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">INNI</span><span class="muted">مستبعد · 34.2</span><span><a href="reports/INNI_analysis_20261031.html">HTML</a> · <a href="reports/INNI_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">VIVK</span><span class="muted">مستبعد · 31.5</span><span><a href="reports/VIVK_analysis_20261031.html">HTML</a> · <a href="reports/VIVK_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">NFE</span><span class="muted">مستبعد · 25.0</span><span><a href="reports/NFE_analysis_20261031.html">HTML</a> · <a href="reports/NFE_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">OPTT</span><span class="muted">مستبعد · 25.0</span><span><a href="reports/OPTT_analysis_20261031.html">HTML</a> · <a href="reports/OPTT_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">ZONE</span><span class="muted">مستبعد · 25.0</span><span><a href="reports/ZONE_analysis_20261031.html">HTML</a> · <a href="reports/ZONE_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">HUBC</span><span class="muted">مستبعد · 24.3</span><span><a href="reports/HUBC_analysis_20261031.html">HTML</a> · <a href="reports/HUBC_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">DKI</span><span class="muted">فرصة مؤهلة · 0.0</span><span><a href="reports/DKI_analysis_20261031.html">HTML</a> · <a href="reports/DKI_analysis_20261031.md">MD</a></span></li>
+<li><span class="sym">WFF</span><span class="muted">GAM · غير مؤهل · 0.0</span><span><a href="reports/WFF_analysis_20261031.html">HTML</a> · <a href="reports/WFF_analysis_20261031.md">MD</a></span></li></ul>
+  </div>
+  <div class="card">
+    <h2><span>آخر عمليات المسح</span><span class="muted">سجل زمني</span></h2>
+    <ul class="files"><li><span>2026-10-31 03:49</span><span class="muted">18 رمز · جاهز 0</span><span><a href="history/2026-10-31_0349.json">تفاصيل</a></span></li></ul>
+  </div>
+</div>
+
+<footer>
+  <div>مواعيد المسح التلقائي: ٣ مرات كل يوم عمل (افتتاح السوق · منتصف الجلسة · بعد الإغلاق).</div>
+  <div>المصدر: <a href="https://github.com/omermasaad75-alt/-penny-stock-news-bot">omermasaad75-alt/-penny-stock-news-bot</a> · المزوّدون: yahoo-finance (live/True) · sec-edgar (live/True) · finra (live/True) · news-rss (live/True) · demo-generator (demo/False)</div>
+  <div>تنبيه: هذا النظام أداة تحليل فني وليست نصيحة مالية — القرار النهائي للمستثمر.</div>
+</footer>
+</div>
+</body>
+</html>
