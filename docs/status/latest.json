@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-11-03 01:27",
+ "generated_at_riyadh": "2026-11-03 02:52",
  "mode": "live",
  "sources": {
   "mode_setting": "live",
@@ -10,14 +10,14 @@
     "name": "yahoo-finance",
     "ok": true,
     "detail": "",
-    "latency_ms": 71,
+    "latency_ms": 79,
     "source_kind": "live"
    },
    {
     "name": "sec-edgar",
     "ok": true,
     "detail": "",
-    "latency_ms": 45,
+    "latency_ms": 65,
     "source_kind": "live"
    },
    {
@@ -3860,5 +3860,5 @@
    "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/41537319419"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/41548568491"
 }
