@@ -1,0 +1,1025 @@
+{
+  "symbol": "NCT",
+  "name": "Intercont (Cayman) Limited",
+  "sector": "Industrials",
+  "industry": "Marine Shipping",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+  "synthetic": false,
+  "as_of": "2026-11-05",
+  "last_close": 1.45,
+  "change_pct": -2.03,
+  "dollar_volume": 136571.0,
+  "rs_found": true,
+  "rs_date": "2026-09-17",
+  "rs_age_days": 51,
+  "rs_ratio_str": "1-for-25",
+  "rs_ratio": 25.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 8.8,
+  "spike_high": 9.32,
+  "spike_pct": 5.9091,
+  "spike_date": "2026-09-17",
+  "decline_pct": -86.9098705090329,
+  "peak_date": "2026-09-17",
+  "bottom_price": 1.22,
+  "bottom_date": "2026-10-21",
+  "base_sessions": 1,
+  "base_high": 1.41,
+  "base_low": 1.22,
+  "base_range_pct": 15.5738,
+  "base_broken": false,
+  "volume_dryup": 0.032,
+  "atr_pct": 76.96,
+  "rsi_now": 24.73,
+  "rsi_trough": 22.20753577015499,
+  "rsi_trough_date": "2026-10-01",
+  "rsi_sessions_below_30": 25,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": 1.47211,
+  "channel_slope_pct": -1.41,
+  "channel_upper": 2.3408,
+  "channel_broken": false,
+  "rvol": 4.2,
+  "higher_lows": 1,
+  "squeeze": true,
+  "lifecycle_stage": "المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 1.220",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+30.3% من 1.305 إلى 1.700",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 1.670 (على 36.9% من الدعم 1.220) — توقف السعر عندها بفارق 1.8%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "أدنى نقطة بعد القمة 1.251 مقابل الدعم 1.220",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": true,
+      "detail": "2 إغلاق فوق 1.226 (آخرها 2026-11-05)",
+      "state": "ok"
+    }
+  ],
+  "impulse_pct": 30.27,
+  "impulse_high": 1.7,
+  "impulse_date": "2026-10-27",
+  "resistance_level": 1.67,
+  "resistance_distance_pct": 36.89,
+  "resistance_date": "2026-10-26",
+  "pullback_type": "shallow_pullback",
+  "pullback_low": 1.251,
+  "pullback_date": "2026-11-04",
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 1.2261,
+  "reclaim_sessions": 2,
+  "reclaim_date": "2026-11-05",
+  "support_level": 1.22,
+  "support_hold_ok": false,
+  "base_close": 1.305,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    7.5,
+    12.5,
+    7.425,
+    8.8,
+    8.575,
+    6.13,
+    5.7,
+    6.0,
+    5.43,
+    4.65,
+    4.43,
+    2.5,
+    1.89,
+    1.56,
+    1.46,
+    1.68,
+    1.73,
+    1.5,
+    1.52,
+    1.65,
+    1.49,
+    1.35,
+    1.42,
+    1.37,
+    1.42,
+    1.35,
+    1.39,
+    1.37,
+    1.305,
+    1.32,
+    1.26,
+    1.48,
+    1.54,
+    1.56,
+    1.55,
+    1.49,
+    1.41,
+    1.39,
+    1.48,
+    1.45
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 1.8,
+  "shares_out": 16017510.0,
+  "float_shares": null,
+  "market_cap": 16665200.0,
+  "avg_volume": 581718.0,
+  "insider_pct": 0.18,
+  "institutional_pct": 0.0,
+  "short_pct_float": 6.09,
+  "short_as_of": "1792022400",
+  "short_shares": 59548.0,
+  "days_to_cover": 0.06,
+  "short_change_pct": -52.5,
+  "short_volume_ratio": 0.51,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "NCT",
+      "date": "2026-11-09",
+      "type": "earnings",
+      "title": "موعد الإعلان عن النتائج (تقويم Yahoo)",
+      "sentiment": "neutral",
+      "impact": "high",
+      "source": "yahoo-finance",
+      "url": ""
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-10-31",
+      "type": "other",
+      "title": "Intercont (Cayman) (NCT) 10K Form and Latest SEC Filings 2026 - MarketBeat",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA3ZDYzWE1ORFpHRERIdklWODJxcUphSHRjeWVidEhIc2p0YkU1NE1acG1NODBGM1VIV1dWTlZCaW1HdEVhd2hkbGhwNHc3X3l5VGJEeEZ5ZG8tZVEwSTdaOTNfME83Z2FG?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "Intercont (Cayman) Limited (NCT) Releases Q4 2026 Earnings: Revenue Growth but Wider Losses - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQQ2RUSXE5RW9aYmZNbVY2UHo2a1pFU2pJTnczeDN5M1hLQVZhSjVPcXJ1eEpmVEpTdXNJQURKZWYxd0Nyc3FRUzZSOGJ2MFE0WVJ2WGduNS1mWU1sNHUzY09DYWZZU0xwRVVQUktrckhjdHJqSU84VU1FbUZEc2F6Z3hMX2g5OXZONWZTZnJ4MGFTNGFpMzFIdUp1ckdBMlVRR0N4c2ktWU5QMFBNT3dORWhlbTAxUFVTd1lPakFfTzZsbnI1Y0RUY0kzaDZ5RTA?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — ANNUAL REPORT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026114310/ea0308630-20f_intercont.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — REPORT OF FOREIGN PRIVATE ISSUER",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026114261/ea0309761-6k_intercont.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Intercont (Cayman) (Nasdaq:NCT) - Stock Analysis - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFB3Sl9kTFlsRkVyY0JDZnBBUUdhdFhXU2VYSkxJWVhyRmo5RHR5MGFielYwTGhQQTdfcDVMTEFJVDJ0SElhQ0VJWERTYkZqOC1uN2VWblNYLVFBbkJWT0ZWcDVZUmprQnBoTDJRQm5oNlI4M3RGNlRFNTN2Y1hWWW8?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-10-23",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026112141/ea0309363-424b5_intercont.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "$NCT stock is down 15% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZGxhNXBwUWkzcUJrLWZlZkVTNU9VbWpNR0pkYjVkQU90anYxRGMxYVllWTJ1Q2d3cnl3c19kVHJLck1qRVhwTU11WndndXpXMFlkX0dzdHdsTHpRU2FoZ0tfUi1LaVhGRE5jcjZId3BMcm85V3h5RlRyenJDV0VYUV80VlY2LXdTek41ZTVOLVFXaGR1eG9sMnZBSkJsUGotUkE?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13D/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000149315226045086/xslSCHEDULE_13D_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "NCT Stock Whipsaws As Traders Pounce On Extreme Volatility - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQVlVZemFvb1A2Ny0yRWJ3YVB3bXJNTzJTWFdpOGhiLXpqV0VzaHRrUnEwa3lvVG5wSGpWdDZFOFAzQkJycWZqN2VvNFdCQkgzLTNObVI3R1BuSTFHNkpJSXFTWXNrbzhCRXJoUWh5SUtjUWEtY0dfNmNnTTdFaWprRTY2VQ?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "NCT Stock Rockets Then Retreats As Volatility Grips Traders - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQQzI0UVJoM1g1V2FrS1E4UkQwUDVzc0NfZDktNGF6bW5uaGZOLWZwdnB6MUg5UWhjTWswdGRCLW5kNXBwUERvcGlPcWxBaXlkMjhjU1hsdUFMM0hKUmkxeVpadkNCOV9GYXRiMHU0eTFlQkZBcjBmRXlMeDRyUzViZDVzcW4?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "NCT Stock Whipsaws After Parabolic Spike Draws Day Traders - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVWV2R3QzTW9MaWM3MFhmSU1TMUxoWDhXNEhaWDNsblNXRVpZYVNJQzREbEZTblpOVEE5XzZuLUR4cl9oTWpMU3pqQ1JJQl9ORE1TZmF2MHdaNU9MMTIzV2hxUlZ4ZHluRm1RSWh6dldEWjJKTm5lQUtyX2hHb3FLNw?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "NCT Stock Whipsaws As Traders Zero In On Volatility - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOM1NFZ0xsdU1DR3BERG5ZLVlJOGdGcXhxUzlpYkRDb3pTOU5xRG9lRmRhZFB6NkJnLWVtZEVuNmNWT01YOE84TGFrN3k5eDVuNEkyRThGdlh2b1hFR3RkcmZ4ZE5QbFZYT00yNTFUbVFZZkNKM3c5WnFQNGhNbkdLdUU1WHg?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "NCT Stock Whipsaws Higher As Traders Target Extreme Volatility - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQTXVCRTE1OXlvaG1vMFFzb2I3a1BoMFg2QUxsbXRCejZsV1hCXzhNVk45dGFvZFdvM0JZR0hLQWk1R2hPS3lVajhOM3gyQkJKUkhscVB5V2JfeFFMd0RkenlLWFdpT282TnNSMmdBbTVnd1puQmVzWkhtMkRPSU5fRW5RYw?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "NCT Stock Whipsaws Higher As Traders Target Volatile Move - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOMjJGQWJDSm82YUtrcXNwTTJpY2VQRWpuUjE2ZFBOZXNIQkU1MU9CRmd2MW9IQVNTMkhtd24wMGd4Z2Y2MmVhSUk2bk5Felh0b2JJSm5Qd1pCY0VObkdQanAtZTBUVFgzaTN5NW43NUxNYjlkWi1KTDRtWlZUSVU3YmdR?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-14",
+      "type": "other",
+      "title": "Intercont (Cayman) Limited Announces Effective Time of Share Consolidation/Reverse Share Splitto Regain NASDAQ Compliance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/intercont-cayman-limited-announces-effective-210000748.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-11",
+      "type": "other",
+      "title": "إفصاح SEC: S-8 — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026099064/ea0303538-s8_intercont.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-10",
+      "type": "other",
+      "title": "NCT Issues Official Statement to Shareholders Reinforcing Long-Term Commitment, Compliance and Transparency",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nct-issues-official-statement-shareholders-151500374.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-09-10",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/999999999526002933/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "إفصاح SEC: F-3 — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026089705/ea0296968-f3_intercont.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-08-11",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000149315226037029/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-07-07",
+      "type": "offering",
+      "title": "Intercont (Cayman) Limited Announces Pricing of $6.32 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/intercont-cayman-limited-announces-pricing-154500961.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-06-18",
+      "type": "other",
+      "title": "إفصاح SEC: F-1/A — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026069967/ea0291199-04.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-06-08",
+      "type": "other",
+      "title": "إفصاح SEC: F-1 — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026066161/ea0291199-03.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-05-28",
+      "type": "other",
+      "title": "NCT Stock Spikes On Heavy Volume As Value Story Emerges - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNckN5cUF1QWFpTGFhb1NNVU5NRjlVUldMOGxrRjBrU0VGM0pMZ0paUm5lSjRvWTQ5dmpSWnNIMms5UGtzaHZ0ZTY1UDZyX3kyR0FfVVpaTnpGZ0N0S3A5a0p3M0JjSnlhYnhmc1p4R2l4TjlmVHllUS1lY0kxcm4yUk5n?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-05-28",
+      "type": "other",
+      "title": "NCT Stock Doubles Intraday As Traders Pile Into Volatile Move - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOZWdkak51dDVGWGlPQ2ttWW9PbXVkeUd6U2VRX0xjLWZlMHYzSWp4d3Q1MTFaTGFBVmx2dzBOX004U1E4RE96MkdVZk1IVmQ4ODlpcFhuMkJwNzN2aWJENlRncDdjOWdXXzB3cm5lLVBpd0NoOU9TZERjc284cm1QZA?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-05-18",
+      "type": "other",
+      "title": "إفصاح SEC: DRS",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026058267/filename1.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-05-13",
+      "type": "other",
+      "title": "12 Industrials Stocks Moving In Wednesday's After-Market Session",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/news/12-industrials-stocks-moving-wednesdays-210607035.html"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-05-12",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — CURRENT REPORT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026054999/ea0290055-01.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-05-01",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000185141626000012/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-04-06",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026040544/ea028468402-424b3_intercont.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-03-20",
+      "type": "other",
+      "title": "إفصاح SEC: 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000149315226011798/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-01-29",
+      "type": "other",
+      "title": "Individual investors own 25% of NCT Alliance Berhad (KLSE:NCT) shares but private companies control 55% of the company",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/news/individual-investors-own-25-nct-025238421.html"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2025-12-29",
+      "type": "other",
+      "title": "NCT Alliance Berhad's (KLSE:NCT) Stock Is Going Strong: Have Financials A Role To Play?",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/news/nct-alliance-berhads-klse-nct-231010956.html"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2025-12-20",
+      "type": "offering",
+      "title": "Intercont (Cayman) Limited Receives Nasdaq Notification Letter Regarding Minimum Bid Price Deficiency",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/intercont-cayman-limited-receives-nasdaq-030000974.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2025-12-02",
+      "type": "other",
+      "title": "We Think That There Are More Issues For NCT Alliance Berhad (KLSE:NCT) Than Just Sluggish Earnings",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/news/think-more-issues-nct-alliance-223946031.html"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2025-12-01",
+      "type": "contract",
+      "title": "NCT Enters Ro-Ro Vessel Partnership to Strengthen Earnings Visibility and Carbon Neutral Fleet Strategy",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/nct-enters-ro-ro-vessel-135000414.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2025-11-20",
+      "type": "other",
+      "title": "How Did Intercont (Cayman) Limited's (NASDAQ:NCT) 13% ROE Fare Against The Industry?",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/news/did-intercont-cayman-limiteds-nasdaq-101853530.html"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2025-03-28",
+      "type": "other",
+      "title": "NCT Stock Price and Chart — NASDAQ:NCT - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE92UXk4QzNFcDJPNzZvMzRYeS1CakZEUGl1VkowNFNWYnpjX3BET1l6VUFhUWRHOWNpYmtvc2NBZDdDOUhnRk9NNU1lajJLNWZnNlVXQVI2UEROQms?oc=5"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2024-12-25",
+      "type": "other",
+      "title": "INTERCONT CAYMAN LTD CLASS A (NCT) Stock Chart - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9VX0VMT3l0R1BWNWZ4X0lWVEhZd3ZlelIwdjQ4M1ItaWZOTHd0VFdrUDU0SkNRZnFUZVhVTGROZmlLNWI2OVRvMnBJT05fVnJpQUJMWjVUTG9YOWZ2QmtDQjJfbw?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "NCT",
+      "kind": "424B5",
+      "date": "2026-10-23",
+      "title": "إفصاح 424B5 — PROSPECTUS SUPPLEMENT",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026112141/ea0309363-424b5_intercont.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "NCT",
+      "kind": "effectiveness",
+      "date": "2026-09-10",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/999999999526002933/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "NCT",
+      "kind": "news-offering",
+      "date": "2026-07-07",
+      "title": "Intercont (Cayman) Limited Announces Pricing of $6.32 Million Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/intercont-cayman-limited-announces-pricing-154500961.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "NCT",
+      "kind": "424B3",
+      "date": "2026-04-06",
+      "title": "إفصاح 424B3 — PROSPECTUS SUPPLEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026040544/ea028468402-424b3_intercont.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "NCT",
+      "kind": "news-offering",
+      "date": "2025-12-20",
+      "title": "Intercont (Cayman) Limited Receives Nasdaq Notification Letter Regarding Minimum Bid Price Deficiency",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/news/intercont-cayman-limited-receives-nasdaq-030000974.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    }
+  ],
+  "risk_flags": [
+    "سيولة منخفضة — تنبيه فقط وليس شرط استبعاد",
+    "محفزات قادمة: 2026-11-09 موعد الإعلان عن النتائج (تقويم Yahoo)"
+  ],
+  "positive_news": [
+    {
+      "symbol": "NCT",
+      "date": "2025-12-01",
+      "type": "contract",
+      "title": "NCT Enters Ro-Ro Vessel Partnership to Strengthen Earnings Visibility and Carbon Neutral Fleet Strategy",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/nct-enters-ro-ro-vessel-135000414.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "NCT",
+      "date": "2026-10-23",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026112141/ea0309363-424b5_intercont.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-07-07",
+      "type": "offering",
+      "title": "Intercont (Cayman) Limited Announces Pricing of $6.32 Million Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/intercont-cayman-limited-announces-pricing-154500961.html?.tsrc=rss"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2026-04-06",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — PROSPECTUS SUPPLEMENT",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2018529/000121390026040544/ea028468402-424b3_intercont.htm"
+    },
+    {
+      "symbol": "NCT",
+      "date": "2025-12-20",
+      "type": "offering",
+      "title": "Intercont (Cayman) Limited Receives Nasdaq Notification Letter Regarding Minimum Bid Price Deficiency",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/intercont-cayman-limited-receives-nasdaq-030000974.html?.tsrc=rss"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "short_shares"
+  ],
+  "rejections": [
+    "الأسهم المكشوفة 59,548 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 1.45,
+      "display": "1.4500$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 51,
+      "display": "1-for-25 · 2026-09-17 · عمر 51 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -86.9099,
+      "display": "86.91% من قمة ما بعد التقسيم · القمة 9.3200$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 22.2075,
+      "display": "أدنى RSI 22.21 (2026-10-01)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 59548.0,
+      "display": "59,548 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 59,548 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 219 يوماً (1-for-25) — خارج نافذة 60 يوماً المطلوبة",
+    "تسلسل «جاهز فنياً» قيد التكوّن — المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%)",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 49.5,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.02 · قاعدة القاع: 0.03 · آخر 3 جلسات: 0.27",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 70.0,
+      "weight": 35,
+      "detail": "تباعد RSI صاعد · قاع مزدوج W · وتد هابط",
+      "points": 24.5
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "1 قاع صاعد في البنية",
+    "حجم نسبي 4.2x يدعم الحركة",
+    "انطلاقة +30% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 1.518,
+    "entry_zone": [
+      1.2265,
+      1.518
+    ],
+    "stop": 1.2144,
+    "stop_pct": -20.0,
+    "stop_structural": 1.1468,
+    "stop_structural_pct": -24.45,
+    "targets": {
+      "t1_382": 4.3142,
+      "t2_618": 6.2258,
+      "t3_full": 9.32
+    },
+    "rr_t1": 9.21,
+    "rr_t2": 15.51,
+    "risk_per_share": 0.3036,
+    "reward_t2_per_share": 4.7078,
+    "atr_pct": 76.96,
+    "bottom": 1.22,
+    "peak": 9.32,
+    "last": 1.45,
+    "base_high": 1.41,
+    "ema9": 1.4632,
+    "ema20": 2.863,
+    "support": 1.22,
+    "impulse_high": 1.7,
+    "resistance": 1.67,
+    "sweep_low": null,
+    "reclaim_level": 1.2261,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 77.0%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 1.2144$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 15% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 4.2x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "rsi_divergence",
+      "name_ar": "ديفرجنس إيجابي RSI",
+      "tf": "1D",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ديفرجنس إيجابي على RSI: السعر سجّل قاعاً أدنى بينما RSI سجّل قاعاً أعلى → تلاشي ضغط البيع.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -3.52% للشمعة (30 شمعة). سقف القناة عند 3.811 والسعر أسفله بفارق 62.0% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 3.8109,
+        "channel_mid": 1.9327,
+        "channel_lower": 0.9802
+      },
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "1D",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 1.250 بتاريخ 2026-10-07 وقاع 1.310 بتاريخ 2026-10-13 بفارق 4.8%، وخط العنق عند 2.240 (79.2% فوق القاع). ننتظر إغلاقاً فوق 2.240 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 1.25,
+        "bottom2": 1.31,
+        "neckline": 2.24
+      },
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "1D",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-11-05 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "1D",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (1.220 → 1.251) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.22,
+        "last_low": 1.251
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "1D",
+      "confidence": 0.5325858913431991,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 4 قمة و4 قاع؛ السقف ينحدر 1.32% للشمعة والقاع 0.28%، والسعر ما زال داخل الوتد وسقفه عند 1.485 — الاختراق فوقه هو الإشارة.",
+      "levels": {
+        "resistance": 1.4853,
+        "support": 1.2029
+      },
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 18% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 1.220 بتاريخ 2026-10-21 وقاع 1.251 بتاريخ 2026-11-04 بفارق 2.5%، وخط العنق عند 1.696 (39.0% فوق القاع). ننتظر إغلاقاً فوق 1.696 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 1.22,
+        "bottom2": 1.251,
+        "neckline": 1.6958
+      },
+      "status": "forming"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.5505833926490507,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -0.15% للشمعة (30 شمعة). سقف القناة عند 1.638 والسعر أسفله بفارق 37.7% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.6382,
+        "channel_mid": 1.3857,
+        "channel_lower": 1.1721
+      },
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-11-05 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (1.510 → 0.977) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.51,
+        "last_low": 0.9773
+      },
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 1.02,
+    "rsi": 27.46,
+    "trend": "down",
+    "ema20": 1.3603,
+    "ema50": 4.0092,
+    "rvol": 0.36,
+    "macd_hist": 0.01234,
+    "channel_broken": false,
+    "higher_lows": 3,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-25 منفّذ في 2026-09-17 (عمر 51 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 8.8$ وصعد إلى 9.32$ (+5.9%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 86.9% من القمة 9.32$ إلى القاع المرجعي 1.22$ بتاريخ 2026-10-21 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 22.21 (تشبع بيعي قوي و 25 جلسة تحت 30) والحالي 24.73 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 1.22$ داخل نطاق 15.6% مع جفاف حجم (3% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +30.3% من إغلاق القاعدة (1.305$) إلى 1.7$ (2026-10-27) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 1.67$ (تشكّلت 2026-10-26) — على 36.9% من الدعم الرئيسي، واختُبرها السعر في 2026-10-27 عند 1.7$ وتوقف عندها بفارق 1.8% ثم تراجع.",
+    "حالة التسلسل: المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%).",
+    "تأكيدات فنية: 1 قاع صاعد في البنية، حجم نسبي 4.2x يدعم الحركة، انطلاقة +30% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 27.46",
+    "البيع المكشوف 6.1% من الفلوت (أيام التغطية 0.06).",
+    "أبرز نموذج فني: جفاف حجم ثم انفجار — جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 15% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 4.2x → دخول مؤسسي محتمل.",
+    "أخبار سلبية: إفصاح SEC: 424B5 — PROSPECTUS SUPPLEMENT | Intercont (Cayman) Limited Announces Pricing of $6.32 Million Public Offering",
+    "محفزات إيجابية: NCT Enters Ro-Ro Vessel Partnership to Strengthen Earnings Visibility and Carbon"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

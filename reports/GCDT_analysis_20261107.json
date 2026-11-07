@@ -1,0 +1,946 @@
+{
+  "symbol": "GCDT",
+  "name": "Green Circle Decarbonize Techno",
+  "sector": "Industrials",
+  "industry": "Specialty Industrial Machinery",
+  "exchange": "ASE",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-11-05",
+  "last_close": 0.0036,
+  "change_pct": -28.0,
+  "dollar_volume": 8674024.0,
+  "rs_found": true,
+  "rs_date": "2026-10-07",
+  "rs_age_days": 31,
+  "rs_ratio_str": "1-for-6",
+  "rs_ratio": 6.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 0.0151,
+  "spike_high": 0.06,
+  "spike_pct": 297.351,
+  "spike_date": "2026-11-04",
+  "decline_pct": -97.83333327900618,
+  "peak_date": "2026-11-04",
+  "bottom_price": 0.0013,
+  "bottom_date": "2026-11-04",
+  "base_sessions": 1,
+  "base_high": 0.0093,
+  "base_low": 0.0013,
+  "base_range_pct": 615.3846,
+  "base_broken": false,
+  "volume_dryup": 0.252,
+  "atr_pct": 24497.94,
+  "rsi_now": 30.7,
+  "rsi_trough": 30.708225347299944,
+  "rsi_trough_date": "2026-11-04",
+  "rsi_sessions_below_30": 0,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": -0.33026,
+  "channel_slope_pct": -7.763,
+  "channel_upper": 35.2895,
+  "channel_broken": false,
+  "rvol": 0.25,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 0.001",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+86.0% من 0.005 إلى 0.009",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 0.009 (على 615.4% من الدعم 0.001) — توقف السعر عندها بفارق 0.0%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 86.0,
+  "impulse_high": 0.0093,
+  "impulse_date": "2026-11-05",
+  "resistance_level": 0.0093,
+  "resistance_distance_pct": 615.38,
+  "resistance_date": "2026-11-05",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 0.0013,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.0013,
+  "support_hold_ok": false,
+  "base_close": 0.005,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    3.075,
+    2.941,
+    2.876,
+    2.808,
+    2.439,
+    2.314,
+    2.375,
+    2.209,
+    2.265,
+    2.502,
+    2.544,
+    2.448,
+    2.46,
+    2.238,
+    2.262,
+    2.28,
+    2.245,
+    5.46,
+    3.83,
+    3.097,
+    2.687,
+    2.575,
+    2.341,
+    2.283,
+    2.34,
+    2.304,
+    2.208,
+    2.044,
+    3.066,
+    4.02,
+    4.026,
+    2.884,
+    3.18,
+    3.102,
+    2.679,
+    2.4,
+    2.575,
+    1.41,
+    0.005,
+    0.004
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 2805867.0,
+  "float_shares": 1183715.0,
+  "market_cap": 332464.0,
+  "avg_volume": 5383937.0,
+  "insider_pct": 88.44,
+  "institutional_pct": 2.03,
+  "short_pct_float": 0.63,
+  "short_as_of": "1792022400",
+  "short_shares": 11065.0,
+  "days_to_cover": null,
+  "short_change_pct": 49.1,
+  "short_volume_ratio": 0.602,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "GCDT",
+      "date": "2026-11-04",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Limited Transitions to OTC Trading Platform",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/green-circle-decarbonize-technology-limited-205400663.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-11-04",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — 6-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226049964/form6-k.htm"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-11-03",
+      "type": "offering",
+      "title": "NYSE American to Commence Delisting Proceedings Against Green Circle Decarbonize Technology Limited (GCDT)",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nyse-american-commence-delisting-proceedings-210000090.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-11-02",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Ltd. (GCDT) Stock Price Prediction for 2026, 2030-2040 - Traders Union",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1kUTNaSWZPUFZjaWg5U3NraEZwZnVnUE5Ubk1uNk4zX2RpdWVVbDVOM1pzWlVmMVlFbkx1MWxTRFFhTzk4MXN6THVURzlVSWZqZzJmMTVKMWlROVZMM25VTTBvVko?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-26",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Limited Issues Statement Regarding Unusual Market Activity",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/green-circle-decarbonize-technology-limited-154500557.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-26",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226048499/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-21",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Signs Non-Binding Memorandum of Understanding for Proposed Partners with SANVO Fine Chemicals and Menzies Eurus Aviation for Airport Energy Efficiency",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/green-circle-decarbonize-technology-signs-113000525.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Limited Enters into Preliminary Discussions Regarding Potential Application of Advanced Green Building Technologies at Landmark Karuizawa Resort and Villa Development in Japan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/green-circle-decarbonize-technology-limited-125500724.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "إفصاح SEC: F-1 — F-1",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226047046/formf-1.htm"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Planned to Enter AI Data Center Cooling Market with Proprietary Ultra-Low Energy Liquid Cooling Solutions",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/green-circle-decarbonize-technology-planned-113600662.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-06",
+      "type": "other",
+      "title": "AI data centers could get liquid cooling using energy-saving materials. Green Circle is in early talks with operators. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxONFg3LTlYUW9HZEhUaTZtVEc2ajd2TTZLZG0tU1BYTlFNSjhDcUthaVNBTHE4VXBGcEhfQ0N4RnAyMWlCaDBJTkZMb3B3ZkRNbVFjZWthU25hb25BV3NtTy1IclhkSzhoSmZQOGR6cXk4cnRwUWxFVmROOWdxYlVIaldrTWhFMnN6QWpCZmd2ZkljeGhuSU9tVVJ2eVVRend6ZDF1cUZIcGVkc2c1clc3YzBJSy1JNzREcFZQb0hTNA?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-05",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/999999999526003154/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-05",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226045775/form424b3.htm"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Limited Submits Tender Proposals for Chiller Replacement Engineering at MOS Centre and Air-Conditioning Retrofit & Operation and Maintenance at Nan Fung Centre in Hong Kong",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/green-circle-decarbonize-technology-limited-113000984.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "(AMEX: GCDT) Share Price, GCDT Stock News, GCDT Share Price & Updates - kalkine.ca",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE11am5rbTFiaVlQUkwycjE0T2pwbGdUUTZUaUl4bmNES2tFR1d5TmVwODY5WTNWc18zTHY2X3pKbjBweUFmUmRFRWJGOTNEdw?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-09-23",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Limited Announces 1-for-6 Share Consolidation to Become Effective on October 7, 2026",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/green-circle-decarbonize-technology-limited-125500714.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-09-23",
+      "type": "other",
+      "title": "Six shares will become one as Green Circle aims to lift its trading price - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQT09PelYyTjZTYmJxaWhfVURlT3hLMVpWVVZleVZ5a0tlNkw3Yi1oVnp6cEFQQ3FIdmNqZkJMNTFPVHNUNGVoMXZ1Nlh1QTlSa3lZanZ2UnFZSTlKS3J1NFpQMWxlR3pvcjFUZUtSVWhiYl9JZkwzbnR5bkduX3VWb2FkNHE4bDFNeUhRQ1d3Vk5hNjFmamQxSWVKYjJyUUhxRGN4Zk9ZSzhLMndOZWs0V2tPRk5vQ25rdmhrWGNxTQ?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-09-09",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology (GCDT) Shares Fall 22% After Hours: Here's What Happened - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPMy1qZm5iOHNUWHhreWh1T3VBSlJxZWZqRmx6VldNdDZhT1JlMERGbHFXLWV1aTkxVVBSYWhsUnpnM0pBNmM2STVEYXl1azItOUhfNTl4TUJWelhyQi1hcVphQlNhZ2ZaMkUxTGVBS3pYRVZFQ25UaXd1QW5tU2RWWDFqTU5STVZXMmQ0ZGliUXRfVzNlXzdVeGgzVjFZYVlWZk13N0ZjVjVPWXFwUzUzMUE5QmpiSFlGWjZod3k5TjhOeElBVkZWa1dzUWh2RkYtTGpWN1lWeGpySFYy?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-09-08",
+      "type": "contract",
+      "title": "Green Circle Decarbonize Technology Limited Entering into Strategic Partnership Agreement for Mass Production of BocaPCM-TES Panels in the People's Republic of China",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/green-circle-decarbonize-technology-limited-141500141.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-08-31",
+      "type": "other",
+      "title": "إفصاح SEC: DRS",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226040677/filename1.htm"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-08-18",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Limited Announce Share Capital Increase and Share Capital Alteration",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/green-circle-decarbonize-technology-limited-144500589.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226038530/form20-f.htm"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "إفصاح SEC: 8-A12B/A — 8-A12B/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000175392626001500/g085851_8a12ba.htm"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-08-10",
+      "type": "other",
+      "title": "إفصاح SEC: D",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000106299326004154/xslFormDX01/primary_doc.xml"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-07-31",
+      "type": "other",
+      "title": "إفصاح SEC: NT 20-F — NT 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226035558/formnt20-f.htm"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-07-16",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K/A — 6-K/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226033542/form6-ka.htm"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-06-10",
+      "type": "other",
+      "title": "GCDT Stock Whipsaws As Traders Focus On Debt And Volatility - Timothy Sykes",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOcXIwRlJZbVJCTlhacWNsemxjcTFwS3prY3FsYk1ycXRTQ3hrcFNaOG9leEtEd0RoUGlieUlrRGc1WFA3dnJhLWpkZk9RRnYtZXpEa2I2Q3BkYVNsU3J1VmUxbFQ0N2Z6UF9ZNWNsWEtYVlJzU1hkWXlSR29uc3l4WDNyYnNpSnhhSkpvVWdUZW5NYXJVMHhWY1kzaw?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-06-10",
+      "type": "other",
+      "title": "GCDT Stock Whipsaws As Traders Target Decarbonization Play - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOdUdITi11WmhUckpUN1ByRXZZVk4yeEZ2SkxfWk9RQXNUTnhqWkt0TzdrQURfVkZzM3pzWjdoSl95UUlDVTl4MTZDQzZsbnp3VjNYeVowNEc5Umk1V1djQTQwc3NVY1Y3OFF0dGhSMUdUUFZEQkJFY0FJZXVmSlNmSEZNdEcxbWhCeG1xUG4zSXd2c0NJLUkwV1djTEE?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-06-09",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — PRIMARY DOCUMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000213980626000001/xslF345X06/primary_doc.xml"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-06-08",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology Limited announces Appointment of Mr. Louis Ho Ming Leung as Chief Financial Officer",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/green-circle-decarbonize-technology-limited-142400468.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-03-16",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology (NYSEAM:GCDT) - Stock Analysis - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQMDRzU1VmcWhvbk50OTF6QkU0RUNhOVVMbnVqWHVaRlNOR2lQUlBuOTFVTEtzazdMOEtQYjNlVFVIY1BSQTRDTzk3emJ2QWQ5RVY1bklyZkxGQzNqU2xKbjVCVUl4eElsNm9SZ19jN1JYcVp6VzVmZ0tHMEE4N196dko0eWVQX3V3a0NGTXFmRnl6czlmVHh1dF9R?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-03-03",
+      "type": "other",
+      "title": "Green Circle Decarbonize Techno (GCDT) Stock Forum & Discussion - Yahoo Finance - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9Eb3hTR1ZmMUJTNmY0UmtEVkpxdHJfeklCMTdfT0JrTlVVRHFKa2V0Vk5nWGxmQllLNnpEM3ctTmRxZEUzaUFrTkZ2UGFuZ3h1ajE5bC1sdERPb3JwSFFZ?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-02-16",
+      "type": "other",
+      "title": "Green Circle Decarbonize Techno (GCDT) latest stock news and headlines - Yahoo Finance UK",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFB3VFlOc0t2Q0FoS0xqRk9SRmFlVHFzMktVNVJ4MmZhbHFCUnFvLVAxbXVzNWY5WGRNOEs2cXR0cGJnYjNfYnVIOHNMeVVLZ29ZTnlidXRlQXo?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-02-12",
+      "type": "offering",
+      "title": "Green Circle Decarbonize Technology Limited Announces Closing of the Underwriter’s Over-Allotment Option in Connection with its Initial Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/green-circle-decarbonize-technology-limited-165000846.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-01-17",
+      "type": "other",
+      "title": "What is the current Price Target and Forecast for Green Circle Decarbonize Technology Limited (GCDT) - Zacks Investment Research",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9Ka2RhZTJtZEpXeUxHMXNFa3llbmZPT0MzeWhEVUpmZW1TdVA0bU9kSXBfRW9sU3hpTURKLV9Dci16dzY5QzEwTmZFaTM2Q0FQVXJzd3pHeFlwSFpGWEFYS1ctdzhOSGFmV0pjUHhuSUZlaE1XS1diVg?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-01-14",
+      "type": "offering",
+      "title": "Green Circle Decarbonize Technology Limited Announces Closing of $10,000,000 Initial Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/green-circle-decarbonize-technology-limited-192500916.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-01-14",
+      "type": "other",
+      "title": "Green Circle Decarbonize Techno (GCDT) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5SZThtSEZWLWVXcFFKMGN5RUZiUTlaYjBhNjB0ajJ5eElOdlhQWEpzb2RKTVcwREJya0s4eTVGN3FoYTlnbEJJZ0VWTTdQT2VMNmc?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-01-14",
+      "type": "other",
+      "title": "Green Circle Decarbonize Techno (GCDT) stock price, news, quote and history - Yahoo Finance UK",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA1N0xrRTVTXzBMMEJDTTV6cl9aOFBCUHB5Z25HNzJYRlhlc3lXMDNMN0MwS3l6NG1uWmt0ZjdhRS11R2NFbEVEUUtsMmw0UWROTUE?oc=5"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-01-13",
+      "type": "offering",
+      "title": "Green Circle Decarbonize Technology Limited Prices $10,000,000 Initial Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/green-circle-decarbonize-technology-limited-011200894.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-01-13",
+      "type": "other",
+      "title": "Green Circle Decarbonize Technology (GCDT) Stock News - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5WMjI5QTRRdUpFdzlvLUVpQUkzSXJxQllvSmoyUlAtVDkwNFdaUWZ4SXVxVVBVVE5ySXhqd0haQjRZb1pNZUo3V3E4N19hUQ?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "GCDT",
+      "kind": "news-offering",
+      "date": "2026-11-03",
+      "title": "NYSE American to Commence Delisting Proceedings Against Green Circle Decarbonize Technology Limited (GCDT)",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nyse-american-commence-delisting-proceedings-210000090.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "GCDT",
+      "kind": "effectiveness",
+      "date": "2026-10-05",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/999999999526003154/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GCDT",
+      "kind": "424B3",
+      "date": "2026-10-05",
+      "title": "إفصاح 424B3 — 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226045775/form424b3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GCDT",
+      "kind": "news-offering",
+      "date": "2026-02-12",
+      "title": "Green Circle Decarbonize Technology Limited Announces Closing of the Underwriter’s Over-Allotment Option in Connection with its Initial Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/news/green-circle-decarbonize-technology-limited-165000846.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "GCDT",
+      "kind": "news-offering",
+      "date": "2026-01-14",
+      "title": "Green Circle Decarbonize Technology Limited Announces Closing of $10,000,000 Initial Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/news/green-circle-decarbonize-technology-limited-192500916.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "GCDT",
+      "kind": "news-offering",
+      "date": "2026-01-13",
+      "title": "Green Circle Decarbonize Technology Limited Prices $10,000,000 Initial Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/news/green-circle-decarbonize-technology-limited-011200894.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    }
+  ],
+  "risk_flags": [
+    "⚠ طرح أسهم/تخفيف عالي الخطورة خلال 10 أيام: NYSE American to Commence Delisting Proceedings Against Green Circle D"
+  ],
+  "positive_news": [
+    {
+      "symbol": "GCDT",
+      "date": "2026-09-08",
+      "type": "contract",
+      "title": "Green Circle Decarbonize Technology Limited Entering into Strategic Partnership Agreement for Mass Production of BocaPCM-TES Panels in the People's Republic of China",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/green-circle-decarbonize-technology-limited-141500141.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "GCDT",
+      "date": "2026-11-03",
+      "type": "offering",
+      "title": "NYSE American to Commence Delisting Proceedings Against Green Circle Decarbonize Technology Limited (GCDT)",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nyse-american-commence-delisting-proceedings-210000090.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-10-05",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1926293/000149315226045775/form424b3.htm"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-02-12",
+      "type": "offering",
+      "title": "Green Circle Decarbonize Technology Limited Announces Closing of the Underwriter’s Over-Allotment Option in Connection with its Initial Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/green-circle-decarbonize-technology-limited-165000846.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-01-14",
+      "type": "offering",
+      "title": "Green Circle Decarbonize Technology Limited Announces Closing of $10,000,000 Initial Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/green-circle-decarbonize-technology-limited-192500916.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GCDT",
+      "date": "2026-01-13",
+      "type": "offering",
+      "title": "Green Circle Decarbonize Technology Limited Prices $10,000,000 Initial Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/green-circle-decarbonize-technology-limited-011200894.html?.tsrc=rss"
+    }
+  ],
+  "phase": 7,
+  "display_phase": 7,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price",
+    "rsi"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.0036$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "RSI لم ينزل تحت 30 (أدنى قيمة 30.71) — لا يوجد تشبع بيعي"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.0036,
+      "display": "0.0036$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.0036$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 31,
+      "display": "1-for-6 · 2026-10-07 · عمر 31 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -97.8333,
+      "display": "97.83% من قمة ما بعد التقسيم · القمة 0.0600$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 30.7082,
+      "display": "أدنى RSI 30.71 (2026-11-04)",
+      "ok": false,
+      "data_available": true,
+      "reason": "RSI لم ينزل تحت 30 (أدنى قيمة 30.71) — لا يوجد تشبع بيعي"
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 11065.0,
+      "display": "11,065 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 25.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.25 · قاعدة القاع: 0.25",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "انطلاقة +86% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 0.0045,
+    "entry_zone": [
+      0.0035,
+      0.0045
+    ],
+    "stop": 0.0036,
+    "stop_pct": -20.0,
+    "stop_structural": 0.0012,
+    "stop_structural_pct": -72.84,
+    "targets": {
+      "t1_382": 0.0237,
+      "t2_618": 0.0376,
+      "t3_full": 0.06
+    },
+    "rr_t1": 21.36,
+    "rr_t2": 36.75,
+    "risk_per_share": 0.0009,
+    "reward_t2_per_share": 0.0331,
+    "atr_pct": 24497.94,
+    "bottom": 0.0013,
+    "peak": 0.06,
+    "last": 0.0036,
+    "base_high": 0.0093,
+    "ema9": 1.6233,
+    "ema20": 2.2011,
+    "support": 0.0013,
+    "impulse_high": 0.0093,
+    "resistance": 0.0093,
+    "sweep_low": null,
+    "reclaim_level": 0.0013,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 24497.9%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.0036$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [],
+  "patterns_4h": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 2% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 2.2x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 2 قاع صاعد منذ بداية القاعدة (0.161 → 0.120) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 0.161,
+        "last_low": 0.1202
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -6.10% للشمعة (30 شمعة). سقف القناة عند 0.495 والسعر أسفله بفارق 82.6% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.4946,
+        "channel_mid": 0.2971,
+        "channel_lower": 0.1784
+      },
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 0.161 بتاريخ 2026-10-20 وقاع 0.163 بتاريخ 2026-10-22 بفارق 1.2%، وخط العنق عند 0.200 (24.2% فوق القاع). ننتظر إغلاقاً فوق 0.200 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 0.161,
+        "bottom2": 0.163,
+        "neckline": 0.2
+      },
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.086,
+    "rsi": 22.11,
+    "trend": "down",
+    "ema20": 0.2235,
+    "ema50": 0.7873,
+    "rvol": 2.24,
+    "macd_hist": 0.05464,
+    "channel_broken": false,
+    "higher_lows": 2,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-6 منفّذ في 2026-10-07 (عمر 31 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 0.0151$ وصعد إلى 0.06$ (+297.4%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 97.8% من القمة 0.06$ إلى القاع المرجعي 0.0013$ بتاريخ 2026-11-04 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 30.71 (تشبع بيعي و 0 جلسة تحت 30) والحالي 30.7 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 0.0013$ داخل نطاق 615.4% مع جفاف حجم (25% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +86.0% من إغلاق القاعدة (0.005$) إلى 0.0093$ (2026-11-05) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 0.0093$ (تشكّلت 2026-11-05) — على 615.4% من الدعم الرئيسي، واختُبرها السعر في 2026-11-05 عند 0.0093$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "حالة التسلسل: المقاومة المختبرة بعيدة عن الدعم (أكثر من 28%).",
+    "تأكيدات فنية: انطلاقة +86% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 22.11",
+    "عدد الأسهم 2.81M — الفلوت 1.18M سهم.",
+    "البيع المكشوف 0.6% من الفلوت (أيام التغطية —).",
+    "أخبار سلبية: NYSE American to Commence Delisting Proceedings Against Green Circle Decarbonize | إفصاح SEC: 424B3 — 424B3",
+    "محفزات إيجابية: Green Circle Decarbonize Technology Limited Entering into Strategic Partnership "
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

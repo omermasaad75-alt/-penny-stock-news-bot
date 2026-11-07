@@ -1,0 +1,23 @@
+[
+ {
+  "stamp": "2026-11-07_0358",
+  "generated_at_riyadh": "2026-11-07 03:58",
+  "mode": "live",
+  "summary": {
+   "scanned": 13,
+   "with_reverse_split": 13,
+   "eligible": 1,
+   "watchlist": 0,
+   "gam_candidates": 0,
+   "ready": 0,
+   "failed": 0,
+   "avg_score_watchlist": 0,
+   "top_symbol": "ZONE",
+   "eligible_symbols": [
+    "ZONE"
+   ],
+   "gam_symbols": [],
+   "ready_symbols": []
+  }
+ }
+]
