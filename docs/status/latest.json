@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-11-10 02:08",
+ "generated_at_riyadh": "2026-11-10 03:40",
  "mode": "live",
  "sources": {
   "mode_setting": "live",
@@ -10,14 +10,14 @@
     "name": "yahoo-finance",
     "ok": true,
     "detail": "",
-    "latency_ms": 113,
+    "latency_ms": 157,
     "source_kind": "live"
    },
    {
     "name": "sec-edgar",
     "ok": true,
     "detail": "",
-    "latency_ms": 177,
+    "latency_ms": 110,
     "source_kind": "live"
    },
    {
@@ -1028,7 +1028,7 @@
   "candidate_discovery": {
    "scope": "أسهم أمريكية (region=us) بسعر intraday > 0 وحتى 5$ عبر Yahoo Equity Screener، مرتبة بالنشاط — نطاق مقصود لأسهم البيني، وليس جرداً شاملاً لكل تقسيمات السوق",
    "price_ceiling": 5.0,
-   "total_matching_screener": 10368,
+   "total_matching_screener": 10370,
    "candidate_cap": 1000,
    "pages_fetched": 10,
    "truncated": true,
@@ -2045,7 +2045,7 @@
    "rows_after_split_filter": 20,
    "partial": true,
    "stop_reason": "all_candidates_checked",
-   "total_matching_screener": 10368,
+   "total_matching_screener": 10370,
    "price_ceiling": 5.0,
    "pages_fetched": 10,
    "discovery_truncated": true,
@@ -3886,5 +3886,5 @@
    "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/42717834177"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/42729956632"
 }
