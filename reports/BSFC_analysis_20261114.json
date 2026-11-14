@@ -1,0 +1,837 @@
+{
+  "symbol": "BSFC",
+  "name": "Blue Star Foods Corp.",
+  "sector": "Consumer Defensive",
+  "industry": "Packaged Foods",
+  "exchange": "PNK",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-11-12",
+  "last_close": 0.114,
+  "change_pct": 0.88,
+  "dollar_volume": 72.0,
+  "rs_found": true,
+  "rs_date": "2026-10-08",
+  "rs_age_days": 37,
+  "rs_ratio_str": "1-for-1600",
+  "rs_ratio": 1600.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 0.31,
+  "spike_high": 1.46,
+  "spike_pct": 370.9678,
+  "spike_date": "2026-10-13",
+  "decline_pct": -92.26027430954962,
+  "peak_date": "2026-10-13",
+  "bottom_price": 0.2,
+  "bottom_date": "2026-10-23",
+  "base_sessions": 10,
+  "base_high": 0.238,
+  "base_low": 0.2,
+  "base_range_pct": 19.0,
+  "base_broken": false,
+  "volume_dryup": 0.413,
+  "atr_pct": 75.0,
+  "rsi_now": 32.64,
+  "rsi_trough": 27.732647025135094,
+  "rsi_trough_date": "2026-10-15",
+  "rsi_sessions_below_30": 1,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": true,
+  "macd_hist": 0.024,
+  "channel_slope_pct": -7.93,
+  "channel_upper": 1.0923,
+  "channel_broken": false,
+  "rvol": 1.0,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "فشل — كسر الدعم دون استعادة (إلغاء السيناريو)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": true,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": true,
+      "detail": "10 جلسات ثبات على الدعم 0.200",
+      "state": "ok"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+18.4% من 0.201 إلى 0.238",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": true,
+      "detail": "أقرب مقاومة 0.238 (على 19.0% من الدعم 0.200) — توقف السعر عندها بفارق 0.0%",
+      "state": "ok"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": true,
+      "detail": "أدنى نقطة بعد القمة 0.113 مقابل الدعم 0.200",
+      "state": "ok"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "كسر الدعم دون استعادة ⚠",
+      "state": "active"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 18.41,
+  "impulse_high": 0.238,
+  "impulse_date": "2026-11-06",
+  "resistance_level": 0.238,
+  "resistance_distance_pct": 19.0,
+  "resistance_date": "2026-11-06",
+  "pullback_type": "breakdown",
+  "pullback_low": 0.113,
+  "pullback_date": "2026-11-09",
+  "sweep_low": 0.113,
+  "sweep_depth_pct": 43.5,
+  "sweep_date": "2026-11-09",
+  "reclaim_level": 0.201,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.2,
+  "support_hold_ok": true,
+  "base_close": 0.201,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    1.6,
+    0.31,
+    0.25,
+    0.25,
+    1.0,
+    1.0,
+    0.25,
+    1.0,
+    0.73,
+    0.73,
+    0.73,
+    0.73,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.201,
+    0.201,
+    0.201,
+    0.201,
+    0.238,
+    0.113,
+    0.113,
+    0.113,
+    0.114
+  ],
+  "resistance_tested": true,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 107425.0,
+  "float_shares": 104651.0,
+  "market_cap": 12246.0,
+  "avg_volume": 251.0,
+  "insider_pct": 2.58,
+  "institutional_pct": null,
+  "short_pct_float": 5.96,
+  "short_as_of": "1734048000",
+  "short_shares": 0.18375,
+  "days_to_cover": 0.09,
+  "short_change_pct": 31.2,
+  "short_volume_ratio": null,
+  "short_source": "yahoo-finance",
+  "catalysts": [
+    {
+      "symbol": "BSFC",
+      "date": "2026-11-09",
+      "type": "other",
+      "title": "Blue Star Foods (BSFC) Stock Price, News & Analysis - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9HSU9wOENYbnNPa0NIT3p1c0ZPcG9VSTRmYkhta3RUZmdTQmlvRi1pNi0wSXNsRmpIUkxZTmI1MmdrSnExTmkxMk9zSTRmWWhfdGVj?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226046275/form8-k.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-08-27",
+      "type": "earnings",
+      "title": "Blue Star Foods Corp (BSFC) Key Financial Ratios – Valuation, Profitability & More - Value Research",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOYVRubmloTE9FeU1EMElHWm9tTmdxOVhTbU9kNlg4c2pmTGd0WHBQNHE1SC1XaENjNW1UTWg0U1V2cllkLWc5RFZ4TEM1TWJvMmFKQ2VWNGZqTHhoYzFuV0VqS1ozT3B6cjNiaDlWUmx4eHY2OUJsU18waHhJOEtXcTg1X2ZsWEVvNmp0SW9ualY?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-08-24",
+      "type": "other",
+      "title": "إفصاح SEC: DEF 14C — DEF 14C",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226039858/formdef14c.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-08-20",
+      "type": "other",
+      "title": "إفصاح SEC: 1-A-W — 1-A-W",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226039461/form1-aw.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-08-12",
+      "type": "other",
+      "title": "إفصاح SEC: 1-A/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226037452/xsl1-A_X01/primary_doc.xml"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-07-31",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-Q — 10-Q",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226035660/form10-q.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-05-22",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-K — 10-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226025031/form10-k.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-05-15",
+      "type": "other",
+      "title": "إفصاح SEC: NT 10-Q — NT 10-Q",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226023604/formnt10-q.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-03-31",
+      "type": "other",
+      "title": "إفصاح SEC: NT 10-K — NT 10-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226014260/formnt10-k.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-03-09",
+      "type": "other",
+      "title": "إفصاح SEC: PRE 14C — PRE 14C",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226009288/formpre14c.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-02-12",
+      "type": "other",
+      "title": "إفصاح SEC: 1-A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226006451/xsl1-A_X01/primary_doc.xml"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-01-09",
+      "type": "other",
+      "title": "إفصاح SEC: RW — RW",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226001057/formrw.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2026-01-06",
+      "type": "other",
+      "title": "إفصاح SEC: AW — AW",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226000553/formaw.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2025-12-19",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000121390025123828/xslSCHEDULE_13G_X01/primary_doc.xml"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2025-06-20",
+      "type": "other",
+      "title": "إفصاح SEC: 25-NSE",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000135445725000548/xslF25X02/primary_doc.xml"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2025-03-31",
+      "type": "other",
+      "title": "إفصاح SEC: NT 10-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000164117225001774/formnt10-k.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2025-03-05",
+      "type": "offering",
+      "title": "إفصاح SEC: S-1",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315225009166/forms-1.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2025-02-10",
+      "type": "other",
+      "title": "إفصاح SEC: POS AM",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315225005479/formposam.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2024-12-30",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315224052347/form424b3.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2024-12-26",
+      "type": "other",
+      "title": "إفصاح SEC: S-8",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315224051933/forms-8.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2024-06-27",
+      "type": "other",
+      "title": "Blue Star Foods Provides 2024 Revenue Guidance of At Least 65% Growth With Anticipated Annual Run-Rate Greater Than $20 Million - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPZDBXMnlpMnE1blZ1cUVkYmlJOGczUVgwV3YzYk9jVXBUNVkwcTcyelhOUnh5eWluV3BKckhiQm5OVmxZS1ZIS1BkREVLZmZjbElKdGVGZ2xvZnUwVFgyS3pUa1Nvcnluc0pOQ19zQU5MQktoVnRHODRJVGVud3o5NA?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2024-05-15",
+      "type": "offering",
+      "title": "Blue Star Foods Announces 1-for-50 Reverse Stock Split - Yahoo Finance",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBuTDRaSmpFNko4VmxvY1hnMHZFSkRhRzFRTVpVdzZCMTl1dXNNV0Y3SUtURGZrR3ozNlZwWk1UR1RySWR4RmFWMjJOZGNpb1JFRXZvYVVBU3cxbTgzQS1kVjFaZ2x1SnBmTFpQRWtHN1F5UjVCRG9YWjhfc0Y4UQ?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2023-11-03",
+      "type": "other",
+      "title": "Thinking about buying stock in Aware, Virios Therapeutics, Bit Brother, Confluent, or Blue Star Foods? - Lelezard",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORElNb0hXMl8wdjhZUmFmaEFialEwZERFeG95UU9iOXRQazBxNFFNN1NHZnpLY0I0X2dyZzBxQVVQYXJIR3BKcmZOMjhfRWhkRFJTMmZRN0dEN0RLZXZISVpHTFRIWFNmWlAtWFFfdzhqN3llcHVwZHRQa2t5SUM2VWNPbXpac2RkZHQyM2o2Y3h2Tm1KRFBtd2dFVzIzcG0yRjJjeDRR?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2023-01-07",
+      "type": "other",
+      "title": "Blue Star Foods Corp (BSFC) Share Price Today | Blue Star Foods Corp (BSFC) Live NSE/BSE - Value Research",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPcjE3WHRwdUYzOTBkUEhoOWJvYkt4U3E4a1YyV0xVc2xKcFhnR1hxQ0lSdDRCZ0lQRDJpQW81Q2FaZmIyZUtYbWZWXzBaMzExUW42RHdPV2FqRVVuam9wUW5qRTNJaHhUX3JFSHYxU3V5YzlJZjN6dU5TSUIxTm5iZGNB?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2022-01-19",
+      "type": "other",
+      "title": "Has Blue Star Foods Corp. (BSFC) Outpaced Other Consumer Staples Stocks This Year? - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9CcjFmMmxVLW01cjBUbFhJcms0Z0R0V1Fhdy1oSGJCc2JSNkt2YXZKckdfTFhTZEpFRVBvVHo0SFNLbWJxb2hqU0pmTUhxOVozS0FzTjZxQU5JaDFZTmxOZnc2SXpSM3dTRjU5VGNidUkzTWg2VHBGMWdTUQ?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2021-05-27",
+      "type": "other",
+      "title": "Blue Star Foods Corp. (BSFC) stock price, news, quote and history - Yahoo Finance UK",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBlWnIyQUFwU3pobTJaQ3JMamlKTDAxbW5uUlpRdU5zU2pJY2IyRUxBVjRabGRRbm0tb2o3cmZhSlM0ZU1pVWhVTkJhVG1YRHJuTUE?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2021-04-06",
+      "type": "other",
+      "title": "Blue Star Foods Corp. (BSFC) Stock Historical Prices & Data - Yahoo Finance - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5iUGV2VFNrbEpiZWg2RmtUYUxVQ3FidEQ2Y0ctb1NhSlVwY1JVMGVEZ2ZlcGVHNTRVdkxoekJBSTR0Z3o3UXdpc2pfb0lnaDkwbndOMVZNMnAyamsx?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2020-12-24",
+      "type": "other",
+      "title": "Blue Star Foods Corp. (BSFC) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBORUVmWDc2U0ZZTHd5T2RoMmFIVVZNVHNsNTFydDdPTW5IVlE3bkRFaEhpaUlWLWI5NkxVdHFwbFMzY3ZhQVFiVGlUZ1FOa3FKVUE?oc=5"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2020-04-29",
+      "type": "other",
+      "title": "BSFC Stock Price and Chart — OTC:BSFC - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5NOG5NZDZFb2xwYXBHdnVod01YNTFxVVZ4bGhFSkZRM2JGdTFiR2l5Sjdqd21nYTVqR3QtR2g5bHpoa0JqdmlEU1FhXzI2eVhTMmVsRVc0M3c?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "BSFC",
+      "kind": "delay",
+      "date": "2026-05-15",
+      "title": "تأخير في تقديم NT 10-Q (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226023604/formnt10-q.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "delay",
+      "date": "2026-03-31",
+      "title": "تأخير في تقديم NT 10-K (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315226014260/formnt10-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "S-1",
+      "date": "2025-03-05",
+      "title": "إفصاح S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315225009166/forms-1.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "424B3",
+      "date": "2024-12-30",
+      "title": "إفصاح 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315224052347/form424b3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "effectiveness",
+      "date": "2024-11-27",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/999999999524003605/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "S-1",
+      "date": "2024-11-25",
+      "title": "إفصاح S-1/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315224047660/forms-1a.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "424B5",
+      "date": "2024-07-12",
+      "title": "إفصاح 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315224027092/form424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "news-offering",
+      "date": "2024-05-15",
+      "title": "Blue Star Foods Announces 1-for-50 Reverse Stock Split - Yahoo Finance",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBuTDRaSmpFNko4VmxvY1hnMHZFSkRhRzFRTVpVdzZCMTl1dXNNV0Y3SUtURGZrR3ozNlZwWk1UR1RySWR4RmFWMjJOZGNpb1JFRXZvYVVBU3cxbTgzQS1kVjFaZ2x1SnBmTFpQRWtHN1F5UjVCRG9YWjhfc0Y4UQ?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "8-K",
+      "date": "2024-05-08",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315224018134/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "8-K",
+      "date": "2024-04-18",
+      "title": "8-K بند 1.01,2.03,3.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315224015118/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "BSFC",
+      "kind": "8-K",
+      "date": "2023-09-12",
+      "title": "8-K بند 1.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315223032333/form8-k.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "سيولة منخفضة — تنبيه فقط وليس شرط استبعاد",
+    "كسر الدعم دون استعادة — تنبيه فني فقط"
+  ],
+  "positive_news": [
+    {
+      "symbol": "BSFC",
+      "date": "2026-08-27",
+      "type": "earnings",
+      "title": "Blue Star Foods Corp (BSFC) Key Financial Ratios – Valuation, Profitability & More - Value Research",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOYVRubmloTE9FeU1EMElHWm9tTmdxOVhTbU9kNlg4c2pmTGd0WHBQNHE1SC1XaENjNW1UTWg0U1V2cllkLWc5RFZ4TEM1TWJvMmFKQ2VWNGZqTHhoYzFuV0VqS1ozT3B6cjNiaDlWUmx4eHY2OUJsU18waHhJOEtXcTg1X2ZsWEVvNmp0SW9ualY?oc=5"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "BSFC",
+      "date": "2025-03-05",
+      "type": "offering",
+      "title": "إفصاح SEC: S-1",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315225009166/forms-1.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2024-12-30",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730773/000149315224052347/form424b3.htm"
+    },
+    {
+      "symbol": "BSFC",
+      "date": "2024-05-15",
+      "type": "offering",
+      "title": "Blue Star Foods Announces 1-for-50 Reverse Stock Split - Yahoo Finance",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBuTDRaSmpFNko4VmxvY1hnMHZFSkRhRzFRTVpVdzZCMTl1dXNNV0Y3SUtURGZrR3ozNlZwWk1UR1RySWR4RmFWMjJOZGNpb1JFRXZvYVVBU3cxbTgzQS1kVjFaZ2x1SnBmTFpQRWtHN1F5UjVCRG9YWjhfc0Y4UQ?oc=5"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.114$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.114,
+      "display": "0.1140$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.114$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 37,
+      "display": "1-for-1600 · 2026-10-08 · عمر 37 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -92.2603,
+      "display": "92.26% من قمة ما بعد التقسيم · القمة 1.4600$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 27.7326,
+      "display": "أدنى RSI 27.73 (2026-10-15)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 0.1837,
+      "display": "0 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 908 يوماً (1-for-50) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 1242 يوماً (1-for-20) — خارج نافذة 60 يوماً المطلوبة",
+    "تقرير الأسهم المكشوفة (2024-12-13) سابق للتقسيم العكسي (2026-10-08) — عُدّل 294 ÷ 1600 = 0 سهماً",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 35.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.26 · قاعدة القاع: 0.41",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 40,
+      "weight": 25,
+      "detail": "اختبار دعم: نعم · سحب واستعادة: لا",
+      "points": 10.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "انطلاقة +18% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 0.1425,
+    "entry_zone": [
+      0.201,
+      0.1425
+    ],
+    "stop": 0.1311,
+    "stop_pct": -8.0,
+    "stop_structural": 0.188,
+    "stop_structural_pct": 31.93,
+    "targets": {
+      "t1_382": 0.6813,
+      "t2_618": 0.9787,
+      "t3_full": 1.46
+    },
+    "rr_t1": 47.26,
+    "rr_t2": 73.35,
+    "risk_per_share": 0.0114,
+    "reward_t2_per_share": 0.8362,
+    "atr_pct": 75.0,
+    "bottom": 0.2,
+    "peak": 1.46,
+    "last": 0.114,
+    "base_high": 0.238,
+    "ema9": 0.1726,
+    "ema20": 0.3483,
+    "support": 0.2,
+    "impulse_high": 0.238,
+    "resistance": 0.238,
+    "sweep_low": 0.113,
+    "reclaim_level": 0.201,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 75.0%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.1311$ (-8.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -7.01% للشمعة (30 شمعة). سقف القناة عند 0.817 والسعر أسفله بفارق 86.0% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.8168,
+        "channel_mid": 0.3033,
+        "channel_lower": 0.1126
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 0% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [],
+  "h4": {
+    "available": false,
+    "error": "index -40 is out of bounds for axis 0 with size 36"
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-1600 منفّذ في 2026-10-08 (عمر 37 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 0.31$ وصعد إلى 1.46$ (+371.0%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 92.3% من القمة 1.46$ إلى القاع المرجعي 0.2$ بتاريخ 2026-10-23 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 27.73 (تشبع بيعي و 1 جلسة تحت 30) والحالي 32.64 ولم يتأكد التحسّن بعد.",
+    "ثبات 10 جلسات على القاع 0.2$ داخل نطاق 19.0% مع جفاف حجم (41% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +18.4% من إغلاق القاعدة (0.201$) إلى 0.238$ (2026-11-06) — بالقدر المطلوب (≈20%).",
+    "أقرب مقاومة عند 0.238$ (تشكّلت 2026-11-06) — على 19.0% من الدعم الرئيسي، واختُبرها السعر في 2026-11-06 عند 0.238$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "⚠ كسر الدعم الرئيسي إلى 0.113$ دون استعادة — فشل التسلسل وإلغاء السيناريو.",
+    "حالة التسلسل: فشل — كسر الدعم دون استعادة (إلغاء السيناريو).",
+    "تأكيدات فنية: MACD يتجه للتحسّن، انطلاقة +18% بعد الثبات (التسلسل قيد التكوين).",
+    "عدد الأسهم 107.4K — الفلوت 104.7K سهم.",
+    "البيع المكشوف 6.0% من الفلوت (أيام التغطية 0.09).",
+    "أبرز نموذج فني: قناة هابطة — قناة هابطة بانحدار -7.01% للشمعة (30 شمعة). سقف القناة عند 0.817 والسعر أسفله بفارق 86.0% — ننتظر اختراقاً بإغلاق.",
+    "أخبار سلبية: إفصاح SEC: S-1 | إفصاح SEC: 424B3",
+    "محفزات إيجابية: Blue Star Foods Corp (BSFC) Key Financial Ratios – Valuation, Profitability & Mo"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

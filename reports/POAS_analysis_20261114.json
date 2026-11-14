@@ -1,0 +1,867 @@
+{
+  "symbol": "POAS",
+  "name": "Phaos Technology Holdings (Caym",
+  "sector": "Healthcare",
+  "industry": "Medical Devices",
+  "exchange": "ASE",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar",
+  "synthetic": false,
+  "as_of": "2026-11-12",
+  "last_close": 3.01,
+  "change_pct": 234.07,
+  "dollar_volume": 15729984.0,
+  "rs_found": true,
+  "rs_date": "2026-10-12",
+  "rs_age_days": 33,
+  "rs_ratio_str": "1-for-15",
+  "rs_ratio": 15.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 2.12,
+  "spike_high": 5.6,
+  "spike_pct": 164.151,
+  "spike_date": "2026-11-12",
+  "decline_pct": -63.749999893563135,
+  "peak_date": "2026-11-12",
+  "bottom_price": 2.03,
+  "bottom_date": "2026-11-12",
+  "base_sessions": 0,
+  "base_high": 2.03,
+  "base_low": 2.03,
+  "base_range_pct": 0.0,
+  "base_broken": false,
+  "volume_dryup": 64.343,
+  "atr_pct": 19.83,
+  "rsi_now": 69.22,
+  "rsi_trough": 69.22156215630568,
+  "rsi_trough_date": "2026-11-12",
+  "rsi_sessions_below_30": 0,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 1,
+  "macd_turning": true,
+  "macd_hist": 0.114,
+  "channel_slope_pct": -3.626,
+  "channel_upper": 3.0913,
+  "channel_broken": false,
+  "rvol": 17.96,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "بانتظار جلسات ما بعد الثبات",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [],
+  "impulse_pct": null,
+  "impulse_high": null,
+  "impulse_date": null,
+  "resistance_level": null,
+  "resistance_distance_pct": null,
+  "resistance_date": null,
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": null,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": null,
+  "support_hold_ok": false,
+  "base_close": 3.01,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": null,
+  "spark": [
+    2.46,
+    2.535,
+    2.55,
+    2.505,
+    2.52,
+    2.52,
+    2.49,
+    2.46,
+    2.55,
+    2.67,
+    2.1,
+    2.175,
+    2.325,
+    2.235,
+    2.13,
+    2.07,
+    2.0,
+    2.28,
+    2.43,
+    2.16,
+    2.65,
+    2.63,
+    2.42,
+    2.285,
+    2.25,
+    1.93,
+    1.5,
+    1.245,
+    1.17,
+    1.46,
+    1.26,
+    1.1,
+    1.081,
+    0.845,
+    0.74,
+    0.73,
+    0.752,
+    0.767,
+    0.901,
+    3.01
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": null,
+  "shares_out": 1096450.0,
+  "float_shares": 767705.0,
+  "market_cap": 53369396.0,
+  "avg_volume": 1757657.0,
+  "insider_pct": 29.98,
+  "institutional_pct": 2.6,
+  "short_pct_float": 1.02,
+  "short_as_of": "1793318400",
+  "short_shares": 11232.0,
+  "days_to_cover": 0.13,
+  "short_change_pct": -60.3,
+  "short_volume_ratio": 0.331,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "POAS",
+      "date": "2026-11-13",
+      "type": "other",
+      "title": "After-Hours Stock Movers: Top Gainers and Losers Following Today's US Close - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNaFo3aXVqa05GcGJRTWpNRTBJWGxKRFVHczlNWTRLS3VrMzlJNS1WMlZScWxlZVNPSWhLZ1Z2SEh4TFZXUUdIWjYwM1hHNnBpemN3ZDdQWVlTbk1oYS1qbmNsZURlTEtLU2htdWc1UVNSa0VVQlItbnlQVk5UWHpudjRJd0pqbXJ3MC13WWxtZ0pwU2laWFNXX0otTHVaa2JYekdlWWZ3R2llZUVBS3Q3WFlGTHlJMnA0QUVBVEwydlJTVkU?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-11-13",
+      "type": "other",
+      "title": "Phaos Technology Holdings (NYSE American:POAS) Surges 234% as Microscopy Stock Sees Heavy Trading - Kalkine",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNbmVmR0JYaUYtZ1p4MW52WDRBSmhmdkZQNHJqUnZwNldHQXk5N08zSmlodDlJaHdoaXBidm8ydE5ENGhjTDRrZHQ3ZnI2VW0zZ1BsbklYSVZKRV92cWViQUhTUFd5Nnc4Tl9pNU9obGRwVFVQN1FOYUoyNjNqaEpzNy00SHhpQm5HNU82TzJuWTFBRWVkQ1hmN1NQSmpxR2w4NDlwRzVsNlk5cnF2NzdZMlNUT0l1VXZrU1ZHZEJkZmhITWlXa1lnVWNud1Y?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-11-13",
+      "type": "other",
+      "title": "Unusual Volume Movers: LICN, OGEN, RAIN and More on Nov. 13, 2026 - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOWHA2ck5nemRDQ2N0MkJwT0VoeURhY2VpZF8xV3ZTTkhwNTZjZ0xTdzJqenhIbHl3dlVZSS01azdsS1h1UldmcHZ5RHFqU0wxMmVWUmVQQUI4eHBTN2dGVFNDVnRkRXc5RkVCSXlkcHl0Zl9YeTEwdVZ0SkJYeXV4b3dWbk5tN2tjXzZHRmVEZDllN0lTSW5jS0RlY2t6UEF6RjYtMFFoaE9UYThmMnZMdVVn?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "POAS Interactive Stock Chart | Phaos Technology Holdings (Caym Stock - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBkVzhmRjN3dnFPRVNNRmZuRXRvNjc2N2ZFUGEzZHN2dGZuNHo2cEtfMDF3SGRFUWkydVFCNzJLcHZXcTZPV2F4M01VWU9Odw?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Caym Stock Price Today | POAS Live Chart & News - Traders Union",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5OWlhtbkFBRUpfSWxPZWdLdFBPNVBwQk5MMy10NmV2ZHk2YkR3ejRRQkZhQjd6U1FqWG9nX2VQV0gzSlFHX1NDZHZKYjQ0eDhZZElPd2ZYb0E1NjNid1ZXSQ?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "$Phaos Technology (Cayman) (POAS.US)$ round 2 go - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPUVpOVlo5TW5hbGtRaWl2RTlmc3MwYzBXSUJJeFZkTWRCcmJYWGhCaW92d0JqajFzYlBNZUlBSE1mUHVpcFdrdU1GR0VxNkRlLTRBTUJkdlhnTmFva0ZiWnhDb0IzQWxkaEFKZG40dUpXWEY3Z2xMSGYxN3RNOEJHNGdTQkl5Y2pveUdNN19qYlktY1RBdGJQUFJuc20?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Morning Market Movers: POAS, CDNL, ATXG, XAIR See Big Swings - RTTNews",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPRHpUcndra2VYUlV2OHZXZ1QxOHVXTGxJd1g4SDVYbWNHMGpPOFZUU3Brd2NJZjh3YXVseGhrTWpqeHotVFRwV0ZmWGo1alVzNWRtQ3dsQmVwc0hOUGVNbFhGd0g1VlpSYnh2cjB3UjZEQVB2UlRIeGFha096aUo5OTFHdmFqVHNhaG1TU2xHV0dHWmt3VzE2cQ?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Unusual Volume Movers: LICN, DBGI, POAS Lead the Session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQd2tWWFdkbzM5LUlqX08tSHhsRUJWVTFfZ09jYlVRLUZ5ZWgtRG1FNDBiWHJkMkktWEFQMDhfTHNwcE5RNjNyaXhPTzk1bEdUY3dKRXRqZ2Nacm1jOURyQVdrSVJuMWJHcV9vc3oxd3ZYNERUbHhMTl9wT0hkNTVUX0trbGxrZ2NMT2liTnJDVUM5NzlzWkw5cFRkSDVzOUdRMVNWUVFKQnQ?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Most Active US Stocks Today: NVIDIA, CoreWeave Among High-Volume Names - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQSkZGVFZyTl9VMVJteHJDcVRHUjZIMnpZMW9sMVhjNUZfVmlXR2FhSUZhRm9sTDl0bHdxanB3emdTOHhOWmdncWMwN1lmRDdTTmRGVVc2ZWM2Z191WjdMNklqYlpwenp1LXFDRjhCY0xfZjFxaWk3QllsZGRST0lhY2w5VzdELVl5Um42cElJaFZHdXlnSXpvOHRQQ084c3BvZ1NscjB1MVZmTzlSRXV5dnpPcFFZLUdEX1BMXw?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Premarket Gainers and Losers for Nov. 12, 2026 - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQNWhmbXVXeDZDTzIwY1ZWWXFvQk9MUDNrRjJLU213QjQyN2xGUXEwU0U5UWZxazVGXzdSYTV0N3B3b2JBLXhVWFJSNTU3VTFfRm5meEthQUZ4TU1vNkNYXzNXMFhCVzh2dVhic1N4LTc5VF9JSUE5MWZzbnpJc01Zai1iS0ZpN0NjYkpNN0Y4ZTBodkdfcXJzRngxdw?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "Phaos Technology (POAS) Slips 4.00% to $1.44: Support at $1.37 in Focus - Growth ETF - https://www.siam.in/",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNNUhGMzNFZXdiZmtMamQ4TV9fOHVwZzZzSFpFbTRsQnEtdnRhcUJZclBLVFl6eHJpbVFVYWI3SnVtRWRlVV9HNWxKSkVCb1Z5ZjdqZWhKb24tOU5WSllVd0QzRGVNTmFYQVhHaE04ekNBQzR0b3FkQmVFeUgyaXFlUE8ycnBoVVNrbnhfNm4wSkU2T1BjMWRnb25iZ2FxZ1pFaEpXTUp6cmNVZw?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — 6-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000149315226048589/form6-k.htm"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-10-26",
+      "type": "offering",
+      "title": "Phaos Technology Holdings (Cayman) Limited Provides Required Going Concern Disclosure",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/phaos-technology-holdings-cayman-limited-220000419.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-10-23",
+      "type": "earnings",
+      "title": "Phaos Technology Holdings (POAS) Slips 1.53% to $2.25 as Stock Tests Lower End of Recent Range - Bollinger Expansion - siam.in",
+      "sentiment": "negative",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOWXdoR2ZFOTZlRFdjS1JiTDdqUzV3S21fMWROMTNQWWVyZmh2M1A1Sm1xYjVwV0NTaGVoNjJXS01ZV3BGUEV3Q3ZkbjBwUlZJYjNJNVBnMUUyaDRKZWZDX0RKWnB5VF9iLUs4YW5YendWQy1talh4b1JTTlJIMER2VU1XNi1sVkZrZ2cyazZZS281WHktZThMOHFOaXEwNFZUdzg5Nm5uMF9YbnVhMGVmTjdFekdySlRFU2Y3VVk3REUyMHdTWW9nb09Scw?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Cayman) Limited Announces Filing of Annual Report on Form 20-F for Fiscal Year 2026",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/phaos-technology-holdings-cayman-limited-223000905.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-10-02",
+      "type": "offering",
+      "title": "Phaos Technology Holdings (Cayman) Limited Announces One-For-Fifteen Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/phaos-technology-holdings-cayman-limited-123000165.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-10-01",
+      "type": "contract",
+      "title": "Phaos Technology Holdings (Cayman) Limited Announces Entry Into Securities Purchase Agreement for an Equity Facility of Up to US$10 Million",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/phaos-technology-holdings-cayman-limited-140400092.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-09-18",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Cayman) Limited Announces Update on Involvement of Related Parties",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/phaos-technology-holdings-cayman-limited-125800209.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-09-04",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Cayman) Limited Announces Results of Extraordinary General Meeting",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/phaos-technology-holdings-cayman-limited-213000350.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-08-31",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000149315226040828/form20-f.htm"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-08-11",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Cayman) Limited announces postponement of Extraordinary General Meeting 2026",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/phaos-technology-holdings-cayman-limited-080000129.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-08-11",
+      "type": "other",
+      "title": "إفصاح SEC: F-1/A — F-1/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000149315226037122/formf-1a.htm"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-06-03",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Cayman) Limited Provides Updated Response to Unusual Market Action",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/phaos-technology-holdings-cayman-limited-213000857.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-05-26",
+      "type": "other",
+      "title": "POAS - Phaos Technology (Cayman) Holdings Ltd Stock Price and Quote - Finviz",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE56aGhmdW93dG02aFVUZlBwWjFPeW1sOUNfZWJCNmc2M0FVYWZRbVZ5N0lIQm01Y0FJQXppUUFhbTB2LTEyZXc?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-05-18",
+      "type": "other",
+      "title": "إفصاح SEC: F-1 — F-1",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000149315226024238/formf-1.htm"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-04-15",
+      "type": "other",
+      "title": "إفصاح SEC: S-8 — S-8",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000149315226016714/forms-8.htm"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-03-16",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Caym (POAS) stock price, news, quote and history - Yahoo Finance Australia",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1BNmlzUHRGZzI0djJJanRuWHhtSlpXeFRqREVlaUYyM0U0QnR0ZzZmV09CaW11dmF6OEJ4RHZVM1BHZUlXSDU1U3lNbVNiWUpBdkVIN2I2NEE2NElndkEyQ3NR?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-03-06",
+      "type": "other",
+      "title": "إفصاح SEC: UPLOAD",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000000000026002330/filename1.pdf"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-03-05",
+      "type": "other",
+      "title": "إفصاح SEC: CORRESP",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000149315226008975/filename1.htm"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-02-05",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Cayman) Limited Provides Response to Unusual Market Action",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/phaos-technology-holdings-cayman-limited-110000313.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-11-24",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Cayman) Limited Announces Closing of the Sale of the Option Shares",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/phaos-technology-holdings-cayman-limited-210100502.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-11-14",
+      "type": "offering",
+      "title": "Phaos Technology Announces Closing of Initial Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/phaos-technology-announces-closing-initial-194100665.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-11-13",
+      "type": "other",
+      "title": "POAS Stock Price and Chart — AMEX:POAS - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE14c2hsb1VNRHBlZXg3R2Z0NlUwYV8xVkFOYjNvZ3FySkZqMTJidEZmeGpQWDZSM1BialAxYmhsLTR0MmRrMGluTWVjSTZQYzljU2U2djJXVEpJZw?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-11-12",
+      "type": "other",
+      "title": "إفصاح SEC: CERT — NYSE AMERICAN CERTIFICATION",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000114331325000084/POAS111225.pdf"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-11-12",
+      "type": "other",
+      "title": "إفصاح SEC: 8-A12B — 8-A12B",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000149315225021667/form8-a12b.htm"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-10-22",
+      "type": "other",
+      "title": "إفصاح SEC: POS AM — POS AM",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/000149315225018867/formposam.htm"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-08-19",
+      "type": "other",
+      "title": "symbol__ Stock Quote Price and Forecast - CNN",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBLbm9XMGNMSkpuQ005UUZqSU5zcHJrZllXUHA3ekZLLW43QVkyQ2VZN25FOHE5Ym02Q1hJUVFKUjBSNmZRYTZnUHhCZzdRNXd1?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-08-19",
+      "type": "other",
+      "title": "Phaos Technology Holdings (Caym (POAS) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5RSFBlRHY4Vjl2b1B2UVpySUlUc3lpNmtRMWZtX3RfTXhkRkxKaVk5T2gzTHpvX04xeTV2T3BKQ0w2enE3QVppdnZPZzA4c0VLZEE?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-07-31",
+      "type": "other",
+      "title": "إفصاح SEC: SEC STAFF LETTER",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/999999999725003277/filename1.pdf"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-07-31",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/999999999525002424/xslEFFECTX01/primary_doc.xml"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "POAS",
+      "kind": "news-offering",
+      "date": "2026-10-26",
+      "title": "Phaos Technology Holdings (Cayman) Limited Provides Required Going Concern Disclosure",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/technology/articles/phaos-technology-holdings-cayman-limited-220000419.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "POAS",
+      "kind": "news-offering",
+      "date": "2026-10-02",
+      "title": "Phaos Technology Holdings (Cayman) Limited Announces One-For-Fifteen Reverse Stock Split",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/phaos-technology-holdings-cayman-limited-123000165.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "POAS",
+      "kind": "news-offering",
+      "date": "2025-11-14",
+      "title": "Phaos Technology Announces Closing of Initial Public Offering",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/news/phaos-technology-announces-closing-initial-194100665.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "POAS",
+      "kind": "effectiveness",
+      "date": "2025-07-31",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2024258/999999999525002424/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "محفزات قادمة: 2026-11-13 After-Hours Stock Movers: Top Gainers and Los | 2026-11-13 Phaos Technology Holdings (NYSE American:POAS | 2026-11-13 Unusual Volume Movers: LICN, OGEN, RAIN and M"
+  ],
+  "positive_news": [
+    {
+      "symbol": "POAS",
+      "date": "2026-10-01",
+      "type": "contract",
+      "title": "Phaos Technology Holdings (Cayman) Limited Announces Entry Into Securities Purchase Agreement for an Equity Facility of Up to US$10 Million",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/phaos-technology-holdings-cayman-limited-140400092.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "POAS",
+      "date": "2026-10-26",
+      "type": "offering",
+      "title": "Phaos Technology Holdings (Cayman) Limited Provides Required Going Concern Disclosure",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/phaos-technology-holdings-cayman-limited-220000419.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-10-23",
+      "type": "earnings",
+      "title": "Phaos Technology Holdings (POAS) Slips 1.53% to $2.25 as Stock Tests Lower End of Recent Range - Bollinger Expansion - siam.in",
+      "sentiment": "negative",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOWXdoR2ZFOTZlRFdjS1JiTDdqUzV3S21fMWROMTNQWWVyZmh2M1A1Sm1xYjVwV0NTaGVoNjJXS01ZV3BGUEV3Q3ZkbjBwUlZJYjNJNVBnMUUyaDRKZWZDX0RKWnB5VF9iLUs4YW5YendWQy1talh4b1JTTlJIMER2VU1XNi1sVkZrZ2cyazZZS281WHktZThMOHFOaXEwNFZUdzg5Nm5uMF9YbnVhMGVmTjdFekdySlRFU2Y3VVk3REUyMHdTWW9nb09Scw?oc=5"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2026-10-02",
+      "type": "offering",
+      "title": "Phaos Technology Holdings (Cayman) Limited Announces One-For-Fifteen Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/phaos-technology-holdings-cayman-limited-123000165.html?.tsrc=rss"
+    },
+    {
+      "symbol": "POAS",
+      "date": "2025-11-14",
+      "type": "offering",
+      "title": "Phaos Technology Announces Closing of Initial Public Offering",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/phaos-technology-announces-closing-initial-194100665.html?.tsrc=rss"
+    }
+  ],
+  "phase": 7,
+  "display_phase": 7,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": true,
+  "gam_reasons": [
+    "RSI لم ينزل تحت 30 (أدنى قيمة 69.22) — لا يوجد تشبع بيعي"
+  ],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "rsi"
+  ],
+  "rejections": [
+    "RSI لم ينزل تحت 30 (أدنى قيمة 69.22) — لا يوجد تشبع بيعي"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 3.01,
+      "display": "3.0100$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 33,
+      "display": "1-for-15 · 2026-10-12 · عمر 33 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -63.75,
+      "display": "63.75% من قمة ما بعد التقسيم · القمة 5.6000$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 69.2216,
+      "display": "أدنى RSI 69.22 (2026-11-12)",
+      "ok": false,
+      "data_available": true,
+      "reason": "RSI لم ينزل تحت 30 (أدنى قيمة 69.22) — لا يوجد تشبع بيعي"
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 11232.0,
+      "display": "11,232 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "الثبات على القاع 0 جلسة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مرشح GAM للمراجعة فقط — غير مؤهل وفق الشروط الصارمة، وليس فرصة أو توصية. تقييم RSI مبني على بيانات السعر في المسح الحالي ولا تُحفظ حالات رفض تاريخية بين المسوح."
+  ],
+  "score": 12.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 0.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 32.34 · قاعدة القاع: 64.34 · آخر 3 جلسات: 364.96",
+      "points": 0.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 80.0,
+      "weight": 15,
+      "detail": "EMA20: فوقه / صاعد · EMA30: فوقه / غير صاعد · EMA50: فوقه / غير صاعد",
+      "points": 12.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "حجم نسبي 17.96x يدعم الحركة",
+    "توافق فريم 4 ساعات (اتجاه صاعد)"
+  ],
+  "levels": {
+    "trigger": 3.7625,
+    "entry_zone": [
+      2.9498,
+      3.7625
+    ],
+    "stop": 3.01,
+    "stop_pct": -20.0,
+    "stop_structural": 1.9082,
+    "stop_structural_pct": -49.28,
+    "targets": {
+      "t1_382": 3.3937,
+      "t2_618": 4.2363,
+      "t3_full": 5.6
+    },
+    "rr_t1": -0.49,
+    "rr_t2": 0.63,
+    "risk_per_share": 0.7525,
+    "reward_t2_per_share": 0.4738,
+    "atr_pct": 19.83,
+    "bottom": 2.03,
+    "peak": 5.6,
+    "last": 3.01,
+    "base_high": 2.03,
+    "ema9": 1.3746,
+    "ema20": 1.4927,
+    "support": 2.03,
+    "impulse_high": null,
+    "resistance": null,
+    "sweep_low": null,
+    "reclaim_level": null,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 19.8%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 3.01$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.95,
+      "bias": "bullish",
+      "description_ar": "قناة هابطة بانحدار -5.02% للشمعة (30 شمعة). السعر اخترق سقف القناة (2.976) بفارق 1.1% → تحوّل الاتجاه قصير المدى إيجابي.",
+      "levels": {
+        "channel_upper": 2.9761,
+        "channel_mid": 1.5456,
+        "channel_lower": 0.8027
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 8% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 18.0x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.85,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 4 قاع صاعد منذ بداية القاعدة (0.600 → 1.830) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 0.6001,
+        "last_low": 1.83
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 14% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 3.28,
+    "rsi": 81.41,
+    "trend": "up",
+    "ema20": 1.8124,
+    "ema50": 1.6435,
+    "rvol": 0.04,
+    "macd_hist": 0.29011,
+    "channel_broken": true,
+    "higher_lows": 4,
+    "bullish_divergence": false,
+    "aligned": true
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-15 منفّذ في 2026-10-12 (عمر 33 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 2.12$ وصعد إلى 5.6$ (+164.2%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 63.7% من القمة 5.6$ إلى القاع المرجعي 2.03$ بتاريخ 2026-11-12 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 69.22 (تشبع بيعي و 0 جلسة تحت 30) والحالي 69.22 ولم يتأكد التحسّن بعد.",
+    "ثبات 0 جلسة على القاع 2.03$ داخل نطاق 0.0% مع جفاف حجم (6434% من المتوسط)، والقاع صامد.",
+    "حالة التسلسل: بانتظار جلسات ما بعد الثبات.",
+    "تأكيدات فنية: MACD يتجه للتحسّن، حجم نسبي 17.96x يدعم الحركة، توافق فريم 4 ساعات (اتجاه صاعد).",
+    "فريم 4 ساعات: الاتجاه صاعد، RSI 81.41، والقناة الهابطة مكسورة على الفريم.",
+    "عدد الأسهم 1.10M — الفلوت 767.7K سهم.",
+    "البيع المكشوف 1.0% من الفلوت (أيام التغطية 0.13).",
+    "أبرز نموذج فني: قناة هابطة — قناة هابطة بانحدار -5.02% للشمعة (30 شمعة). السعر اخترق سقف القناة (2.976) بفارق 1.1% → تحوّل الاتجاه قصير المدى إيجابي.",
+    "أخبار سلبية: Phaos Technology Holdings (Cayman) Limited Provides Required Going Concern Discl | Phaos Technology Holdings (POAS) Slips 1.53% to $2.25 as Stock Tests Lower End o",
+    "محفزات إيجابية: Phaos Technology Holdings (Cayman) Limited Announces Entry Into Securities Purch"
+  ],
+  "action_ar": "مرشح GAM للمراجعة في المسار الثانوي فقط؛ لم يجتز الأهلية الصارمة بسبب RSI لم ينزل تحت 30 (أدنى قيمة 69.22) — لا يوجد تشبع بيعي. لا يُعرض كفرصة مؤهلة أو في قائمة المتابعة، وليس توصية أو إشارة دخول.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

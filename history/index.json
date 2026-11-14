@@ -1,0 +1,26 @@
+[
+ {
+  "stamp": "2026-11-14_0428",
+  "generated_at_riyadh": "2026-11-14 04:28",
+  "mode": "live",
+  "summary": {
+   "scanned": 23,
+   "with_reverse_split": 23,
+   "eligible": 2,
+   "watchlist": 0,
+   "gam_candidates": 1,
+   "ready": 0,
+   "failed": 3,
+   "avg_score_watchlist": 0,
+   "top_symbol": "ARAI",
+   "eligible_symbols": [
+    "ARAI",
+    "XXII"
+   ],
+   "gam_symbols": [
+    "POAS"
+   ],
+   "ready_symbols": []
+  }
+ }
+]

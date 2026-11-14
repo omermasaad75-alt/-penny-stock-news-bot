@@ -1,0 +1,1127 @@
+{
+  "symbol": "VWAV",
+  "name": "VisionWave Holdings, Inc.",
+  "sector": "Industrials",
+  "industry": "Aerospace & Defense",
+  "exchange": "NGM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+  "synthetic": false,
+  "as_of": "2026-11-12",
+  "last_close": 0.556,
+  "change_pct": -46.54,
+  "dollar_volume": 1285173.0,
+  "rs_found": true,
+  "rs_date": "2026-09-22",
+  "rs_age_days": 53,
+  "rs_ratio_str": "1-for-20",
+  "rs_ratio": 20.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 6.22,
+  "spike_high": 6.23,
+  "spike_pct": 0.1608,
+  "spike_date": "2026-09-22",
+  "decline_pct": -93.03370811993977,
+  "peak_date": "2026-09-22",
+  "bottom_price": 2.2,
+  "bottom_date": "2026-10-28",
+  "base_sessions": 1,
+  "base_high": 3.18,
+  "base_low": 2.2,
+  "base_range_pct": 44.5455,
+  "base_broken": false,
+  "volume_dryup": 0.737,
+  "atr_pct": 116.68,
+  "rsi_now": 20.88,
+  "rsi_trough": 24.12215451070091,
+  "rsi_trough_date": "2026-09-29",
+  "rsi_sessions_below_30": 21,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": 0.13845,
+  "channel_slope_pct": -5.646,
+  "channel_upper": 4.6471,
+  "channel_broken": false,
+  "rvol": 18.03,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "فشل — كسر الدعم دون استعادة (إلغاء السيناريو)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": true,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 2.200",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+21.8% من 2.610 إلى 3.180",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 3.180 (على 44.5% من الدعم 2.200) — توقف السعر عندها بفارق 0.0%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": true,
+      "detail": "أدنى نقطة بعد القمة 0.434 مقابل الدعم 2.200",
+      "state": "ok"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "كسر الدعم دون استعادة ⚠",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 21.84,
+  "impulse_high": 3.18,
+  "impulse_date": "2026-10-29",
+  "resistance_level": 3.18,
+  "resistance_distance_pct": 44.55,
+  "resistance_date": "2026-10-29",
+  "pullback_type": "breakdown",
+  "pullback_low": 0.434,
+  "pullback_date": "2026-11-12",
+  "sweep_low": 0.434,
+  "sweep_depth_pct": 80.27,
+  "sweep_date": "2026-11-12",
+  "reclaim_level": 2.211,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 2.2,
+  "support_hold_ok": false,
+  "base_close": 2.61,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    5.26,
+    6.2,
+    6.21,
+    5.72,
+    5.79,
+    4.87,
+    4.57,
+    4.16,
+    4.42,
+    4.49,
+    4.48,
+    4.35,
+    5.04,
+    4.88,
+    5.14,
+    5.74,
+    4.52,
+    4.39,
+    4.01,
+    4.01,
+    4.26,
+    3.77,
+    3.8,
+    3.37,
+    3.42,
+    3.72,
+    2.94,
+    2.47,
+    2.61,
+    2.89,
+    2.66,
+    2.19,
+    2.23,
+    1.915,
+    1.61,
+    1.34,
+    1.35,
+    1.27,
+    1.04,
+    0.556
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 3245660.0,
+  "float_shares": 1889.0,
+  "market_cap": 1311246.0,
+  "avg_volume": 795037.0,
+  "insider_pct": 60.1,
+  "institutional_pct": 4.07,
+  "short_pct_float": 7.72,
+  "short_as_of": "1793318400",
+  "short_shares": 188257.0,
+  "days_to_cover": 0.92,
+  "short_change_pct": -36.1,
+  "short_volume_ratio": 0.503,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-13",
+      "type": "other",
+      "title": "12 Industrials Stocks Moving In Friday's Pre-Market Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQcnlWRi05WnJFc1IxeXZQNUt6RHUwOWU4MTZ4Q1RDXzlKSW5JcXhnVF80aWt5QnNhSEFsT0FfOW9pMGg1SXRzN1l5WmI3WlFidVRiWFZ6LWZBemdEa0Q1aURMc29GWjlyYkl2LVIyNWdTbC1DRWE2c2JwblkzRGxNX0paUVBYSk1XR3VQYVktVy1heGNsSXZ1NTFyeEQ2VHUzajhBNVp2M1pFbzAzWThQLTNLbkN2MXd0?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-13",
+      "type": "other",
+      "title": "Unusual Volume Movers: LICN, OGEN, RAIN and More on Nov. 13, 2026 - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOWHA2ck5nemRDQ2N0MkJwT0VoeURhY2VpZF8xV3ZTTkhwNTZjZ0xTdzJqenhIbHl3dlVZSS01azdsS1h1UldmcHZ5RHFqU0wxMmVWUmVQQUI4eHBTN2dGVFNDVnRkRXc5RkVCSXlkcHl0Zl9YeTEwdVZ0SkJYeXV4b3dWbk5tN2tjXzZHRmVEZDllN0lTSW5jS0RlY2t6UEF6RjYtMFFoaE9UYThmMnZMdVVn?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-13",
+      "type": "earnings",
+      "title": "What Explains the 15.46% Pre-Market Decline to USD 0.4701 at VisionWave Holdings (NASDAQ:VWAV)? - Kalkine",
+      "sentiment": "negative",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxObW5wTjJvalJrRHUwSmp1NFN2THFFN09TcFU4azJseWtFcmJnUWhpTjNkc3NsdzYtVFhwTnRMX2Iyak1yOElEc1dQT28xdTV3YzdvQUdTa0ZkcEU1QXdKZW05eVZZSVlyT3BBU1RZbWxHM2JLbnByRXZyWTBlU0JkMlJ2dThicXY4bnlWYkR5dnJmcHBVYTNpZU5RbXN5VHlXejNuZE4zZDdjLWVLdk1EN3FBclJ3YkhEUlY1ZGdBV2o5SUVvbl9Z?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Foresight Successfully Completes Integration into Modular Autonomous Ground Vehicles for Defense Applications",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/foresight-successfully-completes-integration-modular-132300572.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "VisionWave Holdings Signs Non-Binding Letter of Intent to Acquire Controlling Interest in Ukrainian Unmanned Systems Technology Company EPSERVICE",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/visionwave-holdings-signs-non-binding-110000146.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "VisionWave Holdings, Inc. (VWAV) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1oZVFER1c5cTh2RW9VRHlNZjVoNTY5d2Q2dHZSc1JRRWppNUczY3h1T2Z3ME1TZmVnbmk0R3llVkdfc19ZRnZKYUQ3LU8wRXJMMlE?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "symbol__ Stock Quote Price and Forecast - CNN",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9UdFItb1RtTm5qRUNPRi1pSjZmTmg0MTJWRDd3eXJDV2NKMWxndzBqWTV0djBZMjBWamFoOC1sM0pockY5OUR5bnhsa3pjOWFG?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Top VisionWave (VWAV) Competitors 2026 - MarketBeat",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPbTRwa05FTXNuT0pKYkNPOHNOS0ZYWXV3Z19VS0sySWFfbjdreHV1MTl5R3RkbEEtX1BPV2lueVVhM3BGZ29ZVVNJeFgyUEVwUDRNWTBkalpmWFZBSTl0SUNDeDROanZxRjV4S1lyTG13OFJHZFR6dTZ4cGFycHR3ZQ?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Defense Stock VisionWave (Nasdaq: VWAV) Signs LOI to Acquire Majority of Ukrainian Drone Developer EPSERVICE - Investorideas.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNOE5FVGllUkZtM2trNGktY296S0Fsd0t2bXlrWEFpM2t2MllJampjdlNIQjJtVGlHMGtXRDJOLVVNX29HTFk0TGlwbDlQWjU0X01iM0VrbE00QmJ3Qy1HVnVuaHRKRU5nMkFTRWhjbFVzV3NsdXJCMTZOa2MxQlJHUHhGUXJFSzd5dXdxUk5wdEtWVFIxVk92blZvMS1fNEJKQWVGcTJ3Qi1aMm5UVWZIbTdCRk5MSzRwT0VkZHR1UGVWRmV3TW5PR3gyTmVfcFc4bTJvTGNHZjY5YmctMmJGNlJKTjl6cmdiZFdpMXhuaXNBZVNBX3c?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "A Ukrainian company developing aircraft to carry smaller drones is the target of VisionWave's proposed $7 million deal. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNQ1VhTjc3b0d6ZmY0UUlFODB1OGZtakJpM0JfVm1NbkNlTTNDV2pEMUpGczllLXFCU1hzc3A2WTJiTEV0WU5zVTRLOGE5ck5kTElDMnBGSjdoRFdYZUdkcTk3YUFHU01VWEJkcmVRS1AzUnZyT0VPemlUc3EzZUZaRVVUTGJla1ZOcmprOEtuOVR5SS03WXRFN2pMeGJnQ09vejZtcjlubzBFaFJkcmphOTBkN2d2WDk5eU0zb2hR?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Top US Stock Gainers and Losers in Today's Session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNSDlieGxwLWU2QTF3dk52N3FrYTRZbUVMU0dzUkh0TENyN0dVN1p3Y2FJWTZLVjYtR0QzQjQ3M3Job0tfclFBYmd6cDVLZGdOeElNZ2J3UFRnRUFtaTV2bW1jSFhMck9ySmtsSHloRXR3Rl9QUXZhWjBEMzEwb2Z2VWd0dmZjbXJGT2xpamR0VlNzenZSam9GVXk0bW1oYnRpSlU0?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "A proposed deal requires a satisfactory live flight demonstration in Ukraine for VisionWave (VWAV). - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOQkZoVXJIb3VSTk1kZ01peTNXWHZ5cnNuaVpJaWRyVURrN3FUaHJXUDdXTEV1MzFOOTY2ZGUwb1ZhbExFRThaNzZIUzJDMzVyYzQwOEctMHdrQ1hsdUNRSFZwbzJQYnhkaEgxZmZfTTFmNzVNYjQwMWQ1aWx6M2dGUVpuelBRb05TaXROS1NYUDNZUWxrNk1HWWUzcXBMUHNvd0V1VFp1eHFSX09FdHdrLUxMVQ?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "Defense Stocks Wrap Up November 12, 2026 - Investorideas.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQdVJzSkdjSTNUTl95V0E2QVBEUVAwQzB5U1dmb21iWWd3djNBUk9UdXdMVFljdHZpOGQyZEZvM0FKNm93cVZDY09adXlYRkRWb2JPRkc1WjJERFFwdUhVd3hNZWxxaXFhT0pfU2IyRHBIUjBBZFN5cmtOQ3ozMkNVWVRIMlM0ZXJBWW95MXkwbTVkRFJYcjZHeVVqOGVaQQ?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "US Top Movers: Sharp Double-Digit Gainers and Losers in Today's Session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPcW1VM043T0VrUi1sd0p4Y0RNWk9RQUdySzU0Wi04ZU8wbF80NUVoc0hNdFR3YTl3dUFOWlJNb3hOa29tSXozcTR6MVJIVWJLdlVOcXQxYWJpb213RlJETXZnd2JhRjNtc0FEV1ZfSjBWOHFCTXZwU0szRXIycmVNMmxYNnRaUlowZXAzN0JjUWp3c3JBTGtlb3c3MUpzM1pYM2dyZFk4blhWSFBCZzg5Q3l2QWRsc0FmcmhSRkRR?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — FORM 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001429/e8056_8-k.htm"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-11",
+      "type": "other",
+      "title": "Defense Stocks Wrap Up November 10, 2026 - Investorideas.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPeEpuZG81alVxcGdaZHNRN1lLMVZKZjJuWjYwMUtEMzd0ZXJhQk5hTm5DVV9zQWVMcDJpakZrWjd6VzYza0xKTjZhdW16eDlaTmhvS2F2ZDVDMWQ4RHJLcGNkbGRFVGttVGdXeGNBbGpjZ2xmUWExdjcxdmtYY0hNRFppSkFKeFN1TGRLN0RoTVZ5LWlFNHhHUHVrUHhvdw?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-10",
+      "type": "other",
+      "title": "VisionWave Expands STRATUM Aerial Systems Portfolio With Six Unmanned Aircraft Platforms",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/39637/visionwave-expands-stratum-aerial-systems-portfolio-with-six-unmanned-aircraft-platforms"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-10",
+      "type": "other",
+      "title": "VisionWave (Nasdaq: VWAV) Adds Six Field-Tested, Commercially Available Unmanned Aerial Systems to Its STRATUM Aerial Portfolio",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/visionwave-nasdaq-vwav-adds-six-110000696.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-10",
+      "type": "other",
+      "title": "Defense Stock VisionWave (Nasdaq: VWAV) Brings Six Mission-Ready Unmanned Aerial Systems to Market Under STRATUM - Investorideas.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQd1N5RmdtYm1MRnlWYkZSalV0cWIyblVPS2RRdVRMM2tBM1hHWktyRkdnQkRTRmNheDBKM0tLTW9ZR2VueXBhWjFjYTBmN2Y4N2hxZ0JuTFMzR3NSVko2MWszZ21WOS1JUDAxaHpHUmNyRi1PRW13R3VzYmVTVTBVYWYzZEhuTEhTNXJjRXBJOC1kelFDdGRQc24xeWliWjZ1NGJNenZvTHVSYUNmaURlbE5ELXV2WU9pZDFjaWxJdzlGdnY0THZPLWpRbmR1RDhaRUJsMVlPYllKZDZaSnlGcmduRVBVVjQ2bHB0T0dORFROaDFGcDlqQ0hxZw?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-10",
+      "type": "other",
+      "title": "VisionWave Holdings, Inc. (VWAV) Seasonal Returns Chart - Yahoo Finance - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1VSG5ENkFiNVBGekJLN2lncmVHNVd4OVlzeGdzeFQ1Z1BXY2I4N0hxNlpRQlliODN2dGdVZVg2QXQ4SGhxMHRUci1qUms1d1R3ekZvMXZPRDVBTDVqVXBLd2h3?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-05",
+      "type": "other",
+      "title": "VisionWave Targets Dual-Use Expansion Across Defense, Infrastructure, Agriculture and Aviation Markets",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/visionwave-targets-dual-expansion-across-120000889.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "إفصاح SEC: DEF 14A — FORM DEF 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001376/e8024_def14a.htm"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-10-20",
+      "type": "other",
+      "title": "VisionWave Advances Development-Stage RF Sensing Portfolio for Counter-UAS, Electronic Warfare and Non-Line-of-Sight Applications",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/visionwave-advances-development-stage-rf-100000188.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "VisionWave Advances Stratum AI, an Agentic AI Architecture for Autonomous Mission Intelligence and Orchestration",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/visionwave-advances-stratum-ai-agentic-100000099.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "إفصاح SEC: PRE 14A — FORM PRE 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001343/e8008_pre14a.htm"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "إفصاح SEC: 144",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000210659926000001/xsl144X01/primary_doc.xml"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-10-05",
+      "type": "other",
+      "title": "VisionWave Outlines Development of Autonomous Defense Ecosystem Across Tactical UAV and Counter-UAS Applications",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/visionwave-outlines-development-autonomous-defense-110000105.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "VisionWave Expands International Demonstration Program for Autonomous Defense Systems",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/visionwave-expands-international-demonstration-program-100000621.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-28",
+      "type": "other",
+      "title": "VisionWave Highlights STRATUM Autonomous Ground Systems Platform for Multi-Mission Defense Operations",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/37025/visionwave-highlights-stratum-autonomous-ground-systems-platform-for-multi-mission-defense-operations"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-25",
+      "type": "other",
+      "title": "Why Is a Stock Down 97% This Year Paying to Appear Next to Palantir?",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://247wallst.com/investing/2026/09/25/why-is-a-stock-down-97-this-year-paying-to-appear-next-to-palantir/"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-24",
+      "type": "contract",
+      "title": "VisionWave Holdings Receives $20 Million Purchase Order for 200 STRATUM VARAN Unmanned Ground Vehicles, Subject to Conditions",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/visionwave-holdings-receives-20-million-120000365.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-18",
+      "type": "offering",
+      "title": "VisionWave Holdings, Inc. Announces 1-for-20 Reverse Stock Split Effective September 22, 2026",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/visionwave-holdings-inc-announces-1-120000773.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-18",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — FORM 424B5",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001265/e7955_424b5.htm"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-14",
+      "type": "other",
+      "title": "VisionWave Files U.S. Non-Provisional Patent Application Describing ARGUS™, a Proposed Space-Enabled, AI-Driven Counter-Drone Defense Architecture",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/visionwave-files-u-non-provisional-110000434.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-10",
+      "type": "other",
+      "title": "VisionWave Outlines Strategy for an Integrated Autonomous Systems Ecosystem Spanning Ground, Air, AI and RF Technologies",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/visionwave-outlines-strategy-integrated-autonomous-110000684.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-01",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/999999999526002856/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-08-31",
+      "type": "other",
+      "title": "VisionWave Holdings Provides Update on Pending Acquisition of Majority Interest in C.M. Composite Materials Ltd.",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/visionwave-holdings-provides-pending-acquisition-110000572.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-08-24",
+      "type": "other",
+      "title": "إفصاح SEC: S-3/A — FORM S-3/A1",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001132/e7889_s3a.htm"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-08-20",
+      "type": "contract",
+      "title": "Foresight and VisionWave Sign Strategic Cooperation Agreement to Advance AI-Enabled Autonomous Defense Systems",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/foresight-visionwave-sign-strategic-cooperation-113200691.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-08-19",
+      "type": "other",
+      "title": "VisionWave Appoints Tony Fabrizio as Director, Aerospace and Defense of Its UK Subsidiary, Strengthening UK and European Defense Expansion",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/visionwave-appoints-tony-fabrizio-director-110000011.html?.tsrc=rss"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-10-13",
+      "title": "8-K بند 1.02,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001340/e8004_8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-10-01",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001305/e7981_8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-09-24",
+      "title": "8-K بند 1.01,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001278/e7965_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "424B5",
+      "date": "2026-09-18",
+      "title": "إفصاح 424B5 — FORM 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001265/e7955_424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "news-offering",
+      "date": "2026-09-18",
+      "title": "VisionWave Holdings, Inc. Announces 1-for-20 Reverse Stock Split Effective September 22, 2026",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/visionwave-holdings-inc-announces-1-120000773.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-09-14",
+      "title": "8-K بند 1.01,2.03,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001239/e7941_8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "effectiveness",
+      "date": "2026-09-01",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/999999999526002856/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "S-3",
+      "date": "2026-08-24",
+      "title": "إفصاح S-3/A — FORM S-3/A1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001132/e7889_s3a.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "delay",
+      "date": "2026-08-14",
+      "title": "تأخير في تقديم NT 10-Q (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001068/e7856_nt10q.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-08-10",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001032/e7839_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "S-3",
+      "date": "2026-08-03",
+      "title": "إفصاح S-3 — FORM S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001005/e7818_s3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "424B3",
+      "date": "2026-07-23",
+      "title": "إفصاح 424B3 — FORM424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000969/e7802_424b3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "S-1",
+      "date": "2026-07-07",
+      "title": "إفصاح S-1/A — FORM S-1/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000921/e7757_s1a.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-06-25",
+      "title": "8-K بند 1.01,3.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000886/e7744_8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-05-15",
+      "title": "8-K بند 1.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000750/e7637_8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "news-offering",
+      "date": "2026-04-28",
+      "title": "How VisionWave’s New Shelf Registration and Board Appointment Could Shape Capital Flexibility for VWAV Investors - Yahoo Finance",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNZXhJN21rbEh1T0M3VzBFN2RacnVMa1U0bmdsTk5peWQtbjNVN0k1Mlo1ajQxdGY4M3ZVYUd3VTJpbE1CMWY5OEdMc0JyQzdwSEJFbDU1dmlFYXlWZUNZaEdidXFRZ1VBMEhMa0JvRGxma3B3VEkxSGl1S1psbExkdzJuc2pObW44eFd1OEJSMWNNenB0b2hzS1pDRzBWc1FPSlRCeW9EZkFpNE9vXzhuNU9B?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "S-1",
+      "date": "2026-04-16",
+      "title": "إفصاح S-1 — FORM S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000589/e7556_s1.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-04-13",
+      "title": "8-K بند 1.01,2.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000555/e7553_8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-03-17",
+      "title": "8-K بند 1.01,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000412/e7445_8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2026-03-09",
+      "title": "8-K بند 3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000364/e7410_8k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "424B3",
+      "date": "2026-02-24",
+      "title": "إفصاح 424B3 — FORM 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000298/e7366_424b3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "S-1",
+      "date": "2026-01-23",
+      "title": "إفصاح S-1/A — FORM S-1/A2",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226000110/e7240_s-1a2.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "VWAV",
+      "kind": "8-K",
+      "date": "2025-12-30",
+      "title": "8-K بند 1.01,5.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112225001741/e7167_8k.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "كسر الدعم دون استعادة — تنبيه فني فقط",
+    "محفزات قادمة: 2026-11-13 12 Industrials Stocks Moving In Friday's Pre- | 2026-11-13 Unusual Volume Movers: LICN, OGEN, RAIN and M | 2026-11-13 What Explains the 15.46% Pre-Market Decline t"
+  ],
+  "positive_news": [
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-24",
+      "type": "contract",
+      "title": "VisionWave Holdings Receives $20 Million Purchase Order for 200 STRATUM VARAN Unmanned Ground Vehicles, Subject to Conditions",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/visionwave-holdings-receives-20-million-120000365.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-08-20",
+      "type": "contract",
+      "title": "Foresight and VisionWave Sign Strategic Cooperation Agreement to Advance AI-Enabled Autonomous Defense Systems",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/foresight-visionwave-sign-strategic-cooperation-113200691.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "VWAV",
+      "date": "2026-11-13",
+      "type": "earnings",
+      "title": "What Explains the 15.46% Pre-Market Decline to USD 0.4701 at VisionWave Holdings (NASDAQ:VWAV)? - Kalkine",
+      "sentiment": "negative",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxObW5wTjJvalJrRHUwSmp1NFN2THFFN09TcFU4azJseWtFcmJnUWhpTjNkc3NsdzYtVFhwTnRMX2Iyak1yOElEc1dQT28xdTV3YzdvQUdTa0ZkcEU1QXdKZW05eVZZSVlyT3BBU1RZbWxHM2JLbnByRXZyWTBlU0JkMlJ2dThicXY4bnlWYkR5dnJmcHBVYTNpZU5RbXN5VHlXejNuZE4zZDdjLWVLdk1EN3FBclJ3YkhEUlY1ZGdBV2o5SUVvbl9Z?oc=5"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-18",
+      "type": "offering",
+      "title": "VisionWave Holdings, Inc. Announces 1-for-20 Reverse Stock Split Effective September 22, 2026",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/visionwave-holdings-inc-announces-1-120000773.html?.tsrc=rss"
+    },
+    {
+      "symbol": "VWAV",
+      "date": "2026-09-18",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — FORM 424B5",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2038439/000173112226001265/e7955_424b5.htm"
+    }
+  ],
+  "phase": 1,
+  "display_phase": 1,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price",
+    "short_shares"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.556$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الأسهم المكشوفة 188,257 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.556,
+      "display": "0.5560$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.556$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 53,
+      "display": "1-for-20 · 2026-09-22 · عمر 53 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -93.0337,
+      "display": "93.03% من قمة ما بعد التقسيم · القمة 6.2300$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 24.1222,
+      "display": "أدنى RSI 24.12 (2026-09-29)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 188257.0,
+      "display": "188,257 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 188,257 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 63.7,
+  "grade": "C",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.17 · قاعدة القاع: 0.74 · آخر 3 جلسات: 58.56",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 67.7,
+      "weight": 35,
+      "detail": "وتد هابط",
+      "points": 23.7
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 60,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: نعم",
+      "points": 15.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "حجم نسبي 18.03x يدعم الحركة",
+    "انطلاقة +22% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 0.695,
+    "entry_zone": [
+      2.211,
+      0.695
+    ],
+    "stop": 0.6394,
+    "stop_pct": -8.0,
+    "stop_structural": 2.068,
+    "stop_structural_pct": 197.55,
+    "targets": {
+      "t1_382": 3.7395,
+      "t2_618": 4.6905,
+      "t3_full": 6.23
+    },
+    "rr_t1": 54.76,
+    "rr_t2": 71.86,
+    "risk_per_share": 0.0556,
+    "reward_t2_per_share": 3.9955,
+    "atr_pct": 116.68,
+    "bottom": 2.2,
+    "peak": 6.23,
+    "last": 0.556,
+    "base_high": 3.18,
+    "ema9": 1.4773,
+    "ema20": 2.4823,
+    "support": 2.2,
+    "impulse_high": 3.18,
+    "resistance": 3.18,
+    "sweep_low": 0.434,
+    "reclaim_level": 2.211,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 116.7%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.6394$ (-8.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 33% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 18.0x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "1D",
+      "confidence": 0.6772458037472963,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 4 قمة و4 قاع؛ السقف ينحدر 3.41% للشمعة والقاع 2.89%، والسعر ما زال داخل الوتد وسقفه عند 2.318 — الاختراق فوقه هو الإشارة.",
+      "levels": {
+        "resistance": 2.3185,
+        "support": 1.6308
+      },
+      "status": "forming"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -4.36% للشمعة (30 شمعة). سقف القناة عند 5.421 والسعر أسفله بفارق 89.7% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 5.4212,
+        "channel_mid": 3.2699,
+        "channel_lower": 1.9723
+      },
+      "status": "forming"
+    },
+    {
+      "name": "base",
+      "name_ar": "قاعدة تجميع / ثبات على القاع",
+      "tf": "1D",
+      "confidence": 0.55,
+      "bias": "neutral",
+      "description_ar": "قاعدة تجميع على مدى 3 جلسات داخل نطاق -25.0% (القاع 2.200 / القمة 1.650). حجم آخر 3 جلسات يساوي 7467% من متوسط ما قبله (جفاف بيعي) والتقلب ATR تغيّر بنسبة +210%.",
+      "levels": {
+        "base_low": 2.2,
+        "base_high": 1.65
+      },
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -4.52% للشمعة (30 شمعة). سقف القناة عند 2.393 والسعر أسفله بفارق 82.9% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 2.3926,
+        "channel_mid": 1.5977,
+        "channel_lower": 1.0669
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 26% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-11-12 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.4098,
+    "rsi": 18.44,
+    "trend": "down",
+    "ema20": 1.0705,
+    "ema50": 2.2351,
+    "rvol": 0.05,
+    "macd_hist": -0.01383,
+    "channel_broken": false,
+    "higher_lows": 0,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-20 منفّذ في 2026-09-22 (عمر 53 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 6.22$ وصعد إلى 6.23$ (+0.2%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 93.0% من القمة 6.23$ إلى القاع المرجعي 2.2$ بتاريخ 2026-10-28 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 24.12 (تشبع بيعي قوي و 21 جلسة تحت 30) والحالي 20.88 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 2.2$ داخل نطاق 44.5% مع جفاف حجم (74% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +21.8% من إغلاق القاعدة (2.61$) إلى 3.18$ (2026-10-29) — بالقدر المطلوب (≈20%).",
+    "أقرب مقاومة عند 3.18$ (تشكّلت 2026-10-29) — على 44.5% من الدعم الرئيسي، واختُبرها السعر في 2026-10-29 عند 3.18$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "⚠ كسر الدعم الرئيسي إلى 0.434$ دون استعادة — فشل التسلسل وإلغاء السيناريو.",
+    "حالة التسلسل: فشل — كسر الدعم دون استعادة (إلغاء السيناريو).",
+    "تأكيدات فنية: حجم نسبي 18.03x يدعم الحركة، انطلاقة +22% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 18.44",
+    "عدد الأسهم 3.25M — الفلوت 1.9K سهم.",
+    "البيع المكشوف 7.7% من الفلوت (أيام التغطية 0.92).",
+    "أبرز نموذج فني: جفاف حجم ثم انفجار — جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 33% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 18.0x → دخول مؤسسي محتمل.",
+    "أخبار سلبية: What Explains the 15.46% Pre-Market Decline to USD 0.4701 at VisionWave Holdings | VisionWave Holdings, Inc. Announces 1-for-20 Reverse Stock Split Effective Septe",
+    "محفزات إيجابية: VisionWave Holdings Receives $20 Million Purchase Order for 200 STRATUM VARAN Un | Foresight and VisionWave Sign Strategic Cooperation Agreement to Advance AI-Enab"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}
