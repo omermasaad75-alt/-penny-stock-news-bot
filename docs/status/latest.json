@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-11-17 03:46",
+ "generated_at_riyadh": "2026-11-17 06:56",
  "mode": "live",
  "sources": {
   "mode_setting": "live",
@@ -10,14 +10,14 @@
     "name": "yahoo-finance",
     "ok": true,
     "detail": "",
-    "latency_ms": 99,
+    "latency_ms": 125,
     "source_kind": "live"
    },
    {
     "name": "sec-edgar",
     "ok": true,
     "detail": "",
-    "latency_ms": 120,
+    "latency_ms": 75,
     "source_kind": "live"
    },
    {
@@ -30,7 +30,7 @@
    {
     "name": "news-rss",
     "ok": true,
-    "detail": "34 عنوان",
+    "detail": "35 عنوان",
     "latency_ms": 0,
     "source_kind": "live"
    },
@@ -441,7 +441,7 @@
    "JELD": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "LRMR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "TRSI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "PLCEQ": "لا توجد بيانات حقيقية لهذا الرمز",
+   "PLCEQ": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "AVXL": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "ZONX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "VMHG": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -530,7 +530,7 @@
    "AQST": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "UPB": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "ENGN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "MKDW": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+   "MKDW": "لا توجد بيانات حقيقية لهذا الرمز",
    "CERS": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "TIGR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "LPL": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -582,7 +582,7 @@
    "INOH": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "FULC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "HYLN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "SLQT": "لا توجد بيانات حقيقية لهذا الرمز",
+   "SLQT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "DBGI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "LASE": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "ADTN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -640,7 +640,7 @@
    "LFMD": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "VTGN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "HEMP": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "MOBX": "لا توجد بيانات حقيقية لهذا الرمز",
+   "MOBX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "XTNT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "STTK": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "SLNX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -662,7 +662,6 @@
    "MSTO": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "ALTO": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "GHAV": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "YMT": "لا توجد بيانات حقيقية لهذا الرمز",
    "ICMB": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "TDUP": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "NCMI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -1451,6 +1450,7 @@
    "JELD",
    "LRMR",
    "TRSI",
+   "PLCEQ",
    "AVXL",
    "ZONX",
    "VMHG",
@@ -1539,7 +1539,6 @@
    "AQST",
    "UPB",
    "ENGN",
-   "MKDW",
    "CERS",
    "TIGR",
    "LPL",
@@ -1590,6 +1589,7 @@
    "INOH",
    "FULC",
    "HYLN",
+   "SLQT",
    "DBGI",
    "LASE",
    "ADTN",
@@ -1648,6 +1648,7 @@
    "LFMD",
    "VTGN",
    "HEMP",
+   "MOBX",
    "XTNT",
    "STTK",
    "SLNX",
@@ -1669,6 +1670,7 @@
    "MSTO",
    "ALTO",
    "GHAV",
+   "YMT",
    "ICMB",
    "TDUP",
    "NCMI",
@@ -2042,7 +2044,7 @@
    "candidates_collected": 1000,
    "candidates_checked": 1000,
    "candidates_unchecked": 0,
-   "rows_after_split_filter": 15,
+   "rows_after_split_filter": 16,
    "partial": true,
    "stop_reason": "all_candidates_checked",
    "total_matching_screener": 10460,
@@ -2055,16 +2057,13 @@
      "symbols": []
     },
     "no_data": {
-     "count": 13,
+     "count": 10,
      "symbols": [
       "NMHI",
       "NMZ-RI",
       "WENNW",
-      "PLCEQ",
+      "MKDW",
       "SKYD-WT",
-      "SLQT",
-      "MOBX",
-      "YMT",
       "TVGNW",
       "BEATW",
       "HYAC-WT",
@@ -2073,7 +2072,7 @@
      ]
     },
     "no_recent_split": {
-     "count": 972,
+     "count": 974,
      "symbols": [
       "CYAB",
       "RDAR",
@@ -2098,7 +2097,7 @@
      ]
     },
     "rs_technically_excluded": {
-     "count": 11,
+     "count": 12,
      "symbols": [
       "GUTS",
       "VIVK",
@@ -2110,7 +2109,8 @@
       "NIVF",
       "PARA",
       "WFF",
-      "XXII"
+      "XXII",
+      "YMT"
      ]
     },
     "gam_candidates": {
@@ -2529,7 +2529,7 @@
   "JELD": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "LRMR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "TRSI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "PLCEQ": "لا توجد بيانات حقيقية لهذا الرمز",
+  "PLCEQ": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "AVXL": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "ZONX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "VMHG": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -2618,7 +2618,7 @@
   "AQST": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "UPB": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "ENGN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "MKDW": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+  "MKDW": "لا توجد بيانات حقيقية لهذا الرمز",
   "CERS": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "TIGR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "LPL": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -2670,7 +2670,7 @@
   "INOH": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "FULC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "HYLN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "SLQT": "لا توجد بيانات حقيقية لهذا الرمز",
+  "SLQT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "DBGI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "LASE": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "ADTN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -2728,7 +2728,7 @@
   "LFMD": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "VTGN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "HEMP": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "MOBX": "لا توجد بيانات حقيقية لهذا الرمز",
+  "MOBX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "XTNT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "STTK": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "SLNX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -2750,7 +2750,6 @@
   "MSTO": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "ALTO": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "GHAV": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "YMT": "لا توجد بيانات حقيقية لهذا الرمز",
   "ICMB": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "TDUP": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "NCMI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -3119,8 +3118,8 @@
   "INMB": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً"
  },
  "summary": {
-  "scanned": 15,
-  "with_reverse_split": 15,
+  "scanned": 16,
+  "with_reverse_split": 16,
   "eligible": 2,
   "watchlist": 0,
   "gam_candidates": 2,
@@ -3160,7 +3159,7 @@
    "phase": 1,
    "score": 80.8,
    "grade": "A",
-   "last_close": 0.9918,
+   "last_close": 0.992,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3176,7 +3175,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.9918$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.992$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 585,071 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3277,8 +3276,8 @@
    ],
    "lifecycle_ready": false,
    "lifecycle_failed": false,
-   "resistance_distance_pct": 72.13,
-   "impulse_pct": -4.26,
+   "resistance_distance_pct": 72.68,
+   "impulse_pct": -3.95,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3340,7 +3339,7 @@
    "phase": 3,
    "score": 35.0,
    "grade": "D",
-   "last_close": 0.2025,
+   "last_close": 0.203,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3356,7 +3355,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.2025$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.203$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 42,838 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3460,7 +3459,7 @@
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
-   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+   "news_source": "rss:yahoo+sec-edgar+yahoo-finance",
    "synthetic": false,
    "phase_ar": "المرحلة 1 — تقسيم عكسي مرصود",
    "rejections": [],
@@ -3587,7 +3586,7 @@
    "phase": 7,
    "score": 0.0,
    "grade": "D",
-   "last_close": 0.0993,
+   "last_close": 0.099,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3603,7 +3602,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.0993$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.099$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "RSI لم ينزل تحت 30 (أدنى قيمة 42.40) — لا يوجد تشبع بيعي",
     "الأسهم المكشوفة 52,128 ليست أقل من 20,000"
    ],
@@ -3660,7 +3659,7 @@
    "phase": 1,
    "score": 0.0,
    "grade": "D",
-   "last_close": 0.4932,
+   "last_close": 0.493,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3676,7 +3675,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.4932$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    "سعر الإقفال 0.493$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
    ],
    "missing_step": null,
    "sequence_done": null,
@@ -3689,6 +3688,41 @@
    "short_as_of": "1793318400",
    "rs_date": "2026-11-05",
    "rs_ratio": 58.0
+  },
+  {
+   "symbol": "YMT",
+   "phase": 1,
+   "score": 0.0,
+   "grade": "D",
+   "last_close": 0.153,
+   "eligible": false,
+   "watchlist": false,
+   "gam_candidate": false,
+   "gam_reasons": [],
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null,
+   "price_source": "yahoo-finance",
+   "split_source": "yahoo-finance",
+   "fundamentals_source": "yahoo-finance",
+   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+   "synthetic": false,
+   "phase_ar": "مستبعد",
+   "rejections": [
+    "سعر الإقفال 0.153$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+   ],
+   "missing_step": null,
+   "sequence_done": null,
+   "core_price": null,
+   "core_reverse_split": null,
+   "core_decline": null,
+   "core_rsi": null,
+   "core_short_shares": null,
+   "short_shares": 1714.7,
+   "short_as_of": "1793318400",
+   "rs_date": "2026-11-16",
+   "rs_ratio": 10.0
   }
  ],
  "providers": [
@@ -3714,7 +3748,7 @@
    "name": "news-rss",
    "ok": true,
    "source_kind": "live",
-   "detail": "34 عنوان"
+   "detail": "35 عنوان"
   },
   {
    "name": "demo-generator",
@@ -3723,5 +3757,5 @@
    "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/43990210600"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/44013620759"
 }
