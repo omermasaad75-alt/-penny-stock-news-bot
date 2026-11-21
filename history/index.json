@@ -1,0 +1,23 @@
+[
+ {
+  "stamp": "2026-11-21_0520",
+  "generated_at_riyadh": "2026-11-21 05:20",
+  "mode": "live",
+  "summary": {
+   "scanned": 18,
+   "with_reverse_split": 18,
+   "eligible": 1,
+   "watchlist": 0,
+   "gam_candidates": 0,
+   "ready": 0,
+   "failed": 4,
+   "avg_score_watchlist": 0,
+   "top_symbol": "GOVX",
+   "eligible_symbols": [
+    "GOVX"
+   ],
+   "gam_symbols": [],
+   "ready_symbols": []
+  }
+ }
+]

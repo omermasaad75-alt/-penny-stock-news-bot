@@ -1,0 +1,914 @@
+{
+  "symbol": "ZBAO",
+  "name": "Zhibao Technology Inc.",
+  "sector": "Financial Services",
+  "industry": "Insurance Brokers",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+  "synthetic": false,
+  "as_of": "2026-11-19",
+  "last_close": 0.122,
+  "change_pct": -8.96,
+  "dollar_volume": 3774476.0,
+  "rs_found": true,
+  "rs_date": "2026-10-12",
+  "rs_age_days": 40,
+  "rs_ratio_str": "1-for-50",
+  "rs_ratio": 50.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 2.61,
+  "spike_high": 3.05,
+  "spike_pct": 16.8582,
+  "spike_date": "2026-10-12",
+  "decline_pct": -96.06557379692224,
+  "peak_date": "2026-10-12",
+  "bottom_price": 0.191,
+  "bottom_date": "2026-11-10",
+  "base_sessions": 1,
+  "base_high": 0.23,
+  "base_low": 0.191,
+  "base_range_pct": 20.4189,
+  "base_broken": false,
+  "volume_dryup": 0.391,
+  "atr_pct": 175.64,
+  "rsi_now": 19.76,
+  "rsi_trough": 17.678873365760012,
+  "rsi_trough_date": "2026-11-10",
+  "rsi_sessions_below_30": 22,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": 0.18594,
+  "channel_slope_pct": -7.865,
+  "channel_upper": 0.7966,
+  "channel_broken": false,
+  "rvol": 0.21,
+  "higher_lows": 0,
+  "squeeze": true,
+  "lifecycle_stage": "فشل — كسر الدعم دون استعادة (إلغاء السيناريو)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": true,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 0.191",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+114.4% من 0.194 إلى 0.416",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 0.230 (على 20.4% من الدعم 0.191) — توقف السعر عندها بفارق 80.9%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": true,
+      "detail": "أدنى نقطة بعد القمة 0.120 مقابل الدعم 0.191",
+      "state": "ok"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "كسر الدعم دون استعادة ⚠",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 114.43,
+  "impulse_high": 0.416,
+  "impulse_date": "2026-11-13",
+  "resistance_level": 0.23,
+  "resistance_distance_pct": 20.42,
+  "resistance_date": "2026-11-11",
+  "pullback_type": "breakdown",
+  "pullback_low": 0.12,
+  "pullback_date": "2026-11-18",
+  "sweep_low": 0.12,
+  "sweep_depth_pct": 37.17,
+  "sweep_date": "2026-11-18",
+  "reclaim_level": 0.192,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.191,
+  "support_hold_ok": false,
+  "base_close": 0.194,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    4.6,
+    4.35,
+    4.0,
+    5.0,
+    5.4,
+    4.8,
+    4.45,
+    4.35,
+    4.1,
+    2.95,
+    2.85,
+    2.4,
+    1.89,
+    1.02,
+    0.952,
+    0.634,
+    0.53,
+    0.531,
+    0.485,
+    0.44,
+    0.423,
+    0.327,
+    0.334,
+    0.32,
+    0.294,
+    0.255,
+    0.26,
+    0.26,
+    0.24,
+    0.227,
+    0.23,
+    0.23,
+    0.194,
+    0.219,
+    0.211,
+    0.279,
+    0.203,
+    0.183,
+    0.134,
+    0.122
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 80.87,
+  "shares_out": 9921127.0,
+  "float_shares": 62167.0,
+  "market_cap": 930601.0,
+  "avg_volume": 4843433.0,
+  "insider_pct": 71.61,
+  "institutional_pct": 0.28,
+  "short_pct_float": 0.44,
+  "short_as_of": "1793318400",
+  "short_shares": 42838.0,
+  "days_to_cover": 0.05,
+  "short_change_pct": 229.4,
+  "short_volume_ratio": 0.36,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "ZBAO",
+      "date": "2026-11-17",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — CURRENT REPORT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026121434/ea0309871-01.htm"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-11-13",
+      "type": "other",
+      "title": "Zhibao Technology Reports 16% Revenue Growth to RMB 319.9 Million and Narrows Annual Net Loss by 95.3%",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/40006/zhibao-technology-reports-16-revenue-growth-to-rmb-319-9-million-and-narrows-annual-net-loss-by-95-3"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-11-13",
+      "type": "other",
+      "title": "Zhibao Technology Inc. Reports Fiscal Year 2026 Financial Results and Files Annual Report on Form 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zhibao-technology-inc-reports-fiscal-110000113.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-11-13",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — ANNUAL REPORT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026119102/ea0309805-20f_zhibao.htm"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-11-03",
+      "type": "other",
+      "title": "إفصاح SEC: NT 20-F — NOTIFICATION OF LATE FILING",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026115244/ea0310609-nt20f_zhibao.htm"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "BC-Most Active Stocks",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-143019571.html"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "Zhibao Technology Inc. Announces Reverse Share Split",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zhibao-technology-inc-announces-reverse-154000823.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — REPORT OF FOREIGN PRIVATE ISSUER",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026107822/ea0308064-6k_zhibao.htm"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "Zhibao Technology Issues Preliminary Guidance for Fiscal Year Ended June 30, 2026",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zhibao-technology-issues-preliminary-guidance-163000360.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-28",
+      "type": "contract",
+      "title": "Zhibao Technology Signs NEXSYS Acquisition Agreement for Planned AI Computing Infrastructure Business",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/37029/zhibao-technology-signs-nexsys-acquisition-agreement-for-planned-ai-computing-infrastructure-business"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-28",
+      "type": "contract",
+      "title": "Zhibao Technology Signs Definitive Agreement to Acquire NEXSYS TECH for Planned AI Computing Infrastructure Business",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/zhibao-technology-signs-definitive-agreement-120000089.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-23",
+      "type": "other",
+      "title": "Zhibao Technology Signs Non-Binding LOI to Acquire On-Chain Trading Platform MeVX",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/36799/zhibao-technology-signs-non-binding-loi-to-acquire-on-chain-trading-platform-mevx"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-22",
+      "type": "other",
+      "title": "Zhibao Technology Inc. Subsidiary Zhibao Labuan Re's Board Approves Strategic Capital Injection and Operational Funding Exploration",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zhibao-technology-inc-subsidiary-zhibao-125900765.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-18",
+      "type": "other",
+      "title": "Zhibao Technology Inc. Subsidiary Zhibao Labuan Re Accelerates Reinsurance Business Expansion Across Hong Kong and Southeast Asia",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/zhibao-technology-inc-subsidiary-zhibao-125900130.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-16",
+      "type": "contract",
+      "title": "Zhibao Technology Expands Healthcare Data Infrastructure Through Changzhou Insurance Platform Agreement",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/36421/zhibao-technology-expands-healthcare-data-infrastructure-through-changzhou-insurance-platform-agreement"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-16",
+      "type": "other",
+      "title": "Zhibao Technology Inc. Expands Healthcare Data Elements Infrastructure via Joint Initiative with Hyperchain and Changzhou City Data to Provide Insurance Services to over 5 Million Residents",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/zhibao-technology-inc-expands-healthcare-125900523.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-10",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/999999999526002938/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-08-31",
+      "type": "other",
+      "title": "إفصاح SEC: F-1 — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026095337/ea0303198-f1_zhibao.htm"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-08-19",
+      "type": "other",
+      "title": "Chinese InsurTech Firm Zhibao Adds 2,380 Bitcoin in $154.7M Treasury Pivot",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://decrypt.co/375935/china-zhibao-bitcoin-treasury-pivot"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-08-19",
+      "type": "other",
+      "title": "Nasdaq-Listed Chinese Company Does a Michael Saylor, Launches New Bitcoin Treasury Worth $154.7 Million",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/nasdaq-listed-chinese-company-does-055304475.html"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-08-17",
+      "type": "other",
+      "title": "Zhibao Technology Inc. Announces Closing of $154.7 Million PIPE Financing",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zhibao-technology-inc-announces-closing-130100797.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-08-14",
+      "type": "other",
+      "title": "AM Best Withdraws Credit Ratings of Zhibao Labuan Reinsurance Company Limited",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/am-best-withdraws-credit-ratings-131900279.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-08-12",
+      "type": "other",
+      "title": "Zhibao Technology Forms AI-Native Long-Term Insurance Joint Venture With Dongbaohui",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/34160/zhibao-technology-forms-ai-native-long-term-insurance-joint-venture-with-dongbaohui"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-08-12",
+      "type": "other",
+      "title": "Zhibao Technology Inc. Establishes Joint Venture with Dongbaohui, Unlocking a New Chapter in AI-Native Embedded Long-Term Insurance Services",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/zhibao-technology-inc-establishes-joint-123000657.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-07-31",
+      "type": "contract",
+      "title": "Zhibao Technology Inc. Announces Signing of Definitive Securities Purchase Agreement for PIPE Financing Payable in Bitcoin",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/zhibao-technology-inc-announces-signing-123000476.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-07-23",
+      "type": "other",
+      "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://decrypt.co/374178/nasdaq-listed-zhibao-bitcoin-treasury-220-million-stock-sale"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-07-22",
+      "type": "other",
+      "title": "Why Zhibao Technology (ZBAO) Stock Is Up Today - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQYV9TbENreF9wS29IamE2a25BUXFZcXNYLVdzVGlseTd2RXNPRUZJNlFuV3hfVVpoS0ViT2tlbWRvUGRPSjdYSUp0aFdoNVNZU1loTUNQOEVOdnUxYmhWUlN1dWN6WmxYbklYVXpUWjlNeV9mWTB4V0NQd182bk1NVUdfdlJfdw?oc=5"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-07-07",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — OWNERSHIP DOCUMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026075982/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-07-02",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026075006/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-06-01",
+      "type": "other",
+      "title": "إفصاح SEC: F-1/A — AMENDMENT NO. 2 TO FORM F-1",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026063037/ea029270101-f1a2_zhibao.htm"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-05-28",
+      "type": "other",
+      "title": "ZBAO - Zhibao Technology Inc Stock Price and Quote - Finviz",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE8tM2l3UVVGc0tldmpyNmdHZXVwNGg3WTEtRDlBWTZxcmZjejVnb2xSbjhrX2VHbE5IaHFZVVBJN3ZuaHZCV1E?oc=5"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-05-13",
+      "type": "other",
+      "title": "إفصاح SEC: F-1/A — AMENDMENT NO. 1 TO FORM F-1",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026055814/ea0290377-f1a1_zhibao.htm"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-04-21",
+      "type": "other",
+      "title": "Zhibao Technology Inc (ZBAO) (Half Year 2026) Earnings Call Highlights: Revenue Soars Amid ...",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zhibao-technology-inc-zbao-half-030032924.html"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-04-02",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K/A — AMENDMENT NO. 1 TO FORM 6-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/000121390026039355/ea0284447-6ka1_zhibao.htm"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2025-04-24",
+      "type": "other",
+      "title": "Zhibao Technology (ZBAO) Stock Price, News & Analysis - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5TT2o2eUZVdWJ3NTI4ajhoTjNsRVFxeUVvSXgycjNTNUdXRzkzT0hNMmtHV25ySXlBQ21VNHg1eFU0ZHJ3cVNSUUxCOWlGdTVMZzNN?oc=5"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2024-07-22",
+      "type": "other",
+      "title": "Zhibao Technology: ZBAO Stock Price Quote & News - Robinhood",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAwV01xZkpyRjdEeHVIOTZiajZ6YzVYblVTdUpwU2dUOFFzU29zQjAtaGtYeVo3a3pWMWRrQTlZaTlmYnJzUjJzNkgyS1U4dXV2eFE?oc=5"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2024-05-12",
+      "type": "other",
+      "title": "Zhibao Technology Inc. (ZBAO) Stock Forum & Discussion - Yahoo Finance - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9nek9ZVnJqeFJPUVJSTjlKT2N2dDhNWlFmQlpmWnZWNkExTHFBV190Y0h0cFl6RTktZkdSWXdaZG5JNXpsWlBXaHltdy1ZVkJ4aVVQbVljRlBKMGdCMzV3?oc=5"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2024-05-06",
+      "type": "other",
+      "title": "Zhibao Technology Inc. (ZBAO) stock price, news, quote and history - Yahoo Finance UK",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB3LW13SkFuN1RvTENNaVkybW5GeEVscG5MNWxuWHFzLUhCNzhKY1l4TVA0THpLYnppMGdMSUxYN1pYNUh5VkVHVUdJajItUkgxNkE?oc=5"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2024-04-22",
+      "type": "other",
+      "title": "Zhibao Technology Inc. (ZBAO) Stock Historical Prices & Data - Yahoo Finance - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5UeHNqUl8wajFuNlJ1aFNiV000cVI3clJpc00xWnllenpESFk3cGY0Rmw2blhlb290RmNOWVFveDdyekRCUDlXdy1QVGVXWDhvSFAxMDU1V2RzRm9G?oc=5"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2024-04-16",
+      "type": "other",
+      "title": "Zhibao Technology Inc. (ZBAO) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE85amt3aS0xVk40azBYZmdydTQ2VnJyYUN6NHVQR2xVRXZkZFk3Z203VGJ1OHVCbDdpM1o0N21JaDU2dTlPY0J1ZkpRd3NvYlY4QlE?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "ZBAO",
+      "kind": "effectiveness",
+      "date": "2026-09-10",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1966750/999999999526002938/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "كسر الدعم دون استعادة — تنبيه فني فقط"
+  ],
+  "positive_news": [
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-28",
+      "type": "contract",
+      "title": "Zhibao Technology Signs NEXSYS Acquisition Agreement for Planned AI Computing Infrastructure Business",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/37029/zhibao-technology-signs-nexsys-acquisition-agreement-for-planned-ai-computing-infrastructure-business"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-28",
+      "type": "contract",
+      "title": "Zhibao Technology Signs Definitive Agreement to Acquire NEXSYS TECH for Planned AI Computing Infrastructure Business",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/zhibao-technology-signs-definitive-agreement-120000089.html?.tsrc=rss"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-09-16",
+      "type": "contract",
+      "title": "Zhibao Technology Expands Healthcare Data Infrastructure Through Changzhou Insurance Platform Agreement",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/36421/zhibao-technology-expands-healthcare-data-infrastructure-through-changzhou-insurance-platform-agreement"
+    },
+    {
+      "symbol": "ZBAO",
+      "date": "2026-07-31",
+      "type": "contract",
+      "title": "Zhibao Technology Inc. Announces Signing of Definitive Securities Purchase Agreement for PIPE Financing Payable in Bitcoin",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/zhibao-technology-inc-announces-signing-123000476.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [],
+  "phase": 3,
+  "display_phase": 3,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price",
+    "short_shares"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.122$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الأسهم المكشوفة 42,838 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.122,
+      "display": "0.1220$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.122$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 40,
+      "display": "1-for-50 · 2026-10-12 · عمر 40 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -96.0656,
+      "display": "96.07% من قمة ما بعد التقسيم · القمة 3.0500$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 17.6789,
+      "display": "أدنى RSI 17.68 (2026-11-10)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 42838.0,
+      "display": "42,838 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 42,838 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 35.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.27 · قاعدة القاع: 0.39 · آخر 3 جلسات: 0.63",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 40,
+      "weight": 25,
+      "detail": "اختبار دعم: نعم · سحب واستعادة: لا",
+      "points": 10.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "انطلاقة +114% بعد الثبات (التسلسل قيد التكوين)",
+    "ديفرجنس إيجابي على فريم 4 ساعات"
+  ],
+  "levels": {
+    "trigger": 0.1525,
+    "entry_zone": [
+      0.192,
+      0.1525
+    ],
+    "stop": 0.1403,
+    "stop_pct": -8.0,
+    "stop_structural": 0.1795,
+    "stop_structural_pct": 17.73,
+    "targets": {
+      "t1_382": 1.2831,
+      "t2_618": 1.9579,
+      "t3_full": 3.05
+    },
+    "rr_t1": 92.68,
+    "rr_t2": 147.98,
+    "risk_per_share": 0.0122,
+    "reward_t2_per_share": 1.8054,
+    "atr_pct": 175.64,
+    "bottom": 0.191,
+    "peak": 3.05,
+    "last": 0.122,
+    "base_high": 0.23,
+    "ema9": 0.199,
+    "ema20": 0.5278,
+    "support": 0.191,
+    "impulse_high": 0.416,
+    "resistance": 0.23,
+    "sweep_low": 0.12,
+    "reclaim_level": 0.192,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 175.6%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.1403$ (-8.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -6.65% للشمعة (30 شمعة). سقف القناة عند 0.573 والسعر أسفله بفارق 78.7% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.5729,
+        "channel_mid": 0.3489,
+        "channel_lower": 0.2125
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 10% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "1D",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-11-17 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "rsi_divergence",
+      "name_ar": "ديفرجنس إيجابي RSI",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "ديفرجنس إيجابي على RSI: السعر سجّل قاعاً أدنى بينما RSI سجّل قاعاً أعلى → تلاشي ضغط البيع.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -2.02% للشمعة (30 شمعة). سقف القناة عند 0.275 والسعر أسفله بفارق 65.4% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.2751,
+        "channel_mid": 0.1951,
+        "channel_lower": 0.1383
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 0% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 0.122 بتاريخ 2026-11-18 وقاع 0.120 بتاريخ 2026-11-19 بفارق 1.6%، وخط العنق عند 0.158 (31.7% فوق القاع). ننتظر إغلاقاً فوق 0.158 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 0.1219,
+        "bottom2": 0.12,
+        "neckline": 0.158
+      },
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.0953,
+    "rsi": 25.66,
+    "trend": "down",
+    "ema20": 0.1584,
+    "ema50": 0.4777,
+    "rvol": 0.01,
+    "macd_hist": 0.0015,
+    "channel_broken": false,
+    "higher_lows": 3,
+    "bullish_divergence": true,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-50 منفّذ في 2026-10-12 (عمر 40 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 2.61$ وصعد إلى 3.05$ (+16.9%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 96.1% من القمة 3.05$ إلى القاع المرجعي 0.191$ بتاريخ 2026-11-10 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 17.68 (تشبع بيعي متطرف و 22 جلسة تحت 30) والحالي 19.76 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 0.191$ داخل نطاق 20.4% مع جفاف حجم (39% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +114.4% من إغلاق القاعدة (0.194$) إلى 0.416$ (2026-11-13) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 0.23$ (تشكّلت 2026-11-11) — على 20.4% من الدعم الرئيسي، واختُبرها السعر في 2026-11-13 عند 0.416$ وتوقف عندها بفارق 80.9% ثم تراجع.",
+    "⚠ كسر الدعم الرئيسي إلى 0.12$ دون استعادة — فشل التسلسل وإلغاء السيناريو.",
+    "حالة التسلسل: فشل — كسر الدعم دون استعادة (إلغاء السيناريو).",
+    "تأكيدات فنية: انطلاقة +114% بعد الثبات (التسلسل قيد التكوين)، ديفرجنس إيجابي على فريم 4 ساعات.",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 25.66",
+    "عدد الأسهم 9.92M — الفلوت 62.2K سهم.",
+    "البيع المكشوف 0.4% من الفلوت (أيام التغطية 0.05).",
+    "أبرز نموذج فني: قناة هابطة — قناة هابطة بانحدار -6.65% للشمعة (30 شمعة). سقف القناة عند 0.573 والسعر أسفله بفارق 78.7% — ننتظر اختراقاً بإغلاق.",
+    "محفزات إيجابية: Zhibao Technology Signs NEXSYS Acquisition Agreement for Planned AI Computing In | Zhibao Technology Signs Definitive Agreement to Acquire NEXSYS TECH for Planned "
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

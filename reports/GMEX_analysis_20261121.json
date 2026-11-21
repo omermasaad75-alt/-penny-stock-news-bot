@@ -1,0 +1,954 @@
+{
+  "symbol": "GMEX",
+  "name": "GMEX Robotics Corporation",
+  "sector": "Technology",
+  "industry": "Consumer Electronics",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+  "synthetic": false,
+  "as_of": "2026-11-19",
+  "last_close": 0.32,
+  "change_pct": 4.58,
+  "dollar_volume": 1208641.0,
+  "rs_found": true,
+  "rs_date": "2026-09-28",
+  "rs_age_days": 54,
+  "rs_ratio_str": "1-for-9",
+  "rs_ratio": 9.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 3.36,
+  "spike_high": 3.595,
+  "spike_pct": 6.9941,
+  "spike_date": "2026-09-28",
+  "decline_pct": -92.18358870427826,
+  "peak_date": "2026-09-28",
+  "bottom_price": 0.3,
+  "bottom_date": "2026-11-18",
+  "base_sessions": 0,
+  "base_high": 0.35,
+  "base_low": 0.3,
+  "base_range_pct": 16.6667,
+  "base_broken": true,
+  "volume_dryup": 56.811,
+  "atr_pct": 63.24,
+  "rsi_now": 20.4,
+  "rsi_trough": 14.804146790598665,
+  "rsi_trough_date": "2026-10-05",
+  "rsi_sessions_below_30": 38,
+  "rsi_recovered": true,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": 0.12593,
+  "channel_slope_pct": -5.845,
+  "channel_upper": 1.0127,
+  "channel_broken": false,
+  "rvol": 14.87,
+  "higher_lows": 0,
+  "squeeze": true,
+  "lifecycle_stage": "انطلاقة ضعيفة (+14% — المستهدف ≈20%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "0 جلسة ثبات على الدعم 0.300 — القاع مكسور ⚠",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": false,
+      "detail": "+14.4% من 0.306 إلى 0.350",
+      "state": "pending"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": true,
+      "detail": "أقرب مقاومة 0.350 (على 16.7% من الدعم 0.300) — توقف السعر عندها بفارق 0.0%",
+      "state": "ok"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 14.38,
+  "impulse_high": 0.35,
+  "impulse_date": "2026-11-19",
+  "resistance_level": 0.35,
+  "resistance_distance_pct": 16.67,
+  "resistance_date": "2026-11-19",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 0.3015,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 0.3,
+  "support_hold_ok": false,
+  "base_close": 0.306,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    3.294,
+    3.24,
+    3.17,
+    2.76,
+    2.56,
+    2.45,
+    2.31,
+    2.64,
+    2.66,
+    1.94,
+    1.74,
+    1.71,
+    2.09,
+    1.71,
+    1.36,
+    1.14,
+    1.32,
+    0.94,
+    0.89,
+    0.82,
+    0.772,
+    0.78,
+    0.8,
+    0.843,
+    0.878,
+    0.85,
+    0.877,
+    0.588,
+    0.508,
+    0.445,
+    0.478,
+    0.445,
+    0.457,
+    0.48,
+    0.424,
+    0.408,
+    0.375,
+    0.362,
+    0.306,
+    0.32
+  ],
+  "resistance_tested": true,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 752439.0,
+  "float_shares": 361428.0,
+  "market_cap": 144485.0,
+  "avg_volume": 1428481.0,
+  "insider_pct": null,
+  "institutional_pct": 0.58,
+  "short_pct_float": 1.69,
+  "short_as_of": "1793318400",
+  "short_shares": 12722.0,
+  "days_to_cover": 0.01,
+  "short_change_pct": -59.5,
+  "short_volume_ratio": 0.457,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "GMEX",
+      "date": "2026-11-20",
+      "type": "other",
+      "title": "US Stock Gap Movers for Nov. 20, 2026 - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPenZSUGNWeEtqal9zQnZSUk5oVmo5MmVMVnJ1VGp4WFNLVm11S3AzREhDZTRWRUVQMnZjQl9JWlhKa0FfQWtsZDBHaDhpVTlPMDRhTmlCUFRIUTZ2SXhYcExPR2w2dWtKQWtTYXNobTRKSFUwQ3Q3WHNOWkxlbHlaNUI3a0ZlWGc0cnIzOTBxYnQ?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-11-20",
+      "type": "other",
+      "title": "Premarket Movers on Nov. 20, 2026: Gainers and Losers - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNY1hXd0RMTkRSSFZaN2hhbEVBR0R6blZvcWVBTEJRQ2VpdlZwWElBWWJvS0IteDRrbGZHcUp3cVBFN2pQYmZxQzJtMW5EbTFLeUdqcFRTdW91QkRadm9SUFNILV9fcUdySWJQeUlVSXZteFB1eGNMM2dWaHc5OVdVdFgyWWJDYnZhOXVCbGttd0l0VUhYNW9zZjMwNEE1R2NUcjM2MQ?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-11-19",
+      "type": "other",
+      "title": "Premarket Small-Cap Movers: Nov. 19, 2026 Gainers and Losers - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUmNoVEpfSWtQcUgwRlFSeFpSeEpoeGw0SXJrM3g1dlY3MUlvaU5JdXJFNkhDbHVWTmZWUVJlTWJET2JOcThDaXB4cjhzVXE4Yk1KYkFCM3RjdHZHeWtITGJleDZXZjVhY0V2ZGtnZDlqZENUa1IyX3NiYWNTMnJGcTVOdlNRa1I3UUt1bGJadFJaSnZRQnktd2tGM2o2OEV4WG9GMHJWZ2VWcjdoZ3c?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-11-11",
+      "type": "other",
+      "title": "GMEX: FY 2026 Revenue Driven by Legacy Fitness Business",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-fy-2026-revenue-driven-100100715.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-11-02",
+      "type": "earnings",
+      "title": "موعد الإعلان عن النتائج (تقويم Yahoo)",
+      "sentiment": "neutral",
+      "impact": "high",
+      "source": "yahoo-finance",
+      "url": ""
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-11-02",
+      "type": "other",
+      "title": "GMEX Robotics Reports Six Month and Full Year Financial Results for Fiscal Year Ended June 30, 2026 Highlighted by Double Digit Growth in Second Half Revenue",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-reports-six-month-214000804.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-11-02",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1928581/000149315226049631/form20-f.htm"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-11-02",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — 6-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1928581/000149315226049629/form6-k.htm"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-11-02",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K/A — 6-K/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1928581/000149315226049628/form6-ka.htm"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-10-20",
+      "type": "other",
+      "title": "GMEX Robotics Announces MediaMeta's U.S. AI-Powered Autonomous Grooming Project and Patent Filing",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-announces-mediametas-u-123000323.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-10-14",
+      "type": "earnings",
+      "title": "GMEX Robotics Completes Initial Strategic Investment in MediaMeta.Ai to Advance Socially Intelligent Robotics",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-completes-initial-strategic-202000136.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "GMEX Robotics to Present at the 20th Annual LD Micro Main Event",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-present-20th-annual-185100888.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-10-08",
+      "type": "contract",
+      "title": "GMEX: Emerging Robotics Strategy; Deploying 1st Order & Building Pipeline – Initiating Coverage",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-emerging-robotics-strategy-deploying-141900592.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-10-08",
+      "type": "other",
+      "title": "$GMEX stock is down 17% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNX0xsYTc0WGxnRExOZWRZOW5VNVN0Y3hTX1Z4SnZPSmlReWYtd0g2ZjJheUI2OThWcWVZZTVUM2tqdEVRR3pZMC1rdHh6all2T3U2QmRWNTU4a18wdUtXbXk0SnBTTkR4THBmOTRrRGRacllwRGRIM1UwZVZBUE11XzhDdmtWdnVXbUw0QW9QbEdLSXR1UG5fZDNjYU81aFN3aE1v?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-09-23",
+      "type": "other",
+      "title": "GMEX Robotics Corporation Announces Share Consolidation and Reduction of Par Value",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/gmex-robotics-corporation-announces-share-203000142.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-09-08",
+      "type": "other",
+      "title": "$GMEX stock is down 11% today. Here's what we see in our data. - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQdzh3NXhUeFpEMk5acEkxMGVWVUVwWWUxUkp5Rkx3QmdmZXV5QXRfSHZ3ODBFRm43U2xkVl90ZmRZdWpGcVR4Tzh2dmI1NlJiQXMyOTV4Vi1PV1MxYzVkWU9GaFgtZ2ItZnlNVlFqY2Z6c2MyQWlwY1VUTzVabEU2RUMzdERBMURJbEp6UFFMamtrZ3dDUHlHUXFXY0d6QlVtSnNB?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-09-08",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — PRIMARY DOCUMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1928581/000147559726000232/xslF345X06/primary_doc.xml"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-08-25",
+      "type": "earnings",
+      "title": "1 High-Yield Dividend Stock Worth Loading Up On Right Now",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "yahoo-finance",
+      "url": "https://www.fool.com/investing/2026/08/25/1-high-yield-dividend-stock-worth-loading-up-on-ri/"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-08-11",
+      "type": "other",
+      "title": "GMEX Robotics Issues Shareholder Letter: Advancing Socially Intelligent Machines",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-issues-shareholder-letter-123000605.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-08-11",
+      "type": "other",
+      "title": "GMEX Robotics Unveils Mount Cutting Robot Sensor Downtime by Up to 90% - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNSVk0T0dUTURvc1VGZ2toOWVxVTZ3WF9vNVZpcDZwcjluTWFLemhmLWI4YXBfeXBoUVM3QzUtOEJkazRiUXB3b1ZxNGd6b3ktZDRnYVBlRWJpSnpyVzBSSEFYekIyVmlWWUZ0bHc2Rmt3d0trUGFEUVRsZTlRQlRVY1hJcExXSUl2WlVFd2tJVHhfQVF3YWtPMER3ZXBSX2swUUdlVGlWQU9vaDJuX2VETk1INA?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-08-03",
+      "type": "other",
+      "title": "GMEX Robotics Corporation to Launch 247meta.ai Multi-Model Platform for Autonomous Enterprise and Consumer Workflows",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-corporation-launch-247meta-123000597.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-07-28",
+      "type": "contract",
+      "title": "GMEX Robotics Corporation Enters into Definitive Agreement to Acquire Strategic Equity Interest in MediaMeta.Ai to Advance Social Intelligence",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-corporation-enters-definitive-124500593.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-07-14",
+      "type": "other",
+      "title": "GMEX Robotics Signs Letter of Intent for AI Platform Acquisition Focused on Social Intelligence",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/31861/gmex-robotics-signs-letter-of-intent-for-ai-platform-acquisition-focused-on-social-intelligence"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-07-14",
+      "type": "other",
+      "title": "GMEX Robotics Corporation Signs Letter of Intent for Strategic Acquisition of AI Platform to Build Social World Models for Human-Centric Mass Deployment",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-corporation-signs-letter-123000681.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-07-10",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — INITIAL STATEMENT OF BENEFICIAL OWNERSHIP OF SECURITIES",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1928581/000109489126000248/xslF345X06/form3.xml"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-07-09",
+      "type": "other",
+      "title": "GMEX Robotics Appoints Brian Hartzband to Lead U.S. Operations, Accelerating North American Expansion",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-appoints-brian-hartzband-123000362.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-07-06",
+      "type": "other",
+      "title": "GMEX Robotics enters into Letter of Intent to Acquire Equity Interest of a California based Robotics and Industrial AI company, Creating a Next-Generation physical AI Connectivity & Sensing Platform",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-enters-letter-intent-123000447.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-06-29",
+      "type": "other",
+      "title": "GMEX Robotics Corporation Announces Share Consolidation",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/gmex-robotics-corporation-announces-share-204500712.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-06-29",
+      "type": "other",
+      "title": "GMEX Robotics Corporation Announces Share Consolidation - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQcGcybkdBaUwyS3hKQmRHbDBfLTczRHJ4MDFBYTVvU1FlNWhOamFDUXJ3aFBuQ1REdXoySER2UEp4SlE2OHJpLXZBSUNsS0FYNEhVOS1nREY0NjdubXhjZHV2emJNUUtQQlVnWmhPTzM5T0drSHZTRjlZUVgwcThYcU5sUmZSTW4tRFdDQXZTcTlvRFdSb05KaEdIUTJhbXhzTWEtUk1FeTRTUQ?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-06-11",
+      "type": "other",
+      "title": "GMEX Robotics launches Innovative Tool-free Vision Sensor Mounting System for Industrial Robots to Drive Factory Efficiency",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/gmex-robotics-launches-innovative-tool-123000001.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-06-09",
+      "type": "other",
+      "title": "GMEX Robotics Announces $2 Million Private Investment at $1.0692 Per Share, a 20% Premium from Latest Market Close",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/gmex-robotics-announces-2-million-123000529.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-06-09",
+      "type": "other",
+      "title": "GMEX Robotics Secures $2 Million PIPE Financing at 20% Premium to Market Price (GMEX) - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNLXNKdEFrcGotLU54anJvYVFpZjVaRlVYUzhGemFZMGhleDJnaHhsZGEzUFZza3A3ZjdaTThCQ3p4NVY4ZVYxcGF5U1NET0prWkV2QXlYejRXOVc5Q3EzeGlaYWc5WHdVX0pQVmprSWdYUmJFdE1NYTBQME5lMXFqVXJ6QmE2NkFIQ1pOYmNfRmRlMW9zRC1zSGZLXzU?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-05-28",
+      "type": "other",
+      "title": "GMEX Robotics Shareholder Letter: Powering the Next Generation of Intelligent Machines",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/gmex-robotics-shareholder-letter-powering-123000807.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-05-27",
+      "type": "other",
+      "title": "GMEX - GMEX Robotics Corp Stock Price and Quote - Finviz",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBiQzZMZkJiWXFiY2hobDJiTUtpZFpaTXc0cHpPdkNlVzZKTC1tdWN6aG1JdnRWNGk3OUk4X0RjM1I3QXBLWXc?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-05-05",
+      "type": "contract",
+      "title": "GMEX Robotics Receives First Deployment Order for Bon Vivant 3.0 Cooking Robot Machines",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/gmex-robotics-receives-first-deployment-124500187.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-03-23",
+      "type": "contract",
+      "title": "GMEX Robotics Receives AU$4.2 Million First Commercial Order from Leading Australian Food & Beverage Group - Yahoo Finance",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQYTZjTlAyVDlfelFtZmxFNlAtRjFIWFA4Uzl3ME1LbmNISF9BZXVldzU4YlhKd1lNMi1fT212ZmtybzVrZnFTbUlYLTZWay01YjNScUxwRmhYNXEyWUlWU0NMRHZpdW1ET3BYSEJpZ0NKY2hYZmttR01wRFpWLXVDTjNMYkVsb29WeFZIbTA2TlROVXRZUTNiVUs0TFc?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-03-19",
+      "type": "other",
+      "title": "إفصاح SEC: D",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1928581/000149315226011403/xslFormDX01/primary_doc.xml"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-03-16",
+      "type": "other",
+      "title": "GMEX Robotics Corporation (GMEX) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5jZ3QxcWQ3aE1scG9YUGljYWNxZTd6aDVBX3AxOGUxN3RJYlpQUVc2c3RXUkx3ZDVvYklnZWhPeFNWZVlwN2U3YjFWcnJlRFNpaUE?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-03-16",
+      "type": "other",
+      "title": "GMEX Robotics Corporation (GMEX) stock price, news, quote and history - Yahoo Finance UK",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBFTmIxa2JjWDhSVEpTMVZlTzNEeVV5Qm5jNDM2YVRvUFBlanZydy1uNjBjdFNEdVQzYXdoaVJQVVQwQW4tQjJrOFprWkktYUYyNFE?oc=5"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-03-16",
+      "type": "other",
+      "title": "GMEX Robotics Corporation (GMEX) Stock Historical Prices & Data - Yahoo Finance - Yahoo! Finance Canada",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE83NHpHU0tjVlRtYno3cFJEQnBKSDJSWHVRT3BmdEo2XzUwdnI0NmJGWGFiSnVvSVBNOFlqN3RaczNfWGhmaXZCVFpPTU5TUV9IdllJREF2WV9tZnV3?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "GMEX",
+      "kind": "424B5",
+      "date": "2025-11-28",
+      "title": "إفصاح 424B5 — 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1928581/000149315225025354/form424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GMEX",
+      "kind": "424B5",
+      "date": "2025-02-10",
+      "title": "إفصاح 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1928581/000149315225005573/form424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "GMEX",
+      "kind": "effectiveness",
+      "date": "2025-02-05",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1928581/999999999525000321/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "كسر القاع المرجعي — تنبيه فني لا يلغي الأهلية",
+    "⚠ كسر القاع المرجعي — احتمال استمرار الهبوط",
+    "محفزات قادمة: 2026-11-20 US Stock Gap Movers for Nov. 20, 2026 - Chart | 2026-11-20 Premarket Movers on Nov. 20, 2026: Gainers an"
+  ],
+  "positive_news": [
+    {
+      "symbol": "GMEX",
+      "date": "2026-10-14",
+      "type": "earnings",
+      "title": "GMEX Robotics Completes Initial Strategic Investment in MediaMeta.Ai to Advance Socially Intelligent Robotics",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-completes-initial-strategic-202000136.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-10-08",
+      "type": "contract",
+      "title": "GMEX: Emerging Robotics Strategy; Deploying 1st Order & Building Pipeline – Initiating Coverage",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-emerging-robotics-strategy-deploying-141900592.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-08-25",
+      "type": "earnings",
+      "title": "1 High-Yield Dividend Stock Worth Loading Up On Right Now",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "yahoo-finance",
+      "url": "https://www.fool.com/investing/2026/08/25/1-high-yield-dividend-stock-worth-loading-up-on-ri/"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-07-28",
+      "type": "contract",
+      "title": "GMEX Robotics Corporation Enters into Definitive Agreement to Acquire Strategic Equity Interest in MediaMeta.Ai to Advance Social Intelligence",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/gmex-robotics-corporation-enters-definitive-124500593.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-05-05",
+      "type": "contract",
+      "title": "GMEX Robotics Receives First Deployment Order for Bon Vivant 3.0 Cooking Robot Machines",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/gmex-robotics-receives-first-deployment-124500187.html?.tsrc=rss"
+    },
+    {
+      "symbol": "GMEX",
+      "date": "2026-03-23",
+      "type": "contract",
+      "title": "GMEX Robotics Receives AU$4.2 Million First Commercial Order from Leading Australian Food & Beverage Group - Yahoo Finance",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQYTZjTlAyVDlfelFtZmxFNlAtRjFIWFA4Uzl3ME1LbmNISF9BZXVldzU4YlhKd1lNMi1fT212ZmtybzVrZnFTbUlYLTZWay01YjNScUxwRmhYNXEyWUlWU0NMRHZpdW1ET3BYSEJpZ0NKY2hYZmttR01wRFpWLXVDTjNMYkVsb29WeFZIbTA2TlROVXRZUTNiVUs0TFc?oc=5"
+    }
+  ],
+  "negative_news": [],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.32$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.32,
+      "display": "0.3200$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.32$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 54,
+      "display": "1-for-9 · 2026-09-28 · عمر 54 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -92.1836,
+      "display": "92.18% من قمة ما بعد التقسيم · القمة 3.5950$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 14.8041,
+      "display": "أدنى RSI 14.80 (2026-10-05)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 12722.0,
+      "display": "12,722 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 142 يوماً (1-for-9) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 204 يوماً (1-for-7) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 317 يوماً (1-for-8) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 424 يوماً (1-for-16) — خارج نافذة 60 يوماً المطلوبة",
+    "الثبات على القاع 0 جلسة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 50.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.05 · قاعدة القاع: 56.81 · آخر 3 جلسات: 10.45",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 100,
+      "weight": 25,
+      "detail": "اختبار دعم: نعم · سحب واستعادة: نعم",
+      "points": 25.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "RSI خرج من التشبع البيعي وتحسّن",
+    "حجم نسبي 14.87x يدعم الحركة"
+  ],
+  "levels": {
+    "trigger": 0.4,
+    "entry_zone": [
+      0.3136,
+      0.4
+    ],
+    "stop": 0.32,
+    "stop_pct": -20.0,
+    "stop_structural": 0.282,
+    "stop_structural_pct": -29.5,
+    "targets": {
+      "t1_382": 1.5587,
+      "t2_618": 2.3363,
+      "t3_full": 3.595
+    },
+    "rr_t1": 14.48,
+    "rr_t2": 24.2,
+    "risk_per_share": 0.08,
+    "reward_t2_per_share": 1.9363,
+    "atr_pct": 63.24,
+    "bottom": 0.3,
+    "peak": 3.595,
+    "last": 0.32,
+    "base_high": 0.35,
+    "ema9": 0.4092,
+    "ema20": 0.7013,
+    "support": 0.3,
+    "impulse_high": 0.35,
+    "resistance": 0.35,
+    "sweep_low": null,
+    "reclaim_level": 0.3015,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 63.2%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.32$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "1D",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 7% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 14.9x → دخول مؤسسي محتمل.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -6.11% للشمعة (30 شمعة). سقف القناة عند 1.316 والسعر أسفله بفارق 75.7% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.3156,
+        "channel_mid": 1.0019,
+        "channel_lower": 0.7629
+      },
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "1D",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-11-13 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -1.91% للشمعة (30 شمعة). سقف القناة عند 0.519 والسعر أسفله بفارق 63.6% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.5186,
+        "channel_mid": 0.3946,
+        "channel_lower": 0.3003
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 0% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (ابتلاع شرائي)",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-11-19 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (0.360 → 0.180) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 0.36,
+        "last_low": 0.18
+      },
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.1887,
+    "rsi": 20.59,
+    "trend": "down",
+    "ema20": 0.325,
+    "ema50": 0.6226,
+    "rvol": 0.04,
+    "macd_hist": -0.00485,
+    "channel_broken": false,
+    "higher_lows": 3,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-9 منفّذ في 2026-09-28 (عمر 54 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 3.36$ وصعد إلى 3.595$ (+7.0%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 92.2% من القمة 3.595$ إلى القاع المرجعي 0.3$ بتاريخ 2026-11-18 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 14.80 (تشبع بيعي متطرف و 38 جلسة تحت 30) والحالي 20.4 مع بدء التحسّن.",
+    "ثبات 0 جلسة على القاع 0.3$ داخل نطاق 16.7% مع جفاف حجم (5681% من المتوسط)، والقاع مكسور ⚠",
+    "الانطلاقة بعد الثبات: +14.4% من إغلاق القاعدة (0.306$) إلى 0.35$ (2026-11-19) — أقل من المستهدف (20%) قليلاً.",
+    "أقرب مقاومة عند 0.35$ (تشكّلت 2026-11-19) — على 16.7% من الدعم الرئيسي، واختُبرها السعر في 2026-11-19 عند 0.35$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "حالة التسلسل: انطلاقة ضعيفة (+14% — المستهدف ≈20%).",
+    "تأكيدات فنية: RSI خرج من التشبع البيعي وتحسّن، حجم نسبي 14.87x يدعم الحركة.",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 20.59",
+    "عدد الأسهم 752.4K — الفلوت 361.4K سهم.",
+    "البيع المكشوف 1.7% من الفلوت (أيام التغطية 0.01).",
+    "أبرز نموذج فني: جفاف حجم ثم انفجار — جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 7% من متوسط ما قبله ، ثم انفجار حجمي الآن بحجم نسبي 14.9x → دخول مؤسسي محتمل.",
+    "محفزات إيجابية: GMEX Robotics Completes Initial Strategic Investment in MediaMeta.Ai to Advance  | GMEX: Emerging Robotics Strategy; Deploying 1st Order & Building Pipeline – Init"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

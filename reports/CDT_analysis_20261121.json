@@ -1,0 +1,978 @@
+{
+  "symbol": "CDT",
+  "name": "CDT Equity Inc.",
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+  "synthetic": false,
+  "as_of": "2026-11-19",
+  "last_close": 0.267,
+  "change_pct": -22.16,
+  "dollar_volume": 3447552.0,
+  "rs_found": true,
+  "rs_date": "2026-11-06",
+  "rs_age_days": 15,
+  "rs_ratio_str": "1-for-20",
+  "rs_ratio": 20.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 1.38,
+  "spike_high": 1.61,
+  "spike_pct": 16.6667,
+  "spike_date": "2026-11-06",
+  "decline_pct": -83.78881956074858,
+  "peak_date": "2026-11-06",
+  "bottom_price": 0.261,
+  "bottom_date": "2026-11-19",
+  "base_sessions": 0,
+  "base_high": 0.261,
+  "base_low": 0.261,
+  "base_range_pct": 0.0,
+  "base_broken": false,
+  "volume_dryup": 0.366,
+  "atr_pct": 2123.23,
+  "rsi_now": 15.18,
+  "rsi_trough": 15.181285244558069,
+  "rsi_trough_date": "2026-11-19",
+  "rsi_sessions_below_30": 10,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": 10.80936,
+  "channel_slope_pct": -11.452,
+  "channel_upper": 2.6448,
+  "channel_broken": false,
+  "rvol": 0.86,
+  "higher_lows": 0,
+  "squeeze": true,
+  "lifecycle_stage": "بانتظار جلسات ما بعد الثبات",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [],
+  "impulse_pct": null,
+  "impulse_high": null,
+  "impulse_date": null,
+  "resistance_level": null,
+  "resistance_distance_pct": null,
+  "resistance_date": null,
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": null,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": null,
+  "support_hold_ok": false,
+  "base_close": 0.267,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": null,
+  "spark": [
+    40.0,
+    38.0,
+    29.0,
+    27.2,
+    25.0,
+    19.8,
+    18.36,
+    18.6,
+    16.72,
+    16.0,
+    14.36,
+    13.2,
+    9.0,
+    4.8,
+    4.18,
+    4.7,
+    3.72,
+    3.18,
+    2.9,
+    2.6,
+    2.6,
+    1.88,
+    1.6,
+    1.66,
+    1.54,
+    1.36,
+    1.4,
+    1.34,
+    1.02,
+    0.84,
+    1.31,
+    0.84,
+    0.561,
+    0.51,
+    0.443,
+    0.4,
+    0.377,
+    0.36,
+    0.343,
+    0.267
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": null,
+  "shares_out": 1900144.0,
+  "float_shares": 21023.0,
+  "market_cap": 437033.0,
+  "avg_volume": 943585.0,
+  "insider_pct": 17.52,
+  "institutional_pct": 0.06,
+  "short_pct_float": 1.61,
+  "short_as_of": "1793318400",
+  "short_shares": 292.05,
+  "days_to_cover": 0.01,
+  "short_change_pct": 205.8,
+  "short_volume_ratio": 0.485,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "CDT",
+      "date": "2026-11-20",
+      "type": "other",
+      "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQdEFMXzNFUlcwd1NpUHhoSTRxMHpVb3ZEb0VieS0wZk82TTh3ZFFieTk2UzZWVWtGaFJlQVpTV3hCME41M3JtUmpMZ1RlbDNIYl81blJPeTM0UmJtWG9IZGw3QnRNdlFkbXB4YWRzTExUM0toNDZid2Z3SDcwQUNRbFE2SUlzcGlBYWxGUjZrU01jRDVibzQxVkFnbE9QMXpUSFVzRkQzeXpPZUpLUzhPdGFsY1hYeVdj?oc=5"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-11-17",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226052727/form424b3.htm"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-11-16",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-Q — 10-Q",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226052618/form10-q.htm"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-11-16",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226052414/form8-k.htm"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-11-11",
+      "type": "other",
+      "title": "CDT Commences Human Skin Studies with QIMA Life Sciences on Novel Tapinarof Combinations in Vitiligo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-commences-human-skin-studies-120000241.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-11-06",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13D/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000175392626002067/xslSCHEDULE_13D_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-11-02",
+      "type": "other",
+      "title": "BC-Most Active Stocks",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-153017443.html"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-10-30",
+      "type": "other",
+      "title": "CDT Equity Welcomes U.S. Regulatory Development Supporting Expanded Access to Compounded Peptides",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-equity-welcomes-u-regulatory-123200989.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "CDT Partners with Manoira to Explore Enhancing Animal Health Products Ahead of Launch",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-partners-manoira-explore-enhancing-120000843.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000175392626002012/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "إفصاح SEC: DEF 14A — DEF 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226048693/formdef14a.htm"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "إفصاح SEC: 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000175392626002005/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "إفصاح SEC: PRE 14A — PRE 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226047422/formpre14a.htm"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "CDT Highlights Sarborg's Solid-Form Patent Filing on a First-in-Class Respiratory Asset",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-highlights-sarborgs-solid-form-121000551.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000175392626001911/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "CDT Highlights Sarborg’s Expanding Quantum Computing IP Portfolio and Application to Drug Discovery",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-highlights-sarborg-expanding-quantum-110000257.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "CDT Equity Inc. Announces Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cdt-equity-inc-announces-reverse-121000623.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "CDT Equity announces 1-for-25 reverse stock split - TradingView",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNRjZIYnF5NmhTQmROTGpJQjVVZjIyWE1UMEM4Vm1sV3VwbGF4Y1R1TFlYZi1pc3I2QndsRTA3aTZqOXNvRTZINmVCVDRrQnJxQjNTaGxkNlBEMXh1VVlhU1RXelpXQVRvQnZ5QlNYVFlmTmhiMHRnanpiWTA0YTJCTUJPOTRIUzhIM19PMS1jOGdaXzZ1R1M3NTR5eEZocUZ5M1BmX0RMc1dVdk9mTGJBVlB3?oc=5"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-18",
+      "type": "other",
+      "title": "CDT Partners with QIMA Life Sciences to Evaluate Novel Tapinarof Combinations in Psoriasis and Vitiligo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-partners-qima-life-sciences-103000022.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-17",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/999999999526003001/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-10",
+      "type": "other",
+      "title": "CDT Highlights Sarborg’s Application of Signature Intelligence and Quantum Computing Models to Mental Health",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-highlights-sarborg-application-signature-110000080.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-08",
+      "type": "offering",
+      "title": "إفصاح SEC: S-1 — S-1",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226041808/forms-1.htm"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "CDT Provides Capital Update and Confirms No Nasdaq Deficiencies",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cdt-provides-capital-confirms-no-090000106.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "CDT Equity (CDT) Shares Fall 21% After Hours: Here's What Happened - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNNTRLTi1fYWU0ZVdVQnQ2OHJDV0JWZWRzSGZ0U2kwUTl2NzBRbkRZX3BQNUZZd1Fyb09jRmE5dkVIUl9QMDdacnRwQ3g3RXRqbFdJT2I4SmJTT0FzbnIzVmo1WUlOSWxZNEVWSmtPbklNZ0Q2eWtKMmlJeHlOTTN6alNWZDc0RkV1QUxQN0JBRkJmbzNrdkE?oc=5"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "CDT Equity Inc. Reports 13.7 Million Shares Outstanding and Nasdaq Compliance - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxORG9TRFRLbUx4cDZqTHE2MnczSjl5WDNWUHJlV3NUeXJuQkxsYTdGNjFLRHplaGpoNUctay1kLWZSeWVZZkMxQjhrZjgxMzdzbGxPUXVpLWZaOXduVElaa01JUXV2aFd4TFYyRTl6c0tyZnhDLU5fTW5RWnJYVmNaLXNIallWblZBNHhtbkExOV9hZGJqSGVTTXZYT05rMHRhQ0xudlQ5ZUZGTzluSGlJMzNJOA?oc=5"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-02",
+      "type": "other",
+      "title": "$CDT stock is down 37% today. Here's what we see in our data. | CDT Stock News - Quiver Quantitative",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOU0hTV25ZVTQ2bEdZOXczb0VuUThFQkpDZEhrckZ2clhuYjk0cy1zNnF0d1dBZlI5MUlvWmNURm9mS0R0SnBzYmJBdFRrWDZBMTJ2NXpIRFQwX09RTTBMRUJFY0tDd1VzOW1TVHlJMWMxNFNhREVmLUZrNklJaGdDLTcxcm9ORGVDMWxMeXM0QjNiZERiakc1Wmd3emlwNGhucXc?oc=5"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-01",
+      "type": "other",
+      "title": "CDT Appoints Co-Founder James Bligh as Chief Executive Officer to Lead Next Phase of Growth",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-appoints-co-founder-james-120000833.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-01",
+      "type": "other",
+      "title": "CDT Equity (CDT) Shares Fall 21% After Hours: Here's What Happened - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOa0ZQOWZMdXNBeU10N1JJdk9kbDM3amtwaVRJYVBHQ0RPVkNCWG52SUI4LXp4MVNFOXZSTGRzdWlRTkVaY2syTFVranplZ0V2RVhIZ09VV0ItLXhDRnV5V0NkTjkxdGtQOFlzYWVZYUhhWk44cW9ZV0dPYWhnRTZYNGFPZy11dDlDWjBnQkZvRTh6VEtBQWZWclpTckVjTEpqZEpaUG9FZDVXSi1jVks3VzRKRklINWo5R2lOWWxn?oc=5"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-08-28",
+      "type": "other",
+      "title": "CDT Validates Enhanced Solid-Form Properties Within Its IP Portfolio",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-validates-enhanced-solid-form-090000151.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-08-25",
+      "type": "other",
+      "title": "CDT Announces Investment in Pep'd, Expanding into the Fast-Growing US Peptide Market",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/cdt-announces-investment-pepd-expanding-090000473.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-08-03",
+      "type": "other",
+      "title": "CDT Increases Stake in Sarborg following its Quantum Computing and Intellectual Property Expansion",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cdt-increases-stake-sarborg-following-123000227.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-07-20",
+      "type": "other",
+      "title": "CDT Highlights Sarborg's Patent Filing Extending Quantum-Enabled PRISM Platform to Sugarcane",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cdt-highlights-sarborgs-patent-filing-123000608.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-06-26",
+      "type": "other",
+      "title": "CDT Highlights Sarborg's Application of Quantum Computing to Solid-Form Development",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cdt-highlights-sarborgs-application-quantum-123000097.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-06-18",
+      "type": "earnings",
+      "title": "CDT Notes Strategic Investment into Sarborg and Expansion into Quantum Computing",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cdt-notes-strategic-investment-sarborg-123000862.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-06-16",
+      "type": "other",
+      "title": "CDT Equity Announces Debt Update and New Loan Facility",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cdt-equity-announces-debt-loan-123000536.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-05-26",
+      "type": "other",
+      "title": "CDT - CDT Equity Inc Stock Price and Quote - Finviz",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE5mb2FoR0dCRldrU3ZPeGdaVTVaVV9KRVBneV90R2ZhdmJ5SHhQbTlwOEYwb1REN191QmxqTmZjYkExdGV5?oc=5"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-05-11",
+      "type": "other",
+      "title": "CDT Equity Advances AstraZeneca PLC (AZN)’s AZD5904 Into PCT Patent Protection Stage",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/sectors/healthcare/articles/cdt-equity-advances-astrazeneca-plc-200132326.html"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-01-02",
+      "type": "other",
+      "title": "Sector Update: Health Care Stocks Advance Late Afternoon",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/news/sector-health-care-stocks-advance-205359166.html"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2025-08-13",
+      "type": "other",
+      "title": "CDT Equity (Nasdaq:CDT) - Stock Analysis - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOLUtmdk1JWDNjalpXNTAwUzZWWGhreFh3QzVyWGc1RVoyN3RMQzJQRndMVUsya1BaUGZwaVdkSW1qNDVOQVZhazJXcnNRa0FJMVZhS1R2R1FPRl9FYlpuYVNZT3lNQzlTVW9HdkJtczNfUnB5MHE1elp1WXJ4bXpockQzYw?oc=5"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2025-04-25",
+      "type": "other",
+      "title": "CDT Equity (CDT) Stock Price, News & Analysis - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE0yMG9QMFFtWEltcWo0a1U0NzNZUEN1RkxKTlpLaWQ5WTNjVXRTS2I0VVlSQzVwdmFqU3lXZmNOWkhRV1hPWG9XZnF1NG1QR1V4ZXc?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "CDT",
+      "kind": "424B3",
+      "date": "2026-11-17",
+      "title": "إفصاح 424B3 — 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226052727/form424b3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "8-K",
+      "date": "2026-10-27",
+      "title": "8-K بند 1.01,3.02,7.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226048638/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "8-K",
+      "date": "2026-10-13",
+      "title": "8-K بند 1.01,2.03,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226046738/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "news-offering",
+      "date": "2026-09-25",
+      "title": "CDT Equity Inc. Announces Reverse Stock Split",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cdt-equity-inc-announces-reverse-121000623.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "news-offering",
+      "date": "2026-09-25",
+      "title": "CDT Equity announces 1-for-25 reverse stock split - TradingView",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNRjZIYnF5NmhTQmROTGpJQjVVZjIyWE1UMEM4Vm1sV3VwbGF4Y1R1TFlYZi1pc3I2QndsRTA3aTZqOXNvRTZINmVCVDRrQnJxQjNTaGxkNlBEMXh1VVlhU1RXelpXQVRvQnZ5QlNYVFlmTmhiMHRnanpiWTA0YTJCTUJPOTRIUzhIM19PMS1jOGdaXzZ1R1M3NTR5eEZocUZ5M1BmX0RMc1dVdk9mTGJBVlB3?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "effectiveness",
+      "date": "2026-09-17",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/999999999526003001/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "S-1",
+      "date": "2026-09-08",
+      "title": "إفصاح S-1 — S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226041808/forms-1.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "8-K",
+      "date": "2026-07-31",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226035682/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "8-K",
+      "date": "2026-07-29",
+      "title": "8-K بند 3.02 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226035202/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "8-K",
+      "date": "2026-07-07",
+      "title": "8-K بند 1.01,2.03,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226032375/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "8-K",
+      "date": "2026-06-16",
+      "title": "8-K بند 1.01,2.03,3.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226028909/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "delay",
+      "date": "2026-05-15",
+      "title": "تأخير في تقديم NT 10-Q (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226023832/formnt10-q.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "8-K",
+      "date": "2026-05-15",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226023707/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "S-3",
+      "date": "2026-04-22",
+      "title": "إفصاح S-3 — S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226018405/forms-3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "424B5",
+      "date": "2026-04-02",
+      "title": "إفصاح 424B5 — 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226014923/form424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "CDT",
+      "kind": "delay",
+      "date": "2026-04-01",
+      "title": "تأخير في تقديم NT 10-K (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226014626/formnt10-k.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "محفزات قادمة: 2026-11-20 12 Health Care Stocks Moving In Friday's Pre-"
+  ],
+  "positive_news": [
+    {
+      "symbol": "CDT",
+      "date": "2026-06-18",
+      "type": "earnings",
+      "title": "CDT Notes Strategic Investment into Sarborg and Expansion into Quantum Computing",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/cdt-notes-strategic-investment-sarborg-123000862.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "CDT",
+      "date": "2026-11-17",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B3 — 424B3",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226052727/form424b3.htm"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "CDT Equity Inc. Announces Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cdt-equity-inc-announces-reverse-121000623.html?.tsrc=rss"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-25",
+      "type": "offering",
+      "title": "CDT Equity announces 1-for-25 reverse stock split - TradingView",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNRjZIYnF5NmhTQmROTGpJQjVVZjIyWE1UMEM4Vm1sV3VwbGF4Y1R1TFlYZi1pc3I2QndsRTA3aTZqOXNvRTZINmVCVDRrQnJxQjNTaGxkNlBEMXh1VVlhU1RXelpXQVRvQnZ5QlNYVFlmTmhiMHRnanpiWTA0YTJCTUJPOTRIUzhIM19PMS1jOGdaXzZ1R1M3NTR5eEZocUZ5M1BmX0RMc1dVdk9mTGJBVlB3?oc=5"
+    },
+    {
+      "symbol": "CDT",
+      "date": "2026-09-08",
+      "type": "offering",
+      "title": "إفصاح SEC: S-1 — S-1",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1896212/000149315226041808/forms-1.htm"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.267$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.267,
+      "display": "0.2670$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.267$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 15,
+      "display": "1-for-20 · 2026-11-06 · عمر 15 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -83.7888,
+      "display": "83.79% من قمة ما بعد التقسيم · القمة 1.6100$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 15.1813,
+      "display": "أدنى RSI 15.18 (2026-11-19)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 292.05,
+      "display": "292 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 124 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 239 يوماً (1-for-25) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 404 يوماً (1-for-8) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 550 يوماً (1-for-15) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 663 يوماً (1-for-100) — خارج نافذة 60 يوماً المطلوبة",
+    "الثبات على القاع 0 جلسة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "تقرير الأسهم المكشوفة (2026-10-30) سابق للتقسيم العكسي (2026-11-06) — عُدّل 5,841 ÷ 20 = 292 سهماً",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 25.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.37 · قاعدة القاع: 0.37",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [],
+  "levels": {
+    "trigger": 0.3337,
+    "entry_zone": [
+      0.2623,
+      0.3337
+    ],
+    "stop": 0.267,
+    "stop_pct": -20.0,
+    "stop_structural": 0.2453,
+    "stop_structural_pct": -26.49,
+    "targets": {
+      "t1_382": 0.7763,
+      "t2_618": 1.0947,
+      "t3_full": 1.61
+    },
+    "rr_t1": 6.63,
+    "rr_t2": 11.4,
+    "risk_per_share": 0.0667,
+    "reward_t2_per_share": 0.7609,
+    "atr_pct": 2123.23,
+    "bottom": 0.261,
+    "peak": 1.61,
+    "last": 0.267,
+    "base_high": 0.261,
+    "ema9": 0.5751,
+    "ema20": 8.3121,
+    "support": 0.261,
+    "impulse_high": null,
+    "resistance": null,
+    "sweep_low": null,
+    "reclaim_level": null,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 2123.2%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.267$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -13.44% للشمعة (30 شمعة). سقف القناة عند 0.775 والسعر أسفله بفارق 65.5% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.7746,
+        "channel_mid": 0.5582,
+        "channel_lower": 0.4022
+      },
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "4H",
+      "confidence": 0.682989506087519,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 3 قمة و6 قاع؛ السقف ينحدر 4.11% للشمعة والقاع 3.55%، والسعر ما زال داخل الوتد وسقفه عند 0.306 — الاختراق فوقه هو الإشارة.",
+      "levels": {
+        "resistance": 0.3056,
+        "support": 0.2205
+      },
+      "status": "forming"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -4.20% للشمعة (30 شمعة). سقف القناة عند 0.720 والسعر أسفله بفارق 68.0% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.7199,
+        "channel_mid": 0.5439,
+        "channel_lower": 0.4109
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 4% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.2303,
+    "rsi": 13.73,
+    "trend": "down",
+    "ema20": 0.4021,
+    "ema50": 8.3029,
+    "rvol": 0.26,
+    "macd_hist": 0.09792,
+    "channel_broken": false,
+    "higher_lows": 0,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-20 منفّذ في 2026-11-06 (عمر 15 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 1.38$ وصعد إلى 1.61$ (+16.7%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 83.8% من القمة 1.61$ إلى القاع المرجعي 0.261$ بتاريخ 2026-11-19 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 15.18 (تشبع بيعي متطرف و 10 جلسة تحت 30) والحالي 15.18 ولم يتأكد التحسّن بعد.",
+    "ثبات 0 جلسة على القاع 0.261$ داخل نطاق 0.0% مع جفاف حجم (37% من المتوسط)، والقاع صامد.",
+    "حالة التسلسل: بانتظار جلسات ما بعد الثبات.",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 13.73",
+    "عدد الأسهم 1.90M — الفلوت 21.0K سهم.",
+    "البيع المكشوف 1.6% من الفلوت (أيام التغطية 0.01).",
+    "أبرز نموذج فني: قناة هابطة — قناة هابطة بانحدار -13.44% للشمعة (30 شمعة). سقف القناة عند 0.775 والسعر أسفله بفارق 65.5% — ننتظر اختراقاً بإغلاق.",
+    "أخبار سلبية: إفصاح SEC: 424B3 — 424B3 | CDT Equity Inc. Announces Reverse Stock Split",
+    "محفزات إيجابية: CDT Notes Strategic Investment into Sarborg and Expansion into Quantum Computing"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}
