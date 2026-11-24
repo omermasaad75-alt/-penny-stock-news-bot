@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-11-24 04:10",
+ "generated_at_riyadh": "2026-11-24 06:17",
  "mode": "live",
  "sources": {
   "mode_setting": "live",
@@ -10,14 +10,14 @@
     "name": "yahoo-finance",
     "ok": true,
     "detail": "",
-    "latency_ms": 117,
+    "latency_ms": 79,
     "source_kind": "live"
    },
    {
     "name": "sec-edgar",
     "ok": true,
     "detail": "",
-    "latency_ms": 74,
+    "latency_ms": 155,
     "source_kind": "live"
    },
    {
@@ -30,7 +30,7 @@
    {
     "name": "news-rss",
     "ok": true,
-    "detail": "37 عنوان",
+    "detail": "27 عنوان",
     "latency_ms": 0,
     "source_kind": "live"
    },
@@ -985,8 +985,6 @@
    "AZGFF": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "BEAT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "BLGO": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "RIME": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "SRTM": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "WSRC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "DTREF": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "KULR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -2046,7 +2044,7 @@
    "candidates_collected": 1000,
    "candidates_checked": 1000,
    "candidates_unchecked": 0,
-   "rows_after_split_filter": 15,
+   "rows_after_split_filter": 17,
    "partial": true,
    "stop_reason": "all_candidates_checked",
    "total_matching_screener": 10614,
@@ -2073,7 +2071,7 @@
      ]
     },
     "no_recent_split": {
-     "count": 976,
+     "count": 974,
      "symbols": [
       "RBNE",
       "KOAN",
@@ -2100,26 +2098,28 @@
     "rs_technically_excluded": {
      "count": 15,
      "symbols": [
+      "ZBAO",
+      "KITT",
       "GMEX",
       "SHFS",
       "VIVK",
-      "KITT",
       "TRUG",
       "BSFC",
-      "ZBAO",
       "CDT",
       "EVFM",
       "OTTEF",
       "SMX",
       "XXII",
-      "SCAG",
+      "RIME",
       "NIVF",
       "PARA"
      ]
     },
     "gam_candidates": {
-     "count": 0,
-     "symbols": []
+     "count": 1,
+     "symbols": [
+      "SCAG"
+     ]
     },
     "watchlist": {
      "count": 0,
@@ -3074,8 +3074,6 @@
   "AZGFF": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "BEAT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "BLGO": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "RIME": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "SRTM": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "WSRC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "DTREF": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "KULR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -3120,17 +3118,21 @@
   "WHWK": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً"
  },
  "summary": {
-  "scanned": 15,
-  "with_reverse_split": 15,
-  "eligible": 0,
+  "scanned": 17,
+  "with_reverse_split": 17,
+  "eligible": 1,
   "watchlist": 0,
-  "gam_candidates": 0,
+  "gam_candidates": 1,
   "ready": 0,
-  "failed": 6,
+  "failed": 3,
   "avg_score_watchlist": 0,
-  "top_symbol": "",
-  "eligible_symbols": [],
-  "gam_symbols": [],
+  "top_symbol": "SRTM",
+  "eligible_symbols": [
+   "SRTM"
+  ],
+  "gam_symbols": [
+   "SCAG"
+  ],
   "ready_symbols": []
  },
  "gam_policy": {
@@ -3151,19 +3153,19 @@
  },
  "top": [
   {
-   "symbol": "GMEX",
+   "symbol": "ZBAO",
    "phase": 2,
-   "score": 50.0,
-   "grade": "D",
-   "last_close": 0.192,
+   "score": 59.5,
+   "grade": "C",
+   "last_close": 0.11,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
    "gam_reasons": [],
    "lifecycle_ready": false,
    "lifecycle_failed": false,
-   "resistance_distance_pct": 16.67,
-   "impulse_pct": 14.38,
+   "resistance_distance_pct": 20.21,
+   "impulse_pct": 20.21,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3171,7 +3173,79 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.192$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    "سعر الإقفال 0.11$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الأسهم المكشوفة 42,838 ليست أقل من 20,000"
+   ],
+   "missing_step": null,
+   "sequence_done": null,
+   "core_price": null,
+   "core_reverse_split": null,
+   "core_decline": null,
+   "core_rsi": null,
+   "core_short_shares": null,
+   "short_shares": 42838.0,
+   "short_as_of": "1793318400",
+   "rs_date": "2026-10-12",
+   "rs_ratio": 50.0
+  },
+  {
+   "symbol": "KITT",
+   "phase": 1,
+   "score": 56.0,
+   "grade": "C",
+   "last_close": 0.719,
+   "eligible": false,
+   "watchlist": false,
+   "gam_candidate": false,
+   "gam_reasons": [],
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": 38.64,
+   "impulse_pct": 36.23,
+   "price_source": "yahoo-finance",
+   "split_source": "yahoo-finance",
+   "fundamentals_source": "yahoo-finance",
+   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+   "synthetic": false,
+   "phase_ar": "مستبعد",
+   "rejections": [
+    "سعر الإقفال 0.719$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الأسهم المكشوفة 203,890 ليست أقل من 20,000"
+   ],
+   "missing_step": null,
+   "sequence_done": null,
+   "core_price": null,
+   "core_reverse_split": null,
+   "core_decline": null,
+   "core_rsi": null,
+   "core_short_shares": null,
+   "short_shares": 203890.0,
+   "short_as_of": "1793318400",
+   "rs_date": "2026-09-25",
+   "rs_ratio": 6.0
+  },
+  {
+   "symbol": "GMEX",
+   "phase": 2,
+   "score": 50.0,
+   "grade": "D",
+   "last_close": 0.213,
+   "eligible": false,
+   "watchlist": false,
+   "gam_candidate": false,
+   "gam_reasons": [],
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": 88.33,
+   "impulse_pct": 76.56,
+   "price_source": "yahoo-finance",
+   "split_source": "yahoo-finance",
+   "fundamentals_source": "yahoo-finance",
+   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+   "synthetic": false,
+   "phase_ar": "مستبعد",
+   "rejections": [
+    "سعر الإقفال 0.213$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
    ],
    "missing_step": null,
    "sequence_done": null,
@@ -3187,7 +3261,7 @@
   },
   {
    "symbol": "SHFS",
-   "phase": 1,
+   "phase": 7,
    "score": 49.5,
    "grade": "D",
    "last_close": 0.003,
@@ -3196,9 +3270,9 @@
    "gam_candidate": false,
    "gam_reasons": [],
    "lifecycle_ready": false,
-   "lifecycle_failed": true,
-   "resistance_distance_pct": 150.0,
-   "impulse_pct": 100.0,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": 50.0,
+   "impulse_pct": 0.0,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3223,16 +3297,16 @@
   },
   {
    "symbol": "VIVK",
-   "phase": 2,
+   "phase": 3,
    "score": 49.3,
    "grade": "D",
-   "last_close": 0.225,
+   "last_close": 0.1888,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
    "gam_reasons": [],
    "lifecycle_ready": false,
-   "lifecycle_failed": false,
+   "lifecycle_failed": true,
    "resistance_distance_pct": 107.72,
    "impulse_pct": 89.71,
    "price_source": "yahoo-finance",
@@ -3242,7 +3316,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.225$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.1888$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 129,453 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3258,55 +3332,19 @@
    "rs_ratio": 15.0
   },
   {
-   "symbol": "KITT",
-   "phase": 1,
-   "score": 46.0,
-   "grade": "D",
-   "last_close": 0.69,
-   "eligible": false,
-   "watchlist": false,
-   "gam_candidate": false,
-   "gam_reasons": [],
-   "lifecycle_ready": false,
-   "lifecycle_failed": true,
-   "resistance_distance_pct": 18.42,
-   "impulse_pct": 21.74,
-   "price_source": "yahoo-finance",
-   "split_source": "yahoo-finance",
-   "fundamentals_source": "yahoo-finance",
-   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
-   "synthetic": false,
-   "phase_ar": "مستبعد",
-   "rejections": [
-    "سعر الإقفال 0.69$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
-    "الأسهم المكشوفة 203,890 ليست أقل من 20,000"
-   ],
-   "missing_step": null,
-   "sequence_done": null,
-   "core_price": null,
-   "core_reverse_split": null,
-   "core_decline": null,
-   "core_rsi": null,
-   "core_short_shares": null,
-   "short_shares": 203890.0,
-   "short_as_of": "1793318400",
-   "rs_date": "2026-09-25",
-   "rs_ratio": 6.0
-  },
-  {
    "symbol": "TRUG",
    "phase": 2,
    "score": 40.0,
    "grade": "D",
-   "last_close": 0.281,
+   "last_close": 0.315,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
    "gam_reasons": [],
    "lifecycle_ready": false,
    "lifecycle_failed": false,
-   "resistance_distance_pct": 23.92,
-   "impulse_pct": 14.91,
+   "resistance_distance_pct": 34.75,
+   "impulse_pct": 13.17,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3314,7 +3352,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.281$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.315$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 91,641 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3365,55 +3403,19 @@
    "rs_ratio": 1600.0
   },
   {
-   "symbol": "ZBAO",
-   "phase": 3,
-   "score": 35.0,
-   "grade": "D",
-   "last_close": 0.094,
-   "eligible": false,
-   "watchlist": false,
-   "gam_candidate": false,
-   "gam_reasons": [],
-   "lifecycle_ready": false,
-   "lifecycle_failed": true,
-   "resistance_distance_pct": 20.42,
-   "impulse_pct": 114.43,
-   "price_source": "yahoo-finance",
-   "split_source": "yahoo-finance",
-   "fundamentals_source": "yahoo-finance",
-   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
-   "synthetic": false,
-   "phase_ar": "مستبعد",
-   "rejections": [
-    "سعر الإقفال 0.094$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
-    "الأسهم المكشوفة 42,838 ليست أقل من 20,000"
-   ],
-   "missing_step": null,
-   "sequence_done": null,
-   "core_price": null,
-   "core_reverse_split": null,
-   "core_decline": null,
-   "core_rsi": null,
-   "core_short_shares": null,
-   "short_shares": 42838.0,
-   "short_as_of": "1793318400",
-   "rs_date": "2026-10-12",
-   "rs_ratio": 50.0
-  },
-  {
    "symbol": "CDT",
    "phase": 2,
    "score": 25.0,
    "grade": "D",
-   "last_close": 0.23,
+   "last_close": 0.25,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
    "gam_reasons": [],
    "lifecycle_ready": false,
    "lifecycle_failed": false,
-   "resistance_distance_pct": null,
-   "impulse_pct": null,
+   "resistance_distance_pct": 12.56,
+   "impulse_pct": 9.13,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3421,7 +3423,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.23$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    "سعر الإقفال 0.25$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
    ],
    "missing_step": null,
    "sequence_done": null,
@@ -3513,7 +3515,7 @@
    "phase": 3,
    "score": 25.0,
    "grade": "D",
-   "last_close": 2.7,
+   "last_close": 2.07,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3546,9 +3548,9 @@
   {
    "symbol": "XXII",
    "phase": 1,
-   "score": 17.7,
+   "score": 16.8,
    "grade": "D",
-   "last_close": 0.337,
+   "last_close": 0.286,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3564,7 +3566,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.337$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    "سعر الإقفال 0.286$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
    ],
    "missing_step": null,
    "sequence_done": null,
@@ -3579,19 +3581,58 @@
    "rs_ratio": 58.0
   },
   {
-   "symbol": "SCAG",
-   "phase": 3,
-   "score": 5.4,
+   "symbol": "RIME",
+   "phase": 2,
+   "score": 13.9,
    "grade": "D",
-   "last_close": 0.658,
+   "last_close": 0.53,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
    "gam_reasons": [],
    "lifecycle_ready": false,
-   "lifecycle_failed": true,
-   "resistance_distance_pct": 35.67,
-   "impulse_pct": 25.27,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null,
+   "price_source": "yahoo-finance",
+   "split_source": "yahoo-finance",
+   "fundamentals_source": "yahoo-finance",
+   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+   "synthetic": false,
+   "phase_ar": "مستبعد",
+   "rejections": [
+    "سعر الإقفال 0.53$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الهبوط 17.9% أقل من الحد المطلوب 30.0%",
+    "RSI لم ينزل تحت 30 (أدنى قيمة 35.58) — لا يوجد تشبع بيعي"
+   ],
+   "missing_step": null,
+   "sequence_done": null,
+   "core_price": null,
+   "core_reverse_split": null,
+   "core_decline": null,
+   "core_rsi": null,
+   "core_short_shares": null,
+   "short_shares": 17030.0,
+   "short_as_of": "1793318400",
+   "rs_date": "2026-11-23",
+   "rs_ratio": 10.0
+  },
+  {
+   "symbol": "SCAG",
+   "phase": 7,
+   "score": 12.0,
+   "grade": "D",
+   "last_close": 1.1,
+   "eligible": false,
+   "watchlist": false,
+   "gam_candidate": true,
+   "gam_reasons": [
+    "RSI لم ينزل تحت 30 (أدنى قيمة 43.15) — لا يوجد تشبع بيعي"
+   ],
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": 127.96,
+   "impulse_pct": 127.96,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3599,8 +3640,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.658$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
-    "RSI لم ينزل تحت 30 (أدنى قيمة 51.29) — لا يوجد تشبع بيعي"
+    "RSI لم ينزل تحت 30 (أدنى قيمة 43.15) — لا يوجد تشبع بيعي"
    ],
    "missing_step": null,
    "sequence_done": null,
@@ -3619,7 +3659,7 @@
    "phase": 2,
    "score": 4.6,
    "grade": "D",
-   "last_close": 0.027,
+   "last_close": 0.021,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3631,11 +3671,11 @@
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
-   "news_source": "rss:google+rss:yahoo+sec-edgar",
+   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.027$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.021$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 125,342 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3685,6 +3725,39 @@
    "short_as_of": "1793318400",
    "rs_date": "2026-10-27",
    "rs_ratio": 10.0
+  },
+  {
+   "symbol": "SRTM",
+   "phase": 2,
+   "score": 0.0,
+   "grade": "D",
+   "last_close": 1.03,
+   "eligible": true,
+   "watchlist": false,
+   "gam_candidate": false,
+   "gam_reasons": [],
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null,
+   "price_source": "yahoo-finance",
+   "split_source": "yahoo-finance",
+   "fundamentals_source": "yahoo-finance",
+   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+   "synthetic": false,
+   "phase_ar": "المرحلة 2 — موجة هبوط وتشبع بيعي",
+   "rejections": [],
+   "missing_step": null,
+   "sequence_done": null,
+   "core_price": null,
+   "core_reverse_split": null,
+   "core_decline": null,
+   "core_rsi": null,
+   "core_short_shares": null,
+   "short_shares": 494.6666666666667,
+   "short_as_of": "1793318400",
+   "rs_date": "2026-11-23",
+   "rs_ratio": 9.0
   }
  ],
  "providers": [
@@ -3710,7 +3783,7 @@
    "name": "news-rss",
    "ok": true,
    "source_kind": "live",
-   "detail": "37 عنوان"
+   "detail": "27 عنوان"
   },
   {
    "name": "demo-generator",
@@ -3719,5 +3792,5 @@
    "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/45302910897"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/45318349073"
 }
