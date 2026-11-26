@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-11-26 01:42",
+ "generated_at_riyadh": "2026-11-26 03:57",
  "mode": "live",
  "sources": {
   "mode_setting": "live",
@@ -10,14 +10,14 @@
     "name": "yahoo-finance",
     "ok": true,
     "detail": "",
-    "latency_ms": 71,
+    "latency_ms": 110,
     "source_kind": "live"
    },
    {
     "name": "sec-edgar",
     "ok": true,
     "detail": "",
-    "latency_ms": 166,
+    "latency_ms": 184,
     "source_kind": "live"
    },
    {
@@ -1029,7 +1029,7 @@
   "candidate_discovery": {
    "scope": "أسهم أمريكية (region=us) بسعر intraday > 0 وحتى 5$ عبر Yahoo Equity Screener، مرتبة بالنشاط — نطاق مقصود لأسهم البيني، وليس جرداً شاملاً لكل تقسيمات السوق",
    "price_ceiling": 5.0,
-   "total_matching_screener": 10609,
+   "total_matching_screener": 10613,
    "candidate_cap": 1000,
    "pages_fetched": 10,
    "truncated": true,
@@ -2044,7 +2044,7 @@
    "rows_after_split_filter": 19,
    "partial": true,
    "stop_reason": "all_candidates_checked",
-   "total_matching_screener": 10609,
+   "total_matching_screener": 10613,
    "price_ceiling": 5.0,
    "pages_fetched": 10,
    "discovery_truncated": true,
@@ -2108,9 +2108,9 @@
       "SMX",
       "RUBI",
       "WHLR",
+      "RIME",
       "TOPP",
       "NIVF",
-      "RIME",
       "SRTM",
       "TWG",
       "XXII"
@@ -3121,7 +3121,7 @@
   "watchlist": 0,
   "gam_candidates": 0,
   "ready": 0,
-  "failed": 2,
+  "failed": 3,
   "avg_score_watchlist": 0,
   "top_symbol": "EVFM",
   "eligible_symbols": [
@@ -3152,7 +3152,7 @@
    "phase": 2,
    "score": 59.5,
    "grade": "C",
-   "last_close": 0.1204,
+   "last_close": 0.134,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3168,7 +3168,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.1204$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.134$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 137,792 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3188,7 +3188,7 @@
    "phase": 1,
    "score": 56.5,
    "grade": "C",
-   "last_close": 1.06,
+   "last_close": 1.03,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3221,18 +3221,18 @@
   },
   {
    "symbol": "GMEX",
-   "phase": 2,
+   "phase": 3,
    "score": 50.0,
    "grade": "D",
-   "last_close": 0.1397,
+   "last_close": 0.135,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
    "gam_reasons": [],
    "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 33.33,
-   "impulse_pct": 3.7,
+   "lifecycle_failed": true,
+   "resistance_distance_pct": 88.33,
+   "impulse_pct": 76.56,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3240,7 +3240,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.1397$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.135$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 156,197 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3367,7 +3367,7 @@
    "phase": 3,
    "score": 25.0,
    "grade": "D",
-   "last_close": 0.2192,
+   "last_close": 0.243,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3383,7 +3383,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.2192$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.243$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 112,528 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3436,7 +3436,7 @@
    "phase": 3,
    "score": 25.0,
    "grade": "D",
-   "last_close": 0.4624,
+   "last_close": 2.851,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3452,7 +3452,6 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.4624$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 51,790 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3510,7 +3509,7 @@
    "phase": 3,
    "score": 25.0,
    "grade": "D",
-   "last_close": 2.06,
+   "last_close": 1.99,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3546,7 +3545,7 @@
    "phase": 3,
    "score": 24.5,
    "grade": "D",
-   "last_close": 0.536,
+   "last_close": 0.629,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3562,7 +3561,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.536$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.629$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 67,942 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3612,6 +3611,44 @@
    "short_as_of": "1794528000",
    "rs_date": "2026-10-30",
    "rs_ratio": 6.0
+  },
+  {
+   "symbol": "RIME",
+   "phase": 2,
+   "score": 11.2,
+   "grade": "D",
+   "last_close": 0.4,
+   "eligible": false,
+   "watchlist": false,
+   "gam_candidate": false,
+   "gam_reasons": [],
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null,
+   "price_source": "yahoo-finance",
+   "split_source": "yahoo-finance",
+   "fundamentals_source": "yahoo-finance",
+   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+   "synthetic": false,
+   "phase_ar": "مستبعد",
+   "rejections": [
+    "سعر الإقفال 0.4$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الهبوط 28.6% أقل من الحد المطلوب 30.0%",
+    "RSI لم ينزل تحت 30 (أدنى قيمة 32.86) — لا يوجد تشبع بيعي",
+    "الأسهم المكشوفة 26,282 ليست أقل من 20,000"
+   ],
+   "missing_step": null,
+   "sequence_done": null,
+   "core_price": null,
+   "core_reverse_split": null,
+   "core_decline": null,
+   "core_rsi": null,
+   "core_short_shares": null,
+   "short_shares": 26282.0,
+   "short_as_of": "1794528000",
+   "rs_date": "2026-11-23",
+   "rs_ratio": 10.0
   },
   {
    "symbol": "TOPP",
@@ -3686,48 +3723,11 @@
    "rs_ratio": 8.0
   },
   {
-   "symbol": "RIME",
-   "phase": 2,
-   "score": 0.0,
-   "grade": "D",
-   "last_close": 0.4612,
-   "eligible": false,
-   "watchlist": false,
-   "gam_candidate": false,
-   "gam_reasons": [],
-   "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 15.3,
-   "impulse_pct": 15.3,
-   "price_source": "yahoo-finance",
-   "split_source": "yahoo-finance",
-   "fundamentals_source": "yahoo-finance",
-   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
-   "synthetic": false,
-   "phase_ar": "مستبعد",
-   "rejections": [
-    "سعر الإقفال 0.4612$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
-    "RSI لم ينزل تحت 30 (أدنى قيمة 32.86) — لا يوجد تشبع بيعي",
-    "الأسهم المكشوفة 26,282 ليست أقل من 20,000"
-   ],
-   "missing_step": null,
-   "sequence_done": null,
-   "core_price": null,
-   "core_reverse_split": null,
-   "core_decline": null,
-   "core_rsi": null,
-   "core_short_shares": null,
-   "short_shares": 26282.0,
-   "short_as_of": "1794528000",
-   "rs_date": "2026-11-23",
-   "rs_ratio": 10.0
-  },
-  {
    "symbol": "SRTM",
    "phase": 2,
    "score": 0.0,
    "grade": "D",
-   "last_close": 0.363,
+   "last_close": 0.469,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3743,7 +3743,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.363$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    "سعر الإقفال 0.469$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
    ],
    "missing_step": null,
    "sequence_done": null,
@@ -3860,5 +3860,5 @@
    "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/45715369161"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/45732314474"
 }
