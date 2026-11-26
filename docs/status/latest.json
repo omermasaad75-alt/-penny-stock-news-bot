@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-11-26 06:36",
+ "generated_at_riyadh": "2026-11-27 01:32",
  "mode": "live",
  "sources": {
   "mode_setting": "live",
@@ -10,14 +10,14 @@
     "name": "yahoo-finance",
     "ok": true,
     "detail": "",
-    "latency_ms": 97,
+    "latency_ms": 87,
     "source_kind": "live"
    },
    {
     "name": "sec-edgar",
     "ok": true,
     "detail": "",
-    "latency_ms": 154,
+    "latency_ms": 51,
     "source_kind": "live"
    },
    {
@@ -30,7 +30,7 @@
    {
     "name": "news-rss",
     "ok": true,
-    "detail": "31 عنوان",
+    "detail": "32 عنوان",
     "latency_ms": 0,
     "source_kind": "live"
    },
@@ -324,7 +324,7 @@
    "TSHA": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "OCGN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "GLXG": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "INLF": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+   "INLF": "لا توجد بيانات حقيقية لهذا الرمز",
    "NUVB": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "VRSRF": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "TXTM": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -1028,7 +1028,7 @@
   "candidate_discovery": {
    "scope": "أسهم أمريكية (region=us) بسعر intraday > 0 وحتى 5$ عبر Yahoo Equity Screener، مرتبة بالنشاط — نطاق مقصود لأسهم البيني، وليس جرداً شاملاً لكل تقسيمات السوق",
    "price_ceiling": 5.0,
-   "total_matching_screener": 10613,
+   "total_matching_screener": 10597,
    "candidate_cap": 1000,
    "pages_fetched": 10,
    "truncated": true,
@@ -1332,7 +1332,6 @@
    "TSHA",
    "OCGN",
    "GLXG",
-   "INLF",
    "NUVB",
    "VRSRF",
    "TXTM",
@@ -2042,7 +2041,7 @@
    "rows_after_split_filter": 20,
    "partial": true,
    "stop_reason": "all_candidates_checked",
-   "total_matching_screener": 10613,
+   "total_matching_screener": 10597,
    "price_ceiling": 5.0,
    "pages_fetched": 10,
    "discovery_truncated": true,
@@ -2052,11 +2051,12 @@
      "symbols": []
     },
     "no_data": {
-     "count": 11,
+     "count": 12,
      "symbols": [
       "IPSI",
       "NMZ-RI",
       "NMHI",
+      "INLF",
       "BRR",
       "CORZW",
       "BTOG",
@@ -2068,7 +2068,7 @@
      ]
     },
     "no_recent_split": {
-     "count": 969,
+     "count": 968,
      "symbols": [
       "FCHL",
       "EARI",
@@ -2411,7 +2411,7 @@
   "TSHA": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "OCGN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "GLXG": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "INLF": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+  "INLF": "لا توجد بيانات حقيقية لهذا الرمز",
   "NUVB": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "VRSRF": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "TXTM": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -3239,8 +3239,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.135$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
-    "الأسهم المكشوفة 156,197 ليست أقل من 20,000"
+    "سعر الإقفال 0.135$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
    ],
    "missing_step": null,
    "sequence_done": null,
@@ -3249,7 +3248,7 @@
    "core_decline": null,
    "core_rsi": null,
    "core_short_shares": null,
-   "short_shares": 156197.0,
+   "short_shares": 8220.0,
    "short_as_of": "1794528000",
    "rs_date": "2026-09-28",
    "rs_ratio": 9.0
@@ -3883,7 +3882,7 @@
    "name": "news-rss",
    "ok": true,
    "source_kind": "live",
-   "detail": "31 عنوان"
+   "detail": "32 عنوان"
   },
   {
    "name": "demo-generator",
@@ -3892,5 +3891,5 @@
    "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/45749943464"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/45905391912"
 }
