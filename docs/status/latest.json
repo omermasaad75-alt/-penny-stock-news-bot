@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-11-28 03:29",
+ "generated_at_riyadh": "2026-11-28 06:20",
  "mode": "live",
  "sources": {
   "mode_setting": "live",
@@ -10,14 +10,14 @@
     "name": "yahoo-finance",
     "ok": true,
     "detail": "",
-    "latency_ms": 75,
+    "latency_ms": 91,
     "source_kind": "live"
    },
    {
     "name": "sec-edgar",
     "ok": true,
     "detail": "",
-    "latency_ms": 123,
+    "latency_ms": 186,
     "source_kind": "live"
    },
    {
@@ -687,7 +687,6 @@
    "ONCY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "JQC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "MNTN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "SPRC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "SFRX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "BDORY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "LGBI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -2039,7 +2038,7 @@
    "candidates_collected": 1000,
    "candidates_checked": 1000,
    "candidates_unchecked": 0,
-   "rows_after_split_filter": 20,
+   "rows_after_split_filter": 21,
    "partial": true,
    "stop_reason": "all_candidates_checked",
    "total_matching_screener": 10560,
@@ -2068,7 +2067,7 @@
      ]
     },
     "no_recent_split": {
-     "count": 969,
+     "count": 968,
      "symbols": [
       "EARI",
       "TMSH",
@@ -2103,21 +2102,23 @@
       "SPWR",
       "TRUG",
       "CDT",
-      "HCTI",
       "OTTEF",
       "SMX",
       "WHLR",
       "TWG",
       "ALBAF",
       "SRTM",
+      "HCTI",
       "NIVF",
       "TOPP",
       "XXII"
      ]
     },
     "gam_candidates": {
-     "count": 0,
-     "symbols": []
+     "count": 1,
+     "symbols": [
+      "SPRC"
+     ]
     },
     "watchlist": {
      "count": 0,
@@ -2774,7 +2775,6 @@
   "ONCY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "JQC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "MNTN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "SPRC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "SFRX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "BDORY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "LGBI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -3113,11 +3113,11 @@
   "RPAY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً"
  },
  "summary": {
-  "scanned": 20,
-  "with_reverse_split": 20,
+  "scanned": 21,
+  "with_reverse_split": 21,
   "eligible": 2,
   "watchlist": 0,
-  "gam_candidates": 0,
+  "gam_candidates": 1,
   "ready": 0,
   "failed": 3,
   "avg_score_watchlist": 0,
@@ -3126,7 +3126,9 @@
    "UFG",
    "EVFM"
   ],
-  "gam_symbols": [],
+  "gam_symbols": [
+   "SPRC"
+  ],
   "ready_symbols": []
  },
  "gam_policy": {
@@ -3151,7 +3153,7 @@
    "phase": 2,
    "score": 59.5,
    "grade": "C",
-   "last_close": 0.1225,
+   "last_close": 0.123,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3159,7 +3161,7 @@
    "lifecycle_ready": false,
    "lifecycle_failed": false,
    "resistance_distance_pct": 42.55,
-   "impulse_pct": 58.19,
+   "impulse_pct": 58.51,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3167,7 +3169,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.1225$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.123$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 137,792 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3220,10 +3222,10 @@
   },
   {
    "symbol": "SHFS",
-   "phase": 1,
+   "phase": 7,
    "score": 49.4,
    "grade": "D",
-   "last_close": 0.0029,
+   "last_close": 0.003,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3239,7 +3241,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.0029$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.003$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 1,280,173 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3398,7 +3400,7 @@
    "phase": 2,
    "score": 40.0,
    "grade": "D",
-   "last_close": 0.2656,
+   "last_close": 0.266,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3414,7 +3416,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.2656$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.266$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 81,443 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3434,15 +3436,15 @@
    "phase": 2,
    "score": 25.0,
    "grade": "D",
-   "last_close": 0.1989,
+   "last_close": 0.199,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
    "gam_reasons": [],
    "lifecycle_ready": false,
    "lifecycle_failed": false,
-   "resistance_distance_pct": 20.8,
-   "impulse_pct": -3.47,
+   "resistance_distance_pct": 20.57,
+   "impulse_pct": -3.65,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3450,7 +3452,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.1989$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.199$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 112,528 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3497,42 +3499,6 @@
    "short_as_of": "1659052800",
    "rs_date": "2026-11-18",
    "rs_ratio": 1500.0
-  },
-  {
-   "symbol": "HCTI",
-   "phase": 3,
-   "score": 25.0,
-   "grade": "D",
-   "last_close": 0.462,
-   "eligible": false,
-   "watchlist": false,
-   "gam_candidate": false,
-   "gam_reasons": [],
-   "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 15.0,
-   "impulse_pct": 12.0,
-   "price_source": "yahoo-finance",
-   "split_source": "yahoo-finance",
-   "fundamentals_source": "yahoo-finance",
-   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
-   "synthetic": false,
-   "phase_ar": "مستبعد",
-   "rejections": [
-    "سعر الإقفال 0.462$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
-    "الأسهم المكشوفة 51,790 ليست أقل من 20,000"
-   ],
-   "missing_step": null,
-   "sequence_done": null,
-   "core_price": null,
-   "core_reverse_split": null,
-   "core_decline": null,
-   "core_rsi": null,
-   "core_short_shares": null,
-   "short_shares": 51790.0,
-   "short_as_of": "1794528000",
-   "rs_date": "2026-10-26",
-   "rs_ratio": 20.0
   },
   {
    "symbol": "OTTEF",
@@ -3613,7 +3579,7 @@
    "phase": 2,
    "score": 21.0,
    "grade": "D",
-   "last_close": 0.4028,
+   "last_close": 0.403,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3629,7 +3595,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.4028$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.403$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 439,892 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3751,11 +3717,47 @@
    "rs_ratio": 9.0
   },
   {
+   "symbol": "HCTI",
+   "phase": 2,
+   "score": 0.0,
+   "grade": "D",
+   "last_close": 0.35,
+   "eligible": false,
+   "watchlist": false,
+   "gam_candidate": false,
+   "gam_reasons": [],
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": 39.21,
+   "impulse_pct": 29.87,
+   "price_source": "yahoo-finance",
+   "split_source": "yahoo-finance",
+   "fundamentals_source": "yahoo-finance",
+   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+   "synthetic": false,
+   "phase_ar": "مستبعد",
+   "rejections": [
+    "سعر الإقفال 0.35$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الأسهم المكشوفة 51,790 ليست أقل من 20,000"
+   ],
+   "missing_step": null,
+   "sequence_done": null,
+   "core_price": null,
+   "core_reverse_split": null,
+   "core_decline": null,
+   "core_rsi": null,
+   "core_short_shares": null,
+   "short_shares": 51790.0,
+   "short_as_of": "1794528000",
+   "rs_date": "2026-10-26",
+   "rs_ratio": 20.0
+  },
+  {
    "symbol": "NIVF",
    "phase": 3,
    "score": 0.0,
    "grade": "D",
-   "last_close": 0.0139,
+   "last_close": 0.014,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
@@ -3771,7 +3773,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.0139$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.014$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 30,631 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3787,6 +3789,43 @@
    "rs_ratio": 8.0
   },
   {
+   "symbol": "SPRC",
+   "phase": 2,
+   "score": 0.0,
+   "grade": "D",
+   "last_close": 1.4,
+   "eligible": false,
+   "watchlist": false,
+   "gam_candidate": true,
+   "gam_reasons": [
+    "الهبوط 23.3% أقل من الحد المطلوب 30.0%"
+   ],
+   "lifecycle_ready": false,
+   "lifecycle_failed": false,
+   "resistance_distance_pct": null,
+   "impulse_pct": null,
+   "price_source": "yahoo-finance",
+   "split_source": "yahoo-finance",
+   "fundamentals_source": "yahoo-finance",
+   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+   "synthetic": false,
+   "phase_ar": "مستبعد",
+   "rejections": [
+    "الهبوط 23.3% أقل من الحد المطلوب 30.0%"
+   ],
+   "missing_step": null,
+   "sequence_done": null,
+   "core_price": null,
+   "core_reverse_split": null,
+   "core_decline": null,
+   "core_rsi": null,
+   "core_short_shares": null,
+   "short_shares": 733.0,
+   "short_as_of": "1794528000",
+   "rs_date": "2026-11-27",
+   "rs_ratio": 5.0
+  },
+  {
    "symbol": "TOPP",
    "phase": 7,
    "score": 0.0,
@@ -3798,8 +3837,8 @@
    "gam_reasons": [],
    "lifecycle_ready": false,
    "lifecycle_failed": false,
-   "resistance_distance_pct": 136.15,
-   "impulse_pct": 10.76,
+   "resistance_distance_pct": 136.23,
+   "impulse_pct": 10.8,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3827,15 +3866,15 @@
    "phase": 1,
    "score": 0.0,
    "grade": "D",
-   "last_close": 0.2846,
+   "last_close": 0.285,
    "eligible": false,
    "watchlist": false,
    "gam_candidate": false,
    "gam_reasons": [],
    "lifecycle_ready": false,
    "lifecycle_failed": false,
-   "resistance_distance_pct": 18.09,
-   "impulse_pct": 6.99,
+   "resistance_distance_pct": 18.26,
+   "impulse_pct": 7.14,
    "price_source": "yahoo-finance",
    "split_source": "yahoo-finance",
    "fundamentals_source": "yahoo-finance",
@@ -3843,7 +3882,7 @@
    "synthetic": false,
    "phase_ar": "مستبعد",
    "rejections": [
-    "سعر الإقفال 0.2846$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "سعر الإقفال 0.285$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
     "الأسهم المكشوفة 71,006 ليست أقل من 20,000"
    ],
    "missing_step": null,
@@ -3891,5 +3930,5 @@
    "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/46088120541"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/46102327900"
 }
