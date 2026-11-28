@@ -1,5 +1,5 @@
 {
- "generated_at_riyadh": "2026-11-28 01:17",
+ "generated_at_riyadh": "2026-11-28 03:29",
  "mode": "live",
  "sources": {
   "mode_setting": "live",
@@ -10,14 +10,14 @@
     "name": "yahoo-finance",
     "ok": true,
     "detail": "",
-    "latency_ms": 153,
+    "latency_ms": 75,
     "source_kind": "live"
    },
    {
     "name": "sec-edgar",
     "ok": true,
     "detail": "",
-    "latency_ms": 296,
+    "latency_ms": 123,
     "source_kind": "live"
    },
    {
@@ -30,7 +30,7 @@
    {
     "name": "news-rss",
     "ok": true,
-    "detail": "39 عنوان",
+    "detail": "40 عنوان",
     "latency_ms": 0,
     "source_kind": "live"
    },
@@ -56,6 +56,7 @@
    "BFLR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "DOGZ": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "LOT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+   "DCX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "SAFX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "CHSN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "KOAN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -173,6 +174,7 @@
    "VNET": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "NWGC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "EOSE": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+   "AMOD": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "XLAB": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "NUAI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "WIT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -210,10 +212,10 @@
    "CRML": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "RCAT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "CBIA": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+   "NCPL": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "BBLR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "QUBT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "AREC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "NCPL": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "ENZC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "FRTG": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "AEGY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -736,9 +738,9 @@
    "PLX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "SVIA": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "NMZ-RI": "لا توجد بيانات حقيقية لهذا الرمز",
+   "LZ": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "ZYN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "EGY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-   "LZ": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "LCTX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "GGII": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
    "ACCH": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -1030,18 +1032,18 @@
    "candidate_cap": 1000,
    "pages_fetched": 10,
    "truncated": true,
-   "candidates_collected": 999
+   "candidates_collected": 1000
   },
   "scan_coverage": {
-   "candidates_collected": 999,
-   "candidates_checked": 999,
+   "candidates_collected": 1000,
+   "candidates_checked": 1000,
    "candidates_unchecked": 0,
    "unchecked_symbols": [],
    "partial": true,
    "stop_reason": "all_candidates_checked"
   },
   "synthetic_count": 0,
-  "candidates_checked": 999,
+  "candidates_checked": 1000,
   "verified_symbols": [
    "NIVF",
    "EARI",
@@ -1175,6 +1177,7 @@
    "VNET",
    "NWGC",
    "EOSE",
+   "AMOD",
    "XLAB",
    "NUAI",
    "WIT",
@@ -1212,10 +1215,10 @@
    "CRML",
    "RCAT",
    "CBIA",
+   "NCPL",
    "BBLR",
    "QUBT",
    "AREC",
-   "NCPL",
    "ENZC",
    "FRTG",
    "AEGY",
@@ -1744,9 +1747,9 @@
    "MODC",
    "PLX",
    "SVIA",
+   "LZ",
    "ZYN",
    "EGY",
-   "LZ",
    "LCTX",
    "GGII",
    "ACCH",
@@ -2033,10 +2036,10 @@
    "RPAY"
   ],
   "coverage": {
-   "candidates_collected": 999,
-   "candidates_checked": 999,
+   "candidates_collected": 1000,
+   "candidates_checked": 1000,
    "candidates_unchecked": 0,
-   "rows_after_split_filter": 21,
+   "rows_after_split_filter": 20,
    "partial": true,
    "stop_reason": "all_candidates_checked",
    "total_matching_screener": 10560,
@@ -2065,7 +2068,7 @@
      ]
     },
     "no_recent_split": {
-     "count": 967,
+     "count": 969,
      "symbols": [
       "EARI",
       "TMSH",
@@ -2079,14 +2082,14 @@
       "BFLR",
       "DOGZ",
       "LOT",
+      "DCX",
       "SAFX",
       "CHSN",
       "KOAN",
       "AITX",
       "WETO",
       "GRAB",
-      "VWAV",
-      "NTRR"
+      "VWAV"
      ]
     },
     "rs_technically_excluded": {
@@ -2140,6 +2143,7 @@
   "BFLR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "DOGZ": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "LOT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+  "DCX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "SAFX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "CHSN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "KOAN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -2257,6 +2261,7 @@
   "VNET": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "NWGC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "EOSE": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+  "AMOD": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "XLAB": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "NUAI": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "WIT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -2294,10 +2299,10 @@
   "CRML": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "RCAT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "CBIA": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
+  "NCPL": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "BBLR": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "QUBT": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "AREC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "NCPL": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "ENZC": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "FRTG": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "AEGY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -2820,9 +2825,9 @@
   "PLX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "SVIA": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "NMZ-RI": "لا توجد بيانات حقيقية لهذا الرمز",
+  "LZ": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "ZYN": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "EGY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
-  "LZ": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "LCTX": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "GGII": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
   "ACCH": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً",
@@ -3108,17 +3113,16 @@
   "RPAY": "لا تقسيم عكسي منفّذ مؤكّد خلال آخر 60 يوماً"
  },
  "summary": {
-  "scanned": 21,
-  "with_reverse_split": 21,
-  "eligible": 3,
+  "scanned": 20,
+  "with_reverse_split": 20,
+  "eligible": 2,
   "watchlist": 0,
   "gam_candidates": 0,
   "ready": 0,
   "failed": 3,
   "avg_score_watchlist": 0,
-  "top_symbol": "DCX",
+  "top_symbol": "UFG",
   "eligible_symbols": [
-   "DCX",
    "UFG",
    "EVFM"
   ],
@@ -3177,39 +3181,6 @@
    "short_as_of": "1794528000",
    "rs_date": "2026-10-12",
    "rs_ratio": 50.0
-  },
-  {
-   "symbol": "DCX",
-   "phase": 7,
-   "score": 55.8,
-   "grade": "C",
-   "last_close": 1.17,
-   "eligible": true,
-   "watchlist": false,
-   "gam_candidate": false,
-   "gam_reasons": [],
-   "lifecycle_ready": false,
-   "lifecycle_failed": false,
-   "resistance_distance_pct": 14.07,
-   "impulse_pct": 216.0,
-   "price_source": "yahoo-finance",
-   "split_source": "yahoo-finance",
-   "fundamentals_source": "yahoo-finance",
-   "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
-   "synthetic": false,
-   "phase_ar": "مرحلة التمدد — بعد الاختراق",
-   "rejections": [],
-   "missing_step": null,
-   "sequence_done": null,
-   "core_price": null,
-   "core_reverse_split": null,
-   "core_decline": null,
-   "core_rsi": null,
-   "core_short_shares": null,
-   "short_shares": 19868.0,
-   "short_as_of": "1794528000",
-   "rs_date": "2026-09-28",
-   "rs_ratio": 160.0
   },
   {
    "symbol": "VIVK",
@@ -3911,7 +3882,7 @@
    "name": "news-rss",
    "ok": true,
    "source_kind": "live",
-   "detail": "39 عنوان"
+   "detail": "40 عنوان"
   },
   {
    "name": "demo-generator",
@@ -3920,5 +3891,5 @@
    "detail": "معطّل — الوضع الحي لا يستخدم بيانات تجريبية"
   }
  ],
- "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/46075626212"
+ "run_url": "https://github.com/omermasaad75-alt/-penny-stock-news-bot/actions/runs/46088120541"
 }
