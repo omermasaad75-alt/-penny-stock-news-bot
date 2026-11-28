@@ -1,0 +1,1166 @@
+{
+  "symbol": "TRUG",
+  "name": "TruGolf Holdings, Inc.",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+  "synthetic": false,
+  "as_of": "2026-11-27",
+  "last_close": 0.266,
+  "change_pct": 0.76,
+  "dollar_volume": 893056.0,
+  "rs_found": true,
+  "rs_date": "2026-09-29",
+  "rs_age_days": 60,
+  "rs_ratio_str": "1-for-10",
+  "rs_ratio": 10.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 2.62,
+  "spike_high": 3.59,
+  "spike_pct": 37.0229,
+  "spike_date": "2026-09-29",
+  "decline_pct": -93.95543181291566,
+  "peak_date": "2026-09-29",
+  "bottom_price": 0.227,
+  "bottom_date": "2026-11-24",
+  "base_sessions": 1,
+  "base_high": 0.28,
+  "base_low": 0.227,
+  "base_range_pct": 23.348,
+  "base_broken": false,
+  "volume_dryup": 3.183,
+  "atr_pct": 60.05,
+  "rsi_now": 24.8,
+  "rsi_trough": 23.091316366674974,
+  "rsi_trough_date": "2026-11-19",
+  "rsi_sessions_below_30": 30,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 0,
+  "macd_turning": false,
+  "macd_hist": 0.08149,
+  "channel_slope_pct": -5.191,
+  "channel_upper": 0.7405,
+  "channel_broken": false,
+  "rvol": 9.16,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "انطلاقة ضعيفة (+9% — المستهدف ≈20%)",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 0.227",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": false,
+      "detail": "+8.5% من 0.258 إلى 0.280",
+      "state": "pending"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": true,
+      "detail": "أقرب مقاومة 0.280 (على 23.3% من الدعم 0.227) — توقف السعر عندها بفارق 0.0%",
+      "state": "ok"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": true,
+      "detail": "أدنى نقطة بعد القمة 0.217 مقابل الدعم 0.227",
+      "state": "ok"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": true,
+      "detail": "سحب إلى 0.217 (4.4% تحت الدعم) ثم استعادة",
+      "state": "ok"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": true,
+      "detail": "1 إغلاق فوق 0.228 (آخرها 2026-11-27)",
+      "state": "ok"
+    }
+  ],
+  "impulse_pct": 8.53,
+  "impulse_high": 0.28,
+  "impulse_date": "2026-11-25",
+  "resistance_level": 0.28,
+  "resistance_distance_pct": 23.35,
+  "resistance_date": "2026-11-25",
+  "pullback_type": "liquidity_sweep",
+  "pullback_low": 0.217,
+  "pullback_date": "2026-11-27",
+  "sweep_low": 0.217,
+  "sweep_depth_pct": 4.41,
+  "sweep_date": "2026-11-27",
+  "reclaim_level": 0.2281,
+  "reclaim_sessions": 1,
+  "reclaim_date": "2026-11-27",
+  "support_level": 0.227,
+  "support_hold_ok": false,
+  "base_close": 0.258,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    2.64,
+    2.56,
+    2.69,
+    2.75,
+    2.56,
+    1.89,
+    1.88,
+    1.74,
+    1.38,
+    1.36,
+    1.12,
+    1.11,
+    1.04,
+    0.969,
+    0.88,
+    0.875,
+    0.86,
+    0.798,
+    0.801,
+    0.769,
+    0.73,
+    0.719,
+    0.789,
+    0.641,
+    0.578,
+    0.524,
+    0.505,
+    0.47,
+    0.54,
+    0.558,
+    0.519,
+    0.47,
+    0.306,
+    0.281,
+    0.275,
+    0.281,
+    0.315,
+    0.258,
+    0.264,
+    0.266
+  ],
+  "resistance_tested": true,
+  "resistance_stall_pct": 0.0,
+  "shares_out": 2861153.0,
+  "float_shares": 692897.0,
+  "market_cap": 760453.0,
+  "avg_volume": 2301400.0,
+  "insider_pct": 7.61,
+  "institutional_pct": 0.09,
+  "short_pct_float": 5.57,
+  "short_as_of": "1794528000",
+  "short_shares": 81443.0,
+  "days_to_cover": 0.13,
+  "short_change_pct": -45.9,
+  "short_volume_ratio": 0.468,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf Announces Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trugolf-announces-reverse-stock-split-141700247.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "other",
+      "title": "Nasdaq's $1 minimum bid rule is why TruGolf plans to combine five Class A shares into one. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQU0E4OUlnX0l4TW1QUElCTERIeHpvM2Y5REhnR0Nub2V4cVJHSjdDQ1JoWV91WEQ4ZWVxMEl0SGVrLTE5YmM5dGV4N3FiZ2U0Y0twX3Y2NGZxS3dscllsa19ITmR0SVJnNTg5TUdKdENTYTd2YWhHc2d6NDM5ZzdDRmYtbUNFdXJOMGszQnJxazI?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf Holdings Announces 1-for-5 Reverse Stock Split to Regain Nasdaq Compliance - Quiver Quantitative",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxONldjSXQ3M0ZTZ2dhdFlSMHBMYzQ1ZnNGbDNNdUc0SGpySXN0OVBJYl90SWQwdU5lSVhmN09iSy13Q01iSHM0RFhtbC11akZLVkE3bGg5ZmJWMVdNbVRmbVZsQUMyd29QZnhCU2txT3J3ZGtMV0hRdEc2engyQjNNc3ZQZkE2bDJDTkpPeDFBbzJUSUxubkprMEduV0JJMDROZXpzV0tNVXo1N1kyT2NNTTVmbmZKUQ?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf announces 1-for-5 reverse stock split effective Dec. 1 - Investing.com",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPSzdMQlZtMjZlcjgwbnMtN0poeWhEM2l4VER3aXBfQXNTWE52Nm5JTDhJeHgyRGhsVl83SEV0YlVlVUNzb2JmVjlKLUFwMWRiY1BMNUFiNGo4OWZvb2Jid2hZb09KRTNyaTAzTnN2Ukt4OThJekFLd3A2aV9QRjFjbWRiM29rMFhMVTI4VXpLQTVXX0JpV3ZmX2ZvcWdOR0hIekwwVHdqMGJtMTJMSXBwSEdVeldBaW8?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf Implementing 1-for-5 Reverse Stock Split to Regain Compliance With Nasdaq Rule - marketscreener.com",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOc1pld1p4M3o4MVU0SGtial80dGNrLXRpQUd6b2NMbnZQblVHd3BFRE1tSk43bnFrU0RTT0JXelRGTUF3QV95b3BjYm5TcUc1UkU1UXN5NlRnLVhVWVlOTkJzdU9qZklxbkNRSExEOElvYVZidzJKQ2RHRlJ6anVIVk9MSEQydmEyU2k2X1J1LXF0Y0JqMHpZeUNzSXVFSjZhbER2a0Q1NE11d0R4VmVHT1g1S1dOWDNCRHlTNlk3THRKQjBfMWY4QzdWNzhoYkE0aEg5eEdR?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf Announces Reverse Stock Split - GlobeNewswire",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNU2RfNm5OeTlyU1dKV0UwanRWMEdDeXpvejJtaFBxVDFKbkJ0VzRib2pobEVUdDA1REUxUmtxNml1MTVFSVVpTHZYX2VFUVBpMEg3ZUFHNjljUXlrM3RUVGRnOEgxd1NYMUlsSExURXNhSzVOY0RPQkY0TmRCQ25KaVNCdnlRVnlrbGVpNnBEeGY1Y1Q4MEF6QW0zR1l4bHEwT3RQTHFPQ2JHVk5mbGc?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-26",
+      "type": "other",
+      "title": "TruGolf (TRUG) Stock Climbs 19% After Hours: What's Driving the Surge? - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOLVZsRUlESWtDRndhaVIxbzFmMFVGOW8yOVA4ZUNxbXl4QWV6V3lFNnNOVDAzUlJhbGtxaG12bWFJeFN2cWZaYkcyMTNlVUdiSEJGcFZWQU1OcEJCU0gxcnRyaEh5ZlNEclAwejFwcUhuLTJwSXFqempIWm5MdHdYY0NOakpNdFZ3NG43a0gxTDZfTUswalNtUTZXOW4zMENMZUFDSDNQS0lmazkwQTVPQkIwVlRXWmMxRlczMFdudlk2QQ?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-24",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — PRIMARY DOCUMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000216276726000003/xslF345X06/primary_doc.xml"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-24",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000216276726000002/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-20",
+      "type": "offering",
+      "title": "إفصاح SEC: S-1 — S-1",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226053580/forms-1.htm"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-20",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K — 8-K",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226053548/form8-k.htm"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-16",
+      "type": "other",
+      "title": "TruGolf Reports Top Third Quarter Results",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trugolf-reports-top-third-quarter-221000156.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-16",
+      "type": "earnings",
+      "title": "إفصاح SEC: 10-Q — 10-Q",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226052600/form10-q.htm"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-12",
+      "type": "other",
+      "title": "IBN Announces Latest Episode of The Bell2Bell Podcast featuring Natalie Hirsch, CFO of TruGolf Holdings Inc.",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/ibn-announces-latest-episode-bell2bell-130000538.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-09",
+      "type": "other",
+      "title": "إفصاح SEC: 8-K/A — 8-K/A",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226050578/form8-ka.htm"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-03",
+      "type": "other",
+      "title": "إفصاح SEC: PRE 14A — PRE 14A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226049751/formpre14a.htm"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-23",
+      "type": "other",
+      "title": "TruGolf Holdings (TRUG) Expands E6 Golf Library to More Than 15,000 Courses, Reports Increased Platform Usage",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/trugolf-holdings-trug-expands-e6-150000450.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-22",
+      "type": "other",
+      "title": "TruGolf's E6 Course Library Surpasses 15,000 Courses as On-Demand Platform Scales Across 19 Launch Monitors",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/trugolfs-e6-course-library-surpasses-153200575.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-22",
+      "type": "other",
+      "title": "TruGolf’s E6 Course Library Surpasses 15,000 Courses as On-Demand Platform Scales Across 19 Launch Monitors",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/trugolf-e6-course-library-surpasses-123300968.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "TruGolf Buy Polymath, the Company Behind Polymesh",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://newsletter.sportingcrypto.com/p/trugolf-buy-polymath"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-16",
+      "type": "other",
+      "title": "TruGolf Holdings Inc. (NASDAQ: TRUG) Acquisition Positions Company in Market for Regulated Tokenization, Digital Securities Infrastructure",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/trugolf-holdings-inc-nasdaq-trug-123000098.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "إفصاح SEC: SCHEDULE 13G/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000194797526000023/xslSCHEDULE_13G_X02/primary_doc.xml"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-14",
+      "type": "other",
+      "title": "TruGolf Links Engages Polymath for Cap Table Tokenization in First Technology Deployment Following Merger",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/trugolf-links-engages-polymath-cap-123500616.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "UPDATED: TruGolf Completes Acquisition of Polymath Research, Bringing a Blockchain Purpose-Built for Regulated Assets to Nasdaq",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/updated-trugolf-completes-acquisition-polymath-185200285.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-09",
+      "type": "other",
+      "title": "TruGolf Completes Acquisition of Polymath Research, Bringing a Blockchain Purpose-Built for Regulated Assets to Nasdaq",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/trugolf-completes-acquisition-polymath-research-123300197.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-02",
+      "type": "other",
+      "title": "IBN to Serve as Media Sponsor of The ThinkEquity Conference 2026",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/media-advertising/articles/ibn-serve-media-sponsor-thinkequity-123700823.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-10-01",
+      "type": "other",
+      "title": "TruGolf Holdings (TRUG) Announces First TruGolf Range Installation Featuring AI Coach",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/trugolf-holdings-trug-announces-first-185621701.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-30",
+      "type": "other",
+      "title": "TruGolf Range Debuts at Lucid Golf in New Albany, Indiana",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/trugolf-range-debuts-lucid-golf-162600124.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-29",
+      "type": "other",
+      "title": "TruGolf and Polymath to Present at The ThinkEquity Conference in New York on October 15",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/articles/trugolf-polymath-present-thinkequity-conference-111500482.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-28",
+      "type": "offering",
+      "title": "TruGolf Announces Reverse Stock Split and Leadership Changes",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/36988/trugolf-announces-reverse-stock-split-and-leadership-changes"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-28",
+      "type": "clinical",
+      "title": "TruGolf Highlights September Milestones as Polymath Acquisition Advances",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trugolf-highlights-september-milestones-polymath-111500538.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-23",
+      "type": "other",
+      "title": "TruGolf Strengthens its Leadership through Changes to Board of Directors and C-Suite",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trugolf-strengthens-leadership-changes-board-214000191.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-16",
+      "type": "other",
+      "title": "TruGolf Holdings Signs Las Vegas Regional Developer, Announces First Co-Branded Pickleball Location",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/36431/trugolf-holdings-signs-las-vegas-regional-developer-announces-first-co-branded-pickleball-location"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-11",
+      "type": "other",
+      "title": "TruGolf Stock Surges Friday: What's Happening? - TruGolf Holdings (NASDAQ:TRUG) - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxORjdydmtGaVZlMzFObGUzbFZZYjQtdHBKRTB1SmZvRFBDNGktMDlVZTNUS3JQYmlud05uaXl4WF95bmlWRFZVektZNHF2MnlOUEJ2YnptdjNBWWl2ejJSckhZbzhLOEI0S1JZSlZLVGZacnJBblFHQW8zU2YwM2JxZTVZNDEyTG5CM3hWSDBURjgxWTJsMzNBaFNfajN0UjFDNDJPVHREUQ?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-11",
+      "type": "other",
+      "title": "Digital assets will get secure holding and trading support - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOOW5vcXcyZHAwOFZ4TjAzd2l6Y0Rwd1FSNklIamxJRWUtbTlKTXZ6ZGQ3d09MTDU3WDVzMUV0aU1Vb1RLd1gyV01CSldHSTA0UkgxOU55b3BrenBKYjVNNjlWbUZwZjhaNmViM25XX3A1dzR3UVlSTTFQbEdNNGowSUJOQU9mNUFuSG9hV0pkVHBFcXJWWm41VTd2N2l4bko0NjNPa1RBRm56ei1tQUYtbkYwNTFMbmdN?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-08",
+      "type": "other",
+      "title": "TruGolf Holdings Binding Distribution MOU Expands Canadian Market Reach",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/35862/trugolf-holdings-binding-distribution-mou-expands-canadian-market-reach"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-08-18",
+      "type": "other",
+      "title": "TRUG Stock Soars As Franchise Rollout Fuels Q2 Momentum - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1OcVlQZU1hdHNxRFlMNFNLaHM0SXNUYUdQN1pDZTc4ZGl4Z2Nkc2hEa1RkbVkxelJyeFgwWkdTTEpuMVFSY3JXOXFKMVJkYmUycjBtOXM0cjN4Zi0yX2ZORFFfZV9lUV9mTW9mbl9GVWRVcjFpQTd5SWlEeU1TZw?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-08-17",
+      "type": "other",
+      "title": "TruGolf Shares Surge Monday: What's Driving the Action? - TruGolf Holdings (NASDAQ:TRUG) - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPM1lMRVl2czZldTc5YWcwdTY3dnlDTl9xRk9XSVJNaGlTR1NTR3NHOTk4R2t5eDJSNU00QUpOV0FfSVFUQTg4cE5XZTRWVzZXako3VU5hbVBNODFIdHQzVDhKdmI0QzI4cHRHd3VLYUlxZzRMWmdRUzN4NEpvVkVIdnJzRkFoVzAwM1E2eE1xYXJEUUtadFZ3V1JQbkNseVN6ZFRIeXRLMXE2c0FYRG5mZkxacw?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-08-17",
+      "type": "other",
+      "title": "TRUG Stock Pops As TruGolf Launches Flagship Franchise Push - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQaVVITlVydEdsTXhWMnhMOG1fRk1tekZiNDE4OUI1MGNVd1VjMDNYLW14em9CdWlmTFZxLUNuZEF2VkZxX00zVlU2V29MS3Q0SjZCVDljNnpVUWdOLXlPd1FsRW5UbWJvNS1fSXJtWkZORHh1dEd1MUNWLVlQU2E4bg?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-08-17",
+      "type": "other",
+      "title": "TRUG Stock Jumps As TruGolf Links Franchise Expansion Kicks Off - StocksToTrade",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBuOTNDQnhTNFVIZjlja3lZVnVRSFZSbWg4VTFOYUoyV2hBMFBReEptbm1Cc29sQ1hYcFNBYmJianlZZU5aSUtEQWYtOXlaU3NFS0dwOEV0ck82d1NDU2Zyd0NZRWFsYU5ZNHN5VFRweUJEbWtCbURTbm5hNjdndw?oc=5"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "TRUG",
+      "kind": "news-offering",
+      "date": "2026-11-27",
+      "title": "TruGolf Announces Reverse Stock Split",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trugolf-announces-reverse-stock-split-141700247.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "news-offering",
+      "date": "2026-11-27",
+      "title": "TruGolf Holdings Announces 1-for-5 Reverse Stock Split to Regain Nasdaq Compliance - Quiver Quantitative",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxONldjSXQ3M0ZTZ2dhdFlSMHBMYzQ1ZnNGbDNNdUc0SGpySXN0OVBJYl90SWQwdU5lSVhmN09iSy13Q01iSHM0RFhtbC11akZLVkE3bGg5ZmJWMVdNbVRmbVZsQUMyd29QZnhCU2txT3J3ZGtMV0hRdEc2engyQjNNc3ZQZkE2bDJDTkpPeDFBbzJUSUxubkprMEduV0JJMDROZXpzV0tNVXo1N1kyT2NNTTVmbmZKUQ?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "news-offering",
+      "date": "2026-11-27",
+      "title": "TruGolf announces 1-for-5 reverse stock split effective Dec. 1 - Investing.com",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPSzdMQlZtMjZlcjgwbnMtN0poeWhEM2l4VER3aXBfQXNTWE52Nm5JTDhJeHgyRGhsVl83SEV0YlVlVUNzb2JmVjlKLUFwMWRiY1BMNUFiNGo4OWZvb2Jid2hZb09KRTNyaTAzTnN2Ukt4OThJekFLd3A2aV9QRjFjbWRiM29rMFhMVTI4VXpLQTVXX0JpV3ZmX2ZvcWdOR0hIekwwVHdqMGJtMTJMSXBwSEdVeldBaW8?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "news-offering",
+      "date": "2026-11-27",
+      "title": "TruGolf Implementing 1-for-5 Reverse Stock Split to Regain Compliance With Nasdaq Rule - marketscreener.com",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOc1pld1p4M3o4MVU0SGtial80dGNrLXRpQUd6b2NMbnZQblVHd3BFRE1tSk43bnFrU0RTT0JXelRGTUF3QV95b3BjYm5TcUc1UkU1UXN5NlRnLVhVWVlOTkJzdU9qZklxbkNRSExEOElvYVZidzJKQ2RHRlJ6anVIVk9MSEQydmEyU2k2X1J1LXF0Y0JqMHpZeUNzSXVFSjZhbER2a0Q1NE11d0R4VmVHT1g1S1dOWDNCRHlTNlk3THRKQjBfMWY4QzdWNzhoYkE0aEg5eEdR?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "news-offering",
+      "date": "2026-11-27",
+      "title": "TruGolf Announces Reverse Stock Split - GlobeNewswire",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNU2RfNm5OeTlyU1dKV0UwanRWMEdDeXpvejJtaFBxVDFKbkJ0VzRib2pobEVUdDA1REUxUmtxNml1MTVFSVVpTHZYX2VFUVBpMEg3ZUFHNjljUXlrM3RUVGRnOEgxd1NYMUlsSExURXNhSzVOY0RPQkY0TmRCQ25KaVNCdnlRVnlrbGVpNnBEeGY1Y1Q4MEF6QW0zR1l4bHEwT3RQTHFPQ2JHVk5mbGc?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "S-1",
+      "date": "2026-11-20",
+      "title": "إفصاح S-1 — S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226053580/forms-1.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "8-K",
+      "date": "2026-10-09",
+      "title": "8-K بند 1.01,2.01,3.02,5.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226046435/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "news-offering",
+      "date": "2026-09-28",
+      "title": "TruGolf Announces Reverse Stock Split and Leadership Changes",
+      "severity": "high",
+      "url": "https://investorshub.advfn.com/market-news/article/36988/trugolf-announces-reverse-stock-split-and-leadership-changes?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "8-K",
+      "date": "2026-09-24",
+      "title": "8-K بند 1.01,5.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226044019/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "8-K",
+      "date": "2026-09-09",
+      "title": "8-K بند 1.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226041991/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "8-K",
+      "date": "2026-08-27",
+      "title": "8-K بند 1.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226040430/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "8-K",
+      "date": "2026-08-21",
+      "title": "8-K بند 3.01,3.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226039727/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "8-K",
+      "date": "2026-08-18",
+      "title": "8-K بند 1.01,3.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226038904/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "delay",
+      "date": "2026-05-15",
+      "title": "تأخير في تقديم NT 10-Q (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226023901/formnt10-q.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "delay",
+      "date": "2026-03-31",
+      "title": "تأخير في تقديم NT 10-K (مخاطر امتثال)",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226014124/formnt10-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "effectiveness",
+      "date": "2025-12-15",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/999999999525003735/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "S-3",
+      "date": "2025-11-18",
+      "title": "إفصاح S-3 — S-3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315225023954/forms-3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "424B3",
+      "date": "2025-09-10",
+      "title": "إفصاح 424B3 — 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000164117225027068/form424b3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "S-1",
+      "date": "2025-09-09",
+      "title": "إفصاح S-1/A — S-1/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000164117225026946/forms-1a.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "8-K",
+      "date": "2025-07-22",
+      "title": "8-K بند 1.01,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000164117225020523/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "8-K",
+      "date": "2025-04-23",
+      "title": "8-K بند 1.01,2.03,3.02,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000164117225005787/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "8-K",
+      "date": "2025-01-08",
+      "title": "8-K بند 1.01,2.03,3.02,8.01,9.01 — اتفاقية/إصدار أسهم",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315225001307/form8-k.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "424B3",
+      "date": "2024-10-03",
+      "title": "إفصاح 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315224039253/form424b3.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "S-1",
+      "date": "2024-09-23",
+      "title": "إفصاح S-1/A",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315224037841/forms-1a.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "TRUG",
+      "kind": "S-1",
+      "date": "2024-02-14",
+      "title": "إفصاح S-1",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315224006734/forms-1.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "⚠ طرح أسهم/تخفيف عالي الخطورة خلال 10 أيام: TruGolf Announces Reverse Stock Split | TruGolf Holdings Announces 1-for-5 Reverse Stock Split to Regain Nasda"
+  ],
+  "positive_news": [
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-28",
+      "type": "clinical",
+      "title": "TruGolf Highlights September Milestones as Polymath Acquisition Advances",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trugolf-highlights-september-milestones-polymath-111500538.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf Announces Reverse Stock Split",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trugolf-announces-reverse-stock-split-141700247.html?.tsrc=rss"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf Holdings Announces 1-for-5 Reverse Stock Split to Regain Nasdaq Compliance - Quiver Quantitative",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxONldjSXQ3M0ZTZ2dhdFlSMHBMYzQ1ZnNGbDNNdUc0SGpySXN0OVBJYl90SWQwdU5lSVhmN09iSy13Q01iSHM0RFhtbC11akZLVkE3bGg5ZmJWMVdNbVRmbVZsQUMyd29QZnhCU2txT3J3ZGtMV0hRdEc2engyQjNNc3ZQZkE2bDJDTkpPeDFBbzJUSUxubkprMEduV0JJMDROZXpzV0tNVXo1N1kyT2NNTTVmbmZKUQ?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf announces 1-for-5 reverse stock split effective Dec. 1 - Investing.com",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPSzdMQlZtMjZlcjgwbnMtN0poeWhEM2l4VER3aXBfQXNTWE52Nm5JTDhJeHgyRGhsVl83SEV0YlVlVUNzb2JmVjlKLUFwMWRiY1BMNUFiNGo4OWZvb2Jid2hZb09KRTNyaTAzTnN2Ukt4OThJekFLd3A2aV9QRjFjbWRiM29rMFhMVTI4VXpLQTVXX0JpV3ZmX2ZvcWdOR0hIekwwVHdqMGJtMTJMSXBwSEdVeldBaW8?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf Implementing 1-for-5 Reverse Stock Split to Regain Compliance With Nasdaq Rule - marketscreener.com",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOc1pld1p4M3o4MVU0SGtial80dGNrLXRpQUd6b2NMbnZQblVHd3BFRE1tSk43bnFrU0RTT0JXelRGTUF3QV95b3BjYm5TcUc1UkU1UXN5NlRnLVhVWVlOTkJzdU9qZklxbkNRSExEOElvYVZidzJKQ2RHRlJ6anVIVk9MSEQydmEyU2k2X1J1LXF0Y0JqMHpZeUNzSXVFSjZhbER2a0Q1NE11d0R4VmVHT1g1S1dOWDNCRHlTNlk3THRKQjBfMWY4QzdWNzhoYkE0aEg5eEdR?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-27",
+      "type": "offering",
+      "title": "TruGolf Announces Reverse Stock Split - GlobeNewswire",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNU2RfNm5OeTlyU1dKV0UwanRWMEdDeXpvejJtaFBxVDFKbkJ0VzRib2pobEVUdDA1REUxUmtxNml1MTVFSVVpTHZYX2VFUVBpMEg3ZUFHNjljUXlrM3RUVGRnOEgxd1NYMUlsSExURXNhSzVOY0RPQkY0TmRCQ25KaVNCdnlRVnlrbGVpNnBEeGY1Y1Q4MEF6QW0zR1l4bHEwT3RQTHFPQ2JHVk5mbGc?oc=5"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-11-20",
+      "type": "offering",
+      "title": "إفصاح SEC: S-1 — S-1",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1857086/000149315226053580/forms-1.htm"
+    },
+    {
+      "symbol": "TRUG",
+      "date": "2026-09-28",
+      "type": "offering",
+      "title": "TruGolf Announces Reverse Stock Split and Leadership Changes",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/36988/trugolf-announces-reverse-stock-split-and-leadership-changes"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "price",
+    "short_shares"
+  ],
+  "rejections": [
+    "سعر الإقفال 0.266$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)",
+    "الأسهم المكشوفة 81,443 ليست أقل من 20,000"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 0.266,
+      "display": "0.2660$",
+      "ok": false,
+      "data_available": true,
+      "reason": "سعر الإقفال 0.266$ خارج نطاق الاستراتيجية (1.0$ - 5.0$)"
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 60,
+      "display": "1-for-10 · 2026-09-29 · عمر 60 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -93.9554,
+      "display": "93.96% من قمة ما بعد التقسيم · القمة 3.5900$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 23.0913,
+      "display": "أدنى RSI 23.09 (2026-11-19)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 81443.0,
+      "display": "81,443 سهم",
+      "ok": false,
+      "data_available": true,
+      "reason": "الأسهم المكشوفة 81,443 ليست أقل من 20,000"
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 246 يوماً (1-for-10) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 523 يوماً (1-for-50) — خارج نافذة 60 يوماً المطلوبة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "مستبعد من قائمة الفرص — راجع أسباب الاستبعاد"
+  ],
+  "score": 40.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.15 · قاعدة القاع: 3.18 · آخر 3 جلسات: 6.66",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 60,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: نعم",
+      "points": 15.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "حجم نسبي 9.16x يدعم الحركة",
+    "سحب سيولة تحت الدعم إلى 0.217$ ثم عودة الإغلاق فوقه"
+  ],
+  "levels": {
+    "trigger": 0.3218,
+    "entry_zone": [
+      0.26,
+      0.3218
+    ],
+    "stop": 0.2575,
+    "stop_pct": -20.0,
+    "stop_structural": 0.204,
+    "stop_structural_pct": -36.62,
+    "targets": {
+      "t1_382": 1.5117,
+      "t2_618": 2.3053,
+      "t3_full": 3.59
+    },
+    "rr_t1": 18.49,
+    "rr_t2": 30.82,
+    "risk_per_share": 0.0644,
+    "reward_t2_per_share": 1.9835,
+    "atr_pct": 60.05,
+    "bottom": 0.227,
+    "peak": 3.59,
+    "last": 0.266,
+    "base_high": 0.28,
+    "ema9": 0.3241,
+    "ema20": 0.5463,
+    "support": 0.227,
+    "impulse_high": 0.28,
+    "resistance": 0.28,
+    "sweep_low": 0.217,
+    "reclaim_level": 0.2281,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 60.0%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 0.2575$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة، ابتلاع شرائي، نجمة الصباح)",
+      "tf": "1D",
+      "confidence": 0.85,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-11-19، 2026-11-20، 2026-11-23 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -5.91% للشمعة (30 شمعة). سقف القناة عند 1.082 والسعر أسفله بفارق 75.4% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.0818,
+        "channel_mid": 0.8206,
+        "channel_lower": 0.6225
+      },
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "falling_wedge",
+      "name_ar": "وتد هابط",
+      "tf": "4H",
+      "confidence": 0.8925387819448973,
+      "bias": "bullish",
+      "description_ar": "وتد هابط يتشكل من 3 قمة و7 قاع؛ السقف ينحدر 2.94% للشمعة والقاع 2.46%، والسعر اخترق سقف الوتد فعلياً → انعكاس مؤكد.",
+      "levels": {
+        "resistance": 0.2437,
+        "support": 0.1804
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -2.30% للشمعة (30 شمعة). سقف القناة عند 0.488 والسعر أسفله بفارق 46.6% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 0.4878,
+        "channel_mid": 0.3692,
+        "channel_lower": 0.2794
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 2% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 1 قاع صاعد منذ بداية القاعدة (0.275 → 0.217) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 0.2753,
+        "last_low": 0.217
+      },
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 0.2606,
+    "rsi": 31.26,
+    "trend": "down",
+    "ema20": 0.298,
+    "ema50": 0.5068,
+    "rvol": 0.54,
+    "macd_hist": 0.01022,
+    "channel_broken": false,
+    "higher_lows": 3,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-10 منفّذ في 2026-09-29 (عمر 60 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 2.62$ وصعد إلى 3.59$ (+37.0%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 94.0% من القمة 3.59$ إلى القاع المرجعي 0.227$ بتاريخ 2026-11-24 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 23.09 (تشبع بيعي قوي و 30 جلسة تحت 30) والحالي 24.8 ولم يتأكد التحسّن بعد.",
+    "ثبات جلسة واحدة على القاع 0.227$ داخل نطاق 23.3% مع جفاف حجم (318% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +8.5% من إغلاق القاعدة (0.258$) إلى 0.28$ (2026-11-25) — أقل من المستهدف (20%) قليلاً.",
+    "أقرب مقاومة عند 0.28$ (تشكّلت 2026-11-25) — على 23.4% من الدعم الرئيسي، واختُبرها السعر في 2026-11-25 عند 0.28$ وتوقف عندها بفارق 0.0% ثم تراجع.",
+    "سحب سيولة (Liquidity Sweep) تحت الدعم: هبطت الفتيل إلى 0.217$ (4.4% تحت الدعم 0.227$) في 2026-11-27 ثم أُغلق فوق الدعم في جلسة واحدة استعادة (آخرها 2026-11-27).",
+    "حالة التسلسل: انطلاقة ضعيفة (+9% — المستهدف ≈20%).",
+    "تأكيدات فنية: حجم نسبي 9.16x يدعم الحركة، سحب سيولة تحت الدعم إلى 0.217$ ثم عودة الإغلاق فوقه.",
+    "فريم 4 ساعات: الاتجاه هابط، RSI 31.26",
+    "عدد الأسهم 2.86M — الفلوت 692.9K سهم.",
+    "البيع المكشوف 5.6% من الفلوت (أيام التغطية 0.13).",
+    "أبرز نموذج فني: شموع انعكاسية (شمعة المطرقة، ابتلاع شرائي، نجمة الصباح) — ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-11-19، 2026-11-20، 2026-11-23 — دليل دخول مشترين.",
+    "أخبار سلبية: TruGolf Announces Reverse Stock Split | TruGolf Holdings Announces 1-for-5 Reverse Stock Split to Regain Nasdaq Complian",
+    "محفزات إيجابية: TruGolf Highlights September Milestones as Polymath Acquisition Advances"
+  ],
+  "action_ar": "غير مؤهل حالياً — يبقى في الجدول العام كمستبعد، ولا توجد إشارة دخول أو توصية.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

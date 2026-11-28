@@ -1,0 +1,954 @@
+{
+  "symbol": "UFG",
+  "name": "Uni-Fuels Holdings Limited",
+  "sector": "Industrials",
+  "industry": "Marine Shipping",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+  "synthetic": false,
+  "as_of": "2026-11-27",
+  "last_close": 2.41,
+  "change_pct": 40.12,
+  "dollar_volume": 5213919.0,
+  "rs_found": true,
+  "rs_date": "2026-11-03",
+  "rs_age_days": 25,
+  "rs_ratio_str": "1-for-10",
+  "rs_ratio": 10.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 3.12,
+  "spike_high": 4.91,
+  "spike_pct": 57.3718,
+  "spike_date": "2026-11-03",
+  "decline_pct": -67.61710625680294,
+  "peak_date": "2026-11-03",
+  "bottom_price": 1.59,
+  "bottom_date": "2026-11-20",
+  "base_sessions": 1,
+  "base_high": 2.22,
+  "base_low": 1.59,
+  "base_range_pct": 39.6226,
+  "base_broken": false,
+  "volume_dryup": 0.22,
+  "atr_pct": 21.5,
+  "rsi_now": 43.05,
+  "rsi_trough": 22.248316599319224,
+  "rsi_trough_date": "2026-11-19",
+  "rsi_sessions_below_30": 5,
+  "rsi_recovered": true,
+  "above_ema9_sessions": 1,
+  "macd_turning": true,
+  "macd_hist": 0.00111,
+  "channel_slope_pct": -2.355,
+  "channel_upper": 3.5149,
+  "channel_broken": false,
+  "rvol": 19.25,
+  "higher_lows": 1,
+  "squeeze": false,
+  "lifecycle_stage": "تجاوز المقاومة بقوة (55.0% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [
+    {
+      "key": "support_hold",
+      "ar": "ثبات على الدعم (أقلها 3 جلسات تداول)",
+      "std": "≥ 3 جلسات داخل ±9% حول الدعم دون كسره",
+      "ok": false,
+      "detail": "جلسة واحدة ثبات على الدعم 1.590",
+      "state": "active"
+    },
+    {
+      "key": "impulse",
+      "ar": "الانطلاقة بعد الثبات (≈20%)",
+      "std": "≥ 15% (المثالي 20%)",
+      "ok": true,
+      "detail": "+63.8% من 2.100 إلى 3.440",
+      "state": "ok"
+    },
+    {
+      "key": "resistance",
+      "ar": "اختبار مقاومة قريبة",
+      "std": "مقاومة ≤ 28% فوق الدعم",
+      "ok": false,
+      "detail": "أقرب مقاومة 2.220 (على 39.6% من الدعم 1.590) — توقف السعر عندها بفارق 55.0%",
+      "state": "pending"
+    },
+    {
+      "key": "pullback",
+      "ar": "العودة لاختبار الدعم الرئيسي",
+      "std": "ملامسة الدعم (تسامح 2%)",
+      "ok": false,
+      "detail": "لم تحدث موجة عائدة بعد",
+      "state": "pending"
+    },
+    {
+      "key": "sweep",
+      "ar": "سحب سيولة تحت الدعم ثم العودة فوقه (أو إعادة اختبار الدعم)",
+      "std": "كسر الدعم ≥ 1% ثم إغلاق فوقه",
+      "ok": false,
+      "detail": "لم يتحقق بعد",
+      "state": "pending"
+    },
+    {
+      "key": "reclaim",
+      "ar": "الاستقرار فوق الدعم بعد السحب",
+      "std": "≥ 1 إغلاق فوق الدعم +0.5%",
+      "ok": false,
+      "detail": "لا يوجد إغلاق استعادة بعد",
+      "state": "pending"
+    }
+  ],
+  "impulse_pct": 63.81,
+  "impulse_high": 3.44,
+  "impulse_date": "2026-11-27",
+  "resistance_level": 2.22,
+  "resistance_distance_pct": 39.62,
+  "resistance_date": "2026-11-23",
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": 1.5979,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": 1.59,
+  "support_hold_ok": false,
+  "base_close": 2.1,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": "pivot",
+  "spark": [
+    4.4,
+    4.05,
+    3.9,
+    3.71,
+    3.69,
+    3.96,
+    3.89,
+    3.75,
+    3.58,
+    3.79,
+    3.7,
+    3.65,
+    3.6,
+    3.67,
+    3.53,
+    3.54,
+    3.38,
+    3.11,
+    3.3,
+    3.17,
+    2.81,
+    2.81,
+    3.36,
+    3.4,
+    3.13,
+    3.06,
+    3.09,
+    3.0,
+    2.93,
+    2.85,
+    2.75,
+    2.29,
+    2.16,
+    2.11,
+    1.94,
+    2.1,
+    1.967,
+    1.79,
+    1.72,
+    2.41
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": 54.95,
+  "shares_out": 981500.0,
+  "float_shares": 981514.0,
+  "market_cap": 7824065.0,
+  "avg_volume": 219645.0,
+  "insider_pct": 44.93,
+  "institutional_pct": 0.81,
+  "short_pct_float": 1.72,
+  "short_as_of": "1794528000",
+  "short_shares": 16899.0,
+  "days_to_cover": 0.28,
+  "short_change_pct": -59.4,
+  "short_volume_ratio": 0.387,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "UFG",
+      "date": "2026-11-27",
+      "type": "other",
+      "title": "Uni-Fuels Reports 62% Revenue Growth and Raises Full-Year Guidance to US$410 Million–US$430 Million",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://investorshub.advfn.com/market-news/article/40822/uni-fuels-reports-62-revenue-growth-and-raises-full-year-guidance-to-us410-million-us430-million"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-27",
+      "type": "other",
+      "title": "Uni-Fuels Reports Strong First Nine Months of 2026 Results and Raises FY2026 Revenue Guidance to US$410M-US$430M",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/uni-fuels-reports-strong-first-142800819.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-27",
+      "type": "other",
+      "title": "UFG: SEC Form 6-K filed by Uni-Fuels Holdings Limited - Quantisnow",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQZ2pvTGNWVjgtbi05WUliSFBiSmRvWGNUZWtEeHZGSXd0Z0txZUkydTNrbjMtT1JfVW00Y090Qk5aVjJQckNGXzJTdnpyNnpfcDBiRE93VVA1R1ZHMUlCaTRjek16aVlNRUZpMVdqQ3lvaWhvNlFFWjVQb1B4ZlplcjFlSFJUUV9pbjd6Mnc1V1ZrUkxTUXc?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-27",
+      "type": "other",
+      "title": "Uni-Fuels Skyrockets After 62% Revenue Growth and a Better-Than-Expected Sales Outlook - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQemI0cEhZcjlWOHRWUHM2ZXlleG5pdmxPcllWMGh1Ml9fRGM5NEpYXy04WDB6OXlwQjZkRzFZMGo5bDdHaUpERDQwTjQxQU1MaDhfcUdoOVk1TGFxMFV3RC02Q3Y4QmRMVm42a3B3d0R4NUxrbWlja3ljZ3BqY0ZRQXVZTFBHcE5ySXJPRjhYSWRsZU1MNlJqUE85VG5PQ1ZaSTFlNEg4dHVVaWY1OFdNbWJ0LTk1WUdPRF9SOXR1ODFwdE1sN2tBY2lKbTlLY1V6MXkzTmVZTC1Sdw?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-27",
+      "type": "earnings",
+      "title": "Revenue rose 62% to $307.8 million. Uni-Fuels swung to a $1.5 million profit. - Stock Titan",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOaDFnUXN5cy1naVQ3N1JSSjZzc0VScmdrdDQxaUpPLW16T0VqYk44NE9iVUs4dkhXeGhUbUZ4NTVjbkJXSklGMkZkMlNLQTFhc3BKaFR0N3loQ3Z0b0lmc0VhcW1QSFdPanZHaG5mM3dfZmJsLUl1dmVVQVVJeFQ3N2djRnFrYUZHV0VXWjNmOXFGVHlRZFZhVUVGN1doOHMtNHhuVXZmYTN6OWE3WnotNGhLTlFJYk0?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-27",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — 6-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226054443/form6-k.htm"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-25",
+      "type": "other",
+      "title": "Most-Active U.S. Stocks: Wednesday's Regular Session - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxONHR1SHdhY2VPeHJ0Y083bDlsX3ktU2VkX3hOMnBhQXZsSndHc3JoTjFBXzc3VTdxZlJMSnNrYko3RjA3eFM3WjVzajhWMElRTjE1SENESjE1VHdZRC1FUUlvU01ObXpxYThmaDhWSkg1d3JwVVlwdnV5Vy1IRWRHWDJ3SG85RXZtOEgxcnU1QVFRMEhoTTVWSXU0OFN5bTVhdUE?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-24",
+      "type": "other",
+      "title": "Uni-Fuels Holdings (Nasdaq:UFG) - Stock Analysis - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE93VHVRVElTT1NtdnpLNXFtNE9pX0tZeHBFUjEydmoxX1BwVTJqa0VicEdfNm1NczVzZjdBdkNJeGJlWEVhM2g1LWVibG42U3A0T3lGV1ZBVUQ1U3NRWktsMkdMZGhGYjV4cjBXaEEyelByaUF2OXdV?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-21",
+      "type": "earnings",
+      "title": "United Fire Group, Inc. declares quarterly cash dividend of $0.20 per share - Quantisnow",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOOTdtRHM3RnFBQWhMd3hIa2RwN2tqbUo1RnowV0RtUUdodWZXM1BmM0F3eFNWeXZXeEVacVZzczZyYWNKakdhMVNDOHo1Z2NkV3Rwa0lNYVJLa3R1cEJqanV5MG5FamRldU5HUTdIaVVwWjY5MmtQMmZZbUJ1c21iOGVfbWM2eTB0Z0pXbjA2c3dZeENpMjBKWmpqLTJGTXg0WjRoUWp6cw?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-20",
+      "type": "other",
+      "title": "Uni-Fuels Holdings Limited Class A Ordinary Shares (NASDAQ: UFG) Stock Price, News & Analysis - Kalkine",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5JMTFFME1GNHk2RWRKYzdRR0t0ZVZlZUpzOHpEMDAyQ1N4OE9oVURhRnZNLUx6UThUUFdMcXQzMVU0WlVmOVNnZ3d3RFRReHpPN0ZMNQ?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-20",
+      "type": "earnings",
+      "title": "United Fire Group Declares Quarterly Cash Dividend of $0.20 Per Share - Quiver Quantitative",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNMFY4ZjJIVU8xTmVBNlROTjBoVWxaT0NCY1pVQkdiTUpWeVJNcGlQUkVKalVYUnJPS0lNMmJlZE1vVVFiY3IyaUJoUjBJN245TW1adXJMa015dkdfWnFlVzBMUFI0c3JkdlNWMEVDVkI2UnRXamk0UEc3MEVUMFlwMDZaR2ZQdlZDdDMwQUdfcEVFeTNzaUtNUHY4TUg1UzQ1RXM2aVhLMA?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-18",
+      "type": "other",
+      "title": "Uni-Fuels Regains Compliance with Nasdaq Minimum Bid Price Requirement",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/uni-fuels-regains-compliance-nasdaq-135600494.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Uni-Fuels Announces Effective Date of Share Consolidation",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/uni-fuels-announces-effective-date-211500856.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-10-29",
+      "type": "other",
+      "title": "Uni-Fuels Announces Effective Date of Share Consolidation - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOR053X3J0Wi1kRHljX0pEcGZVSE05QnJ6RER0TjdIV3I5RXh5YlFlQkFiRHN4RE10OUlTeU1LTjlRY3g5RmZpaUwyVm5XZGdBcFF4Vnplb3d4cy04QjBtb2o5SEhfZHZ2amNOQzRPY083enVxU3ZNaFd1b09USk5uT1hPVDlleHBjUVNrMTBPMmtDT0pkVVNKenRnbzQxa0dr?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-10-27",
+      "type": "other",
+      "title": "United Fire Group, Inc. Rings the Nasdaq Stock Market Closing Bell - Nasdaq",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQQnFUc045WDhKbHR3VWI4Si14dGJCLUZDa2E2Q2tVYW9sOWtZRkJmTUtHV0pYa0JmdzdacXpwcnl4aGF2SnlLTGtuOHhHb1BURUU1S2NNM2Fqd0xKYUxNajRzcXg3WkxnNGFzaXpZUnFRRF9hNGxrSHpXMUpiSG4wRjE1a3Zfc3I5ZGI4SDhnb0JTamxf?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-10-23",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — 424B5",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226048276/form424b5.htm"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-09-22",
+      "type": "earnings",
+      "title": "موعد الإعلان عن النتائج (تقويم Yahoo)",
+      "sentiment": "neutral",
+      "impact": "high",
+      "source": "yahoo-finance",
+      "url": ""
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-09-09",
+      "type": "other",
+      "title": "Uni-Fuels Reports Record First-Half 2026 Financial Results and Raises Full-Year Revenue Guidance to US$340M-US$360M",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/uni-fuels-reports-record-first-125600731.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-09-09",
+      "type": "other",
+      "title": "Uni-Fuels Holdings (UFG) Stock Jumps Over 18% After Hours: Here's Why It Is Trending - TradingView",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOLUFwVzdWYnpkMzBab2hOUXNaLUQ5eVhEM1dmWEJ6S0NGbGZmMjgzM3h6YWdjOGhkT181RUZ1SDlRWnViTFJyWjNQUzFOU2tqdy1iSHJza0I0RkFFTFZBSGduZFU5Zm5Keks0c1BOeTNRNEhXV1JSLWdSNzR4N2hWZEhlWEk5Y1diclBxWEhOTkd0TU1HTHdVcXJyNjdGZk44dHJSTzl4dVEtaXU2cVFWeFIwYjhwZVJsN3ZJT0plOXhiX0tsYkRPamp2cW5id3lKWm1YajhB?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-09-09",
+      "type": "other",
+      "title": "Uni-Fuels Holdings Limited Raises Earnings Guidance for the Full Year 2026 - marketscreener.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNUE00YlhVWnNKRVllUXl3TTFsLUZheFlRUHJiMGxiQTRSNGpLWEdPSU5SLUdJb0xYZUp4aWJpM2czYTNpdE5EbTN3VUx2SnFoLURzOFhiRkR4Tlc1eXJLSjFtMzdhNVJIdkhlVmpPOEkyT1AyNTRaUlR2VXc3OEIzcV9wSUlJOHcteTJ3a2drclRCRms4OGN3VGNMcHhvUzBDemJXM0pFUGpHT0p2VlJnbnVKTTFSLXdWeE5ELVFTYWlnYnZRU3c?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-09-09",
+      "type": "other",
+      "title": "Uni-Fuels Shares Surge After Hours Following First-Half Results - Uni-Fuels Holdings (NASDAQ:UFG) - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxObUhnM1hwNURjZUhNZTZHWDZwSXdTNDI0RzdoOTMwNThfRXhienVDZmF2S29hcDk5YmN2R1pqSDdQLWphZXd5SllBdW5rVVZhWEZoVmJyT0JDbnRyaVYyanYwN3lJMjFGVGhTVGdOQnNiYWtuWmo1dkxrbDRuM21VVVpJOVVhRkNQcEF0WHJiWmVzMzBITUluQUI4Z2hIdzFlR2JxRC1MZGxzM0RPRXRxZnBDR0FiNi1R?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-09-09",
+      "type": "other",
+      "title": "Uni-Fuels (UFG) Earnings Date and Reports 2026 $UFG - MarketBeat",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5LMDN4WlRzLVNHMlA5a3ZyMkFGbnRRRGVjVlFUd2lJYTBXUVlWTDJpUE9HX29pVEdkMEJtdGlleUU3a2V3ZjY1T0ZKWldGcHpTQ0dfZFNuNVB5OWJNVkN3ejJTZlA?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-09-04",
+      "type": "other",
+      "title": "إفصاح SEC: S-8 — S-8",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226041596/forms-8.htm"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-07-31",
+      "type": "offering",
+      "title": "Uni-Fuels Announces Receipt of Nasdaq Notification Letter Regarding Minimum Price Deficiency",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/uni-fuels-announces-receipt-nasdaq-210000077.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-06-25",
+      "type": "other",
+      "title": "UFG: Uni-Fuels Strong 1st Quarter Revenue Growth Supports Price Target of $5.00",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/energy/articles/ufg-uni-fuels-strong-1st-161900119.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-06-25",
+      "type": "other",
+      "title": "Uni-Fuels Holdings (NasdaqCM:UFG) Stock Forecast & Analyst Predictions - Simply Wall St",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNOUx4SU5PWmFKLVRBTFBobXl0cUlNcnd0LTJzVzZzWkJTYW5qNHNoN2wxRHlSeGVyY1hremxiLUtYZkFxX3JZWVI2dFBsV3pqdmg5WHNQcXptNnNzTVhHcjVwUHRMSFZjU2M2UG1xa3BjcWhJTE1sUVpsZVVkNlBCUA?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-05-26",
+      "type": "other",
+      "title": "Uni-Fuels Reports First Quarter 2026 Results and Raises Full Year Revenue Guidance to US$320M–US$340M",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/uni-fuels-reports-first-quarter-125600277.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-05-26",
+      "type": "other",
+      "title": "UFG - Uni Fuels Holdings Ltd Stock Price and Quote - Finviz",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1qZFR0R1E1R2c0djdrSVpPemN0ZTVMbjEzRk5tVXZ5SHlKdVlaUnlwVjBLb19Udk1uSU1LT3NTdUp4bG5f?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-04-24",
+      "type": "other",
+      "title": "UFG: Uni-Fuels Strong Revenue Growth Supports Price Target of $5.00",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/ufg-uni-fuels-strong-revenue-141600275.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-04-22",
+      "type": "other",
+      "title": "Uni-Fuels Reports Audited FY2025 Results with 70% Revenue Growth and Expanding Global Operations",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/uni-fuels-reports-audited-fy2025-130600970.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-04-22",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F — 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226018455/form20-f.htm"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-04-08",
+      "type": "other",
+      "title": "إفصاح SEC: 3 — 3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226015624/xslF345X06/ownership.xml"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-03-17",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K/A — 6-K/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226010430/form6-ka.htm"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-03-03",
+      "type": "other",
+      "title": "Uni-Fuels Accelerates Global Growth with Nationwide Bunkering in Thailand",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/uni-fuels-accelerates-global-growth-125600020.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-02-23",
+      "type": "other",
+      "title": "Uni-Fuels Expands Southeast Asia Footprint with New Regional Office in Thailand",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/uni-fuels-expands-southeast-asia-125600543.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-02-12",
+      "type": "other",
+      "title": "Uni-Fuels Renews ISCC Certification Following Successful Inaugural Biofuel Delivery",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/news/uni-fuels-renews-iscc-certification-140000243.html?.tsrc=rss"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-02-06",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/999999999526000470/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-02-04",
+      "type": "other",
+      "title": "إفصاح SEC: CORRESP",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226005092/filename1.htm"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-01-30",
+      "type": "other",
+      "title": "إفصاح SEC: F-3/A — F-3/A",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226004486/formf-3a.htm"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-01-27",
+      "type": "other",
+      "title": "إفصاح SEC: UPLOAD",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000000000026000890/filename1.pdf"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "UFG",
+      "kind": "424B5",
+      "date": "2026-10-23",
+      "title": "إفصاح 424B5 — 424B5",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226048276/form424b5.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "UFG",
+      "kind": "news-offering",
+      "date": "2026-07-31",
+      "title": "Uni-Fuels Announces Receipt of Nasdaq Notification Letter Regarding Minimum Price Deficiency",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/uni-fuels-announces-receipt-nasdaq-210000077.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "UFG",
+      "kind": "effectiveness",
+      "date": "2026-02-06",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/999999999526000470/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "UFG",
+      "kind": "424B3",
+      "date": "2025-03-25",
+      "title": "إفصاح 424B3",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000164117225000462/form424b3.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [],
+  "positive_news": [
+    {
+      "symbol": "UFG",
+      "date": "2026-11-27",
+      "type": "earnings",
+      "title": "Revenue rose 62% to $307.8 million. Uni-Fuels swung to a $1.5 million profit. - Stock Titan",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOaDFnUXN5cy1naVQ3N1JSSjZzc0VScmdrdDQxaUpPLW16T0VqYk44NE9iVUs4dkhXeGhUbUZ4NTVjbkJXSklGMkZkMlNLQTFhc3BKaFR0N3loQ3Z0b0lmc0VhcW1QSFdPanZHaG5mM3dfZmJsLUl1dmVVQVVJeFQ3N2djRnFrYUZHV0VXWjNmOXFGVHlRZFZhVUVGN1doOHMtNHhuVXZmYTN6OWE3WnotNGhLTlFJYk0?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-21",
+      "type": "earnings",
+      "title": "United Fire Group, Inc. declares quarterly cash dividend of $0.20 per share - Quantisnow",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOOTdtRHM3RnFBQWhMd3hIa2RwN2tqbUo1RnowV0RtUUdodWZXM1BmM0F3eFNWeXZXeEVacVZzczZyYWNKakdhMVNDOHo1Z2NkV3Rwa0lNYVJLa3R1cEJqanV5MG5FamRldU5HUTdIaVVwWjY5MmtQMmZZbUJ1c21iOGVfbWM2eTB0Z0pXbjA2c3dZeENpMjBKWmpqLTJGTXg0WjRoUWp6cw?oc=5"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-11-20",
+      "type": "earnings",
+      "title": "United Fire Group Declares Quarterly Cash Dividend of $0.20 Per Share - Quiver Quantitative",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNMFY4ZjJIVU8xTmVBNlROTjBoVWxaT0NCY1pVQkdiTUpWeVJNcGlQUkVKalVYUnJPS0lNMmJlZE1vVVFiY3IyaUJoUjBJN245TW1adXJMa015dkdfWnFlVzBMUFI0c3JkdlNWMEVDVkI2UnRXamk0UEc3MEVUMFlwMDZaR2ZQdlZDdDMwQUdfcEVFeTNzaUtNUHY4TUg1UzQ1RXM2aVhLMA?oc=5"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "UFG",
+      "date": "2026-10-23",
+      "type": "offering",
+      "title": "إفصاح SEC: 424B5 — 424B5",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226048276/form424b5.htm"
+    },
+    {
+      "symbol": "UFG",
+      "date": "2026-07-31",
+      "type": "offering",
+      "title": "Uni-Fuels Announces Receipt of Nasdaq Notification Letter Regarding Minimum Price Deficiency",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/uni-fuels-announces-receipt-nasdaq-210000077.html?.tsrc=rss"
+    }
+  ],
+  "phase": 7,
+  "display_phase": 7,
+  "phase_key": "EXTENDED",
+  "phase_ar": "مرحلة التمدد — بعد الاختراق",
+  "eligible": true,
+  "watchlist": false,
+  "gam_candidate": false,
+  "gam_reasons": [],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [],
+  "rejections": [],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 2.41,
+      "display": "2.4100$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 25,
+      "display": "1-for-10 · 2026-11-03 · عمر 25 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -67.6171,
+      "display": "67.62% من قمة ما بعد التقسيم · القمة 4.9100$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 22.2483,
+      "display": "أدنى RSI 22.25 (2026-11-19)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 16899.0,
+      "display": "16,899 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "تسلسل «جاهز فنياً» قيد التكوّن — تجاوز المقاومة بقوة (55.0% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة",
+    "الثبات على القاع جلسة واحدة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)"
+  ],
+  "score": 46.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 100.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.22 · قاعدة القاع: 0.22",
+      "points": 25.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 60.0,
+      "weight": 35,
+      "detail": "قاع مزدوج W",
+      "points": 21.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن",
+    "RSI خرج من التشبع البيعي وتحسّن",
+    "1 قاع صاعد في البنية",
+    "حجم نسبي 19.25x يدعم الحركة",
+    "انطلاقة +64% بعد الثبات (التسلسل قيد التكوين)"
+  ],
+  "levels": {
+    "trigger": 3.0125,
+    "entry_zone": [
+      2.3618,
+      3.0125
+    ],
+    "stop": 2.41,
+    "stop_pct": -20.0,
+    "stop_structural": 1.4946,
+    "stop_structural_pct": -50.39,
+    "targets": {
+      "t1_382": 2.8582,
+      "t2_618": 3.6418,
+      "t3_full": 4.91
+    },
+    "rr_t1": -0.26,
+    "rr_t2": 1.04,
+    "risk_per_share": 0.6025,
+    "reward_t2_per_share": 0.6293,
+    "atr_pct": 21.5,
+    "bottom": 1.59,
+    "peak": 4.91,
+    "last": 2.41,
+    "base_high": 2.22,
+    "ema9": 2.1663,
+    "ema20": 2.5307,
+    "support": 1.59,
+    "impulse_high": 3.44,
+    "resistance": 2.22,
+    "sweep_low": null,
+    "reclaim_level": 1.5979,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 21.5%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 2.41$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "1D",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -3.83% للشمعة (30 شمعة). سقف القناة عند 3.084 والسعر أسفله بفارق 21.9% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 3.0839,
+        "channel_mid": 2.5537,
+        "channel_lower": 2.1146
+      },
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "1D",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 1.660 بتاريخ 2026-11-17 وقاع 1.590 بتاريخ 2026-11-20 بفارق 4.4%، وخط العنق عند 2.425 (52.5% فوق القاع). ننتظر إغلاقاً فوق 2.425 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 1.66,
+        "bottom2": 1.59,
+        "neckline": 2.425
+      },
+      "status": "forming"
+    }
+  ],
+  "patterns_4h": [
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 2 قاع صاعد منذ بداية القاعدة (1.660 → 1.601) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.66,
+        "last_low": 1.6006
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -1.57% للشمعة (30 شمعة). سقف القناة عند 3.099 والسعر أسفله بفارق 25.1% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 3.0985,
+        "channel_mid": 2.5275,
+        "channel_lower": 2.0618
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 3% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    },
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.6,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 1.660 بتاريخ 2026-11-17 وقاع 1.590 بتاريخ 2026-11-20 بفارق 4.4%، وخط العنق عند 2.425 (52.5% فوق القاع). ننتظر إغلاقاً فوق 2.425 لتأكيد الاختراق.",
+      "levels": {
+        "bottom1": 1.66,
+        "bottom2": 1.59,
+        "neckline": 2.425
+      },
+      "status": "forming"
+    },
+    {
+      "name": "candlestick_reversal",
+      "name_ar": "شموع انعكاسية (شمعة المطرقة)",
+      "tf": "4H",
+      "confidence": 0.55,
+      "bias": "bullish",
+      "description_ar": "ظهرت شموع انعكاسية إيجابية عند منطقة القاع بتاريخ 2026-11-23 — دليل دخول مشترين.",
+      "levels": null,
+      "status": "confirmed"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 2.3197,
+    "rsi": 50.71,
+    "trend": "neutral",
+    "ema20": 2.1877,
+    "ema50": 2.6141,
+    "rvol": 0.94,
+    "macd_hist": 0.07157,
+    "channel_broken": false,
+    "higher_lows": 4,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-10 منفّذ في 2026-11-03 (عمر 25 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 3.12$ وصعد إلى 4.91$ (+57.4%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 67.6% من القمة 4.91$ إلى القاع المرجعي 1.59$ بتاريخ 2026-11-20 — هبوط يتجاوز شرط 50% (سيناريو مثالي).",
+    "RSI وصل إلى 22.25 (تشبع بيعي قوي و 5 جلسة تحت 30) والحالي 43.05 مع بدء التحسّن.",
+    "ثبات جلسة واحدة على القاع 1.59$ داخل نطاق 39.6% مع جفاف حجم (22% من المتوسط)، والقاع صامد.",
+    "الانطلاقة بعد الثبات: +63.8% من إغلاق القاعدة (2.1$) إلى 3.44$ (2026-11-27) — أعلى من المستهدف قليلاً.",
+    "أقرب مقاومة عند 2.22$ (تشكّلت 2026-11-23) — على 39.6% من الدعم الرئيسي، واختُبرها السعر في 2026-11-27 عند 3.44$ وتوقف عندها بفارق 55.0% ثم تراجع.",
+    "حالة التسلسل: تجاوز المقاومة بقوة (55.0% فوقها) دون التوقف عندها — بانتظار مقاومة جديدة.",
+    "تأكيدات فنية: MACD يتجه للتحسّن، RSI خرج من التشبع البيعي وتحسّن، 1 قاع صاعد في البنية، حجم نسبي 19.25x يدعم الحركة، انطلاقة +64% بعد الثبات (التسلسل قيد التكوين).",
+    "فريم 4 ساعات: الاتجاه عرضي، RSI 50.71",
+    "عدد الأسهم 981.5K — الفلوت 981.5K سهم.",
+    "البيع المكشوف 1.7% من الفلوت (أيام التغطية 0.28).",
+    "أبرز نموذج فني: قناة هابطة — قناة هابطة بانحدار -3.83% للشمعة (30 شمعة). سقف القناة عند 3.084 والسعر أسفله بفارق 21.9% — ننتظر اختراقاً بإغلاق.",
+    "أخبار سلبية: إفصاح SEC: 424B5 — 424B5 | Uni-Fuels Announces Receipt of Nasdaq Notification Letter Regarding Minimum Pric",
+    "محفزات إيجابية: Revenue rose 62% to $307.8 million. Uni-Fuels swung to a $1.5 million profit. -  | United Fire Group, Inc. declares quarterly cash dividend of $0.20 per share - Qu"
+  ],
+  "action_ar": "ممتد بعد الاختراق: انتظر إعادة اختبار القاعدة أو استخدام حجم مركز أصغر بكثير.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "EXTENDED",
+    "ar": "مرحلة التمدد — بعد الاختراق",
+    "color": "#8957e5",
+    "desc": "السهم ابتعد عن منطقة الارتكاز — الدخول يحتاج انتظار إعادة اختبار."
+  },
+  "phase_color": "#8957e5"
+}

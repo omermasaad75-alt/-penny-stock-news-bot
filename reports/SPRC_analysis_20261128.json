@@ -1,0 +1,927 @@
+{
+  "symbol": "SPRC",
+  "name": "SciSparc Ltd.",
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "exchange": "NCM",
+  "data_source": "live",
+  "price_source": "yahoo-finance",
+  "split_source": "yahoo-finance",
+  "fundamentals_source": "yahoo-finance",
+  "news_source": "rss:google+rss:yahoo+sec-edgar+yahoo-finance",
+  "synthetic": false,
+  "as_of": "2026-11-27",
+  "last_close": 1.4,
+  "change_pct": 39.3,
+  "dollar_volume": 1726246.0,
+  "rs_found": true,
+  "rs_date": "2026-11-27",
+  "rs_age_days": 1,
+  "rs_ratio_str": "1-for-5",
+  "rs_ratio": 5.0,
+  "rs_source": "yahoo-finance",
+  "rs_url": "",
+  "rs_open": 1.2,
+  "spike_high": 1.5,
+  "spike_pct": 25.0,
+  "spike_date": "2026-11-27",
+  "decline_pct": -23.333334922790527,
+  "peak_date": "2026-11-27",
+  "bottom_price": 1.15,
+  "bottom_date": "2026-11-27",
+  "base_sessions": 0,
+  "base_high": 1.15,
+  "base_low": 1.15,
+  "base_range_pct": 0.0,
+  "base_broken": false,
+  "volume_dryup": 0.985,
+  "atr_pct": 55.98,
+  "rsi_now": 22.35,
+  "rsi_trough": 22.352238200956393,
+  "rsi_trough_date": "2026-11-27",
+  "rsi_sessions_below_30": 1,
+  "rsi_recovered": false,
+  "above_ema9_sessions": 1,
+  "macd_turning": true,
+  "macd_hist": 0.62529,
+  "channel_slope_pct": -7.169,
+  "channel_upper": 3.6661,
+  "channel_broken": false,
+  "rvol": 0.66,
+  "higher_lows": 0,
+  "squeeze": false,
+  "lifecycle_stage": "بانتظار جلسات ما بعد الثبات",
+  "lifecycle_ready": false,
+  "lifecycle_failed": false,
+  "lifecycle_checks": [],
+  "impulse_pct": null,
+  "impulse_high": null,
+  "impulse_date": null,
+  "resistance_level": null,
+  "resistance_distance_pct": null,
+  "resistance_date": null,
+  "pullback_type": null,
+  "pullback_low": null,
+  "pullback_date": null,
+  "sweep_low": null,
+  "sweep_depth_pct": null,
+  "sweep_date": null,
+  "reclaim_level": null,
+  "reclaim_sessions": 0,
+  "reclaim_date": null,
+  "support_level": null,
+  "support_hold_ok": false,
+  "base_close": 1.4,
+  "lifecycle_sequence_ok": false,
+  "resistance_kind": null,
+  "spark": [
+    23.6,
+    21.8,
+    21.65,
+    23.2,
+    22.15,
+    22.35,
+    20.4,
+    19.7,
+    18.15,
+    10.0,
+    8.5,
+    7.0,
+    6.65,
+    6.7,
+    6.0,
+    5.45,
+    6.45,
+    4.25,
+    4.15,
+    3.56,
+    3.38,
+    2.99,
+    2.995,
+    2.565,
+    2.145,
+    2.095,
+    2.08,
+    1.895,
+    1.99,
+    1.775,
+    1.765,
+    1.655,
+    1.65,
+    1.35,
+    1.5,
+    0.98,
+    0.95,
+    0.895,
+    1.005,
+    1.4
+  ],
+  "resistance_tested": false,
+  "resistance_stall_pct": null,
+  "shares_out": 1195689.0,
+  "float_shares": 115258.0,
+  "market_cap": 1673964.0,
+  "avg_volume": 643437.0,
+  "insider_pct": null,
+  "institutional_pct": 0.5,
+  "short_pct_float": 0.15,
+  "short_as_of": "1794528000",
+  "short_shares": 733.0,
+  "days_to_cover": 0.01,
+  "short_change_pct": 51.1,
+  "short_volume_ratio": 0.459,
+  "short_source": "yahoo-finance+finra-regsho",
+  "catalysts": [
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-25",
+      "type": "other",
+      "title": "Unusual Volume Small-Cap Movers: Nov. 25, 2026 - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNR1l2S2RDYWEwdlpHckNpeGdHV1hoZ3hqMzQzZ3M5d0JWSVVOUGF6ZmQ5VkljMThuODAzV3BDa3JJUUVJMHZ3TTNLa21tMTV6WWFIeURNYnVManNyVU0yMEhrQ3NjMEhMbzRuTEhTeUdvRFB0eGl0T0dETVN6dG5LVlVfcThmRlFBbUFadUpUWUdHYTBBc29kX0Nuaw?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-25",
+      "type": "other",
+      "title": "SPRC 6-K & SEC Filings - Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE80VjZRU0c1cmNIVmhOcHhVU0ZuemNwaTRVNTJwVENwd2VMRTBZWWFYU182Rkw3d0RlRFFlNnJhNVRhNGdiMmxRZFpMdGw5Z2lmT2JZaE9nODJVcThVWTY3TldKSm5TUzFTX1BGU0lIRG1iVlpfQ1lqYkRB?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-25",
+      "type": "other",
+      "title": "A grant of 90,000 stock units for the SciSparc (SPRC) tech chief vests quarterly through November 2028. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPNXA5NjFWSGwzY3ZfYUVKYzlKbFRERjEtT2Rwd2lyOFdsZXNjZ3VVSjQ3S0Yxd2cwbWpieGRyX21xaU50ZUhTSE1zOUpFWG5WZGZHam9sMVF3Qk5qTkx4NDRIOE5WUHQ4bXN3TmlOZnhxbVBHOVBpbVhEZDlKb0FLbGdoTzNMYnluemR6dTcwbkhjSG9QNVo2WWIwR2lLeU15Q2pfZUlhVWhvRWs?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-25",
+      "type": "offering",
+      "title": "SciSparc (SPRC): Shareholders to vote on up to $10M public offering - Quantisnow",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPVUg1S2l4dFR5bm9RWG5uQVJZV0pfd0lSVnJuLUtiaHZPZmlIbzIwM3B6akxnUENrbU0yTkNmRWFNRDhYdVlVUjFCWFNXRjFnNE1rdk1ucU5fcFp6ZVUxQlpGTGd6SDFnSFNUOWVNc2VObHJyNmFNa1pSVnJwTGdxWE5kdw?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-25",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K — REPORT OF FOREIGN PRIVATE ISSUER",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/000121390026124162/ea0313558-6k_scisparc.htm"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-24",
+      "type": "other",
+      "title": "SciSparc(SPRC) Stock Price Today | Quotes & News - Moomoo",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPbUpFSVRqZkRZQ2l4RjBVd0h0NmE5UnpydTc4d05pN3Nob0hmWUlKOTlkdmFNRE0tdWRzY1hCVkdySXJSU3pOanRmSVRTYzVNX2c4cWcyRnFObmhJY2FNdXZjWlB5c3JMUV95d3VhRl9DdDZpWEYyT2h2bmhtd3hqeWZGY1ljX2RsQ2tiZEpBMnVIZ1c5Q1NlR2R2Ul9ndGJVM0Y5aWpJWVEtSVptT0hKd2RXUjVtLVBfTzJQQ0hjN0dReFB5dGVRRmtFYnVXeXZuSWMzczZzdjRPMEYta05VdHd3UTk5MW9HMGZVRUsxNkNCbFlMTENqdEs2QmcwcUNiU3JlZkFqRUxmeHRrTG5yT1hnMGQyR2tINkNaYWdBSjZXMkd1WG42cGU2Qmt2YmtGZDdGdUZMNXV4TzVpMHRBSGNsZXRId2xCOGhpcXQ5QVRaU1VfVUxZanFIcS04b1NSbFgzWFg5cUpLYTlqUDlVcUxyX3pyWUtwTFE?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-24",
+      "type": "other",
+      "title": "SPRC: SEC Form 6-K filed by SciSparc Ltd. - Quantisnow",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9yR3MyTzBwdGtWNmx2eUVIT2lfSkpoczhRR2I4ZlpxUDZrQkZTcmdkSkxqWXpIWExzVjdGVUlpSEtzaWJyVjdIaFdnb2VhSUZicXRCejYtT1l4NktZbGFSSzlSUFNfdHZ0RlZtY0k0YWhHdzJpSUxNRjBOSWJvZw?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-24",
+      "type": "other",
+      "title": "The planned 1-for-5 reverse split at SciSparc (SPRC) would leave 2 billion authorized shares unchanged. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNYnRjNHhEaFhCUGJncmZRMkFPcmhtSjU3NEtIS0szRVQ1NlBWQnNLUzlJMkF4am9leC1OcGRGamt1UURERXZUUmJSM3R3V3hyRWZCSVQ4TGFKWVJRU1RHUmdWdTItTVBpQXZ5Nk50cE9Pb1RkWlA1eF9YQWpGbG9CR2VicGRwSGQxMDN2LU11YTA4NVFUcU9ZWnczSmZfZlhJZDViYkhxbV9qZW4zdkE?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-23",
+      "type": "other",
+      "title": "SciSparc Announces 1-for-5 Reverse Share Split",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/scisparc-announces-1-5-reverse-210100763.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-23",
+      "type": "other",
+      "title": "2.63 million shares would become about 526,000 under SciSparc's planned split - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNSmF0eFdOQWIwQVRDcVVqX1BlYkViZ3hUYWQtTzBYZUY3NVQ1WmU4ZWMzTFJldHAxRG53ZTl6Y1V2WjN2WmZwa09HRDRhMmxhd0NwMVZ0cElMTTdTUWxMNkxKd0JzUlpzZlk2STVsTmVBaWRvRUdaM3BndjAzN1BXQkRSNE9JUTRSNU83VW9tWFlLQVVKMEY1SVNlX1U?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-23",
+      "type": "offering",
+      "title": "SciSparc to implement 1-for-5 reverse stock split - TradingView",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRDZfUUFFZDMtdkNBUWRubWZfMTZUZ1JQZlBQV1A5LWM3TXpRcmdwMlZ4bjdhdXpiZlNQU3U5RjZ2V1hmMVRlYlppSmtyYXBkczRKZ1dOM0RkX2RZY0IwZ2xnMkhuNHlDU2ZqQU5SUGdoUk5WQjVIbDRYNDNnTGtSYnZyVDlma2N4RnlwRHFkT0ZPN054SnNNeFY1cFZiNDRZYUZsdGxNa0VTYkJYQ3lPRXNB?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-23",
+      "type": "other",
+      "title": "SciSparc Announces 1-for-5 Reverse Share Split - www.marketscreener.com",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNZjBxbjhoRGluMWtQZnYwUUlUOUlnUllpTndOLXRETHhBbzhRcGVaX0MwcF84dlBET0Qyd1M3MEVOQzgyc3lkaXZta0lvbW11VWN0TU5KLXdCNUlwTUVTS1p2Y2phUXYxSExxUU4tQ3ZFOHR3TEJHd2VDaFVINVhPX2pBZVlQTFp4aWwtX3c3Yno3bm1FdE1rWWJhSm5nb0Nw?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-23",
+      "type": "other",
+      "title": "A planned reverse split at SciSparc (Nasdaq: SPRC) would cut outstanding shares but leave 2 billion authorized. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPTldOMmZLeVc5TUhzc1JCSUVxdHNGUWNGZVk3VUlMZ3BhNWt1a0NOSDIwVWJNVTRQaVZ2M2dHTnp6UGxZam1Ob2M2RHhMMVhVWmtuaVNvdk5FRkdpTVFYT0RsTFBvNzFNT2xveVZyZVJBOEVzWHh4RzhkUHJLRUdFNm1CVUlXQkV1TlN2Vnp4OWhVQ3BMOXZqWE9kUTJSalpMa0oyLUNGQm43S1BCYkE?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-20",
+      "type": "other",
+      "title": "Today's Top Stock Movers: MSS Surges 97.0%, VWAV Plunges 71.02% - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNMEVfLU9KUmpIRjNKU3dmbjU0Njk5TmlKVF8teXNNMkRiMUhJR0plcHdnOER3TnFwVjc2TEFPTjE0Mjhhdnd6RUJ0RkxNZ2lxUWUxQmJzR2kzQjdwRUVfcmpaUUpZZEVrLTF4QURkVkd0dnoyUEVUNi16RTNWbzdLS2VXVm1FTklmT0lKUl8tWVlKWEYyd05FOFhPdmltWnJLTjVNS2RSU1BxYjJF?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-19",
+      "type": "other",
+      "title": "BC-Most Active Stocks",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-153021724.html"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-19",
+      "type": "other",
+      "title": "SciSparc (SPRC) Stock Jumps 39% After Hours as Agentic AI Strategy Draws Attention - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPV2hWeDhMU29PWmxqZW5aSnNkSDc1d1V5Y000ejRrZHMzSmtjR25DY2JJVkttZ1lhaV91ei1lS296OFVZVzRhMFZIRVZlX0J6RDRia2hBVUhoVFBmRWlKZnp5SDJnZG9yeHZFNzVlSkZBSFU2LUtMMUlLSVFvTUMyaWZjWUZqeXNzNW5HN1VUZG8zSHR3LWhfWHFzdF9hWXR4dmZUajhQcGoyOVFfc2VQWHN3VlYwekFtTkE?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-19",
+      "type": "other",
+      "title": "12 Health Care Stocks Moving In Thursday's Pre-Market Session - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNT1JXUll3bzk2bUR3Y3A4YWNuQVU0eFgwRUozaVllOHVKZWw3Q1owc05nU1ZuZjd6U3Z1WjJfUDk0ZXZiams1d1hQV2tiMzRDSWtUZTZqZHhSVzJ6dUg3NWh6QmxnR3ZRcDZCN0daYmZVSEJTN2ExTG8wb2Y3ZTBwVXBSbTdROTM0b0oxVnZEekhUN2xFUndKcXFCVzkybWU1cGdndXgxNndORHR5cldZeVgtX2xPQkRIWEdj?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-19",
+      "type": "other",
+      "title": "إفصاح SEC: EFFECT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/999999999526003582/xslEFFECTX01/primary_doc.xml"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-16",
+      "type": "other",
+      "title": "SciSparc: Former National Security Advisor to Prime Minister Benjamin Netanyahu Renowned AI Prof. Jacob Nagel Joins the Company’s SAB",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/scisparc-former-national-security-advisor-123200562.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-16",
+      "type": "other",
+      "title": "Benjamin Netanyahu's former national security adviser joins SciSparc as it lays groundwork for a planned AI move. - Stock Titan",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQajJ3ZEtEWHRVUFliUE5kQkNTbWdDdGNlbFJGSDRqVXZrLU1acDNCajczUWhzRnBfWGVwUFMtZXpFbGY2d3ZFcU1PbE4wZmFiZlVRVEdIbENCZmdxOVJabGUwejVQOTd3Z25wMEVWVjN3VHdZUmVzOFBueGZOVXdybFl1RkJDb253S0ZPd0FyUHBPTUtnazY0aVZ0d1lZdTIzTHEwM25CcHFRc19Fc2xRMDZMSEVpUQ?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-09",
+      "type": "other",
+      "title": "إفصاح SEC: F-3 — REGISTRATION STATEMENT",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/000121390026117517/ea0311482-f3_scisparc.htm"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-09",
+      "type": "other",
+      "title": "إفصاح SEC: 6-K/A — AMENDMENT NO. 1 TO FORM 6-K",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/000121390026117211/ea0311402-6ka1_scisparc.htm"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-10-26",
+      "type": "other",
+      "title": "After-Hours Movers: SNTI, BRAI, CLS Rise; SPRC, DVLT Fall - ChartMill",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQckZMenJ3UkNhYXg3MXhURnBPOVdzMnQxY1dTR3NXbFZPV1FnZmx1M2xrWDNGQ2NfN1ZJUDlNUlJ2MnlCdG85bkh2R2pUS1NGenFuYnU5aFdfRV9jbnZqQ3ZfV2xiUFdOZjktd1NfenJQdjRYWVl4NEVCR1d1R0QwRDZHUjlzWGNLbDdRV21palZjZXh5NlZ2UGwwUnZIRDlnSWI4WjRNZw?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-10-22",
+      "type": "clinical",
+      "title": "SciSparc: Subsidiary NeuroThera Labs Reports Positive Progress in FDA-Approved Phase IIb Clinical Trial for Tourette Syndrome",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-labs-reports-125500979.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-10-22",
+      "type": "clinical",
+      "title": "NeuroThera Labs Reports Positive Progress in FDA-Approved Phase IIb Clinical Trial for Tourette Syndrome",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/neurothera-labs-reports-positive-progress-130246395.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-10-19",
+      "type": "other",
+      "title": "SciSparc Shifts Focus to Agentic AI, Targeting Cybersecurity and Finance Applications",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/scisparc-shifts-focus-agentic-ai-123500864.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "SciSparc Announces Transformation into Agentic AI-Powered Technologies, Including Cybersecurity and Finance Technologies",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/scisparc-announces-transformation-agentic-ai-110600950.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-10-15",
+      "type": "other",
+      "title": "Why Is SciSparc Stock Gaining Thursday? - Benzinga",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOMDVsVWNhcUFyUXhhLWdRR0JmSUJwaTVWRXJwWkdubF9Sbkh6bERPQTNyQlhyeE8wa3REOWU0MWNaUnZZSkFjbk9SNUs1aGtmclhFQkFyOElybGhtQXlVYUtHakpRVDU3VEJxZk1OeVdRX1JFTkJTamRYbGZTWDhDc1Z3dnpJcjVGdDhzb3lOSEp3c1dPTXJFbGJOaHVUTFly?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-10-07",
+      "type": "other",
+      "title": "SciSparc: Subsidiary NeuroThera Labs’ CliniQuantum Reports Successful Quantum-Enabled Analysis of Billions of Gene Combinations Using Real-World Clinical Data on an S&P 500 Company’s Quantum Architecture",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-labs-cliniquantum-122200177.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-09-23",
+      "type": "contract",
+      "title": "SciSparc: Subsidiary NeuroThera Highlights Enhancement of U.S. Patent Portfolio Through Collaboration with Clearmind Covering LSD, Ketamine and Ibogaine Combinations",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-highlights-enhancement-123500830.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-09-02",
+      "type": "clinical",
+      "title": "SciSparc: Subsidiary NeuroThera Labs Pursues FDA Orphan Drug Designation for Adult Tourette Syndrome Drug; Engages Government and Public Affairs Firm RK Strategies",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-labs-pursues-131651760.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-31",
+      "type": "other",
+      "title": "Weekly Roundup on the Cannabis Sector & Psychedelic Sector",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "yahoo-finance",
+      "url": "https://finance.yahoo.com/healthcare/articles/weekly-roundup-cannabis-sector-psychedelic-141211556.html"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-31",
+      "type": "other",
+      "title": "SciSparc: Subsidiary NeuroThera Labs Achieves Significant Enrollment Momentum in SCI‑210 Autism Clinical Trial",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-labs-achieves-200300230.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-31",
+      "type": "other",
+      "title": "NeuroThera Labs Achieves Significant Enrollment Momentum in SCI210 Autism Clinical Trial",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/neurothera-labs-achieves-significant-enrollment-200559011.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-26",
+      "type": "other",
+      "title": "SciSparc Advances Agentic AI Strategy with Addition of Internationally Recognized AI Expert Prof. Carmel Domshlak to Scientific Advisory Board",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/technology/ai/articles/scisparc-advances-agentic-ai-strategy-123200312.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-24",
+      "type": "offering",
+      "title": "SciSparc: NeuroThera-Clearmind Collaboration Advances MDMA-N-acylethanolamines IP for the Treatment of PTSD Amid Rising U.S. Federal Support for Psychedelic Innovation",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-neurothera-clearmind-collaboration-advances-125100941.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-19",
+      "type": "other",
+      "title": "إفصاح SEC: F-3/A — AMENDMENT NO. 1 TO FORM F-3",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/000121390026091651/ea0302331-f3a1_scisparc.htm"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-19",
+      "type": "other",
+      "title": "إفصاح SEC: 20-F/A — AMENDMENT NO. 1 TO FORM 20-F",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "sec-edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/000121390026091427/ea0302520-20fa1_scisparc.htm"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-18",
+      "type": "other",
+      "title": "SciSparc: Subsidiary NeuroThera Labs Completes C$5.4 Million Financing with SciSparc’s Stake Valued at Approximately C$30 Million",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-labs-completes-120600290.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-12",
+      "type": "other",
+      "title": "SciSparc’s Subsidiary NeuroThera Labs Granted Japanese Patent for its Proprietary, Innovative Therapeutic Combination",
+      "sentiment": "neutral",
+      "impact": "low",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-labs-granted-122500865.html?.tsrc=rss"
+    }
+  ],
+  "dilution": [
+    {
+      "symbol": "SPRC",
+      "kind": "news-offering",
+      "date": "2026-11-25",
+      "title": "SciSparc (SPRC): Shareholders to vote on up to $10M public offering - Quantisnow",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPVUg1S2l4dFR5bm9RWG5uQVJZV0pfd0lSVnJuLUtiaHZPZmlIbzIwM3B6akxnUENrbU0yTkNmRWFNRDhYdVlVUjFCWFNXRjFnNE1rdk1ucU5fcFp6ZVUxQlpGTGd6SDFnSFNUOWVNc2VObHJyNmFNa1pSVnJwTGdxWE5kdw?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "SPRC",
+      "kind": "news-offering",
+      "date": "2026-11-23",
+      "title": "SciSparc to implement 1-for-5 reverse stock split - TradingView",
+      "severity": "high",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRDZfUUFFZDMtdkNBUWRubWZfMTZUZ1JQZlBQV1A5LWM3TXpRcmdwMlZ4bjdhdXpiZlNQU3U5RjZ2V1hmMVRlYlppSmtyYXBkczRKZ1dOM0RkX2RZY0IwZ2xnMkhuNHlDU2ZqQU5SUGdoUk5WQjVIbDRYNDNnTGtSYnZyVDlma2N4RnlwRHFkT0ZPN054SnNNeFY1cFZiNDRZYUZsdGxNa0VTYkJYQ3lPRXNB?oc=5",
+      "source": "rss:google"
+    },
+    {
+      "symbol": "SPRC",
+      "kind": "effectiveness",
+      "date": "2026-11-19",
+      "title": "إفصاح EFFECT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/999999999526003582/xslEFFECTX01/primary_doc.xml",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "SPRC",
+      "kind": "news-offering",
+      "date": "2026-08-24",
+      "title": "SciSparc: NeuroThera-Clearmind Collaboration Advances MDMA-N-acylethanolamines IP for the Treatment of PTSD Amid Rising U.S. Federal Support for Psychedelic Innovation",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-neurothera-clearmind-collaboration-advances-125100941.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "SPRC",
+      "kind": "news-offering",
+      "date": "2026-08-12",
+      "title": "NeuroThera Labs Inc. Closes First Tranche of Non-Brokered Private Placement",
+      "severity": "high",
+      "url": "https://finance.yahoo.com/healthcare/articles/neurothera-labs-inc-closes-first-210100988.html?.tsrc=rss",
+      "source": "rss:yahoo"
+    },
+    {
+      "symbol": "SPRC",
+      "kind": "424B5",
+      "date": "2026-01-14",
+      "title": "إفصاح 424B5 — PROSPECTUS SUPPLEMENT",
+      "severity": "high",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/000121390026004172/ea0272764-424b5_scisparc.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "SPRC",
+      "kind": "424B3",
+      "date": "2025-11-04",
+      "title": "إفصاح 424B3 — PROSPECTUS SUPPLEMENT",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/000121390025105616/ea026355701-424b3_scisparc.htm",
+      "source": "sec-edgar"
+    },
+    {
+      "symbol": "SPRC",
+      "kind": "424B3",
+      "date": "2025-07-21",
+      "title": "إفصاح 424B3 — PROSPECTUS",
+      "severity": "medium",
+      "url": "https://www.sec.gov/Archives/edgar/data/1611746/000121390025066094/ea0249647-424b3_scisparc.htm",
+      "source": "sec-edgar"
+    }
+  ],
+  "risk_flags": [
+    "⚠ طرح أسهم/تخفيف عالي الخطورة خلال 10 أيام: SciSparc (SPRC): Shareholders to vote on up to $10M public offering -  | SciSparc to implement 1-for-5 reverse stock split - TradingView"
+  ],
+  "positive_news": [
+    {
+      "symbol": "SPRC",
+      "date": "2026-10-22",
+      "type": "clinical",
+      "title": "SciSparc: Subsidiary NeuroThera Labs Reports Positive Progress in FDA-Approved Phase IIb Clinical Trial for Tourette Syndrome",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-labs-reports-125500979.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-10-22",
+      "type": "clinical",
+      "title": "NeuroThera Labs Reports Positive Progress in FDA-Approved Phase IIb Clinical Trial for Tourette Syndrome",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/neurothera-labs-reports-positive-progress-130246395.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-09-23",
+      "type": "contract",
+      "title": "SciSparc: Subsidiary NeuroThera Highlights Enhancement of U.S. Patent Portfolio Through Collaboration with Clearmind Covering LSD, Ketamine and Ibogaine Combinations",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-highlights-enhancement-123500830.html?.tsrc=rss"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-09-02",
+      "type": "clinical",
+      "title": "SciSparc: Subsidiary NeuroThera Labs Pursues FDA Orphan Drug Designation for Adult Tourette Syndrome Drug; Engages Government and Public Affairs Firm RK Strategies",
+      "sentiment": "positive",
+      "impact": "medium",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-subsidiary-neurothera-labs-pursues-131651760.html?.tsrc=rss"
+    }
+  ],
+  "negative_news": [
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-25",
+      "type": "offering",
+      "title": "SciSparc (SPRC): Shareholders to vote on up to $10M public offering - Quantisnow",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPVUg1S2l4dFR5bm9RWG5uQVJZV0pfd0lSVnJuLUtiaHZPZmlIbzIwM3B6akxnUENrbU0yTkNmRWFNRDhYdVlVUjFCWFNXRjFnNE1rdk1ucU5fcFp6ZVUxQlpGTGd6SDFnSFNUOWVNc2VObHJyNmFNa1pSVnJwTGdxWE5kdw?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-11-23",
+      "type": "offering",
+      "title": "SciSparc to implement 1-for-5 reverse stock split - TradingView",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:google",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRDZfUUFFZDMtdkNBUWRubWZfMTZUZ1JQZlBQV1A5LWM3TXpRcmdwMlZ4bjdhdXpiZlNQU3U5RjZ2V1hmMVRlYlppSmtyYXBkczRKZ1dOM0RkX2RZY0IwZ2xnMkhuNHlDU2ZqQU5SUGdoUk5WQjVIbDRYNDNnTGtSYnZyVDlma2N4RnlwRHFkT0ZPN054SnNNeFY1cFZiNDRZYUZsdGxNa0VTYkJYQ3lPRXNB?oc=5"
+    },
+    {
+      "symbol": "SPRC",
+      "date": "2026-08-24",
+      "type": "offering",
+      "title": "SciSparc: NeuroThera-Clearmind Collaboration Advances MDMA-N-acylethanolamines IP for the Treatment of PTSD Amid Rising U.S. Federal Support for Psychedelic Innovation",
+      "sentiment": "negative",
+      "impact": "high",
+      "source": "rss:yahoo",
+      "url": "https://finance.yahoo.com/healthcare/articles/scisparc-neurothera-clearmind-collaboration-advances-125100941.html?.tsrc=rss"
+    }
+  ],
+  "phase": 2,
+  "display_phase": 2,
+  "phase_key": "REJECTED",
+  "phase_ar": "مستبعد",
+  "eligible": false,
+  "watchlist": false,
+  "gam_candidate": true,
+  "gam_reasons": [
+    "الهبوط 23.3% أقل من الحد المطلوب 30.0%"
+  ],
+  "gam_rsi_scope": "current_scan_price_series",
+  "rejection_codes": [
+    "decline"
+  ],
+  "rejections": [
+    "الهبوط 23.3% أقل من الحد المطلوب 30.0%"
+  ],
+  "core_filters": [
+    {
+      "key": "price",
+      "label_ar": "السعر ضمن نطاق البيني",
+      "rule_ar": "1$ ≤ آخر إغلاق ≤ 5$ (الحدان مشمولان)",
+      "value": 1.4,
+      "display": "1.4000$",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "reverse_split",
+      "label_ar": "تقسيم عكسي منفّذ حديثاً",
+      "rule_ar": "تقسيم عكسي منفّذ خلال ≤ 60 يوماً وبعامل > 1",
+      "value": 1,
+      "display": "1-for-5 · 2026-11-27 · عمر 1 يوم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "decline",
+      "label_ar": "هبوط كافٍ من قمة ما بعد التقسيم",
+      "rule_ar": "هبوط ≥ 30% من أعلى قمة بعد التقسيم",
+      "value": -23.3333,
+      "display": "23.33% من قمة ما بعد التقسيم · القمة 1.5000$",
+      "ok": false,
+      "data_available": true,
+      "reason": "الهبوط 23.3% أقل من الحد المطلوب 30.0%"
+    },
+    {
+      "key": "rsi",
+      "label_ar": "تشبع بيعي أثناء تكوّن القاع",
+      "rule_ar": "RSI(14) < 30 أثناء تكوّن القاع",
+      "value": 22.3522,
+      "display": "أدنى RSI 22.35 (2026-11-27)",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    },
+    {
+      "key": "short_shares",
+      "label_ar": "انخفاض الأسهم المكشوفة",
+      "rule_ar": "عدد الأسهم المكشوفة < 20,000 سهم (حصرياً)",
+      "value": 733.0,
+      "display": "733 سهم",
+      "ok": true,
+      "data_available": true,
+      "reason": ""
+    }
+  ],
+  "notes": [
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 269 يوماً (1-for-9) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 513 يوماً (1-for-21) — خارج نافذة 60 يوماً المطلوبة",
+    "حدث تاريخي متجاهَل: تقسيم عكسي عمره 1157 يوماً (1-for-26) — خارج نافذة 60 يوماً المطلوبة",
+    "الثبات على القاع 0 جلسة — لم يكتمل شرط 3 جلسات بعد (مرحلة تكوّن القاعدة)",
+    "تقرير الأسهم المكشوفة (2026-11-13) سابق للتقسيم العكسي (2026-11-27) — عُدّل 3,665 ÷ 5 = 733 سهماً",
+    "مرشح GAM للمراجعة فقط — غير مؤهل وفق الشروط الصارمة، وليس فرصة أو توصية. تقييم RSI مبني على بيانات السعر في المسح الحالي ولا تُحفظ حالات رفض تاريخية بين المسوح."
+  ],
+  "score": 0.0,
+  "grade": "D",
+  "breakdown": [
+    {
+      "key": "volume",
+      "ar": "جفاف الحجم",
+      "score": 0.0,
+      "weight": 25,
+      "detail": "أدنى جفاف مستخدم (3 جلسات / 20 سابقة): 0.98 · قاعدة القاع: 0.98",
+      "points": 0.0
+    },
+    {
+      "key": "patterns",
+      "ar": "النماذج الفنية البديلة",
+      "score": 0.0,
+      "weight": 35,
+      "detail": "لا نموذج مؤكد/متكوّن — صفر نقاط؛ لا استبعاد",
+      "points": 0.0
+    },
+    {
+      "key": "support",
+      "ar": "اختبار الدعم وسحب السيولة",
+      "score": 0,
+      "weight": 25,
+      "detail": "اختبار دعم: لا · سحب واستعادة: لا",
+      "points": 0.0
+    },
+    {
+      "key": "ema",
+      "ar": "تفاعل EMA 20 / 30 / 50",
+      "score": 0.0,
+      "weight": 15,
+      "detail": "EMA20: تحته / غير صاعد · EMA30: تحته / غير صاعد · EMA50: تحته / غير صاعد",
+      "points": 0.0
+    }
+  ],
+  "confirmations": [
+    "MACD يتجه للتحسّن"
+  ],
+  "levels": {
+    "trigger": 1.518,
+    "entry_zone": [
+      1.2265,
+      1.518
+    ],
+    "stop": 1.2144,
+    "stop_pct": -20.0,
+    "stop_structural": 1.081,
+    "stop_structural_pct": -28.79,
+    "targets": {
+      "t1_382": 1.2837,
+      "t2_618": 1.3663,
+      "t3_full": 1.5
+    },
+    "rr_t1": -0.77,
+    "rr_t2": -0.5,
+    "risk_per_share": 0.3036,
+    "reward_t2_per_share": -0.1517,
+    "atr_pct": 55.98,
+    "bottom": 1.15,
+    "peak": 1.5,
+    "last": 1.4,
+    "base_high": 1.15,
+    "ema9": 1.3527,
+    "ema20": 2.857,
+    "support": 1.15,
+    "impulse_high": null,
+    "resistance": null,
+    "sweep_low": null,
+    "reclaim_level": null,
+    "position_note_ar": "مخاطرة السهم عالية (ATR 56.0%) — استخدم حجم مركز صغير؛ مثال: مخاطرة 0.5-1% من رأس المال لكل صفقة، والوقف عند 1.2144$ (-20.0% من نقطة الدخول)."
+  },
+  "patterns_daily": [],
+  "patterns_4h": [
+    {
+      "name": "double_bottom",
+      "name_ar": "قاع مزدوج (W)",
+      "tf": "4H",
+      "confidence": 0.9,
+      "bias": "bullish",
+      "description_ar": "قاع مزدوج: قاع 0.835 بتاريخ 2026-11-20 وقاع 0.789 بتاريخ 2026-11-24 بفارق 5.8%، وخط العنق عند 1.000 (26.7% فوق القاع). تم اختراق خط العنق → النموذج مكتمل.",
+      "levels": {
+        "bottom1": 0.835,
+        "bottom2": 0.7895,
+        "neckline": 1.0
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "higher_lows",
+      "name_ar": "بنية قيعان صاعدة",
+      "tf": "4H",
+      "confidence": 0.7,
+      "bias": "bullish",
+      "description_ar": "بنية قيعان صاعدة: 2 قاع صاعد منذ بداية القاعدة (1.139 → 0.789) وهو أول دليل على انتقال العرض إلى الطلب.",
+      "levels": {
+        "first_low": 1.139,
+        "last_low": 0.7895
+      },
+      "status": "confirmed"
+    },
+    {
+      "name": "descending_channel",
+      "name_ar": "قناة هابطة",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "bearish",
+      "description_ar": "قناة هابطة بانحدار -2.20% للشمعة (30 شمعة). سقف القناة عند 1.944 والسعر أسفله بفارق 30.0% — ننتظر اختراقاً بإغلاق.",
+      "levels": {
+        "channel_upper": 1.9441,
+        "channel_mid": 1.4517,
+        "channel_lower": 1.084
+      },
+      "status": "forming"
+    },
+    {
+      "name": "volume_dryup",
+      "name_ar": "جفاف حجم ثم انفجار",
+      "tf": "4H",
+      "confidence": 0.65,
+      "bias": "neutral",
+      "description_ar": "جفاف الحجم: أدنى حجم في النصف الأخير من النافذة = 0% من متوسط ما قبله ، ولم يحدث بعد انفجار حجمي (ننتظر تأكيد السيولة).",
+      "levels": null,
+      "status": "forming"
+    }
+  ],
+  "h4": {
+    "available": true,
+    "last": 1.36,
+    "rsi": 49.37,
+    "trend": "neutral",
+    "ema20": 1.212,
+    "ema50": 2.6149,
+    "rvol": 0.03,
+    "macd_hist": 0.10421,
+    "channel_broken": false,
+    "higher_lows": 2,
+    "bullish_divergence": false,
+    "aligned": false
+  },
+  "why_ar": [
+    "تقسيم عكسي 1-for-5 منفّذ في 2026-11-27 (عمر 1 يوماً) — داخل نافذة الشهرين المطلوبة بالاستراتيجية.",
+    "افتتح يوم التقسيم على 1.2$ وصعد إلى 1.5$ (+25.0%) ثم فشل في الثبات فوق الصعود.",
+    "موجة هبوط 23.3% من القمة 1.5$ إلى القاع المرجعي 1.15$ بتاريخ 2026-11-27 — أقل من شرط 30%.",
+    "RSI وصل إلى 22.35 (تشبع بيعي قوي و 1 جلسة تحت 30) والحالي 22.35 ولم يتأكد التحسّن بعد.",
+    "ثبات 0 جلسة على القاع 1.15$ داخل نطاق 0.0% مع جفاف حجم (98% من المتوسط)، والقاع صامد.",
+    "حالة التسلسل: بانتظار جلسات ما بعد الثبات.",
+    "تأكيدات فنية: MACD يتجه للتحسّن.",
+    "فريم 4 ساعات: الاتجاه عرضي، RSI 49.37",
+    "عدد الأسهم 1.20M — الفلوت 115.3K سهم.",
+    "البيع المكشوف 0.1% من الفلوت (أيام التغطية 0.01).",
+    "أخبار سلبية: SciSparc (SPRC): Shareholders to vote on up to $10M public offering - Quantisnow | SciSparc to implement 1-for-5 reverse stock split - TradingView",
+    "محفزات إيجابية: SciSparc: Subsidiary NeuroThera Labs Reports Positive Progress in FDA-Approved P | NeuroThera Labs Reports Positive Progress in FDA-Approved Phase IIb Clinical Tri"
+  ],
+  "action_ar": "مرشح GAM للمراجعة في المسار الثانوي فقط؛ لم يجتز الأهلية الصارمة بسبب الهبوط 23.3% أقل من الحد المطلوب 30.0%. لا يُعرض كفرصة مؤهلة أو في قائمة المتابعة، وليس توصية أو إشارة دخول.",
+  "note_ar": "",
+  "phase_info": {
+    "key": "REJECTED",
+    "ar": "مستبعد",
+    "color": "#5b6472",
+    "desc": "لم يستوفِ شروط الاستراتيجية (راجع أسباب الاستبعاد)."
+  },
+  "phase_color": "#5b6472"
+}

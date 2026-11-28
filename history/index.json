@@ -1,0 +1,26 @@
+[
+ {
+  "stamp": "2026-11-28_0620",
+  "generated_at_riyadh": "2026-11-28 06:20",
+  "mode": "live",
+  "summary": {
+   "scanned": 21,
+   "with_reverse_split": 21,
+   "eligible": 2,
+   "watchlist": 0,
+   "gam_candidates": 1,
+   "ready": 0,
+   "failed": 3,
+   "avg_score_watchlist": 0,
+   "top_symbol": "UFG",
+   "eligible_symbols": [
+    "UFG",
+    "EVFM"
+   ],
+   "gam_symbols": [
+    "SPRC"
+   ],
+   "ready_symbols": []
+  }
+ }
+]
